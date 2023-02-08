@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ambient8.ogg-e2d10e50e4c0ce28812071483b4fe79d.oggstr"
+
+[deps]
+
+source_file="res://minigames/minigame8/sounds/ambient/ambient8.ogg"
+dest_files=[ "res://.import/ambient8.ogg-e2d10e50e4c0ce28812071483b4fe79d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/door_locked.ogg-41bdb36286d10ac61661661765a0dcf4.oggstr"
+
+[deps]
+
+source_file="res://minigames/minigame8/sounds/door_locked.ogg"
+dest_files=[ "res://.import/door_locked.ogg-41bdb36286d10ac61661661765a0dcf4.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

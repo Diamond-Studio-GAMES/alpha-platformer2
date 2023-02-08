@@ -1,0 +1,417 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "AdsManager",
+"language": "GDScript",
+"path": "res://scripts/menu/ads_manager.gd"
+}, {
+"base": "Player",
+"class": "Archer",
+"language": "GDScript",
+"path": "res://scripts/game/player/player_archer.gd"
+}, {
+"base": "Area2D",
+"class": "Attack",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/attack.gd"
+}, {
+"base": "Node",
+"class": "Box",
+"language": "GDScript",
+"path": "res://scripts/menu/box_opening.gd"
+}, {
+"base": "Player",
+"class": "Butcher",
+"language": "GDScript",
+"path": "res://scripts/game/player/player_butcher.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Dasher",
+"language": "GDScript",
+"path": "res://minigames/minigame5/resources/dasher.gd"
+}, {
+"base": "Player",
+"class": "Death",
+"language": "GDScript",
+"path": "res://scripts/game/player/player_death.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Entity",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/entity.gd"
+}, {
+"base": "Area2D",
+"class": "FireAttack",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/fire_attack.gd"
+}, {
+"base": "Control",
+"class": "Garden",
+"language": "GDScript",
+"path": "res://minigames/minigame6/resources/garden.gd"
+}, {
+"base": "Node",
+"class": "Globals",
+"language": "GDScript",
+"path": "res://scripts/game/globals.gd"
+}, {
+"base": "Area2D",
+"class": "Heal",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/heal.gd"
+}, {
+"base": "Mob",
+"class": "KnifeMan",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/knife_man.gd"
+}, {
+"base": "Player",
+"class": "Knight",
+"language": "GDScript",
+"path": "res://scripts/game/player/player_knight.gd"
+}, {
+"base": "Mob",
+"class": "KnightMob",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/knight_mob.gd"
+}, {
+"base": "WindowDialog",
+"class": "Lobby",
+"language": "GDScript",
+"path": "res://scripts/game/multiplayer/multiplayer_lobby.gd"
+}, {
+"base": "Mob",
+"class": "Mechanic",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/mechanic.gd"
+}, {
+"base": "Entity",
+"class": "Mob",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/mob.gd"
+}, {
+"base": "Node",
+"class": "Multiplayer",
+"language": "GDScript",
+"path": "res://scripts/game/multiplayer/multiplayer.gd"
+}, {
+"base": "Node",
+"class": "MultiplayerGame",
+"language": "GDScript",
+"path": "res://scripts/game/multiplayer/multiplayer_game.gd"
+}, {
+"base": "Node",
+"class": "MultiplayerSpawnable",
+"language": "GDScript",
+"path": "res://scripts/game/multiplayer/multiplayer_spawnable.gd"
+}, {
+"base": "Node",
+"class": "MultiplayerSynchronizer",
+"language": "GDScript",
+"path": "res://scripts/game/multiplayer/multiplayer_synchronizer.gd"
+}, {
+"base": "Mob",
+"class": "Mushroom",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/mushroom.gd"
+}, {
+"base": "Node2D",
+"class": "Night",
+"language": "GDScript",
+"path": "res://minigames/minigame8/scripts/night.gd"
+}, {
+"base": "Resource",
+"class": "PlantResource",
+"language": "GDScript",
+"path": "res://minigames/minigame6/resources/plant_resource.gd"
+}, {
+"base": "Entity",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scripts/game/player/player.gd"
+}, {
+"base": "Player",
+"class": "PlayerPlayer",
+"language": "GDScript",
+"path": "res://scripts/game/player/player_player.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Pushable",
+"language": "GDScript",
+"path": "res://scripts/game/other/block.gd"
+}, {
+"base": "Mob",
+"class": "Shooter",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/shooter.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "ShooterPlayer",
+"language": "GDScript",
+"path": "res://minigames/minigame7/shooter_player.gd"
+}, {
+"base": "Player",
+"class": "Spearman",
+"language": "GDScript",
+"path": "res://scripts/game/player/player_spearman.gd"
+}, {
+"base": "Mob",
+"class": "Sportsman",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/sportsman.gd"
+}, {
+"base": "Node2D",
+"class": "Throwable",
+"language": "GDScript",
+"path": "res://scripts/game/other/throwable.gd"
+}, {
+"base": "Line2D",
+"class": "Trail2D",
+"language": "GDScript",
+"path": "res://scripts/game/other/trail.gd"
+}, {
+"base": "Control",
+"class": "VirtualJoystick",
+"language": "GDScript",
+"path": "res://scripts/game/other/virtual_joystick.gd"
+}, {
+"base": "Player",
+"class": "Wizard",
+"language": "GDScript",
+"path": "res://scripts/game/player/player_wizard.gd"
+} ]
+_global_script_class_icons={
+"AdsManager": "",
+"Archer": "",
+"Attack": "res://textures/gui/attack.png",
+"Box": "res://textures/items/box.png",
+"Butcher": "",
+"Dasher": "",
+"Death": "",
+"Entity": "",
+"FireAttack": "res://textures/blocks/fireMask.png",
+"Garden": "",
+"Globals": "res://textures/gui/alpha_text.png",
+"Heal": "res://textures/effects/other/heal_plus.png",
+"KnifeMan": "res://textures/mobs/knife_man/head.res",
+"Knight": "",
+"KnightMob": "",
+"Lobby": "",
+"Mechanic": "res://textures/mobs/mechanic/head.res",
+"Mob": "res://textures/mobs/mechanic/transform_eye.res",
+"Multiplayer": "",
+"MultiplayerGame": "",
+"MultiplayerSpawnable": "",
+"MultiplayerSynchronizer": "",
+"Mushroom": "res://textures/mobs/mushroom/mushroom.res",
+"Night": "",
+"PlantResource": "res://minigames/minigame6/resources/seed_packet_legendary.png",
+"Player": "",
+"PlayerPlayer": "",
+"Pushable": "res://textures/blocks/ladder.png",
+"Shooter": "res://textures/mobs/shooter/head.res",
+"ShooterPlayer": "",
+"Spearman": "",
+"Sportsman": "res://textures/mobs/knife_man/head.res",
+"Throwable": "",
+"Trail2D": "",
+"VirtualJoystick": "",
+"Wizard": ""
+}
+
+[application]
+
+config/name="Alpha Platformer Adventure 2: The Last Challenge"
+run/main_scene="res://scenes/splash_screen.scn"
+boot_splash/image="res://textures/misc/pre_splash_screen.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://textures/misc/icon.png"
+config/quit_on_go_back=false
+
+[audio]
+
+default_bus_layout="res://misc/bus_layout.res"
+
+[autoload]
+
+G="*res://scripts/game/globals.gd"
+MP="*res://scripts/game/multiplayer/multiplayer.gd"
+AdManager="*res://scripts/menu/ads_manager.gd"
+
+[compression]
+
+formats/zstd/compression_level=1
+formats/zlib/compression_level=0
+formats/gzip/compression_level=0
+
+[debug]
+
+gdscript/warnings/enable=false
+gdscript/warnings/unsafe_property_access=true
+gdscript/warnings/unsafe_method_access=true
+gdscript/warnings/unsafe_cast=true
+gdscript/warnings/unsafe_call_argument=true
+multirun/number_of_windows=2
+multirun/add_custom_args=false
+multirun/first_window_args="listen"
+multirun/other_window_args="join"
+multirun/window_distance=1270
+
+[display]
+
+window/size/width=960
+window/size/height=540
+window/energy_saving/keep_screen_on=false
+window/handheld/orientation="sensor_landscape"
+window/stretch/mode="2d"
+window/stretch/aspect="keep_height"
+
+[editor]
+
+scene_naming=2
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[input]
+
+left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777231,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777233,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+jump={
+"deadzone": 0.49,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777232,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+attack1={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":67,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777234,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ulti={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":88,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777221,"unicode":0,"echo":false,"script":null)
+ ]
+}
+potion1={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":49,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777351,"unicode":0,"echo":false,"script":null)
+ ]
+}
+potion2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":50,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777352,"unicode":0,"echo":false,"script":null)
+ ]
+}
+potion3={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":51,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777353,"unicode":0,"echo":false,"script":null)
+ ]
+}
+pause={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777217,"unicode":0,"echo":false,"script":null)
+ ]
+}
+gadget={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":90,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777237,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[input_devices]
+
+buffering/agile_event_flushing=true
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemies"
+2d_physics/layer_4="other"
+2d_physics/layer_5="attack"
+2d_physics/layer_6="water"
+
+[locale]
+
+locale_filter=[ 1, [ "en", "ru" ] ]
+translations=PoolStringArray( "res://misc/apa2_translation.en.translation", "res://misc/apa2_translation.ru.translation" )
+translation_remaps={
+"res://minigames/minigame8/textures/enemies/fezek_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/fezek.png:en" ),
+"res://minigames/minigame8/textures/enemies/fizruk_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/fizruk.png:en" ),
+"res://minigames/minigame8/textures/enemies/gaynomama_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/gaynomama.png:en" ),
+"res://minigames/minigame8/textures/enemies/geographichka_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/geographichka.png:en" ),
+"res://minigames/minigame8/textures/enemies/himichka_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/himichka.png:en" ),
+"res://minigames/minigame8/textures/enemies/izichka_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/izichka.png:en" ),
+"res://minigames/minigame8/textures/enemies/matem_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/matem.png:en" ),
+"res://minigames/minigame8/textures/enemies/muzichka_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/muzichka.png:en" ),
+"res://minigames/minigame8/textures/enemies/obschestvo_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/obschestvo.png:en" ),
+"res://minigames/minigame8/textures/enemies/tehnolog_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/tehnolog.png:en" )
+}
+
+[node]
+
+name_casing=2
+
+[physics]
+
+2d/physics_engine="GodotPhysics"
+common/enable_object_picking=false
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+vram_compression/import_bptc=true
+vram_compression/import_etc=true
+vram_compression/import_pvrtc=true
+batching/precision/uv_contract=true
+environment/default_environment="res://misc/env.res"

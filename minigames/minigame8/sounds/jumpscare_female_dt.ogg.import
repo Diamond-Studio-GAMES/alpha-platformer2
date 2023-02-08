@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/jumpscare_female_dt.ogg-12c179472b015bcd6251348d08d6483b.oggstr"
+
+[deps]
+
+source_file="res://minigames/minigame8/sounds/jumpscare_female_dt.ogg"
+dest_files=[ "res://.import/jumpscare_female_dt.ogg-12c179472b015bcd6251348d08d6483b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

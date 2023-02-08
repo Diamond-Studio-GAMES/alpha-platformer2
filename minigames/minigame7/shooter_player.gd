@@ -1,0 +1,138 @@
+extends KinematicBody2D
+class_name ShooterPlayer
+
+
+var current_weapon = "gun"
+var current_weapon_node = null
+var weapons = []
+var SPEED = 350
+onready var joystick0 = $camera/gui/gui/joystick
+onready var joystick1 = $camera/gui/gui/joystick2
+onready var sprite = $sprite
+onready var hp_bar = $camera/gui/gui/hp
+onready var ammo_counter = $camera/gui/gui/ammo
+onready var parent = $".."
+var timer = 0
+var max_hp = 100
+var hp = 100
+var is_shooting = false
+var aim_vector = Vector2.ZERO
+var player_name = ""
+var direction = Vector2.ZERO
+var effect = load("res://minigames/minigame7/death_effect.scn")
+
+
+func _ready():
+	$label.text = player_name
+	hp_bar.max_value = max_hp
+	if not MP.has_multiplayer_authority(self):
+		$camera/gui.hide()
+	else:
+		$camera.make_current()
+	for i in $sprite/weapon.get_children():
+		weapons.append(i.name)
+	current_weapon = weapons[0]
+	current_weapon_node = $sprite/weapon.get_node(current_weapon)
+	current_weapon_node.is_active = true
+	get_tree().connect("network_peer_connected", self, "sync_weapon")
+	if get_tree().is_network_server():
+		var ips = IP.get_local_addresses()
+		var ip = ips[0]
+		var ip_founded = false
+		for i in ips:
+			if i.begins_with("192.168."):
+				ip = i
+				ip_founded = true
+				break
+		if not ip_founded:
+			ip += " (возможно, нет подключения)"
+		$camera/gui/gui/ip.text = "Ваш IP: " + ip
+		$camera/gui/gui/start.show()
+
+
+func _physics_process(delta):
+	if MP.has_multiplayer_authority(self):
+		aim_vector = joystick1._output
+		direction = joystick0._output
+		var dir = Vector2.ZERO
+		if parent.started:
+			dir = move_and_slide(SPEED * direction)
+		if dir.x < 0:
+			sprite.scale.x = -0.4
+		elif dir.x > 0:
+			sprite.scale.x = 0.4
+		if aim_vector.x > 0:
+			sprite.scale.x = 0.4
+		elif aim_vector.x < 0:
+			sprite.scale.x = -0.4
+		hp_bar.value = hp
+		ammo_counter.text = str(current_weapon_node.ammo) + "/" + str(current_weapon_node.all_ammo)
+	else:
+		if parent.started:
+			move_and_slide(SPEED * direction)
+
+
+func hurt(dmg):
+	$MultiplayerSynchronizer.sync_call(self, "hurt", [dmg])
+	if hp <= 0:
+		return
+	hp = clamp(hp - dmg, 0, max_hp)
+	if hp <= 0:
+		var node = effect.instance()
+		node.global_position = global_position
+		node.flip_h = sprite.scale.x < 0
+		get_parent().add_child(node, true)
+		hide()
+		SPEED *= 2
+		sprite.modulate = Color.black
+		is_shooting = false
+		$shape.set_deferred("disabled", true)
+		$camera/gui/gui/ip.text = "ПОРАЖЕНИЕ!" + ("\n Если ты сервер, подожди пока матч закончится!" if get_tree().is_network_server() else "")
+		if MP.has_multiplayer_authority(self):
+			parent.rpc("player_died", get_tree().get_network_unique_id())
+
+
+func do_disconnect():
+	queue_free()
+	MP.close_network()
+	$"../lobby".show()
+
+
+func shoot(b):
+	if hp <= 0:
+		is_shooting = false
+		return
+	if not parent.started:
+		is_shooting = false
+		return
+	is_shooting = b
+
+
+func start_game():
+	$camera/gui/gui/ip.text = ""
+	get_parent().rpc("start_game")
+	$camera/gui/gui/start.hide()
+
+
+func change_weapon(change_idx = true):
+	$MultiplayerSynchronizer.sync_call(self, "change_weapon", [])
+	current_weapon_node.hide()
+	current_weapon_node.is_active = false
+	var next_idx = weapons.find(current_weapon)
+	if change_idx:
+		next_idx += 1
+		if next_idx >= len(weapons):
+			next_idx = 0
+	current_weapon = weapons[next_idx]
+	current_weapon_node = $sprite/weapon.get_node(current_weapon)
+	current_weapon_node.show()
+	current_weapon_node.is_active = true
+
+
+func sync_weapon(id):
+	yield(get_tree().create_timer(0.5),"timeout")
+	$MultiplayerSynchronizer.sync_call(self, "change_weapon", [false])
+
+
+func make_text(t):
+	$camera/gui/gui/ip.text = t

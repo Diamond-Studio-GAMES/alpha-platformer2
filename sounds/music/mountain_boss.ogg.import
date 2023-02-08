@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mountain_boss.ogg-4c48c1d84bb26ab559bac956eedb0222.oggstr"
+
+[deps]
+
+source_file="res://sounds/music/mountain_boss.ogg"
+dest_files=[ "res://.import/mountain_boss.ogg-4c48c1d84bb26ab559bac956eedb0222.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

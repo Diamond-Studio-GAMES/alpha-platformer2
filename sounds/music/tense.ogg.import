@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tense.ogg-84d346854f5c5120adf93f72585a74a6.oggstr"
+
+[deps]
+
+source_file="res://sounds/music/tense.ogg"
+dest_files=[ "res://.import/tense.ogg-84d346854f5c5120adf93f72585a74a6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/steps_in.ogg-0b393b5309f3d148b8a36df6b69d15ab.oggstr"
+
+[deps]
+
+source_file="res://minigames/minigame8/sounds/steps_in.ogg"
+dest_files=[ "res://.import/steps_in.ogg-0b393b5309f3d148b8a36df6b69d15ab.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
