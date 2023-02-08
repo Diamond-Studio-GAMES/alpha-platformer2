@@ -29,7 +29,7 @@ func create():
 
 func join():
 	popup_centered()
-	show_scr("connect")
+	$connect.show()
 	var parts_of_level = G.current_level.split("_")
 	$connect/title.text = "Присоединиться к комнате с уровнем " + parts_of_level[0] + "-" + parts_of_level[1] + "..."
 
@@ -135,7 +135,7 @@ func register_player_self():
 func init_multiplayer():
 	for i in $lobby/scroll/list.get_children():
 		i.queue_free()
-	show_scr("lobby")
+	$lobby.show()
 	if get_tree().is_network_server():
 		$lobby/ip.show()
 		$lobby/more.show()
@@ -186,14 +186,6 @@ func update_start_game_button():
 		$lobby/start_game.disabled = true
 		return
 	$lobby/start_game.disabled = not get_tree().get_network_connected_peers().size() > 0
-
-
-func show_scr(scr):
-	for i in get_children():
-		if i is TextureButton:
-			continue
-		i.hide()
-	get_node(scr).show()
 
 
 func show_alert(text, title = "Ошибка!"):
