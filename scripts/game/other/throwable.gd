@@ -47,7 +47,7 @@ func _ready():
 		angle = Vector2.RIGHT.rotated(deg2rad(rotation_degrees))
 
 
-func destroy_it_attack(attack : Attack):
+func destroy_it_attack(attack):
 	if is_player_projectile and attack.is_player_attack:
 		return
 	if is_enemy_projectile and attack.is_enemy_attack:

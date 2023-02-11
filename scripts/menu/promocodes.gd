@@ -2,7 +2,6 @@ extends Control
 
 
 var pending_promocode = ""
-var promos = load("res://misc/promocodes.res")
 onready var line = $line_edit
 onready var comment = $comment
 onready var http = $http

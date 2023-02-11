@@ -9,7 +9,7 @@ var _attack_node
 var _ulti
 var _ulti_use_effect
 var _camera_tween
-var _aim_tween : Tween
+var _aim_tween
 var is_active_gadget = false
 var anima
 var arrow = load("res://prefabs/classes/arrow.scn")
@@ -280,6 +280,7 @@ func _process(delta):
 			anima.track_set_key_value(trck_idx1, key_idx2_1, hand_rotate + 80)
 		if is_aiming:
 			aim_time += delta
+			_health_timer = 0
 			if aim_time >= 1.1:
 				_anim_tree["parameters/aim_ts/scale"] = 0
 	if jout.length_squared() <= 0 and is_aiming:

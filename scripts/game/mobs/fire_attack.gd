@@ -49,7 +49,7 @@ func remove_body(node):
 		iterations.remove(idx)
 
 
-func deal_damage(node, i):
+func deal_damage(node):
 	if node.name.begins_with("player") and is_player_attack:
 		return
 	if node.name.begins_with("mob") and is_enemy_attack:
@@ -61,13 +61,16 @@ func deal_damage(node, i):
 			node.hurt(damage, -1 * knockback, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time)
 	if is_on_entity or node.current_health <= 0:
 		return
-	if not node.has_node(@"fire_on_entity"):
+	if not node.has_node("fire_on_entity"):
 		var foe = fire_on_entity.instance()
 		foe.name = "fire_on_entity"
 		foe.target = node
 		node.add_child(foe)
 	else:
-		node.get_node("fire_on_entity").iterations[i] = 0
+		var foe = node.get_node("fire_on_entity")
+		var idx = foe.bodies.find(node)
+		if idx != -1:
+			foe.iterations[idx] = 0
 
 
 func _physics_process(delta):
@@ -80,10 +83,10 @@ func _physics_process(delta):
 			if timers[i] >= 70:
 				timers[i] = 10
 				iterations[i] += 1
-				deal_damage(bodies[i], i)
+				deal_damage(bodies[i])
 		else:
 			timers[i] += delta*60
 			if timers[i] >= 60:
 				timers[i] = 0
-				deal_damage(bodies[i], i)
+				deal_damage(bodies[i])
 	

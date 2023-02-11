@@ -304,7 +304,7 @@ func use_potion(level):
 			_potion_1.get_node("count").text = str(potions_1)
 			_anim_tree["parameters/potion_seek/seek_position"] = 0
 			_anim_tree["parameters/potion_shot/active"] = true
-			yield(get_tree().create_timer(0.6, false), "timeout")
+			yield(get_tree().create_timer(0.8, false), "timeout")
 			if MP.auth(self):
 				heal(round(max_health * 0.2))
 			yield(get_tree().create_timer(0.6, false), "timeout")
@@ -321,7 +321,7 @@ func use_potion(level):
 			_potion_2.get_node("count").text = str(potions_2)
 			_anim_tree["parameters/potion_seek/seek_position"] = 0
 			_anim_tree["parameters/potion_shot/active"] = true
-			yield(get_tree().create_timer(0.6, false), "timeout")
+			yield(get_tree().create_timer(0.8, false), "timeout")
 			if MP.auth(self):
 				heal(round(max_health * 0.4))
 			yield(get_tree().create_timer(0.6, false), "timeout")
@@ -338,7 +338,7 @@ func use_potion(level):
 			_potion_3.get_node("count").text = str(potions_3)
 			_anim_tree["parameters/potion_seek/seek_position"] = 0
 			_anim_tree["parameters/potion_shot/active"] = true
-			yield(get_tree().create_timer(0.6, false), "timeout")
+			yield(get_tree().create_timer(0.8, false), "timeout")
 			if MP.auth(self):
 				heal(round(max_health * 0.6))
 			yield(get_tree().create_timer(0.6, false), "timeout")

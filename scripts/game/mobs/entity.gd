@@ -166,7 +166,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 	if time1 > 0:
 		yield(get_tree().create_timer(time1, false), "timeout")
 	if current_health > 0:
-		can_move = true
+		can_move = true and not is_stunned
 	if difference > 0:
 		yield(get_tree().create_timer(difference, false), "timeout")
 	if current_health > 0:

@@ -24,6 +24,7 @@ func start_load():
 	if loader == null:
 		print("Can't load!")
 		get_tree().change_scene("res://scenes/splash_screen.scn")
+		queue_free()
 		return
 
 

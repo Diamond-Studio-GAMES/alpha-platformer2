@@ -740,11 +740,11 @@ func open_box():
 			loot["coins"] += gen.randi_range(6, 18) * 3
 		if ulti_classes.size() > 0:
 			loot["ulti_tokens"] = {
-				ulti_classes[0] : gen.randi_range(1, 3) + randi() % 2
+				ulti_classes[0] : gen.randi_range(1, 2) + randi() % 2
 			}
 			G.setv(ulti_classes[0] + "_ulti_tokens", G.getv(ulti_classes[0] + "_ulti_tokens", 0) + loot["ulti_tokens"][ulti_classes[0]])
 		else:
-			loot["coins"] += gen.randi_range(1, 3) * 12 + (randi() % 2) * 12
+			loot["coins"] += gen.randi_range(1, 2) * 12 + (randi() % 2) * 12
 		G.setv("coins", G.getv("coins", 0) + loot["coins"])
 		init_values()
 	return loot
