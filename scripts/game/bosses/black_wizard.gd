@@ -143,7 +143,7 @@ func process_attack(delta):
 			return
 		player_target = mob.player
 		attack_timer = 0
-		next_attack_time = rand_range(1, 1.5)
+		next_attack_time = rand_range(1.5, 2)
 		var variants = attacks.duplicate()
 		if not under_shield:
 			variants.append("make_shield")

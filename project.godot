@@ -260,11 +260,6 @@ gdscript/warnings/unsafe_property_access=true
 gdscript/warnings/unsafe_method_access=true
 gdscript/warnings/unsafe_cast=true
 gdscript/warnings/unsafe_call_argument=true
-multirun/number_of_windows=2
-multirun/add_custom_args=false
-multirun/first_window_args="listen"
-multirun/other_window_args="join"
-multirun/window_distance=1270
 
 [display]
 
@@ -410,8 +405,6 @@ common/enable_object_picking=false
 quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
-vram_compression/import_bptc=true
 vram_compression/import_etc=true
-vram_compression/import_pvrtc=true
 batching/precision/uv_contract=true
 environment/default_environment="res://misc/env.res"

@@ -10,7 +10,7 @@ export (float) var reload_time = 2
 var is_active = false
 var reload_timer = 0
 var delay_timer = 0
-var bullet = load("res://minigames/minigame7/weapons/ZAWARKA.scn")
+var bullet = load("res://minigames/minigame7/weapons/ZAWARKA_effect.scn")
 
 
 func _ready():
