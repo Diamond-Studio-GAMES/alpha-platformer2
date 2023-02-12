@@ -2,4 +2,6 @@ android/
 addons/
 .import/
 
+*.translation
+
 export_presets.cfg
