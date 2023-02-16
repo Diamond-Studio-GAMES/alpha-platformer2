@@ -126,7 +126,7 @@ remote func add_player():
 	players_connected += 1
 
 
-func _node_added(node : Node):
+func _node_added(node):
 	if not is_active:
 		return
 	if node.is_in_group("spawnable") and not node.get_meta("spawned_remotely", false):
@@ -157,7 +157,7 @@ remote func sync_spawn(node_name, file_path, node_path, server_master, spawn_dat
 		return
 #	print("added spawnable remotely")
 #	print("rpc sender: ", get_tree().get_rpc_sender_id(), " node: ", node_name, " master_id: ", netw_m_id)
-	var node = load(file_path).instance() as Node
+	var node = load(file_path).instance()
 	var spawner = node.get_node("MultiplayerSpawnable")
 	node.name = node_name
 	for i in spawn_data:
@@ -173,6 +173,8 @@ remote func sync_spawn(node_name, file_path, node_path, server_master, spawn_dat
 remote func sync_delete(path):
 	var node_to_free = get_node_or_null(path)
 	if not is_instance_valid(node_to_free):
+		return
+	if has_multiplayer_authority(node_to_free):
 		return
 	get_node(path).queue_free()
 

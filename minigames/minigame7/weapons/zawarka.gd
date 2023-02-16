@@ -44,5 +44,5 @@ func shoot():
 	if ammo <= 0:
 		reload_timer = reload_time
 		self_modulate = Color.gray
-	yield(get_tree().create_timer(3.5), "timeout")
+	yield(get_tree().create_timer(2), "timeout")
 	player.pause_mode = PAUSE_MODE_INHERIT

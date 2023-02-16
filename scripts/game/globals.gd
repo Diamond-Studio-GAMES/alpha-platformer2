@@ -232,7 +232,7 @@ func update_music(node):
 
 
 func receive_ad_reward():
-	G.receive_loot({"gold_box":1})
+	receive_loot({"gold_box":1})
 
 
 func receive_loot(looted):

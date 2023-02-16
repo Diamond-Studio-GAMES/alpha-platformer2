@@ -18,5 +18,6 @@ func remove_body(body):
 func _physics_process(delta):
 	for i in bodies:
 		var s = i.jump(jump_power)
+		i._move.y = -jump_power * i.GRAVITY_SCALE
 		if s:
 			$effect.restart()

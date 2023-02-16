@@ -99,6 +99,7 @@ func check_for_end():
 		return
 	if alive_players.empty():
 		state = State.END
+		get_tree().call_group("player", "remove_from_group", "spawnable")
 		yield(get_tree().create_timer(4), "timeout")
 		get_tree().call_group("player", "end_game")
 

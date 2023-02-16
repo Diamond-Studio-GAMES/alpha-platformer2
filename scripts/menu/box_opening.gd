@@ -715,9 +715,9 @@ func open_box():
 		var coins_count = 0
 		var c = gen.randi_range(0, 100)
 		if c < 70:
-			coins_count = gen.randi_range(35, 110)
+			coins_count = gen.randi_range(30, 90)
 		else:
-			coins_count = gen.randi_range(110, 145)
+			coins_count = gen.randi_range(90, 120)
 		loot["coins"] = coins_count
 		if power_classes.size() >= 0:
 			power_classes.shuffle()

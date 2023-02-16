@@ -59,7 +59,7 @@ func deal_damage(node):
 			node.hurt(damage, 1 * knockback, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time)
 		else:
 			node.hurt(damage, -1 * knockback, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time)
-	if is_on_entity or node.current_health <= 0:
+	if is_on_entity or node.current_health <= 0 or not MP.auth(node):
 		return
 	if not node.has_node("fire_on_entity"):
 		var foe = fire_on_entity.instance()
@@ -78,7 +78,7 @@ func _physics_process(delta):
 		if is_on_entity:
 			timers[i] += delta*60
 			global_position = target.global_position
-			if iterations[i] >= 5:
+			if iterations[i] >= 5 and MP.auth(self):
 				queue_free()
 			if timers[i] >= 70:
 				timers[i] = 10
