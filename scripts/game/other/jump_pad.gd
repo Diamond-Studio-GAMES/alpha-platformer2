@@ -13,11 +13,9 @@ func add_body(body):
 func remove_body(body):
 	if body in bodies:
 		bodies.erase(body)
+		$effect.restart()
 
 
 func _physics_process(delta):
 	for i in bodies:
-		var s = i.jump(jump_power)
 		i._move.y = -jump_power * i.GRAVITY_SCALE
-		if s:
-			$effect.restart()

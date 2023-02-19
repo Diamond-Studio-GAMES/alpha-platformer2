@@ -180,14 +180,12 @@ func use_gadget():
 	can_move = true
 	_knockback = 0
 	is_stunned = false
+	stun_stars.hide()
 	yield(get_tree().create_timer(0.5), "timeout")
-	var prev_z = z_index
-	z_index = 110
-#	yield(get_tree().create_timer(5), "timeout")
-	yield(get_tree().create_timer((4 + floor(int(get_tree().current_scene.name[6])/2.0))/time_scale), "timeout")
+	var time_to_stop = 4 + floor(int(get_tree().current_scene.name.trim_prefix("level_").split("_")[0]) / 2.0)
+	yield(get_tree().create_timer(time_to_stop / time_scale), "timeout")
 	effect.get_node("anim").play("ZERO")
 	yield(get_tree().create_timer(0.5), "timeout")
-	z_index = prev_z
 	pause_mode = PAUSE_MODE_INHERIT
 	get_tree().paused = false
 	is_active_gadget = false
