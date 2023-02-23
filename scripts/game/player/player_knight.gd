@@ -96,7 +96,7 @@ func miss(knockback_multiplier):
 	_level.add_child(node)
 	_knockback = KNOCKBACK_POWER * clamp(sign(knockback_multiplier) * 2 + 1, -1, 1) 
 	if abs(knockback_multiplier) > 0:
-		_body.scale = Vector2(-knockback_multiplier, 1)
+		_body.scale = Vector2(-sign(knockback_multiplier), 1)
 	yield(get_tree().create_timer(0.3, false), "timeout")
 	_knockback = 0
 	yield(get_tree().create_timer(0.2, false), "timeout")

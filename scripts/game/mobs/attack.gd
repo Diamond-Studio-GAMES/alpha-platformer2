@@ -22,8 +22,8 @@ var exceptions_timers = []
 signal hit_enemy
 signal hit_wall
 signal hit_player
-signal hit_attack #COMPATIBILITY
-signal hit_attack_with_object
+signal hit_attack
+signal hit_attack_with_object(node)
 
 
 func _ready():

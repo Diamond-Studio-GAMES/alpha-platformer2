@@ -416,7 +416,7 @@ func _physics_process(delta):
 	else:
 		_health_timer = 0
 	if MP.auth(self):
-		if _health_timer >= 300 and current_health < max_health * 0.75 and current_health > 0:
+		if _health_timer >= 300 and current_health < round(max_health * 0.75) and current_health > 0:
 			idle_heal()
 	if _health_timer < 240:
 		_healed_times = 0
