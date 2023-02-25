@@ -2,17 +2,17 @@ extends Node
 class_name Globals, "res://textures/gui/alpha_text.png"
 
 
-const VERSION = "0.7.0"
-const VERSION_STATUS = ""
-const VERSION_STATUS_NUMBER = ""
-const VERSION_CODE = 53
+const VERSION = "0.8.0"
+const VERSION_STATUS = "сборка"
+const VERSION_STATUS_NUMBER = "1"
+const VERSION_CODE = 54
 var selected_class = "knight"
 var selected_class_to_test = "knight"
 var current_level = "1_1"
-var current_save = "main" setget current_save_set
 var cached_ip = ""
 var cached_suff = 0
-var file : ConfigFile
+var main_file : ConfigFile
+var save_file : ConfigFile
 var save_timer = 0
 var loading_scene = load("res://scenes/menu/loading.scn")
 var current_scene = "res://scenes/menu/menu.scn"
@@ -166,17 +166,20 @@ func _ready():
 	music.bus = "music"
 	music.stream = load("res://sounds/music/menu/menu.ogg")
 	add_child(music)
-	file = ConfigFile.new()
-	file.load("user://saves.game")
+	main_file = ConfigFile.new()
+	main_file.load_encrypted_pass("user://main.apa2", "main")
+	var dir = Directory.new()
+	if not dir.dir_exists("user://saves/"):
+		dir.make_dir_recursive("user://saves/")
 	fps_text = load("res://prefabs/menu/fps_counter.scn").instance()
 	add_child(fps_text)
-	fps_text.visible = G.file.get_value("main", "fps", false)
+	fps_text.visible = G.main_getv( "fps", false)
 
 
 func _process(delta):
 	save_timer += delta
 	if save_timer >= 20:
-		file.save("user://saves.game")
+		save()
 		save_timer = 0
 	update_music(null)
 
@@ -191,23 +194,55 @@ func _notification(what):
 
 
 func setv(name, value):
-	file.set_value(current_save, name, value)
+	save_file.set_value("save", name, value)
 
 
 func addv(name, value, default_value = 0):
-	file.set_value(current_save, name, file.get_value(current_save, name, default_value) + value)
+	save_file.set_value("save", name, save_file.get_value("save", name, default_value) + value)
 
 
-func getv(name, default_value = null):
-	return file.get_value(current_save, name, default_value)
+func getv(name, default_value = 0):
+	return save_file.get_value("save", name, default_value)
+
+
+func main_setv(name, value):
+	main_file.set_value("config", name, value)
+
+
+func main_getv(name, default_value = 0):
+	return main_file.get_value("config", name, default_value)
+
+
+func main_addv(name, value, default_value = 0):
+	main_file.set_value("config", name, main_file.get_value("config", name, default_value) + value)
+
+
+func set_save_meta(id, meta, data):
+	main_file.set_value(id, meta, data)
+
+
+func get_save_meta(id, meta, data):
+	return main_file.get_value(id, meta, data)
 
 
 func save():
-	file.save("user://saves.game")
+	main_file.save_encrypted_pass("user://main.apa2", "main")
+	if save_file != null:
+		save_file.save_encrypted_pass("user://saves/".plus_file(getv("save_id", "pass") + ".apa2save"), "apa2_save")
+
+
+func open_save(id):
+	save_file = ConfigFile.new()
+	save_file.load_encrypted_pass("user://saves/".plus_file(id + ".apa2save"), "apa2_save")
+
+
+func unload_save():
+	save()
+	save_file = null
 
 
 func change_to_scene(path):
-	if get_tree().root.has_node("/root/loading"):
+	if has_node("/root/loading"):
 		if $"/root/loading".load_path == path:
 			return
 	var node = loading_scene.instance()
@@ -304,7 +339,3 @@ func receive_loot(looted):
 		n.show_loot(loot_to_show)
 		yield(n, "end_loot")
 		emit_signal("loot_end")
-
-
-func current_save_set(value):
-	current_save = str(value)

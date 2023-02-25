@@ -17,7 +17,7 @@ var GR_BY_ID = {
 
 
 func _ready():
-	var tilemap = load("user://custom_level_" + str(G.current_save.hash()) + ".scn").instance()
+	var tilemap = load("user://custom_levels/" + G.getv("save_id", "lol") + ".scn").instance()
 	add_child(tilemap)
 	var load_bg = load("res://minigames/minigame5/load_bg.scn").instance()
 	tilemap.add_child(load_bg)

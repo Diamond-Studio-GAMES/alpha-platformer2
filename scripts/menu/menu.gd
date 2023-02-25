@@ -80,8 +80,7 @@ func more():
 
 
 func quit():
-	G.save()
-	G.current_save = "main"
+	G.unload_save()
 	get_tree().change_scene("res://scenes/menu/save_loader.scn")
 
 
@@ -90,11 +89,12 @@ func controls():
 
 
 func reset():
-	G.file.erase_section(G.current_save)
-	G.save()
 	var dir = Directory.new()
-	if dir.file_exists("user://custom_level_" + str(G.current_save.hash()) + ".scn"):
-		dir.remove("user://custom_level_" + str(G.current_save.hash()) + ".scn")
+	var id = G.getv("save_id", "ffff00")
+	G.unload_save()
+	dir.remove("user://saves/".plus_file(id + ".apa2save"))
+	if dir.file_exists("user://custom_levels/" + id + ".scn"):
+		dir.remove("user://custom_levels/" + id + ".scn")
 	get_tree().change_scene("res://scenes/menu/save_loader.scn")
 
 
@@ -106,6 +106,7 @@ func change_name():
 
 func do_change():
 	G.setv("name", $settings/name_change/line_edit.text)
+	G.set_save_meta(G.getv("save_id", "ffff00"), "name", $settings/name_change/line_edit.text)
 
 
 func link():

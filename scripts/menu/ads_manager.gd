@@ -52,7 +52,7 @@ func initialize(age):
 
 func showInterstitial():
 	print("Showing Interstitial...")
-	if G.file.get_value("main", "no_ads", false):
+	if G.main_getv( "no_ads", false):
 		print("ABORTING: ADS REMOVED!")
 		return
 	if appodeal == null:

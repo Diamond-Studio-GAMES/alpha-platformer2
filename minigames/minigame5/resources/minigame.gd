@@ -3,9 +3,11 @@ extends Control
 
 func _ready():
 	var file = File.new()
-	if not file.file_exists("user://custom_level_" + str(G.current_save.hash()) + ".scn"):
+	if not file.file_exists("user://custom_levels/" + G.getv("save_id", "lol") + ".scn"):
+		var dir = Directory.new()
+		dir.make_dir_recursive("user://custom_levels/")
 		var scene = load("res://minigames/minigame5/level_preset.scn")
-		ResourceSaver.save("user://custom_level_" + str(G.current_save.hash()) + ".scn", scene)
+		ResourceSaver.save("user://custom_levels/" + G.getv("save_id", "lol") + ".scn", scene)
 		G.setv("ld_bg", 0)
 		G.setv("ld_m", 0)
 		G.setv("ld_gr", 0)

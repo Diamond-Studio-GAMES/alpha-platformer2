@@ -130,7 +130,7 @@ func _on_sku_details_query_completed(sku_details):
 			GEMS_2500_SKU:
 				butt_gem2.text = make_price(available_sku.one_time_purchase_details)
 			NO_ADS_SKU:
-				if G.file.get_value("main", "no_ads", false):
+				if G.main_getv( "no_ads", false):
 					continue
 				butt_no_ads.text = make_price(available_sku.one_time_purchase_details)
 
@@ -204,7 +204,7 @@ func toggle_buttons(state):
 		butt_gem0.text = "-"
 		butt_gem1.text = "-"
 		butt_gem2.text = "-"
-		if not G.file.get_value("main", "no_ads", false):
+		if not G.main_getv( "no_ads", false):
 			butt_no_ads.text = "-"
 
 func make_price(data):
@@ -261,7 +261,7 @@ func _process(delta):
 		p2.text = "У тебя:" + str(G.getv("potions3", 0))
 		if int(p2.text) >= 5:
 			b2.disabled = true
-	if G.file.get_value("main", "no_ads", false):
+	if G.main_getv( "no_ads", false):
 		na.disabled = true
 		na.text = "Куплено"
 
@@ -274,13 +274,14 @@ func get_gems(count):
 
 
 func removed_ads():
-	if G.file.get_value("main", "no_ads", false):
+	if G.main_getv( "no_ads", false):
 		return
-	G.file.set_value("main", "no_ads", true)
+	G.main_setv( "no_ads", true)
 	G.save()
 	yield(get_tree(), "idle_frame")
 	get_tree().paused = true
 	yield(get_tree().create_timer(0.5), "timeout")
+	get_tree().paused = false
 	get_tree().change_scene("res://scenes/menu/no_ads.scn")
 
 
@@ -786,3 +787,8 @@ func request_online_response(result, code, header, body):
 			if not G.getv("save_id", "none") in j["ids"]:
 				continue
 		show_offer(j["costs"], j["receives"], int(i), j["name"])
+
+
+func _exit_tree():
+	var dir = Directory.new()
+	dir.remove("user://online_cache.cfg")
