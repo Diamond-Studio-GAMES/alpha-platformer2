@@ -105,17 +105,17 @@ func post_hurt():
 
 func move_left():
 	ms.sync_call(self, "move_left")
-	_move_direction = Vector2(-1, _move_direction.y)
+	_move_direction.x = -1
 
 
 func move_right():
 	ms.sync_call(self, "move_right")
-	_move_direction = Vector2(1, _move_direction.y)
+	_move_direction.x = 1
 
 
 func stop():
 	ms.sync_call(self, "stop")
-	_move_direction = Vector2(0, _move_direction.y)
+	_move_direction.x = 0
 
 
 func jump(power = 0):

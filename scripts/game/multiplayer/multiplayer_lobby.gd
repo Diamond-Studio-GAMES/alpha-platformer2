@@ -70,6 +70,7 @@ func do_disconnect():
 func connected_ok():
 	if curr_suff > 0:
 		G.cached_suff = curr_suff
+	$connect.hide()
 	init_multiplayer()
 
 

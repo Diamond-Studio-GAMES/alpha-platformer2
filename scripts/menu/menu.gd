@@ -11,12 +11,17 @@ func _ready():
 	$settings/conf2.get_label().align = Label.ALIGN_CENTER
 	$settings/conf2.get_cancel().text = "НЕТ!"
 	$settings/conf2.get_ok().text = "да"
+	$about/version.text = "Версия: " + G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER
 	$settings/mv_s.value = G.getv("volume", 1)
 	$settings/sfxv_s.value = G.getv("volume_sfx", 1)
 	$settings/efcts_s.selected = G.getv("effects", Globals.EffectsType.STANDARD)
 	$settings/dmp_s.value = G.getv("damping", 2.5)
 	$settings/smc_c.pressed = G.getv("smooth_camera", true)
+	$settings/light_c.pressed = G.getv("beauty_light", true)
 	$settings/save_id.text = "ID сохранения: " + G.getv("save_id", "undefined")
+	var date = G.getv("create_date", Time.get_datetime_dict_from_system())
+	var date_str = "%02d/%02d/%d" % [date["day"], date["month"], date["year"]]
+	$settings/creation_date.text = "Дата создания: " + date_str
 	if OS.has_feature("pc"):
 		$settings/contr.hide()
 		$settings/contr_pc.show()
@@ -27,6 +32,7 @@ func _process(delta):
 	G.setv("volume_sfx", $settings/sfxv_s.value)
 	G.setv("damping", $settings/dmp_s.value)
 	G.setv("smooth_camera", $settings/smc_c.pressed)
+	G.setv("beauty_light", $settings/light_c.pressed)
 	G.setv("effects", $settings/efcts_s.selected)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("music"), linear2db($settings/mv_s.value))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("sfx"), linear2db($settings/sfxv_s.value))

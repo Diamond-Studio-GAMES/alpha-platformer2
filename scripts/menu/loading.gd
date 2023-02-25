@@ -1,8 +1,6 @@
 extends Node
 
 
-func _enter_tree():
-	pass
 export (String) var load_path = "res://scenes/menu/menu.scn"
 var loader
 var time_max = 10
@@ -10,7 +8,7 @@ var wait_frames = 2
 
 
 func _ready():
-	yield(get_tree(), "idle_frame")
+	yield(get_tree().create_timer(0.05), "timeout")
 	start_load()
 
 
@@ -47,8 +45,8 @@ func _process(time):
 		else:
 			print(err)
 			get_tree().change_scene("res://scenes/splash_screen.scn")
-			loader = null
 			G.emit_signal("loaded_to_scene", "error")
+			queue_free()
 			break
 
 

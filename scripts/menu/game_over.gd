@@ -16,10 +16,6 @@ func _ready():
 		AdManager.ad_counter = 1
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("music"), false)
 	hardcore = G.getv("hardcore", false)
-	$soul/soul.modulate = G.SOUL_COLORS[G.getv("soul_type", 6)]
-	$soul/soul.self_modulate = Color.white
-	$soul/soul_b.self_modulate = G.SOUL_COLORS[G.getv("soul_type", 6)]
-	$soul/particles.self_modulate = G.SOUL_COLORS[G.getv("soul_type", 6)]
 	if hardcore:
 		$soul/anim.play("defeat2")
 		$game_over/retry.hide()

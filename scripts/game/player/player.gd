@@ -27,6 +27,7 @@ var custom_respawn_scene = ""
 var can_see = true
 var can_revive = true
 var _healed_times = 0
+var _prev_move_x = 0
 
 
 #ATTACK
@@ -79,7 +80,6 @@ func _ready():
 		$visual/body/head/hair/hair_woman.show()
 		$visual/body/head/hair/hair_man.hide()
 		$hurt_sfx.stream = load("res://sounds/sfx/female_hurt.wav")
-	$camera/gui/base/hero_panel/head/soul.self_modulate = G.SOUL_COLORS[G.getv("soul_type", 6)]
 	#MOVE
 	_body = $visual/body
 	collision_layer = 0b10
@@ -138,6 +138,7 @@ func _ready():
 	smooth_camera = G.getv("smooth_camera", true)
 	damping = G.getv("damping", 2.5)
 	camera.set_as_toplevel(smooth_camera)
+	camera.zoom = default_camera_zoom
 	if smooth_camera:
 		camera.global_position = global_position
 	
@@ -211,15 +212,33 @@ func apply_data(data):
 #MOVE
 func move_left():
 	ms.sync_call(self, "move_left")
-	_move_direction = Vector2(-1, _move_direction.y)
+	_prev_move_x = _move_direction.x
+	_move_direction.x = -1
 
 func move_right():
 	ms.sync_call(self, "move_right")
-	_move_direction = Vector2(1, _move_direction.y)
+	_prev_move_x = _move_direction.x
+	_move_direction.x = 1
+
+func stop_left():
+	if _move_direction.x < 0: 
+		if _prev_move_x <= 0:
+			stop()
+		else:
+			move_right()
+	_prev_move_x = 0
+
+func stop_right():
+	if _move_direction.x > 0: 
+		if _prev_move_x >= 0:
+			stop()
+		else:
+			move_left()
+	_prev_move_x = 0
 
 func stop():
 	ms.sync_call(self, "stop")
-	_move_direction = Vector2(0, _move_direction.y)
+	_move_direction.x = 0
 
 func jump(power = 0):
 	ms.sync_call(self, "jump")
@@ -401,8 +420,10 @@ func _physics_process(delta):
 			move_right()
 		if Input.is_action_just_pressed("jump"):
 			jump()
-		if Input.is_action_just_released("left") or Input.is_action_just_released("right"):
-			stop()
+		if Input.is_action_just_released("right"):
+			stop_right()
+		if Input.is_action_just_released("left"):
+			stop_left()
 	
 	#HEALTH
 		if Input.is_action_just_pressed("potion1"):

@@ -118,7 +118,7 @@ func show_d_win():
 		next_lvl = str(int(curr_lvl.split("_")[0]) + 1) + "_1"
 	var max_lvl = G.getv("level", "1_1")
 	var set_new = true
-	if int(max_lvl.split("_")[0]) == int(next_lvl.split("_")[0]):
+	if max_lvl.split("_")[0] == next_lvl.split("_")[0]:
 		if int(max_lvl.split("_")[1]) > int(next_lvl.split("_")[1]):
 			set_new = false
 	elif int(max_lvl.split("_")[0]) > int(next_lvl.split("_")[0]):
@@ -195,7 +195,7 @@ func display_rewards(level = ""):
 	var ulti_chance = 20 if get_power_ulti_classes()[1] else 0
 	var tokens_count = str(round(4 * mod_lvl * mod_day)) + "-" + str(round(9 * mod_lvl * mod_day))
 	var ulti_tokens_count = str(round(1 * mod_lvl * mod_day)) + "-" + str(round(2 * mod_lvl * mod_day))
-	var gold_box_chance = clamp(-20 + (mod_day - 1) * 80, 0, 100)
+	var gold_box_chance = clamp(-20 + (mod_day - 1) * 70, 0, 100)
 	var box_chance = clamp((mod_lvl - 1) * 25 + (mod_day - 1) * 500, 0, 100)
 	var potion_chance = round((mod_lvl - 1) * 2.5)
 	var text = "[center][img=24x24]res://textures/items/coin.png[/img] {count} ({chance}%)".format({"count" : coins_count, "chance" : 100 - tokens_chance - ulti_chance})
@@ -230,7 +230,7 @@ func set_win_rewards(level = ""):
 	var tokens_count_max = round(9 * mod_lvl * mod_day)
 	var ulti_tokens_count_min = round(1 * mod_lvl * mod_day)
 	var ulti_tokens_count_max = round(2 * mod_lvl * mod_day)
-	var gold_box_chance = clamp(-20 + (mod_day - 1) * 80, 0, 100)
+	var gold_box_chance = clamp(-20 + (mod_day - 1) * 70, 0, 100)
 	var box_chance = clamp((mod_lvl - 1) * 25 + (mod_day - 1) * 500, 0, 100)
 	var potion_chance = round((mod_lvl - 1) * 2.5)
 	# Generating rewards.

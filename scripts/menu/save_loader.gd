@@ -39,6 +39,9 @@ func _ready():
 	$settings/sfxv_s.value = G.file.get_value("main", "volume_sfx", 1)
 	$settings/fullscr.pressed = G.file.get_value("main", "fullscr", false)
 	$settings/fps.pressed = G.file.get_value("main", "fps", false)
+	$misc/check_upd.pressed = G.file.get_value("main", "check_upd", true)
+	$misc/check_patch.pressed = G.file.get_value("main", "check_patches", true)
+	$misc/check_beta.pressed = G.file.get_value("main", "check_beta", not G.VERSION_STATUS.empty())
 	$create/name.placeholder_text = tr("sl.create.pname")
 	$create/name.set_message_translation(false)
 	$create/name.notification(NOTIFICATION_TRANSLATION_CHANGED)
@@ -60,7 +63,7 @@ func list_saves():
 		var node = save_obj.instance()
 		node.get_node("name").text = G.file.get_value(i, "name", "???")
 		var date = G.file.get_value(i, "last_opened", Time.get_datetime_dict_from_system())
-		var date_str = str(date["day"]) + "/" + str(date["month"]) + "/" + str(date["year"])
+		var date_str = "%02d/%02d/%d" % [date["day"], date["month"], date["year"]]
 		node.get_node("date").text = date_str
 		node.get_node("soul").self_modulate = G.SOUL_COLORS[G.file.get_value(i, "soul_type", 6)]
 		node.get_node("play").connect("pressed", self, "play", [i])
@@ -88,6 +91,9 @@ func _process(delta):
 		OS.window_fullscreen = $settings/fullscr.pressed
 	else:
 		$settings/fullscr.visible = false
+	G.file.set_value("main", "check_upd", $misc/check_upd.pressed)
+	G.file.set_value("main", "check_patches", $misc/check_patch.pressed)
+	G.file.set_value("main", "check_beta", $misc/check_beta.pressed)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("music"), linear2db($settings/mv_s.value))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("sfx"), linear2db($settings/sfxv_s.value))
 
@@ -244,6 +250,15 @@ func confirm_delete():
 		dir.remove("user://custom_level_" + str(G.current_save.hash()) + ".scn")
 	list_saves()
 	$enter_color.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
+func remove_patches():
+	var dir = Directory.new()
+	var path = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir()
+	if dir.file_exists(path.plus_file("apa2_patch.pck")):
+		dir.remove(path.plus_file("apa2_patch.pck"))
+	G.file.set_value("main", "patch_version", 0)
+	G.file.set_value("main", "patch_code", 0)
 
 
 func quit():

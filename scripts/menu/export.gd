@@ -14,6 +14,8 @@ func request():
 
 
 func export_file():
+	var dir = Directory.new()
+	dir.make_dir_recursive(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS))
 	var file = ConfigFile.new()
 	file.load("user://saves.game")
 	file.save_encrypted_pass(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS).plus_file("saves.game.enc.png"), OS.get_model_name())

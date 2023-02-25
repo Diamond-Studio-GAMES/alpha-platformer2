@@ -48,4 +48,20 @@ ss.pp.accept,Я ознакомился и принимаю П. К.,I’ve read a
 ss.pp.accept.butt,Далее,Next
 ss.a.title,Введите свой возраст,Enter your age
 ss.a.accept,Подтвердить,Confirm
-ss.a.comment,Это не повлияет на игровой процесс.,This won“t affect gameplay.
+ss.a.comment,Это не повлияет на игровой процесс.,This won’t affect gameplay.
+ss.update.title,Обновление,Update
+ss.update.text,Доступна новая версия игры!,New version of game is available!
+ss.update.cancel,Отмена,Cancel
+ss.update.do,Обновить,Upgrade
+ss.status.check.upd,Проверяю наличие обновлений…,Checking updates…
+ss.status.check.patch,Проверяю наличие патчей…,Checking patches... 
+ss.status.download,Загрузка патча…,Downloading patch...
+sl.misc.name,ЕЩЁ,MORE
+sl.misc.check.upd,Проверять наличие обновлений,Check updates
+sl.misc.check.patch,Проверять и загружать патчи,Check and download patches
+sl.misc.quit,ЗАКРЫТЬ,CLOSE
+sl.misc.remove,Удалить патчи,Remove patches
+sl.misc.remove.note,"Внимание: в патчах содержатся исправления ошибок. Если их удалить, вы можете опять с ними столкнуться. Используйте, если после загрузки патча появились другие ошибки.
+Изменения будут применены после перезапуска игры.","Warning: patches contain bug fixes, and if you delete them, you can encounter those bugs. Delete only if you encounter some new bugs after downloading patch.
+Changes will be applied after restarting the game."
+sl.misc.check.upd.beta,Оповещать о новых бета-версиях,Check new beta-versions

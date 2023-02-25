@@ -2,6 +2,10 @@ extends Node
 class_name Globals, "res://textures/gui/alpha_text.png"
 
 
+const VERSION = "0.7.0"
+const VERSION_STATUS = ""
+const VERSION_STATUS_NUMBER = ""
+const VERSION_CODE = 53
 var selected_class = "knight"
 var selected_class_to_test = "knight"
 var current_level = "1_1"

@@ -222,7 +222,7 @@ func swords_down():
 	yield(get_tree().create_timer(0.6, false), "timeout")
 	randomize()
 	swords_down_poses.shuffle()
-	for i in range(10 if is_angry else 7):
+	for i in range(8 if is_angry else 6):
 		var attack = sword_down_attack.instance()
 		attack.global_position = swords_down_poses[i]
 		$"../..".add_child(attack)

@@ -1,11 +1,36 @@
 extends Control
 
 
-func go_to_save_loader():
+var done_checking = false
+var can_update = false
+onready var http = $http
+
+signal check_done
+
+
+func end_splash():
+	if done_checking:
+		finish()
+	else:
+		yield(self, "check_done")
+		finish()
+
+
+func finish():
+	if can_update:
+		$update.popup_centered()
+		yield($update, "popup_hide")
+	var file = File.new()
+	var path = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir()
+	if file.file_exists(path.plus_file("apa2_patch.pck")):
+		if G.file.get_value("main", "patch_code", 0) == G.VERSION_CODE:
+			ProjectSettings.load_resource_pack(path.plus_file("apa2_patch.pck"))
 	get_tree().change_scene("res://scenes/menu/save_loader.scn")
 
 
 func _ready():
+	$update.get_ok().text = tr("ss.update.do")
+	$update.get_cancel().text = tr("ss.update.cancel")
 	$privacy_policy.get_close_button().hide()
 	$age.get_close_button().hide()
 	TranslationServer.set_locale(G.file.get_value("main", "lang", "ru"))
@@ -17,15 +42,102 @@ func _ready():
 	if not G.file.has_section_key("main", "age"):
 		$age.popup_centered()
 		return
+	
+	var dir = Directory.new()
+	var path = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir()
+	if dir.file_exists(path.plus_file("apa2_patch.pck")):
+		if G.file.get_value("main", "patch_code", 0) != G.VERSION_CODE:
+			dir.remove(path.plus_file("apa2_patch.pck"))
+			G.file.set_value("main", "patch_version", 0)
+			G.file.set_value("main", "patch_code", 0)
+	
 	AdManager.initialize(G.file.get_value("main", "age", 0))
 	$anim.play("splash")
-	var file = File.new()
-	if file.file_exists(OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir().plus_file("apa2_patch.pck")):
-		ProjectSettings.load_resource_pack(OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir().plus_file("apa2_patch.pck"))
+	check_updates()
+
+
+func check_updates():
+	if not G.file.get_value("main", "check_upd", true):
+		check_patches()
+		return
+	$label.text = tr("ss.status.check.upd")
+	http.connect("request_completed", self, "update_request", [], CONNECT_ONESHOT)
+	var err = http.request("http://f0695447.xsph.ru/versions.json")
+	if err:
+		check_patches()
+
+
+func update_request(result, code, header, body):
+	if result != HTTPRequest.RESULT_SUCCESS:
+		check_patches()
+		return
+	var data = JSON.parse(body.get_string_from_utf8())
+	if data.error:
+		check_patches()
+		return
+	if data.result.beta > G.VERSION_CODE and G.file.get_value("main", "check_beta", not G.VERSION_STATUS.empty()):
+		$update.window_title = tr("ss.update.title") + " (BETA)"
+		$update.dialog_text = tr("ss.update.text") + " (BETA)"
+		can_update = true
+	if data.result.stable > G.VERSION_CODE:
+		can_update = true
+	check_patches()
+
+
+func check_patches():
+	if not G.file.get_value("main", "check_patches", true):
+		end_check()
+		return
+	$label.text = tr("ss.status.check.patch")
+	http.connect("request_completed", self, "patch_request", [], CONNECT_ONESHOT)
+	var err = http.request("http://f0695447.xsph.ru/patches.json")
+	if err:
+		end_check()
+
+
+func patch_request(result, code, header, body):
+	if result != HTTPRequest.RESULT_SUCCESS:
+		end_check()
+		return
+	var data = JSON.parse(body.get_string_from_utf8())
+	if data.error:
+		end_check()
+		return
+	if data.result.has(str(G.VERSION_CODE)):
+		if data.result[str(G.VERSION_CODE)] > G.file.get_value("main", "patch_version", 0):
+			http.download_file = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir().plus_file("apa2_patch.pck")
+			http.connect("request_completed", self, "download_patch", [data.result[str(G.VERSION_CODE)]], CONNECT_ONESHOT)
+			var err = http.request("http://f0695447.xsph.ru/" + str(G.VERSION_CODE) + "patch.pck")
+			$label.text = tr("ss.status.download")
+			if err:
+				end_check()
+		else:
+			end_check()
+	else:
+		end_check()
+
+
+func download_patch(result, code, header, body, version):
+	if result != HTTPRequest.RESULT_SUCCESS:
+		end_check()
+		return
+	G.file.set_value("main", "patch_version", version)
+	G.file.set_value("main", "patch_code", G.VERSION_CODE)
+	end_check()
+
+
+func end_check():
+	done_checking = true
+	emit_signal("check_done")
+	$label.text = ""
 
 
 func open_link():
 	OS.shell_open("http://diamondstudiogames.tilda.ws/privacy_policy")
+
+
+func open_update_link():
+	OS.shell_open("https://play.google.com/store/apps/details?id=ru.diamondstudio.alphaplatformer2")
 
 
 func check_toggled(state):

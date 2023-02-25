@@ -7,7 +7,7 @@ export (bool) var testing = false
 onready var pos = $spawn_pos
 var tint
 var pl
-var gen : RandomNumberGenerator
+var gen := RandomNumberGenerator.new()
 
 
 func _enter_tree():
@@ -18,7 +18,6 @@ func _enter_tree():
 func _ready():
 	if MP.is_active:
 		yield($"/root/mg", "game_started")
-	gen = RandomNumberGenerator.new()
 	gen.randomize()
 	var chance = 7 if G.getv("go_chance", false) else 2
 	chance = 100 if G.getv("hated_death", false) else chance
@@ -35,6 +34,13 @@ func _ready():
 	p.position = pos.position
 	p.name = "player" + (str(get_tree().get_network_unique_id()) if MP.is_active else "")
 	add_child(p)
+	if has_node("lights"):
+		if not G.getv("beauty_light", true):
+			for i in $lights.get_children():
+				if i is Light2D:
+					i.hide()
+				else:
+					i.color = Color(0.35, 0.35, 0.35, 1)
 	tint.color = Color(1, 1, 1, 0)
 	if testing:
 		pl = p
