@@ -763,21 +763,21 @@ func fetch_online_offers():
 	http.connect("request_completed", self, "request_online_response", [], CONNECT_ONESHOT)
 	var err = http.request("http://f0695447.xsph.ru/apa2_online.cfg")
 	if err:
-		printerr("fetch failed:", err)
+		print("fetch failed:", err)
 
 
 func request_online_response(result, code, header, body):
 	if result != HTTPRequest.RESULT_SUCCESS:
-		printerr("fetch failed:", result, " ", code)
+		print("fetch failed:", result, " ", code)
 		return
 	yield(get_tree(), "idle_frame")
 	var cf = ConfigFile.new()
 	var err = cf.load_encrypted_pass("user://online_cache.cfg", "apa2_online")
 	if err:
-		printerr("fetch failed:", err)
+		print("fetch failed:", err)
 		return
 	if not cf.has_section("offers"):
-		printerr("fetch failed:", "no offers")
+		print("fetch failed:", "no offers")
 		return
 	for i in cf.get_section_keys("offers"):
 		if int(i) in G.getv("online_offers_used_id", []):

@@ -1,9 +1,6 @@
 extends Control
 
 
-func _enter_tree():
-	pass
-
 var hardcore = false
 export (float, 0, 1, 0.01) var time_scale = 1
 
@@ -19,9 +16,11 @@ func _ready():
 	if hardcore:
 		$soul/anim.play("defeat2")
 		$game_over/retry.hide()
-		G.file.erase_section(G.current_save)
-		G.save()
-		G.current_save = "main"
+		$select_level.queue_free()
+		var id = G.getv("save_id", "unknown")
+		G.unload_save()
+		var d = Directory.new()
+		d.remove("user://saves/".plus_file(id + ".apa2save"))
 	else:
 		$soul/anim.play("defeat")
 

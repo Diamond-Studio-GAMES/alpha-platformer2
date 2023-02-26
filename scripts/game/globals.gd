@@ -171,6 +171,8 @@ func _ready():
 	var dir = Directory.new()
 	if not dir.dir_exists("user://saves/"):
 		dir.make_dir_recursive("user://saves/")
+	if dir.file_exists("user://saves.game"):
+		import_saves_from_old_file()
 	fps_text = load("res://prefabs/menu/fps_counter.scn").instance()
 	add_child(fps_text)
 	fps_text.visible = G.main_getv( "fps", false)
@@ -239,6 +241,20 @@ func open_save(id):
 func unload_save():
 	save()
 	save_file = null
+
+
+func import_saves_from_old_file():
+	var cf = ConfigFile.new()
+	cf.load("user://saves.game")
+	for i in cf.get_sections():
+		if i == "main":
+			continue
+		var file = ConfigFile.new()
+		for j in cf.get_section_keys(i):
+			file.set_value("save", j, cf.get_value(i, j))
+		file.save_encrypted_pass("user://saves/".plus_file(cf.get_value(i, "save_id", "file" + str(randi())) + ".apa2save"), "apa2_save")
+	var dir = Directory.new()
+	dir.remove("user://saves.game")
 
 
 func change_to_scene(path):
