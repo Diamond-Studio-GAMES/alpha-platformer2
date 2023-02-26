@@ -669,7 +669,7 @@ func open_box():
 	var hero = percent_chance(hero_chance) and not classes_to_unlock.empty()
 	var soul_power = percent_chance(2) and not soul_power_classes.empty()
 	var gadget = percent_chance(4) and not gadget_classes.empty()
-	var amulet_frag = percent_chance(15) and not amulet_types.empty()
+	var amulet_frag = percent_chance(16) and not amulet_types.empty()
 	var gem_chance = percent_chance(10)
 	var loot = {}
 	var gems = 0
@@ -714,10 +714,10 @@ func open_box():
 		power_classes.shuffle()
 		var coins_count = 0
 		var c = gen.randi_range(0, 100)
-		if c < 70:
-			coins_count = gen.randi_range(30, 90)
+		if c < 80:
+			coins_count = gen.randi_range(30, 80)
 		else:
-			coins_count = gen.randi_range(90, 120)
+			coins_count = gen.randi_range(80, 120)
 		loot["coins"] = coins_count
 		if power_classes.size() >= 0:
 			power_classes.shuffle()
@@ -732,9 +732,8 @@ func open_box():
 			G.setv(power_classes[1] + "_tokens", G.getv(power_classes[1] + "_tokens", 0) + loot["tokens"][power_classes[1]])
 		elif power_classes.size() == 1:
 			loot["tokens"] = {
-				power_classes[0] : gen.randi_range(3, 9)
+				power_classes[0] : gen.randi_range(4, 12)
 			}
-			loot["coins"] += gen.randi_range(3, 9)
 			G.setv(power_classes[0] + "_tokens", G.getv(power_classes[0] + "_tokens", 0) + loot["tokens"][power_classes[0]])
 		elif power_classes.empty():
 			loot["coins"] += gen.randi_range(6, 18) * 3

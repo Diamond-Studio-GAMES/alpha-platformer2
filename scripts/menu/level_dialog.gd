@@ -29,7 +29,7 @@ func _ready():
 	rewards_text.add_color_override("font_color_shadow", Color(0, 0, 0, 0))
 	gen = RandomNumberGenerator.new()
 	gen.randomize()
-	if get_tree().current_scene.name == "win" or get_tree().current_scene.name == "game_over":
+	if get_tree().current_scene.name in ["win", "game_over"]:
 		get_close_button().connect("pressed", self, "menu")
 	if type == Type.END_LEVEL:
 		show_d_win()
@@ -190,7 +190,7 @@ func display_rewards(level = ""):
 	var mod_day = 1.5 if G.getv(level + "_c", {"day":50})["day"] != Time.get_datetime_dict_from_system()["day"] and G.getv(level + "_c_ut", 0) <= Time.get_unix_time_from_system() else 1
 	mod_day = 2 if G.getv(level + "_c", {}).hash() == {}.hash() else mod_day
 	mod_day = 5 if G.getv(level + "_c", {}).hash() == {}.hash() and level.split("_")[1] == "10" else mod_day
-	var coins_count = str(round(25 * mod_lvl * mod_day / 5) * 5) + "-" + str(round(50 * mod_lvl * mod_day / 5) * 5)
+	var coins_count = str(round(20 * mod_lvl * mod_day / 5) * 5) + "-" + str(round(45 * mod_lvl * mod_day / 5) * 5)
 	var tokens_chance = 30 if get_power_ulti_classes()[0] else 0
 	var ulti_chance = 20 if get_power_ulti_classes()[1] else 0
 	var tokens_count = str(round(4 * mod_lvl * mod_day)) + "-" + str(round(9 * mod_lvl * mod_day))
@@ -222,8 +222,8 @@ func set_win_rewards(level = ""):
 	var mod_day = 1.5 if G.getv(level + "_c", {"day":50})["day"] != Time.get_datetime_dict_from_system()["day"]  and G.getv(level + "_c_ut", 0) <= Time.get_unix_time_from_system() else 1
 	mod_day = 2 if G.getv(level + "_c", {}).hash() == {}.hash() else mod_day
 	mod_day = 5 if G.getv(level + "_c", {}).hash() == {}.hash() and level.split("_")[1] == "10" else mod_day
-	var coins_count_min = round(25 * mod_lvl * mod_day / 5) * 5
-	var coins_count_max = round(50 * mod_lvl * mod_day / 5) * 5
+	var coins_count_min = round(20 * mod_lvl * mod_day / 5) * 5
+	var coins_count_max = round(45 * mod_lvl * mod_day / 5) * 5
 	var tokens_chance = 30 if get_power_ulti_classes()[0] else 0
 	var ulti_chance = 20 if get_power_ulti_classes()[1] else 0
 	var tokens_count_min = round(4 * mod_lvl * mod_day)

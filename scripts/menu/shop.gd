@@ -397,7 +397,7 @@ func info_box():
 			if G.getv("total_amulet_frags_"+G.AMULET[i], 0) < G.AMULET_MAX[i]:
 				amulet_types.append(G.AMULET[i])
 	var hero_chance = G.getv("hero_chance", 1.0) if not classes_to_unlock.empty() else 0
-	var amul_chance = 15 if not amulet_types.empty() else 0
+	var amul_chance = 16 if not amulet_types.empty() else 0
 	var gadget_chance = 4 if not gadget_classes.empty() else 0
 	var sp_chance = 2 if not soul_power_classes.empty() else 0
 	var coins_chance = 100 - hero_chance - gadget_chance - sp_chance - amul_chance
