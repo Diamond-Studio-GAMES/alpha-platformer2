@@ -1,12 +1,16 @@
 extends Control
 
 
-var gen : RandomNumberGenerator = RandomNumberGenerator.new()
-signal next
+export (Array, Resource) var plants_common = []
+export (Array, Resource) var plants_epic = []
+export (Array, Resource) var plants_legendary = []
+export (Array, Resource) var plants_rare = []
+var gen := RandomNumberGenerator.new()
 var pack_c = load("res://minigames/minigame6/resources/seed_packet_common.png")
 var pack_r = load("res://minigames/minigame6/resources/seed_packet_rare.png")
 var pack_e = load("res://minigames/minigame6/resources/seed_packet_epic.png")
 var pack_l = load("res://minigames/minigame6/resources/seed_packet_legendary.png")
+signal next
 
 
 func _input(event):
@@ -46,43 +50,34 @@ func open_box():
 	var rare = percent_chance(25)
 	var epic = percent_chance(15)
 	var legendary = percent_chance(6.5)
-	var got_rarity = ""
+	var plants = []
 	if legendary:
-		got_rarity = "legendary"
+		plants = plants_legendary
 		$semen_screen/pack/rarity.add_color_override("font_color", Color.yellow)
 		$semen_screen/pack.texture = pack_l
 		$semen_screen/pack/glow.show()
 	elif epic:
 		$semen_screen/pack/rarity.add_color_override("font_color", Color.magenta)
-		got_rarity = "epic"
+		plants = plants_epic
 		$semen_screen/pack.texture = pack_e
 		$semen_screen/pack/rarity.text = "Эпическое"
 	elif rare:
-		got_rarity = "rare"
+		plants = plants_rare
 		$semen_screen/pack/rarity.add_color_override("font_color", Color.green)
 		$semen_screen/pack.texture = pack_r
 		$semen_screen/pack/rarity.text = "Редкое"
 	elif common:
 		$semen_screen/pack/rarity.text = "Обычное"
-		got_rarity = "common"
+		plants = plants_common
 		$semen_screen/pack.texture = pack_c
 	else:
 		get_tree().change_scene("res://minigames/minigame6/minigame.scn")
 		return
 	$fert_screen.hide()
 	$semen_screen.show()
-	var dir = Directory.new()
-	dir.open("res://minigames/minigame6/plants/{0}/".format([got_rarity]))
-	var files = []
-	dir.list_dir_begin(true)
-	var file_name = dir.get_next()
-	while file_name != "":
-		files.append(file_name)
-		file_name = dir.get_next()
-	files.shuffle()
-	var got_plant_path = dir.get_current_dir().plus_file(files[0])
-	G.addv("garden_plants", [got_plant_path], [])
-	var got_plant : PlantResource = ResourceLoader.load(got_plant_path) as PlantResource
+	plants.shuffle()
+	var got_plant : PlantResource = plants[0] as PlantResource
+	G.addv("garden_plants", [got_plant.resource_path], [])
 	$semen_screen/pack/plant.texture = got_plant.texture
 	$semen_screen/pack/label.text = got_plant.name
 	$semen_screen/anim.play("get")
