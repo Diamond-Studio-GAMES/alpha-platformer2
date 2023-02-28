@@ -2,6 +2,9 @@ android/
 addons/
 .import/
 
-*.translation
+apa2_translation.en.translation
+apa2_translation.ru.translation
+misc/apa2_translation.ru.translation
+misc/apa2_translation.en.translation
 
 export_presets.cfg
