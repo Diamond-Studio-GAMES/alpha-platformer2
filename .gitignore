@@ -3,5 +3,7 @@ addons/
 .import/
 
 *.translation
+apa2_translation.en.translation
+apa2_translation.ru.translation
 
 export_presets.cfg
