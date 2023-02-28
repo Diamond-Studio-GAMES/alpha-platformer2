@@ -32,7 +32,6 @@ sl.delete.no,НЕТ!!!,NO!!!
 sl.nosaves,"Пока что тут пусто, но ты можешь начать игру кнопкой ниже!",You can start game with button below!
 sl.ei,ЭКСПОРТ/ИМПОРТ,EXPORT/IMPORT
 sl.ei.title,Экспорт/импорт сохранений,
-<<<<<<< HEAD
 sl.ei.step0,Шаг 1: выдай разрешение на чтение и запись файлов (начиная с версии Android 6),Step 1: Give permission to read and write external storage (starting with Android 6)
 sl.ei.step1,"Шаг 2: Экспортируй сохранения кнопкой ниже
 Сохранится в: ","Step 2: Export saves with button below.
@@ -40,13 +39,6 @@ Will be saved in: "
 sl.ei.step2,"Шаг 3: Импортируй сохранения в новой версии
 ВНИМАНИЕ: ВСЕ ТЕКУЩИЕ СОХРАНЕНИЯ БУДУТ УДАЛЕНЫ БЕЗВОЗВРАТНО!!!","Step 3: Import saves in new version.
 WARNING: ALL CURRENT SAVES WILL BE REMOVED!!!"
-=======
-sl.ei.step0,Шаг 1: Выдай разрешение на чтение и запись файлов (начиная с версии Android 6),Step 1: Give permission to read and write external storage (starting with Android 6)
-sl.ei.step1,"Шаг 2: Экспортируй сохранения кнопкой ниже
-Сохранится в: ","Step 2: Export saves with button below.
-Will be saved in: "
-sl.ei.step2,Шаг 3: Импортируй сохранения в новой версии,Step 3: Import saves in new version.
->>>>>>> d858bc1... Untrack files in .gitignore
 sl.ei.give,ВЫДАТЬ,GIVE
 sl.ei.export,ЭКСПОРТ,EXPORT
 sl.ei.import,ИМПОРТ,IMPORT
