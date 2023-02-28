@@ -111,7 +111,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 	ms.sync_call(self, "hurt", [damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, can_ignored])
 	var past_health = current_health
 	if defense_allowed:
-		current_health = clamp(current_health - clamp(damage - defense, 0, 999), 0, max_health)
+		current_health = clamp(current_health - max(damage - defense, 0), 0, max_health)
 	else:
 		current_health = clamp(current_health - damage, 0, max_health)
 	if fatal:

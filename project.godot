@@ -391,6 +391,10 @@ translation_remaps={
 "res://minigames/minigame8/textures/enemies/tehnolog_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/tehnolog.png:en" )
 }
 
+[logging]
+
+file_logging/enable_file_logging.pc=false
+
 [node]
 
 name_casing=2
@@ -406,5 +410,6 @@ quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 vram_compression/import_etc=true
+batching/options/single_rect_fallback=true
 batching/precision/uv_contract=true
 environment/default_environment="res://misc/env.res"
