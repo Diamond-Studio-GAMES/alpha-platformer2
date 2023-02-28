@@ -377,7 +377,7 @@ pointing/emulate_touch_from_mouse=true
 [locale]
 
 locale_filter=[ 1, [ "en", "ru" ] ]
-translations=PoolStringArray( "res://misc/translations/apa2_translation.en.translation", "res://misc/translations/apa2_translation.ru.translation" )
+translations=PoolStringArray( "res://misc/apa2_translation.en.translation", "res://misc/apa2_translation.ru.translation" )
 translation_remaps={
 "res://minigames/minigame8/textures/enemies/fezek_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/fezek.png:en" ),
 "res://minigames/minigame8/textures/enemies/fizruk_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/fizruk.png:en" ),
@@ -390,11 +390,6 @@ translation_remaps={
 "res://minigames/minigame8/textures/enemies/obschestvo_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/obschestvo.png:en" ),
 "res://minigames/minigame8/textures/enemies/tehnolog_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/tehnolog.png:en" )
 }
-
-[logging]
-
-file_logging/enable_file_logging.pc=false
-file_logging/max_log_files=45
 
 [node]
 
@@ -411,7 +406,5 @@ quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 vram_compression/import_etc=true
-batching/options/single_rect_fallback=true
-batching/lights/max_join_items=0
 batching/precision/uv_contract=true
 environment/default_environment="res://misc/env.res"
