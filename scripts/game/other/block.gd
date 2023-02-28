@@ -3,22 +3,21 @@ class_name Pushable, "res://textures/blocks/ladder.png"
 
 
 var _move = Vector2()
-var _y = 0
 var MAX_GRAVITY = 250
-var GRAVITY_SPEED = 15
-var test_move = 5
+var GRAVITY_SPEED = 750
+onready var ray0 = $ray0
+onready var ray1 = $ray1
 
 
 func _physics_process(delta):
-	_y = clamp(_move.y + GRAVITY_SPEED, -9999, MAX_GRAVITY)
-	_move = Vector2(_move.x, _y)
-	_move = move_and_slide(_move, Vector2.UP, false, 4, 0.785398, true)
+	_move = Vector2(_move.x, min(_move.y + GRAVITY_SPEED * delta, MAX_GRAVITY))
+	move_and_slide(_move)
 	_move.x = 0
-	var col = move_and_collide(Vector2(test_move, 0), true, true, true)
-	if col:
-		if col.collider_velocity.x < 0:
-			_move.x = col.collider_velocity.x
-	col = move_and_collide(Vector2(-test_move, 0), true, true, true)
-	if col:
-		if col.collider_velocity.x > 0:
-			_move.x = col.collider_velocity.x
+	if ray0.is_colliding():
+		if ray0.get_collider() is Entity:
+			var body = ray0.get_collider()
+			_move.x += max(body._move.x, 0)
+	if ray1.is_colliding():
+		if ray1.get_collider() is Entity:
+			var body = ray1.get_collider()
+			_move.x += min(body._move.x, 0)
