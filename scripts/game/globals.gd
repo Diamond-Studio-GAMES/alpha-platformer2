@@ -175,6 +175,9 @@ func _ready():
 		import_saves_from_old_file()
 	fps_text = load("res://prefabs/menu/fps_counter.scn").instance()
 	add_child(fps_text)
+	if OS.has_feature("editor") or OS.has_feature("cheats"):
+		var ch = load("res://prefabs/menu/cheats.scn").instance()
+		add_child(ch)
 	fps_text.visible = G.main_getv( "fps", false)
 
 
