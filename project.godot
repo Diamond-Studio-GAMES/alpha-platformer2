@@ -411,5 +411,6 @@ quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 vram_compression/import_etc=true
+batching/options/single_rect_fallback=true
 batching/precision/uv_contract=true
 environment/default_environment="res://misc/env.res"
