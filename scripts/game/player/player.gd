@@ -295,6 +295,7 @@ func post_hurt():
 
 
 func end_game():
+	print(name, get_stack())
 	$camera.give_up()
 
 

@@ -24,7 +24,7 @@ func _ready():
 
 
 func check(id):
-	if state == State.LOBBY or state == State.END:
+	if state in [State.LOBBY, State.END]:
 		return
 	if id in players_remain_to_load:
 		players_remain_to_load.erase(id)
@@ -101,7 +101,7 @@ func check_for_end():
 		state = State.END
 		get_tree().call_group("player", "remove_from_group", "spawnable")
 		yield(get_tree().create_timer(4), "timeout")
-		get_tree().call_group("player", "end_game")
+		get_tree().get_nodes_in_group("player")[0].end_game()
 
 
 func kill_revive_player(id, revive = false):
@@ -114,13 +114,11 @@ func kill_revive_player(id, revive = false):
 	check_for_end()
 
 
-
 remotesync func start_game():
 	yield(get_tree().create_timer(0.1), "timeout")
 	state = State.IN_GAME
 	emit_signal("game_started")
 	get_tree().paused = false
-	for i in get_tree().get_nodes_in_group("synchronizer"):
-		i.start_sync()
+	get_tree().call_group("synchronizer", "start_sync")
 	alive_players = Array(get_tree().get_network_connected_peers())
 	alive_players.append(get_tree().get_network_unique_id())

@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/star_class.png-c7b49ae479c9e164eb662de57600cae1.stex"
+path="res://.import/bg_light.png-82a3d2b8929e7e9ab4570b83cfa0a7b5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/effects/other/star_class.png"
-dest_files=[ "res://.import/star_class.png-c7b49ae479c9e164eb662de57600cae1.stex" ]
+source_file="res://textures/gui/bg_light.png"
+dest_files=[ "res://.import/bg_light.png-82a3d2b8929e7e9ab4570b83cfa0a7b5.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

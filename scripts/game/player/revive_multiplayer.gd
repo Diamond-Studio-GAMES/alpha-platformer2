@@ -1,6 +1,7 @@
 extends Area2D
 
 
+const REVIVE_TIME = 7.5
 var bodies = []
 var timer = 0
 onready var player = $".."
@@ -10,6 +11,7 @@ onready var bar = $revive_bars/progress
 func _ready():
 	connect("body_entered", self, "add_body")
 	connect("body_exited", self, "remove_body")
+	bar.max_value = REVIVE_TIME
 
 
 func add_body(node):
@@ -33,7 +35,7 @@ func _physics_process(delta):
 	else:
 		timer = 0
 	bar.value = timer
-	if timer >= 8:
+	if timer >= REVIVE_TIME:
 		timer = 0
 		player.revive(int(player.max_health*0.25))
 	

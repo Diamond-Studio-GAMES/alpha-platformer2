@@ -6,6 +6,7 @@ export (float, 0, 1, 0.01) var time_scale = 1
 
 
 func _ready():
+	print("entered", get_tree().paused)
 	if AdManager.ad_counter == 1:
 		AdManager.showInterstitial()
 		AdManager.ad_counter = 0

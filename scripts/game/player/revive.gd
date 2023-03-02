@@ -24,7 +24,6 @@ func show_revive_screen():
 	if G.getv("gems", 0) < 10:
 		$gui/death_screen/window/revive.disabled = true
 	get_tree().paused = true
-	Engine.time_scale = 0.01
 
 
 func revive_button():
@@ -33,7 +32,6 @@ func revive_button():
 	is_screen_on = false
 	$gui/death_screen/window.disconnect("popup_hide", self, "give_up")
 	get_tree().paused = false
-	Engine.time_scale = 1
 	zoom = $"..".default_camera_zoom
 	G.setv("gems", G.getv("gems", 0) - 10)
 	G.save()
@@ -50,7 +48,6 @@ func give_up():
 	if MP.is_active:
 		$"/root/mg".state = 3
 		MP.close_network()
-	Engine.time_scale = 1
 	get_tree().paused = false
 	if $"..".custom_respawn_scene.empty():
 		get_tree().change_scene("res://scenes/menu/game_over.scn")

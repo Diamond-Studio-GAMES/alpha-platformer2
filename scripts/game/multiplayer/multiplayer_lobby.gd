@@ -30,6 +30,7 @@ func create():
 func join():
 	popup_centered()
 	$connect.show()
+	$lobby.hide()
 	var parts_of_level = G.current_level.split("_")
 	$connect/title.text = "Присоединиться к комнате с уровнем " + parts_of_level[0] + "-" + parts_of_level[1] + "..."
 
@@ -70,7 +71,6 @@ func do_disconnect():
 func connected_ok():
 	if curr_suff > 0:
 		G.cached_suff = curr_suff
-	$connect.hide()
 	init_multiplayer()
 
 
@@ -136,6 +136,7 @@ func register_player_self():
 func init_multiplayer():
 	for i in $lobby/scroll/list.get_children():
 		i.queue_free()
+	$connect.hide()
 	$lobby.show()
 	if get_tree().is_network_server():
 		$lobby/ip.show()

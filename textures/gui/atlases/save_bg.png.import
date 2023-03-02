@@ -2,25 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/class_drop_bg_light.png-d3d387eede3f01d319854d66b5a7eb49.stex"
+path="res://.import/save_bg.png-e10d552b6408b525637656316987e846.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/gui/class_drop_bg_light.png"
-dest_files=[ "res://.import/class_drop_bg_light.png-d3d387eede3f01d319854d66b5a7eb49.stex" ]
+source_file="res://textures/gui/atlases/save_bg.png"
+dest_files=[ "res://.import/save_bg.png-e10d552b6408b525637656316987e846.stex" ]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
