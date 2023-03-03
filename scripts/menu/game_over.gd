@@ -19,7 +19,7 @@ func _ready():
 		$game_over/retry.hide()
 		$select_level.queue_free()
 		var id = G.getv("save_id", "unknown")
-		G.unload_save()
+		G.close_save()
 		var d = Directory.new()
 		d.remove("user://saves/".plus_file(id + ".apa2save"))
 	else:

@@ -80,7 +80,7 @@ func more():
 
 
 func quit():
-	G.unload_save()
+	G.close_save()
 	get_tree().change_scene("res://scenes/menu/save_loader.scn")
 
 
@@ -91,7 +91,7 @@ func controls():
 func reset():
 	var dir = Directory.new()
 	var id = G.getv("save_id", "ffff00")
-	G.unload_save()
+	G.close_save()
 	dir.remove("user://saves/".plus_file(id + ".apa2save"))
 	if dir.file_exists("user://custom_levels/" + id + ".scn"):
 		dir.remove("user://custom_levels/" + id + ".scn")

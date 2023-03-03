@@ -43,7 +43,7 @@ func _process(time):
 		elif err == OK:
 			$loading/bar.value = float(loader.get_stage()) / loader.get_stage_count() * 100
 		else:
-			print(err)
+			print("Can't load: ", err)
 			get_tree().change_scene("res://scenes/splash_screen.scn")
 			G.emit_signal("loaded_to_scene", "error")
 			queue_free()
@@ -51,7 +51,6 @@ func _process(time):
 
 
 func set_scene(scene):
-	G.current_scene = load_path
 	$loading/bar.value = 100
 	get_tree().change_scene_to(scene)
 	G.emit_signal("loaded_to_scene", load_path)

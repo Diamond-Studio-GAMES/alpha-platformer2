@@ -221,10 +221,13 @@ func open_gui(what = null):
 		open_select_class_for_tokens(loot["wild_tokens"])
 		yield(self, "tokens_class_selected")
 		if selected_class_for_tokens == "coins":
+			if not loot.has("coins"):
+				loot["coins"] = 0
 			loot["coins"] = loot["wild_tokens"] * 3
 			G.setv("coins", G.getv("coins", 0) + loot["coins"])
 		else:
-			loot["tokens"] = {}
+			if not loot.has("tokens"):
+				loot["tokens"] = {}
 			loot["tokens"][selected_class_for_tokens] = loot["wild_tokens"]
 			G.setv(selected_class_for_tokens + "_tokens", G.getv(selected_class_for_tokens + "_tokens", 0) + loot["wild_tokens"])
 		loot.erase("wild_tokens")
@@ -232,10 +235,13 @@ func open_gui(what = null):
 		open_select_class_for_ulti_tokens(loot["wild_ulti_tokens"])
 		yield(self, "tokens_class_selected")
 		if selected_class_for_tokens == "coins":
+			if not loot.has("coins"):
+				loot["coins"] = 0
 			loot["coins"] = loot["wild_ulti_tokens"] * 12
 			G.setv("coins", G.getv("coins", 0) + loot["coins"])
 		else:
-			loot["ulti_tokens"] = {}
+			if not loot.has("ulti_tokens"):
+				loot["ulti_tokens"] = {}
 			loot["ulti_tokens"][selected_class_for_tokens] = loot["wild_ulti_tokens"]
 			G.setv(selected_class_for_tokens + "_ulti_tokens", G.getv(selected_class_for_tokens + "_ulti_tokens", 0) + loot["wild_ulti_tokens"])
 		loot.erase("wild_ulti_tokens")
