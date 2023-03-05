@@ -7,11 +7,11 @@ export (float, 0, 1, 0.01) var time_scale = 1
 
 func _ready():
 	print("entered", get_tree().paused)
-	if AdManager.ad_counter == 1:
-		AdManager.showInterstitial()
-		AdManager.ad_counter = 0
+	if G.ad.ad_counter == 1:
+		G.ad.showInterstitial()
+		G.ad.ad_counter = 0
 	else:
-		AdManager.ad_counter = 1
+		G.ad.ad_counter = 1
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("music"), false)
 	hardcore = G.getv("hardcore", false)
 	if hardcore:

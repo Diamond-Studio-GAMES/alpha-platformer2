@@ -2,7 +2,7 @@ extends WindowDialog
 class_name Lobby
 
 
-const PORT = 7411
+const PORT = 7412
 var curr_suff = -1
 var ip_preffix = ""
 var players_info = {}

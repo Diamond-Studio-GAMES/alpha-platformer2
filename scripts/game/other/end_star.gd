@@ -7,7 +7,7 @@ var ended = false
 func end_level(l):
 	if ended:
 		return
-	if not l.name.begins_with("player"):
+	if not l is Player:
 		return
 	ended = true
 	$anim.play("end")

@@ -51,7 +51,7 @@ func _ready():
 			G.main_setv( "patch_version", 0)
 			G.main_setv( "patch_code", 0)
 	
-	AdManager.initialize(G.main_getv( "age", 0))
+	G.ad.initialize(G.main_getv( "age", 0))
 	$anim.play("splash")
 	check_updates()
 

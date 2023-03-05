@@ -8,8 +8,6 @@ onready var jump_ray0 = $jump_ray_cast
 onready var jump_ray1 = $jump_ray_cast2
 onready var path_ray_left = $path_ray_cast_left
 onready var path_ray_right = $path_ray_cast_right
-var player_timer = 0
-var attack_timer = 0
 
 
 func _ready():
@@ -32,7 +30,7 @@ func attack():
 	yield(get_tree().create_timer(0.2, false), "timeout")
 	attack_shape.disabled = true
 	yield(get_tree().create_timer(0.2, false), "timeout")
-	if not can_move:
+	if is_hurt or is_stunned:
 		return
 	$visual/body/knife_attack/swing.play()
 	attack_visual.show()
@@ -57,31 +55,30 @@ func _physics_process(delta):
 	player_timer += delta
 	if player_timer > reaction_speed:
 		player_timer = 0
-		player_distance = global_position.distance_to(player.global_position)
-		if player_distance > vision_distance:
+		player_distance = global_position.distance_squared_to(player.global_position)
+		if player_distance > _vision_distance:
 			stop()
 			return
-		if player.global_position.x > global_position.x:
+		if player.global_position.x > global_position.x and _is_move_safe(path_ray_right):
 			move_right()
-		else:
+		elif player.global_position.x < global_position.x and _is_move_safe(path_ray_left):
 			move_left()
-		if under_water and player_distance < vision_distance/2 and player.global_position.y+20 < global_position.y:
+		else:
+			stop()
+		if under_water and player_distance < _vision_distance/4 and player.global_position.y+20 < global_position.y:
 			jump()
 		if under_water and breath_time < 2 and not immune_to_water:
 			jump()
 	attack_timer += delta
-	if attack_timer > attack_speed and player_distance < 90:
+	if attack_timer > attack_speed and player_distance < 8100:
 		attack()
 		attack_timer = 0
-	if (ray_colliding(jump_ray0) == Colliding.OK and _move_direction.x > 0) or (ray_colliding(jump_ray1) == Colliding.OK and _move_direction.x < 0):
+	if ray_colliding(jump_ray0) == Colliding.OK and _move_direction.x > 0 or  \
+			ray_colliding(jump_ray1) == Colliding.OK and _move_direction.x < 0:
 		jump()
-	if _move_direction.x >= 0: 
-		if ray_colliding(path_ray_right) == Colliding.DANGER:
+	lookup_timer += delta
+	if lookup_timer > lookup_speed:
+		if _move_direction.x > 0 and not _is_move_safe(path_ray_right):
 			stop()
-		elif ray_colliding(path_ray_right) == Colliding.NO_BLOCK and not under_water:
-			stop()
-	elif _move_direction.x < 0:
-		if ray_colliding(path_ray_left) == Colliding.DANGER:
-			stop()
-		elif ray_colliding(path_ray_left) == Colliding.NO_BLOCK and not under_water:
+		elif _move_direction.x < 0 and not _is_move_safe(path_ray_left):
 			stop()

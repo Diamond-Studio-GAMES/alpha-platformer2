@@ -106,11 +106,11 @@ func show_d(lvl = "1_1"):
 
 func show_d_win():
 	yield(get_tree(), "idle_frame")
-	if AdManager.ad_counter == 1:
-		AdManager.showInterstitial()
-		AdManager.ad_counter = 0
+	if G.ad.ad_counter == 1:
+		G.ad.showInterstitial()
+		G.ad.ad_counter = 0
 	else:
-		AdManager.ad_counter = 1
+		G.ad.ad_counter = 1
 	$particles.set_as_toplevel(true)
 	curr_lvl = G.current_level
 	var next_lvl = curr_lvl.split("_")[0] + "_" + str(int(curr_lvl.split("_")[1]) + 1)

@@ -3,67 +3,71 @@ class_name Player
 
 
 # HEALTH
-var _soul
-var _player_head
-var _soul_sprite
-var _soul_break_sprite
 var _health_timer = 0
 var have_soul_power = false
 var amulet = -1
-var _buttons
-var _potion_1
-var _potion_2
-var _potion_3
 var potions_1 = 1
 var potions_2 = 1
 var potions_3 = 1
-var can_use_potion = true
-var _is_drinking = false
-var breath_bar
-var breath_time_warned = false
-var is_reviving = false
-var tint_anim
+var _breath_time_warned = false
 var custom_respawn_scene = ""
 var can_see = true
 var can_revive = true
+var can_control = true
+var _is_ultiing = false
+var _is_drinking = false
+var _is_attacking = false
+var is_reviving = false
 var _healed_times = 0
 var _prev_move_x = 0
+var _soul_sprite = load("res://textures/gui/soul.png")
+var _soul_break_sprite = load("res://textures/gui/soul_break.png")
+onready var _soul = $camera/gui/base/hero_panel/head/soul
+onready var _player_head = $visual/body/head
+onready var _buttons = $camera/gui/base/buttons
+onready var _potion_1 = $camera/gui/base/hero_panel/potion1
+onready var _potion_2 = $camera/gui/base/hero_panel/potion2
+onready var _potion_3 = $camera/gui/base/hero_panel/potion3
+onready var tint_anim = $camera/gui/base/tint/anim
+onready var _breath_bar = $camera/gui/base/hero_panel/breath_indicator
 
 
 #ATTACK
 var attack_cooldown = 0
 var RECHARGE_SPEED = 1.0
 var can_attack = true
-var _attack_bar
+onready var _attack_bar = $camera/gui/base/hero_panel/strike_bar
+onready var _attack_empty_anim = $camera/gui/base/hero_panel/strike_bar/anim
 
 
 #ULTI
-var _ulti_tween
-var _ulti_anim
-var ulti_percentage = 0
-var _ulti_bar
-var _ulti_button
+export (bool) var smooth_camera = true
+export (float, 1, 5) var damping = 2.5
+export (Vector2) var offset = Vector2(0.25, 0.25)
 export (Color) var ulti_filled = Color.white
 export (Color) var ulti_empty = Color.gray
-var _is_ultiing = false
+var ulti_percentage = 0
+var ulti_amulet = G.Amulet.POWER
 var have_gadget = false
 var gadget_count = 3
 var gadget_cooldown = 0
-var gadget_bar
-var gadget_counter
-var dialog_text
 var dialog_timer = 0
 var class_nam = "player"
 var power = 0
 var ulti_power = 1
-
-#CAMERA
-export (bool) var smooth_camera = true
-export (float, 1, 5) var damping = 2.5
-export (Vector2) var offset = Vector2(0.25, 0.25)
 var face_left = false
-onready var camera = $camera
 var default_camera_zoom = Vector2(0.3, 0.3)
+var _ulti_use_effect = load("res://prefabs/effects/super_use.scn")
+var _ulti
+onready var _ulti_bar = $camera/gui/base/hero_panel/ulti_bar
+onready var _ulti_anim = $ulti_charge_effect/anim
+onready var _ulti_tween = $ulti_charge_effect/tween
+onready var _ulti_button = $camera/gui/base/buttons/buttons_1/ulti
+onready var gadget_bar = $camera/gui/base/buttons/buttons_0/gadget/progress
+onready var gadget_counter = $camera/gui/base/buttons/buttons_0/gadget/count
+onready var dialog_text = $camera/gui/base/dialog
+onready var camera = $camera
+onready var _camera_tween = $camera_tween
 
 
 func _ready():
@@ -80,40 +84,24 @@ func _ready():
 		$visual/body/head/hair/hair_woman.show()
 		$visual/body/head/hair/hair_man.hide()
 		$hurt_sfx.stream = load("res://sounds/sfx/female_hurt.wav")
-	#MOVE
 	_body = $visual/body
 	collision_layer = 0b10
 	collision_mask = 0b11101
-	
-	#HEALTH
 	_health_bar = $camera/gui/base/hero_panel/health
 	_health_change_bar = $camera/gui/base/hero_panel/health/health_change
-	_soul = $camera/gui/base/hero_panel/head/soul
 	_head = $camera/gui/base/hero_panel/head
 	_head_sprite = load("res://textures/mobs/player/head.res")
 	_head_hurt_sprite = load("res://textures/mobs/player/head_hurt.res")
-	_soul_sprite = load("res://textures/gui/soul.png")
-	_soul_break_sprite = load("res://textures/gui/soul_break.png")
+	
+	
 	_hp_count = $camera/gui/base/hero_panel/hp_count
-	_player_head = $visual/body/head
-	_heal_particles = $heal
-	_buttons = $camera/gui/base/buttons
-	tint_anim = $camera/gui/base/tint/anim
-	
-	
-	
 	current_health = max_health
-	_hp_count.text = str(current_health) + "/" + str(max_health)
 	_health_bar.max_value = max_health
-	_health_bar.value = current_health
 	_health_change_bar.max_value = max_health
-	_health_change_bar.value = current_health
+	_update_bars()
 	potions_1 = G.getv("potions1", 0)
 	potions_2 = G.getv("potions2", 0)
 	potions_3 = G.getv("potions3", 0)
-	_potion_1 = $camera/gui/base/hero_panel/potion1
-	_potion_2 = $camera/gui/base/hero_panel/potion2
-	_potion_3 = $camera/gui/base/hero_panel/potion3
 	if potions_1 <= 0:
 		_potion_1.hide()
 	if potions_2 <= 0:
@@ -123,16 +111,6 @@ func _ready():
 	_potion_1.get_node("count").text = str(potions_1)
 	_potion_2.get_node("count").text = str(potions_2)
 	_potion_3.get_node("count").text = str(potions_3)
-	breath_bar = $camera/gui/base/hero_panel/breath_indicator
-	
-	_attack_bar = $camera/gui/base/hero_panel/strike_bar
-	_ulti_bar = $camera/gui/base/hero_panel/ulti_bar
-	_ulti_anim = $ulti_charge_effect/anim
-	_ulti_tween = $ulti_charge_effect/tween
-	_ulti_button = $camera/gui/base/buttons/buttons_1/ulti
-	gadget_bar = $camera/gui/base/buttons/buttons_0/gadget/progress
-	gadget_counter = $camera/gui/base/buttons/buttons_0/gadget/count
-	dialog_text = $camera/gui/base/dialog
 	amulet = G.getv(class_nam + "_amulet", -1)
 	dialog_text.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	smooth_camera = G.getv("smooth_camera", true)
@@ -141,7 +119,6 @@ func _ready():
 	camera.zoom = default_camera_zoom
 	if smooth_camera:
 		camera.global_position = global_position
-	
 	#CONTROL
 	for i in $camera/gui/base/buttons/buttons_0.get_children():
 		if i.name != "joystick" and i.name != "gadget":
@@ -210,12 +187,16 @@ func apply_data(data):
 	_hp_count = $bars/hp
 
 #MOVE
-func move_left():
+func move_left(force = false):
+	if not (can_control or force):
+		return
 	ms.sync_call(self, "move_left")
 	_prev_move_x = _move_direction.x
 	_move_direction.x = -1
 
-func move_right():
+func move_right(force = false):
+	if not (can_control or force):
+		return
 	ms.sync_call(self, "move_right")
 	_prev_move_x = _move_direction.x
 	_move_direction.x = 1
@@ -236,13 +217,17 @@ func stop_right():
 			move_left()
 	_prev_move_x = 0
 
-func stop():
+func stop(force = false):
+	if not (can_control or force):
+		return
 	ms.sync_call(self, "stop")
 	_move_direction.x = 0
 
-func jump(power = 0):
+func jump(power = 0, force = false):
+	if not (can_control or force):
+		return
 	ms.sync_call(self, "jump")
-	if not can_move:
+	if is_hurt or is_stunned:
 		return false
 	if power == 0:
 		power = JUMP_POWER
@@ -253,10 +238,10 @@ func jump(power = 0):
 
 
 #HEALTH
-func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, can_ignored = true):
+func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4):
 	if is_reviving:
 		return
-	var state = .hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, can_ignored)
+	var state = .hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time)
 	if state == null:
 		return
 	if not state.is_valid():
@@ -280,23 +265,21 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 		tint_anim.stop(true)
 		tint_anim.play("hurting")
 	state.connect("completed", self, "post_hurt")
-	var state_next = state.resume()
+	state.resume()
 
 
-func post_hurt():
-	if current_health <= 0:
+func post_hurt(ded):
+	if ded:
 		yield(get_tree().create_timer(4, false), "timeout")
 		if not MP.is_active:
-			if not $camera.is_screen_on and current_health <= 0:
-				$camera.show_revive_screen()
-	else:
+			if not camera.is_screen_on and current_health <= 0:
+				camera.show_revive_screen()
+	elif not is_stunned:
 		_player_head.texture = _head_sprite
-		can_hurt = true
 
 
 func end_game():
-	print(name, get_stack())
-	$camera.give_up()
+	camera.give_up()
 
 
 func heal(amount):
@@ -306,9 +289,7 @@ func heal(amount):
 
 
 func use_potion(level):
-	if _is_drinking or not can_move or is_reviving:
-		return
-	if not can_use_potion:
+	if _is_drinking or is_hurt or is_stunned or is_reviving or _is_ultiing or _is_attacking:
 		return
 	ms.sync_call(self, "use_potion", [level])
 	match level:
@@ -365,25 +346,59 @@ func use_potion(level):
 			_is_drinking = false
 
 
+func ulti():
+	if ulti_percentage < 100 or is_hurt or is_stunned or _is_attacking or _is_drinking:
+		return
+	ms.sync_call(self, "ulti")
+	$skill_use_sfx.play()
+	ulti_percentage = 0
+	_health_timer = 0
+	_is_ultiing = true
+	_camera_tween.interpolate_property(camera, "zoom", default_camera_zoom, Vector2(0.6, 0.6), 0.3)
+	_camera_tween.start()
+	_ulti_tween.interpolate_property(_ulti_bar, "value", 100, 0, 0.5)
+	_ulti_tween.start()
+	_anim_tree["parameters/ulti_shot/active"] = true
+	if MP.auth(self):
+		var node = _ulti.instance()
+		node.has_amulet = is_amulet(ulti_amulet)
+		node.level = ulti_power
+		node.power = power
+		node.global_position = global_position
+		_level.add_child(node, true)
+	$camera/gui/base/ulti_use/anim.play("ulti_use")
+	yield(get_tree().create_timer(0.8, false), "timeout")
+	_is_ultiing = false
+	yield(get_tree().create_timer(2, false), "timeout")
+	_camera_tween.interpolate_property(camera, "zoom", Vector2(0.6, 0.6), default_camera_zoom, 0.3)
+	_camera_tween.start()
+
+
+func make_effect():
+	var node = _ulti_use_effect.instance()
+	node.modulate = ulti_filled
+	node.global_position = Vector2(global_position.x + (sign(_body.scale.x) * 15), global_position.y - 35 * GRAVITY_SCALE)
+	_level.add_child(node)
+
+
 func _process(delta):
-	attack_cooldown = clamp(attack_cooldown - delta, 0, 10)
-	if attack_cooldown == 0 and not can_attack:
+	attack_cooldown = max(attack_cooldown - delta, 0)
+	if attack_cooldown <= 0 and not can_attack:
 		can_attack = true
 	_attack_bar.value = 100 - (attack_cooldown / RECHARGE_SPEED * 100)
 	
 	if under_water:
-		breath_bar.visible = true
-		breath_bar.value = breath_time
+		_breath_bar.visible = true
+		_breath_bar.value = breath_time
 	else:
-		breath_bar.visible = false
+		_breath_bar.visible = false
 	
-	if breath_time <= 2 and not breath_time_warned:
+	if breath_time <= 2 and not _breath_time_warned:
 		tint_anim.stop(true)
 		tint_anim.play("hurting")
-	if breath_time <= 2 and not breath_time_warned:
-		breath_time_warned = true
-	elif breath_time > 2 and breath_time_warned:
-		breath_time_warned = false
+		_breath_time_warned = true
+	elif breath_time > 2 and _breath_time_warned:
+		_breath_time_warned = false
 	
 	if current_health > 0 and not _is_ultiing:
 		ulti_percentage = clamp(ulti_percentage + 2.5 * delta * (1.25 if is_amulet(G.Amulet.ULTI) else 1), 0, 100)
@@ -400,7 +415,7 @@ func _process(delta):
 		_ulti_bar.tint_progress = ulti_empty
 		_ulti_anim.play("nope")
 		_ulti_button.visible = false
-	dialog_timer = clamp(dialog_timer - delta, 0, 999)
+	dialog_timer = max(dialog_timer - delta, 0)
 	if dialog_timer <= 0:
 		dialog_text.text = ""
 	if not have_gadget:
@@ -411,8 +426,6 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	if is_stunned:
-		_player_head.texture = _head_hurt_sprite
 	#MOVE
 	if MP.auth(self):
 		if Input.is_action_just_pressed("left"):
@@ -460,13 +473,11 @@ func idle_heal():
 	_healed_times += 1
 	var percent = 0.03 + _healed_times * 0.0075
 	current_health = clamp(round(current_health + max_health * percent), 0, round(max_health * 0.75))
-	_health_change_bar.value = current_health
-	_health_bar.value = current_health
-	_hp_count.text = str(current_health) + "/" + str(max_health)
+	_update_bars()
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0:
+	if gadget_cooldown > 0 or gadget_count <= 0 or current_health <= 0:
 		return
 	ms.sync_call(self, "use_gadget")
 	$gadget_sfx.play()
@@ -486,8 +497,7 @@ func revive(hp_count = -1):
 	if MP.auth(self):
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("music"), false)
 	$revive_sfx.play()
-	can_hurt = true
-	can_move = false
+	is_hurt = false
 	is_reviving = true
 	_health_timer = 0
 	_head.texture = _head_sprite
@@ -507,10 +517,10 @@ func revive(hp_count = -1):
 	_anim_tree["parameters/death_trans/current"] = AliveState.ALIVE
 	_buttons.show()
 	yield(get_tree().create_timer(0.4, false), "timeout")
-	$shield.rotation_degrees = 0 
+	$shield/anim.seek(0, true)
 	$shield.show()
 	_move.y = -JUMP_POWER * 1.7 * GRAVITY_SCALE
-	can_move = true
+	is_hurt = false
 	yield(get_tree().create_timer(4.6, false), "timeout")
 	is_reviving = false
 	$shield.hide()
@@ -525,7 +535,7 @@ func make_dialog(text = "", time = 2, color = Color.white):
 
 func stun(time):
 	if is_stunned:
-		ms.sync_call(self, "stun")
+		ms.sync_call(self, "stun", [time])
 		stun_time += time
 		return
 	yield(.stun(time), "completed")
@@ -543,10 +553,5 @@ func _exit_tree():
 
 func is_amulet(type):
 	if amulet == type:
-		return true
-	return false
-
-static func sis_amulet(type, class_na):
-	if G.getv(class_na + "_amulet", -1) == type:
 		return true
 	return false

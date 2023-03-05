@@ -49,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/game/mobs/entity.gd"
 }, {
-"base": "Area2D",
+"base": "Attack",
 "class": "FireAttack",
 "language": "GDScript",
 "path": "res://scripts/game/mobs/fire_attack.gd"
@@ -238,6 +238,8 @@ _global_script_class_icons={
 
 config/name="Alpha Platformer Adventure 2: The Last Challenge"
 run/main_scene="res://scenes/splash_screen.scn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="alpha-platformer2"
 boot_splash/image="res://textures/misc/pre_splash_screen.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://textures/misc/icon.png"
@@ -262,10 +264,9 @@ formats/gzip/compression_level=0
 [debug]
 
 gdscript/warnings/enable=false
-gdscript/warnings/unsafe_property_access=true
-gdscript/warnings/unsafe_method_access=true
-gdscript/warnings/unsafe_cast=true
-gdscript/warnings/unsafe_call_argument=true
+gdscript/warnings/unused_class_variable=true
+gdscript/warnings/unused_argument=false
+gdscript/warnings/return_value_discarded=false
 
 [display]
 
@@ -416,6 +417,5 @@ quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 vram_compression/import_etc=true
-batching/options/single_rect_fallback=true
 batching/precision/uv_contract=true
 environment/default_environment="res://misc/env.res"

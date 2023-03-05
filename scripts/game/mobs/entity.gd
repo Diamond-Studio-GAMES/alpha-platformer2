@@ -11,55 +11,53 @@ enum AliveState {
 	DEAD = 1,
 }
 
-export (float) var SPEED = 85
-export (float) var speed_cooficent = 1
-export (float) var JUMP_POWER = 255
 const UP_DIRECTION = Vector2.UP
-export (float) var KNOCKBACK_POWER = 150
+export (int) var SPEED = 85
+export (float) var speed_cooficent = 1.0
+export (int) var JUMP_POWER = 255
+export (int) var KNOCKBACK_POWER = 150
+export (int) var MAX_GRAVITY = 250
+export (int) var MAX_UNDERWATER_GRAVITY = 30
+export (float) var GRAVITY_SCALE = 1.0
 var GRAVITY_SPEED = 750
-export (float) var MAX_GRAVITY = 250
-export (float) var MAX_UNDERWATER_GRAVITY = 30
-export (float) var GRAVITY_SCALE = 1
 var _move_direction = Vector2()
 var _body
-var _visual
-var _anim
-var _anim_tree
-var _y
 var _move = Vector2()
 var _knockback = 0
-var can_move = true
+var is_hurt = false
 var can_turn = true
-var _level
+var is_stunned = false
+var under_water = false
+var _is_falling = false
 var _visual_scale = Vector2(1, 1)
+onready var _visual = $visual
+onready var _anim = $anim
+onready var _anim_tree = $anim_tree
+onready var _level = get_tree().current_scene
 
 
 # HEALTH
 export (int) var max_health = 100
-var current_health
 export (int) var defense = 5
 export (bool) var immune_to_water = false
-var can_hurt = true
+var current_health = 100
 var _hp_count
 var _health_bar
 var _health_change_bar
 var _head
 var _head_sprite
 var _head_hurt_sprite
-var _tween
-var _hurt_heal_text = load("res://prefabs/effects/hurt_heal_text.scn")
-var _heal_particles
 var _start_falling_y = 0
-var _is_falling = false
-var under_water = false
 var waters = []
 var breath_time = 10
-var is_stunned = false
-var stun_stars
 var stun_time = 0
-var ms : MultiplayerSynchronizer
+var _hurt_heal_text = load("res://prefabs/effects/hurt_heal_text.scn")
 var stun_effect = load("res://prefabs/effects/stun_effect.scn")
 var fall_effect = load("res://prefabs/effects/fall_effect.scn")
+onready var _tween = $tween
+onready var stun_stars = $stun_stars
+onready var _heal_particles = $heal
+onready var ms : MultiplayerSynchronizer = $MultiplayerSynchronizer as MultiplayerSynchronizer
 
 signal died
 signal hurt
@@ -67,17 +65,8 @@ signal stun_ended
 
 
 func _ready():
-	randomize()
-	_anim = $anim
-	_anim_tree = $anim_tree
-	_visual = $visual
 	_start_falling_y = global_position.y
-	_tween = $tween
-	_heal_particles = $heal
 	current_health = max_health
-	stun_stars = $stun_stars
-	ms = $MultiplayerSynchronizer
-	_level = $".."
 
 #MOVE
 
@@ -107,40 +96,35 @@ func calculate_fall_damage():
 
 
 #HEALTH
-func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, can_ignored = true):
-	ms.sync_call(self, "hurt", [damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, can_ignored])
+func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4):
+	ms.sync_call(self, "hurt", [damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time])
 	var past_health = current_health
-	if defense_allowed:
-		current_health = clamp(current_health - max(damage - defense, 0), 0, max_health)
-	else:
-		current_health = clamp(current_health - damage, 0, max_health)
+	var real_defense = defense
+	if not defense_allowed:
+		real_defense = 0
+	current_health = clamp(current_health - max(damage - real_defense, 0), 0, max_health)
 	if fatal:
 		current_health = 0
 		damage = max_health
 	if current_health >= past_health:
 		return
-	can_hurt = false
-	can_move = false
+	is_hurt = true
 	if stuns:
 		stun(stun_time)
 	_head.texture = _head_hurt_sprite
 	yield()
-	if not current_health >= past_health:
-		var node = _hurt_heal_text.instance()
-		if defense_allowed:
-			node.get_node("text").text = str(damage - defense)
-		else:
-			node.get_node("text").text = str(damage)
-		_level.add_child(node)
-		node.global_position = global_position
-		node.position.x += randi() % 13 - 6
-		node.position.y += randi() % 13 - 6
-		node.global_scale = Vector2(0.5, 0.5)
-	_health_bar.value = current_health
-	_hp_count.text = str(current_health) + "/" + str(max_health)
+	var node = _hurt_heal_text.instance()
+	node.get_node("text").text = str(damage - real_defense)
+	_level.add_child(node)
+	node.global_position = global_position
+	node.position += Vector2(randi() % 13 - 6, randi() % 13 - 6)
+	node.global_scale = Vector2(0.5, 0.5)
+	_update_bars()
 	$hurt_sfx.play()
+	_health_change_bar.value = past_health
 	_tween.interpolate_property(_health_change_bar, "value", past_health, current_health, 0.6, Tween.TRANS_SINE, Tween.EASE_OUT, 0.4)
 	_tween.start()
+	var died = false
 	if current_health > 0:
 		emit_signal("hurt")
 		_knockback = KNOCKBACK_POWER * knockback_multiplier
@@ -149,38 +133,42 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 		_anim_tree["parameters/hurt_shot/active"] = true
 	else:
 		emit_signal("died")
+		died = true
 		if abs(knockback_multiplier) > 0:
 			_body.scale = Vector2(sign(-knockback_multiplier), 1)
 		_visual.scale = _body.scale
 		_visual_scale = _visual.scale
 		_body.scale = Vector2(1, 1)
 		_anim_tree["parameters/death_trans/current"] = AliveState.DEAD
-		if has_node(@"fire_on_entity"):
+		if has_node("fire_on_entity"):
 			$fire_on_entity.queue_free()
-	var time0 = clamp(custom_immobility_time, 0, 0.1) if current_health > 0 else 0
-	var time1 = clamp(custom_immobility_time - 0.1, 0, 9999) if current_health > 0 else 0
-	var difference = clamp(custom_invincibility_time - custom_immobility_time, 0, 9999) if current_health > 0 else 0
+	var time0 = 0
+	var time1 = 0
+	var difference = 0
+	if current_health > 0:
+		time0 = clamp(custom_immobility_time, 0, 0.1)
+		time1 = max(custom_immobility_time - 0.1, 0)
+		difference = max(custom_invincibility_time - custom_immobility_time - 0.05, 0)
 	if time0 > 0:
 		yield(get_tree().create_timer(time0, false), "timeout")
 	_knockback = 0
 	if time1 > 0:
 		yield(get_tree().create_timer(time1, false), "timeout")
 	if current_health > 0:
-		can_move = true and not is_stunned
+		is_hurt = false
 	if difference > 0:
 		yield(get_tree().create_timer(difference, false), "timeout")
-	if current_health > 0:
+	if current_health > 0 and not is_stunned:
 		_head.texture = _head_sprite
-		can_hurt = true
+	return died
 
 
 func heal(amount):
 	ms.sync_call(self, "heal", [amount])
-	if current_health <= 0 and not name.begins_with("player"):
+	if current_health <= 0 and not is_in_group("player"):
 		return
 	current_health = clamp(current_health + amount, 0, max_health)
-	_health_bar.value = current_health
-	_hp_count.text = str(current_health) + "/" + str(max_health)
+	_update_bars()
 	_tween.stop_all()
 	_tween.remove_all()
 	_health_change_bar.value = current_health
@@ -195,13 +183,11 @@ func heal(amount):
 
 func _physics_process(delta):
 	if is_stunned:
-		can_move = false
-		_head.texture = _head_hurt_sprite
 		stun_time -= delta
 		if stun_time <= 0:
 			emit_signal("stun_ended")
-	scale = Vector2(scale.x, abs(scale.y) * GRAVITY_SCALE)
-	if can_move:
+	scale.y = abs(scale.y) * sign(GRAVITY_SCALE)
+	if not (is_stunned or is_hurt):
 		if _move_direction.x != 0:
 			if can_turn:
 				_body.scale = Vector2(_move_direction.x, _body.scale.y)
@@ -209,28 +195,22 @@ func _physics_process(delta):
 				_anim_tree["parameters/iw_trans/current"] = IWState.WALK
 		elif _anim_tree["parameters/iw_trans/current"] != IWState.IDLE:
 			_anim_tree["parameters/iw_trans/current"] = IWState.IDLE
-		if not under_water:
-			_y = clamp(_move.y + GRAVITY_SPEED * delta * GRAVITY_SCALE, 
-					-9999 if GRAVITY_SCALE > 0 else MAX_GRAVITY * GRAVITY_SCALE, 
-					MAX_GRAVITY * GRAVITY_SCALE if GRAVITY_SCALE > 0 else 9999)
-		else:
-			_y = clamp(_move.y + GRAVITY_SPEED * delta * GRAVITY_SCALE, 
-					-9999 if GRAVITY_SCALE > 0 else MAX_UNDERWATER_GRAVITY * GRAVITY_SCALE,
-					MAX_UNDERWATER_GRAVITY * GRAVITY_SCALE if GRAVITY_SCALE > 0 else 9999)
-		_move = Vector2(_move_direction.x * SPEED * speed_cooficent + _knockback, _y)
-		_move.y = move_and_slide(_move, UP_DIRECTION * GRAVITY_SCALE, false, 4, 0.785398, true).y
+		_move.x = _move_direction.x * SPEED * speed_cooficent + _knockback
 	else:
 		_anim_tree["parameters/iw_trans/current"] = IWState.IDLE
-		if not under_water:
-			_y = clamp(_move.y + GRAVITY_SPEED * delta * GRAVITY_SCALE, 
-					-9999 if GRAVITY_SCALE > 0 else MAX_GRAVITY * GRAVITY_SCALE, 
-					MAX_GRAVITY * GRAVITY_SCALE if GRAVITY_SCALE > 0 else 9999)
+		_move.x = _knockback
+	if under_water:
+		if GRAVITY_SCALE > 0:
+			_move.y = min(_move.y + GRAVITY_SPEED * delta * GRAVITY_SCALE, MAX_UNDERWATER_GRAVITY * GRAVITY_SCALE)
 		else:
-			_y = clamp(_move.y + GRAVITY_SPEED * delta * GRAVITY_SCALE, 
-					-9999 if GRAVITY_SCALE > 0 else MAX_UNDERWATER_GRAVITY * GRAVITY_SCALE,
-					MAX_UNDERWATER_GRAVITY * GRAVITY_SCALE if GRAVITY_SCALE > 0 else 9999)
-		_move = Vector2(_knockback, _y)
-		_move.y = move_and_slide(_move, UP_DIRECTION * GRAVITY_SCALE).y
+			_move.y = max(_move.y + GRAVITY_SPEED * delta * GRAVITY_SCALE, MAX_UNDERWATER_GRAVITY * GRAVITY_SCALE)
+	else:
+		if GRAVITY_SCALE > 0:
+			_move.y = min(_move.y + GRAVITY_SPEED * delta * GRAVITY_SCALE, MAX_GRAVITY * GRAVITY_SCALE)
+		else:
+			_move.y = max(_move.y + GRAVITY_SPEED * delta * GRAVITY_SCALE, MAX_GRAVITY * GRAVITY_SCALE)
+	_move = move_and_slide(_move, UP_DIRECTION * GRAVITY_SCALE)
+	
 	if GRAVITY_SCALE > 0:
 		if _move.y >= 25 and not _is_falling:
 			_start_falling_y = global_position.y
@@ -251,20 +231,13 @@ func _physics_process(delta):
 
 func _process(delta):
 	if current_health <= 0:
-		can_move = false
+		is_hurt = true
 	if under_water:
 		_start_falling_y = global_position.y
-	if waters.size() > 0:
-		under_water = true
-	else:
-		under_water = false
-	if under_water:
 		breath_time -= delta
 		if breath_time <= 0:
 			if not immune_to_water:
 				hurt(1, 0, false, true)
-	else:
-		breath_time = 10
 	if current_health <= 0:
 		_visual.scale = _visual_scale
 
@@ -272,11 +245,13 @@ func _process(delta):
 func water_checked(area):
 	if area.name.begins_with("water"):
 		waters.append(area)
+		_update_water_state()
 
 
 func water_unchecked(area):
 	if area in waters:
 		waters.erase(area)
+		_update_water_state()
 
 
 func stun(time):
@@ -288,13 +263,24 @@ func stun(time):
 		stun_time += time
 		return
 	is_stunned = true
-	can_move = false
 	stun_time = time
 	stun_stars.show()
 	yield(self, "stun_ended")
 	is_stunned = false
-	can_move = true
 	if current_health > 0:
 		_head.texture = _head_sprite
 	stun_stars.hide()
 
+
+func _update_bars():
+	_health_bar.value = current_health
+	_health_change_bar.value = current_health
+	_hp_count.text = str(current_health) + "/" + str(max_health)
+
+
+func _update_water_state():
+	if waters.size() > 0:
+		under_water = true
+	else:
+		under_water = false
+		breath_time = 10

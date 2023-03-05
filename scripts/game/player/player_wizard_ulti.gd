@@ -1,23 +1,16 @@
 extends Area2D
 
 
-var _ulti_attack
 var level = 1
 var power = 0
 var attack_power = 25
-var gen
 var has_amulet = false
-var _level
-var _effect
+var _ulti_attack = load("res://prefabs/classes/wizard_ulti_attack.scn")
+var _effect = load("res://prefabs/effects/effect_wizard_ulti.scn")
+onready var _level = get_tree().current_scene
 
 
 func _ready():
-	_level = $".."
-	_ulti_attack = load("res://prefabs/classes/wizard_ulti_attack.scn")
-	_effect = load("res://prefabs/effects/effect_wizard_ulti.scn")
-	gen = RandomNumberGenerator.new()
-	gen.randomize()
-	randomize()
 	attack_power = (30 + power * 6) * 0.5
 	var wizard_max_health = 80 + power * 16 + (60 if has_amulet else 0)
 	match level:
@@ -35,9 +28,9 @@ func _ready():
 	var enemies = get_overlapping_bodies()
 	var enemies_copy = enemies.duplicate()
 	for i in enemies_copy:
-		if i.name.begins_with("player"):
+		if i is Player:
 			enemies.erase(i)
-		if not i.has_method("hurt"):
+		if not i is Entity:
 			enemies.erase(i)
 	if enemies.empty():
 		yield(get_tree().create_timer(2, false), "timeout")
@@ -50,15 +43,10 @@ func _ready():
 		node.global_position = targeted_enemy.global_position
 		var effect_node = _effect.instance()
 		effect_node.global_position = targeted_enemy.global_position
-		targeted_enemy.can_hurt = true
-		yield(get_tree(), "idle_frame")
-		targeted_enemy.can_hurt = true
 		_level.add_child(effect_node, true)
 		node.damage = attack_power
-#		node.scale = Vector2(2, 2)
 		_level.add_child(node, true)
 	if not enemies.empty():
 		$sfx.play()
-	yield(get_tree().create_timer(0.25, false), "timeout")
-	yield(get_tree().create_timer(2, false), "timeout")
+	yield(get_tree().create_timer(2.25, false), "timeout")
 	queue_free()

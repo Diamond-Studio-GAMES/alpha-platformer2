@@ -8,9 +8,8 @@ onready var jump_ray1 = $jump_ray_cast2
 onready var path_ray_left = $path_ray_cast_left
 onready var path_ray_right = $path_ray_cast_right
 onready var shoot = $visual/body/arm_right/hand/weapon/shoot
-onready var bullet = load("res://prefabs/mobs/shooter_bullet.scn")
-var player_timer = 0
-var attack_timer = 0
+var bullet = load("res://prefabs/mobs/shooter_bullet.scn")
+var _min_distance = 0
 var anima
 var trck_idx = 0
 var key_idx0 = 0
@@ -21,6 +20,7 @@ func _ready():
 	reaction_speed += rand_range(-0.05, 0.1)
 	attack_speed += rand_range(-0.1, 0.2)
 	attack_damage = round(stats_multiplier * attack_damage)
+	_min_distance = min_distance * min_distance
 	anima = _anim.get_animation("attack")
 	trck_idx = anima.find_track(@"visual/body/arm_right:rotation_degrees")
 	key_idx0 = anima.track_find_key(trck_idx, 0.1)
@@ -62,7 +62,7 @@ func attack():
 
 
 func _physics_process(delta):
-	if current_health <= 0 or not can_move:
+	if current_health <= 0 or is_hurt or is_stunned:
 		return
 	find_target()
 	if not MP.auth(self):
@@ -74,34 +74,35 @@ func _physics_process(delta):
 	attack_timer += delta
 	if player_timer > reaction_speed:
 		player_timer = 0
-		player_distance = global_position.distance_to(player.global_position)
-		if player_distance > vision_distance:
+		player_distance = global_position.distance_squared_to(player.global_position)
+		if player_distance > _vision_distance:
 			stop()
 			return
-		if player_distance > min_distance:
-			if player.global_position.x > global_position.x:
+		if player_distance > _min_distance:
+			if player.global_position.x > global_position.x and _is_move_safe(path_ray_right):
 				move_right()
-			else:
+			elif player.global_position.x < global_position.x and _is_move_safe(path_ray_left):
 				move_left()
+			else:
+				stop()
 		else:
-			if player.global_position.x > global_position.x:
+			if player.global_position.x > global_position.x and _is_move_safe(path_ray_left):
 				move_left()
-			else:
+			elif player.global_position.x < global_position.x and _is_move_safe(path_ray_right):
 				move_right()
+			else:
+				stop()
 		if under_water and breath_time < 2 and not immune_to_water:
 			jump()
-		if attack_timer > attack_speed and player_distance < 160:
+		if attack_timer > attack_speed and player_distance < 25600:
 			attack()
 			attack_timer = 0
-	if (ray_colliding(jump_ray0) == Colliding.OK and _move_direction.x > 0) or (ray_colliding(jump_ray1) == Colliding.OK and _move_direction.x < 0):
+	if ray_colliding(jump_ray0) == Colliding.OK and _move_direction.x > 0 or \
+			ray_colliding(jump_ray1) == Colliding.OK and _move_direction.x < 0:
 		jump()
-	if _move_direction.x >= 0: 
-		if ray_colliding(path_ray_right) == Colliding.DANGER:
+	lookup_timer += delta
+	if lookup_timer > lookup_speed:
+		if _move_direction.x > 0 and not _is_move_safe(path_ray_right):
 			stop()
-		elif ray_colliding(path_ray_right) == Colliding.NO_BLOCK and not under_water:
-			stop()
-	elif _move_direction.x < 0:
-		if ray_colliding(path_ray_left) == Colliding.DANGER:
-			stop()
-		elif ray_colliding(path_ray_left) == Colliding.NO_BLOCK and not under_water:
+		elif _move_direction.x < 0 and not _is_move_safe(path_ray_left):
 			stop()

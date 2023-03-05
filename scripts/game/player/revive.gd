@@ -3,15 +3,21 @@ extends Camera2D
 
 var counter
 var is_revived = false
+var is_gived_up = false
+var is_multiplayer = false
 var is_screen_on = false
 
 
 func _ready():
+	is_multiplayer = MP.is_active
 	counter = $gui/death_screen/gems/count
-	$gui/death_screen/window.connect("popup_hide", self, "give_up")
+	$gui/death_screen/window.get_close_button().connect("pressed", self, "give_up")
+	$gui/death_screen/window.popup_exclusive = true
 
 
 func show_revive_screen():
+	if is_multiplayer:
+		return
 	if is_revived or not $"..".can_revive:
 		give_up()
 		return
@@ -43,11 +49,12 @@ func revive_button():
 
 
 func give_up():
-	if not is_revived:
-		$gui/death_screen/window.disconnect("popup_hide", self, "give_up")
+	if is_gived_up:
+		return
 	if MP.is_active:
 		$"/root/mg".state = 3
 		MP.close_network()
+	is_gived_up = true
 	get_tree().paused = false
 	if $"..".custom_respawn_scene.empty():
 		get_tree().change_scene("res://scenes/menu/game_over.scn")

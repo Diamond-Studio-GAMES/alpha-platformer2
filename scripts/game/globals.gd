@@ -19,6 +19,7 @@ var custom_respawn_scene = ""
 var dialog_in_menu = ""
 var fps_text
 var music
+var ad : AdsManager
 var loading_scene = load("res://scenes/menu/loading.scn")
 var box = load("res://scenes/menu/box.scn")
 const CLASSES_ID = {
@@ -161,7 +162,6 @@ signal loaded_to_scene(path)
 func _ready():
 	main_file = ConfigFile.new()
 	main_file.load_encrypted_pass("user://main.apa2", "main")
-	save_file = main_file
 	var dir = Directory.new()
 	if not dir.dir_exists("user://saves/"):
 		dir.make_dir_recursive("user://saves/")
@@ -179,6 +179,9 @@ func _ready():
 	
 	randomize()
 	get_tree().connect("node_added", self, "_node_added")
+	ad = AdsManager.new()
+	ad.name = "Ads"
+	add_child(ad)
 	music = AudioStreamPlayer.new()
 	music.name = "menu_music"
 	music.bus = "music"
@@ -197,8 +200,6 @@ func _process(delta):
 	if save_timer >= 20:
 		save()
 		save_timer = 0
-	if Input.is_action_just_pressed("gadget"):
-		receive_loot({"potions1":6})
 
 
 func _notification(what):
@@ -260,7 +261,7 @@ func open_save(id):
 
 func close_save():
 	save()
-	save_file = main_file
+	save_file = null
 
 
 func change_to_scene(path):
