@@ -37,7 +37,7 @@ func apply_data(data):
 
 
 func attack():
-	if is_hurt or is_stunned or _is_drinking or _is_ultiing:
+	if is_hurt or is_stunned or _is_drinking or _is_ultiing or not can_control:
 		return
 	if not can_attack:
 		_attack_empty_anim.play("empty")

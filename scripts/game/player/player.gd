@@ -187,15 +187,15 @@ func apply_data(data):
 	_hp_count = $bars/hp
 
 #MOVE
-func move_left(force = false):
-	if not (can_control or force):
+func move_left():
+	if not can_control:
 		return
 	ms.sync_call(self, "move_left")
 	_prev_move_x = _move_direction.x
 	_move_direction.x = -1
 
-func move_right(force = false):
-	if not (can_control or force):
+func move_right():
+	if not can_control:
 		return
 	ms.sync_call(self, "move_right")
 	_prev_move_x = _move_direction.x
@@ -217,8 +217,8 @@ func stop_right():
 			move_left()
 	_prev_move_x = 0
 
-func stop(force = false):
-	if not (can_control or force):
+func stop():
+	if not can_control:
 		return
 	ms.sync_call(self, "stop")
 	_move_direction.x = 0
@@ -289,7 +289,7 @@ func heal(amount):
 
 
 func use_potion(level):
-	if _is_drinking or is_hurt or is_stunned or is_reviving or _is_ultiing or _is_attacking:
+	if _is_drinking or is_hurt or is_stunned or is_reviving or _is_ultiing or _is_attacking or not can_control:
 		return
 	ms.sync_call(self, "use_potion", [level])
 	match level:
@@ -347,7 +347,7 @@ func use_potion(level):
 
 
 func ulti():
-	if ulti_percentage < 100 or is_hurt or is_stunned or _is_attacking or _is_drinking:
+	if ulti_percentage < 100 or is_hurt or is_stunned or _is_attacking or _is_drinking or not can_control:
 		return
 	ms.sync_call(self, "ulti")
 	$skill_use_sfx.play()
@@ -477,7 +477,7 @@ func idle_heal():
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or current_health <= 0:
+	if gadget_cooldown > 0 or gadget_count <= 0 or current_health <= 0 or not can_control:
 		return
 	ms.sync_call(self, "use_gadget")
 	$gadget_sfx.play()

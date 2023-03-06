@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/game/mobs/attack.gd"
 }, {
+"base": "Node2D",
+"class": "Boss",
+"language": "GDScript",
+"path": "res://scripts/game/bosses/boss.gd"
+}, {
 "base": "Node",
 "class": "Box",
 "language": "GDScript",
@@ -198,6 +203,7 @@ _global_script_class_icons={
 "AdsManager": "",
 "Archer": "",
 "Attack": "res://textures/gui/attack.png",
+"Boss": "",
 "Box": "res://textures/items/box.png",
 "Butcher": "",
 "Dasher": "",
@@ -417,5 +423,11 @@ quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 vram_compression/import_etc=true
+batching/options/single_rect_fallback=true
+batching/parameters/batch_buffer_size=32768
 batching/precision/uv_contract=true
 environment/default_environment="res://misc/env.res"
+
+[world]
+
+2d/cell_size=32

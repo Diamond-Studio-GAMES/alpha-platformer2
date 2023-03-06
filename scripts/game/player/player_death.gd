@@ -45,7 +45,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 
 
 func attack():
-	if is_hurt or is_stunned or _is_drinking:
+	if is_hurt or is_stunned or _is_drinking or not can_control:
 		return
 	if not can_attack:
 		_attack_empty_anim.play("empty")
@@ -93,7 +93,7 @@ func oraoraora():
 
 
 func ulti():
-	if ulti_percentage < 100 or is_stunned or is_hurt or _is_drinking or is_active_gadget:
+	if ulti_percentage < 100 or is_stunned or is_hurt or _is_drinking or is_active_gadget or not can_control:
 		return
 	ms.sync_call(self, "ulti")
 	$skill_use_sfx.play()
@@ -140,7 +140,7 @@ func _process(delta):
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or _is_drinking or _is_ultiing:
+	if gadget_cooldown > 0 or gadget_count <= 0 or _is_drinking or _is_ultiing or not can_control:
 		return
 	.use_gadget()
 	var effect = THEWORLD.instance()

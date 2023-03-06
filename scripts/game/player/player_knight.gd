@@ -88,7 +88,7 @@ func miss(knockback_multiplier):
 
 
 func attack():
-	if is_hurt or is_stunned or _is_drinking or _is_ultiing:
+	if is_hurt or is_stunned or _is_drinking or _is_ultiing or not can_control:
 		return
 	if not can_attack:
 		_attack_empty_anim.play("empty")
@@ -123,7 +123,7 @@ func _process(delta):
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or is_hurt or is_stunned:
+	if gadget_cooldown > 0 or gadget_count <= 0 or is_hurt or is_stunned or not can_control:
 		return
 	.use_gadget()
 	is_active_gadget = true

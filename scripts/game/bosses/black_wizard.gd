@@ -1,69 +1,25 @@
-extends Node2D
+extends Boss
 
-
-onready var mob : Mob = $mob_bw
-onready var anim = $anim
-var boss_bar : TextureProgress
-var boss_hp : Label
-var player : Player
-var is_attacking = false
-var waiting_for_death = false
-var death_timer = 0
-var is_cutscene = false
-var attack_timer = 0
-var next_attack_time = 1
-var attacks = ["blackball", "lightnings", "mob_spawn", "blackball", "lightnings"]
-var player_target = null
 
 var shield_timer = 0
 var under_shield = false
 var blackball = load("res://prefabs/bosses/blackball.scn")
 var mob_shooter = load("res://prefabs/bosses/shooter_boss.scn")
 onready var lightnings = $lightnings.get_children()
-onready var ms = $MultiplayerSynchronizer
-
-
-func set_cutscene(val):
-	if not is_instance_valid(player):
-		return
-	player.can_move = not val
-	is_cutscene = val
 
 
 func _ready():
-	randomize()
+	mob = $mob_bw
+	fill_x = 53
+	tp_pos = Vector2(54, -2)
+	mercy_dialog = "Чёрный маг: Слава тебе, %s!" % G.getv("name", "")
+	death_dialog = "Чёрный маг: Я был не прав...\n (убить или пощадить?)"
+	attacks = ["blackball", "lightnings", "mob_spawn", "blackball", "lightnings"]
 	if MP.is_active:
 		yield($"/root/mg", "game_started")
 	yield(get_tree(), "idle_frame")
-	player = get_tree().current_scene.get_node("player"+(str(get_tree().get_network_unique_id()) if MP.is_active else ""))
-	boss_bar = player.get_boss_bar()
+	yield(get_tree(), "idle_frame")
 	boss_bar.get_node("boss_name").text = "ЧЁРНЫЙ МАГ" + ":"
-	boss_hp = boss_bar.get_node("hp_count")
-	boss_hp.text = str(mob.current_health) + "/" + str(mob.max_health)
-	boss_bar.max_value = mob.max_health
-	boss_bar.value = mob.current_health
-
-
-func start_fight():
-	player.get_node("camera_tween").interpolate_property(player.get_node("camera"), "zoom", player.default_camera_zoom, Vector2(0.6, 0.6), 1)
-	player.get_node("camera_tween").start()
-	player.default_camera_zoom = Vector2(0.6, 0.6)
-	boss_bar.show()
-	var tilemap = $"../../tilemap"
-	for i in range(-30, 0):
-		tilemap.set_cell(53, i, 5)
-	move_player_to_start()
-	if MP.is_active:
-		rpc("move_player_to_start")
-	$"../../music".play()
-	$"../../tint/anim".play("boss_name_appear")
-	yield($"../../tint/anim", "animation_finished")
-	is_attacking = true
-	mob.defense = 0
-
-
-remote func move_player_to_start():
-	player.global_position = $"../../tilemap".map_to_world(Vector2(54, -2)) + Vector2.ONE * 16
 
 
 func _process(delta):
@@ -78,9 +34,6 @@ func _process(delta):
 			set_cutscene(true)
 			yield(anim, "animation_finished")
 			set_cutscene(false)
-	if player != null:
-		if is_cutscene:
-			player.can_move = false
 	if boss_bar == null:
 		return
 	if mob == null:

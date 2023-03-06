@@ -171,7 +171,6 @@ func heal(amount):
 	_update_bars()
 	_tween.stop_all()
 	_tween.remove_all()
-	_health_change_bar.value = current_health
 	_heal_particles.restart()
 	var node = _hurt_heal_text.instance()
 	node.get_node("text").text = str(amount)
@@ -186,7 +185,8 @@ func _physics_process(delta):
 		stun_time -= delta
 		if stun_time <= 0:
 			emit_signal("stun_ended")
-	scale.y = abs(scale.y) * sign(GRAVITY_SCALE)
+	var gravity_direction = sign(GRAVITY_SCALE)
+	scale.y = abs(scale.y) * gravity_direction
 	if not (is_stunned or is_hurt):
 		if _move_direction.x != 0:
 			if can_turn:
@@ -211,22 +211,13 @@ func _physics_process(delta):
 			_move.y = max(_move.y + GRAVITY_SPEED * delta * GRAVITY_SCALE, MAX_GRAVITY * GRAVITY_SCALE)
 	_move = move_and_slide(_move, UP_DIRECTION * GRAVITY_SCALE)
 	
-	if GRAVITY_SCALE > 0:
-		if _move.y >= 25 and not _is_falling:
-			_start_falling_y = global_position.y
-			_is_falling = true
-		if _move.y <= 25 and _is_falling:
-			calculate_fall_damage()
-			_start_falling_y = global_position.y
-			_is_falling = false
-	else:
-		if _move.y <= -25 and not _is_falling:
-			_start_falling_y = global_position.y
-			_is_falling = true
-		if _move.y >= -25 and _is_falling:
-			calculate_fall_damage()
-			_start_falling_y = global_position.y
-			_is_falling = false
+	if _move.y * gravity_direction >= 25 and not _is_falling:
+		_start_falling_y = global_position.y
+		_is_falling = true
+	if _move.y * gravity_direction <= 25 and _is_falling:
+		calculate_fall_damage()
+		_start_falling_y = global_position.y
+		_is_falling = false
 
 
 func _process(delta):

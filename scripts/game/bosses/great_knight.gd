@@ -1,4 +1,4 @@
-extends Node2D
+extends Boss
 
 
 const OFFSET_X = 160

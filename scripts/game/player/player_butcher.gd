@@ -65,7 +65,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 
 
 func attack():
-	if is_hurt or is_stunned or _is_ultiing or _is_drinking:
+	if is_hurt or is_stunned or _is_ultiing or _is_drinking or not can_control:
 		return
 	if not can_attack:
 		_attack_empty_anim.play("empty")
@@ -111,7 +111,7 @@ func _physics_process(delta):
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or is_stunned or is_hurt or _is_drinking or not is_on_floor():
+	if gadget_cooldown > 0 or gadget_count <= 0 or is_stunned or is_hurt or _is_drinking or not is_on_floor() or not can_control:
 		return
 	jump(375)
 	.use_gadget()

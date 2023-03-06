@@ -70,7 +70,7 @@ func joystick_released(output):
 
 
 func attack():
-	if is_hurt or is_stunned or _is_ultiing or _is_drinking:
+	if is_hurt or is_stunned or _is_ultiing or _is_drinking or not can_control:
 		return
 	if not can_attack:
 		_attack_empty_anim.play("empty")
@@ -98,7 +98,7 @@ func attack():
 
 
 func throw(direction):
-	if is_hurt or is_stunned or _is_ultiing or _is_drinking:
+	if is_hurt or is_stunned or _is_ultiing or _is_drinking or not can_control:
 		return
 	if not can_attack:
 		_attack_empty_anim.play("empty")
@@ -162,7 +162,7 @@ func _process(delta):
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0:
+	if gadget_cooldown > 0 or gadget_count <= 0 or not can_control:
 		return
 	if ulti_percentage >= 100:
 		return

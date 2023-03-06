@@ -105,14 +105,14 @@ func _physics_process(delta):
 		attack()
 		attack_timer = 0
 		player_timer = -0.4
-	if ray_colliding(jump_ray0) == Colliding.OK and _move_direction.x > 0 or \
-			ray_colliding(jump_ray1) == Colliding.OK and _move_direction.x < 0:
-		jump()
 	if transform_timer >= 20 and not is_hurt and not is_stunned and _move.y == 0:
 		do_transform()
 		transform_timer = 0
 	lookup_timer += delta
 	if lookup_timer > lookup_speed:
+		if ray_colliding(jump_ray0) == Colliding.OK and _move_direction.x > 0 or \
+				ray_colliding(jump_ray1) == Colliding.OK and _move_direction.x < 0:
+			jump()
 		if _move_direction.x > 0 and not _is_move_safe(path_ray_right):
 			stop()
 		elif _move_direction.x < 0 and not _is_move_safe(path_ray_left):

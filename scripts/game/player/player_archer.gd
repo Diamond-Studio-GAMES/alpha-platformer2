@@ -112,7 +112,7 @@ func sp_effect(remote_call = false):
 
 
 func attack():
-	if is_hurt or is_stunned or _is_ultiing or _is_drinking or is_aiming:
+	if is_hurt or is_stunned or _is_ultiing or _is_drinking or is_aiming or not can_control:
 		return
 	if not can_attack:
 		_attack_empty_anim.play("empty")
@@ -155,7 +155,7 @@ func calc_hand_rotate(direction):
 
 
 func throw(direction, aimed_time):
-	if is_hurt or is_stunned or _is_attacking or _is_drinking or _is_ultiing:
+	if is_hurt or is_stunned or _is_attacking or _is_drinking or _is_ultiing or not can_control:
 		return
 	if aimed_time < 0.55:
 		attack_cooldown = RECHARGE_SPEED / 2
@@ -200,7 +200,7 @@ func _process(delta):
 			aim_line.modulate = Color.red if attack_cooldown > 0 else Color.white
 		else:
 			aim_line.visible = false
-	if not is_hurt and not is_stunned and not _is_drinking and not _is_ultiing and can_attack:
+	if not is_hurt and not is_stunned and not _is_drinking and not _is_ultiing and can_attack and can_control:
 		if MP.auth(self):
 			jout = joystick._output
 		if cjo != jout and jout.length_squared() > 0:
@@ -240,7 +240,7 @@ func _process(delta):
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0:
+	if gadget_cooldown > 0 or gadget_count <= 0 or not can_control:
 		return
 	.use_gadget()
 	var node = gadget_attack.instance()

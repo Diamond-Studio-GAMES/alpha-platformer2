@@ -1,4 +1,4 @@
-extends Node2D
+extends Boss
 
 
 onready var mob : Mob = $mob_sh
