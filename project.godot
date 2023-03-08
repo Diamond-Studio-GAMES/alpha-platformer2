@@ -259,7 +259,6 @@ default_bus_layout="res://misc/bus_layout.res"
 
 G="*res://scripts/game/globals.gd"
 MP="*res://scripts/game/multiplayer/multiplayer.gd"
-AdManager="*res://scripts/menu/ads_manager.gd"
 
 [compression]
 
@@ -414,7 +413,6 @@ name_casing=2
 
 [physics]
 
-2d/physics_engine="GodotPhysics"
 common/enable_object_picking=false
 
 [rendering]
@@ -424,7 +422,6 @@ quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 vram_compression/import_etc=true
 batching/options/single_rect_fallback=true
-batching/parameters/batch_buffer_size=32768
 batching/precision/uv_contract=true
 environment/default_environment="res://misc/env.res"
 

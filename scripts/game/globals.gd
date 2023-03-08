@@ -200,10 +200,6 @@ func _process(delta):
 	if save_timer >= 20:
 		save()
 		save_timer = 0
-	if Input.is_action_just_pressed("gadget"):
-		var m = load("res://prefabs/mobs/shooter.scn").instance()
-		m.global_poisition = get_tree().current_scene.find_node("player", false, false)
-		get_tree().current_scene.add_child(m, true)
 
 
 func _notification(what):

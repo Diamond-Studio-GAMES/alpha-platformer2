@@ -12,6 +12,8 @@ func _ready():
 	mob = $mob_bw
 	fill_x = 53
 	tp_pos = Vector2(54, -2)
+	next_attack_time_min = 1.5
+	next_attack_time_max = 2
 	mercy_dialog = "Чёрный маг: Слава тебе, %s!" % G.getv("name", "")
 	death_dialog = "Чёрный маг: Я был не прав...\n (убить или пощадить?)"
 	attacks = ["blackball", "lightnings", "mob_spawn", "blackball", "lightnings"]
@@ -23,17 +25,6 @@ func _ready():
 
 
 func _process(delta):
-	if is_attacking and player != null:
-		process_attack(delta)
-	if waiting_for_death:
-		death_timer += delta
-		if death_timer >= 5:
-			waiting_for_death = false
-			player.make_dialog("Чёрный маг: Слава тебе, %s!" % G.getv("name", ""), 3)
-			anim.play("mercy")
-			set_cutscene(true)
-			yield(anim, "animation_finished")
-			set_cutscene(false)
 	if boss_bar == null:
 		return
 	if mob == null:
@@ -50,59 +41,21 @@ func _process(delta):
 			shield_timer = 0
 			under_shield = false
 			$visual/body/shield/anim.play("end")
-	boss_hp.text = str(mob.current_health) + "/" + str(mob.max_health)
-	boss_bar.value = mob.current_health
-
-
-func get_hit(area):
-	if waiting_for_death:
-		if not MP.auth(area):
-			return
-		waiting_for_death = false
-		anim.play("final_death")
-		G.setv("boss_" + G.current_level + "_killed", true)
 
 
 func death():
 	if not $visual/body/shield/shape.disabled:
 		$visual/body/shield/anim.play("end")
-	$"../../music".stop()
-	player.get_node("camera_tween").stop_all()
-	player.get_node("camera_tween").remove_all()
-	player.get_node("camera_tween").interpolate_property(player.get_node("camera"), "zoom", player.get_node("camera").zoom, Vector2(0.3, 0.3), 1)
-	player.get_node("camera_tween").start()
-	player.default_camera_zoom = Vector2(0.3, 0.3)
-	is_attacking = false
-	set_cutscene(true)
-	anim.play("death")
-	yield(anim, "animation_finished")
-	set_cutscene(false)
-	if G.getv("boss_" + G.current_level + "_killed", false):
-		anim.play("final_death")
-	else:
-		player.make_dialog("Чёрный маг: Я был не прав...\n (убить или пощадить?)", 5)
-		waiting_for_death = true
+	.death()
 
 
-func process_attack(delta):
-	if mob.is_stunned:
-		return
-	if not MP.auth(self):
-		return
-	attack_timer += delta
-	if attack_timer >= next_attack_time:
-		mob.find_target()
-		if mob.player == null:
-			return
-		player_target = mob.player
-		attack_timer = 0
-		next_attack_time = rand_range(1.5, 2)
-		var variants = attacks.duplicate()
-		if not under_shield:
-			variants.append("make_shield")
-			variants.append("make_shield")
-		variants.shuffle()
-		call(variants[0])
+func do_attack():
+	var variants = attacks.duplicate()
+	if not under_shield:
+		variants.append("make_shield")
+		variants.append("make_shield")
+	variants.shuffle()
+	call(variants[0])
 
 
 func make_shield():
@@ -124,8 +77,8 @@ func blackball():
 		return
 	var n = blackball.instance()
 	n.global_position = $visual/body/arm_right/hand/weapon/shoot.global_position
+	n.rotation = $visual/body/arm_right/hand/weapon/shoot.global_position.direction_to(player.global_position).angle()
 	get_tree().current_scene.add_child(n, true)
-	n.look_at(player_target.global_position)
 
 
 func lightnings():
