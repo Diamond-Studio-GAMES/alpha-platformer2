@@ -129,7 +129,7 @@ func show_d_win():
 			i.hide()
 		else:
 			i.show()
-			$"../..".get_node("class_%s/%s/anim" % [i.name, i.name]).play("attack")
+			$"../..".get_node("class_visuals/%s/%s/anim" % [i.name, i.name]).play("attack")
 	popup_centered()
 	window_title = "Уровень " + curr_lvl.split("_")[0] + "-" + curr_lvl.split("_")[1] + " пройден!"
 	set_win_rewards(G.current_level)

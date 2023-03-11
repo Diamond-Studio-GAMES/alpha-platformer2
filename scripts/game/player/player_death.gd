@@ -7,12 +7,16 @@ var another_attack = false
 var _attack = load("res://prefabs/classes/death_attack.scn")
 var THEWORLD = load("res://prefabs/effects/THEWORLD.scn")
 var ORA = load("res://prefabs/classes/ORA.scn")
+var curr_lvl_loc = 1
 onready var trail = $trail
 
 
 func _ready():
+	curr_lvl_loc = int(get_tree().current_scene.name.trim_prefix("level_").split("_")[0])
 	randomize()
 	have_gadget = true
+	max_health = curr_lvl_loc * 25 + 250
+	defense = curr_lvl_loc + 15
 	current_health = max_health
 	_health_bar.max_value = max_health
 	_health_change_bar.max_value = max_health
@@ -64,8 +68,9 @@ func attack():
 		var node = _attack.instance()
 		node.global_position = global_position
 		node.scale.x = _body.scale.x
+		node.damage = 85 + curr_lvl_loc * 8
 		if randi() % 10 == 2:
-			node.damage = 85*3
+			node.damage *= 3
 			node.modulate = Color.black
 		_level.add_child(node)
 	_is_attacking = false
@@ -88,6 +93,7 @@ func oraoraora():
 		if _body.scale.x < 0:
 			node.rotation_degrees = 180
 		node.global_position = global_position + offset
+		node.get_node("attack").damage = 30 + curr_lvl_loc * 3
 		_level.add_child(node)
 	_is_attacking = false
 
@@ -158,7 +164,7 @@ func use_gadget():
 	_knockback = 0
 	stun_time = 0
 	yield(get_tree().create_timer(0.5), "timeout")
-	var time_to_stop = 4 + floor(int(get_tree().current_scene.name.trim_prefix("level_").split("_")[0]) / 2.0)
+	var time_to_stop = 4 + floor(curr_lvl_loc / 2.0)
 	yield(get_tree().create_timer(time_to_stop / time_scale), "timeout")
 	effect.get_node("anim").play("ZERO")
 	yield(get_tree().create_timer(0.5), "timeout")

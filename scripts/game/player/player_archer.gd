@@ -85,8 +85,17 @@ func joystick_released(output):
 		_attack_empty_anim.play("empty")
 		return
 	ms.sync_call(self, "joystick_released", [output])
-	jout = Vector2.ZERO
 	var aimed = aim_time
+	reset_aim()
+	if output == Vector2.ZERO:
+		if MP.auth(self):
+			attack()
+	else:
+		throw(output, aimed)
+
+
+func reset_aim():
+	jout = Vector2.ZERO
 	if is_aiming:
 		speed_cooficent = 1
 		can_turn = true
@@ -98,17 +107,12 @@ func joystick_released(output):
 		_aim_tween.remove_all()
 		_aim_tween.interpolate_property(_anim_tree, "parameters/aim_blend/blend_amount", _anim_tree["parameters/aim_blend/blend_amount"], 0, 0.3)
 		_aim_tween.start()
-	if output.x == 0 and output.y == 0:
-		if MP.auth(self):
-			attack()
-	else:
-		throw(output, aimed)
 
 
 func sp_effect(remote_call = false):
 	if gen.randi_range(0, 100) > 55 or remote_call:
 		$knockback/anim.play("def")
-		ms.sync_call(self, "sp_effect")
+		ms.sync_call(self, "sp_effect", [true])
 
 
 func attack():
@@ -227,16 +231,7 @@ func _process(delta):
 			if aim_time >= 1.1:
 				_anim_tree["parameters/aim_ts/scale"] = 0
 	if jout.length_squared() <= 0 and is_aiming:
-#		is_aiming = false
-#		can_turn = true
-#		aim_time = 0
-#		_anim_tree["parameters/aim_ts/scale"] = 1
-#		_anim_tree["parameters/aim_seek/seek_position"] = 2
-#		_aim_tween.stop_all()
-#		_aim_tween.remove_all()
-#		_aim_tween.interpolate_property(_anim_tree, "parameters/aim_blend/blend_amount", _anim_tree["parameters/aim_blend/blend_amount"], 0, 0.3)
-#		_aim_tween.start()
-		joystick_released(Vector2())
+		reset_aim()
 
 
 func use_gadget():

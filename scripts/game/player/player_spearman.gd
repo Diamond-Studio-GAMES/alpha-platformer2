@@ -64,7 +64,7 @@ func apply_data(data):
 
 
 func joystick_released(output):
-	if output.x == 0 and output.y == 0:
+	if output == Vector2.ZERO:
 		attack()
 	else:
 		throw(output)

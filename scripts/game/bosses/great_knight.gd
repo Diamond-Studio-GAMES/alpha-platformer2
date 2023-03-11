@@ -11,6 +11,7 @@ var sword_down_attack = load("res://prefabs/bosses/sword_down_attack.scn")
 
 
 func _ready():
+	mob = $mob_gk
 	fill_x = 53
 	tp_pos = Vector2(54, -2)
 	attacks = ["crack", "swipes", "throw", "swords_down"]
@@ -96,8 +97,8 @@ func throw():
 	yield(get_tree().create_timer(0.6, false), "timeout")
 	var node = sword_throw.instance()
 	node.global_position = $visual/body/arm_right/hand/weapon/shoot.global_position
+	node.rotation = $visual/body/arm_right/hand/weapon/shoot.global_position.direction_to(player.global_position).angle()
 	$"../..".add_child(node, true)
-	node.look_at(mob.player.global_position)
 
 
 func swords_down():

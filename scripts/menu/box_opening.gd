@@ -172,9 +172,11 @@ func open_select_class_for_tokens(count):
 		if not CLASSES[i] in power_classes:
 			get_node("wild_card_screen/classes/class" + str(i + 1)).hide()
 		else:
+			get_node("wild_card_screen/classes/class" + str(i + 1)).connect("pressed", self, "select_class_for_tokens", [G.CLASSES_ID[i]])
 			get_node("wild_card_screen/classes/class" + str(i + 1) + "/count").text = str(G.getv(CLASSES[i] + "_tokens", 0)) + "/" + str(G.getv(CLASSES[i] + "_level", 0) * 10 + 10)
 	if power_classes.empty():
 		$wild_card_screen/classes/to_coins.show()
+		$wild_card_screen/classes/to_coins.connect("pressed", self, "select_class_for_tokens", ["coins"])
 
 
 func open_select_class_for_ulti_tokens(count):
@@ -185,9 +187,11 @@ func open_select_class_for_ulti_tokens(count):
 		if not CLASSES[i] in ulti_classes:
 			get_node("wild_ulti_card_screen/classes/class" + str(i + 1)).hide()
 		else:
+			get_node("wild_ulti_card_screen/classes/class" + str(i + 1)).connect("pressed", self, "select_class_for_tokens", [G.CLASSES_ID[i]])
 			get_node("wild_ulti_card_screen/classes/class" + str(i + 1) + "/count").text = str(G.getv(CLASSES[i] + "_ulti_tokens", 0)) + "/" + str(G.getv(CLASSES[i] + "_ulti_level", 1) * 30 + 30)
 	if ulti_classes.empty():
 		$wild_ulti_card_screen/classes/to_coins.show()
+		$wild_ulti_card_screen/classes/to_coins.connect("pressed", self, "select_class_for_tokens", ["coins"])
 
 
 func select_class_for_tokens(sel_class = ""):
@@ -200,12 +204,13 @@ func open_gui(what = null):
 	hide_screens()
 	var loot = {}
 	if what == null:
-		if box_type == BoxType.STANDARD:
-			loot = open_box()
-		elif box_type == BoxType.BIG:
-			loot = open_big_box()
-		elif box_type == BoxType.MEGA:
-			loot = open_megabox()
+		match box_type:
+			BoxType.STANDARD:
+				loot = open_box()
+			BoxType.BIG:
+				loot = open_big_box()
+			BoxType.MEGA:
+				loot = open_megabox()
 	else:
 		loot = what
 	print(loot)
@@ -317,11 +322,6 @@ func open_gui(what = null):
 			items -= 1
 			item_counter_count.text = str(items)
 	if loot.has("class"):
-		if not has_node("class_screen"):
-			var class_screen = load("res://prefabs/menu/box_class_screen.scn").instance()
-			class_screen.name = "class_screen"
-			screens["class_screen"] = class_screen
-			add_child_below_node($soul_power_screen, class_screen)
 		hide_screens()
 		show_screen("class_screen")
 		for i in loot["class"]:
@@ -333,7 +333,7 @@ func open_gui(what = null):
 			get_node("class_screen/" + i).show()
 			get_node("class_screen/" + i + "/class/ui/text/class_name/count").text = str(5 - classes_to_unlock.size()) + "-й из 5 классов"
 			get_node("class_screen/" + i + "/anim").play("main")
-			$roll_out.play()
+			$class_screen/roll_out.play()
 			glow_items -= 1
 			yield(get_tree().create_timer(4), "timeout")
 			yield(self, "next")
@@ -618,6 +618,11 @@ func hide_screens():
 
 
 func show_screen(screen):
+	if not screens.has(screen):
+		var _screen = load("res://prefabs/menu/box_%s.scn" % screen).instance()
+		_screen.name = screen
+		screens[screen] = _screen
+		add_child_below_node($mega_box_screen, _screen)
 	screens[screen].show()
 	screens[screen].pause_mode = PAUSE_MODE_INHERIT
 

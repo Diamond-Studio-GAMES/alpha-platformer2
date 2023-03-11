@@ -36,7 +36,6 @@ func revive_button():
 	if G.getv("gems", 0) < 10:
 		return
 	is_screen_on = false
-	$gui/death_screen/window.disconnect("popup_hide", self, "give_up")
 	get_tree().paused = false
 	zoom = $"..".default_camera_zoom
 	G.setv("gems", G.getv("gems", 0) - 10)

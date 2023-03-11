@@ -6,7 +6,6 @@ export (float, 0, 1, 0.01) var time_scale = 1
 
 
 func _ready():
-	print("entered", get_tree().paused)
 	if G.ad.ad_counter_go > 2:
 		G.ad.showInterstitial()
 		G.ad.ad_counter_go = 0

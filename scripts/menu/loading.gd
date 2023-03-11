@@ -4,11 +4,10 @@ extends Node
 export (String) var load_path = "res://scenes/menu/menu.scn"
 var loader
 var time_max = 16
-var wait_frames = 2
+var wait_frames = 3
 
 
 func _ready():
-	yield(get_tree().create_timer(0.05), "timeout")
 	start_load()
 
 

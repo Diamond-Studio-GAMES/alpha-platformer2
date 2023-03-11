@@ -77,8 +77,8 @@ func big_knife_launch():
 		return
 	var n = big_knife_attack.instance()
 	n.global_position = $visual/body/arm_left/hand/end.global_position
+	n.rotation = $visual/body/arm_left/hand/end.global_position.direction_to(player.global_position).angle()
 	$"../..".add_child(n, true)
-	n.look_at(player_target.global_position)
 
 
 func sheep_bombs_launch():

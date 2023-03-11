@@ -41,9 +41,7 @@ func _ready():
 	if OS.has_feature("HTML5"):
 		$multiplayer_guide.dialog_text = "Мультиплеер не доступен в веб-версии. Установи игру на телефон, чтобы сыграть в него!"
 	var max_lvl = false
-	for i in $levels/levels.get_children():
-		if i.name == "bg":
-			continue
+	for i in $levels/levels/buttons.get_children():
 		i.connect("pressed", self, "play_lvl", [i.name])
 		var nums = i.name.split("_")
 		i.text = nums[0] + "-" + nums[1]
@@ -377,6 +375,7 @@ func confirm_upgrade():
 	G.addv("coins", -(G.getv(selected_class + "_level", 0) * 50 + 50))
 	G.addv(selected_class + "_tokens", -(G.getv(selected_class + "_level", 0) * 10 + 10))
 	G.addv(selected_class + "_level", 1)
+	G.emit_signal("loot_end") # Update offers
 	select_class(selected_class)
 	info(false)
 	var h = curr_info.get_node("health/value").text
@@ -479,6 +478,7 @@ func confirm_upgrade_ulti():
 	G.addv("coins", -(G.getv(selected_class + "_ulti_level", 1) * 600 + 600))
 	G.addv(selected_class + "_ulti_tokens", -(G.getv(selected_class + "_ulti_level", 1) * 30 + 30))
 	G.addv(selected_class + "_ulti_level", 1, 1)
+	G.emit_signal("loot_end") # Update offers
 	select_class(selected_class)
 	info(false)
 	var u = curr_info.get_node("ulti/value").text
@@ -532,10 +532,7 @@ func sell(ulti = false):
 
 func shop(val = true):
 	$shop.visible = val
-	for i in $levels/levels.get_children():
-		if i.name == "bg":
-			continue
-		i.visible = not val
+	$levels/levels/buttons.visible = not val
 
 
 func help():
