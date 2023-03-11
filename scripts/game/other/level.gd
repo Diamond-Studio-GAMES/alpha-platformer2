@@ -7,7 +7,7 @@ export (bool) var testing = false
 onready var pos = $spawn_pos
 var tint
 var pl
-var gen := RandomNumberGenerator.new()
+var gen = RandomNumberGenerator.new()
 
 
 func _enter_tree():

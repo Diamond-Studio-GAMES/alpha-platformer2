@@ -19,7 +19,7 @@ func _ready():
 	$settings/smc_c.pressed = G.getv("smooth_camera", true)
 	$settings/light_c.pressed = G.getv("beauty_light", true)
 	$settings/save_id.text = "ID сохранения: " + G.getv("save_id", "undefined")
-	var date = G.getv("create_date", Time.get_datetime_dict_from_system())
+	var date = G.getv("create_date", Time.get_date_dict_from_system())
 	var date_str = "%02d/%02d/%d" % [date["day"], date["month"], date["year"]]
 	$settings/creation_date.text = "Дата создания: " + date_str
 	if OS.has_feature("pc"):

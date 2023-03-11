@@ -18,7 +18,8 @@ enum ShowStyle {
 }
 
 
-var ad_counter = 0
+var ad_counter_win = 0
+var ad_counter_go = 0
 var appodeal
 
 signal rewarded_video_finished(amount, currency)

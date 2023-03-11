@@ -234,8 +234,7 @@ func buy_no_ads():
 # END OF IAP
 
 func _process(delta):
-	if current_day != Time.get_datetime_dict_from_system()["day"]:
-		yield(get_tree(), "idle_frame")
+	if current_day != Time.get_date_dict_from_system()["day"]:
 		_ready()
 	if G.getv("potions1", 0) < 1:
 		p0.text = ""
@@ -424,13 +423,13 @@ func _ready():
 	fetch_online_offers()
 	init_iap()
 	$confirm.get_ok().text = "Купить"
-	current_day = Time.get_datetime_dict_from_system()["day"]
+	current_day = Time.get_date_dict_from_system()["day"]
 	current_unix_time = Time.get_unix_time_from_system()
 	show_offers()
 
 
 func show_offers():
-	if G.getv("offers_upd", {"day": 0})["day"] != Time.get_datetime_dict_from_system()["day"] and \
+	if G.getv("offers_upd", {"day": 0})["day"] != Time.get_date_dict_from_system()["day"] and \
 			G.getv("offers_upd_time", Time.get_unix_time_from_system()) <= Time.get_unix_time_from_system():
 		generate_offers()
 		return
@@ -658,7 +657,7 @@ func generate_offers():
 				continue
 		if type == 7:
 			#TOKENS
-			if gen.randi_range(1, 2) == 1:
+			if randi() % 2 == 1:
 				#POWER
 				if power_classes.empty():
 					continue
@@ -683,13 +682,13 @@ func generate_offers():
 			var count_of_pt = 0
 			var count_of_ut = 0
 			var cost = 30
-			if gen.randi_range(0, 2) == 0:
+			if randi() % 3 == 1:
 				count_of_pt = 80 + gen.randi_range(0, 1) * 40
 				if count_of_pt == 80:
 					cost += 5
 				else:
 					cost += 8
-			if gen.randi_range(0, 2) == 1:
+			if randi() % 3 == 2:
 				count_of_ut = 20 + gen.randi_range(0, 1) * 10
 				if count_of_ut == 20:
 					cost += 5
@@ -704,7 +703,7 @@ func generate_offers():
 			else:
 				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "tokens" : {what: count_of_pt}, "ulti_tokens" : {what: count_of_ut}}, "id" : i, "name" : "НАБОР КЛАССА"}
 		if type == 9: #WILD TOKENS
-			if gen.randi_range(1, 2) == 1:
+			if randi() % 2 == 1:
 				#POWER
 				if power_classes.empty():
 					continue
@@ -748,7 +747,7 @@ func generate_offers():
 	free_receives.shuffle()
 	G.setv("offers", G.getv("offers", []) + [{"costs":{}, "receives":free_receives[0], "id" : 993, "name" : "ПОДАРОК!"}])
 	G.save()
-	G.setv("offers_upd", Time.get_datetime_dict_from_system())
+	G.setv("offers_upd", Time.get_date_dict_from_system())
 	G.setv("offers_upd_time", Time.get_unix_time_from_system())
 	G.setv("collected_ad_bonus", false)
 	show_offers()

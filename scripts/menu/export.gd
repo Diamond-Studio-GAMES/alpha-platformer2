@@ -28,7 +28,6 @@ func export_file():
 			for i in cfc.get_section_keys("save"):
 				cf.set_value(filename, i, cfc.get_value("save", i))
 		filename = dir.get_next()
-#	cf.save(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS).plus_file("apa2_backups").plus_file(str(int(Time.get_unix_time_from_system())) + ".apa2saves.png"))
 	cf.save("user://export_cache.apa2saves.uncompressed")
 	var of = File.new()
 	var nf = File.new()

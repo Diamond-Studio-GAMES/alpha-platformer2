@@ -8,6 +8,7 @@ var axe = load("res://prefabs/bosses/axe_throw.scn")
 
 
 func _ready():
+	mob = $mob_fk
 	attacks = ["beartraps", "spikes", "charge_axe", "axe_sides", "axe_throw", "axe_throw"]
 	fill_x = 57
 	tp_pos = Vector2(58, -2)

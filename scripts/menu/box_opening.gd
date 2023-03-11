@@ -16,7 +16,7 @@ var ulti_classes = []
 var soul_power_classes = []
 var amulet_types = []
 var hero_chance = 0.5
-var gen
+var gen = RandomNumberGenerator.new()
 var tokens_tween
 onready var box_anim = $box_screen/anim
 onready var box_anim2 = $big_box_screen/anim
@@ -599,7 +599,6 @@ func open_gui_set_ulti_tokens_count(count):
 
 
 func _ready():
-	gen = RandomNumberGenerator.new()
 	get_tree().paused = true
 	randomize()
 	gen.randomize()

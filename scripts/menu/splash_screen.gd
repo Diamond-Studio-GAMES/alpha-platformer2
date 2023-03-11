@@ -4,6 +4,7 @@ extends Control
 var done_checking = false
 var can_update = false
 onready var http = $http
+onready var label = $label
 
 signal check_done
 
@@ -60,7 +61,7 @@ func check_updates():
 	if not G.main_getv( "check_upd", true):
 		check_patches()
 		return
-	$label.text = tr("ss.status.check.upd")
+	label.text = tr("ss.status.check.upd")
 	http.connect("request_completed", self, "update_request", [], CONNECT_ONESHOT)
 	var err = http.request("http://f0695447.xsph.ru/versions.json")
 	if err:
@@ -88,7 +89,7 @@ func check_patches():
 	if not G.main_getv( "check_patches", true):
 		end_check()
 		return
-	$label.text = tr("ss.status.check.patch")
+	label.text = tr("ss.status.check.patch")
 	http.connect("request_completed", self, "patch_request", [], CONNECT_ONESHOT)
 	var err = http.request("http://f0695447.xsph.ru/patches.json")
 	if err:
@@ -108,7 +109,7 @@ func patch_request(result, code, header, body):
 			http.download_file = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir().plus_file("apa2_patch.pck")
 			http.connect("request_completed", self, "download_patch", [data.result[str(G.VERSION_CODE)]], CONNECT_ONESHOT)
 			var err = http.request("http://f0695447.xsph.ru/" + str(G.VERSION_CODE) + "patch.pck")
-			$label.text = tr("ss.status.download")
+			label.text = tr("ss.status.download")
 			if err:
 				end_check()
 		else:
@@ -129,7 +130,7 @@ func download_patch(result, code, header, body, version):
 func end_check():
 	done_checking = true
 	emit_signal("check_done")
-	$label.text = ""
+	label.text = ""
 
 
 func open_link():

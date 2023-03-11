@@ -4,7 +4,7 @@ extends TextureButton
 export (String) var id = "0"
 onready var garden : Garden = $".."
 var current_plant = ""
-onready var current_day = Time.get_datetime_dict_from_system()["day"]
+onready var current_day = Time.get_date_dict_from_system()["day"]
 onready var current_unix_time = Time.get_unix_time_from_system()
 var current_plant_data : PlantResource
 var plant_mini_tex = load("res://minigames/minigame6/resources/plant_start.png")
@@ -84,8 +84,8 @@ func _ready():
 
 
 func _process(delta):
-	if Time.get_datetime_dict_from_system()["day"] != current_day and Time.get_unix_time_from_system() >= current_unix_time:
-		current_day = Time.get_datetime_dict_from_system()["day"]
+	if Time.get_date_dict_from_system()["day"] != current_day and Time.get_unix_time_from_system() >= current_unix_time:
+		current_day = Time.get_date_dict_from_system()["day"]
 		current_unix_time = Time.get_unix_time_from_system()
 		setup_plant()
 

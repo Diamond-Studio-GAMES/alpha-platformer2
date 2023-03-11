@@ -3,7 +3,7 @@ extends Node
 
 export (String) var load_path = "res://scenes/menu/menu.scn"
 var loader
-var time_max = 10
+var time_max = 16
 var wait_frames = 2
 
 

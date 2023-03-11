@@ -72,7 +72,7 @@ func list_saves():
 	for i in list_of_saves:
 		var node = save_obj.instance()
 		node.get_node("name").text = G.get_save_meta(i, "name", "???")
-		var date = G.get_save_meta(i, "last_opened", Time.get_datetime_dict_from_system())
+		var date = G.get_save_meta(i, "last_opened", Time.get_date_dict_from_system())
 		var date_str = "%02d/%02d/%d" % [date["day"], date["month"], date["year"]]
 		node.get_node("date").text = date_str
 		node.get_node("soul").self_modulate = G.SOUL_COLORS[G.get_save_meta(i, "soul_type", 6)]
@@ -117,9 +117,9 @@ func create():
 	var id = make_id($create/name.text.strip_edges().to_lower())
 	G.open_save(id)
 	G.setv("save_id", id)
-	G.setv("last_opened", Time.get_datetime_dict_from_system())
+	G.setv("last_opened", Time.get_date_dict_from_system())
 	G.setv("name", $create/name.text)
-	G.setv("create_date", Time.get_datetime_dict_from_system())
+	G.setv("create_date", Time.get_date_dict_from_system())
 	if $create/male.pressed:
 		G.setv("gender", "male")
 	else:
@@ -146,8 +146,8 @@ func create():
 
 func play(id):
 	G.open_save(id)
-	G.setv("last_opened", Time.get_datetime_dict_from_system())
-	G.set_save_meta(id, "last_opened", Time.get_datetime_dict_from_system())
+	G.setv("last_opened", Time.get_date_dict_from_system())
+	G.set_save_meta(id, "last_opened", Time.get_date_dict_from_system())
 	G.save()
 	$enter.interpolate_property($enter_color, "color", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 1)
 	$enter.start()
@@ -297,7 +297,7 @@ func reload_meta_from_saves():
 				filename = dir.get_next()
 				continue
 			var id = cf.get_value("save", "save_id", "nn")
-			G.set_save_meta(id, "last_opened", cf.get_value("save", "last_opened", Time.get_datetime_dict_from_system()))
+			G.set_save_meta(id, "last_opened", cf.get_value("save", "last_opened", Time.get_date_dict_from_system()))
 			G.set_save_meta(id, "name", cf.get_value("save", "name", "Michail"))
 			G.set_save_meta(id, "soul_type", cf.get_value("save", "soul_type", 1))
 		filename = dir.get_next()
