@@ -8,7 +8,7 @@ var counter = 0
 
 
 func add_body(node):
-	if node.get_collision_layer_bit(5):
+	if node.get_collision_layer_bit(5) and is_on_entity:
 		queue_free()
 		return
 	.add_body(node)

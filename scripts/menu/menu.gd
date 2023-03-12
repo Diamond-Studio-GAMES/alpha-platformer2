@@ -1,6 +1,9 @@
 extends Control
 
 
+onready var pm = $settings/grph_s.get_popup()
+
+
 func _ready():
 	$settings/name_change.get_ok().text = "Сменить"
 	$settings/name_change.get_cancel().text = "Отмена"
@@ -11,13 +14,21 @@ func _ready():
 	$settings/conf2.get_label().align = Label.ALIGN_CENTER
 	$settings/conf2.get_cancel().text = "НЕТ!"
 	$settings/conf2.get_ok().text = "да"
+	pm.hide_on_checkable_item_selection = false
+	pm.hide_on_item_selection = false
+	pm.hide_on_state_item_selection = false
+	pm.connect("id_pressed", self, "graphics_menu_id_pressed")
+	pm.set_item_checked(pm.get_item_index(10 + G.getv("effects")), true)
+	pm.set_item_checked(pm.get_item_index(20 + G.getv("grass_anim")), true)
+	for i in range(4):
+		var p = int(pow(2, i))
+		if G.getv("graphics", G.Graphics.BEAUTY_ALL) & p == 0:
+			pm.set_item_checked(pm.get_item_index(i + 30), false)
 	$about/version.text = "Версия: " + G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER
 	$settings/mv_s.value = G.getv("volume", 1)
 	$settings/sfxv_s.value = G.getv("volume_sfx", 1)
-	$settings/efcts_s.selected = G.getv("effects", Globals.EffectsType.STANDARD)
 	$settings/dmp_s.value = G.getv("damping", 2.5)
 	$settings/smc_c.pressed = G.getv("smooth_camera", true)
-	$settings/light_c.pressed = G.getv("beauty_light", true)
 	$settings/save_id.text = "ID сохранения: " + G.getv("save_id", "undefined")
 	var date = G.getv("create_date", Time.get_date_dict_from_system())
 	var date_str = "%02d/%02d/%d" % [date["day"], date["month"], date["year"]]
@@ -32,8 +43,6 @@ func _process(delta):
 	G.setv("volume_sfx", $settings/sfxv_s.value)
 	G.setv("damping", $settings/dmp_s.value)
 	G.setv("smooth_camera", $settings/smc_c.pressed)
-	G.setv("beauty_light", $settings/light_c.pressed)
-	G.setv("effects", $settings/efcts_s.selected)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("music"), linear2db($settings/mv_s.value))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("sfx"), linear2db($settings/sfxv_s.value))
 
@@ -111,3 +120,26 @@ func do_change():
 
 func link():
 	OS.shell_open("https://t.me/dsgames31")
+
+
+func graphics_menu_id_pressed(id):
+	if id in range(1, 4):
+		return
+	var idx = pm.get_item_index(id)
+	if id >= 10 and id < 20:
+		G.setv("effects", id - 10)
+		for i in range(10, 13):
+			pm.set_item_checked(pm.get_item_index(i), false)
+		pm.set_item_checked(idx, true)
+	elif id >= 20 and id < 30:
+		G.setv("grass_anim", id - 20)
+		for i in range(20, 23):
+			pm.set_item_checked(pm.get_item_index(i), false)
+		pm.set_item_checked(idx, true)
+	else:
+		if pm.is_item_checked(idx):
+			pm.set_item_checked(idx, false)
+			G.setv("graphics", G.getv("graphics", G.Graphics.BEAUTY_ALL) & ~(1 << (id - 30)))
+		else:
+			pm.set_item_checked(idx, true)
+			G.setv("graphics", G.getv("graphics", G.Graphics.BEAUTY_ALL) | (1 << (id - 30)))

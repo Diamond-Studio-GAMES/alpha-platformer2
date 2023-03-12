@@ -4,8 +4,8 @@ class_name Globals, "res://textures/gui/alpha_text.png"
 
 const VERSION = "0.8.0"
 const VERSION_STATUS = "сборка"
-const VERSION_STATUS_NUMBER = "1"
-const VERSION_CODE = 54
+const VERSION_STATUS_NUMBER = "2"
+const VERSION_CODE = 55
 
 var main_file : ConfigFile
 var save_file : ConfigFile
@@ -145,6 +145,18 @@ enum EffectsType {
 	STANDARD = 0,
 	SIMPLE = 1,
 	DISABLED = 2,
+}
+enum GrassType {
+	GPU = 0,
+	CPU = 1,
+	STATIC = 2,
+}
+enum Graphics {
+	BEAUTY_LIGHT = 1,
+	BEAUTY_WATER = 2,
+	BEAUTY_LAVA = 4,
+	BEAUTY_FIRE = 8,
+	BEAUTY_ALL = 15,
 }
 enum Amulet {
 	POWER = 0,
