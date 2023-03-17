@@ -24,6 +24,7 @@ var _move_direction = Vector2()
 var _body
 var _move = Vector2()
 var _knockback = 0
+var hurt_counter = 0
 var is_hurt = false
 var can_turn = true
 var is_stunned = false
@@ -109,6 +110,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 	if current_health >= past_health:
 		return
 	is_hurt = true
+	hurt_counter += 1
 	if stuns:
 		stun(stun_time)
 	_head.texture = _head_hurt_sprite
@@ -158,7 +160,8 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 		is_hurt = false
 	if difference > 0:
 		yield(get_tree().create_timer(difference, false), "timeout")
-	if current_health > 0 and not is_stunned:
+	hurt_counter -= 1
+	if current_health > 0 and not is_stunned and hurt_counter < 1:
 		_head.texture = _head_sprite
 	return died
 
@@ -223,6 +226,7 @@ func _physics_process(delta):
 func _process(delta):
 	if current_health <= 0:
 		is_hurt = true
+		_head.texture = _head_hurt_sprite
 	if under_water:
 		_start_falling_y = global_position.y
 		breath_time -= delta
@@ -258,7 +262,7 @@ func stun(time):
 	stun_stars.show()
 	yield(self, "stun_ended")
 	is_stunned = false
-	if current_health > 0:
+	if current_health > 0 and hurt_counter < 1:
 		_head.texture = _head_sprite
 	stun_stars.hide()
 

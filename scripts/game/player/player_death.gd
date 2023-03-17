@@ -30,8 +30,9 @@ func _ready():
 
 func apply_data(data):
 	.apply_data(data)
-	max_health = 250
-	defense = 15
+	max_health = curr_lvl_loc * 25 + 250
+	defense = curr_lvl_loc + 15
+	current_health = max_health
 	RECHARGE_SPEED = 0.1
 	_health_bar.max_value = max_health
 	_health_change_bar.max_value = max_health

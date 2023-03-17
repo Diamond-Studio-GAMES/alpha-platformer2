@@ -239,7 +239,7 @@ func jump(power = 0, force = false):
 
 #HEALTH
 func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4):
-	if is_reviving:
+	if is_reviving or current_health < 0:
 		return
 	var state = .hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time)
 	if state == null:
@@ -274,7 +274,7 @@ func post_hurt(ded):
 		if not MP.is_active:
 			if not camera.is_screen_on and current_health <= 0:
 				camera.show_revive_screen()
-	elif not is_stunned:
+	elif not is_stunned and hurt_counter < 1:
 		_player_head.texture = _head_sprite
 
 
