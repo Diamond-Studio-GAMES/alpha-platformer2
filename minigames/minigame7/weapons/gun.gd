@@ -3,6 +3,7 @@ extends Node2D
 
 onready var player = $"../../.." as ShooterPlayer
 onready var aim_line = $shoot_point/line
+onready var effect = $shoot_point/shot_effect/anim
 export (int) var damage = 30
 export (int) var ammo = 7
 export (int) var per_reload_ammo = 7
@@ -45,7 +46,9 @@ func _physics_process(delta):
 
 
 func shoot():
-	player.get_node("MultiplayerSynchronizer").sync_call(self, "shoot")
+	player.ms.sync_call(self, "shoot")
+	effect.play("shot")
+	effect.seek(0, true)
 	if MP.has_multiplayer_authority(self):
 		var node = bullet.instance()
 		node.global_position = $shoot_point.global_position
@@ -57,6 +60,7 @@ func shoot():
 		node.damage = damage
 		node.bullet_lifetime = bullet_lifetime
 		node.name = "bullet" + str(randi())
+		node.by_who = player.player_name
 		player.get_parent().add_child(node, true)
 	delay_timer = shoot_delay
 	ammo -= 1

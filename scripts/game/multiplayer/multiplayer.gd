@@ -41,7 +41,9 @@ func has_multiplayer_authority(node):
 
 
 func auth(node):
-	return has_multiplayer_authority(node)
+	if not is_active:
+		return true
+	return node.is_network_master()
 
 
 func _add_synchronizer(path, node):

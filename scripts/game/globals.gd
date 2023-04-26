@@ -19,6 +19,7 @@ var custom_respawn_scene = ""
 var dialog_in_menu = ""
 var fps_text
 var music
+var time_timer
 var ad : AdsManager
 var loading_scene = load("res://scenes/menu/loading.scn")
 var box = load("res://scenes/menu/box.scn")
@@ -192,7 +193,7 @@ func _ready():
 	randomize()
 	get_tree().connect("node_added", self, "_node_added")
 	ad = AdsManager.new()
-	ad.name = "Ads"
+	ad.name = "ads"
 	add_child(ad)
 	music = AudioStreamPlayer.new()
 	music.name = "menu_music"
@@ -200,8 +201,15 @@ func _ready():
 	music.stream = load("res://sounds/music/menu/menu.ogg")
 	add_child(music)
 	fps_text = load("res://prefabs/menu/fps_counter.scn").instance()
-	add_child(fps_text)
 	fps_text.visible = G.main_getv("fps", false)
+	add_child(fps_text)
+	time_timer = Timer.new()
+	time_timer.name = "timer"
+	time_timer.wait_time = 1
+	time_timer.pause_mode = PAUSE_MODE_PROCESS
+	add_child(time_timer)
+	time_timer.connect("timeout", self, "update_timer")
+	time_timer.start()
 	if OS.has_feature("editor") or OS.has_feature("cheats"):
 		var ch = load("res://prefabs/menu/cheats.scn").instance()
 		add_child(ch)
@@ -303,6 +311,12 @@ func update_music(node):
 			music.play(0)
 		elif curr_scene != "menu" and curr_scene != "levels":
 			music.stop()
+
+
+func update_timer():
+	if save_file == null:
+		return
+	G.addv("time", 1)
 
 
 func receive_ad_reward():

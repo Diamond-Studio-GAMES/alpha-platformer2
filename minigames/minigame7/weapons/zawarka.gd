@@ -2,6 +2,7 @@ extends Sprite
 
 
 onready var player = $"../../.." as ShooterPlayer
+onready var effect = $shot_effect/anim
 export (int) var ammo = 1
 export (int) var per_reload_ammo = 1
 export (int) var all_ammo = 0
@@ -33,7 +34,9 @@ func _physics_process(delta):
 
 
 func shoot():
-	player.get_node("MultiplayerSynchronizer").sync_call(self, "shoot")
+	player.ms.sync_call(self, "shoot")
+	effect.play("shot")
+	effect.seek(0, true)
 	player.pause_mode = PAUSE_MODE_PROCESS
 	if MP.has_multiplayer_authority(self):
 		var node = bullet.instance()
