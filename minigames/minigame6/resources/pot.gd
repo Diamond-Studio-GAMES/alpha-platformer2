@@ -62,6 +62,7 @@ func fertilize():
 		return
 	G.addv("garden_fert", -current_plant_data.fertilizer_needs, 0)
 	G.setv(gid + "_watered_day", current_day - 1)
+	$fertilizing.play()
 	garden.fert_up_pressed()
 	setup_plant()
 
@@ -74,6 +75,7 @@ func do_water():
 	G.addv("garden_water", -current_plant_data.water_needs, 0)
 	G.setv(gid + "_watered_day", current_day)
 	G.setv(gid + "_watered", true)
+	$watering.play(0)
 	setup_plant()
 
 
