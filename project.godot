@@ -452,6 +452,7 @@ name_casing=2
 
 [physics]
 
+3d/physics_engine="GodotPhysics"
 common/enable_object_picking=false
 
 [rendering]
@@ -460,8 +461,10 @@ quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 vram_compression/import_etc=true
+quality/shading/force_vertex_shading=true
 batching/precision/uv_contract=true
 environment/default_environment="res://misc/env.res"
+quality/enable_object_picking=false
 
 [world]
 
