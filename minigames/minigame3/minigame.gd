@@ -5,6 +5,7 @@ var collected_gems = 0
 var collected_coins = 0
 var timer = 0
 var minutes_passed = 0
+var coin_counter = 0
 var effect_coins = load("res://minigames/minigame3/coins_add_effect.scn")
 var effect_gems = load("res://minigames/minigame3/gems_add_effect.scn")
 var coin = load("res://minigames/minigame3/coin.scn")
@@ -40,11 +41,13 @@ func _process(delta):
 	timer += delta
 	if timer >= 60:
 		timer = 0
-		spawn_item(coin, 40)
+		spawn_item(coin, 20)
+		add_coins(20)
 		minutes_passed += 1
 	if minutes_passed >= 60:
 		minutes_passed = 0
-		spawn_item(gem, 12)
+		spawn_item(gem, 6)
+		add_gems(6)
 
 
 func quit():
@@ -52,10 +55,12 @@ func quit():
 
 
 func _on_spawn_timer_timeout():
-	if randi() % 200 == 63:
+	if coin_counter >= 150:
 		spawn_item(gem, 1)
+		coin_counter = 0
 	else:
 		spawn_item(coin, 1)
+		coin_counter += 1
 
 
 func spawn_item(item, count):
