@@ -60,8 +60,8 @@ func _ready():
 
 
 func find_target():
-	if find_target_timer > reaction_speed:
-		find_target_timer = 0
+	if find_target_timer <= 0:
+		find_target_timer = reaction_speed
 	else:
 		return
 	players = get_tree().get_nodes_in_group("player")
@@ -133,7 +133,7 @@ func jump(power = 0):
 
 
 func _physics_process(delta):
-	find_target_timer += delta
+	find_target_timer -= delta
 
 
 func ray_colliding(ray):

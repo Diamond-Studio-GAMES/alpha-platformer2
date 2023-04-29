@@ -77,7 +77,7 @@ func blackball():
 		return
 	var n = blackball.instance()
 	n.global_position = $visual/body/arm_right/hand/weapon/shoot.global_position
-	n.rotation = $visual/body/arm_right/hand/weapon/shoot.global_position.direction_to(player.global_position).angle()
+	n.rotation = $visual/body/arm_right/hand/weapon/shoot.global_position.direction_to(mob.player.global_position).angle()
 	get_tree().current_scene.add_child(n, true)
 
 

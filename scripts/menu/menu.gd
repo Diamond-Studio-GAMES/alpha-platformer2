@@ -36,6 +36,11 @@ func _ready():
 	if OS.has_feature("pc"):
 		$settings/contr.hide()
 		$settings/contr_pc.show()
+	if not G.dialog_in_menu.empty():
+		var dialog = $dialog
+		dialog.dialog_text = G.dialog_in_menu
+		G.dialog_in_menu = ""
+		dialog.popup_centered()
 
 
 func _process(delta):

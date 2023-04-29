@@ -302,11 +302,6 @@ func update_music(node):
 		curr_scene = node.name
 		if curr_scene == "menu" and prev_scene != "levels":
 			music.play(0)
-			if not dialog_in_menu.empty():
-				var dialog = get_tree().current_scene.get_node("dialog")
-				dialog.dialog_text = dialog_in_menu
-				dialog_in_menu = ""
-				dialog.popup_centered()
 		elif curr_scene == "levels" and prev_scene != "menu":
 			music.play(0)
 		elif curr_scene != "menu" and curr_scene != "levels":

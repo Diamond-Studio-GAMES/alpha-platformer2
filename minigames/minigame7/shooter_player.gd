@@ -111,7 +111,7 @@ func hurt(dmg, by):
 	if hp <= 0:
 		var node = effect.instance()
 		node.global_position = global_position
-		node.flip_h = sprite.scale.x < 0
+		node.scale.x = sprite.scale.x
 		get_parent().add_child(node, true)
 		hide()
 		SPEED *= 2
