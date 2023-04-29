@@ -56,10 +56,11 @@ func _ready():
 		$visual/body/knight_attack.connect("hit_enemy", self, "sp_effect")
 	if not have_gadget:
 		$camera/gui/base/buttons/buttons_0/gadget.hide()
-	if have_soul_power:
-		$control_indicator/sp.show()
-	else:
-		$control_indicator/standard.show()
+	if MP.auth(self):
+		if have_soul_power:
+			$control_indicator/sp.show()
+		else:
+			$control_indicator/standard.show()
 
 
 func apply_data(data):
