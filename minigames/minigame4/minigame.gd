@@ -6,6 +6,14 @@ export (String) var level_name = "УРОВЕНЬ: ТЕСТ"
 export (Array, PackedScene) var mobs = []
 onready var pos = $spawn_pos
 onready var st = $spawn_timer
+onready var hp_butt = $shop/shop/panel/base/options/hp/buy
+onready var arm_butt = $shop/shop/panel/base/options/armor/buy
+onready var def_butt = $shop/shop/panel/base/options/defense/buy
+onready var atk_butt = $shop/shop/panel/base/options/attack/buy
+var hp_cost = 3
+var arm_cost = 3
+var def_cost = 3
+var atk_cost = 3
 var tint
 var wave_numder = 1
 var mob_count = 0
@@ -44,17 +52,18 @@ func get_rewards():
 
 func _ready():
 	gen.randomize()
-	G.setv("hated_death", false)
-	G.setv("go_chance", false)
-	var p = load("res://minigames/minigame4/hero.scn").instance()
-	p.get_node("camera/gui/base/intro/text/main").text = level_name
-	p.get_node("camera/gui/base/intro/text/location").text = location
-	p.position = pos.position
-	p.name = "player"
-	p.custom_respawn_scene = filename
-	p.get_node("camera").connect("gived_up", self, "get_rewards")
-	add_child(p)
-	player = p
+	player = load("res://minigames/minigame4/hero.scn").instance()
+	player.get_node("camera/gui/base/intro/text/main").text = level_name
+	player.get_node("camera/gui/base/intro/text/location").text = location
+	player.position = pos.position
+	player.name = "player"
+	player.custom_respawn_scene = filename
+	player.get_node("camera").connect("gived_up", self, "get_rewards")
+	hp_butt.connect("pressed", self, "buy_health")
+	arm_butt.connect("pressed", self, "buy_armor")
+	def_butt.connect("pressed", self, "buy_defense")
+	atk_butt.connect("pressed", self, "buy_attack")
+	add_child(player)
 	if has_node("lights"):
 		if G.getv("graphics", 15) & G.Graphics.BEAUTY_LIGHT == 0:
 			for i in $lights.get_children():
@@ -78,29 +87,50 @@ func percent_chance(in_chance):
 
 
 func start_wave():
+	$shop.hide()
 	player.make_dialog("Волна %d началась!" % wave_numder, 5, Color.red)
 	mob_count = round(wave_numder * 0.8) + gen.randi_range(0, 3)
+	if wave_numder == 50:
+		mob_count = 4
 	for i in range(mob_count):
-		spawn_mob()
+		spawn_mob(i)
 		st.start(gen.randf_range(0.7, 1.5))
 		yield(st, "timeout")
 	player.make_dialog("Все враги появились!")
 	yield(self, "wave_ended")
+	if wave_numder == 50:
+		$tint/tint/anim.play("win")
+		yield($tint/tint/anim, "animation_finished")
+		get_rewards()
+		yield(G, "loot_end")
+		G.dialog_in_menu = "Поздравляем с победой!"
+		get_tree().change_scene("res://scenes/menu/menu.scn")
+		return
+	player.make_dialog("Волна зачищена!", 2, Color.green)
 	wave_numder += 1
-	start_wave()
+	yield(get_tree().create_timer(2, false), "timeout")
+	$shop.show()
+	update_shop()
 
 
-func spawn_mob():
+func spawn_mob(pos_id = -1):
 	mobs.shuffle()
-	var mob = mobs[0].instance()
+	var mob = mobs[0].instance() as Mob
 	mob.vision_distance = 10000
-	mob.stats_multiplier = 1 + wave_numder * 0.2 + gen.randf_range(-wave_numder * 0.05, wave_numder * 0.1)
-	var spawn_id = str(gen.randi_range(0, 3))
-	mob.global_position = get_node("spawn_points/pos" + spawn_id).global_position
-	get_node("spawn_points/pos" + spawn_id + "/anim").play("spawn")
-	if percent_chance(2):
-		mob.stats_multiplier *= 2
+	if wave_numder != 50:
+		mob.stats_multiplier = 1 + wave_numder * 0.2 + gen.randf_range(-wave_numder * 0.05, wave_numder * 0.1)
+		var spawn_id = str(gen.randi_range(0, 3))
+		mob.global_position = get_node("spawn_points/pos" + spawn_id).global_position
+		get_node("spawn_points/pos" + spawn_id + "/anim").play("spawn")
+		if percent_chance(2):
+			mob.stats_multiplier *= 1.5
+			mob.modulate = Color.red
+	else:
+		mob.stats_multiplier = 25
 		mob.modulate = Color.red
+		var spawn_id = str(pos_id)
+		mob.global_position = get_node("spawn_points/pos" + spawn_id).global_position
+		get_node("spawn_points/pos" + spawn_id + "/anim").play("spawn")
 	mob.connect("died", self, "mob_died", [mob])
 	$mobs.add_child(mob, true)
 
@@ -119,3 +149,38 @@ func mob_died(node):
 	hh.get_node("text").modulate = Color.yellow
 	hh.get_node("text").text = "+" + str(amount)
 	add_child(hh)
+
+
+func update_shop():
+	hp_butt.disabled = player.coins < hp_cost
+	arm_butt.disabled = player.coins < arm_cost
+	def_butt.disabled = player.coins < def_cost
+	atk_butt.disabled = player.coins < atk_cost
+	hp_butt.text = str(hp_cost)
+	arm_butt.text = str(arm_cost)
+	atk_butt.text = str(atk_cost)
+	def_butt.text = str(def_cost)
+
+
+func buy_health():
+	player.add_max_health(20, hp_cost)
+	hp_cost += 1
+	update_shop()
+
+
+func buy_armor():
+	player.add_armor(15, arm_cost)
+	arm_cost += 1
+	update_shop()
+
+
+func buy_defense():
+	player.add_defense(1, def_cost)
+	def_cost += 1
+	update_shop()
+
+
+func buy_attack():
+	player.add_attack(6, atk_cost)
+	atk_cost += 1
+	update_shop()

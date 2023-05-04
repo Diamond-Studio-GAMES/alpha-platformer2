@@ -184,6 +184,7 @@ func revive(hp = -1):
 	current_armor = max_armor
 	_armor_timer.paused = false
 	_armor_timer.stop()
+	_armor_indicator.hide()
 	_update_all_bars()
 	.revive(hp)
 
@@ -288,20 +289,32 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 		_player_head.texture = _head_sprite
 
 
-func add_max_health(amount):
+func add_max_health(amount, cost = 0):
 	max_health += amount
 	_update_all_bars()
 	heal(amount)
+	if cost > 0:
+		add_coins(-cost)
 
 
-func add_defense(amount):
+func add_defense(amount, cost = 0):
 	defense += amount
+	if cost > 0:
+		add_coins(-cost)
 
 
-func add_armor(amount):
+func add_armor(amount, cost = 0):
 	max_armor += amount
 	current_armor = max_armor
 	_update_all_bars()
+	if cost > 0:
+		add_coins(-cost)
+
+
+func add_attack(amount, cost = 0):
+	_attack_node.damage += amount / 2
+	if cost > 0:
+		add_coins(-cost)
 
 
 func add_coins(amount):
