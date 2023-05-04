@@ -418,11 +418,10 @@ func _process(delta):
 	dialog_timer = max(dialog_timer - delta, 0)
 	if dialog_timer <= 0:
 		dialog_text.text = ""
-	if not have_gadget:
-		return
-	if gadget_count > 0:
-		gadget_cooldown = clamp(gadget_cooldown - delta, 0, 10)
-	gadget_bar.value = gadget_cooldown
+	if have_gadget:
+		if gadget_count > 0:
+			gadget_cooldown = clamp(gadget_cooldown - delta, 0, 10)
+		gadget_bar.value = gadget_cooldown
 
 
 func _physics_process(delta):

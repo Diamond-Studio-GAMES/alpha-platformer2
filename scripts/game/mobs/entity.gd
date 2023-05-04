@@ -225,6 +225,7 @@ func _physics_process(delta):
 
 func _process(delta):
 	if current_health <= 0:
+		_visual.scale = _visual_scale
 		is_hurt = true
 		_head.texture = _head_hurt_sprite
 	if under_water:
@@ -233,8 +234,6 @@ func _process(delta):
 		if breath_time <= 0:
 			if not immune_to_water:
 				hurt(1, 0, false, true)
-	if current_health <= 0:
-		_visual.scale = _visual_scale
 
 
 func water_checked(area):

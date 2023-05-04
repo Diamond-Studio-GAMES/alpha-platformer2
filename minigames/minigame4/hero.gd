@@ -12,6 +12,7 @@ var key_idx0
 var key_idx1
 var is_using_gadget = false
 var bullet = load("res://minigames/minigame4/bullet.scn")
+var sp = load("res://minigames/minigame4/hero_sp.scn")
 onready var joystick = $camera/gui/base/buttons/buttons_1/joystick
 onready var aim_line = $aim_line
 onready var _attack_visual = $visual/body/spear_attack/visual
@@ -216,6 +217,11 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 	hurt_counter += 1
 	if stuns:
 		stun(stun_time)
+	if randi() % 10 == 3:
+		var n = sp.instance()
+		n.global_position = global_position + Vector2.RIGHT * rand_range(-32, 32)
+		n.get_node("rockets_attack").damage = _attack_node.damage * 4
+		get_parent().add_child(n)
 	_head.texture = _head_hurt_sprite
 	_health_timer = 0
 	_player_head.texture = _head_hurt_sprite

@@ -11,9 +11,9 @@ onready var arm_butt = $shop/shop/panel/base/options/armor/buy
 onready var def_butt = $shop/shop/panel/base/options/defense/buy
 onready var atk_butt = $shop/shop/panel/base/options/attack/buy
 var hp_cost = 3
-var arm_cost = 3
+var arm_cost = 4
 var def_cost = 3
-var atk_cost = 3
+var atk_cost = 4
 var tint
 var wave_numder = 1
 var mob_count = 0
@@ -35,11 +35,11 @@ func get_rewards():
 		var type = gen.randi_range(0, 2)
 		match type:
 			0:
-				loot["gems"] += 1 + round(i * 0.01)
+				loot["gems"] += 1 + round(i * 0.02)
 			1:
-				loot["coins"] += 160 + round(i * 1.6)
+				loot["coins"] += 100 + round(i * 1.6)
 			2:
-				loot["box"] += 1 + round(i * 0.01)
+				loot["box"] += 1 + round(i * 0.02)
 	if loot["gems"] == 0:
 		loot.erase("gems")
 	if loot["coins"] == 0:
@@ -58,7 +58,8 @@ func _ready():
 	player.position = pos.position
 	player.name = "player"
 	player.custom_respawn_scene = filename
-	player.get_node("camera").connect("gived_up", self, "get_rewards")
+	if not G.getv("hardcore", false):
+		player.get_node("camera").connect("gived_up", self, "get_rewards")
 	hp_butt.connect("pressed", self, "buy_health")
 	arm_butt.connect("pressed", self, "buy_armor")
 	def_butt.connect("pressed", self, "buy_defense")
@@ -89,7 +90,7 @@ func percent_chance(in_chance):
 func start_wave():
 	$shop.hide()
 	player.make_dialog("Волна %d началась!" % wave_numder, 5, Color.red)
-	mob_count = round(wave_numder * 0.8) + gen.randi_range(0, 3)
+	mob_count = round(wave_numder * 0.65) + gen.randi_range(0, 3)
 	if wave_numder == 50:
 		mob_count = 4
 	for i in range(mob_count):
@@ -118,7 +119,7 @@ func spawn_mob(pos_id = -1):
 	var mob = mobs[0].instance() as Mob
 	mob.vision_distance = 10000
 	if wave_numder != 50:
-		mob.stats_multiplier = 1 + wave_numder * 0.2 + gen.randf_range(-wave_numder * 0.05, wave_numder * 0.1)
+		mob.stats_multiplier = 1 + wave_numder * 0.2 + gen.randf_range(-wave_numder * 0.05, wave_numder * 0.08)
 		var spawn_id = str(gen.randi_range(0, 3))
 		mob.global_position = get_node("spawn_points/pos" + spawn_id).global_position
 		get_node("spawn_points/pos" + spawn_id + "/anim").play("spawn")
@@ -142,7 +143,7 @@ func mob_died(node):
 	player.make_dialog("Врагов осталось: " + str(mob_count))
 	if mob_count <= 0:
 		emit_signal("wave_ended")
-	var amount = round(node.stats_multiplier * gen.randf_range(1, 2)) + gen.randi_range(1, 4)
+	var amount = round(node.stats_multiplier * gen.randf_range(1, 2.5)) + gen.randi_range(1, 4)
 	player.add_coins(amount)
 	var hh = hh_text.instance()
 	hh.global_position = node.global_position

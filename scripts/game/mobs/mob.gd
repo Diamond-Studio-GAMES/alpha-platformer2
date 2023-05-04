@@ -132,7 +132,7 @@ func jump(power = 0):
 	return false
 
 
-func _physics_process(delta):
+func _process(delta):
 	find_target_timer -= delta
 
 

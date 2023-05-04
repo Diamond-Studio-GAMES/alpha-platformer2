@@ -1,7 +1,7 @@
 extends Node2D
 
 
-const PORT = 41510
+const PORT = 41511
 var player = load("res://minigames/minigame7/player.scn")
 var heal = load("res://minigames/minigame7/heal.scn")
 var started = false
