@@ -10,7 +10,7 @@ var curr_day = 0
 var curr_ut = 0
 var prev_classes = []
 var end_rewards = {}
-var gen : RandomNumberGenerator
+var gen = RandomNumberGenerator.new()
 export (Type) var type = Type.SELECT_LEVEL
 onready var rewards_text = $rc
 var AMULET_ICONS = {
@@ -27,9 +27,8 @@ var AMULET_ICONS = {
 func _ready():
 	rewards_text.add_color_override("default_color", Color.white)
 	rewards_text.add_color_override("font_color_shadow", Color(0, 0, 0, 0))
-	gen = RandomNumberGenerator.new()
 	gen.randomize()
-	if get_tree().current_scene.name == "win" or get_tree().current_scene.name == "game_over":
+	if get_tree().current_scene.name in ["win", "game_over"]:
 		get_close_button().connect("pressed", self, "menu")
 	if type == Type.END_LEVEL:
 		show_d_win()
@@ -37,7 +36,7 @@ func _ready():
 	$play/menu.get_popup().connect("id_pressed", self, "menu_pressed")
 	if OS.has_feature("HTML5"):
 		$play/menu.disabled = true
-	curr_day = Time.get_datetime_dict_from_system()["day"]
+	curr_day = Time.get_date_dict_from_system()["day"]
 	curr_ut = Time.get_unix_time_from_system()
 	for i in range(5):
 		$class2.set_item_disabled(i, not G.CLASSES_ID[i] in G.getv("classes", []))
@@ -47,8 +46,8 @@ func _ready():
 func _process(delta):
 	if type == Type.END_LEVEL:
 		return
-	if curr_day != Time.get_datetime_dict_from_system()["day"] and visible and Time.get_unix_time_from_system() >= curr_ut:
-		curr_day = Time.get_datetime_dict_from_system()["day"]
+	if curr_day != Time.get_date_dict_from_system()["day"] and visible and Time.get_unix_time_from_system() >= curr_ut:
+		curr_day = Time.get_date_dict_from_system()["day"]
 		curr_ut = Time.get_unix_time_from_system()
 		hide()
 		show_d(curr_lvl)
@@ -106,11 +105,11 @@ func show_d(lvl = "1_1"):
 
 func show_d_win():
 	yield(get_tree(), "idle_frame")
-	if AdManager.ad_counter == 1:
-		AdManager.showInterstitial()
-		AdManager.ad_counter = 0
+	if G.ad.ad_counter_win == 1:
+		G.ad.showInterstitial()
+		G.ad.ad_counter_win = 0
 	else:
-		AdManager.ad_counter = 1
+		G.ad.ad_counter_win = 1
 	$particles.set_as_toplevel(true)
 	curr_lvl = G.current_level
 	var next_lvl = curr_lvl.split("_")[0] + "_" + str(int(curr_lvl.split("_")[1]) + 1)
@@ -130,7 +129,7 @@ func show_d_win():
 			i.hide()
 		else:
 			i.show()
-			$"../..".get_node("class_%s/%s/anim" % [i.name, i.name]).play("attack")
+			$"../..".get_node("class_visuals/%s/%s/anim" % [i.name, i.name]).play("attack")
 	popup_centered()
 	window_title = "Уровень " + curr_lvl.split("_")[0] + "-" + curr_lvl.split("_")[1] + " пройден!"
 	set_win_rewards(G.current_level)
@@ -147,7 +146,7 @@ func claim_reward():
 	G.receive_loot(end_rewards)
 	yield(G, "loot_end")
 	popup_centered()
-	G.setv(curr_lvl + "_c", Time.get_datetime_dict_from_system())
+	G.setv(curr_lvl + "_c", Time.get_date_dict_from_system())
 	G.setv(curr_lvl + "_c_ut", Time.get_unix_time_from_system())
 	$claim.hide()
 	$buttons.show()
@@ -187,10 +186,10 @@ func get_power_ulti_classes():
 
 func display_rewards(level = ""):
 	var mod_lvl = 1 + float(level.split("_")[0]) * 0.4
-	var mod_day = 1.5 if G.getv(level + "_c", {"day":50})["day"] != Time.get_datetime_dict_from_system()["day"] and G.getv(level + "_c_ut", 0) <= Time.get_unix_time_from_system() else 1
+	var mod_day = 1.5 if G.getv(level + "_c", {"day":50})["day"] != Time.get_date_dict_from_system()["day"] and G.getv(level + "_c_ut", 0) <= Time.get_unix_time_from_system() else 1
 	mod_day = 2 if G.getv(level + "_c", {}).hash() == {}.hash() else mod_day
 	mod_day = 5 if G.getv(level + "_c", {}).hash() == {}.hash() and level.split("_")[1] == "10" else mod_day
-	var coins_count = str(round(25 * mod_lvl * mod_day / 5) * 5) + "-" + str(round(50 * mod_lvl * mod_day / 5) * 5)
+	var coins_count = str(round(20 * mod_lvl * mod_day / 5) * 5) + "-" + str(round(45 * mod_lvl * mod_day / 5) * 5)
 	var tokens_chance = 30 if get_power_ulti_classes()[0] else 0
 	var ulti_chance = 20 if get_power_ulti_classes()[1] else 0
 	var tokens_count = str(round(4 * mod_lvl * mod_day)) + "-" + str(round(9 * mod_lvl * mod_day))
@@ -219,11 +218,11 @@ func display_rewards(level = ""):
 
 func set_win_rewards(level = ""):
 	var mod_lvl = 1 + float(level.split("_")[0]) * 0.4
-	var mod_day = 1.5 if G.getv(level + "_c", {"day":50})["day"] != Time.get_datetime_dict_from_system()["day"]  and G.getv(level + "_c_ut", 0) <= Time.get_unix_time_from_system() else 1
+	var mod_day = 1.5 if G.getv(level + "_c", {"day":50})["day"] != Time.get_date_dict_from_system()["day"]  and G.getv(level + "_c_ut", 0) <= Time.get_unix_time_from_system() else 1
 	mod_day = 2 if G.getv(level + "_c", {}).hash() == {}.hash() else mod_day
 	mod_day = 5 if G.getv(level + "_c", {}).hash() == {}.hash() and level.split("_")[1] == "10" else mod_day
-	var coins_count_min = round(25 * mod_lvl * mod_day / 5) * 5
-	var coins_count_max = round(50 * mod_lvl * mod_day / 5) * 5
+	var coins_count_min = round(20 * mod_lvl * mod_day / 5) * 5
+	var coins_count_max = round(45 * mod_lvl * mod_day / 5) * 5
 	var tokens_chance = 30 if get_power_ulti_classes()[0] else 0
 	var ulti_chance = 20 if get_power_ulti_classes()[1] else 0
 	var tokens_count_min = round(4 * mod_lvl * mod_day)

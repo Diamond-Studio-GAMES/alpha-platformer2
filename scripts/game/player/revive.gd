@@ -3,15 +3,22 @@ extends Camera2D
 
 var counter
 var is_revived = false
+var is_gived_up = false
+var is_multiplayer = false
 var is_screen_on = false
+signal gived_up
 
 
 func _ready():
+	is_multiplayer = MP.is_active
 	counter = $gui/death_screen/gems/count
-	$gui/death_screen/window.connect("popup_hide", self, "give_up")
+	$gui/death_screen/window.get_close_button().connect("pressed", self, "give_up")
+	$gui/death_screen/window.popup_exclusive = true
 
 
 func show_revive_screen():
+	if is_multiplayer:
+		return
 	if is_revived or not $"..".can_revive:
 		give_up()
 		return
@@ -24,16 +31,13 @@ func show_revive_screen():
 	if G.getv("gems", 0) < 10:
 		$gui/death_screen/window/revive.disabled = true
 	get_tree().paused = true
-	Engine.time_scale = 0.01
 
 
 func revive_button():
 	if G.getv("gems", 0) < 10:
 		return
 	is_screen_on = false
-	$gui/death_screen/window.disconnect("popup_hide", self, "give_up")
 	get_tree().paused = false
-	Engine.time_scale = 1
 	zoom = $"..".default_camera_zoom
 	G.setv("gems", G.getv("gems", 0) - 10)
 	G.save()
@@ -45,12 +49,13 @@ func revive_button():
 
 
 func give_up():
-	if not is_revived:
-		$gui/death_screen/window.disconnect("popup_hide", self, "give_up")
+	if is_gived_up:
+		return
+	emit_signal("gived_up")
 	if MP.is_active:
 		$"/root/mg".state = 3
 		MP.close_network()
-	Engine.time_scale = 1
+	is_gived_up = true
 	get_tree().paused = false
 	if $"..".custom_respawn_scene.empty():
 		get_tree().change_scene("res://scenes/menu/game_over.scn")

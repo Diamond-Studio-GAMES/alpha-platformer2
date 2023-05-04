@@ -12,6 +12,8 @@ onready var sprite = $sprite
 onready var hp_bar = $camera/gui/gui/hp
 onready var ammo_counter = $camera/gui/gui/ammo
 onready var parent = $".."
+onready var ip_text = $camera/gui/gui/ip
+onready var ms = $MultiplayerSynchronizer
 var timer = 0
 var max_hp = 100
 var hp = 100
@@ -19,6 +21,8 @@ var is_shooting = false
 var aim_vector = Vector2.ZERO
 var player_name = ""
 var direction = Vector2.ZERO
+var is_pc = false
+var is_cool_aim = false
 var effect = load("res://minigames/minigame7/death_effect.scn")
 
 
@@ -46,14 +50,29 @@ func _ready():
 				break
 		if not ip_founded:
 			ip += " (возможно, нет подключения)"
-		$camera/gui/gui/ip.text = "Ваш IP: " + ip
+		ip_text.text = "Ваш IP: " + ip
 		$camera/gui/gui/start.show()
+	is_cool_aim = bool(G.getv("shooter_aim_mode"))
+	is_pc = OS.has_feature("pc")
+	if is_pc:
+		joystick0.hide()
+		$camera/gui/gui/shoot.hide()
 
 
 func _physics_process(delta):
 	if MP.has_multiplayer_authority(self):
+		if is_cool_aim:
+			if joystick1._output != Vector2.ZERO and aim_vector == Vector2.ZERO:
+				shoot(true)
+			elif joystick1._output == Vector2.ZERO and aim_vector != Vector2.ZERO:
+				shoot(false)
 		aim_vector = joystick1._output
-		direction = joystick0._output
+		if is_pc:
+			direction.x = Input.get_axis("shooter_left", "shooter_right")
+			direction.y = Input.get_axis("shooter_up", "shooter_down")
+			direction = direction.normalized()
+		else:
+			direction = joystick0._output
 		var dir = Vector2.ZERO
 		if parent.started:
 			dir = move_and_slide(SPEED * direction)
@@ -72,24 +91,36 @@ func _physics_process(delta):
 			move_and_slide(SPEED * direction)
 
 
-func hurt(dmg):
-	$MultiplayerSynchronizer.sync_call(self, "hurt", [dmg])
+func _process(delta):
+	if is_pc and MP.has_multiplayer_authority(self):
+		if Input.is_action_just_pressed("shooter_change_weapon"):
+			change_weapon()
+		if Input.is_action_just_pressed("shooter_shoot"):
+			shoot(true)
+		elif Input.is_action_just_released("shooter_shoot"):
+			shoot(false)
+
+
+func hurt(dmg, by):
+	ms.sync_call(self, "hurt", [dmg, by])
 	if hp <= 0:
+		$shape.set_deferred("disabled", true)
+		hide()
 		return
 	hp = clamp(hp - dmg, 0, max_hp)
 	if hp <= 0:
 		var node = effect.instance()
 		node.global_position = global_position
-		node.flip_h = sprite.scale.x < 0
+		node.scale.x = sprite.scale.x
 		get_parent().add_child(node, true)
 		hide()
 		SPEED *= 2
 		sprite.modulate = Color.black
 		is_shooting = false
 		$shape.set_deferred("disabled", true)
-		$camera/gui/gui/ip.text = "ПОРАЖЕНИЕ!" + ("\n Если ты сервер, подожди пока матч закончится!" if get_tree().is_network_server() else "")
 		if MP.has_multiplayer_authority(self):
-			parent.rpc("player_died", get_tree().get_network_unique_id())
+			parent.rpc("player_died", get_tree().get_network_unique_id(), by)
+		ip_text.text = "ПОРАЖЕНИЕ!" + ("\n Если ты сервер, подожди пока матч закончится!" if get_tree().is_network_server() else "")
 
 
 func do_disconnect():
@@ -109,13 +140,13 @@ func shoot(b):
 
 
 func start_game():
-	$camera/gui/gui/ip.text = ""
+	ip_text.text = ""
 	get_parent().rpc("start_game")
 	$camera/gui/gui/start.hide()
 
 
 func change_weapon(change_idx = true):
-	$MultiplayerSynchronizer.sync_call(self, "change_weapon", [])
+	ms.sync_call(self, "change_weapon", [])
 	current_weapon_node.hide()
 	current_weapon_node.is_active = false
 	var next_idx = weapons.find(current_weapon)
@@ -131,8 +162,8 @@ func change_weapon(change_idx = true):
 
 func sync_weapon(id):
 	yield(get_tree().create_timer(0.5),"timeout")
-	$MultiplayerSynchronizer.sync_call(self, "change_weapon", [false])
+	ms.sync_call(self, "change_weapon", [false])
 
 
 func make_text(t):
-	$camera/gui/gui/ip.text = t
+	ip_text.text = t

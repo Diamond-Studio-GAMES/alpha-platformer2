@@ -17,4 +17,5 @@ func area_entered(area):
 				node.get_node("attack").damage = area.damage
 				yield(get_tree(), "idle_frame")
 				get_tree().current_scene.add_child(node, true)
-				throw.queue_free()
+				if not throw.is_queued_for_deletion():
+					throw.queue_free()

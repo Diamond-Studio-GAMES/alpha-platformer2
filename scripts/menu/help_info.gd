@@ -1,9 +1,6 @@
 extends Button
 
 
-
-func _enter_tree():
-	pass
 export (String, MULTILINE) var info = ""
 export (String) var id = ""
 
@@ -15,5 +12,5 @@ func _ready():
 
 
 func accept():
-	G.setv("learned_ids", G.getv("learned_ids", []) + [id])
+	G.addv("learned_ids", [id], [])
 	hide()

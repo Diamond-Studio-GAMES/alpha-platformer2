@@ -1,24 +1,17 @@
 extends Area2D
 
 
-var _ulti_attack
 var damage = 0
 var level = 1
 var power = 0
 var attack_power = 25
-var gen
 var has_amulet = false
-var _level
-var _effect
+var _ulti_attack = load("res://prefabs/classes/butcher_ulti_attack.scn")
+var _effect = load("res://prefabs/effects/effect_butcher_ulti.scn")
+onready var _level = get_tree().current_scene
 
 
 func _ready():
-	_level = $".."
-	_ulti_attack = load("res://prefabs/classes/butcher_ulti_attack.scn")
-	_effect = load("res://prefabs/effects/effect_butcher_ulti.scn")
-	gen = RandomNumberGenerator.new()
-	gen.randomize()
-	randomize()
 	attack_power = 30 + power * 6  + (15 if  has_amulet else 0)
 	match level:
 		1:
@@ -35,9 +28,9 @@ func _ready():
 	var enemies = get_overlapping_bodies()
 	var enemies_copy = enemies.duplicate()
 	for i in enemies_copy:
-		if i.name.begins_with("player"):
+		if i is Player:
 			enemies.erase(i)
-		if not i.has_method("hurt"):
+		if not i is Entity:
 			enemies.erase(i)
 	if enemies.empty():
 		queue_free()
@@ -50,17 +43,14 @@ func _ready():
 		if i.current_health > targeted_enemy.current_health:
 			targeted_enemy = i
 		if i.current_health == targeted_enemy.current_health and \
-			i.global_position.distance_to(global_position) < targeted_enemy.global_position.distance_to(global_position):
-				targeted_enemy = i
+				i.global_position.distance_squared_to(global_position) < targeted_enemy.global_position.distance_squared_to(global_position):
+			targeted_enemy = i
 	if MP.auth(self):
 		var node = _ulti_attack.instance()
 		node.global_position = targeted_enemy.global_position
 		var effect_node = _effect.instance()
 		effect_node.global_position = targeted_enemy.global_position
 		_level.add_child(effect_node, true)
-		targeted_enemy.can_hurt = true
-		yield(get_tree(), "idle_frame")
-		targeted_enemy.can_hurt = true
 		enemies.erase(targeted_enemy)
 		node.damage = damage
 		node.scale = Vector2(2, 2)

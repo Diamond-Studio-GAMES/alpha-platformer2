@@ -2,26 +2,27 @@ extends Node
 class_name Globals, "res://textures/gui/alpha_text.png"
 
 
-const VERSION = "0.7.0"
-const VERSION_STATUS = ""
-const VERSION_STATUS_NUMBER = ""
-const VERSION_CODE = 53
-var selected_class = "knight"
+const VERSION = "0.8.0"
+const VERSION_STATUS = "сборка"
+const VERSION_STATUS_NUMBER = "2"
+const VERSION_CODE = 55
+
+var main_file : ConfigFile
+var save_file : ConfigFile
+var save_timer = 0
 var selected_class_to_test = "knight"
 var current_level = "1_1"
-var current_save = "main" setget current_save_set
+var curr_scene = ""
 var cached_ip = ""
 var cached_suff = 0
-var file : ConfigFile
-var save_timer = 0
-var loading_scene = load("res://scenes/menu/loading.scn")
-var current_scene = "res://scenes/menu/menu.scn"
-var box = load("res://scenes/menu/box.scn")
-var curr_scene = ""
 var custom_respawn_scene = ""
 var dialog_in_menu = ""
 var fps_text
 var music
+var time_timer
+var ad : AdsManager
+var loading_scene = load("res://scenes/menu/loading.scn")
+var box = load("res://scenes/menu/box.scn")
 const CLASSES_ID = {
 	-1 : "player",
 	0 : "knight",
@@ -146,6 +147,18 @@ enum EffectsType {
 	SIMPLE = 1,
 	DISABLED = 2,
 }
+enum GrassType {
+	GPU = 0,
+	CPU = 1,
+	STATIC = 2,
+}
+enum Graphics {
+	BEAUTY_LIGHT = 1,
+	BEAUTY_WATER = 2,
+	BEAUTY_LAVA = 4,
+	BEAUTY_FIRE = 8,
+	BEAUTY_ALL = 15,
+}
 enum Amulet {
 	POWER = 0,
 	DEFENSE = 1,
@@ -160,25 +173,53 @@ signal loaded_to_scene(path)
 
 
 func _ready():
+	main_file = ConfigFile.new()
+	main_file.load_encrypted_pass("user://main.apa2", "main")
+	var dir = Directory.new()
+	if not dir.dir_exists("user://saves/"):
+		dir.make_dir_recursive("user://saves/")
+	if dir.file_exists("user://saves.game"):
+		var cf = ConfigFile.new()
+		cf.load("user://saves.game")
+		for i in cf.get_sections():
+			if i == "main":
+				continue
+			var file = ConfigFile.new()
+			for j in cf.get_section_keys(i):
+				file.set_value("save", j, cf.get_value(i, j))
+			file.save_encrypted_pass("user://saves/".plus_file(cf.get_value(i, "save_id", "file" + str(randi())) + ".apa2save"), "apa2_save")
+		dir.remove("user://saves.game")
+	
 	randomize()
+	get_tree().connect("node_added", self, "_node_added")
+	ad = AdsManager.new()
+	ad.name = "ads"
+	add_child(ad)
 	music = AudioStreamPlayer.new()
 	music.name = "menu_music"
 	music.bus = "music"
 	music.stream = load("res://sounds/music/menu/menu.ogg")
 	add_child(music)
-	file = ConfigFile.new()
-	file.load("user://saves.game")
 	fps_text = load("res://prefabs/menu/fps_counter.scn").instance()
+	fps_text.visible = G.main_getv("fps", false)
 	add_child(fps_text)
-	fps_text.visible = G.file.get_value("main", "fps", false)
+	time_timer = Timer.new()
+	time_timer.name = "timer"
+	time_timer.wait_time = 1
+	time_timer.pause_mode = PAUSE_MODE_PROCESS
+	add_child(time_timer)
+	time_timer.connect("timeout", self, "update_timer")
+	time_timer.start()
+	if OS.has_feature("editor") or OS.has_feature("cheats"):
+		var ch = load("res://prefabs/menu/cheats.scn").instance()
+		add_child(ch)
 
 
 func _process(delta):
 	save_timer += delta
 	if save_timer >= 20:
-		file.save("user://saves.game")
+		save()
 		save_timer = 0
-	update_music(null)
 
 
 func _notification(what):
@@ -190,24 +231,61 @@ func _notification(what):
 			save()
 
 
+func _node_added(node):
+	if node == get_tree().current_scene:
+		update_music(node)
+
+
+func getv(name, default_value = 0):
+	return save_file.get_value("save", name, default_value)
+
+
 func setv(name, value):
-	file.set_value(current_save, name, value)
+	save_file.set_value("save", name, value)
 
 
 func addv(name, value, default_value = 0):
-	file.set_value(current_save, name, file.get_value(current_save, name, default_value) + value)
+	save_file.set_value("save", name, save_file.get_value("save", name, default_value) + value)
 
 
-func getv(name, default_value = null):
-	return file.get_value(current_save, name, default_value)
+func main_setv(name, value):
+	main_file.set_value("config", name, value)
+
+
+func main_getv(name, default_value = 0):
+	return main_file.get_value("config", name, default_value)
+
+
+func main_addv(name, value, default_value = 0):
+	main_file.set_value("config", name, main_file.get_value("config", name, default_value) + value)
+
+
+func set_save_meta(id, meta, data):
+	main_file.set_value(id, meta, data)
+
+
+func get_save_meta(id, meta, data):
+	return main_file.get_value(id, meta, data)
 
 
 func save():
-	file.save("user://saves.game")
+	main_file.save_encrypted_pass("user://main.apa2", "main")
+	if save_file != null:
+		save_file.save_encrypted_pass("user://saves/".plus_file(getv("save_id", "pass") + ".apa2save"), "apa2_save")
+
+
+func open_save(id):
+	save_file = ConfigFile.new()
+	save_file.load_encrypted_pass("user://saves/".plus_file(id + ".apa2save"), "apa2_save")
+
+
+func close_save():
+	save()
+	save_file = null
 
 
 func change_to_scene(path):
-	if get_tree().root.has_node("/root/loading"):
+	if has_node("/root/loading"):
 		if $"/root/loading".load_path == path:
 			return
 	var node = loading_scene.instance()
@@ -216,23 +294,24 @@ func change_to_scene(path):
 
 
 func update_music(node):
-	if not is_instance_valid(get_tree().current_scene):
+	if not is_instance_valid(node):
 		music.stop()
 		return
-	if get_tree().current_scene.name != curr_scene:
+	if node.name != curr_scene:
 		var prev_scene = curr_scene
-		curr_scene = get_tree().current_scene.name
+		curr_scene = node.name
 		if curr_scene == "menu" and prev_scene != "levels":
 			music.play(0)
-			if not dialog_in_menu.empty():
-				var dialog = get_tree().current_scene.get_node("dialog")
-				dialog.dialog_text = dialog_in_menu
-				dialog_in_menu = ""
-				dialog.popup_centered()
 		elif curr_scene == "levels" and prev_scene != "menu":
 			music.play(0)
 		elif curr_scene != "menu" and curr_scene != "levels":
 			music.stop()
+
+
+func update_timer():
+	if save_file == null:
+		return
+	G.addv("time", 1)
 
 
 func receive_ad_reward():
@@ -247,37 +326,40 @@ func receive_loot(looted):
 		if i.ends_with("box"):
 			continue
 		if i == "coins" or i == "gems" or i.begins_with("potions") or i.begins_with("garden"):
-			setv(i, getv(i, 0) + rec[i])
+			addv(i, rec[i])
 		if getv("potions1", 0) > 5:
 			if another_rec.has("potions1"):
 				another_rec["potions1"] = another_rec["potions1"] - getv("potions1", 0) + 5
-			if another_rec.has("coins"):
-				another_rec["coins"] = another_rec["coins"] + (getv("potions1", 0) - 5) * 275
-			else:
-				another_rec["coins"] = (getv("potions1", 0) - 5) * 275
-			setv("coins", getv("coins", 0) + (getv("potions1", 0) - 5) * 275)
+				if another_rec["potions1"] <= 0:
+					another_rec.erase("potions1")
+			if not another_rec.has("coins"):
+				another_rec["coins"] = 0
+			another_rec["coins"] += (getv("potions1", 0) - 5) * 275
+			addv("coins", (getv("potions1", 0) - 5) * 275)
 			setv("potions1", 5)
 		if getv("potions2", 0) > 5:
 			if another_rec.has("potions2"):
 				another_rec["potions2"] = another_rec["potions2"] - getv("potions2", 0) + 5
-			if another_rec.has("coins"):
-				another_rec["coins"] = another_rec["coins"] + (getv("potions2", 0) - 5) * 600
-			else:
-				another_rec["coins"] = (getv("potions2", 0) - 5) * 600
-			setv("coins", getv("coins", 0) + (getv("potions2", 0) - 5) * 600)
+				if another_rec["potions2"] <= 0:
+					another_rec.erase("potions2")
+			if not another_rec.has("coins"):
+				another_rec["coins"] = 0
+			another_rec["coins"] += (getv("potions2", 0) - 5) * 600
+			addv("coins", (getv("potions2", 0) - 5) * 600)
 			setv("potions2", 5)
 		if getv("potions3", 0) > 5:
 			if another_rec.has("potions3"):
 				another_rec["potions3"] = another_rec["potions3"] - getv("potions3", 0) + 5
-			if another_rec.has("coins"):
-				another_rec["coins"] = another_rec["coins"] + (getv("potions3", 0) - 5) * 925
-			else:
-				another_rec["coins"] = (getv("potions3", 0) - 5) * 925
-			setv("coins", getv("coins", 0) + (getv("potions3", 0) - 5) * 925)
+				if another_rec["potions3"] <= 0:
+					another_rec.erase("potions3")
+			if not another_rec.has("coins"):
+				another_rec["coins"] = 0
+			another_rec["coins"] += (getv("potions3", 0) - 5) * 925
+			addv("coins", (getv("potions3", 0) - 5) * 925)
 			setv("potions3", 5)
 		if i == "class":
 			for j in rec[i]:
-				setv("classes", getv("classes", []) + [j])
+				addv("classes", [j], [])
 		if i == "gadget":
 			for j in rec[i]:
 				setv(j + "_gadget", true)
@@ -290,10 +372,10 @@ func receive_loot(looted):
 				addv("total_amulet_frags_"+j, rec[i][j])
 		if i == "tokens":
 			for j in rec[i]:
-				setv(j + "_tokens", getv(j + "_tokens", 0) + rec[i][j])
+				addv(j + "_tokens", rec[i][j])
 		if i == "ulti_tokens":
 			for j in rec[i]:
-				setv(j + "_ulti_tokens", getv(j + "_ulti_tokens", 0) + rec[i][j])
+				addv(j + "_ulti_tokens", rec[i][j])
 	if another_rec.hash() != rec.hash():
 		rec = another_rec
 	for i in rec:
@@ -304,7 +386,3 @@ func receive_loot(looted):
 		n.show_loot(loot_to_show)
 		yield(n, "end_loot")
 		emit_signal("loot_end")
-
-
-func current_save_set(value):
-	current_save = str(value)

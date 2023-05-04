@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/game/mobs/attack.gd"
 }, {
+"base": "Node2D",
+"class": "Boss",
+"language": "GDScript",
+"path": "res://scripts/game/bosses/boss.gd"
+}, {
 "base": "Node",
 "class": "Box",
 "language": "GDScript",
@@ -49,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/game/mobs/entity.gd"
 }, {
-"base": "Area2D",
+"base": "Attack",
 "class": "FireAttack",
 "language": "GDScript",
 "path": "res://scripts/game/mobs/fire_attack.gd"
@@ -93,6 +98,11 @@ _global_script_classes=[ {
 "class": "Mechanic",
 "language": "GDScript",
 "path": "res://scripts/game/mobs/mechanic.gd"
+}, {
+"base": "Player",
+"class": "MinigameHero",
+"language": "GDScript",
+"path": "res://minigames/minigame4/hero.gd"
 }, {
 "base": "Entity",
 "class": "Mob",
@@ -144,6 +154,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/game/player/player_player.gd"
 }, {
+"base": "CryptoKey",
+"class": "Promocode",
+"language": "GDScript",
+"path": "res://scripts/menu/promocode.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Pushable",
 "language": "GDScript",
@@ -193,6 +208,7 @@ _global_script_class_icons={
 "AdsManager": "",
 "Archer": "",
 "Attack": "res://textures/gui/attack.png",
+"Boss": "",
 "Box": "res://textures/items/box.png",
 "Butcher": "",
 "Dasher": "",
@@ -207,6 +223,7 @@ _global_script_class_icons={
 "KnightMob": "",
 "Lobby": "",
 "Mechanic": "res://textures/mobs/mechanic/head.res",
+"MinigameHero": "",
 "Mob": "res://textures/mobs/mechanic/transform_eye.res",
 "Multiplayer": "",
 "MultiplayerGame": "",
@@ -217,6 +234,7 @@ _global_script_class_icons={
 "PlantResource": "res://minigames/minigame6/resources/seed_packet_legendary.png",
 "Player": "",
 "PlayerPlayer": "",
+"Promocode": "res://textures/gui/promocodes.png",
 "Pushable": "res://textures/blocks/ladder.png",
 "Shooter": "res://textures/mobs/shooter/head.res",
 "ShooterPlayer": "",
@@ -232,6 +250,8 @@ _global_script_class_icons={
 
 config/name="Alpha Platformer Adventure 2: The Last Challenge"
 run/main_scene="res://scenes/splash_screen.scn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="alpha-platformer2"
 boot_splash/image="res://textures/misc/pre_splash_screen.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://textures/misc/icon.png"
@@ -245,7 +265,6 @@ default_bus_layout="res://misc/bus_layout.res"
 
 G="*res://scripts/game/globals.gd"
 MP="*res://scripts/game/multiplayer/multiplayer.gd"
-AdManager="*res://scripts/menu/ads_manager.gd"
 
 [compression]
 
@@ -256,10 +275,14 @@ formats/gzip/compression_level=0
 [debug]
 
 gdscript/warnings/enable=false
-gdscript/warnings/unsafe_property_access=true
-gdscript/warnings/unsafe_method_access=true
-gdscript/warnings/unsafe_cast=true
-gdscript/warnings/unsafe_call_argument=true
+gdscript/warnings/unused_class_variable=true
+gdscript/warnings/unused_argument=false
+gdscript/warnings/return_value_discarded=false
+multirun/number_of_windows=2
+multirun/window_distance=1270
+multirun/add_custom_args=true
+multirun/first_window_args="listen"
+multirun/other_window_args="join"
 
 [display]
 
@@ -273,6 +296,10 @@ window/stretch/aspect="keep_height"
 [editor]
 
 scene_naming=2
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/multirun/plugin.cfg" )
 
 [importer_defaults]
 
@@ -359,6 +386,36 @@ gadget={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777237,"unicode":0,"echo":false,"script":null)
  ]
 }
+shooter_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+shooter_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+shooter_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+shooter_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+shooter_shoot={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+shooter_change_weapon={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":3,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [input_devices]
 
@@ -391,13 +448,17 @@ translation_remaps={
 "res://minigames/minigame8/textures/enemies/tehnolog_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/tehnolog.png:en" )
 }
 
+[logging]
+
+file_logging/enable_file_logging.pc=false
+
 [node]
 
 name_casing=2
 
 [physics]
 
-2d/physics_engine="GodotPhysics"
+3d/physics_engine="GodotPhysics"
 common/enable_object_picking=false
 
 [rendering]
@@ -406,5 +467,11 @@ quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 vram_compression/import_etc=true
+quality/shading/force_vertex_shading=true
 batching/precision/uv_contract=true
 environment/default_environment="res://misc/env.res"
+quality/enable_object_picking=false
+
+[world]
+
+2d/cell_size=32

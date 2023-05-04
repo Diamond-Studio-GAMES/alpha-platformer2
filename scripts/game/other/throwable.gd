@@ -36,13 +36,13 @@ export (String, FILE, "*.wav, *.ogg") var simple_effect_destroy_sound_wall = ""
 
 
 func _ready():
-	$attack.connect("hit_wall", self, "destroy_it", [DestroyedReason.WALL])
-	$attack.emit_hit_attack_signal = true
-	$attack.connect("hit_enemy", self, "destroy_it", [DestroyedReason.HIT, EntityType.ENEMY])
-	$attack.connect("hit_player", self, "destroy_it", [DestroyedReason.HIT, EntityType.PLAYER])
+	var _attack = $attack
+	_attack.connect("hit_wall", self, "destroy_it", [DestroyedReason.WALL])
+	_attack.emit_hit_attack_signal = true
+	_attack.connect("hit_enemy", self, "destroy_it", [DestroyedReason.HIT, EntityType.ENEMY])
+	_attack.connect("hit_player", self, "destroy_it", [DestroyedReason.HIT, EntityType.PLAYER])
 	if destroyable_by_attacks:
-		$attack.connect("hit_attack_with_object", self, "destroy_it_attack")
-	yield(get_tree(), "idle_frame")
+		_attack.connect("hit_attack_with_object", self, "destroy_it_attack")
 	if angle == Vector2.ZERO:
 		angle = Vector2.RIGHT.rotated(deg2rad(rotation_degrees))
 
@@ -87,7 +87,7 @@ func destroy_it(destroy_reason, entity_hit = EntityType.ENEMY):
 			get_parent().add_child(node)
 	elif G.getv("effects", Globals.EffectsType.STANDARD) == Globals.EffectsType.SIMPLE:
 		node = load(destroy_effect_simple_path).instance()
-		node.global_position = global_position + simple_effect_offset.rotated(deg2rad(rotation_degrees))
+		node.global_position = global_position + simple_effect_offset.rotated(rotation)
 		node.modulate = simple_effect_color
 		node.scale = simple_effect_scale
 		get_parent().add_child(node)

@@ -16,22 +16,14 @@ var timer = 0
 
 
 func _ready():
-	G.connect("loot_end", self, "update_offer", [], CONNECT_DEFERRED | CONNECT_REFERENCE_COUNTED)
-	day_of_offer = Time.get_datetime_dict_from_system()["day"]
+	G.connect("loot_end", self, "update_offer", [], CONNECT_REFERENCE_COUNTED)
+	day_of_offer = Time.get_date_dict_from_system()["day"]
 	time_of_offer = Time.get_unix_time_from_system()
 	update_offer()
 
 
-func _process(delta):
-	timer += delta
-	if timer < 0.5:
-		return
-	timer = 0
-	update_offer()
-
-
 func update_offer():
-	if day_of_offer != Time.get_datetime_dict_from_system()["day"] and time_of_offer <= Time.get_unix_time_from_system():
+	if day_of_offer != Time.get_date_dict_from_system()["day"] and time_of_offer <= Time.get_unix_time_from_system():
 		queue_free()
 	power_classes = []
 	gadget_classes = []

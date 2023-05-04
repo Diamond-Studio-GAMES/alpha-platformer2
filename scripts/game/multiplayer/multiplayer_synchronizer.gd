@@ -19,12 +19,12 @@ onready var path = str(get_path())
 
 
 func _enter_tree():
-	MP.add_synchronizer(str(get_path()), self)
+	MP._add_synchronizer(str(get_path()), self)
 	add_to_group("synchronizer")
 
 
 func _exit_tree():
-	MP.remove_synchronizer(str(get_path()))
+	MP._remove_synchronizer(str(get_path()))
 
 
 func _ready():
@@ -50,42 +50,44 @@ func _physics_process(delta):
 		return
 	if physics_frame_timer >= physics_frame_delay:
 		physics_frame_timer = 0
-		sync_properties()
+		_sync_properties()
 	physics_frame_timer += 1
 	if physics_frame_timer_unreliable >= physics_frame_delay_unreliable:
 		physics_frame_timer_unreliable = 0
-		sync_properties_unreliable()
+		_sync_properties_unreliable()
 	physics_frame_timer_unreliable += 1
 
 
-func sync_properties_unreliable():
+func _sync_properties_unreliable():
 	if unreliable_sync_nodes.empty():
 		return
 	var sync_data_u = []
 	for i in range(len(unreliable_sync_nodes)):
 		sync_data_u.append(unreliable_sync_nodes[i].get(unreliable_sync_properties[i]))
-	MP.sync_properties_unreliable(path, sync_data_u)
+	MP._sync_properties_unreliable(path, sync_data_u)
 
 
-func sync_properties():
+func _sync_properties():
 	if reliable_sync_nodes.empty():
 		return
 	var sync_data = []
 	for i in range(len(reliable_sync_nodes)):
 		sync_data.append(reliable_sync_nodes[i].get(reliable_sync_properties[i]))
-	MP.sync_properties(path, sync_data)
+	MP._sync_properties(path, sync_data)
 
 
-func set_sync_properties(data):
+
+func _set_sync_properties(data):
 	for i in range(len(data)):
 		reliable_sync_nodes[i].set(reliable_sync_properties[i], data[i])
 
-func set_sync_properties_unreliable(data):
+
+func _set_sync_properties_unreliable(data):
 	for i in range(len(data)):
 		unreliable_sync_nodes[i].set(unreliable_sync_properties[i], data[i])
 
 
-func sync_call(obj : Node, func_name, args = [], forced = false):
+func sync_call(obj, func_name, args = [], forced = false):
 	if not MP.is_active:
 		return
 	if not forced:
@@ -93,8 +95,8 @@ func sync_call(obj : Node, func_name, args = [], forced = false):
 			return
 	if not syncing:
 		return
-	MP.sync_call(path, str(get_path_to(obj)), func_name, args)
+	MP._sync_call(path, get_path_to(obj), func_name, args)
 
 
-func sync_call_remote(node_path, func_name, args = []):
+func _sync_call_remote(node_path, func_name, args = []):
 	get_node(node_path).callv(func_name, args)

@@ -42,13 +42,14 @@ func _physics_process(delta):
 
 
 func shoot():
-	player.get_node("MultiplayerSynchronizer").sync_call(self, "shoot")
+	player.ms.sync_call(self, "shoot")
 	if MP.has_multiplayer_authority(self):
 		var node = bullet.instance()
 		node.global_position = $shoot_point.global_position
 		var rot = Vector2.RIGHT.rotated(rotation)
 		if player.get_node("sprite").scale.x < 0:
 			rot.x = -rot.x
+		node.by_who = player.player_name
 		node.rotation = rot.angle() + deg2rad(randi() % int(max_unaccuracity * 2) - max_unaccuracity)
 		player.get_parent().add_child(node, true)
 	delay_timer = shoot_delay

@@ -1,23 +1,19 @@
 extends Area2D
 
 
-var _ulti_attack
+var gen = RandomNumberGenerator.new()
 var times = 0
 var damage_per_time = 0
 var level = 1
 var power = 0
 var attack_power = 25
-var gen
 var has_amulet = false
-var _level
-var _effect
+var _ulti_attack = load("res://prefabs/classes/knight_ulti_attack.scn")
+var _effect = load("res://prefabs/effects/effect_knight_ulti.scn")
+onready var _level = get_tree().current_scene
 
 
 func _ready():
-	_level = $".."
-	_ulti_attack = load("res://prefabs/classes/knight_ulti_attack.scn")
-	_effect = load("res://prefabs/effects/effect_knight_ulti.scn")
-	gen = RandomNumberGenerator.new()
 	gen.randomize()
 	randomize()
 	attack_power = 25 + power * 5  + (15 if  has_amulet else 0)
@@ -41,16 +37,15 @@ func _ready():
 	var enemies = get_overlapping_bodies()
 	var enemies_copy = enemies.duplicate()
 	for i in enemies_copy:
-		if i.name.begins_with("player"):
+		if i is Player:
 			enemies.erase(i)
-		if not i.has_method("hurt"):
+		if not i is Entity:
 			enemies.erase(i)
 	var estimated_times = times
 	if enemies.empty():
 		queue_free()
 		return
 	while estimated_times > 0 and enemies.size() > 0 and MP.auth(self):
-		var node = _ulti_attack.instance()
 		enemies.shuffle()
 		var selected_enemy = enemies[0]
 		if not is_instance_valid(selected_enemy):
@@ -59,16 +54,13 @@ func _ready():
 		if selected_enemy.current_health <= 0:
 			enemies.erase(selected_enemy)
 			continue
+		var node = _ulti_attack.instance()
 		node.global_position = selected_enemy.global_position
 		var effect_node = _effect.instance()
 		effect_node.global_position = selected_enemy.global_position
 		_level.add_child(effect_node, true)
-		selected_enemy.can_hurt = true
-		yield(get_tree(), "idle_frame")
-		selected_enemy.can_hurt = true
 		node.damage = damage_per_time
-		var scale_amount = 2
-		node.scale = Vector2(scale_amount, scale_amount)
+		node.scale = Vector2.ONE * 2
 		_level.add_child(node, true)
 		estimated_times -= 1
 		yield(get_tree().create_timer(0.25, false), "timeout")

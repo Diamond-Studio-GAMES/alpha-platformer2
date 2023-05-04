@@ -8,7 +8,7 @@ var going_to_fertilize = false
 var going_to_dig_up = false
 var selected_plant = ""
 var plant_element = load("res://minigames/minigame6/element_of_plant_list.scn")
-onready var current_day = Time.get_datetime_dict_from_system()["day"]
+onready var current_day = Time.get_date_dict_from_system()["day"]
 onready var current_unix_time = Time.get_unix_time_from_system()
 signal plant_selected(canceled)
 
@@ -53,8 +53,8 @@ func check_for_gift():
 func _process(delta):
 	$fert.text = str(G.getv("garden_fert", 0))
 	$water.text = str(G.getv("garden_water", 0))
-	if Time.get_datetime_dict_from_system()["day"] != current_day:
-		current_day = Time.get_datetime_dict_from_system()["day"]
+	if Time.get_date_dict_from_system()["day"] != current_day:
+		current_day = Time.get_date_dict_from_system()["day"]
 		current_unix_time = Time.get_unix_time_from_system()
 		check_for_gift()
 

@@ -16,7 +16,7 @@ var ulti_classes = []
 var soul_power_classes = []
 var amulet_types = []
 var hero_chance = 0.5
-var gen
+var gen = RandomNumberGenerator.new()
 var tokens_tween
 onready var box_anim = $box_screen/anim
 onready var box_anim2 = $big_box_screen/anim
@@ -172,9 +172,11 @@ func open_select_class_for_tokens(count):
 		if not CLASSES[i] in power_classes:
 			get_node("wild_card_screen/classes/class" + str(i + 1)).hide()
 		else:
+			get_node("wild_card_screen/classes/class" + str(i + 1)).connect("pressed", self, "select_class_for_tokens", [G.CLASSES_ID[i]])
 			get_node("wild_card_screen/classes/class" + str(i + 1) + "/count").text = str(G.getv(CLASSES[i] + "_tokens", 0)) + "/" + str(G.getv(CLASSES[i] + "_level", 0) * 10 + 10)
 	if power_classes.empty():
 		$wild_card_screen/classes/to_coins.show()
+		$wild_card_screen/classes/to_coins.connect("pressed", self, "select_class_for_tokens", ["coins"])
 
 
 func open_select_class_for_ulti_tokens(count):
@@ -185,9 +187,11 @@ func open_select_class_for_ulti_tokens(count):
 		if not CLASSES[i] in ulti_classes:
 			get_node("wild_ulti_card_screen/classes/class" + str(i + 1)).hide()
 		else:
+			get_node("wild_ulti_card_screen/classes/class" + str(i + 1)).connect("pressed", self, "select_class_for_tokens", [G.CLASSES_ID[i]])
 			get_node("wild_ulti_card_screen/classes/class" + str(i + 1) + "/count").text = str(G.getv(CLASSES[i] + "_ulti_tokens", 0)) + "/" + str(G.getv(CLASSES[i] + "_ulti_level", 1) * 30 + 30)
 	if ulti_classes.empty():
 		$wild_ulti_card_screen/classes/to_coins.show()
+		$wild_ulti_card_screen/classes/to_coins.connect("pressed", self, "select_class_for_tokens", ["coins"])
 
 
 func select_class_for_tokens(sel_class = ""):
@@ -200,12 +204,13 @@ func open_gui(what = null):
 	hide_screens()
 	var loot = {}
 	if what == null:
-		if box_type == BoxType.STANDARD:
-			loot = open_box()
-		elif box_type == BoxType.BIG:
-			loot = open_big_box()
-		elif box_type == BoxType.MEGA:
-			loot = open_megabox()
+		match box_type:
+			BoxType.STANDARD:
+				loot = open_box()
+			BoxType.BIG:
+				loot = open_big_box()
+			BoxType.MEGA:
+				loot = open_megabox()
 	else:
 		loot = what
 	print(loot)
@@ -221,10 +226,13 @@ func open_gui(what = null):
 		open_select_class_for_tokens(loot["wild_tokens"])
 		yield(self, "tokens_class_selected")
 		if selected_class_for_tokens == "coins":
+			if not loot.has("coins"):
+				loot["coins"] = 0
 			loot["coins"] = loot["wild_tokens"] * 3
 			G.setv("coins", G.getv("coins", 0) + loot["coins"])
 		else:
-			loot["tokens"] = {}
+			if not loot.has("tokens"):
+				loot["tokens"] = {}
 			loot["tokens"][selected_class_for_tokens] = loot["wild_tokens"]
 			G.setv(selected_class_for_tokens + "_tokens", G.getv(selected_class_for_tokens + "_tokens", 0) + loot["wild_tokens"])
 		loot.erase("wild_tokens")
@@ -232,10 +240,13 @@ func open_gui(what = null):
 		open_select_class_for_ulti_tokens(loot["wild_ulti_tokens"])
 		yield(self, "tokens_class_selected")
 		if selected_class_for_tokens == "coins":
+			if not loot.has("coins"):
+				loot["coins"] = 0
 			loot["coins"] = loot["wild_ulti_tokens"] * 12
 			G.setv("coins", G.getv("coins", 0) + loot["coins"])
 		else:
-			loot["ulti_tokens"] = {}
+			if not loot.has("ulti_tokens"):
+				loot["ulti_tokens"] = {}
 			loot["ulti_tokens"][selected_class_for_tokens] = loot["wild_ulti_tokens"]
 			G.setv(selected_class_for_tokens + "_ulti_tokens", G.getv(selected_class_for_tokens + "_ulti_tokens", 0) + loot["wild_ulti_tokens"])
 		loot.erase("wild_ulti_tokens")
@@ -311,11 +322,6 @@ func open_gui(what = null):
 			items -= 1
 			item_counter_count.text = str(items)
 	if loot.has("class"):
-		if not has_node("class_screen"):
-			var class_screen = load("res://prefabs/menu/box_class_screen.scn").instance()
-			class_screen.name = "class_screen"
-			screens["class_screen"] = class_screen
-			add_child_below_node($soul_power_screen, class_screen)
 		hide_screens()
 		show_screen("class_screen")
 		for i in loot["class"]:
@@ -327,7 +333,7 @@ func open_gui(what = null):
 			get_node("class_screen/" + i).show()
 			get_node("class_screen/" + i + "/class/ui/text/class_name/count").text = str(5 - classes_to_unlock.size()) + "-й из 5 классов"
 			get_node("class_screen/" + i + "/anim").play("main")
-			$roll_out.play()
+			$class_screen/roll_out.play()
 			glow_items -= 1
 			yield(get_tree().create_timer(4), "timeout")
 			yield(self, "next")
@@ -593,7 +599,6 @@ func open_gui_set_ulti_tokens_count(count):
 
 
 func _ready():
-	gen = RandomNumberGenerator.new()
 	get_tree().paused = true
 	randomize()
 	gen.randomize()
@@ -613,6 +618,11 @@ func hide_screens():
 
 
 func show_screen(screen):
+	if not screens.has(screen):
+		var _screen = load("res://prefabs/menu/box_%s.scn" % screen).instance()
+		_screen.name = screen
+		screens[screen] = _screen
+		add_child_below_node($mega_box_screen, _screen)
 	screens[screen].show()
 	screens[screen].pause_mode = PAUSE_MODE_INHERIT
 
@@ -669,7 +679,7 @@ func open_box():
 	var hero = percent_chance(hero_chance) and not classes_to_unlock.empty()
 	var soul_power = percent_chance(2) and not soul_power_classes.empty()
 	var gadget = percent_chance(4) and not gadget_classes.empty()
-	var amulet_frag = percent_chance(15) and not amulet_types.empty()
+	var amulet_frag = percent_chance(16) and not amulet_types.empty()
 	var gem_chance = percent_chance(10)
 	var loot = {}
 	var gems = 0
@@ -714,10 +724,10 @@ func open_box():
 		power_classes.shuffle()
 		var coins_count = 0
 		var c = gen.randi_range(0, 100)
-		if c < 70:
-			coins_count = gen.randi_range(30, 90)
+		if c < 80:
+			coins_count = gen.randi_range(30, 80)
 		else:
-			coins_count = gen.randi_range(90, 120)
+			coins_count = gen.randi_range(80, 120)
 		loot["coins"] = coins_count
 		if power_classes.size() >= 0:
 			power_classes.shuffle()
@@ -732,9 +742,8 @@ func open_box():
 			G.setv(power_classes[1] + "_tokens", G.getv(power_classes[1] + "_tokens", 0) + loot["tokens"][power_classes[1]])
 		elif power_classes.size() == 1:
 			loot["tokens"] = {
-				power_classes[0] : gen.randi_range(3, 9)
+				power_classes[0] : gen.randi_range(4, 12)
 			}
-			loot["coins"] += gen.randi_range(3, 9)
 			G.setv(power_classes[0] + "_tokens", G.getv(power_classes[0] + "_tokens", 0) + loot["tokens"][power_classes[0]])
 		elif power_classes.empty():
 			loot["coins"] += gen.randi_range(6, 18) * 3

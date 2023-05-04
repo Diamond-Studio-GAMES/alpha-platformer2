@@ -1,24 +1,17 @@
 extends Area2D
 
 
-var _ulti_attack
 var damage = 0
 var level = 1
 var power = 0
 var attack_power = 25
-var gen
 var has_amulet = false
-var _level
-var _effect
+onready var _level = get_tree().current_scene
+var _ulti_attack = load("res://prefabs/classes/archer_ulti_attack.scn")
+var _effect = load("res://prefabs/effects/effect_archer_ulti.scn")
 
 
 func _ready():
-	_level = $".."
-	_ulti_attack = load("res://prefabs/classes/archer_ulti_attack.scn")
-	_effect = load("res://prefabs/effects/effect_archer_ulti.scn")
-	gen = RandomNumberGenerator.new()
-	gen.randomize()
-	randomize()
 	attack_power = 35 + power * 7  + (15 if  has_amulet else 0)
 	match level:
 		1:
@@ -35,9 +28,9 @@ func _ready():
 	var enemies = get_overlapping_bodies()
 	var enemies_copy = enemies.duplicate()
 	for i in enemies_copy:
-		if i.name.begins_with("player"):
+		if i is Player:
 			enemies.erase(i)
-		if not i.has_method("hurt"):
+		if not i is Entity:
 			enemies.erase(i)
 	if enemies.empty():
 		queue_free()
@@ -54,9 +47,6 @@ func _ready():
 		var effect_node = _effect.instance()
 		effect_node.global_position = i.global_position
 		_level.add_child(effect_node, true)
-		i.can_hurt = true
-		yield(get_tree(), "idle_frame")
-		i.can_hurt = true
 		node.damage = damage
 		node.scale = Vector2(1.5, 1.5)
 		_level.add_child(node, true)

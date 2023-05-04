@@ -28,9 +28,9 @@ func _ready():
 func add_body(node):
 	if node.has_method("heal"):
 		bodies.append(node)
-		if node.name.begins_with("player"):
+		if node is Player:
 			emit_signal("hit_player")
-		elif node.name.begins_with("mob"):
+		elif node.is_in_group("mob"):
 			emit_signal("hit_enemy")
 	else:
 		if node.has_method("deal_damage") and emit_hit_attack_signal:
@@ -45,7 +45,7 @@ func remove_body(node):
 
 
 func heal(node):
-	if node.name.begins_with("player") and not is_player_heal:
+	if node is Player and not is_player_heal:
 		return
 	if node.name.begins_with("mob") and not is_enemy_heal:
 		return

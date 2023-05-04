@@ -41,7 +41,7 @@ func restart():
 		return
 	VisualServer.set_shader_time_scale(1)
 	get_tree().paused = false
-	G.change_to_scene(G.current_scene)
+	G.change_to_scene(get_tree().current_scene.filename)
 
 
 func menu():

@@ -130,7 +130,7 @@ func _on_sku_details_query_completed(sku_details):
 			GEMS_2500_SKU:
 				butt_gem2.text = make_price(available_sku.one_time_purchase_details)
 			NO_ADS_SKU:
-				if G.file.get_value("main", "no_ads", false):
+				if G.main_getv( "no_ads", false):
 					continue
 				butt_no_ads.text = make_price(available_sku.one_time_purchase_details)
 
@@ -204,7 +204,7 @@ func toggle_buttons(state):
 		butt_gem0.text = "-"
 		butt_gem1.text = "-"
 		butt_gem2.text = "-"
-		if not G.file.get_value("main", "no_ads", false):
+		if not G.main_getv( "no_ads", false):
 			butt_no_ads.text = "-"
 
 func make_price(data):
@@ -234,8 +234,7 @@ func buy_no_ads():
 # END OF IAP
 
 func _process(delta):
-	if current_day != Time.get_datetime_dict_from_system()["day"]:
-		yield(get_tree(), "idle_frame")
+	if current_day != Time.get_date_dict_from_system()["day"]:
 		_ready()
 	if G.getv("potions1", 0) < 1:
 		p0.text = ""
@@ -261,7 +260,7 @@ func _process(delta):
 		p2.text = "У тебя:" + str(G.getv("potions3", 0))
 		if int(p2.text) >= 5:
 			b2.disabled = true
-	if G.file.get_value("main", "no_ads", false):
+	if G.main_getv( "no_ads", false):
 		na.disabled = true
 		na.text = "Куплено"
 
@@ -274,13 +273,14 @@ func get_gems(count):
 
 
 func removed_ads():
-	if G.file.get_value("main", "no_ads", false):
+	if G.main_getv( "no_ads", false):
 		return
-	G.file.set_value("main", "no_ads", true)
+	G.main_setv( "no_ads", true)
 	G.save()
 	yield(get_tree(), "idle_frame")
 	get_tree().paused = true
 	yield(get_tree().create_timer(0.5), "timeout")
+	get_tree().paused = false
 	get_tree().change_scene("res://scenes/menu/no_ads.scn")
 
 
@@ -396,7 +396,7 @@ func info_box():
 			if G.getv("total_amulet_frags_"+G.AMULET[i], 0) < G.AMULET_MAX[i]:
 				amulet_types.append(G.AMULET[i])
 	var hero_chance = G.getv("hero_chance", 1.0) if not classes_to_unlock.empty() else 0
-	var amul_chance = 15 if not amulet_types.empty() else 0
+	var amul_chance = 16 if not amulet_types.empty() else 0
 	var gadget_chance = 4 if not gadget_classes.empty() else 0
 	var sp_chance = 2 if not soul_power_classes.empty() else 0
 	var coins_chance = 100 - hero_chance - gadget_chance - sp_chance - amul_chance
@@ -423,19 +423,19 @@ func _ready():
 	fetch_online_offers()
 	init_iap()
 	$confirm.get_ok().text = "Купить"
-	current_day = Time.get_datetime_dict_from_system()["day"]
+	current_day = Time.get_date_dict_from_system()["day"]
 	current_unix_time = Time.get_unix_time_from_system()
 	show_offers()
 
 
 func show_offers():
-	if G.getv("offers_upd", {"day": 0})["day"] != Time.get_datetime_dict_from_system()["day"] and \
+	if G.getv("offers_upd", {"day": 0})["day"] != Time.get_date_dict_from_system()["day"] and \
 			G.getv("offers_upd_time", Time.get_unix_time_from_system()) <= Time.get_unix_time_from_system():
 		generate_offers()
 		return
 	for i in G.getv("offers", []):
 		show_offer(i["costs"], i["receives"], i["id"], i["name"])
-	if not G.getv("collected_ad_bonus", false) and AdManager.ads_available():
+	if not G.getv("collected_ad_bonus", false) and G.ad.ads_available():
 		var node = load("res://prefabs/menu/offer_ad.scn").instance()
 		$scroll/offers.add_child(node)
 		$scroll/offers.move_child(node, 0)
@@ -657,7 +657,7 @@ func generate_offers():
 				continue
 		if type == 7:
 			#TOKENS
-			if gen.randi_range(1, 2) == 1:
+			if randi() % 2 == 1:
 				#POWER
 				if power_classes.empty():
 					continue
@@ -682,13 +682,13 @@ func generate_offers():
 			var count_of_pt = 0
 			var count_of_ut = 0
 			var cost = 30
-			if gen.randi_range(0, 2) == 0:
+			if randi() % 3 == 1:
 				count_of_pt = 80 + gen.randi_range(0, 1) * 40
 				if count_of_pt == 80:
 					cost += 5
 				else:
 					cost += 8
-			if gen.randi_range(0, 2) == 1:
+			if randi() % 3 == 2:
 				count_of_ut = 20 + gen.randi_range(0, 1) * 10
 				if count_of_ut == 20:
 					cost += 5
@@ -703,7 +703,7 @@ func generate_offers():
 			else:
 				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "tokens" : {what: count_of_pt}, "ulti_tokens" : {what: count_of_ut}}, "id" : i, "name" : "НАБОР КЛАССА"}
 		if type == 9: #WILD TOKENS
-			if gen.randi_range(1, 2) == 1:
+			if randi() % 2 == 1:
 				#POWER
 				if power_classes.empty():
 					continue
@@ -747,7 +747,7 @@ func generate_offers():
 	free_receives.shuffle()
 	G.setv("offers", G.getv("offers", []) + [{"costs":{}, "receives":free_receives[0], "id" : 993, "name" : "ПОДАРОК!"}])
 	G.save()
-	G.setv("offers_upd", Time.get_datetime_dict_from_system())
+	G.setv("offers_upd", Time.get_date_dict_from_system())
 	G.setv("offers_upd_time", Time.get_unix_time_from_system())
 	G.setv("collected_ad_bonus", false)
 	show_offers()
@@ -762,21 +762,21 @@ func fetch_online_offers():
 	http.connect("request_completed", self, "request_online_response", [], CONNECT_ONESHOT)
 	var err = http.request("http://f0695447.xsph.ru/apa2_online.cfg")
 	if err:
-		printerr("fetch failed:", err)
+		print("fetch failed:", err)
 
 
 func request_online_response(result, code, header, body):
 	if result != HTTPRequest.RESULT_SUCCESS:
-		printerr("fetch failed:", result, " ", code)
+		print("fetch failed:", result, " ", code)
 		return
 	yield(get_tree(), "idle_frame")
 	var cf = ConfigFile.new()
 	var err = cf.load_encrypted_pass("user://online_cache.cfg", "apa2_online")
 	if err:
-		printerr("fetch failed:", err)
+		print("fetch failed:", err)
 		return
 	if not cf.has_section("offers"):
-		printerr("fetch failed:", "no offers")
+		print("fetch failed:", "no offers")
 		return
 	for i in cf.get_section_keys("offers"):
 		if int(i) in G.getv("online_offers_used_id", []):
@@ -786,3 +786,8 @@ func request_online_response(result, code, header, body):
 			if not G.getv("save_id", "none") in j["ids"]:
 				continue
 		show_offer(j["costs"], j["receives"], int(i), j["name"])
+
+
+func _exit_tree():
+	var dir = Directory.new()
+	dir.remove("user://online_cache.cfg")

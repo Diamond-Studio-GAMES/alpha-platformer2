@@ -41,9 +41,7 @@ func _ready():
 	if OS.has_feature("HTML5"):
 		$multiplayer_guide.dialog_text = "Мультиплеер не доступен в веб-версии. Установи игру на телефон, чтобы сыграть в него!"
 	var max_lvl = false
-	for i in $levels/levels.get_children():
-		if i.name == "bg":
-			continue
+	for i in $levels/levels/buttons.get_children():
 		i.connect("pressed", self, "play_lvl", [i.name])
 		var nums = i.name.split("_")
 		i.text = nums[0] + "-" + nums[1]
@@ -70,8 +68,8 @@ func play_lvl(lvl = "1_1"):
 func _process(delta):
 	$classes/gems.text = str(G.getv("gems", 20))
 	$shop/gems.text = str(G.getv("gems", 20))
-	$classes/coins.text = str(G.getv("coins", 1000))
-	$shop/coins.text = str(G.getv("coins", 1000))
+	$classes/coins.text = str(G.getv("coins", 0))
+	$shop/coins.text = str(G.getv("coins", 0))
 
 
 func exit():
@@ -374,9 +372,10 @@ func confirm_upgrade():
 	var prev_df = curr_info.get_node("defense/value").text
 	if curr_info.get_node_or_null("attack2/value") != null:
 		curr_info.get_node("attack2/value").self_modulate = Color.white
-	G.setv("coins", G.getv("coins") - (G.getv(selected_class + "_level", 0) * 50 + 50))
-	G.setv(selected_class + "_tokens", G.getv(selected_class + "_tokens") - (G.getv(selected_class + "_level", 0) * 10 + 10))
-	G.setv(selected_class + "_level", G.getv(selected_class + "_level", 0) + 1)
+	G.addv("coins", -(G.getv(selected_class + "_level", 0) * 50 + 50))
+	G.addv(selected_class + "_tokens", -(G.getv(selected_class + "_level", 0) * 10 + 10))
+	G.addv(selected_class + "_level", 1)
+	G.emit_signal("loot_end") # Update offers
 	select_class(selected_class)
 	info(false)
 	var h = curr_info.get_node("health/value").text
@@ -395,7 +394,7 @@ func confirm_upgrade():
 	$upgrade/upgrade/title.text = G.CLASSES[selected_class]
 	for i in $upgrade/upgrade/panels.get_children():
 		i.hide()
-		i.get_node("sfx_value").volume_db = linear2db(0)
+		i.get_node("sfx_value").volume_db = -60
 	$upgrade/upgrade/panel/title.text = "Уровень"
 	$upgrade/upgrade/panel/previous.text = str(G.getv(selected_class + "_level", 0) - 1)
 	$upgrade/upgrade/panel/next.text = str(G.getv(selected_class + "_level", 0))
@@ -403,24 +402,24 @@ func confirm_upgrade():
 	$upgrade/upgrade/panels/panel0/title.text = "Здоровье"
 	$upgrade/upgrade/panels/panel0/previous.text = prev_h
 	$upgrade/upgrade/panels/panel0/next.text = h
-	$upgrade/upgrade/panels/panel0.get_node("sfx_value").volume_db = linear2db(1)
+	$upgrade/upgrade/panels/panel0.get_node("sfx_value").volume_db = 0
 	if int(prev_df) != 0:
 		$upgrade/upgrade/panels/panel1.show()
 		$upgrade/upgrade/panels/panel1/title.text = "Защита"
 		$upgrade/upgrade/panels/panel1/previous.text = prev_df
 		$upgrade/upgrade/panels/panel1/next.text = df
-		$upgrade/upgrade/panels/panel1.get_node("sfx_value").volume_db = linear2db(1)
+		$upgrade/upgrade/panels/panel1.get_node("sfx_value").volume_db = 0
 	$upgrade/upgrade/panels/panel2.show()
 	$upgrade/upgrade/panels/panel2/title.text = "Урон"
 	$upgrade/upgrade/panels/panel2/previous.text = prev_dm
 	$upgrade/upgrade/panels/panel2/next.text = dm
-	$upgrade/upgrade/panels/panel2.get_node("sfx_value").volume_db = linear2db(1)
+	$upgrade/upgrade/panels/panel2.get_node("sfx_value").volume_db = 0
 	if int(prev_dm2) != 0:
 		$upgrade/upgrade/panels/panel3.show()
 		$upgrade/upgrade/panels/panel3/title.text = "Урон(бл.)"
 		$upgrade/upgrade/panels/panel3/previous.text = prev_dm2
 		$upgrade/upgrade/panels/panel3/next.text = dm2
-		$upgrade/upgrade/panels/panel3.get_node("sfx_value").volume_db = linear2db(1)
+		$upgrade/upgrade/panels/panel3.get_node("sfx_value").volume_db = 0
 	$upgrade/upgrade/anim.play("upgrade")
 
 
@@ -476,9 +475,10 @@ func confirm_upgrade_ulti():
 	var prev_uc = ""
 	if curr_info.get_node_or_null("ulti_c/value") != null:
 		prev_uc = curr_info.get_node("ulti_c/value").text
-	G.setv("coins", G.getv("coins") - (G.getv(selected_class + "_ulti_level", 1) * 600 + 600))
-	G.setv(selected_class + "_ulti_tokens", G.getv(selected_class + "_ulti_tokens") - (G.getv(selected_class + "_ulti_level", 1) * 30 + 30))
-	G.setv(selected_class + "_ulti_level", G.getv(selected_class + "_ulti_level", 1) + 1)
+	G.addv("coins", -(G.getv(selected_class + "_ulti_level", 1) * 600 + 600))
+	G.addv(selected_class + "_ulti_tokens", -(G.getv(selected_class + "_ulti_level", 1) * 30 + 30))
+	G.addv(selected_class + "_ulti_level", 1, 1)
+	G.emit_signal("loot_end") # Update offers
 	select_class(selected_class)
 	info(false)
 	var u = curr_info.get_node("ulti/value").text
@@ -495,7 +495,7 @@ func confirm_upgrade_ulti():
 	$upgrade/upgrade/title.text = G.CLASSES[selected_class]
 	for i in $upgrade/upgrade/panels.get_children():
 		i.hide()
-		i.get_node("sfx_value").volume_db = linear2db(0)
+		i.get_node("sfx_value").volume_db = 0
 	$upgrade/upgrade/panel/title.text = "Навык"
 	$upgrade/upgrade/panel/previous.text = str(G.getv(selected_class + "_ulti_level", 1) - 1)
 	$upgrade/upgrade/panel/next.text = str(G.getv(selected_class + "_ulti_level", 1))
@@ -504,13 +504,13 @@ func confirm_upgrade_ulti():
 		$upgrade/upgrade/panels/panel0/title.text = curr_info.get_node("ulti").text
 		$upgrade/upgrade/panels/panel0/previous.text = prev_u
 		$upgrade/upgrade/panels/panel0/next.text = u
-		$upgrade/upgrade/panels/panel0.get_node("sfx_value").volume_db = linear2db(1)
+		$upgrade/upgrade/panels/panel0.get_node("sfx_value").volume_db = 0
 	if not prev_uc.empty() and prev_uc != uc:
 		$upgrade/upgrade/panels/panel1.show()
 		$upgrade/upgrade/panels/panel1/title.text = curr_info.get_node("ulti_c").text
 		$upgrade/upgrade/panels/panel1/previous.text = prev_uc
 		$upgrade/upgrade/panels/panel1/next.text = uc
-		$upgrade/upgrade/panels/panel1.get_node("sfx_value").volume_db = linear2db(1)
+		$upgrade/upgrade/panels/panel1.get_node("sfx_value").volume_db = 0
 	$upgrade/upgrade/anim.play("upgrade")
 
 
@@ -527,12 +527,12 @@ func sell(ulti = false):
 	var coins_mul = 12 if ulti else 3
 	var coins_get = tokens_left * coins_mul
 	select_class(selected_class)
-	var n = load("res://scenes/menu/box.scn").instance()
 	G.receive_loot({"coins":coins_get})
 
 
 func shop(val = true):
 	$shop.visible = val
+	$levels/levels/buttons.visible = not val
 
 
 func help():
@@ -544,5 +544,3 @@ func help():
 func try():
 	G.selected_class_to_test = selected_class
 	G.change_to_scene("res://scenes/levels/test.scn")
-
-

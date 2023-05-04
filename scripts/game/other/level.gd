@@ -7,7 +7,7 @@ export (bool) var testing = false
 onready var pos = $spawn_pos
 var tint
 var pl
-var gen := RandomNumberGenerator.new()
+var gen = RandomNumberGenerator.new()
 
 
 func _enter_tree():
@@ -24,7 +24,7 @@ func _ready():
 	G.setv("hated_death", false)
 	G.setv("go_chance", false)
 	var p
-	if percent_chance(chance) and get_tree().current_scene.name.begins_with("level"): #and not MP.is_active:
+	if percent_chance(chance) and name.begins_with("level"): #and not MP.is_active:
 		print("death")
 		p = load("res://prefabs/classes/death.scn").instance()
 	else:
@@ -35,7 +35,7 @@ func _ready():
 	p.name = "player" + (str(get_tree().get_network_unique_id()) if MP.is_active else "")
 	add_child(p)
 	if has_node("lights"):
-		if not G.getv("beauty_light", true):
+		if G.getv("graphics", 15) & G.Graphics.BEAUTY_LIGHT == 0:
 			for i in $lights.get_children():
 				if i is Light2D:
 					i.hide()

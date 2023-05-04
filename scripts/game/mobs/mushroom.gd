@@ -10,11 +10,9 @@ func _ready():
 	attack_damage = round(stats_multiplier * attack_damage)
 	attack_shape.disabled = true
 	current_health = max_health
-	_hp_count.text = str(current_health) + "/" + str(max_health)
 	_health_bar.max_value = max_health
-	_health_bar.value = current_health
 	_health_change_bar.max_value = max_health
-	_health_change_bar.value = current_health
+	_update_bars()
 	$attack.damage = attack_damage
 	$check.connect("body_entered", self, "append_body")
 	$check.connect("body_exited", self, "remove_body")
@@ -31,9 +29,8 @@ func remove_body(body):
 
 
 func _physics_process(delta):
-	if bodies.empty() or is_stunned or current_health <= 0 or not can_move:
+	if bodies.empty() or is_stunned or current_health <= 0 or is_hurt:
 		attack_shape.set_deferred("disabled", true)
 		return
-#	_anim_tree["parameters/attack_seek/seek_position"] = 0
 	_anim_tree["parameters/attack_shot/active"] = true
 	attack_shape.set_deferred("disabled", false)

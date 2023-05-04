@@ -57,6 +57,7 @@ func shoot():
 		node.speed = bullet_speed
 		node.damage = damage
 		node.bullet_lifetime = bullet_lifetime
+		node.by_who = player.player_name
 		player.get_parent().add_child(node, true)
 	delay_timer = shoot_delay
 	ammo -= 1

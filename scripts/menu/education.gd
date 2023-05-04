@@ -1,9 +1,6 @@
 extends Control
 
 
-func _enter_tree():
-	pass
-
 export (NodePath) var next_edu = null
 export (bool) var first = false
 var next = null

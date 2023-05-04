@@ -17,12 +17,12 @@ var id_to_delete = ""
 
 
 func _ready():
-	if not G.file.has_section_key("main", "volume"):
-		G.file.set_value("main", "volume", 0.75)
-		G.file.set_value("main", "volume_sfx", 1)
-		G.file.set_value("main", "fullscr", false)
-		G.file.set_value("main", "fps", false)
-	TranslationServer.set_locale(G.file.get_value("main", "lang", "ru"))
+	if G.main_getv("volume", -1) < 0:
+		G.main_setv( "volume", 0.75)
+		G.main_setv( "volume_sfx", 1)
+		G.main_setv( "fullscr", false)
+		G.main_setv( "fps", false)
+	TranslationServer.set_locale(G.main_getv( "lang", "ru"))
 	$delete_window.get_label().align = Label.ALIGN_CENTER
 	$delete_window.get_cancel().text = tr("sl.delete.no")
 	$delete_window.get_ok().text = tr("sl.delete.yes")
@@ -35,13 +35,13 @@ func _ready():
 	$enter_color.color = Color.black
 	$enter.interpolate_property($enter_color, "color", Color(0, 0, 0, 1), Color(0, 0, 0, 0), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.5)
 	$enter.start()
-	$settings/mv_s.value = G.file.get_value("main", "volume", 0.75)
-	$settings/sfxv_s.value = G.file.get_value("main", "volume_sfx", 1)
-	$settings/fullscr.pressed = G.file.get_value("main", "fullscr", false)
-	$settings/fps.pressed = G.file.get_value("main", "fps", false)
-	$misc/check_upd.pressed = G.file.get_value("main", "check_upd", true)
-	$misc/check_patch.pressed = G.file.get_value("main", "check_patches", true)
-	$misc/check_beta.pressed = G.file.get_value("main", "check_beta", not G.VERSION_STATUS.empty())
+	$settings/mv_s.value = G.main_getv( "volume", 0.75)
+	$settings/sfxv_s.value = G.main_getv( "volume_sfx", 1)
+	$settings/fullscr.pressed = G.main_getv( "fullscr", false)
+	$settings/fps.pressed = G.main_getv( "fps", false)
+	$misc/check_upd.pressed = G.main_getv( "check_upd", true)
+	$misc/check_patch.pressed = G.main_getv( "check_patches", true)
+	$misc/check_beta.pressed = G.main_getv( "check_beta", not G.VERSION_STATUS.empty())
 	$create/name.placeholder_text = tr("sl.create.pname")
 	$create/name.set_message_translation(false)
 	$create/name.notification(NOTIFICATION_TRANSLATION_CHANGED)
@@ -52,20 +52,30 @@ func list_saves():
 	$saves/empty_text.hide()
 	for i in $saves/scroll/saves.get_children():
 		i.queue_free()
+	var dir = Directory.new()
+	dir.open("user://saves/")
+	dir.list_dir_begin(true)
+	var list = []
+	var filename = dir.get_next()
+	while filename != "":
+		if not dir.current_is_dir():
+			list.append(filename)
+		filename = dir.get_next()
+	if list != G.main_getv("saves_list", []):
+		reload_meta_from_saves()
+		G.main_setv("saves_list", list)
 	var list_of_saves = []
-	list_of_saves = Array(G.file.get_sections())
-	if list_of_saves.has("main"):
-		list_of_saves.erase("main")
+	list_of_saves = get_save_ids_list()
 	if list_of_saves.size() <= 0:
 		$saves/empty_text.show()
 		return
 	for i in list_of_saves:
 		var node = save_obj.instance()
-		node.get_node("name").text = G.file.get_value(i, "name", "???")
-		var date = G.file.get_value(i, "last_opened", Time.get_datetime_dict_from_system())
+		node.get_node("name").text = G.get_save_meta(i, "name", "???")
+		var date = G.get_save_meta(i, "last_opened", Time.get_date_dict_from_system())
 		var date_str = "%02d/%02d/%d" % [date["day"], date["month"], date["year"]]
 		node.get_node("date").text = date_str
-		node.get_node("soul").self_modulate = G.SOUL_COLORS[G.file.get_value(i, "soul_type", 6)]
+		node.get_node("soul").self_modulate = G.SOUL_COLORS[G.get_save_meta(i, "soul_type", 6)]
 		node.get_node("play").connect("pressed", self, "play", [i])
 		node.get_node("copy").connect("pressed", self, "duplicate_save", [i])
 		node.get_node("delete").connect("pressed", self, "delete_save", [i])
@@ -79,37 +89,37 @@ func _process(delta):
 		soul.self_modulate = G.SOUL_COLORS[$create/soul_type.selected]
 	else:
 		soul.self_modulate = Color.red
-	if $create/name.text.strip_edges().empty() or G.file.has_section($create/name.text.strip_edges().to_lower()):
+	if $create/name.text.strip_edges().empty():
 		$create/create.disabled = true
 	else:
 		$create/create.disabled = false
 	
-	G.file.set_value("main", "volume", $settings/mv_s.value)
-	G.file.set_value("main", "volume_sfx", $settings/sfxv_s.value)
+	G.main_setv( "volume", $settings/mv_s.value)
+	G.main_setv( "volume_sfx", $settings/sfxv_s.value)
 	if OS.has_feature("pc"):
-		G.file.set_value("main", "fullscr", $settings/fullscr.pressed)
+		G.main_setv( "fullscr", $settings/fullscr.pressed)
 		OS.window_fullscreen = $settings/fullscr.pressed
 	else:
 		$settings/fullscr.visible = false
-	G.file.set_value("main", "check_upd", $misc/check_upd.pressed)
-	G.file.set_value("main", "check_patches", $misc/check_patch.pressed)
-	G.file.set_value("main", "check_beta", $misc/check_beta.pressed)
+	G.main_setv( "check_upd", $misc/check_upd.pressed)
+	G.main_setv( "check_patches", $misc/check_patch.pressed)
+	G.main_setv( "check_beta", $misc/check_beta.pressed)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("music"), linear2db($settings/mv_s.value))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("sfx"), linear2db($settings/sfxv_s.value))
 
 
 func fps_button_changed(state):
 	G.fps_text.visible = state
-	G.file.set_value("main", "fps", state)
+	G.main_setv( "fps", state)
 
 
 func create():
-	var id = $create/name.text.strip_edges().to_lower()
-	G.current_save = id
-	G.setv("save_id", make_id(G.current_save))
-	G.setv("last_opened", Time.get_datetime_dict_from_system())
+	var id = make_id($create/name.text.strip_edges().to_lower())
+	G.open_save(id)
+	G.setv("save_id", id)
+	G.setv("last_opened", Time.get_date_dict_from_system())
 	G.setv("name", $create/name.text)
-	G.setv("create_date", Time.get_datetime_dict_from_system())
+	G.setv("create_date", Time.get_date_dict_from_system())
 	if $create/male.pressed:
 		G.setv("gender", "male")
 	else:
@@ -121,9 +131,9 @@ func create():
 		G.setv("soul_type", 6)
 	G.setv("gems", 10)
 	G.setv("coins", 0)
-	G.setv("volume", G.file.get_value("main", "volume", 0.75))
-	G.setv("volume_sfx", G.file.get_value("main", "volume_sfx", 1))
-	G.setv("lang", G.file.get_value("main", "lang", OS.get_locale_language()))
+	G.setv("volume", G.main_getv( "volume", 0.75))
+	G.setv("volume_sfx", G.main_getv( "volume_sfx", 1))
+	G.setv("lang", G.main_getv( "lang", OS.get_locale_language()))
 	G.setv("hero_chance", 2)
 	$enter.interpolate_property($enter_color, "color", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 2)
 	$enter.start()
@@ -135,10 +145,9 @@ func create():
 
 
 func play(id):
-	G.current_save = id
-	G.setv("last_opened", Time.get_datetime_dict_from_system())
-	if G.getv("save_id", "0") == "0":
-		G.setv("save_id", make_id(G.current_save))
+	G.open_save(id)
+	G.setv("last_opened", Time.get_date_dict_from_system())
+	G.set_save_meta(id, "last_opened", Time.get_date_dict_from_system())
 	G.save()
 	$enter.interpolate_property($enter_color, "color", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 1)
 	$enter.start()
@@ -214,19 +223,19 @@ func enter_settings():
 
 
 func lang():
-	if G.file.get_value("main", "lang", "ru") == "ru":
-		G.file.set_value("main", "lang", "en")
+	if G.main_getv( "lang", "ru") == "ru":
+		G.main_setv( "lang", "en")
 		G.save()
-		TranslationServer.set_locale(G.file.get_value("main", "lang", "en"))
+		TranslationServer.set_locale(G.main_getv( "lang", "en"))
 	else:
-		G.file.set_value("main", "lang", "ru")
+		G.main_setv( "lang", "ru")
 		G.save()
-		TranslationServer.set_locale(G.file.get_value("main","lang", "ru"))
+		TranslationServer.set_locale(G.main_getv("lang", "ru"))
 	get_tree().reload_current_scene()
 
 
 func delete_save(id):
-	$delete_window.get_label().text = tr("sl.delete.text") + " \"" + G.file.get_value(id, "name", "") + "\"?"
+	$delete_window.get_label().text = tr("sl.delete.text") + " \"" + G.get_save_meta(id, "name", "") + "\"?"
 	$delete_window.popup_centered()
 	$delete_window.get_ok().release_focus()
 	$enter_color.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -243,11 +252,10 @@ func cancel():
 
 
 func confirm_delete():
-	G.file.erase_section(id_to_delete)
-	G.save()
 	var dir = Directory.new()
-	if dir.file_exists("user://custom_level_" + str(G.current_save.hash()) + ".scn"):
-		dir.remove("user://custom_level_" + str(G.current_save.hash()) + ".scn")
+	dir.remove("user://saves/".plus_file(id_to_delete + ".apa2save"))
+	if dir.file_exists("user://custom_levels/" + id_to_delete + ".scn"):
+		dir.remove("user://custom_levels/" + id_to_delete + ".scn")
 	list_saves()
 	$enter_color.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
@@ -257,8 +265,8 @@ func remove_patches():
 	var path = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir()
 	if dir.file_exists(path.plus_file("apa2_patch.pck")):
 		dir.remove(path.plus_file("apa2_patch.pck"))
-	G.file.set_value("main", "patch_version", 0)
-	G.file.set_value("main", "patch_code", 0)
+	G.main_setv( "patch_version", 0)
+	G.main_setv( "patch_code", 0)
 
 
 func quit():
@@ -266,16 +274,45 @@ func quit():
 	get_tree().quit()
 
 
+func get_save_ids_list():
+	var list = Array(G.main_file.get_sections())
+	list.erase("config")
+	return list
+
+
+func reload_meta_from_saves():
+	for i in G.main_file.get_sections():
+		if i == "config":
+			continue
+		G.main_file.erase_section(i)
+	var dir = Directory.new()
+	dir.open("user://saves/")
+	dir.list_dir_begin(true)
+	var filename = dir.get_next()
+	while filename != "":
+		if not dir.current_is_dir():
+			var cf = ConfigFile.new()
+			var err = cf.load_encrypted_pass("user://saves/".plus_file(filename), "apa2_save")
+			if err:
+				filename = dir.get_next()
+				continue
+			var id = cf.get_value("save", "save_id", "nn")
+			G.set_save_meta(id, "last_opened", cf.get_value("save", "last_opened", Time.get_date_dict_from_system()))
+			G.set_save_meta(id, "name", cf.get_value("save", "name", "Michail"))
+			G.set_save_meta(id, "soul_type", cf.get_value("save", "soul_type", 1))
+		filename = dir.get_next()
+
+
 func duplicate_save(id):
 	randomize()
-	var keys = Array(G.file.get_section_keys(id))
-	var new_id = id + str(randi()%10000)
-	for i in keys:
-		G.file.set_value(new_id, i, G.file.get_value(id, i))
-	G.file.set_value(new_id, "save_id", "0")
-	G.file.set_value(new_id, "name", G.file.get_value(new_id, "name", "") + " (копия)")
-	G.save()
+	var cf = ConfigFile.new()
+	cf.load_encrypted_pass("user://saves/".plus_file(id + ".apa2save"), "apa2_save")
+	cf.set_value("save", "name", (cf.get_value("save", "name", "...") + " (копия)").substr(0, 16))
+	var new_id = make_id(cf.get_value("save", "name", "..."))
+	cf.set_value("save", "save_id", new_id)
+	cf.save_encrypted_pass("user://saves/".plus_file(new_id + ".apa2save"), "apa2_save")
 	list_saves()
+
 
 func make_id(save_name):
 	randomize()

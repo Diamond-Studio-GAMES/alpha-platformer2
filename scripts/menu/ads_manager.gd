@@ -18,7 +18,8 @@ enum ShowStyle {
 }
 
 
-var ad_counter = 0
+var ad_counter_win = 0
+var ad_counter_go = 0
 var appodeal
 
 signal rewarded_video_finished(amount, currency)
@@ -52,7 +53,7 @@ func initialize(age):
 
 func showInterstitial():
 	print("Showing Interstitial...")
-	if G.file.get_value("main", "no_ads", false):
+	if G.main_getv( "no_ads", false):
 		print("ABORTING: ADS REMOVED!")
 		return
 	if appodeal == null:

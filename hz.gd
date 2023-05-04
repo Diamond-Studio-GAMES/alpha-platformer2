@@ -1,6 +1,6 @@
-extends Node2D
+extends EditorScript
 tool
 
-func _init():
-	print(global_scale)
-	print("hello blyat")
+
+func _run():
+	pass

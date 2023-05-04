@@ -1,9 +1,6 @@
 extends Node2D
 
 
-func _enter_tree():
-	pass
-
 func _ready():
 	if G.getv("gender", "male") == "male":
 		$visual/body/head/hair/hair_man.show()

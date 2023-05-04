@@ -34,16 +34,16 @@ func _ready():
 func _process(delta):
 	if timer == null:
 		return
-	if shake_timer >= 0.2 and player.current_health > 0:
-		player_camera.offset_h = rand_range(-0.03, 0.03)
-		player_camera.offset_v = rand_range(-0.03, 0.03)
 	if player.current_health > 0:
 		timer_time -= delta
+		if shake_timer >= 0.2:
+			player_camera.offset_h = rand_range(-0.03, 0.03)
+			player_camera.offset_v = rand_range(-0.03, 0.03)
+		if timer_time <= 0 and not won:
+			won = true
+			player.make_dialog("ТЫ ПОБЕДИЛ!", 2, Color.red)
 	shake_timer += delta
 	timer.value = timer_time
-	if timer_time <= 0 and not won and player.current_health > 0:
-		won = true
-		player.make_dialog("ТЫ ПОБЕДИЛ!", 2, Color.red)
 	if won:
 		win_timer -= delta
 		if win_timer <= 0 and not reward_claimed:
