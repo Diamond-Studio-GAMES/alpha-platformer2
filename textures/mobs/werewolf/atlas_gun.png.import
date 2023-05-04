@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/atlas_gun.png-755d38966d276555079ad2e5cf060d3b.stex"
+path="res://.import/atlas_gun.png-9a8617345a0313532e531a23b055f5bf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/minigame4/textures/atlas_gun.png"
-dest_files=[ "res://.import/atlas_gun.png-755d38966d276555079ad2e5cf060d3b.stex" ]
+source_file="res://textures/mobs/werewolf/atlas_gun.png"
+dest_files=[ "res://.import/atlas_gun.png-9a8617345a0313532e531a23b055f5bf.stex" ]
 
 [params]
 

@@ -99,6 +99,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/game/mobs/mechanic.gd"
 }, {
+"base": "Player",
+"class": "MinigameHero",
+"language": "GDScript",
+"path": "res://minigames/minigame4/hero.gd"
+}, {
 "base": "Entity",
 "class": "Mob",
 "language": "GDScript",
@@ -218,6 +223,7 @@ _global_script_class_icons={
 "KnightMob": "",
 "Lobby": "",
 "Mechanic": "res://textures/mobs/mechanic/head.res",
+"MinigameHero": "",
 "Mob": "res://textures/mobs/mechanic/transform_eye.res",
 "Multiplayer": "",
 "MultiplayerGame": "",

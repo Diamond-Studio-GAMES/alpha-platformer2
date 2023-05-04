@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gun.png-1b7f5dfff80c35673659f7c93e5c8f2a.stex"
+path="res://.import/gun.png-10c9a2e10c0823aeee558018a6776bb5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/minigame4/textures/gun.png"
-dest_files=[ "res://.import/gun.png-1b7f5dfff80c35673659f7c93e5c8f2a.stex" ]
+source_file="res://textures/mobs/werewolf/gun.png"
+dest_files=[ "res://.import/gun.png-10c9a2e10c0823aeee558018a6776bb5.stex" ]
 
 [params]
 

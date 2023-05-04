@@ -6,6 +6,7 @@ var is_revived = false
 var is_gived_up = false
 var is_multiplayer = false
 var is_screen_on = false
+signal gived_up
 
 
 func _ready():
@@ -50,6 +51,7 @@ func revive_button():
 func give_up():
 	if is_gived_up:
 		return
+	emit_signal("gived_up")
 	if MP.is_active:
 		$"/root/mg".state = 3
 		MP.close_network()

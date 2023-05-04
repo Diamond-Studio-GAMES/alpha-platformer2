@@ -15,6 +15,7 @@ func _ready():
 
 func _physics_process(delta):
 	if node == null:
+		queue_free()
 		return
 	if inherit_visibility:
 		visible = node.visible

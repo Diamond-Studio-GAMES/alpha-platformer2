@@ -24,7 +24,7 @@ func _ready():
 	G.setv("hated_death", false)
 	G.setv("go_chance", false)
 	var p
-	if percent_chance(chance) and get_tree().current_scene.name.begins_with("level"): #and not MP.is_active:
+	if percent_chance(chance) and name.begins_with("level"): #and not MP.is_active:
 		print("death")
 		p = load("res://prefabs/classes/death.scn").instance()
 	else:
