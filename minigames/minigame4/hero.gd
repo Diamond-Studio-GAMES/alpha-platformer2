@@ -298,7 +298,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 func add_max_health(amount, cost = 0):
 	max_health += amount
 	_update_all_bars()
-	heal(amount)
+	heal(max_health)
 	if cost > 0:
 		add_coins(-cost)
 
@@ -312,6 +312,9 @@ func add_defense(amount, cost = 0):
 func add_armor(amount, cost = 0):
 	max_armor += amount
 	current_armor = max_armor
+	_armor_timer.paused = false
+	_armor_timer.stop()
+	_armor_indicator.hide()
 	_update_all_bars()
 	if cost > 0:
 		add_coins(-cost)

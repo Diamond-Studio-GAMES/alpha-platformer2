@@ -17,6 +17,7 @@ var cached_ip = ""
 var cached_suff = 0
 var custom_respawn_scene = ""
 var dialog_in_menu = ""
+var time_scale_change = 1
 var fps_text
 var music
 var time_timer
@@ -227,7 +228,7 @@ func _notification(what):
 		NOTIFICATION_APP_PAUSED, NOTIFICATION_PAUSED, \
 		NOTIFICATION_WM_GO_BACK_REQUEST, NOTIFICATION_WM_UNFOCUS_REQUEST, \
 		NOTIFICATION_WM_QUIT_REQUEST, NOTIFICATION_EXIT_TREE:
-#			Engine.time_scale = 0.1
+			Engine.time_scale = time_scale_change
 			save()
 
 

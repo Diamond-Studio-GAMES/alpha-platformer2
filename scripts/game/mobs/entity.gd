@@ -161,7 +161,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 	if difference > 0:
 		yield(get_tree().create_timer(difference, false), "timeout")
 	hurt_counter -= 1
-	if current_health > 0 and not is_stunned and hurt_counter < 1:
+	if not died and not is_stunned and hurt_counter < 1:
 		_head.texture = _head_sprite
 	return died
 
