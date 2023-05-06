@@ -100,7 +100,10 @@ func check_for_end():
 	if alive_players.empty():
 		state = State.END
 		get_tree().call_group("player", "remove_from_group", "spawnable")
-		yield(get_tree().create_timer(4), "timeout")
+		if get_tree().is_network_server():
+			yield(get_tree().create_timer(4), "timeout")
+		else:
+			yield(get_tree().create_timer(2), "timeout")
 		get_tree().get_nodes_in_group("player")[0].end_game()
 
 

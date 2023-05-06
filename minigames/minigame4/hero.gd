@@ -212,6 +212,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 			return
 	if fatal:
 		current_health = 0
+		current_armor = 0
 		damage = max_health
 	is_hurt = true
 	hurt_counter += 1
