@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/red_world.ogg-5600e6d48aa720100bedeadc3faf8e1e.oggstr"
+
+[deps]
+
+source_file="res://sounds/music/red_world.ogg"
+dest_files=[ "res://.import/red_world.ogg-5600e6d48aa720100bedeadc3faf8e1e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
