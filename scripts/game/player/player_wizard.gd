@@ -106,7 +106,7 @@ func throw(direction):
 	ms.sync_call(self, "throw", [direction])
 	can_attack = false
 	_is_attacking = true
-	speed_cooficent = 0.5
+	speed_cooficent *= 0.5
 	if MP.auth(self):
 		RECHARGE_SPEED = 1.6 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
 	can_turn = false
@@ -139,7 +139,7 @@ func throw(direction):
 		_level.add_child(node, true)
 	yield(get_tree().create_timer(0.167, false), "timeout")
 	_is_attacking = false
-	speed_cooficent = 1
+	speed_cooficent /= 0.5
 	can_turn = true
 
 

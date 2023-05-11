@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/game/player/player_death.gd"
 }, {
+"base": "Mob",
+"class": "Doctor",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/doctor.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Entity",
 "language": "GDScript",
@@ -213,33 +218,34 @@ _global_script_class_icons={
 "Butcher": "",
 "Dasher": "",
 "Death": "",
+"Doctor": "",
 "Entity": "",
 "FireAttack": "res://textures/blocks/fireMask.png",
 "Garden": "",
 "Globals": "res://textures/gui/alpha_text.png",
 "Heal": "res://textures/effects/other/heal_plus.png",
-"KnifeMan": "res://textures/mobs/knife_man/head.res",
+"KnifeMan": "",
 "Knight": "",
 "KnightMob": "",
 "Lobby": "",
-"Mechanic": "res://textures/mobs/mechanic/head.res",
+"Mechanic": "",
 "MinigameHero": "",
-"Mob": "res://textures/mobs/mechanic/transform_eye.res",
+"Mob": "",
 "Multiplayer": "",
 "MultiplayerGame": "",
 "MultiplayerSpawnable": "",
 "MultiplayerSynchronizer": "",
-"Mushroom": "res://textures/mobs/mushroom/mushroom.res",
+"Mushroom": "",
 "Night": "",
 "PlantResource": "res://minigames/minigame6/resources/seed_packet_legendary.png",
 "Player": "",
 "PlayerPlayer": "",
 "Promocode": "res://textures/gui/promocodes.png",
 "Pushable": "res://textures/blocks/ladder.png",
-"Shooter": "res://textures/mobs/shooter/head.res",
+"Shooter": "",
 "ShooterPlayer": "",
 "Spearman": "",
-"Sportsman": "res://textures/mobs/knife_man/head.res",
+"Sportsman": "",
 "Throwable": "",
 "Trail2D": "",
 "VirtualJoystick": "",
@@ -278,11 +284,6 @@ gdscript/warnings/enable=false
 gdscript/warnings/unused_class_variable=true
 gdscript/warnings/unused_argument=false
 gdscript/warnings/return_value_discarded=false
-multirun/number_of_windows=2
-multirun/window_distance=1270
-multirun/add_custom_args=true
-multirun/first_window_args="listen"
-multirun/other_window_args="join"
 
 [display]
 
@@ -299,7 +300,7 @@ scene_naming=2
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/multirun/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [importer_defaults]
 

@@ -1,5 +1,5 @@
 extends Mob
-class_name Mushroom, "res://textures/mobs/mushroom/mushroom.res"
+class_name Mushroom
 
 
 onready var attack_shape = $attack/shape

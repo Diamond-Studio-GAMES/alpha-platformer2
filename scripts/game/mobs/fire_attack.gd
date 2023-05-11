@@ -3,8 +3,19 @@ class_name FireAttack, "res://textures/blocks/fireMask.png"
 
 
 export (bool) var is_on_entity = false
-var fire_on_entity = load("res://prefabs/effects/fire_on_entity.scn")
+export (String) var on_entity_node_name = "fire_on_entity"
+export (int) var on_entity_damage_ticks = 5
+export (int) var on_entity_damage = -1
+export (String, FILE) var custom_path = "" 
+var fire_on_entity
 var counter = 0
+
+
+func _ready():
+	if custom_path.empty():
+		fire_on_entity = load("res://prefabs/effects/fire_on_entity.scn")
+	else:
+		fire_on_entity = load(custom_path)
 
 
 func add_body(node):
@@ -24,13 +35,15 @@ func deal_damage(node):
 		return
 	if is_on_entity:
 		counter += 1
-		if counter >= 5:
+		if counter >= on_entity_damage_ticks:
 			queue_free()
 	else:
-		if node.has_node("fire_on_entity"):
-			node.get_node("fire_on_entity").counter = 0
+		if node.has_node(on_entity_node_name):
+			node.get_node(on_entity_node_name).counter = 0
 		else:
 			var n = fire_on_entity.instance()
-			n.name = "fire_on_entity"
+			n.name = on_entity_node_name
+			if on_entity_damage > 0:
+				n.damage = on_entity_damage
 			node.add_child(n, true)
 	

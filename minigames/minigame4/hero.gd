@@ -94,7 +94,7 @@ func throw(direction):
 	can_attack = false
 	_is_attacking = true
 	can_turn = false
-	speed_cooficent = 0.5
+	speed_cooficent *= 0.5
 	RECHARGE_SPEED = 1
 	attack_cooldown = RECHARGE_SPEED + 0.55
 	var phi = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
@@ -125,7 +125,7 @@ func throw(direction):
 	_level.add_child(node, true)
 	yield(get_tree().create_timer(0.2, false), "timeout")
 	_is_attacking = false
-	speed_cooficent = 1
+	speed_cooficent /= 0.5
 	can_turn = true
 
 

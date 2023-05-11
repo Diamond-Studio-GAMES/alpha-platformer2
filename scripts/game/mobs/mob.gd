@@ -1,5 +1,5 @@
 extends Entity
-class_name Mob, "res://textures/mobs/mechanic/transform_eye.res"
+class_name Mob
 
 # HEALTH
 export (bool) var immune_to_fall_damage = false

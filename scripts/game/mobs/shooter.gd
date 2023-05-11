@@ -1,5 +1,5 @@
 extends Mob
-class_name Shooter, "res://textures/mobs/shooter/head.res"
+class_name Shooter
 
 
 export (float) var min_distance = 100
@@ -31,7 +31,7 @@ func attack():
 	ms.sync_call(self, "attack")
 	find_target()
 	can_turn = false
-	speed_cooficent = 0.3
+	speed_cooficent *= 0.3
 	var direction = global_position.direction_to(player.global_position)
 	var phi = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
 	var hand_rotate = rad2deg(phi)
@@ -58,7 +58,7 @@ func attack():
 			_level.add_child(node, true)
 			yield(get_tree().create_timer(0.05, false), "timeout")
 	yield(get_tree().create_timer(0.1, false), "timeout")
-	speed_cooficent = 1
+	speed_cooficent /= 0.3
 	can_turn = true
 
 

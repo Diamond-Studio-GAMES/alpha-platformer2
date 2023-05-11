@@ -113,7 +113,7 @@ func throw(direction):
 	can_attack = false
 	_is_attacking = true
 	can_turn = false
-	speed_cooficent = 0.5
+	speed_cooficent *= 0.5
 	if MP.auth(self):
 		RECHARGE_SPEED = 1.7 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
 	attack_cooldown = RECHARGE_SPEED + 0.9
@@ -140,7 +140,7 @@ func throw(direction):
 		node.get_node("attack").damage = G.getv("spearman_level", 0) * 4 + 20  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 		_level.add_child(node, true)
 	_is_attacking = false
-	speed_cooficent = 1
+	speed_cooficent /= 0.5
 	yield(get_tree(), "idle_frame")
 	can_turn = true
 

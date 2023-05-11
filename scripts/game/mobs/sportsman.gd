@@ -1,5 +1,5 @@
 extends Mob
-class_name Sportsman, "res://textures/mobs/knife_man/head.res"
+class_name Sportsman
 
 
 onready var attack_visual = $visual/body/knife_attack/visual

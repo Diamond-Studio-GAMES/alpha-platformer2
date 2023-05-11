@@ -98,7 +98,7 @@ func joystick_released(output):
 func reset_aim():
 	jout = Vector2.ZERO
 	if is_aiming:
-		speed_cooficent = 1
+		speed_cooficent /= 0.5
 		can_turn = true
 		is_aiming = false
 		_anim_tree["parameters/aim_ts/scale"] = -1 if aim_time < 0.55 else 1
@@ -210,9 +210,9 @@ func _process(delta):
 			jout = joystick._output
 		if cjo != jout and jout.length_squared() > 0:
 			is_aiming = true
-			speed_cooficent = 0.5
 			can_turn = false
 			if _anim_tree["parameters/aim_blend/blend_amount"] == 0:
+				speed_cooficent *= 0.5
 				_anim_tree["parameters/aim_ts/scale"] = 1
 				_anim_tree["parameters/aim_seek/seek_position"] = 0
 				_aim_tween.stop_all()
