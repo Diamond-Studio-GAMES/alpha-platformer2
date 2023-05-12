@@ -184,6 +184,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/game/player/player_spearman.gd"
 }, {
+"base": "Area2D",
+"class": "SpeedChange",
+"language": "GDScript",
+"path": "res://scripts/game/other/speed_change.gd"
+}, {
 "base": "Mob",
 "class": "Sportsman",
 "language": "GDScript",
@@ -245,6 +250,7 @@ _global_script_class_icons={
 "Shooter": "",
 "ShooterPlayer": "",
 "Spearman": "",
+"SpeedChange": "",
 "Sportsman": "",
 "Throwable": "",
 "Trail2D": "",
