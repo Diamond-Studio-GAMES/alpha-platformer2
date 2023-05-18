@@ -89,17 +89,10 @@ func _input(event):
 		return
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == BUTTON_LEFT:
-			if not is_showing_loot:
-				if not started_opening:
-					match box_type:
-						BoxType.STANDARD:
-							box_anim.play("open")
-						BoxType.BIG:
-							box_anim2.play("open")
-						BoxType.MEGA:
-							box_anim3.play("open")
-				started_opening = true
-			emit_signal("next")
+			click()
+	elif event is InputEventKey:
+		if event.pressed and event.scancode == KEY_SPACE:
+			click()
 
 
 func _process(delta):
@@ -110,6 +103,20 @@ func _process(delta):
 		item_counter_label.text = "ОСТАЛОСЬ БОНУСОВ:"
 	item_counter_glow.visible = glow_items > 0
 	item_counter_count.text = str(items - 1)
+
+
+func click():
+	if not is_showing_loot:
+		if not started_opening:
+			match box_type:
+				BoxType.STANDARD:
+					box_anim.play("open")
+				BoxType.BIG:
+					box_anim2.play("open")
+				BoxType.MEGA:
+					box_anim3.play("open")
+		started_opening = true
+	emit_signal("next")
 
 
 func show_loot(what):
