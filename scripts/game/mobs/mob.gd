@@ -59,8 +59,8 @@ func _ready():
 		player_distance = global_position.distance_squared_to(player.global_position)
 
 
-func find_target():
-	if find_target_timer <= 0:
+func find_target(force = false):
+	if find_target_timer <= 0 or force:
 		find_target_timer = reaction_speed
 	else:
 		return

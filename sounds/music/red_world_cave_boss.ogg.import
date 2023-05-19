@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/red_world_cave_boss.ogg-d7d59a06ef85b8c95b0c526b1038e0c2.oggstr"
+
+[deps]
+
+source_file="res://sounds/music/red_world_cave_boss.ogg"
+dest_files=[ "res://.import/red_world_cave_boss.ogg-d7d59a06ef85b8c95b0c526b1038e0c2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

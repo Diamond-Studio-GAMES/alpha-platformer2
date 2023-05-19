@@ -16,6 +16,7 @@ var player_target = null
 var death_dialog = ""
 var mercy_dialog = ""
 var fill_x = 0
+var fill_height = 30
 var tp_pos = Vector2()
 var next_attack_time_min = 1
 var next_attack_time_max = 2
@@ -51,7 +52,7 @@ func start_fight():
 	player.default_camera_zoom = Vector2(0.6, 0.6)
 	boss_bar.show()
 	var tilemap = $"../../tilemap"
-	for i in range(-30, 0):
+	for i in range(-fill_height, 0):
 		tilemap.set_cell(fill_x, i, 5)
 	move_player_to_start()
 	if MP.is_active:

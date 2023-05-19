@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sword_swipe.png-be5410ae2d8d0df6c2716fe2d571a278.stex"
+path="res://.import/sword_swipe.png-f0715f84254c584d445c541151dd75ea.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/mobs/great_knight/sword_swipe.png"
-dest_files=[ "res://.import/sword_swipe.png-be5410ae2d8d0df6c2716fe2d571a278.stex" ]
+source_file="res://textures/effects/attacks/sword_swipe.png"
+dest_files=[ "res://.import/sword_swipe.png-f0715f84254c584d445c541151dd75ea.stex" ]
 
 [params]
 
