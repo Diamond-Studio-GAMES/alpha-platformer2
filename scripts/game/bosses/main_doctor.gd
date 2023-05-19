@@ -3,6 +3,7 @@ extends Boss
 
 var alive_doctors = []
 var doctor = load("res://prefabs/bosses/doctor_boss.scn")
+var knife = load("res://prefabs/bosses/doctor_knife.scn")
 onready var spawn_pos = $doctor_spawn_pos
 
 
@@ -71,7 +72,16 @@ func heal():
 
 
 func throw():
-	pass
+	ms.sync_call(self, "throw")
+	anim.play("throw")
+	next_attack_time += 2.5
+	yield(get_tree().create_timer(0.9, false), "timeout")
+	if MP.auth(self):
+		mob.find_target(true)
+		var n = knife.instance()
+		n.global_position = $visual/body/arm_right/hand/weapon.global_position
+		get_tree().current_scene.add_child(n, true)
+		n.look_at(mob.player.global_position)
 
 
 func swipes():
