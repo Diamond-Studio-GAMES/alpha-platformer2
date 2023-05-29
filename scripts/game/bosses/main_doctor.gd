@@ -4,7 +4,10 @@ extends Boss
 var alive_doctors = []
 var doctor = load("res://prefabs/bosses/doctor_boss.scn")
 var knife = load("res://prefabs/bosses/doctor_knife.scn")
+var swipe = load("res://prefabs/bosses/doctor_swipe.scn")
+onready var timer = $swipe_timer
 onready var spawn_pos = $doctor_spawn_pos
+onready var spawn_poses = [$swipe_pos0.global_position, $swipe_pos1.global_position, $swipe_pos2.global_position]
 
 
 func _ready():
@@ -32,8 +35,19 @@ func death():
 
 
 func do_attack():
-	attacks.shuffle()
-	call(attacks[0])
+	var targ_dist = global_position.distance_squared_to(mob.player.global_position)
+	if targ_dist < 5625:
+		melee()
+		return
+	else:
+		attacks.shuffle()
+		call(attacks[0])
+
+
+func melee():
+	ms.sync_call(self, "melee")
+	next_attack_time += 1
+	anim.play("melee")
 
 
 func summon():
@@ -85,4 +99,42 @@ func throw():
 
 
 func swipes():
-	pass
+	ms.sync_call(self, "swipes")
+	next_attack_time += 3
+	var angry = false
+	if mob.current_health < mob.max_health / 2:
+		angry = true
+		next_attack_time += 1.6
+	spawn_poses.shuffle()
+	create_swipe(spawn_poses[0])
+	timer.start(0.9)
+	yield(timer, "timeout")
+	anim.play("swipe")
+	timer.start(0.5)
+	yield(timer, "timeout")
+	create_swipe(spawn_poses[2])
+	timer.start(0.9)
+	yield(timer, "timeout")
+	anim.play_backwards("swipe")
+	timer.start(0.5)
+	yield(timer, "timeout")
+	if not angry:
+		timer.start(0.2)
+		yield(timer, "timeout")
+		anim.play("idle")
+		return
+	create_swipe(spawn_poses[1])
+	timer.start(0.9)
+	yield(timer, "timeout")
+	anim.play("swipe")
+	timer.start(0.7)
+	yield(timer, "timeout")
+	anim.play("idle")
+
+
+func create_swipe(pos):
+	if not MP.auth(self):
+		return
+	var node = swipe.instance()
+	node.global_position = pos
+	get_tree().current_scene.add_child(node, true)
