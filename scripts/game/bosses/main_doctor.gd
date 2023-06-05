@@ -15,11 +15,11 @@ func _ready():
 	fill_x = 53
 	fill_height = 5
 	tp_pos = Vector2(54, -2)
-	attacks = ["throw", "summon", "heal", "swipes"]
+	attacks = ["throw", "summon", "heal", "swipes", "throw", "swipes"]
 	mercy_dialog = "Хирург: Спасибо... Пойду потренируюсь на других."
 	death_dialog = "Хирург: Операция не удалась...\n (убить или пощадить?)"
-	next_attack_time_min = 1
-	next_attack_time_max = 2
+	next_attack_time_min = 0.8
+	next_attack_time_max = 1.6
 	if MP.is_active:
 		yield($"/root/mg", "game_started")
 	yield(get_tree(), "idle_frame")
@@ -31,12 +31,14 @@ func death():
 	if MP.auth(self):
 		for i in alive_doctors:
 			i.hurt(i.current_health, 0, false)
+	if timer.time_left > 0:
+		timer.stop()
 	.death()
 
 
 func do_attack():
 	var targ_dist = global_position.distance_squared_to(mob.player.global_position)
-	if targ_dist < 5625:
+	if targ_dist < 4900:
 		melee()
 		return
 	else:
