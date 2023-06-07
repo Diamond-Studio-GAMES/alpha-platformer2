@@ -40,10 +40,6 @@ func apply_data(data):
 
 
 func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 1, custom_immobility_time = 0.8):
-	if is_reviving:
-		return
-	if _is_ultiing:
-		return
 	if is_active_gadget:
 		return
 	.hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time)
