@@ -103,7 +103,7 @@ func check_for_end():
 		if get_tree().is_network_server():
 			yield(get_tree().create_timer(4), "timeout")
 		else:
-			yield(get_tree().create_timer(2), "timeout")
+			yield(get_tree().create_timer(3), "timeout")
 		get_tree().get_nodes_in_group("player")[0].end_game()
 
 

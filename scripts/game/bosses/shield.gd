@@ -15,7 +15,7 @@ func area_entered(area):
 				node.global_position = area.global_position
 				node.rotation = (-throw.angle).angle()
 				node.get_node("attack").damage = area.damage
-				yield(get_tree(), "idle_frame")
+				yield(get_tree().create_timer(1, false), "timeout")
 				get_tree().current_scene.add_child(node, true)
 				if not throw.is_queued_for_deletion():
 					throw.queue_free()
