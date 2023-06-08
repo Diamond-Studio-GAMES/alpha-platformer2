@@ -6,6 +6,8 @@ var player = load("res://minigames/minigame7/player.scn")
 var heal = load("res://minigames/minigame7/heal.scn")
 var started = false
 var alive_players = []
+var players_names = {}
+var my_player
 
 
 func alert(text = ""):
@@ -53,6 +55,7 @@ func spawn_player():
 	n.name = "player" + str(get_tree().get_network_unique_id())
 	n.player_name = G.getv("name", "Player")
 	add_child(n, true)
+	my_player = n
 
 
 func kill_player(id, by):
@@ -61,14 +64,14 @@ func kill_player(id, by):
 	alive_players.erase(id)
 	if alive_players.size() == 1:
 		if alive_players[0] == get_tree().get_network_unique_id():
-			get_node("player" + str(get_tree().get_network_unique_id())).make_text("ВЫ ПОБЕДИЛИ!")
+			my_player.make_text("ВЫ ПОБЕДИЛИ!")
 		else:
-			get_node("player" + str(get_tree().get_network_unique_id())).make_text("ПОБЕДИТЕЛЬ: " + \
-					get_node("player" + str(alive_players[0]) + "/label").text)
+			my_player.make_text("ПОБЕДИТЕЛЬ: " + players_names[alive_players[0]])
 	else:
 		if by == "disconnect":
+			my_player.make_text("Игрок %s отключился!" % players_names[id])
 			return
-		get_node("player" + str(get_tree().get_network_unique_id())).make_text(by + " убивает игрока " + get_node("player" + str(id) + "/label").text + "!")
+		my_player.make_text(by + " убивает игрока " + players_names[id] + "!")
 
 
 remotesync func start_game():
@@ -81,7 +84,10 @@ remotesync func start_game():
 	started = true
 	alive_players = Array(get_tree().get_network_connected_peers())
 	alive_players.append(get_tree().get_network_unique_id())
-	get_node("player" + str(get_tree().get_network_unique_id())).make_text("Игра началась!")
+	players_names = {}
+	for i in alive_players:
+		players_names[i] = get_node("player" + str(i) + "/label").text
+	my_player.make_text("Игра началась!")
 
 
 remotesync func player_died(id, by):
@@ -97,6 +103,7 @@ func client():
 
 
 func disconnected():
+	my_player = null
 	$lobby.show()
 	$heal_timer.stop()
 	$border0/anim.seek(0, true)

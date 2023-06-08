@@ -20,7 +20,7 @@ func _physics_process(delta):
 		started_move = true
 		for body in get_overlapping_bodies():
 			if body.has_method("hurt"):
-				if MP.has_multiplayer_authority(body):
+				if MP.has_multiplayer_authority(body) and not MP.has_multiplayer_authority(self):
 					body.hurt(damage, by_who)
 			queue_free()
 			break
