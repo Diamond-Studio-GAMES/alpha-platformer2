@@ -14,7 +14,7 @@ dest_files=[ "res://.import/avatar.png-b3bf12a204d1891477d343b81727d968.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
