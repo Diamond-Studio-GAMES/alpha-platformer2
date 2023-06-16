@@ -5,7 +5,8 @@ export (float) var spawn_interval = 5
 var mobs = [load("res://minigames/minigame1/mob_knife_man_reznya.scn"),
 		load("res://minigames/minigame1/mob_shooter_reznya.scn"), 
 		load("res://minigames/minigame1/mob_sportsman_reznya.scn"),
-		load("res://minigames/minigame1/mob_knight_reznya.scn")]
+		load("res://minigames/minigame1/mob_knight_reznya.scn"),
+		load("res://minigames/minigame1/mob_doctor_reznya.scn")]
 var timer = null
 var timer_time = 120
 var won = false
