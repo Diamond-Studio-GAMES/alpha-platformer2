@@ -223,10 +223,10 @@ func stop():
 	ms.sync_call(self, "stop")
 	_move_direction.x = 0
 
-func jump(power = 0, force = false):
-	if not (can_control or force):
+func jump(power = 0):
+	if not can_control:
 		return
-	ms.sync_call(self, "jump")
+	ms.sync_call(self, "jump", [power])
 	if is_hurt or is_stunned:
 		return false
 	if power == 0:
@@ -236,6 +236,30 @@ func jump(power = 0, force = false):
 		return true
 	return false
 
+func force_move_left():
+	ms.sync_call(self, "force_move_left")
+	_prev_move_x = _move_direction.x
+	_move_direction.x = -1
+
+func force_move_right():
+	ms.sync_call(self, "force_move_right")
+	_prev_move_x = _move_direction.x
+	_move_direction.x = 1
+
+func force_stop():
+	ms.sync_call(self, "force_stop")
+	_move_direction.x = 0
+
+func force_jump(power = 0):
+	ms.sync_call(self, "force_jump", [power])
+	if is_hurt or is_stunned:
+		return false
+	if power == 0:
+		power = JUMP_POWER
+	if is_on_floor() or under_water:
+		_move.y = -power * GRAVITY_SCALE
+		return true
+	return false
 
 #HEALTH
 func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4):

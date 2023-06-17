@@ -121,7 +121,7 @@ func stop():
 
 
 func jump(power = 0):
-	ms.sync_call(self, "jump")
+	ms.sync_call(self, "jump", [power])
 	if is_hurt or is_stunned:
 		return false
 	if power == 0:
