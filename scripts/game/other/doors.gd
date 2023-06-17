@@ -34,7 +34,7 @@ func enter(id):
 	player.can_control = false
 	if get_node("door" + str(id)).global_position.x > player.global_position.x:
 		player.force_move_right()
-	else:
+	elif get_node("door" + str(id)).global_position.x < player.global_position.x:
 		player.force_move_left()
 	yield(self, "entered_door")
 	going_to_door = -1

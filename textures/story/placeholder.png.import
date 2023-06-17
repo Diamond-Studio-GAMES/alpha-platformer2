@@ -2,25 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lore_0_0.png-d1cb5763ae65fe184a6e6974efb85168.stex"
+path="res://.import/placeholder.png-d25158704c64be9077909676418bcb28.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/story/lore_0_0.png"
-dest_files=[ "res://.import/lore_0_0.png-d1cb5763ae65fe184a6e6974efb85168.stex" ]
+source_file="res://textures/story/placeholder.png"
+dest_files=[ "res://.import/placeholder.png-d25158704c64be9077909676418bcb28.stex" ]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

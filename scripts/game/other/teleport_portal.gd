@@ -18,13 +18,13 @@ func enter_portal(body, portal_id):
 	teleported_entities_portal_ids.append(portal_id)
 	match portal_id:
 		0:
-			var fall_distance = body._start_falling_y-body.global_position.y
+			var fall_distance = body._start_falling_y - body.global_position.y
 			body.global_position = portal1.global_position
 			body._start_falling_y = body.global_position.y + fall_distance
 			portal0anim.play("enter")
 			portal1anim.play("exit")
 		1:
-			var fall_distance = body._start_falling_y-body.global_position.y
+			var fall_distance = body._start_falling_y - body.global_position.y
 			body.global_position = portal0.global_position
 			body._start_falling_y = body.global_position.y + fall_distance
 			portal1anim.play("enter")

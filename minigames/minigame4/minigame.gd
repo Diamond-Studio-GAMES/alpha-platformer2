@@ -93,9 +93,10 @@ func percent_chance(in_chance):
 
 func start_wave():
 	$shop.hide()
+	player.can_control = true
 	player.make_dialog("Волна %d началась!" % wave_number, 5, Color.red)
 	mob_count = round(wave_number * 0.65) + gen.randi_range(0, 3)
-	if wave_number == 50:
+	if wave_number == 20:
 		mob_count = 4
 	for i in range(mob_count):
 		spawn_mob(i)
@@ -103,7 +104,7 @@ func start_wave():
 		yield(st, "timeout")
 	player.make_dialog("Все враги появились!")
 	yield(self, "wave_ended")
-	if wave_number == 50:
+	if wave_number == 20:
 		$tint/tint/anim.play("win")
 		yield($tint/tint/anim, "animation_finished")
 		get_rewards()
@@ -114,6 +115,8 @@ func start_wave():
 	player.make_dialog("Волна зачищена!", 2, Color.green)
 	wave_number += 1
 	yield(get_tree().create_timer(2, false), "timeout")
+	player.stop()
+	player.can_control = false
 	$shop.show()
 	update_shop()
 
@@ -122,7 +125,7 @@ func spawn_mob(pos_id = -1):
 	mobs.shuffle()
 	var mob = mobs[0].instance() as Mob
 	mob.vision_distance = 10000
-	if wave_number != 50:
+	if wave_number != 20:
 		mob.stats_multiplier = 1 + wave_number * 0.2 + gen.randf_range(-wave_number * 0.05, wave_number * 0.08)
 		var spawn_id = str(gen.randi_range(0, 3))
 		mob.global_position = get_node("spawn_points/pos" + spawn_id).global_position
@@ -131,7 +134,7 @@ func spawn_mob(pos_id = -1):
 			mob.stats_multiplier *= 1.5
 			mob.modulate = Color.red
 	else:
-		mob.stats_multiplier = 40
+		mob.stats_multiplier = 10
 		mob.modulate = Color.red
 		var spawn_id = str(pos_id)
 		mob.global_position = get_node("spawn_points/pos" + spawn_id).global_position
