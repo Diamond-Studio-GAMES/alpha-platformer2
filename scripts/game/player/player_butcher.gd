@@ -99,6 +99,14 @@ func _process(delta):
 			use_gadget()
 
 
+func _unhandled_input(event):
+	if not MP.auth(self):
+		return
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			attack()
+
+
 func _physics_process(delta):
 	if is_on_floor() and is_active_gadget:
 		var node = gadget_crack.instance()

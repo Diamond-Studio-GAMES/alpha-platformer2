@@ -29,9 +29,8 @@ func _ready():
 
 func attack():
 	ms.sync_call(self, "attack")
-	find_target()
 	can_turn = false
-	speed_cooficent *= 0.5
+	speed_cooficent *= 0.4
 	var direction = global_position.direction_to(player.global_position)
 	var phi = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
 	var hand_rotate = rad2deg(phi)
@@ -56,9 +55,8 @@ func attack():
 		node.get_node("attack").damage = attack_damage
 		node.get_node("attack").on_entity_damage = attack_damage
 		_level.add_child(node, true)
-		yield(get_tree().create_timer(0.05, false), "timeout")
 	yield(get_tree().create_timer(0.1, false), "timeout")
-	speed_cooficent /= 0.5
+	speed_cooficent /= 0.4
 	can_turn = true
 
 

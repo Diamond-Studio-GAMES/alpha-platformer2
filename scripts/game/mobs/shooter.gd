@@ -29,7 +29,6 @@ func _ready():
 
 func attack():
 	ms.sync_call(self, "attack")
-	find_target()
 	can_turn = false
 	speed_cooficent *= 0.3
 	var direction = global_position.direction_to(player.global_position)
