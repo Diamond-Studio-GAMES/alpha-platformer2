@@ -17,6 +17,7 @@ func _ready():
 	have_gadget = true
 	max_health = curr_lvl_loc * 25 + 250
 	defense = curr_lvl_loc + 15
+	$ulti.damage = 125 + curr_lvl_loc * 15
 	current_health = max_health
 	_health_bar.max_value = max_health
 	_health_change_bar.max_value = max_health

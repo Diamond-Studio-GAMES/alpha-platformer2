@@ -69,11 +69,3 @@ func _process(delta):
 		return
 	if Input.is_action_just_pressed("attack1"):
 		attack()
-
-
-func _unhandled_input(event):
-	if not MP.auth(self):
-		return
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT and event.pressed:
-			attack()

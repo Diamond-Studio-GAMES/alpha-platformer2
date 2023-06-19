@@ -15,7 +15,7 @@ dest_files=[ "res://.import/muzichka_fake.png-3c6631ed50cd42763d0eb0bdf5ca280f.s
 [params]
 
 compress/mode=1
-compress/lossy_quality=0.7
+compress/lossy_quality=0.4
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0

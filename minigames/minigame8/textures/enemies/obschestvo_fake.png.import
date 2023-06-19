@@ -15,7 +15,7 @@ dest_files=[ "res://.import/obschestvo_fake.png-aa221a8d7ea0c6874b5b5e113537452b
 [params]
 
 compress/mode=1
-compress/lossy_quality=0.7
+compress/lossy_quality=0.4
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0

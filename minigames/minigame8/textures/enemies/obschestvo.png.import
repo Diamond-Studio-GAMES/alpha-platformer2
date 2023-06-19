@@ -15,7 +15,7 @@ dest_files=[ "res://.import/obschestvo.png-cb08f70d25fea8d0b1fd201ec254c98b.stex
 [params]
 
 compress/mode=1
-compress/lossy_quality=0.7
+compress/lossy_quality=0.4
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0

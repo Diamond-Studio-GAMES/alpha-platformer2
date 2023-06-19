@@ -15,7 +15,7 @@ dest_files=[ "res://.import/rusichka.png-50353ce14f918ac079a7251b4cd3c825.stex" 
 [params]
 
 compress/mode=1
-compress/lossy_quality=0.7
+compress/lossy_quality=0.4
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0

@@ -15,7 +15,7 @@ dest_files=[ "res://.import/himichka_fake.png-5de8cccb79404015e07395009143720e.s
 [params]
 
 compress/mode=1
-compress/lossy_quality=0.7
+compress/lossy_quality=0.4
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0

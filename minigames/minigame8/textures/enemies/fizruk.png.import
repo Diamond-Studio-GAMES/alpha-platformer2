@@ -15,7 +15,7 @@ dest_files=[ "res://.import/fizruk.png-5ab72ce318481fcd652386f63733f785.stex" ]
 [params]
 
 compress/mode=1
-compress/lossy_quality=0.7
+compress/lossy_quality=0.4
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0

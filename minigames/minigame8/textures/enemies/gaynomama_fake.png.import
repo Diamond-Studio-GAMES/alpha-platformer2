@@ -15,7 +15,7 @@ dest_files=[ "res://.import/gaynomama_fake.png-659b1f2b90def893cc5292636629c65c.
 [params]
 
 compress/mode=1
-compress/lossy_quality=0.7
+compress/lossy_quality=0.4
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0

@@ -15,7 +15,7 @@ dest_files=[ "res://.import/himichka.png-7106e1299f583b1f7c40869eb603ffa7.stex" 
 [params]
 
 compress/mode=1
-compress/lossy_quality=0.7
+compress/lossy_quality=0.4
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
