@@ -31,8 +31,8 @@ func check(id):
 	if id in alive_players:
 		alive_players.erase(id)
 	check_for_done()
-	check_for_end()
 	check_for_no_players()
+	check_for_end()
 
 
 func refuse(id):
@@ -96,6 +96,8 @@ func check_for_done():
 
 func check_for_end():
 	if state != State.IN_GAME:
+		return
+	if get_tree().get_network_connected_peers().size() < 1:
 		return
 	if alive_players.empty():
 		state = State.END

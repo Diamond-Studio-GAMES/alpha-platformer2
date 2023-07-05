@@ -142,8 +142,6 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 		_visual_scale = _visual.scale
 		_body.scale = Vector2(1, 1)
 		_anim_tree["parameters/death_trans/current"] = AliveState.DEAD
-		if has_node("fire_on_entity"):
-			$fire_on_entity.queue_free()
 	var time0 = 0
 	var time1 = 0
 	var difference = 0

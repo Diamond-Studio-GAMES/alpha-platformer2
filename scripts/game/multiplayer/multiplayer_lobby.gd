@@ -155,6 +155,7 @@ func init_multiplayer():
 		$lobby/ip.show()
 		$lobby/more.hide()
 		$lobby/ip.text = "Начать игру может только сервер."
+		$lobby/start_game.hide()
 	$lobby/start_game.disabled = true
 	var parts_of_level = G.current_level.split("_")
 	$lobby/level.text = "Уровень: " + parts_of_level[0] + "-" + parts_of_level[1]

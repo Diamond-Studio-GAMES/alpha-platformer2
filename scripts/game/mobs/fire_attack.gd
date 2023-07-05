@@ -18,6 +18,12 @@ func _ready():
 		fire_on_entity = load(custom_path)
 
 
+func _process(delta):
+	if is_on_entity:
+		if get_parent().current_health <= 0:
+			queue_free()
+
+
 func add_body(node):
 	if node.get_collision_layer_bit(5) and is_on_entity:
 		queue_free()
