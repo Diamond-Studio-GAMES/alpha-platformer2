@@ -177,6 +177,7 @@ func heal(amount):
 	node.get_node("text").text = str(amount)
 	node.get_node("text").modulate = Color.green
 	node.global_position = global_position
+	node.position += Vector2(randi() % 13 - 6, randi() % 13 - 6)
 	_level.add_child(node)
 	$heal_sfx.play()
 

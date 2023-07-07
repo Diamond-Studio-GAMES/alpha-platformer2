@@ -64,6 +64,8 @@ func apply_data(data):
 
 func joystick_released(output):
 	if output == Vector2.ZERO:
+		if OS.has_feature("pc"):
+			return
 		attack()
 	else:
 		throw(output)

@@ -56,7 +56,7 @@ var class_nam = "player"
 var power = 0
 var ulti_power = 1
 var face_left = false
-var default_camera_zoom = Vector2(0.6, 0.6)
+var default_camera_zoom = Vector2(0.3, 0.3)
 var _ulti_use_effect = load("res://prefabs/effects/super_use.scn")
 var _ulti
 onready var _ulti_bar = $camera/gui/base/hero_panel/ulti_bar
@@ -332,9 +332,15 @@ func use_potion(level):
 			_anim_tree["parameters/potion_seek/seek_position"] = 0
 			_anim_tree["parameters/potion_shot/active"] = true
 			yield(get_tree().create_timer(0.8, false), "timeout")
-			if MP.auth(self):
-				heal(round(max_health * 0.2))
-			yield(get_tree().create_timer(0.6, false), "timeout")
+			$shield.show()
+			is_reviving = true
+			for i in range(4):
+				if MP.auth(self):
+					heal(round(max_health * 0.05))
+				if i < 3:
+					yield(get_tree().create_timer(0.2, false), "timeout")
+			$shield.hide()
+			is_reviving = false
 			_is_drinking = false
 		2:
 			if potions_2 <= 0:
@@ -349,9 +355,15 @@ func use_potion(level):
 			_anim_tree["parameters/potion_seek/seek_position"] = 0
 			_anim_tree["parameters/potion_shot/active"] = true
 			yield(get_tree().create_timer(0.8, false), "timeout")
-			if MP.auth(self):
-				heal(round(max_health * 0.4))
-			yield(get_tree().create_timer(0.6, false), "timeout")
+			$shield.show()
+			is_reviving = true
+			for i in range(4):
+				if MP.auth(self):
+					heal(round(max_health * 0.1))
+				if i < 3:
+					yield(get_tree().create_timer(0.2, false), "timeout")
+			$shield.hide()
+			is_reviving = false
 			_is_drinking = false
 		3:
 			if potions_3 <= 0:
@@ -366,9 +378,15 @@ func use_potion(level):
 			_anim_tree["parameters/potion_seek/seek_position"] = 0
 			_anim_tree["parameters/potion_shot/active"] = true
 			yield(get_tree().create_timer(0.8, false), "timeout")
-			if MP.auth(self):
-				heal(round(max_health * 0.6))
-			yield(get_tree().create_timer(0.6, false), "timeout")
+			$shield.show()
+			is_reviving = true
+			for i in range(4):
+				if MP.auth(self):
+					heal(round(max_health * 0.15))
+				if i < 3:
+					yield(get_tree().create_timer(0.2, false), "timeout")
+			$shield.hide()
+			is_reviving = false
 			_is_drinking = false
 
 

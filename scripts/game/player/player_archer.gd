@@ -89,6 +89,8 @@ func joystick_released(output):
 	var aimed = aim_time
 	reset_aim()
 	if output == Vector2.ZERO:
+		if OS.has_feature("pc"):
+			return
 		if MP.auth(self):
 			attack()
 	else:

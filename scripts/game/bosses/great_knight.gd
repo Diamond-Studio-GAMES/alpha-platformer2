@@ -58,6 +58,8 @@ func swipes():
 	create_swipe(player_pos)
 	timer.start(0.15)
 	yield(timer, "timeout")
+	if not is_instance_valid(mob):
+		return
 	if is_angry:
 		anim.play("swipes_angry")
 	else:
@@ -80,6 +82,8 @@ func swipes():
 
 func create_swipe(player_position):
 	if not MP.auth(self):
+		return
+	if not is_instance_valid(mob):
 		return
 	randomize()
 	var node = swipe_effect.instance()
