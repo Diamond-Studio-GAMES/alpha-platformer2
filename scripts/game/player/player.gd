@@ -56,7 +56,7 @@ var class_nam = "player"
 var power = 0
 var ulti_power = 1
 var face_left = false
-var default_camera_zoom = Vector2(0.3, 0.3)
+var default_camera_zoom = Vector2(0.6, 0.6)
 var _ulti_use_effect = load("res://prefabs/effects/super_use.scn")
 var _ulti
 onready var _ulti_bar = $camera/gui/base/hero_panel/ulti_bar
