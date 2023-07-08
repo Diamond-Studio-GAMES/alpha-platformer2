@@ -10,8 +10,9 @@ export (float) var lookup_speed = 0.1
 export (float) var vision_distance = 200.0
 export (float) var attack_speed = 2.5
 export (NodePath) var head_path
-export (String, FILE) var head_sprite_path
-export (String, FILE) var head_hurt_sprite_path
+export (String, FILE) var head_sprite_path = ""
+export (String, FILE) var head_hurt_sprite_path = ""
+export (String, FILE) var custom_mob_death_effect_path = ""
 var _vision_distance = 0
 var player
 var players = []
@@ -20,7 +21,7 @@ var find_target_timer = 0
 var player_timer = 0
 var attack_timer = 0
 var lookup_timer = 0
-var _mob_death = load("res://prefabs/effects/mob_death.scn")
+var mob_death_effect = load("res://prefabs/effects/mob_death.scn")
 
 signal destroyed
 
@@ -40,6 +41,8 @@ func _ready():
 		max_health = round(max_health * mul)
 	defense = round(stats_multiplier * defense)
 	_vision_distance = vision_distance * vision_distance
+	if not custom_mob_death_effect_path.empty():
+		mob_death_effect = load(custom_mob_death_effect_path)
 	_body = $visual/body
 	_health_bar = $bars/progress
 	_health_change_bar = $bars/progress/under
@@ -98,7 +101,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 func post_hurt(ded):
 	if ded:
 		yield(get_tree().create_timer(1, false), "timeout")
-		var death = _mob_death.instance()
+		var death = mob_death_effect.instance()
 		death.global_position = global_position
 		_level.add_child(death)
 		emit_signal("destroyed")

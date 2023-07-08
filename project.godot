@@ -478,7 +478,6 @@ vram_compression/import_etc=true
 quality/shading/force_vertex_shading=true
 batching/precision/uv_contract=true
 environment/default_environment="res://misc/env.res"
-quality/enable_object_picking=false
 
 [world]
 
