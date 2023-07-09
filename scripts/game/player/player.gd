@@ -22,6 +22,9 @@ var _healed_times = 0
 var _prev_move_x = 0
 var _soul_sprite = load("res://textures/gui/soul.png")
 var _soul_break_sprite = load("res://textures/gui/soul_break.png")
+var _potion_1_sprite = load("res://textures/items/small_potion.png")
+var _potion_2_sprite = load("res://textures/items/normal_potion.png")
+var _potion_3_sprite = load("res://textures/items/big_potion.png")
 onready var _soul = $camera/gui/base/hero_panel/head/soul
 onready var _player_head = $visual/body/head
 onready var _buttons = $camera/gui/base/buttons
@@ -329,6 +332,7 @@ func use_potion(level):
 			if potions_1 <= 0:
 				_potion_1.hide()
 			_potion_1.get_node("count").text = str(potions_1)
+			$visual/body/arm_left/hand/item.texture = _potion_1_sprite
 			_anim_tree["parameters/potion_seek/seek_position"] = 0
 			_anim_tree["parameters/potion_shot/active"] = true
 			yield(get_tree().create_timer(0.8, false), "timeout")
@@ -352,6 +356,7 @@ func use_potion(level):
 			if potions_2 <= 0:
 				_potion_2.hide()
 			_potion_2.get_node("count").text = str(potions_2)
+			$visual/body/arm_left/hand/item.texture = _potion_2_sprite
 			_anim_tree["parameters/potion_seek/seek_position"] = 0
 			_anim_tree["parameters/potion_shot/active"] = true
 			yield(get_tree().create_timer(0.8, false), "timeout")
@@ -375,6 +380,7 @@ func use_potion(level):
 			if potions_3 <= 0:
 				_potion_3.hide()
 			_potion_3.get_node("count").text = str(potions_3)
+			$visual/body/arm_left/hand/item.texture = _potion_3_sprite
 			_anim_tree["parameters/potion_seek/seek_position"] = 0
 			_anim_tree["parameters/potion_shot/active"] = true
 			yield(get_tree().create_timer(0.8, false), "timeout")
