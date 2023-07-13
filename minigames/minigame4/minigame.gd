@@ -105,6 +105,7 @@ func start_wave():
 	player.make_dialog("Все враги появились!")
 	yield(self, "wave_ended")
 	if wave_number == 20:
+		G.addv("ls_completed", 1)
 		$tint/tint/anim.play("win")
 		yield($tint/tint/anim, "animation_finished")
 		get_rewards()

@@ -133,6 +133,8 @@ func death():
 	is_attacking = false
 	set_cutscene(true)
 	anim.play("death")
+	G.addv("boss_kills", 1)
+	G.addv("kills", -1)
 	yield(anim, "animation_finished")
 	set_cutscene(false)
 	if G.getv("boss_" + G.current_level + "_killed", false):

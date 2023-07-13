@@ -144,6 +144,7 @@ func ulti():
 	_ulti_tween.interpolate_property(_ulti_bar, "value", 100, 0, 0.5)
 	_ulti_tween.start()
 	_anim_tree["parameters/ulti_shot/active"] = true
+	G.addv("ulti_used", 1)
 	var node = _ulti.instance()
 	node.get_node("rockets_attack").damage = _attack_node.damage * 5
 	node.global_position = global_position
@@ -192,7 +193,7 @@ func revive(hp = -1):
 	.revive(hp)
 
 
-func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4):
+func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
 	var past_health = current_health
 	var past_armor = current_armor
 	var real_defense = defense

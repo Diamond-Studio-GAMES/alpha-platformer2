@@ -80,13 +80,13 @@ func calculate_fall_damage():
 	elif GRAVITY_SCALE < 0 and _start_falling_y < global_position.y:
 		return
 	if distance_falling > 480:
-		hurt(1, 0, false, true)
+		hurt(1, 0, false, true, false, 1, 0.5, 0.4, "fall")
 	elif distance_falling > 416:
-		hurt(round(max_health * 0.7), 0, false)
+		hurt(round(max_health * 0.7), 0, false, false, false, 1, 1.5, 1.2, "fall")
 	elif distance_falling > 320:
-		hurt(round(max_health * 0.5), 0, false)
+		hurt(round(max_health * 0.5), 0, false, false, false, 1, 1, 0.8, "fall")
 	elif distance_falling > 192:
-		hurt(round(max_health * 0.3), 0, false)
+		hurt(round(max_health * 0.3), 0, false, false, false, 1, 0.5, 0.4, "fall")
 	else:
 		return
 	var node = fall_effect.instance()
@@ -97,8 +97,8 @@ func calculate_fall_damage():
 
 
 #HEALTH
-func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4):
-	ms.sync_call(self, "hurt", [damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time])
+func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
+	ms.sync_call(self, "hurt", [damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source])
 	var past_health = current_health
 	var real_defense = defense
 	if not defense_allowed:

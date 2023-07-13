@@ -122,6 +122,8 @@ func show_d_win():
 			set_new = false
 	elif int(max_lvl.split("_")[0]) > int(next_lvl.split("_")[0]):
 		set_new = false
+	if next_lvl.split("_")[0] == "11":
+		set_new = false
 	if set_new:
 		G.setv("level", next_lvl)
 	for i in $classes2.get_children():

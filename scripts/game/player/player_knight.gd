@@ -49,14 +49,14 @@ func apply_data(data):
 	_update_bars()
 
 
-func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4):
+func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
 	if is_reviving:
 		return
 	if defense_allowed:
 		if damage - defense <= 0:
 			return
 	if not defense_allowed or fatal:
-		.hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time)
+		.hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
 		return
 	if have_soul_power and MP.auth(self):
 		var chance = gen.randi_range(0, 100)
@@ -66,7 +66,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 	if is_active_gadget and MP.auth(self):
 		miss(knockback_multiplier)
 		return
-	.hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time)
+	.hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
 
 
 func miss(knockback_multiplier):

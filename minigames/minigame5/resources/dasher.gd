@@ -84,7 +84,6 @@ func _physics_process(delta):
 					jump()
 				_move.y = max(_move.y - SHIP_UP_SPEED * delta, -MAX_SHIP_UP_SPEED) if GRAVITY_SCALE > 0 else min(_move.y + SHIP_UP_SPEED * delta, MAX_SHIP_UP_SPEED)
 	if Mode.SHIP:
-#		_move.y = max(0, _move.y) if GRAVITY_SCALE > 0 else min(0, _move.y)
 		camera.global_position.x = global_position.x
 	_y = clamp(_move.y + GRAVITY_SPEED * delta * GRAVITY_SCALE, 
 			-9999 if GRAVITY_SCALE > 0 else MAX_GRAVITY * GRAVITY_SCALE, 

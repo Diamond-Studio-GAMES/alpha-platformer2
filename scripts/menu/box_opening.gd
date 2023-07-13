@@ -211,6 +211,7 @@ func open_gui(what = null):
 	hide_screens()
 	var loot = {}
 	if what == null:
+		G.addv("boxes_opened", 1)
 		match box_type:
 			BoxType.STANDARD:
 				loot = open_box()

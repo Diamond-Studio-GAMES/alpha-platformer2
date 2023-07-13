@@ -56,6 +56,7 @@ func give_up():
 		$"/root/mg".state = 3
 		MP.close_network()
 	is_gived_up = true
+	G.addv("deaths", 1)
 	get_tree().paused = false
 	if $"..".custom_respawn_scene.empty():
 		get_tree().change_scene("res://scenes/menu/game_over.scn")

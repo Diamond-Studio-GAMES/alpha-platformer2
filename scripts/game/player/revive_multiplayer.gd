@@ -36,6 +36,8 @@ func _physics_process(delta):
 		timer = 0
 	bar.value = timer
 	if timer >= REVIVE_TIME:
+		for i in bodies:
+			i.rpc("revived_player")
 		timer = 0
 		player.revive(int(player.max_health*0.25))
 	

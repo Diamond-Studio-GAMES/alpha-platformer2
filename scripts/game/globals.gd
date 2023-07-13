@@ -7,8 +7,8 @@ const VERSION_STATUS = "сборка"
 const VERSION_STATUS_NUMBER = "4"
 const VERSION_CODE = 57
 
-var main_file : ConfigFile
-var save_file : ConfigFile
+var main_file: ConfigFile
+var save_file: ConfigFile
 var save_timer = 0
 var selected_class_to_test = "knight"
 var current_level = "1_1"
@@ -21,7 +21,8 @@ var time_scale_change = 1
 var fps_text
 var music
 var time_timer
-var ad : AdsManager
+var ad: AdsManager
+var ach: Achievements
 var loading_scene = load("res://scenes/menu/loading.scn")
 var box = load("res://scenes/menu/box.scn")
 const CLASSES_ID = {
@@ -196,6 +197,10 @@ func _ready():
 	ad = AdsManager.new()
 	ad.name = "ads"
 	add_child(ad)
+	ach = Achievements.new()
+	ach.name = "achievements"
+	ach.layer = 80
+	add_child(ach)
 	music = AudioStreamPlayer.new()
 	music.name = "menu_music"
 	music.bus = "music"

@@ -156,6 +156,7 @@ func setup_plant():
 
 
 func claim():
+	G.addv("garden_looted", 1)
 	if current_plant_data.custom_reward:
 		custom_claim()
 		return

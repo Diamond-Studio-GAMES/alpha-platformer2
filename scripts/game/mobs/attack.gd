@@ -12,6 +12,7 @@ export (bool) var defense_allowed = true
 export (bool) var fatal = false
 export (bool) var is_player_attack = false
 export (bool) var is_enemy_attack = false
+export (String) var damage_source = ""
 export (bool) var emit_hit_attack_signal = false
 export (float) var lifetime = 1
 var bodies = []
@@ -26,6 +27,13 @@ signal hit_attack_with_object(node)
 
 
 func _ready():
+	if damage_source.empty():
+		if is_player_attack:
+			damage_source = "player"
+		elif is_enemy_attack:
+			damage_source = "mob"
+		else:
+			damage_source = "env"
 	connect("body_entered", self, "add_body")
 	connect("body_exited", self, "remove_body")
 	connect("area_entered", self, "add_body")
@@ -63,7 +71,7 @@ func deal_damage(node):
 	if node.is_in_group("mob") and is_enemy_attack:
 		return
 	if MP.auth(node):
-		node.hurt(damage, sign(node.global_position.x - global_position.x) * knockback, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time)
+		node.hurt(damage, sign(node.global_position.x - global_position.x) * knockback, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
 
 
 func _physics_process(delta):

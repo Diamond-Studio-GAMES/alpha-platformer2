@@ -64,6 +64,7 @@ func kill_player(id, by):
 	alive_players.erase(id)
 	if alive_players.size() == 1:
 		if alive_players[0] == get_tree().get_network_unique_id():
+			G.addv("royale_victories", 1)
 			my_player.make_text("ВЫ ПОБЕДИЛИ!")
 		else:
 			my_player.make_text("ПОБЕДИТЕЛЬ: " + players_names[alive_players[0]])

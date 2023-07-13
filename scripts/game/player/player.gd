@@ -235,6 +235,8 @@ func jump(power = 0):
 	if power == 0:
 		power = JUMP_POWER
 	if is_on_floor() or under_water:
+		if MP.auth(self):
+			G.addv("jumps", 1)
 		_move.y = -power * GRAVITY_SCALE
 		return true
 	return false
@@ -265,18 +267,22 @@ func force_jump(power = 0):
 	return false
 
 #HEALTH
-func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4):
+func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
 	if is_reviving or current_health < 0:
 		return
 	if _is_ultiing:
 		return
-	var state = .hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time)
+	var state = .hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
 	if state == null:
 		return
 	if not state.is_valid():
 		return
 	_health_timer = 0
 	_player_head.texture = _head_hurt_sprite
+	if MP.auth(self):
+		G.addv("damaged", 1)
+		if damage_source == "fall":
+			G.addv("fall_damaged", 1)
 	if current_health <= 0:
 		collision_layer = 0b0
 		collision_mask = 0b1
@@ -329,6 +335,7 @@ func use_potion(level):
 			potions_1 -= 1
 			if MP.auth(self):
 				G.setv("potions1", potions_1)
+				G.addv("potions_used", 1)
 			if potions_1 <= 0:
 				_potion_1.hide()
 			_potion_1.get_node("count").text = str(potions_1)
@@ -353,6 +360,7 @@ func use_potion(level):
 			potions_2 -= 1
 			if MP.auth(self):
 				G.setv("potions2", potions_2)
+				G.addv("potions_used", 1)
 			if potions_2 <= 0:
 				_potion_2.hide()
 			_potion_2.get_node("count").text = str(potions_2)
@@ -377,6 +385,7 @@ func use_potion(level):
 			potions_3 -= 1
 			if MP.auth(self):
 				G.setv("potions3", potions_3)
+				G.addv("potions_used", 1)
 			if potions_3 <= 0:
 				_potion_3.hide()
 			_potion_3.get_node("count").text = str(potions_3)
@@ -410,6 +419,7 @@ func ulti():
 	_ulti_tween.start()
 	_anim_tree["parameters/ulti_shot/active"] = true
 	if MP.auth(self):
+		G.addv("ulti_used", 1)
 		var node = _ulti.instance()
 		node.has_amulet = is_amulet(ulti_amulet)
 		node.level = ulti_power
@@ -556,6 +566,7 @@ func revive(hp_count = -1):
 	breath_time = 10
 	tint_anim.play("reviving")
 	if MP.auth(self):
+		G.addv("revives", 1)
 		if hp_count < 0:
 			heal(max_health)
 		else:
@@ -574,6 +585,11 @@ func revive(hp_count = -1):
 	is_reviving = false
 	$shield.hide()
 	can_see = true
+
+
+remote func revived_player():
+	if MP.auth(self):
+		G.addv("mp_revives", 1)
 
 
 func make_dialog(text = "", time = 2, color = Color.white):

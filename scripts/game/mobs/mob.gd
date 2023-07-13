@@ -85,8 +85,8 @@ func calculate_fall_damage():
 	.calculate_fall_damage()
 
 
-func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4):
-	var state = .hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time)
+func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
+	var state = .hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
 	if state == null:
 		return
 	if not state.is_valid():
@@ -101,6 +101,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 func post_hurt(ded):
 	if ded:
 		yield(get_tree().create_timer(1, false), "timeout")
+		G.addv("kills", 1)
 		var death = mob_death_effect.instance()
 		death.global_position = global_position
 		_level.add_child(death)

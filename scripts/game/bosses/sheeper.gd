@@ -22,6 +22,11 @@ func _ready():
 	boss_bar.get_node("boss_name").text = "ПАСТУХ" + ":"
 
 
+func death():
+	G.ach.complete(Achievements.BOSS1)
+	.death()
+
+
 func do_attack():
 	var targ_dist = global_position.distance_squared_to(mob.player.global_position)
 	if targ_dist < 5625:

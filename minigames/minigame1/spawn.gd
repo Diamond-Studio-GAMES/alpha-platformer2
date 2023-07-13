@@ -42,6 +42,7 @@ func _process(delta):
 			player_camera.offset_v = rand_range(-0.03, 0.03)
 		if timer_time <= 0 and not won:
 			won = true
+			G.addv("reznya_completed", 1)
 			player.make_dialog("ТЫ ПОБЕДИЛ!", 2, Color.red)
 	shake_timer += delta
 	timer.value = timer_time
