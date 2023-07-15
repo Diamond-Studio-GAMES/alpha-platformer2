@@ -42,7 +42,6 @@ func _process(delta):
 			player_camera.offset_v = rand_range(-0.03, 0.03)
 		if timer_time <= 0 and not won:
 			won = true
-			G.addv("reznya_completed", 1)
 			player.make_dialog("ТЫ ПОБЕДИЛ!", 2, Color.red)
 	shake_timer += delta
 	timer.value = timer_time
@@ -50,6 +49,8 @@ func _process(delta):
 		win_timer -= delta
 		if win_timer <= 0 and not reward_claimed:
 			reward_claimed = true
+			G.addv("reznya_completed", 1)
+			G.ach.complete(Achievements.REZNYA)
 			get_tree().change_scene("res://scenes/menu/menu.scn")
 			G.receive_loot({"gold_box" : 2})
 	spawn_timer += delta

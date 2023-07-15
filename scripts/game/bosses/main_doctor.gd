@@ -33,6 +33,7 @@ func death():
 			i.hurt(i.current_health, 0, false)
 	if timer.time_left > 0:
 		timer.stop()
+	G.ach.complete(Achievements.BOSS5)
 	.death()
 
 

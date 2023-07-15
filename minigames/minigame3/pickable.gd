@@ -17,5 +17,6 @@ func _input_event(camera, event, position, normal, shape_idx):
 				Item.COIN:
 					get_parent().add_coins(1)
 				Item.GEM:
+					G.ach.complete(Achievements.DIAMONDS)
 					get_parent().add_gems(1)
 			queue_free()

@@ -306,6 +306,7 @@ func open_gui(what = null):
 	if loot.has("gadget"):
 		hide_screens()
 		show_screen("gadget_screen")
+		G.ach.complete(Achievements.HELP_FROM_INSIDE)
 		for i in loot["gadget"]:
 			$gadget_screen/label/class.text = G.CLASSES[i]
 			$gadget_screen/desc/label.text = G.GADGETS[i]
@@ -319,6 +320,7 @@ func open_gui(what = null):
 	if loot.has("soul_power"):
 		hide_screens()
 		show_screen("soul_power_screen")
+		G.ach.complete(Achievements.SOUL_MASTER)
 		for i in loot["soul_power"]:
 			$soul_power_screen/label/class.text = G.CLASSES[i]
 			$soul_power_screen/desc/label.text = G.SOUL_POWERS[i]
@@ -332,6 +334,9 @@ func open_gui(what = null):
 	if loot.has("class"):
 		hide_screens()
 		show_screen("class_screen")
+		G.ach.complete(Achievements.WHAT_IS_IT)
+		if classes_to_unlock.size() == 0:
+			G.ach.complete(Achievements.MASTER_OF_WEAPONS)
 		for i in loot["class"]:
 			$class_screen/archer.hide()
 			$class_screen/wizard.hide()

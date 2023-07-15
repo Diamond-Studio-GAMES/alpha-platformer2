@@ -12,6 +12,8 @@ onready var trail = $trail
 
 
 func _ready():
+	if MP.auth(self):
+		G.ach.complete(Achievements.DARK_CREATION)
 	curr_lvl_loc = int(get_tree().current_scene.name.trim_prefix("level_").split("_")[0])
 	randomize()
 	have_gadget = true

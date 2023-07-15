@@ -28,6 +28,11 @@ func _ready():
 		swords_down_poses.append(i.global_position)
 
 
+func death():
+	G.ach.complete(Achievements.BOSS4)
+	.death()
+
+
 func do_attack():
 	if global_position.distance_squared_to(mob.player.global_position) < 6400:
 		melee()

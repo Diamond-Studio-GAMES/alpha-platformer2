@@ -200,6 +200,7 @@ func _ready():
 	ach = Achievements.new()
 	ach.name = "achievements"
 	ach.layer = 80
+	ach.pause_mode = PAUSE_MODE_PROCESS
 	add_child(ach)
 	music = AudioStreamPlayer.new()
 	music.name = "menu_music"
@@ -386,6 +387,7 @@ func receive_loot(looted):
 		rec = another_rec
 	for i in rec:
 		loot_to_show[i] = rec[i]
+	ach.check(Achievements.PROZAPASS)
 	if not loot_to_show.empty():
 		var n = box.instance()
 		get_tree().root.add_child(n)

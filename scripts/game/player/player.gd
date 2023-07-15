@@ -287,6 +287,8 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 		collision_layer = 0b0
 		collision_mask = 0b1
 		if MP.auth(self):
+			if _is_drinking:
+				G.ach.complete(Achievements.FUUUUCK)
 			AudioServer.set_bus_mute(AudioServer.get_bus_index("music"), true)
 			$game_over_sfx.play()
 		tint_anim.stop(true)
@@ -336,6 +338,7 @@ func use_potion(level):
 			if MP.auth(self):
 				G.setv("potions1", potions_1)
 				G.addv("potions_used", 1)
+				G.ach.check(Achievements.POTION_MAN)
 			if potions_1 <= 0:
 				_potion_1.hide()
 			_potion_1.get_node("count").text = str(potions_1)
@@ -344,14 +347,14 @@ func use_potion(level):
 			_anim_tree["parameters/potion_shot/active"] = true
 			yield(get_tree().create_timer(0.8, false), "timeout")
 			$shield.show()
-			is_reviving = true
+			_is_ultiing = true
 			for i in range(4):
 				if MP.auth(self):
 					heal(round(max_health * 0.05))
 				if i < 3:
 					yield(get_tree().create_timer(0.2, false), "timeout")
 			$shield.hide()
-			is_reviving = false
+			_is_ultiing = false
 			_is_drinking = false
 		2:
 			if potions_2 <= 0:
@@ -361,6 +364,7 @@ func use_potion(level):
 			if MP.auth(self):
 				G.setv("potions2", potions_2)
 				G.addv("potions_used", 1)
+				G.ach.check(Achievements.POTION_MAN)
 			if potions_2 <= 0:
 				_potion_2.hide()
 			_potion_2.get_node("count").text = str(potions_2)
@@ -369,14 +373,14 @@ func use_potion(level):
 			_anim_tree["parameters/potion_shot/active"] = true
 			yield(get_tree().create_timer(0.8, false), "timeout")
 			$shield.show()
-			is_reviving = true
+			_is_ultiing = true
 			for i in range(4):
 				if MP.auth(self):
 					heal(round(max_health * 0.1))
 				if i < 3:
 					yield(get_tree().create_timer(0.2, false), "timeout")
 			$shield.hide()
-			is_reviving = false
+			_is_ultiing = false
 			_is_drinking = false
 		3:
 			if potions_3 <= 0:
@@ -386,6 +390,7 @@ func use_potion(level):
 			if MP.auth(self):
 				G.setv("potions3", potions_3)
 				G.addv("potions_used", 1)
+				G.ach.check(Achievements.POTION_MAN)
 			if potions_3 <= 0:
 				_potion_3.hide()
 			_potion_3.get_node("count").text = str(potions_3)
@@ -394,14 +399,14 @@ func use_potion(level):
 			_anim_tree["parameters/potion_shot/active"] = true
 			yield(get_tree().create_timer(0.8, false), "timeout")
 			$shield.show()
-			is_reviving = true
+			_is_ultiing = true
 			for i in range(4):
 				if MP.auth(self):
 					heal(round(max_health * 0.15))
 				if i < 3:
 					yield(get_tree().create_timer(0.2, false), "timeout")
 			$shield.hide()
-			is_reviving = false
+			_is_ultiing = false
 			_is_drinking = false
 
 
@@ -590,6 +595,7 @@ func revive(hp_count = -1):
 remote func revived_player():
 	if MP.auth(self):
 		G.addv("mp_revives", 1)
+		G.ach.check(Achievements.GOOD_PARTNER)
 
 
 func make_dialog(text = "", time = 2, color = Color.white):

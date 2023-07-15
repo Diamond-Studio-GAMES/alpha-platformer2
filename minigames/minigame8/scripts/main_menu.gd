@@ -3,7 +3,8 @@ extends Control
 
 
 func _ready():
-	G.setv("night", 1)
+	if G.getv("night") == 0:
+		G.setv("night", 1)
 	$continue/label.text = "НОЧЬ " + str(G.getv("night", 1))
 
 

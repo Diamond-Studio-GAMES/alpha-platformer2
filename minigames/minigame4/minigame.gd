@@ -108,6 +108,7 @@ func start_wave():
 		G.addv("ls_completed", 1)
 		$tint/tint/anim.play("win")
 		yield($tint/tint/anim, "animation_finished")
+		G.ach.complete(Achievements.LAST_STANDER)
 		get_rewards()
 		yield(G, "loot_end")
 		G.dialog_in_menu = "Поздравляем с победой!"

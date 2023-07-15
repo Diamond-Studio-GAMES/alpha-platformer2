@@ -71,6 +71,8 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 
 func miss(knockback_multiplier):
 	ms.sync_call(self, "miss", [knockback_multiplier])
+	if MP.auth(self):
+		G.ach.complete(Achievements.YOU_MISSED)
 	is_hurt = true
 	_anim_tree["parameters/miss_shot/active"] = true
 	var node = _hurt_heal_text.instance()

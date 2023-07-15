@@ -111,6 +111,7 @@ func settings(val = true):
 
 
 func about(val = true):
+	G.ach.complete(Achievements.SOME_PEOPLES)
 	$about.visible = val
 	$main.visible = not val
 

@@ -198,8 +198,8 @@ func setup_amulets():
 
 
 func craft_amulet(id):
-	if id in G.getv(selected_class+"_amulets", []):
-		G.setv(selected_class+"_amulet", id)
+	if id in G.getv(selected_class + "_amulets", []):
+		G.setv(selected_class + "_amulet", id)
 		setup_amulets()
 		select_class(selected_class)
 		return
@@ -208,8 +208,9 @@ func craft_amulet(id):
 	$amulet_craft/screen/icon.texture = AMULET_ICONS[G.AMULET[id]]
 	$amulet_craft/screen/anim.play("craft")
 	$classes/infos/amulet.hide()
-	G.addv("amulet_frags_"+G.AMULET[id], -AMULETS_COUNTS[selected_class][id], 0)
-	G.addv(selected_class+"_amulets", [id], [])
+	G.ach.complete(Achievements.LUCKY_AMULET)
+	G.addv("amulet_frags_" + G.AMULET[id], -AMULETS_COUNTS[selected_class][id], 0)
+	G.addv(selected_class + "_amulets", [id], [])
 	G.save()
 
 
@@ -375,6 +376,8 @@ func confirm_upgrade():
 	G.addv("coins", -(G.getv(selected_class + "_level", 0) * 50 + 50))
 	G.addv(selected_class + "_tokens", -(G.getv(selected_class + "_level", 0) * 10 + 10))
 	G.addv(selected_class + "_level", 1)
+	if G.getv(selected_class + "_ulti_level", 1) == 5 and G.getv(selected_class + "_level", 0) == 20:
+		G.ach.complete(Achievements.IM_POWER)
 	G.emit_signal("loot_end") # Update offers
 	select_class(selected_class)
 	info(false)
@@ -478,6 +481,8 @@ func confirm_upgrade_ulti():
 	G.addv("coins", -(G.getv(selected_class + "_ulti_level", 1) * 600 + 600))
 	G.addv(selected_class + "_ulti_tokens", -(G.getv(selected_class + "_ulti_level", 1) * 30 + 30))
 	G.addv(selected_class + "_ulti_level", 1, 1)
+	if G.getv(selected_class + "_ulti_level", 1) == 5 and G.getv(selected_class + "_level", 0) == 20:
+		G.ach.complete(Achievements.IM_POWER)
 	G.emit_signal("loot_end") # Update offers
 	select_class(selected_class)
 	info(false)

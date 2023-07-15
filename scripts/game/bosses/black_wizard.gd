@@ -46,6 +46,7 @@ func _process(delta):
 func death():
 	if not $visual/body/shield/shape.disabled:
 		$visual/body/shield/anim.play("end")
+	G.ach.complete(Achievements.BOSS3)
 	.death()
 
 
