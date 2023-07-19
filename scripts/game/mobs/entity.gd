@@ -45,6 +45,7 @@ var current_health = 100
 var _hp_count
 var _health_bar
 var _health_change_bar
+var _tween
 var _head
 var _head_sprite
 var _head_hurt_sprite
@@ -55,10 +56,9 @@ var stun_time = 0
 var _hurt_heal_text = load("res://prefabs/effects/hurt_heal_text.scn")
 var stun_effect = load("res://prefabs/effects/stun_effect.scn")
 var fall_effect = load("res://prefabs/effects/fall_effect.scn")
-onready var _tween = $tween
 onready var stun_stars = $stun_stars
 onready var _heal_particles = $heal
-onready var ms : MultiplayerSynchronizer = $MultiplayerSynchronizer as MultiplayerSynchronizer
+onready var ms: MultiplayerSynchronizer = $MultiplayerSynchronizer as MultiplayerSynchronizer
 
 signal died
 signal hurt
@@ -121,11 +121,15 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 	node.global_position = global_position
 	node.position += Vector2(randi() % 13 - 6, randi() % 13 - 6)
 	node.global_scale = Vector2(0.5, 0.5)
+	var prev_hcb_value = _health_change_bar.value
 	_update_bars()
+	_health_change_bar.value = prev_hcb_value
 	$hurt_sfx.play()
-	_health_change_bar.value = past_health
-	_tween.interpolate_property(_health_change_bar, "value", past_health, current_health, 0.6, Tween.TRANS_SINE, Tween.EASE_OUT, 0.4)
-	_tween.start()
+	if is_instance_valid(_tween):
+		if _tween.is_valid():
+			_tween.kill()
+	_tween = create_tween()
+	_tween.tween_property(_health_change_bar, "value", current_health, 1).set_delay(0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).from_current()
 	var died = false
 	if current_health > 0:
 		emit_signal("hurt")
@@ -169,9 +173,10 @@ func heal(amount):
 	if current_health <= 0 and not is_in_group("player"):
 		return
 	current_health = clamp(current_health + amount, 0, max_health)
+	if is_instance_valid(_tween):
+		if _tween.is_valid():
+			_tween.kill()
 	_update_bars()
-	_tween.stop_all()
-	_tween.remove_all()
 	_heal_particles.restart()
 	var node = _hurt_heal_text.instance()
 	node.get_node("text").text = str(amount)
@@ -193,9 +198,8 @@ func _physics_process(delta):
 		if _move_direction.x != 0:
 			if can_turn:
 				_body.scale = Vector2(_move_direction.x, _body.scale.y)
-			if _anim_tree["parameters/iw_trans/current"] != IWState.WALK:
-				_anim_tree["parameters/iw_trans/current"] = IWState.WALK
-		elif _anim_tree["parameters/iw_trans/current"] != IWState.IDLE:
+			_anim_tree["parameters/iw_trans/current"] = IWState.WALK
+		else:
 			_anim_tree["parameters/iw_trans/current"] = IWState.IDLE
 		_move.x = _move_direction.x * SPEED * speed_cooficent + _knockback
 	else:
