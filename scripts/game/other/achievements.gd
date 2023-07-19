@@ -52,177 +52,177 @@ var blocked_counter = 0
 var achievement_get = load("res://prefabs/menu/achievement_complete.scn")
 var achievements = {
 	BOSS1 : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/boss1.png"),
 		"name" : "Это мои овцы",
 		"desc" : "Победите Пастуха."
 	},
 	BOSS2 : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/boss2.png"),
 		"name" : "Экологический борец",
 		"desc" : "Победите Лесоруба."
 	},
 	BOSS3 : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/boss3.png"),
 		"name" : "Белый маг",
 		"desc" : "Победите Чёрного мага."
 	},
 	BOSS4 : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/boss4.png"),
 		"name" : "Фехтовальщик",
 		"desc" : "Победите Великого рыцаря."
 	},
 	BOSS5 : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/boss5.png"),
 		"name" : "Без талона",
 		"desc" : "Победите Хирурга."
 	},
 	WHAT_IS_IT : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/first_class.png"),
 		"name" : "Это что?",
 		"desc" : "Откройте первый класс."
 	},
 	MASTER_OF_WEAPONS : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/all_classes.png"),
 		"name" : "Мастер всех оружий",
 		"desc" : "Откройте все классы."
 	},
 	IM_POWER : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/class_maxed.png"),
 		"name" : "Сама сила",
 		"desc" : "Прокачайте класс на максимум."
 	},
 	LUCKY_AMULET : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/first_amulet.png"),
 		"name" : "На удачу",
 		"desc" : "Откройте первый амулет."
 	},
 	HELP_FROM_INSIDE : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/first_gadget.png"),
 		"name" : "Помощь изнутри",
 		"desc" : "Откройте первый душевный навык."
 	},
 	SOUL_MASTER : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/first_sp.png"),
 		"name" : "Мастер души",
 		"desc" : "Откройте первую душевную силу."
 	},
 	DARK_CREATION : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/death.png"),
 		"name" : "Воплощение тьмы",
 		"desc" : "Встретьте саму Смерть."
 	},
 	POTION_MAN : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/10_potions.png"),
 		"name" : "Зельеман",
 		"desc" : "Используйте зелья 10 раз."
 	},
 	PROZAPASS : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/max_potions.png"),
 		"name" : "Прозапас",
 		"desc" : "Получите по 5 зелий каждого вида."
 	},
 	BURN_HER_FASTER : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/burn_enemy.png"),
 		"name" : "Кремируйте её быстрее!",
 		"desc" : "Сожгите врага."
 	},
 	THIS_IS_SPARTA : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/fall_enemy_death.png"),
 		"name" : "Это... Спарта",
 		"desc" : "Заставьте монстра умереть от падения."
 	},
 	FUUUUCK : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/death_with_potion.png"),
 		"name" : "ДА ТЫ ЧТО..",
 		"desc" : "Умрите во время использования зелья..."
 	},
 	SOME_PEOPLES : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/about.png"),
 		"name" : "Какие-то человеки..",
 		"desc" : "Посмотрите создателей игры."
 	},
 	REZNYA : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/reznya.png"),
 		"name" : "Резня",
 		"desc" : 'Пройдите мини-игру "Резня".'
 	},
 	CLEARED : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/dyh.png"),
 		"name" : "Очищение",
 		"desc" : 'Пройдите мини-игру "Изб. от ненависти".'
 	},
 	DIAMONDS : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/ss_gem.png"),
 		"name" : "АЛМАЗЫ!!",
 		"desc" : 'Подберите кристалл в "Симуляторе камня".'
 	},
 	LAST_STANDER : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/ls.png"),
 		"name" : "Последний оплот",
 		"desc" : 'Пройдите мини-игру "Последние волны".'
 	},
 	DASHER : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/pd_level_done.png"),
 		"name" : "Dasher",
 		"desc" : 'Пройдите уровень в мини-игре "Platformer Dash".'
 	},
 	LOOT : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/garden_loot.png"),
 		"name" : "Урожай",
 		"desc" : 'Соберите награду с 3 растений в "Саду".'
 	},
 	VICTORY_ROYALE : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/2d_shooter_win.png"),
 		"name" : "Victory Royale #1",
 		"desc" : 'Выиграйте 1 игру в "2Д-шутере".'
 	},
 	ESCAPE : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/fnas_done.png"),
 		"name" : "Побег",
 		"desc" : 'Пройдите мини-игру "FNaS"...'
 	},
 	UNTOUCHED : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/no_damage.png"),
 		"name" : "Неприкасаемый",
 		"desc" : "Пройдите уровень, не получив урон."
 	},
 	BETTER_TOGETHER : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/mp_level.png"),
 		"name" : "Вместе сильнее",
 		"desc" : "Пройдите любой уровень в мультиплеере."
 	},
 	GOOD_PARTNER : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/mp_revive_5.png"),
 		"name" : "Надёжный товарищ",
 		"desc" : "Воскресите напарника 5 раз."
 	},
 	SCREW_IT : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/mp_level_died.png"),
 		"name" : "Беззаботность",
 		"desc" : "Дайте товарищу завершить уровень, пока вы лежите на земле."
 	},
 	WHAT_A_WASTE : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/level_died.png"),
 		"name" : "Какая жалость!",
 		"desc" : "Пройдите уровень с 0 здоровья."
 	},
 	ON_THE_EDGE : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/almost_died.png"),
 		"name" : "На грани",
 		"desc" : "Завершите уровень с меньше, чем 10% здоровья."
 	},
 	ORIGIN : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/lore_seen.png"),
 		"name" : "Начало",
 		"desc" : "Вспомните своё прошлое."
 	},
 	KILLER : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/killer.png"),
 		"name" : "Убийца",
 		"desc" : "Сделайте 250 убийств."
 	},
 	YOU_MISSED : {
-		"icon" : load("res://textures/mobs/sheeper/sheep_bomb.png"),
+		"icon" : load("res://textures/achievements/dodge_shot.png"),
 		"name" : "Ха! Не попал",
 		"desc" : "Уклонитесь от атаки."
 	},

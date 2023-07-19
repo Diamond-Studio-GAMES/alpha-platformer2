@@ -116,6 +116,10 @@ func about(val = true):
 	$main.visible = not val
 
 
+func license():
+	OS.shell_open("https://godotengine.org/license/")
+
+
 func language():
 	if G.getv("lang", "ru") == "ru":
 		G.setv("lang", "en")

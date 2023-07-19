@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/fnas_done.png-8b415daf311111fb3cfd7321502c2687.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://textures/achievements/fnas_done.png"
+dest_files=[ "res://.import/fnas_done.png-8b415daf311111fb3cfd7321502c2687.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
