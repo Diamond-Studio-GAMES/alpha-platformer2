@@ -44,7 +44,7 @@ func initialize(age):
 	appodeal.setUserAge(age)
 	appodeal.setChildDirectedTreatment(coppa)
 	if coppa:
-		appodeal.disableNetworks(["a4g", "applovin", "bidmachine", "facebook", "mraid", "my_target", "nast", "notsy", "ogury", "startapp", "vast", "yandex"])
+		appodeal.disableNetworks(["a4g", "applovin", "bidmachine", "facebook", "mraid", "my_target", "nast", "notsy", "ogury", "vast", "yandex"])
 	appodeal.initialize("07728a05559bd903f48c492785faf0600d70eaab155f1179", AdType.INTERSTITIAL | AdType.REWARDED_VIDEO, consent)
 	appodeal.muteVideosIfCallsMuted(true)
 	appodeal.setTestingEnabled(false)
