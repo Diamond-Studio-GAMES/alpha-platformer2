@@ -24,7 +24,7 @@ func finish():
 	var file = File.new()
 	var path = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir()
 	if file.file_exists(path.plus_file("apa2_patch.pck")):
-		if G.main_getv( "patch_code", 0) == G.VERSION_CODE:
+		if G.main_getv("patch_code", 0) == G.VERSION_CODE:
 			ProjectSettings.load_resource_pack(path.plus_file("apa2_patch.pck"))
 	get_tree().change_scene("res://scenes/menu/save_loader.scn")
 
@@ -34,10 +34,10 @@ func _ready():
 	$update.get_cancel().text = tr("ss.update.cancel")
 	$privacy_policy.get_close_button().hide()
 	$age.get_close_button().hide()
-	TranslationServer.set_locale(G.main_getv( "lang", "ru"))
-	if not G.main_getv( "privacy_policy", false):
-		G.main_setv( "lang", "ru" if OS.get_locale_language() == "ru" else "en")
-		TranslationServer.set_locale(G.main_getv( "lang", "en"))
+	TranslationServer.set_locale(G.main_getv("lang", "ru"))
+	if not G.main_getv("privacy_policy", false):
+		G.main_setv("lang", "ru" if OS.get_locale_language() == "ru" else "en")
+		TranslationServer.set_locale(G.main_getv("lang", "en"))
 		$privacy_policy.popup_centered()
 		return
 	if G.main_getv("age", -1) < 0:
@@ -47,18 +47,18 @@ func _ready():
 	var dir = Directory.new()
 	var path = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir()
 	if dir.file_exists(path.plus_file("apa2_patch.pck")):
-		if G.main_getv( "patch_code", 0) != G.VERSION_CODE:
+		if G.main_getv("patch_code", 0) != G.VERSION_CODE:
 			dir.remove(path.plus_file("apa2_patch.pck"))
-			G.main_setv( "patch_version", 0)
-			G.main_setv( "patch_code", 0)
+			G.main_setv("patch_version", 0)
+			G.main_setv("patch_code", 0)
 	
-	G.ad.initialize(G.main_getv( "age", 0))
+	G.ad.initialize(G.main_getv("age", 0))
 	$anim.play("splash")
 	check_updates()
 
 
 func check_updates():
-	if not G.main_getv( "check_upd", true):
+	if not G.main_getv("check_upd", true):
 		check_patches()
 		return
 	label.text = tr("ss.status.check.upd")
@@ -76,7 +76,7 @@ func update_request(result, code, header, body):
 	if data.error:
 		check_patches()
 		return
-	if data.result.beta > G.VERSION_CODE and G.main_getv( "check_beta", not G.VERSION_STATUS.empty()):
+	if data.result.beta > G.VERSION_CODE and G.main_getv("check_beta", not G.VERSION_STATUS.empty()):
 		$update.window_title = tr("ss.update.title") + " (BETA)"
 		$update.dialog_text = tr("ss.update.text") + " (BETA)"
 		can_update = true
@@ -86,7 +86,7 @@ func update_request(result, code, header, body):
 
 
 func check_patches():
-	if not G.main_getv( "check_patches", true):
+	if not G.main_getv("check_patches", true):
 		end_check()
 		return
 	label.text = tr("ss.status.check.patch")
@@ -105,7 +105,7 @@ func patch_request(result, code, header, body):
 		end_check()
 		return
 	if data.result.has(str(G.VERSION_CODE)):
-		if data.result[str(G.VERSION_CODE)] > G.main_getv( "patch_version", 0):
+		if data.result[str(G.VERSION_CODE)] > G.main_getv("patch_version", 0):
 			http.download_file = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir().plus_file("apa2_patch.pck")
 			http.connect("request_completed", self, "download_patch", [data.result[str(G.VERSION_CODE)]], CONNECT_ONESHOT)
 			var err = http.request("http://f0695447.xsph.ru/" + str(G.VERSION_CODE) + "patch.pck")
@@ -122,8 +122,8 @@ func download_patch(result, code, header, body, version):
 	if result != HTTPRequest.RESULT_SUCCESS:
 		end_check()
 		return
-	G.main_setv( "patch_version", version)
-	G.main_setv( "patch_code", G.VERSION_CODE)
+	G.main_setv("patch_version", version)
+	G.main_setv("patch_code", G.VERSION_CODE)
 	end_check()
 
 
@@ -146,13 +146,13 @@ func check_toggled(state):
 
 
 func accept_policy():
-	G.main_setv( "privacy_policy", true)
+	G.main_setv("privacy_policy", true)
 	G.save()
 	restart()
 
 
 func accept_consent():
-	G.main_setv( "age", $age/slider.value)
+	G.main_setv("age", $age/slider.value)
 	G.save()
 	restart()
 

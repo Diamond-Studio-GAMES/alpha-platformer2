@@ -2,80 +2,80 @@ extends Node
 class_name AdsManager
 
 
-enum AdType {
-	INTERSTITIAL = 1,
-	BANNER = 2,
-	NATIVE = 4,
-	REWARDED_VIDEO = 8,
-	NON_SKIPPABLE_VIDEO = 16,
-}
-enum ShowStyle {
-	INTERSTITIAL = 1,
-	BANNER_TOP = 2,
-	BANNER_BOTTOM = 4,
-	REWARDED_VIDEO = 8,
-	NON_SKIPPABLE_VIDEO = 16,
-}
-
-
 var ad_counter_win = 0
 var ad_counter_go = 0
-var appodeal
+var is_waiting_ad = true
+var admob: AdMob
 
 signal rewarded_video_finished(amount, currency)
 
 
 func _ready():
-	if Engine.has_singleton("GodotAppodeal"):
-		appodeal = Engine.get_singleton("GodotAppodeal")
-	else:
-		print("Appodeal not supported on current platform! Platform: ", OS.get_name())
+	admob = AdMob.new()
+	admob.name = "admob"
+	add_child(admob)
 
 
 func ads_available():
-	return appodeal != null
+	return admob.get_is_initialized()
 
 
 func initialize(age):
-	if appodeal == null:
-		return
-	var consent = age > 15
-	var coppa = age < 13
-	appodeal.setUserAge(age)
-	appodeal.setChildDirectedTreatment(coppa)
-	if coppa:
-		appodeal.disableNetworks(["a4g", "applovin", "bidmachine", "facebook", "mraid", "my_target", "nast", "notsy", "ogury", "vast", "yandex"])
-	appodeal.initialize("07728a05559bd903f48c492785faf0600d70eaab155f1179", AdType.INTERSTITIAL | AdType.REWARDED_VIDEO, consent)
-	appodeal.muteVideosIfCallsMuted(true)
-	appodeal.setTestingEnabled(false)
-	appodeal.connect("rewarded_video_finished", self, "rvf")
+	admob.initialize(true, age < 13, "PG" if age < 13 else "MA", false)
+	admob.request_user_consent()
+	admob.connect("user_earned_rewarded", self, "_on_rewarded_video_finished")
+	admob.connect("rewarded_ad_failed_to_load", self, "_load_rewarded")
+	admob.connect("rewarded_ad_clicked", self, "_load_rewarded")
+	admob.connect("rewarded_ad_closed", self, "_load_rewarded")
+	admob.connect("interstitial_clicked", self, "_load_interstitial")
+	admob.connect("interstitial_failed_to_load", self, "_load_interstitial")
+	admob.connect("interstitial_closed", self, "_load_interstitial")
+	admob.load_interstitial("ca-app-pub-4032583867683331/5392039540")
+	admob.load_rewarded("ca-app-pub-4032583867683331/3907621386")
 
 
-func showInterstitial():
+func show_interstitial():
 	print("Showing Interstitial...")
-	if G.main_getv( "no_ads", false):
+	if G.main_getv("no_ads", false):
 		print("ABORTING: ADS REMOVED!")
 		return
-	if appodeal == null:
+	if not admob.get_is_initialized():
 		print("DUMMY: Shown Interstitial")
 		return
-	appodeal.showAdForPlacement(ShowStyle.INTERSTITIAL, "win_lose")
+	if admob.get_is_interstitial_loaded():
+		admob.show_interstitial()
+	else:
+		if is_waiting_ad:
+			return
+		is_waiting_ad = true
+		yield(admob, "interstitial_loaded")
+		is_waiting_ad = false
+		admob.show_interstitial()
 
 
-func showRewarded():
+func show_rewarded():
 	print("Showing Rewarded...")
-	if appodeal == null:
+	if not admob.get_is_initialized():
 		print("DUMMY: Shown Rewarded")
 		return
-	appodeal.showAdForPlacement(ShowStyle.REWARDED_VIDEO, "gold_box")
+	admob.show_rewarded()
 
 
-func canShowRewarded():
-	if appodeal == null:
-		return false
-	return appodeal.canShow(ShowStyle.REWARDED_VIDEO)
+func can_show_rewarded():
+	return admob.get_is_initialized() and admob.get_is_rewarded_loaded()
 
 
-func rvf(a : float, c : String):
+func _load_interstitial(some = 0):
+	if not admob.get_is_interstitial_loaded():
+		admob.load_interstitial("ca-app-pub-4032583867683331/5392039540")
+
+
+func _load_rewarded(some = 1):
+	if not admob.get_is_rewarded_loaded():
+		admob.load_rewarded("ca-app-pub-4032583867683331/3907621386")
+
+
+func _on_rewarded_video_finished(a: float, c: String):
 	print("REWARD GET: ", str(c), ", ", str(a))
 	emit_signal("rewarded_video_finished", a, c)
+	_load_rewarded()

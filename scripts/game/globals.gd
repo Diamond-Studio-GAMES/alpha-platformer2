@@ -4,15 +4,15 @@ class_name Globals, "res://textures/gui/alpha_text.png"
 
 const VERSION = "0.8.0"
 const VERSION_STATUS = "сборка"
-const VERSION_STATUS_NUMBER = "4"
-const VERSION_CODE = 58
+const VERSION_STATUS_NUMBER = "5"
+const VERSION_CODE = 59
 
 var main_file: ConfigFile
 var save_file: ConfigFile
 var save_timer = 0
 var selected_class_to_test = "knight"
 var current_level = "1_1"
-var curr_scene = ""
+var current_scene = ""
 var cached_ip = ""
 var cached_suff = 0
 var custom_respawn_scene = ""
@@ -304,14 +304,14 @@ func update_music(node):
 	if not is_instance_valid(node):
 		music.stop()
 		return
-	if node.name != curr_scene:
-		var prev_scene = curr_scene
-		curr_scene = node.name
-		if curr_scene == "menu" and prev_scene != "levels":
+	if node.name != current_scene:
+		var prev_scene = current_scene
+		current_scene = node.name
+		if current_scene == "menu" and prev_scene != "levels":
 			music.play(0)
-		elif curr_scene == "levels" and prev_scene != "menu":
+		elif current_scene == "levels" and prev_scene != "menu":
 			music.play(0)
-		elif curr_scene != "menu" and curr_scene != "levels":
+		elif current_scene != "menu" and current_scene != "levels":
 			music.stop()
 
 

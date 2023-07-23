@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://scripts/game/other/achievements.gd"
 }, {
 "base": "Node",
+"class": "AdMob",
+"language": "GDScript",
+"path": "res://scripts/menu/admob.gd"
+}, {
+"base": "Node",
 "class": "AdsManager",
 "language": "GDScript",
 "path": "res://scripts/menu/ads_manager.gd"
@@ -221,6 +226,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Achievements": "",
+"AdMob": "",
 "AdsManager": "",
 "Archer": "",
 "Attack": "res://textures/gui/attack.png",

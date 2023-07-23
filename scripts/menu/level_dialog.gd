@@ -106,7 +106,7 @@ func show_d(lvl = "1_1"):
 func show_d_win():
 	yield(get_tree(), "idle_frame")
 	if G.ad.ad_counter_win == 1:
-		G.ad.showInterstitial()
+		G.ad.show_interstitial()
 		G.ad.ad_counter_win = 0
 	else:
 		G.ad.ad_counter_win = 1

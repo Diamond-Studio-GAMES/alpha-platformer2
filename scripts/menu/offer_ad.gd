@@ -13,11 +13,11 @@ func _ready():
 func _process(delta):
 	timer += delta
 	if timer >= 2:
-		$buy.disabled = not G.ad.canShowRewarded()
+		$buy.disabled = not G.ad.can_show_rewarded()
 
 
 func see():
-	G.ad.showRewarded()
+	G.ad.show_rewarded()
 
 
 func reward(amount, currency):

@@ -18,11 +18,11 @@ var id_to_delete = ""
 
 func _ready():
 	if G.main_getv("volume", -1) < 0:
-		G.main_setv( "volume", 0.75)
-		G.main_setv( "volume_sfx", 1)
-		G.main_setv( "fullscr", false)
-		G.main_setv( "fps", false)
-	TranslationServer.set_locale(G.main_getv( "lang", "ru"))
+		G.main_setv("volume", 0.75)
+		G.main_setv("volume_sfx", 1)
+		G.main_setv("fullscr", false)
+		G.main_setv("fps", false)
+	TranslationServer.set_locale(G.main_getv("lang", "ru"))
 	$delete_window.get_label().align = Label.ALIGN_CENTER
 	$delete_window.get_cancel().text = tr("sl.delete.no")
 	$delete_window.get_ok().text = tr("sl.delete.yes")
@@ -35,13 +35,13 @@ func _ready():
 	$enter_color.color = Color.black
 	$enter.interpolate_property($enter_color, "color", Color(0, 0, 0, 1), Color(0, 0, 0, 0), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0.5)
 	$enter.start()
-	$settings/mv_s.value = G.main_getv( "volume", 0.75)
-	$settings/sfxv_s.value = G.main_getv( "volume_sfx", 1)
-	$settings/fullscr.pressed = G.main_getv( "fullscr", false)
-	$settings/fps.pressed = G.main_getv( "fps", false)
-	$misc/check_upd.pressed = G.main_getv( "check_upd", true)
-	$misc/check_patch.pressed = G.main_getv( "check_patches", true)
-	$misc/check_beta.pressed = G.main_getv( "check_beta", not G.VERSION_STATUS.empty())
+	$settings/mv_s.value = G.main_getv("volume", 0.75)
+	$settings/sfxv_s.value = G.main_getv("volume_sfx", 1)
+	$settings/fullscr.pressed = G.main_getv("fullscr", false)
+	$settings/fps.pressed = G.main_getv("fps", false)
+	$misc/check_upd.pressed = G.main_getv("check_upd", true)
+	$misc/check_patch.pressed = G.main_getv("check_patches", true)
+	$misc/check_beta.pressed = G.main_getv("check_beta", not G.VERSION_STATUS.empty())
 	$create/name.placeholder_text = tr("sl.create.pname")
 	$create/name.set_message_translation(false)
 	$create/name.notification(NOTIFICATION_TRANSLATION_CHANGED)
@@ -94,23 +94,23 @@ func _process(delta):
 	else:
 		$create/create.disabled = false
 	
-	G.main_setv( "volume", $settings/mv_s.value)
-	G.main_setv( "volume_sfx", $settings/sfxv_s.value)
+	G.main_setv("volume", $settings/mv_s.value)
+	G.main_setv("volume_sfx", $settings/sfxv_s.value)
 	if OS.has_feature("pc"):
-		G.main_setv( "fullscr", $settings/fullscr.pressed)
+		G.main_setv("fullscr", $settings/fullscr.pressed)
 		OS.window_fullscreen = $settings/fullscr.pressed
 	else:
 		$settings/fullscr.visible = false
-	G.main_setv( "check_upd", $misc/check_upd.pressed)
-	G.main_setv( "check_patches", $misc/check_patch.pressed)
-	G.main_setv( "check_beta", $misc/check_beta.pressed)
+	G.main_setv("check_upd", $misc/check_upd.pressed)
+	G.main_setv("check_patches", $misc/check_patch.pressed)
+	G.main_setv("check_beta", $misc/check_beta.pressed)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("music"), linear2db($settings/mv_s.value))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("sfx"), linear2db($settings/sfxv_s.value))
 
 
 func fps_button_changed(state):
 	G.fps_text.visible = state
-	G.main_setv( "fps", state)
+	G.main_setv("fps", state)
 
 
 func create():
@@ -131,9 +131,9 @@ func create():
 		G.setv("soul_type", 6)
 	G.setv("gems", 10)
 	G.setv("coins", 0)
-	G.setv("volume", G.main_getv( "volume", 0.75))
-	G.setv("volume_sfx", G.main_getv( "volume_sfx", 1))
-	G.setv("lang", G.main_getv( "lang", OS.get_locale_language()))
+	G.setv("volume", G.main_getv("volume", 0.75))
+	G.setv("volume_sfx", G.main_getv("volume_sfx", 1))
+	G.setv("lang", G.main_getv("lang", OS.get_locale_language()))
 	G.setv("hero_chance", 2)
 	$enter.interpolate_property($enter_color, "color", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 2)
 	$enter.start()
@@ -223,12 +223,12 @@ func enter_settings():
 
 
 func lang():
-	if G.main_getv( "lang", "ru") == "ru":
-		G.main_setv( "lang", "en")
+	if G.main_getv("lang", "ru") == "ru":
+		G.main_setv("lang", "en")
 		G.save()
-		TranslationServer.set_locale(G.main_getv( "lang", "en"))
+		TranslationServer.set_locale(G.main_getv("lang", "en"))
 	else:
-		G.main_setv( "lang", "ru")
+		G.main_setv("lang", "ru")
 		G.save()
 		TranslationServer.set_locale(G.main_getv("lang", "ru"))
 	get_tree().reload_current_scene()
@@ -265,8 +265,8 @@ func remove_patches():
 	var path = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir()
 	if dir.file_exists(path.plus_file("apa2_patch.pck")):
 		dir.remove(path.plus_file("apa2_patch.pck"))
-	G.main_setv( "patch_version", 0)
-	G.main_setv( "patch_code", 0)
+	G.main_setv("patch_version", 0)
+	G.main_setv("patch_code", 0)
 
 
 func quit():
