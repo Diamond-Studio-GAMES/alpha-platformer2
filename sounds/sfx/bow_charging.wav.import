@@ -12,7 +12,7 @@ dest_files=[ "res://.import/bow_charging.wav-e10cda457ed0ed171f465656282875f7.sa
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

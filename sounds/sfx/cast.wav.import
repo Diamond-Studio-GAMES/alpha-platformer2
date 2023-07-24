@@ -12,7 +12,7 @@ dest_files=[ "res://.import/cast.wav-27abb1bbc20cc69ecb7d593fee738364.sample" ]
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

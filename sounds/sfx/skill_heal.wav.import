@@ -12,7 +12,7 @@ dest_files=[ "res://.import/skill_heal.wav-aa3efd7d531b23348ac275f44bf25943.samp
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

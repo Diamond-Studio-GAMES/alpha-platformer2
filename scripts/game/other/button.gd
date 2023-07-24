@@ -6,8 +6,7 @@ export (NodePath) var to_manage
 var m: CollisionObject2D
 var m_mask = 0
 var m_layer = 0
-onready var vpressed = $pressed
-onready var vunpressed = $unpressed
+onready var sprite = $sprite
 
 
 func _ready():
@@ -17,20 +16,23 @@ func _ready():
 
 
 func _process(delta):
-	if pressed and not vpressed.visible:
-		vunpressed.hide()
-		vpressed.show()
+	if pressed and sprite.frame == 1:
+		sprite.frame = 0
 		m.collision_layer = 0
 		m.collision_mask = 0
 		m.hide()
-	elif not pressed and vpressed.visible:
-		vunpressed.show()
-		vpressed.hide()
+	elif not pressed and sprite.frame == 0:
+		sprite.frame = 1
 		m.collision_layer = m_layer
 		m.collision_mask = m_mask
 		m.show()
 
 
-func lever_entered(body):
-	if body is Player:
-		pressed = not pressed
+func body_entered(body):
+	if body is Pushable:
+		pressed = true
+
+
+func body_exited(body):
+	if body is Pushable:
+		pressed = false

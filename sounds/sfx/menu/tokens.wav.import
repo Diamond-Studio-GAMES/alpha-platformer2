@@ -12,7 +12,7 @@ dest_files=[ "res://.import/tokens.wav-b3eaaf5a367057f8005258e1b409e2e1.sample" 
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

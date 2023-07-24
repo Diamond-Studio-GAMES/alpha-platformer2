@@ -12,7 +12,7 @@ dest_files=[ "res://.import/heal.wav-aa4db24b76052769a26b1ea73e60b0bd.sample" ]
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

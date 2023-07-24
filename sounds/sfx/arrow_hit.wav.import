@@ -12,7 +12,7 @@ dest_files=[ "res://.import/arrow_hit.wav-97eee64d423574188f3fd41297704702.sampl
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

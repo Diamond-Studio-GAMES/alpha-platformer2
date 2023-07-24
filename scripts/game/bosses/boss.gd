@@ -131,6 +131,13 @@ func death():
 	player.get_node("camera_tween").start()
 	player.default_camera_zoom = Vector2(0.3, 0.3)
 	is_attacking = false
+	anim.play("idle")
+	anim.advance(0)
+	yield(get_tree(), "idle_frame")
+	if anim.has_animation("RESET"):
+		anim.play("RESET")
+		anim.advance(0)
+		yield(get_tree(), "idle_frame")
 	anim.play("death")
 	G.addv("boss_kills", 1)
 	G.addv("kills", -1)

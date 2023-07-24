@@ -12,7 +12,7 @@ dest_files=[ "res://.import/upgrade.wav-8f68d9539581e436fe2e2fcd4fd3aca8.sample"
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

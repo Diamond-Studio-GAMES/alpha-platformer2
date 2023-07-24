@@ -12,7 +12,7 @@ dest_files=[ "res://.import/swing.wav-86134d071e43ccbc7914712a2b444899.sample" ]
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

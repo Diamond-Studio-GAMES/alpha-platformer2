@@ -12,7 +12,7 @@ dest_files=[ "res://.import/mob_death.wav-43271f1bb8d004bd37ddf405ac5d8444.sampl
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

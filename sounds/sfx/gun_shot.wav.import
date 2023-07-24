@@ -12,7 +12,7 @@ dest_files=[ "res://.import/gun_shot.wav-6319576130c0dd2abb661768459c15ab.sample
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

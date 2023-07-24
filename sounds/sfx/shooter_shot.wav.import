@@ -12,7 +12,7 @@ dest_files=[ "res://.import/shooter_shot.wav-df3c18b5406a57fd651d95e46bdd9a67.sa
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

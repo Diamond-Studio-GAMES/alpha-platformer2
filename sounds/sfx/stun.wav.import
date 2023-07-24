@@ -12,7 +12,7 @@ dest_files=[ "res://.import/stun.wav-9d5b8e61343562ba5338cb5701f0bd2f.sample" ]
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

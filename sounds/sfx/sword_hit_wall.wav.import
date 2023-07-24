@@ -12,7 +12,7 @@ dest_files=[ "res://.import/sword_hit_wall.wav-f00ff4debb760a9fd2c806bf80d8cbb1.
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

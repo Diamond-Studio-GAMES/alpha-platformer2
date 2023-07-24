@@ -12,7 +12,7 @@ dest_files=[ "res://.import/ZAWARKA.wav-56c3f0d8dcca17f38dc7432c8331029f.sample"
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

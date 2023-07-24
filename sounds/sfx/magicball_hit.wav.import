@@ -12,7 +12,7 @@ dest_files=[ "res://.import/magicball_hit.wav-849d7200a107c32c83a3c766d9047770.s
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

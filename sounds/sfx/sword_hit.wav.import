@@ -12,7 +12,7 @@ dest_files=[ "res://.import/sword_hit.wav-6c7de64d7fa8e635573c16bc16e9e84c.sampl
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
