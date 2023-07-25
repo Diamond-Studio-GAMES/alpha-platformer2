@@ -5,7 +5,7 @@ class_name Globals, "res://textures/gui/alpha_text.png"
 const VERSION = "0.8.0"
 const VERSION_STATUS = "бета"
 const VERSION_STATUS_NUMBER = "1"
-const VERSION_CODE = 60
+const VERSION_CODE = 61
 
 var main_file: ConfigFile
 var save_file: ConfigFile

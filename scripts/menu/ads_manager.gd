@@ -5,13 +5,13 @@ class_name AdsManager
 var ad_counter_win = 0
 var ad_counter_go = 0
 var is_waiting_ad = true
-var admob: AdMob
+var admob: AdMobAPI
 
 signal rewarded_video_finished(amount, currency)
 
 
 func _ready():
-	admob = AdMob.new()
+	admob = AdMobAPI.new()
 	admob.name = "admob"
 	add_child(admob)
 

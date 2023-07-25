@@ -1,4 +1,4 @@
-class_name AdMob
+class_name AdMobAPI
 extends Node
 
 signal initialization_complete(status, adapter_name)
