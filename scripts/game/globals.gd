@@ -302,13 +302,12 @@ func change_to_scene(path):
 
 func percent_chance(in_chance):
 	in_chance *= 10000
+	in_chance = int(in_chance)
 	var max_add = 1000000 - in_chance
-	var chance_range_start = randi() % max_add + 1
+	var chance_range_start = randi() % (max_add + 1)
 	var chance_range_end = chance_range_start + in_chance
 	var random_number = randi() % 1000001
-	if random_number >= chance_range_start and random_number <= chance_range_end:
-		return true
-	return false
+	return random_number >= chance_range_start and random_number <= chance_range_end
 
 
 func update_music(node):
