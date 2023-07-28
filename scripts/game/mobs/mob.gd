@@ -58,8 +58,6 @@ func _ready():
 		yield($"/root/mg", "game_started")
 	yield(get_tree(), "idle_frame")
 	find_target()
-	if player != null:
-		player_distance = global_position.distance_squared_to(player.global_position)
 
 
 func find_target(force = false):
