@@ -80,17 +80,6 @@ func _ready():
 	start_wave()
 
 
-func percent_chance(in_chance):
-	in_chance *= 10000
-	var max_add = 1000000 - in_chance
-	var chance_range_start = gen.randi_range(0, max_add)
-	var chance_range_end = chance_range_start + in_chance
-	var random_number = gen.randi_range(0, 1000000)
-	if random_number >= chance_range_start and random_number <= chance_range_end:
-		return true
-	return false
-
-
 func start_wave():
 	$shop.hide()
 	player.can_control = true
@@ -132,7 +121,7 @@ func spawn_mob(pos_id = -1):
 		var spawn_id = str(gen.randi_range(0, 3))
 		mob.global_position = get_node("spawn_points/pos" + spawn_id).global_position
 		get_node("spawn_points/pos" + spawn_id + "/anim").play("spawn")
-		if percent_chance(2):
+		if G.percent_chance(2):
 			mob.stats_multiplier *= 1.5
 			mob.modulate = Color.red
 	else:

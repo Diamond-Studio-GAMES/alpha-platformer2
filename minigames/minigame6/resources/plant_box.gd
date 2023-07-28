@@ -37,7 +37,7 @@ func open_box():
 	yield(self, "next")
 	$water_screen.hide()
 	$fert_screen.show()
-	var fert_get_two = percent_chance(15)
+	var fert_get_two = G.percent_chance(15)
 	var fert_get = 1
 	if fert_get_two:
 		fert_get = 2
@@ -46,10 +46,10 @@ func open_box():
 	$fert_screen/anim.play("get")
 	G.save()
 	yield(self, "next")
-	var common = percent_chance(90)
-	var rare = percent_chance(25)
-	var epic = percent_chance(15)
-	var legendary = percent_chance(6.5)
+	var common = G.percent_chance(90)
+	var rare = G.percent_chance(25)
+	var epic = G.percent_chance(15)
+	var legendary = G.percent_chance(6.5)
 	var plants = []
 	if legendary:
 		plants = plants_legendary
@@ -83,15 +83,3 @@ func open_box():
 	$semen_screen/anim.play("get")
 	yield(self, "next")
 	get_tree().change_scene("res://minigames/minigame6/minigame.scn")
-	
-
-
-func percent_chance(in_chance):
-	in_chance *= 10000
-	var max_add = 1000000 - in_chance
-	var chance_range_start = gen.randi_range(0, max_add)
-	var chance_range_end = chance_range_start + in_chance
-	var random_number = gen.randi_range(0, 1000000)
-	if random_number >= chance_range_start and random_number <= chance_range_end:
-		return true
-	return false

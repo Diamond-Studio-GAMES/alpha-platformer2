@@ -10,7 +10,7 @@ var curr_day = 0
 var curr_ut = 0
 var prev_classes = []
 var end_rewards = {}
-var gen = RandomNumberGenerator.new()
+var gen := RandomNumberGenerator.new()
 export (Type) var type = Type.SELECT_LEVEL
 onready var rewards_text = $rc
 var AMULET_ICONS = {
@@ -235,12 +235,12 @@ func set_win_rewards(level = ""):
 	var box_chance = clamp((mod_lvl - 1) * 25 + (mod_day - 1) * 500, 0, 100)
 	var potion_chance = round((mod_lvl - 1) * 2.5)
 	# Generating rewards.
-	var give_tokens = percent_chance(tokens_chance)
+	var give_tokens = G.percent_chance(tokens_chance)
 	gen.randomize()
-	var give_ulti_tokens = percent_chance(ulti_chance)
-	var give_box = percent_chance(box_chance)
-	var give_gold_box = percent_chance(gold_box_chance)
-	var give_potion = percent_chance(potion_chance)
+	var give_ulti_tokens = G.percent_chance(ulti_chance)
+	var give_box = G.percent_chance(box_chance)
+	var give_gold_box = G.percent_chance(gold_box_chance)
+	var give_potion = G.percent_chance(potion_chance)
 	if give_ulti_tokens:
 		end_rewards["wild_ulti_tokens"] = gen.randi_range(ulti_tokens_count_min, ulti_tokens_count_max)
 	elif give_tokens:
@@ -277,18 +277,6 @@ func set_win_rewards(level = ""):
 		text += "\n"
 	text += "[/center]"
 	rewards_text.bbcode_text = text
-
-
-func percent_chance(in_chance):
-	in_chance = clamp(in_chance, 0, 100)
-	in_chance *= 10000
-	var max_add = 1000000 - in_chance
-	var chance_range_start = gen.randi_range(0, max_add)
-	var chance_range_end = chance_range_start + in_chance
-	var random_number = gen.randi_range(0, 1000000)
-	if random_number >= chance_range_start and random_number <= chance_range_end:
-		return true
-	return false
 
 
 func menu():

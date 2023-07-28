@@ -104,6 +104,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/game/mobs/knight_mob.gd"
 }, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://scripts/game/other/level.gd"
+}, {
 "base": "WindowDialog",
 "class": "Lobby",
 "language": "GDScript",
@@ -189,6 +194,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://minigames/minigame7/shooter_player.gd"
 }, {
+"base": "Mob",
+"class": "Spartan",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/spartan.gd"
+}, {
 "base": "Player",
 "class": "Spearman",
 "language": "GDScript",
@@ -244,6 +254,7 @@ _global_script_class_icons={
 "KnifeMan": "",
 "Knight": "",
 "KnightMob": "",
+"Level": "",
 "Lobby": "",
 "Mechanic": "",
 "MinigameHero": "",
@@ -261,6 +272,7 @@ _global_script_class_icons={
 "Pushable": "res://textures/blocks/ladder.png",
 "Shooter": "",
 "ShooterPlayer": "",
+"Spartan": "",
 "Spearman": "",
 "SpeedChange": "",
 "Sportsman": "",
@@ -450,6 +462,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_4="other"
 2d_physics/layer_5="attack"
 2d_physics/layer_6="water"
+2d_physics/layer_10="plasch"
 
 [locale]
 

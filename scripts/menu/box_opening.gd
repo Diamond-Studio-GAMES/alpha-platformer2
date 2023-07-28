@@ -16,7 +16,7 @@ var ulti_classes = []
 var soul_power_classes = []
 var amulet_types = []
 var hero_chance = 0.5
-var gen = RandomNumberGenerator.new()
+var gen := RandomNumberGenerator.new()
 var tokens_tween
 onready var box_anim = $box_screen/anim
 onready var box_anim2 = $big_box_screen/anim
@@ -689,11 +689,11 @@ func init_values():
 
 
 func open_box():
-	var hero = percent_chance(hero_chance) and not classes_to_unlock.empty()
-	var soul_power = percent_chance(2) and not soul_power_classes.empty()
-	var gadget = percent_chance(4) and not gadget_classes.empty()
-	var amulet_frag = percent_chance(16) and not amulet_types.empty()
-	var gem_chance = percent_chance(10)
+	var hero = G.percent_chance(hero_chance) and not classes_to_unlock.empty()
+	var soul_power = G.percent_chance(2) and not soul_power_classes.empty()
+	var gadget = G.percent_chance(4) and not gadget_classes.empty()
+	var amulet_frag = G.percent_chance(16) and not amulet_types.empty()
+	var gem_chance = G.percent_chance(10)
 	var loot = {}
 	var gems = 0
 	if gem_chance:
@@ -862,14 +862,3 @@ func open_boxes(count):
 	if loot["class"].empty():
 		loot.erase("class")
 	return loot
-
-
-func percent_chance(in_chance):
-	in_chance *= 10000
-	var max_add = 1000000 - in_chance
-	var chance_range_start = gen.randi_range(0, max_add)
-	var chance_range_end = chance_range_start + in_chance
-	var random_number = gen.randi_range(0, 1000000)
-	if random_number >= chance_range_start and random_number <= chance_range_end:
-		return true
-	return false
