@@ -14,8 +14,8 @@ dest_files=[ "res://.import/red_world_bg_base.png-4ce72ad9cbea7dd500574542359fc9
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=1
+compress/lossy_quality=0.4
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
