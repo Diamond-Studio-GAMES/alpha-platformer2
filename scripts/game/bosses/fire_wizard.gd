@@ -15,8 +15,8 @@ func _ready():
 	attacks = ["fireball", "fireballs", "oil", "fire_rain"]
 	mercy_dialog = "Огненный страж: Иди, ты достоин."
 	death_dialog = "Огненный страж: Я... Выгорел?..\n (убить или пощадить?)"
-	next_attack_time_min = 0.8
-	next_attack_time_max = 1.6
+	next_attack_time_min = 1
+	next_attack_time_max = 2
 	if MP.is_active:
 		yield($"/root/mg", "game_started")
 	yield(get_tree(), "idle_frame")
@@ -67,15 +67,13 @@ func fireball():
 		return
 	timer.start(1.5)
 	yield(timer, "timeout")
-	if not is_instance_valid(mob):
-		return
-	if mob.current_health <= 0 or mob.is_stunned:
+	if not can_mob_move():
 		return
 	var inacc = deg2rad(rand_range(-5, 5))
 	var node = fireball_big.instance()
 	node.global_position = $visual/body/arm_left/hand/big_weapon/spawn_pos.global_position
-	node.rotation = (mob.player.global_position - $visual/body/arm_left/hand/big_weapon/spawn_pos.global_position).angle() + inacc
-	node.get_node("fire").rotation = -((mob.player.global_position - $visual/body/arm_left/hand/big_weapon/spawn_pos.global_position).angle() + inacc)
+	node.rotation = (player_target.global_position - $visual/body/arm_left/hand/big_weapon/spawn_pos.global_position).angle() + inacc
+	node.get_node("fire").rotation = -((player_target.global_position - $visual/body/arm_left/hand/big_weapon/spawn_pos.global_position).angle() + inacc)
 	get_tree().current_scene.add_child(node, true)
 
 
@@ -88,7 +86,7 @@ func fire_rain():
 	yield(timer, "timeout")
 	var idx_list = range(int($fire_rain_spawn_end.global_position.x - $fire_rain_spawn_begin.global_position.x) / 32 + 1)
 	idx_list.shuffle()
-	for i in range(5 if not is_angry else 8):
+	for i in range(4 if not is_angry else 7):
 		var step_index = idx_list[i]
 		_create_fireball_to_down($fire_rain_spawn_begin.global_position + Vector2.RIGHT * 32 * step_index)
 		timer.start(0.25)
@@ -106,10 +104,12 @@ func oil():
 		return
 	timer.start(0.5)
 	yield(timer, "timeout")
+	if not can_mob_move():
+		return
 	var is_angry = mob.current_health < mob.max_health / 2
 	var idx_list = range(int($oil_spawn_end.global_position.x - $oil_spawn_begin.global_position.x) / 32 + 1)
 	idx_list.shuffle()
-	for i in range(idx_list.size() - 3 if not is_angry else idx_list.size()):
+	for i in range(idx_list.size() - 5 if not is_angry else idx_list.size() - 2):
 		var step_index = idx_list[i]
 		_create_oil($oil_spawn_begin.global_position + Vector2.RIGHT * 32 * step_index)
 
@@ -117,24 +117,20 @@ func oil():
 func _create_fireball_to_player(spawn_pos):
 	if not MP.auth(self):
 		return
-	if not is_instance_valid(mob):
-		return
-	if mob.current_health <= 0 or mob.is_stunned:
+	if not can_mob_move():
 		return
 	var inacc = deg2rad(rand_range(-10, 10))
 	var node = fireball_small.instance()
 	node.global_position = spawn_pos
-	node.rotation = (mob.player.global_position - spawn_pos).angle() + inacc
-	node.get_node("fire").rotation = -((mob.player.global_position - spawn_pos).angle() + inacc)
+	node.rotation = (player_target.global_position - spawn_pos).angle() + inacc
+	node.get_node("fire").rotation = -((player_target.global_position - spawn_pos).angle() + inacc)
 	get_tree().current_scene.add_child(node, true)
 
 
 func _create_fireball_to_down(spawn_pos):
 	if not MP.auth(self):
 		return
-	if not is_instance_valid(mob):
-		return
-	if mob.current_health <= 0:
+	if not can_mob_move():
 		return
 	var node = fireball_small.instance()
 	node.global_position = spawn_pos

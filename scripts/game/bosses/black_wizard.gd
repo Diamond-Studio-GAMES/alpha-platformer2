@@ -76,9 +76,11 @@ func blackball():
 	yield(get_tree().create_timer(0.5, false), "timeout")
 	if not MP.auth(self):
 		return
+	if not can_mob_move():
+		return
 	var n = blackball.instance()
 	n.global_position = $visual/body/arm_right/hand/weapon/shoot.global_position
-	n.rotation = $visual/body/arm_right/hand/weapon/shoot.global_position.direction_to(mob.player.global_position).angle()
+	n.rotation = $visual/body/arm_right/hand/weapon/shoot.global_position.direction_to(player_target.global_position).angle()
 	get_tree().current_scene.add_child(n, true)
 
 
@@ -87,6 +89,8 @@ func lightnings():
 	next_attack_time += 2.5
 	anim.play("lightnings")
 	yield(get_tree().create_timer(0.5, false), "timeout")
+	if not can_mob_move():
+		return
 	for i in range(0, 15, 2):
 		lightnings[i].get_node("anim").play("strike")
 	yield(get_tree().create_timer(1, false), "timeout")
@@ -100,6 +104,8 @@ func mob_spawn():
 	anim.play("summon")
 	yield(get_tree().create_timer(0.4, false), "timeout")
 	if not MP.auth(self):
+		return
+	if not can_mob_move():
 		return
 	var pos = Vector2.ZERO
 	if randi() % 2 == 1:

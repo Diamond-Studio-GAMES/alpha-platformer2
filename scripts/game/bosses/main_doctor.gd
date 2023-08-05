@@ -38,7 +38,7 @@ func death():
 
 
 func do_attack():
-	var targ_dist = global_position.distance_squared_to(mob.player.global_position)
+	var targ_dist = global_position.distance_squared_to(player_target.global_position)
 	if targ_dist < 4900:
 		melee()
 		return
@@ -60,6 +60,8 @@ func summon():
 	yield(get_tree().create_timer(0.8, false), "timeout")
 	spawn_pos.get_node("anim").play("summon")
 	if MP.auth(self):
+		if not can_mob_move():
+			return
 		var n = doctor.instance()
 		n.global_position = spawn_pos.global_position
 		n.connect("tree_exiting", self, "remove_doctor", [n])
@@ -94,11 +96,12 @@ func throw():
 	next_attack_time += 2.5
 	yield(get_tree().create_timer(0.9, false), "timeout")
 	if MP.auth(self):
-		mob.find_target(true)
+		if not can_mob_move():
+			return
 		var n = knife.instance()
 		n.global_position = $visual/body/arm_right/hand/weapon.global_position
 		get_tree().current_scene.add_child(n, true)
-		n.look_at(mob.player.global_position)
+		n.look_at(player_target.global_position)
 
 
 func swipes():
@@ -137,6 +140,8 @@ func swipes():
 
 func create_swipe(pos):
 	if not MP.auth(self):
+		return
+	if not can_mob_move():
 		return
 	var node = swipe.instance()
 	node.global_position = pos

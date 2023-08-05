@@ -113,10 +113,15 @@ func process_attack(delta):
 		mob.find_target()
 		if mob.player == null:
 			return
-		player_target = mob.player
+		set_target()
 		attack_timer = 0
 		next_attack_time = rand_range(next_attack_time_min, next_attack_time_max)
 		do_attack()
+
+
+func set_target():
+	ms.sync_call(self, "set_target")
+	player_target = mob.player
 
 
 func do_attack():
@@ -147,3 +152,19 @@ func death():
 	else:
 		player.make_dialog(death_dialog, 5)
 		waiting_for_death = true
+
+
+func can_mob_move():
+	if not is_instance_valid(mob):
+		return false
+	if mob.current_health <= 0 or mob.is_stunned:
+		return false
+	return true
+
+
+func is_mob_alive():
+	if not is_instance_valid(mob):
+		return false
+	if mob.current_health <= 0:
+		return false
+	return true

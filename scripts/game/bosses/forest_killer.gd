@@ -29,7 +29,7 @@ func death():
 
 
 func do_attack():
-	var targ_dist = global_position.distance_squared_to(mob.player.global_position)
+	var targ_dist = global_position.distance_squared_to(player_target.global_position)
 	if targ_dist < 5625:
 		melee_attack()
 		return

@@ -34,7 +34,7 @@ func death():
 
 
 func do_attack():
-	if global_position.distance_squared_to(mob.player.global_position) < 6400:
+	if global_position.distance_squared_to(player_target.global_position) < 6400:
 		melee()
 	else:
 		attacks.shuffle()
@@ -59,7 +59,7 @@ func swipes():
 	var is_angry = mob.current_health < mob.max_health * 0.5
 	if is_angry:
 		next_attack_time += 0.4
-	var player_pos = mob.player.global_position
+	var player_pos = player_target.global_position
 	create_swipe(player_pos)
 	timer.start(0.15)
 	yield(timer, "timeout")
@@ -88,7 +88,7 @@ func swipes():
 func create_swipe(player_position):
 	if not MP.auth(self):
 		return
-	if not is_instance_valid(mob):
+	if not can_mob_move():
 		return
 	randomize()
 	var node = swipe_effect.instance()
@@ -104,9 +104,11 @@ func throw():
 	if not MP.auth(self):
 		return
 	yield(get_tree().create_timer(0.6, false), "timeout")
+	if not can_mob_move():
+		return
 	var node = sword_throw.instance()
 	node.global_position = $visual/body/arm_right/hand/weapon/shoot.global_position
-	node.rotation = $visual/body/arm_right/hand/weapon/shoot.global_position.direction_to(player.global_position).angle()
+	node.rotation = $visual/body/arm_right/hand/weapon/shoot.global_position.direction_to(player_target.global_position).angle()
 	$"../..".add_child(node, true)
 
 
@@ -118,6 +120,8 @@ func swords_down():
 		return
 	var is_angry = mob.current_health < mob.max_health * 0.5
 	yield(get_tree().create_timer(0.6, false), "timeout")
+	if not can_mob_move():
+		return
 	randomize()
 	swords_down_poses.shuffle()
 	for i in range(8 if is_angry else 6):

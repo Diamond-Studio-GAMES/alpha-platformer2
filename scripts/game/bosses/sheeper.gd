@@ -28,7 +28,7 @@ func death():
 
 
 func do_attack():
-	var targ_dist = global_position.distance_squared_to(mob.player.global_position)
+	var targ_dist = global_position.distance_squared_to(player_target.global_position)
 	if targ_dist < 5625:
 		melee_attack()
 		return
@@ -80,13 +80,17 @@ func big_knife_launch():
 	if chance == 0:
 		sheep_bombs_launch()
 		return
+	if not can_mob_move():
+		return
 	var n = big_knife_attack.instance()
 	n.global_position = $visual/body/arm_left/hand/end.global_position
-	n.rotation = $visual/body/arm_left/hand/end.global_position.direction_to(player.global_position).angle()
+	n.rotation = $visual/body/arm_left/hand/end.global_position.direction_to(player_target.global_position).angle()
 	$"../..".add_child(n, true)
 
 
 func sheep_bombs_launch():
+	if not can_mob_move():
+		return
 	for i in range(3):
 		var n = sheep_bomb.instance()
 		n.global_position = $visual/body/arm_left/hand/end.global_position
