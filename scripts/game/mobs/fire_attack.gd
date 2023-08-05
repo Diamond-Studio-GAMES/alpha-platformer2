@@ -9,6 +9,7 @@ export (int) var on_entity_damage = -1
 export (String, FILE) var custom_path = "" 
 var fire_on_entity
 var counter = 0
+var damage_ticks = 0
 
 
 func _ready():
@@ -41,7 +42,7 @@ func deal_damage(node):
 		return
 	if is_on_entity:
 		counter += 1
-		if counter >= on_entity_damage_ticks:
+		if counter >= damage_ticks:
 			queue_free()
 	else:
 		if node.has_node(on_entity_node_name):
@@ -51,5 +52,6 @@ func deal_damage(node):
 			n.name = on_entity_node_name
 			if on_entity_damage > 0:
 				n.damage = on_entity_damage
+			n.damage_ticks = on_entity_damage_ticks
 			node.add_child(n, true)
 	

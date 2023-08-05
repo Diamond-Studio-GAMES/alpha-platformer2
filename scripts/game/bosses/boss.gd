@@ -1,10 +1,10 @@
 extends Node2D
 class_name Boss
 
-var mob : Mob
-var boss_bar : TextureProgress
-var boss_hp : Label
-var player : Player
+var mob: Mob
+var boss_bar: TextureProgress
+var boss_hp: Label
+var player: Player
 var is_attacking = false
 var waiting_for_death = false
 var death_timer = 0
@@ -21,7 +21,7 @@ var tp_pos = Vector2()
 var next_attack_time_min = 1
 var next_attack_time_max = 2
 onready var anim = $anim
-onready var ms = $MultiplayerSynchronizer
+onready var ms := $MultiplayerSynchronizer as MultiplayerSynchronizer
 
 
 func set_cutscene(val):

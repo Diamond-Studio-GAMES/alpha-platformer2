@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/knife.png-cd5020b0344ef26ca663bc7073829645.stex"
+path="res://.import/boss6.png-0f240b16709b6af0212c3f4dcd9b6611.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/mobs/fire_wizard/knife.png"
-dest_files=[ "res://.import/knife.png-cd5020b0344ef26ca663bc7073829645.stex" ]
+source_file="res://textures/achievements/boss6.png"
+dest_files=[ "res://.import/boss6.png-0f240b16709b6af0212c3f4dcd9b6611.stex" ]
 
 [params]
 

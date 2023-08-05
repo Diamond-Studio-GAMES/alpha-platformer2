@@ -76,6 +76,11 @@ var achievements = {
 		"name" : "Без талона",
 		"desc" : "Победите Хирурга."
 	},
+	BOSS6 : {
+		"icon" : load("res://textures/achievements/boss6.png"),
+		"name" : "Пожарник",
+		"desc" : "Победите Огненного стража."
+	},
 	WHAT_IS_IT : {
 		"icon" : load("res://textures/achievements/first_class.png"),
 		"name" : "Это что?",
