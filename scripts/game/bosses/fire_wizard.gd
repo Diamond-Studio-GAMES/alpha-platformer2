@@ -21,7 +21,7 @@ func _ready():
 		yield($"/root/mg", "game_started")
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
-	boss_bar.get_node("boss_name").text = "ХИРУРГ" + ":"
+	boss_bar.get_node("boss_name").text = "ОГНЕННЫЙ СТРАЖ" + ":"
 
 
 func death():

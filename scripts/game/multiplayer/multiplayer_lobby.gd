@@ -46,7 +46,7 @@ func connect_ip():
 	G.cached_ip = ip
 
 
-# Здесь начинается спиженный код.
+# Здесь начинается спизженный код.
 func connect_auto():
 	if timer.time_left > 0:
 		return
@@ -141,6 +141,7 @@ func init_multiplayer():
 	if get_tree().is_network_server():
 		$lobby/ip.show()
 		$lobby/more.show()
+		$lobby/start_game.show()
 		var ip = ""
 		var ips = IP.get_local_addresses()
 		ip = ips[0]

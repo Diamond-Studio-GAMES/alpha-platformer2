@@ -1,28 +1,41 @@
 extends Node2D
 
 
-export (float) var max_distance = 10
-var player : Player
+export (float) var max_distance = 8
+export (float) var max_vertical_distance = 32
+export (float) var max_wait_time = 3
+var player: Player
 var entering = false
+var going_door = null
 var going_to_door = -1
+var going_to_door_timer = 0
 
 signal entered_door
 
 
 func _ready():
-	max_distance *= max_distance
 	var suffix = ""
-	if MP.is_active and $"/root/mg".state != 2:
+	if MP.is_active:
 		suffix = str(get_tree().get_network_unique_id())
-		yield($"/root/mg", "game_started")
+		if $"/root/mg".state != 2:
+			yield($"/root/mg", "game_started")
 	yield(get_tree(), "idle_frame")
 	player = get_tree().current_scene.get_node("player" + suffix)
 
 
 func _process(delta):
 	if going_to_door >= 0:
-		if get_node("door" + str(going_to_door)).global_position.distance_squared_to(player.global_position) < max_distance:
+		going_to_door_timer += delta
+		if abs(going_door.global_position.x - player.global_position.x) < max_distance:
+			if player.GRAVITY_SCALE > 0:
+				if player.global_position.y - going_door.global_position.y > max_vertical_distance:
+					player.force_jump()
+			else:
+				if going_door.global_position.y - player.global_position.y > max_vertical_distance:
+					player.force_jump()
 			emit_signal("entered_door")
+		if going_to_door_timer > max_wait_time:
+			player.global_position = going_door.global_position
 
 
 func enter(id):
@@ -32,9 +45,11 @@ func enter(id):
 	going_to_door = id
 	player.stop()
 	player.can_control = false
-	if get_node("door" + str(id)).global_position.x > player.global_position.x:
+	going_door = get_node("door" + str(id))
+	going_to_door_timer = 0
+	if going_door.global_position.x > player.global_position.x:
 		player.force_move_right()
-	elif get_node("door" + str(id)).global_position.x < player.global_position.x:
+	elif going_door.global_position.x < player.global_position.x:
 		player.force_move_left()
 	yield(self, "entered_door")
 	going_to_door = -1

@@ -27,6 +27,8 @@ func end_level(l):
 	if damaged_count == G.getv("damaged"):
 		G.ach.complete(Achievements.UNTOUCHED)
 	yield(get_tree().create_timer(2, false), "timeout")
+	if get_tree().is_network_server():
+		yield(get_tree().create_timer(0.5, false), "timeout")
 	G.addv("levels_completed", 1)
 	if MP.is_active:
 		G.addv("mp_levels", 1)
