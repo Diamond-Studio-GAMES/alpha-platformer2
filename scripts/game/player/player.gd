@@ -81,12 +81,13 @@ func _ready():
 		$visual/body/head/hair/hair_woman.hide()
 		$camera/gui/base/hero_panel/head/hair_man.show()
 		$camera/gui/base/hero_panel/head/hair_woman.hide()
+		$hurt_sfx.stream = load("res://sounds/sfx/randomed/hurt.res")
 	else:
 		$camera/gui/base/hero_panel/head/hair_woman.show()
 		$camera/gui/base/hero_panel/head/hair_man.hide()
 		$visual/body/head/hair/hair_woman.show()
 		$visual/body/head/hair/hair_man.hide()
-		$hurt_sfx.stream = load("res://sounds/sfx/female_hurt.wav")
+		$hurt_sfx.stream = load("res://sounds/sfx/randomed/female_hurt.res")
 	_body = $visual/body
 	collision_layer = 0b10
 	collision_mask = 0b11101
