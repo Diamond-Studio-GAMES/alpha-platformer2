@@ -34,7 +34,7 @@ func _ready():
 	player.name = "player" + (str(get_tree().get_network_unique_id()) if MP.is_active else "")
 	add_child(player)
 	if has_node("lights"):
-		if G.getv("graphics", 15) & G.Graphics.BEAUTY_LIGHT == 0:
+		if G.getv("graphics", G.Graphics.BEAUTY_DEFAULT) & G.Graphics.BEAUTY_LIGHT == 0:
 			for i in $lights.get_children():
 				if i is Light2D:
 					i.hide()

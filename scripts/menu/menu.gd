@@ -23,7 +23,7 @@ func _ready():
 	pm.set_item_checked(pm.get_item_index(20 + G.getv("grass_anim")), true)
 	for i in range(4):
 		var p = int(pow(2, i))
-		if G.getv("graphics", G.Graphics.BEAUTY_ALL) & p == 0:
+		if G.getv("graphics", G.Graphics.BEAUTY_DEFAULT) & p == 0:
 			pm.set_item_checked(pm.get_item_index(i + 30), false)
 	$about/version.text = "Версия: " + G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER
 	$settings/mv_s.value = G.getv("volume", 1)
@@ -188,7 +188,9 @@ func graphics_menu_id_pressed(id):
 	else:
 		if pm.is_item_checked(idx):
 			pm.set_item_checked(idx, false)
-			G.setv("graphics", G.getv("graphics", G.Graphics.BEAUTY_ALL) & ~(1 << (id - 30)))
+			G.setv("graphics", G.getv("graphics", G.Graphics.BEAUTY_DEFAULT) & ~(1 << (id - 30)))
 		else:
+			if id == 30:
+				$settings/beauty_lights_warn.popup_centered()
 			pm.set_item_checked(idx, true)
-			G.setv("graphics", G.getv("graphics", G.Graphics.BEAUTY_ALL) | (1 << (id - 30)))
+			G.setv("graphics", G.getv("graphics", G.Graphics.BEAUTY_DEFAULT) | (1 << (id - 30)))

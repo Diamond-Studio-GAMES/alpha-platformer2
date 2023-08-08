@@ -13,13 +13,13 @@ export (bool) var is_lava_up = true
 func _ready():
 	match to_manage:
 		ToManage.WATER:
-			if G.getv("graphics", G.Graphics.BEAUTY_ALL) & G.Graphics.BEAUTY_WATER != 0:
+			if G.getv("graphics", G.Graphics.BEAUTY_DEFAULT) & G.Graphics.BEAUTY_WATER != 0:
 				continue
 			material = null
 			if has_node("../drops"):
 				$"../drops".queue_free()
 		ToManage.LAVA:
-			if G.getv("graphics", G.Graphics.BEAUTY_ALL) & G.Graphics.BEAUTY_LAVA != 0:
+			if G.getv("graphics", G.Graphics.BEAUTY_DEFAULT) & G.Graphics.BEAUTY_LAVA != 0:
 				continue
 			material = null
 			if is_lava_up:
@@ -29,7 +29,7 @@ func _ready():
 			else:
 				texture = load("res://textures/blocks/lava_masked.png")
 		ToManage.FIRE:
-			if G.getv("graphics", G.Graphics.BEAUTY_ALL) & G.Graphics.BEAUTY_FIRE != 0:
+			if G.getv("graphics", G.Graphics.BEAUTY_DEFAULT) & G.Graphics.BEAUTY_FIRE != 0:
 				continue
 			material = null
 			texture = load("res://textures/blocks/fire0.png")

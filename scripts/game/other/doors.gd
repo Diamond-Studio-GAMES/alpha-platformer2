@@ -27,14 +27,10 @@ func _process(delta):
 	if going_to_door >= 0:
 		going_to_door_timer += delta
 		if abs(going_door.global_position.x - player.global_position.x) < max_distance:
-			if player.GRAVITY_SCALE > 0:
-				if player.global_position.y - going_door.global_position.y > max_vertical_distance:
-					player.force_jump()
-			else:
-				if going_door.global_position.y - player.global_position.y > max_vertical_distance:
-					player.force_jump()
+			if abs(player.global_position.y - going_door.global_position.y) > max_vertical_distance:
+				player.force_jump()
 			emit_signal("entered_door")
-		if going_to_door_timer > max_wait_time:
+		elif going_to_door_timer > max_wait_time:
 			player.global_position = going_door.global_position
 
 
@@ -43,10 +39,10 @@ func enter(id):
 	$door1/button.hide()
 	entering = true
 	going_to_door = id
-	player.stop()
-	player.can_control = false
 	going_door = get_node("door" + str(id))
 	going_to_door_timer = 0
+	player.stop()
+	player.can_control = false
 	if going_door.global_position.x > player.global_position.x:
 		player.force_move_right()
 	elif going_door.global_position.x < player.global_position.x:

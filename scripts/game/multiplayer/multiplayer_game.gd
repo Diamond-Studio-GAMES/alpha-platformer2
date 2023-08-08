@@ -7,6 +7,11 @@ enum State {
 	IN_GAME = 2,
 	END = 3,
 }
+enum Reason {
+	VERSION = 0,
+	LEVEL = 1,
+	BUSY = 2,
+}
 
 var state = State.LOBBY
 var players_remain_to_load = []
@@ -14,6 +19,7 @@ var alive_players = []
 var another_dialog = false
 signal game_started
 signal player_registered(info)
+signal refused(reason, data)
 
 
 func _ready():
@@ -37,8 +43,13 @@ func check(id):
 
 func refuse(id):
 	if MP.is_active and get_tree().is_network_server() and state != State.LOBBY:
-		get_tree().network_peer.disconnect_peer(id)
+		rpc_id(id, "refused", Reason.BUSY, null)
 		return
+
+
+remote func refused(reason, data):
+	MP.close_network()
+	emit_signal("refused", reason, data)
 
 
 func close_multiplayer():
@@ -74,6 +85,16 @@ remote func loaded(id):
 		players_remain_to_load.erase(id)
 	check_for_done()
 	check_for_no_players()
+
+
+remotesync func start_game():
+	yield(get_tree().create_timer(0.1), "timeout")
+	state = State.IN_GAME
+	emit_signal("game_started")
+	get_tree().paused = false
+	get_tree().call_group("synchronizer", "start_sync")
+	alive_players = Array(get_tree().get_network_connected_peers())
+	alive_players.append(get_tree().get_network_unique_id())
 
 
 func check_for_no_players():
@@ -117,13 +138,3 @@ func kill_revive_player(id, revive = false):
 		if id in alive_players:
 			alive_players.erase(id)
 	check_for_end()
-
-
-remotesync func start_game():
-	yield(get_tree().create_timer(0.1), "timeout")
-	state = State.IN_GAME
-	emit_signal("game_started")
-	get_tree().paused = false
-	get_tree().call_group("synchronizer", "start_sync")
-	alive_players = Array(get_tree().get_network_connected_peers())
-	alive_players.append(get_tree().get_network_unique_id())

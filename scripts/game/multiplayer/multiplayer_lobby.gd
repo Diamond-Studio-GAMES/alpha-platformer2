@@ -1,11 +1,24 @@
 extends WindowDialog
 class_name Lobby
 
+enum Reason {
+	VERSION = 0,
+	LEVEL = 1,
+	BUSY = 2,
+}
 
-const PORT = 7412
+const PORT = 7415
 var curr_suff = -1
 var ip_preffix = ""
 var players_info = {}
+var CLASS_ICONS = {
+	"knight" : load("res://textures/classes/knight_helmet.png"),
+	"butcher" : load("res://textures/classes/butcher_helmet.png"),
+	"spearman" : load("res://textures/classes/spearman_helmet.png"),
+	"wizard" : load("res://textures/classes/wizard_helmet.png"),
+	"archer" : load("res://textures/classes/archer_helmet.png"),
+	"player" : null,
+}
 onready var timer = $connect/timer
 onready var try = $connect/try
 
@@ -80,11 +93,12 @@ func player_connected(id):
 		"class" : G.getv("selected_class", "player"),
 		"level" : G.current_level,
 		"power" : G.getv(G.getv("selected_class", "player") + "_level", 0),
-		"ulti_power" : G.getv(G.getv("selected_class", "player") + "_ulti_level", 1)
+		"ulti_power" : G.getv(G.getv("selected_class", "player") + "_ulti_level", 1),
+		"version" : G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER,
+		"version_code" : G.VERSION_CODE
 	}
 	yield(get_tree(), "idle_frame")
 	$"/root/mg".rpc_id(id, "register_player", my_info)
-	update_start_game_button()
 
 
 func player_disconnected(id):
@@ -96,23 +110,51 @@ func player_disconnected(id):
 
 func server_disconnected():
 	do_disconnect()
-	show_alert("Разорвано соединение с сервером.\n Возможно, игра в комнате уже началась,\n или выбранный уровень не совпадает с уровнем комнаты.")
-	$"../select_level_dialog".show_d(G.current_level)
+	show_alert("Разорвано соединение с сервером.")
+
+
+func refused(reason, data):
+	do_disconnect()
+	match reason:
+		Reason.BUSY:
+			show_alert("Невозможно подключиться к комнате - игра уже началась!")
+		Reason.LEVEL:
+			var parts_of_level = data.split("_")
+			var level_name = parts_of_level[0] + "-" + parts_of_level[1]
+			show_alert("Уровень комнаты (%s) не совпадает с Вашим уровнем!" % level_name)
+		Reason.VERSION:
+			var my_version = G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER
+			show_alert("Версия игры комнаты (%s) не совпадает с Вашей версией: %s!" % [data, my_version])
 
 
 func register_player(info):
 	var id = get_tree().get_rpc_sender_id()
+	var my_id = get_tree().get_network_unique_id()
 	if id > 1:
-		if info["level"] != players_info[get_tree().get_network_unique_id()]["level"] and get_tree().is_network_server():
-			get_tree().network_peer.disconnect_peer(id)
+		if info["version_code"] != players_info[my_id]["version_code"]:
+			if get_tree().is_network_server():
+				$"/root/mg".rpc_id(id, "refused", Reason.VERSION, players_info[my_id]["version"])
+			return
+		elif info["level"] != players_info[my_id]["level"]:
+			if get_tree().is_network_server():
+				$"/root/mg".rpc_id(id, "refused", Reason.LEVEL, players_info[my_id]["level"])
 			return
 	players_info[id] = info
+	var hboxcont = HBoxContainer.new()
+	hboxcont.size_flags_horizontal = SIZE_EXPAND_FILL
+	hboxcont.name = str(id)
+	$lobby/scroll/list.add_child(hboxcont)
+	var icon = TextureRect.new()
+	icon.texture = CLASS_ICONS[info["class"]]
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.size_flags_horizontal = SIZE_FILL
+	hboxcont.add_child(icon)
 	var label = Label.new()
 	label.size_flags_horizontal = SIZE_EXPAND_FILL
 	label.valign = VALIGN_CENTER
 	label.text = info["name"] + ": " + G.CLASSES[info["class"]] + ", Сила: " + str(info["power"]) + ",  Навык: " + str(info["ulti_power"])
-	label.name = str(id)
-	$lobby/scroll/list.add_child(label)
+	hboxcont.add_child(label)
+	update_start_game_button()
 
 
 func register_player_self():
@@ -122,15 +164,25 @@ func register_player_self():
 		"class" : G.getv("selected_class", "player"),
 		"level" : G.current_level,
 		"power" : G.getv(G.getv("selected_class", "player") + "_level", 0),
-		"ulti_power" : G.getv(G.getv("selected_class", "player") + "_ulti_level", 1)
+		"ulti_power" : G.getv(G.getv("selected_class", "player") + "_ulti_level", 1),
+		"version" : G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER,
+		"version_code" : G.VERSION_CODE
 	}
 	players_info[id] = info
+	var hboxcont = HBoxContainer.new()
+	hboxcont.size_flags_horizontal = SIZE_EXPAND_FILL
+	hboxcont.name = str(id)
+	$lobby/scroll/list.add_child(hboxcont)
+	var icon = TextureRect.new()
+	icon.texture = CLASS_ICONS[info["class"]]
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.size_flags_horizontal = SIZE_FILL
+	hboxcont.add_child(icon)
 	var label = Label.new()
 	label.size_flags_horizontal = SIZE_EXPAND_FILL
 	label.valign = VALIGN_CENTER
 	label.text = "(Вы)" + info["name"] + ": " + G.CLASSES[info["class"]] + ", Сила: " + str(info["power"]) + ",  Навык: " + str(info["ulti_power"])
-	label.name = str(id)
-	$lobby/scroll/list.add_child(label)
+	hboxcont.add_child(label)
 
 
 func init_multiplayer():
@@ -164,6 +216,7 @@ func init_multiplayer():
 	var node = MultiplayerGame.new()
 	node.name = "mg"
 	node.connect("player_registered", self, "register_player")
+	node.connect("refused", self, "refused")
 	get_tree().root.add_child(node)
 
 

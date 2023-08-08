@@ -159,6 +159,7 @@ enum Graphics {
 	BEAUTY_WATER = 2,
 	BEAUTY_LAVA = 4,
 	BEAUTY_FIRE = 8,
+	BEAUTY_DEFAULT = 14,
 	BEAUTY_ALL = 15,
 }
 enum Amulet {

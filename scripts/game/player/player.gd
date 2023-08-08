@@ -144,6 +144,8 @@ func _ready():
 				i.get_node("button").hide()
 	
 	if MP.auth(self):
+		if MP.is_active:
+			$camera/gui/base/pause_menu/panel/restart.disabled = true
 		camera.make_current()
 		for i in 3:
 			yield(get_tree(), "physics_frame")
