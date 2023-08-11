@@ -6,15 +6,15 @@ onready var pm = $settings/grph_s.get_popup()
 
 
 func _ready():
-	$settings/name_change.get_ok().text = "Сменить"
-	$settings/name_change.get_cancel().text = "Отмена"
+	$settings/name_change.get_ok().text = tr("menu.change")
+	$settings/name_change.get_cancel().text = tr("menu.cancel")
 	$settings/name_change.get_label().align = Label.ALIGN_CENTER
 	$settings/conf.get_label().align = Label.ALIGN_CENTER
-	$settings/conf.get_cancel().text = "Отмена"
-	$settings/conf.get_ok().text = "Да"
+	$settings/conf.get_cancel().text = tr("menu.cancel")
+	$settings/conf.get_ok().text = tr("menu.yes")
 	$settings/conf2.get_label().align = Label.ALIGN_CENTER
-	$settings/conf2.get_cancel().text = "НЕТ!"
-	$settings/conf2.get_ok().text = "да"
+	$settings/conf2.get_cancel().text = tr("menu.noo")
+	$settings/conf2.get_ok().text = tr("menu.yess")
 	pm.hide_on_checkable_item_selection = false
 	pm.hide_on_item_selection = false
 	pm.hide_on_state_item_selection = false
@@ -25,15 +25,18 @@ func _ready():
 		var p = int(pow(2, i))
 		if G.getv("graphics", G.Graphics.BEAUTY_DEFAULT) & p == 0:
 			pm.set_item_checked(pm.get_item_index(i + 30), false)
-	$about/version.text = "Версия: " + G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER
+	$about/version.text = tr("menu.version") + G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER
 	$settings/mv_s.value = G.getv("volume", 1)
 	$settings/sfxv_s.value = G.getv("volume_sfx", 1)
 	$settings/dmp_s.value = G.getv("damping", 2.5)
 	$settings/smc_c.pressed = G.getv("smooth_camera", true)
-	$settings/save_id.text = "ID сохранения: " + G.getv("save_id", "undefined")
+	$settings/save_id.text = tr("menu.save_id") + G.getv("save_id", "undefined")
+	$settings/name_change/line_edit.set_message_translation(false)
+	$settings/name_change/line_edit.notification(NOTIFICATION_TRANSLATION_CHANGED)
+	$settings/name_change/line_edit.placeholder_text = tr("menu.change_name.placeholder")
 	var date = G.getv("create_date", Time.get_date_dict_from_system())
 	var date_str = "%02d/%02d/%d" % [date["day"], date["month"], date["year"]]
-	$settings/creation_date.text = "Дата создания: " + date_str
+	$settings/creation_date.text = tr("menu.creation_date") + date_str
 	for i in G.ach.achievements:
 		var n = ach_panel.instance()
 		n.get_node("name").text = G.ach.achievements[i]["name"]
@@ -157,7 +160,7 @@ func reset():
 
 
 func change_name():
-	$settings/name_change.dialog_text = "Текущее имя: " + G.getv("name", "")
+	$settings/name_change.dialog_text = tr("menu.current_name") + G.getv("name", "")
 	$settings/name_change/line_edit.text = ""
 	$settings/name_change.popup_centered()
 

@@ -467,7 +467,7 @@ pointing/emulate_touch_from_mouse=true
 [locale]
 
 locale_filter=[ 1, [ "en", "ru" ] ]
-translations=PoolStringArray( "res://misc/apa2_translation.en.translation", "res://misc/apa2_translation.ru.translation" )
+translations=PoolStringArray( "res://misc/translations/begin.en.translation", "res://misc/translations/begin.ru.translation", "res://misc/translations/menu.en.translation", "res://misc/translations/menu.ru.translation" )
 translation_remaps={
 "res://minigames/minigame8/textures/enemies/fezek_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/fezek.png:en" ),
 "res://minigames/minigame8/textures/enemies/fizruk_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/fizruk.png:en" ),

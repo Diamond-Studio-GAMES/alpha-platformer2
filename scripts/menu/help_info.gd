@@ -8,7 +8,7 @@ export (String) var id = ""
 func _ready():
 	if id in G.getv("learned_ids", []):
 		hide()
-	$canvas_layer/info.dialog_text = info
+	$canvas_layer/info.dialog_text = tr(info)
 
 
 func accept():
