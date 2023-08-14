@@ -39,8 +39,8 @@ func _ready():
 	$settings/creation_date.text = tr("menu.creation_date") + date_str
 	for i in G.ach.achievements:
 		var n = ach_panel.instance()
-		n.get_node("name").text = G.ach.achievements[i]["name"]
-		n.get_node("desc").text = G.ach.achievements[i]["desc"]
+		n.get_node("name").text = tr(G.ach.achievements[i]["name"])
+		n.get_node("desc").text = tr(G.ach.achievements[i]["desc"])
 		n.get_node("bg/icon").texture = G.ach.achievements[i]["icon"]
 		if not G.ach.is_completed(i):
 			n.modulate = Color(0.5, 0.5, 0.5)

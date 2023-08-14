@@ -108,14 +108,15 @@ func disconnected():
 	my_player = null
 	$lobby.show()
 	$heal_timer.stop()
-	$border0/anim.seek(0, true)
-	$border1/anim.seek(0, true)
-	$border2/anim.seek(0, true)
-	$border3/anim.seek(0, true)
-	$border0/anim.stop(true)
-	$border1/anim.stop(true)
-	$border2/anim.stop(true)
-	$border3/anim.stop(true)
+	if $border0/anim.is_playing():
+		$border0/anim.seek(0, true)
+		$border1/anim.seek(0, true)
+		$border2/anim.seek(0, true)
+		$border3/anim.seek(0, true)
+		$border0/anim.stop(true)
+		$border1/anim.stop(true)
+		$border2/anim.stop(true)
+		$border3/anim.stop(true)
 
 
 func exit():

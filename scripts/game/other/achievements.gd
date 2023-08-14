@@ -53,183 +53,183 @@ var achievement_get = load("res://prefabs/menu/achievement_complete.scn")
 var achievements = {
 	BOSS1 : {
 		"icon" : load("res://textures/achievements/boss1.png"),
-		"name" : "Это мои овцы",
-		"desc" : "Победите Пастуха."
+		"name" : "achv.boss1",
+		"desc" : "achv.boss1.desc"
 	},
 	BOSS2 : {
 		"icon" : load("res://textures/achievements/boss2.png"),
-		"name" : "Экологический борец",
-		"desc" : "Победите Лесоруба."
+		"name" : "achv.boss2",
+		"desc" : "achv.boss2.desc"
 	},
 	BOSS3 : {
 		"icon" : load("res://textures/achievements/boss3.png"),
-		"name" : "Белый маг",
-		"desc" : "Победите Чёрного мага."
+		"name" : "achv.boss3",
+		"desc" : "achv.boss3.desc"
 	},
 	BOSS4 : {
 		"icon" : load("res://textures/achievements/boss4.png"),
-		"name" : "Фехтовальщик",
-		"desc" : "Победите Великого рыцаря."
+		"name" : "achv.boss4",
+		"desc" : "achv.boss4.desc"
 	},
 	BOSS5 : {
 		"icon" : load("res://textures/achievements/boss5.png"),
-		"name" : "Без талона",
-		"desc" : "Победите Хирурга."
+		"name" : "achv.boss5",
+		"desc" : "achv.boss5.desc"
 	},
 	BOSS6 : {
 		"icon" : load("res://textures/achievements/boss6.png"),
-		"name" : "Пожарник",
-		"desc" : "Победите Огненного стража."
+		"name" : "achv.boss6",
+		"desc" : "achv.boss6.desc"
 	},
 	WHAT_IS_IT : {
 		"icon" : load("res://textures/achievements/first_class.png"),
-		"name" : "Это что?",
-		"desc" : "Откройте первый класс."
+		"name" : "achv.what_is_it",
+		"desc" : "achv.what_is_it.desc"
 	},
 	MASTER_OF_WEAPONS : {
 		"icon" : load("res://textures/achievements/all_classes.png"),
-		"name" : "Мастер всех оружий",
-		"desc" : "Откройте все классы."
+		"name" : "achv.master",
+		"desc" : "achv.master.desc"
 	},
 	IM_POWER : {
 		"icon" : load("res://textures/achievements/class_maxed.png"),
-		"name" : "Сама сила",
-		"desc" : "Прокачайте класс на максимум."
+		"name" : "achv.im_power",
+		"desc" : "achv.im_power.desc"
 	},
 	LUCKY_AMULET : {
 		"icon" : load("res://textures/achievements/first_amulet.png"),
-		"name" : "На удачу",
-		"desc" : "Откройте первый амулет."
+		"name" : "achv.lucky_amulet",
+		"desc" : "achv.lucky_amulet.desc"
 	},
 	HELP_FROM_INSIDE : {
 		"icon" : load("res://textures/achievements/first_gadget.png"),
-		"name" : "Помощь изнутри",
-		"desc" : "Откройте первый душевный навык."
+		"name" : "achv.help_from_inside",
+		"desc" : "achv.help_from_inside.desc"
 	},
 	SOUL_MASTER : {
 		"icon" : load("res://textures/achievements/first_sp.png"),
-		"name" : "Мастер души",
-		"desc" : "Откройте первую душевную силу."
+		"name" : "achv.soul_master",
+		"desc" : "achv.soul_master.desc"
 	},
 	DARK_CREATION : {
 		"icon" : load("res://textures/achievements/death.png"),
-		"name" : "Воплощение тьмы",
-		"desc" : "Встретьте саму Смерть."
+		"name" : "achv.dark_creation",
+		"desc" : "achv.dark_creation.desc"
 	},
 	POTION_MAN : {
 		"icon" : load("res://textures/achievements/10_potions.png"),
-		"name" : "Зельеман",
-		"desc" : "Используйте зелья 10 раз."
+		"name" : "achv.potion_man",
+		"desc" : "achv.potion_man.desc"
 	},
 	PROZAPASS : {
 		"icon" : load("res://textures/achievements/max_potions.png"),
-		"name" : "Прозапас",
-		"desc" : "Получите по 5 зелий каждого вида."
+		"name" : "achv.prozapass",
+		"desc" : "achv.prozapass.desc"
 	},
 	BURN_HER_FASTER : {
 		"icon" : load("res://textures/achievements/burn_enemy.png"),
-		"name" : "Кремируйте её быстрее!",
-		"desc" : "Сожгите врага."
+		"name" : "achv.burn_her_faster",
+		"desc" : "achv.burn_her_faster.desc"
 	},
 	THIS_IS_SPARTA : {
 		"icon" : load("res://textures/achievements/fall_enemy_death.png"),
-		"name" : "Это... Спарта",
-		"desc" : "Заставьте монстра умереть от падения."
+		"name" : "achv.this_is_sparta",
+		"desc" : "achv.this_is_sparta.desc"
 	},
 	FUUUUCK : {
 		"icon" : load("res://textures/achievements/death_with_potion.png"),
-		"name" : "ДА ТЫ ЧТО..",
-		"desc" : "Умрите во время использования зелья..."
+		"name" : "achv.fuck",
+		"desc" : "achv.fuck.desc"
 	},
 	SOME_PEOPLES : {
 		"icon" : load("res://textures/achievements/about.png"),
-		"name" : "Какие-то человеки..",
-		"desc" : "Посмотрите создателей игры."
+		"name" : "achv.some_peoples",
+		"desc" : "achv.some_peoples.desc"
 	},
 	REZNYA : {
 		"icon" : load("res://textures/achievements/reznya.png"),
-		"name" : "Резня",
-		"desc" : 'Пройдите мини-игру "Резня".'
+		"name" : "achv.reznya",
+		"desc" : "achv.reznya.desc"
 	},
 	CLEARED : {
 		"icon" : load("res://textures/achievements/dyh.png"),
-		"name" : "Очищение",
-		"desc" : 'Пройдите мини-игру "Изб. от ненависти".'
+		"name" : "achv.cleared",
+		"desc" : "achv.cleared.desc"
 	},
 	DIAMONDS : {
 		"icon" : load("res://textures/achievements/ss_gem.png"),
-		"name" : "АЛМАЗЫ!!",
-		"desc" : 'Подберите кристалл в "Симуляторе камня".'
+		"name" : "achv.diamonds",
+		"desc" : "achv.diamonds.desc"
 	},
 	LAST_STANDER : {
 		"icon" : load("res://textures/achievements/ls.png"),
-		"name" : "Последний оплот",
-		"desc" : 'Пройдите мини-игру "Последние волны".'
+		"name" : "achv.last_stander",
+		"desc" : "achv.last_stander.desc"
 	},
 	DASHER : {
 		"icon" : load("res://textures/achievements/pd_level_done.png"),
 		"name" : "Dasher",
-		"desc" : 'Пройдите уровень в мини-игре "Platformer Dash".'
+		"desc" : "achv.dasher.desc"
 	},
 	LOOT : {
 		"icon" : load("res://textures/achievements/garden_loot.png"),
-		"name" : "Урожай",
-		"desc" : 'Соберите награду с 3 растений в "Саду".'
+		"name" : "achv.loot",
+		"desc" : "achv.loot.desc"
 	},
 	VICTORY_ROYALE : {
 		"icon" : load("res://textures/achievements/2d_shooter_win.png"),
 		"name" : "Victory Royale #1",
-		"desc" : 'Выиграйте 1 игру в "2Д-шутере".'
+		"desc" : "achv.victory_royale.desc"
 	},
 	ESCAPE : {
 		"icon" : load("res://textures/achievements/fnas_done.png"),
-		"name" : "Побег",
-		"desc" : 'Пройдите мини-игру "FNaS"...'
+		"name" : "achv.escape",
+		"desc" : "achv.escape.desc"
 	},
 	UNTOUCHED : {
 		"icon" : load("res://textures/achievements/no_damage.png"),
-		"name" : "Неприкасаемый",
-		"desc" : "Пройдите уровень, не получив урон."
+		"name" : "achv.untouched",
+		"desc" : "achv.untouched.desc"
 	},
 	BETTER_TOGETHER : {
 		"icon" : load("res://textures/achievements/mp_level.png"),
-		"name" : "Вместе сильнее",
-		"desc" : "Пройдите любой уровень в мультиплеере."
+		"name" : "achv.better_together",
+		"desc" : "achv.better_together.desc"
 	},
 	GOOD_PARTNER : {
 		"icon" : load("res://textures/achievements/mp_revive_5.png"),
-		"name" : "Надёжный товарищ",
-		"desc" : "Воскресите напарника 5 раз."
+		"name" : "achv.good_partner",
+		"desc" : "achv.good_partner.desc"
 	},
 	SCREW_IT : {
 		"icon" : load("res://textures/achievements/mp_level_died.png"),
-		"name" : "Беззаботность",
-		"desc" : "Дайте товарищу завершить уровень, пока вы лежите на земле."
+		"name" : "achv.screw_it",
+		"desc" : "achv.screw_it.desc"
 	},
 	WHAT_A_WASTE : {
 		"icon" : load("res://textures/achievements/level_died.png"),
-		"name" : "Какая жалость!",
-		"desc" : "Пройдите уровень с 0 здоровья."
+		"name" : "achv.what_a_waste",
+		"desc" : "achv.what_a_waste.desc"
 	},
 	ON_THE_EDGE : {
 		"icon" : load("res://textures/achievements/almost_died.png"),
-		"name" : "На грани",
-		"desc" : "Завершите уровень с меньше, чем 10% здоровья."
+		"name" : "achv.on_the_edge",
+		"desc" : "achv.on_the_edge.desc"
 	},
 	ORIGIN : {
 		"icon" : load("res://textures/achievements/lore_seen.png"),
-		"name" : "Начало",
-		"desc" : "Вспомните своё прошлое."
+		"name" : "achv.origin",
+		"desc" : "achv.origin.desc"
 	},
 	KILLER : {
 		"icon" : load("res://textures/achievements/killer.png"),
-		"name" : "Убийца",
-		"desc" : "Сделайте 250 убийств."
+		"name" : "achv.killer",
+		"desc" : "achv.killer.desc"
 	},
 	YOU_MISSED : {
 		"icon" : load("res://textures/achievements/dodge_shot.png"),
-		"name" : "Ха! Не попал",
-		"desc" : "Уклонитесь от атаки."
+		"name" : "achv.you_missed",
+		"desc" : "achv.you_missed.desc"
 	},
 }
 
@@ -242,8 +242,8 @@ func complete(id):
 	for i in range(blocked_counter-1):
 		yield(self, "effect_completed")
 	var effect = achievement_get.instance()
-	effect.get_node("panel/name").text = achievements[id]["name"] + "!"
-	effect.get_node("panel/desc").text = achievements[id]["desc"]
+	effect.get_node("panel/name").text = tr(achievements[id]["name"]) + "!"
+	effect.get_node("panel/desc").text = tr(achievements[id]["desc"])
 	effect.get_node("panel/bg/icon").texture = achievements[id]["icon"]
 	add_child(effect)
 	yield(effect, "tree_exited")
