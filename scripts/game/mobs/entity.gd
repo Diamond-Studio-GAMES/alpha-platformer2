@@ -129,7 +129,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 		if _tween.is_valid():
 			_tween.kill()
 	_tween = create_tween()
-	_tween.tween_property(_health_change_bar, "value", current_health, 1).set_delay(0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).from_current()
+	_tween.tween_property(_health_change_bar, "value", current_health, 0.6).set_delay(0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).from_current()
 	var died = false
 	if current_health > 0:
 		emit_signal("hurt")
