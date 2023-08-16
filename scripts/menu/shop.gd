@@ -294,52 +294,55 @@ func buy(costs = "", receives = "", id = -1):
 	current_receive = receive
 	current_cost = cost
 	current_id = id
-	var add = ""
-	for i in receive:
-		if i == "coins":
-			add += ", монеты (" + str(receive[i]) + ")"
-		if i == "gems":
-			add += ", кристаллы (" + str(receive[i]) + ")"
-		if i == "amulet_frags":
-			for j in receive[i]:
-				add += ", фрагменты амулета (" + G.AMULET_NAME[G.AMULET_ID[j]] + "," + str(receive[i][j]) + ")"
-		if i == "gadget":
-			for j in receive[i]:
-				add += ", душевный навык (" + G.CLASSES[j] + ")"
-		if i == "soul_power":
-			for j in receive[i]:
-				add += ", душевная сила (" + G.CLASSES[j] + ")"
-		if i == "class":
-			for j in receive[i]:
-				add += ", класс (" + G.CLASSES[j] + ")"
-		if i == "tokens":
-			for j in receive[i]:
-				add += ", жетоны силы (" + G.CLASSES[j] + "," + str(receive[i][j]) + ")"
-		if i == "ulti_tokens":
-			for j in receive[i]:
-				add += ", жетоны навыка (" + G.CLASSES[j] + "," + str(receive[i][j]) + ")"
-		if i == "wild_tokens":
-			add += ", жетоны силы на любой класс (" + str(receive[i]) + ")"
-		if i == "wild_ulti_tokens":
-			add += ", жетоны навыка на любой класс (" + str(receive[i]) + ")"
-		if i == "potions1":
-			add += ", маленькое зелье (" + str(receive[i]) + ")"
-		if i == "potions2":
-			add += ", среднее зелье (" + str(receive[i]) + ")"
-		if i == "potions3":
-			add += ", большое зелье (" + str(receive[i]) + ")"
-		if i == "box":
-			add += ", ящик (" + str(receive[i]) + ")"
-		if i == "gold_box":
-			add += ", золотой ящик (" + str(receive[i]) + ")"
-		if i == "diamond_box":
-			add += ", алмазный ящик (" + str(receive[i]) + ")"
-	add[0] = ""
-	if not cost.empty():
-		add += " за"
-	else:
+	if cost.empty():
 		confirm_buy()
 		return
+	var add = ""
+	for i in receive:
+		add += ", "
+		match i:
+			"coins":
+				add += "монеты" + " (" + str(receive[i])
+			"gems":
+				add += "кристаллы" + " (" + str(receive[i])
+			"amulet_frags":
+				for j in receive[i]:
+					add += "фрагменты амулета" + " (" + G.AMULET_NAME[G.AMULET_ID[j]] + \
+							", " + str(receive[i][j])
+			"gadget":
+				for j in receive[i]:
+					add += "душевный навык" + " (" + G.CLASSES[j]
+			"soul_power":
+				for j in receive[i]:
+					add += "душевная сила" + " (" + G.CLASSES[j]
+			"class":
+				for j in receive[i]:
+					add += "класс" + " (" + G.CLASSES[j]
+			"tokens":
+				for j in receive[i]:
+					add += "жетоны силы" + " (" + G.CLASSES[j] + "," + str(receive[i][j])
+			"ulti_tokens":
+				for j in receive[i]:
+					add += "жетоны навыка" + " (" + G.CLASSES[j] + "," + str(receive[i][j])
+			"wild_tokens":
+				add += "жетоны силы на любой класс" + " (" + str(receive[i])
+			"wild_ulti_tokens":
+				add += "жетоны навыка на любой класс" + " (" + str(receive[i])
+			"potions1":
+				add += "маленькое зелье" + " (" + str(receive[i])
+			"potions2":
+				add += "среднее зелье" + " (" + str(receive[i])
+			"potions3":
+				add += "большое зелье" + " (" + str(receive[i])
+			"box":
+				add += "ящик" + " (" + str(receive[i])
+			"gold_box":
+				add += "золотой ящик" + " (" + str(receive[i])
+			"diamond_box":
+				add += "алмазный ящик" + " (" + str(receive[i])
+		add += ")"
+	add[0] = ""
+	add += " за"
 	for i in cost:
 		if i == "coins":
 			add += " монеты (" + str(cost[i]) + ")"
@@ -758,7 +761,7 @@ func promocodes():
 
 
 func fetch_online_offers():
-	http.download_file = "user://online_cache.cfg"
+	http.download_file = OS.get_cache_dir().plus_file("online_cache.cfg")
 	http.connect("request_completed", self, "request_online_response", [], CONNECT_ONESHOT)
 	var err = http.request("http://f0695447.xsph.ru/apa2_online.cfg")
 	if err:
@@ -771,7 +774,10 @@ func request_online_response(result, code, header, body):
 		return
 	yield(get_tree(), "idle_frame")
 	var cf = ConfigFile.new()
-	var err = cf.load_encrypted_pass("user://online_cache.cfg", "apa2_online")
+	var err = cf.load_encrypted_pass(OS.get_cache_dir().plus_file("online_cache.cfg"), "apa2_online")
+	var dir = Directory.new()
+	dir.open(OS.get_cache_dir())
+	dir.remove("online_cache.cfg")
 	if err:
 		print("fetch failed:", err)
 		return

@@ -159,6 +159,10 @@ func accept_consent():
 
 func _on_slider_value_changed(value):
 	$age/age_panel/text.text = str(value)
+	if value >= 99:
+		$age/comment.text = tr("ss.a.comment2")
+	else:
+		$age/comment.text = tr("ss.a.comment")
 
 
 func restart():

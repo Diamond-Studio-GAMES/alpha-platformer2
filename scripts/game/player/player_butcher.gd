@@ -113,7 +113,7 @@ func _physics_process(delta):
 func use_gadget():
 	if gadget_cooldown > 0 or gadget_count <= 0 or is_stunned or is_hurt or _is_drinking or not is_on_floor() or not can_control:
 		return
-	jump(375)
+	jump(370)
 	.use_gadget()
 	yield(get_tree().create_timer(0.25, false), "timeout")
 	is_active_gadget = true

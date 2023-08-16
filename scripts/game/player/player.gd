@@ -2,6 +2,9 @@ extends Entity
 class_name Player
 
 
+# MOVEMENT
+export (float) var COYOTE_TIME = 0.1
+var _coyote_timer = 0.1
 # HEALTH
 var _health_timer = 0
 var have_soul_power = false
@@ -237,9 +240,10 @@ func jump(power = 0):
 		return false
 	if power == 0:
 		power = JUMP_POWER
-	if is_on_floor() or under_water:
+	if is_on_floor() or under_water or _coyote_timer > 0:
 		if MP.auth(self):
 			G.addv("jumps", 1)
+		_coyote_timer = 0
 		_move.y = -power * GRAVITY_SCALE
 		return true
 	return false
@@ -264,7 +268,8 @@ func force_jump(power = 0):
 		return false
 	if power == 0:
 		power = JUMP_POWER
-	if is_on_floor() or under_water:
+	if is_on_floor() or under_water or _coyote_timer > 0:
+		_coyote_timer = 0
 		_move.y = -power * GRAVITY_SCALE
 		return true
 	return false
@@ -494,6 +499,8 @@ func _process(delta):
 
 func _physics_process(delta):
 	#MOVE
+	if is_on_floor():
+		_coyote_timer = COYOTE_TIME
 	if MP.auth(self):
 		if Input.is_action_just_pressed("left"):
 			move_left()
@@ -505,6 +512,8 @@ func _physics_process(delta):
 			stop_right()
 		if Input.is_action_just_released("left"):
 			stop_left()
+	if _coyote_timer > 0 and not is_on_floor():
+		_coyote_timer -= delta
 	
 	#HEALTH
 		if Input.is_action_just_pressed("potion1"):
