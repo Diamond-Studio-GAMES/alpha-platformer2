@@ -3,8 +3,10 @@ class_name Player
 
 
 # MOVEMENT
-export (float) var COYOTE_TIME = 0.1
-var _coyote_timer = 0.1
+export (float) var COYOTE_TIME = 0.07
+var _coyote_timer = 0.07
+
+
 # HEALTH
 var _health_timer = 0
 var have_soul_power = false
@@ -243,7 +245,7 @@ func jump(power = 0):
 	if is_on_floor() or under_water or _coyote_timer > 0:
 		if MP.auth(self):
 			G.addv("jumps", 1)
-		_coyote_timer = 0
+		_coyote_timer = -COYOTE_TIME
 		_move.y = -power * GRAVITY_SCALE
 		return true
 	return false
@@ -269,7 +271,7 @@ func force_jump(power = 0):
 	if power == 0:
 		power = JUMP_POWER
 	if is_on_floor() or under_water or _coyote_timer > 0:
-		_coyote_timer = 0
+		_coyote_timer = -COYOTE_TIME
 		_move.y = -power * GRAVITY_SCALE
 		return true
 	return false
@@ -499,8 +501,8 @@ func _process(delta):
 
 func _physics_process(delta):
 	#MOVE
-	if is_on_floor():
-		_coyote_timer = COYOTE_TIME
+	if is_on_floor() and _coyote_timer < COYOTE_TIME:
+		_coyote_timer += delta
 	if MP.auth(self):
 		if Input.is_action_just_pressed("left"):
 			move_left()
