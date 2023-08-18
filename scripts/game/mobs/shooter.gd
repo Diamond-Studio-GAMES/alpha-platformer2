@@ -48,7 +48,7 @@ func attack():
 	_anim_tree["parameters/attack_seek/seek_position"] = 0
 	_anim_tree["parameters/attack_shot/active"] = true
 	yield(get_tree().create_timer(0.2, false), "timeout")
-	if MP.auth(self):
+	if MP.auth(self) and current_health > 0:
 		for i in range(2):
 			var node = bullet.instance()
 			node.global_position = Vector2(shoot.global_position.x, shoot.global_position.y)

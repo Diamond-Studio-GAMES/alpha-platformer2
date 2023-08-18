@@ -31,7 +31,7 @@ func _ready():
 	_health_bar.max_value = max_health
 	_health_change_bar.max_value = max_health
 	_update_bars()
-	$camera/gui/base/ulti_use/ulti_name.text = G.CLASSES[class_nam] + " " + G.RIM_NUMBERS[ulti_power]
+	$camera/gui/base/ulti_use/ulti_name.text = tr(G.ULTIS[class_nam]) + " " + G.RIM_NUMBERS[ulti_power]
 	_attack_visual.hide()
 	_attack_shape.disabled = true
 	_ulti = load("res://prefabs/classes/wizard_ulti.scn")

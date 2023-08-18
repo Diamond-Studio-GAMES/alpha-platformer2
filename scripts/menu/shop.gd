@@ -307,23 +307,23 @@ func buy(costs = "", receives = "", id = -1):
 				add += "кристаллы" + " (" + str(receive[i])
 			"amulet_frags":
 				for j in receive[i]:
-					add += "фрагменты амулета" + " (" + G.AMULET_NAME[G.AMULET_ID[j]] + \
+					add += "фрагменты амулета" + " (" + tr(G.AMULET_NAME[G.AMULET_ID[j]]) + \
 							", " + str(receive[i][j])
 			"gadget":
 				for j in receive[i]:
-					add += "душевный навык" + " (" + G.CLASSES[j]
+					add += "душевный навык" + " (" + tr(G.CLASSES[j])
 			"soul_power":
 				for j in receive[i]:
-					add += "душевная сила" + " (" + G.CLASSES[j]
+					add += "душевная сила" + " (" + tr(G.CLASSES[j])
 			"class":
 				for j in receive[i]:
-					add += "класс" + " (" + G.CLASSES[j]
+					add += "класс" + " (" + tr(G.CLASSES[j])
 			"tokens":
 				for j in receive[i]:
-					add += "жетоны силы" + " (" + G.CLASSES[j] + "," + str(receive[i][j])
+					add += "жетоны силы" + " (" + tr(G.CLASSES[j]) + "," + str(receive[i][j])
 			"ulti_tokens":
 				for j in receive[i]:
-					add += "жетоны навыка" + " (" + G.CLASSES[j] + "," + str(receive[i][j])
+					add += "жетоны навыка" + " (" + tr(G.CLASSES[j]) + "," + str(receive[i][j])
 			"wild_tokens":
 				add += "жетоны силы на любой класс" + " (" + str(receive[i])
 			"wild_ulti_tokens":
@@ -473,21 +473,21 @@ func show_offer(costs, receives, id = 0, name = "АКЦИЯ"):
 				off.get_node("items/item" + str(l)).show()
 				off.get_node("items/item" + str(l) + "/name").text = "ДУШ. НАВЫК"
 				off.get_node("items/item" + str(l) + "/icon").texture = gadget
-				off.get_node("items/item" + str(l) + "/count").text = G.CLASSES[j]
+				off.get_node("items/item" + str(l) + "/count").text = tr(G.CLASSES[j])
 				l += 1
 		if i == "soul_power":
 			for j in receives[i]:
 				off.get_node("items/item" + str(l)).show()
 				off.get_node("items/item" + str(l) + "/name").text = "ДУШ. СИЛА"
 				off.get_node("items/item" + str(l) + "/icon").texture = sp
-				off.get_node("items/item" + str(l) + "/count").text = G.CLASSES[j]
+				off.get_node("items/item" + str(l) + "/count").text = tr(G.CLASSES[j])
 				l += 1
 		if i == "class":
 			for j in receives[i]:
 				off.get_node("items/item" + str(l)).show()
 				off.get_node("items/item" + str(l) + "/name").text = "КЛАСС"
 				off.get_node("items/item" + str(l) + "/icon").texture = CLASS_ICONS[j]
-				off.get_node("items/item" + str(l) + "/count").text = G.CLASSES[j]
+				off.get_node("items/item" + str(l) + "/count").text = tr(G.CLASSES[j])
 				l += 1
 		if i == "tokens":
 			for j in receives[i]:

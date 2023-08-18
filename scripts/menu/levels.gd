@@ -88,7 +88,7 @@ func select_class(class_n = "player"):
 			i.hide()
 		else:
 			i.show()
-	$classes/class.text = G.CLASSES[selected_class]
+	$classes/class.text = tr(G.CLASSES[selected_class])
 	if selected_class == "player" or not selected_class in G.getv("classes", []):
 		$classes/stats.hide()
 		$classes/upgrade.hide()
@@ -156,13 +156,13 @@ func select_class(class_n = "player"):
 
 
 func amulet():
-	$classes/infos/amulet.window_title = "Амулеты класса " + G.CLASSES[selected_class]
+	$classes/infos/amulet.window_title = "Амулеты класса " + tr(G.CLASSES[selected_class])
 	setup_amulets()
 	$classes/infos/amulet.popup_centered()
 
 
 func gadget():
-	$classes/infos/gadget_info.dialog_text = G.GADGETS[selected_class]
+	$classes/infos/gadget_info.dialog_text = tr(G.GADGETS[selected_class])
 	$classes/infos/gadget_info.popup_centered()
 
 
@@ -203,8 +203,8 @@ func craft_amulet(id):
 		setup_amulets()
 		select_class(selected_class)
 		return
-	$amulet_craft/screen/type.text = G.AMULET_NAME[id]
-	$amulet_craft/screen/class.text = G.CLASSES[selected_class]
+	$amulet_craft/screen/type.text = tr(G.AMULET_NAME[id])
+	$amulet_craft/screen/class.text = tr(G.CLASSES[selected_class])
 	$amulet_craft/screen/icon.texture = AMULET_ICONS[G.AMULET[id]]
 	$amulet_craft/screen/anim.play("craft")
 	$classes/infos/amulet.hide()
@@ -394,7 +394,7 @@ func confirm_upgrade():
 	get_node("upgrade/upgrade/classes/" + selected_class).show()
 	$upgrade/upgrade/bg.self_modulate = G.CLASS_COLORS_LIGHT[selected_class]
 	$upgrade/upgrade/glow.self_modulate = G.CLASS_COLORS_HIGHLIGHT[selected_class]
-	$upgrade/upgrade/title.text = G.CLASSES[selected_class]
+	$upgrade/upgrade/title.text = tr(G.CLASSES[selected_class])
 	for i in $upgrade/upgrade/panels.get_children():
 		i.hide()
 		i.get_node("sfx_value").volume_db = -60
@@ -497,10 +497,10 @@ func confirm_upgrade_ulti():
 	get_node("upgrade/upgrade/classes/" + selected_class).show()
 	$upgrade/upgrade/bg.self_modulate = G.CLASS_COLORS_LIGHT[selected_class]
 	$upgrade/upgrade/glow.self_modulate = G.CLASS_COLORS_HIGHLIGHT[selected_class]
-	$upgrade/upgrade/title.text = G.CLASSES[selected_class]
+	$upgrade/upgrade/title.text = tr(G.CLASSES[selected_class])
 	for i in $upgrade/upgrade/panels.get_children():
 		i.hide()
-		i.get_node("sfx_value").volume_db = 0
+		i.get_node("sfx_value").volume_db = -60
 	$upgrade/upgrade/panel/title.text = "Навык"
 	$upgrade/upgrade/panel/previous.text = str(G.getv(selected_class + "_ulti_level", 1) - 1)
 	$upgrade/upgrade/panel/next.text = str(G.getv(selected_class + "_ulti_level", 1))

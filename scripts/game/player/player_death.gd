@@ -24,7 +24,7 @@ func _ready():
 	_health_bar.max_value = max_health
 	_health_change_bar.max_value = max_health
 	_update_bars()
-	$camera/gui/base/ulti_use/ulti_name.text = "РЫВОК СМЕРТИ"
+	$camera/gui/base/ulti_use/ulti_name.text = tr("ulti.death")
 	RECHARGE_SPEED = 0.7
 	if MP.auth(self):
 		$control_indicator/sp.show()

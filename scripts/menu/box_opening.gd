@@ -296,7 +296,7 @@ func open_gui(what = null):
 		var keys = loot["amulet_frags"].keys()
 		for i in range(loot["amulet_frags"].size()):
 			$amulet_frags_screen/token.texture = AMULET_ICONS[keys[i]]
-			$amulet_frags_screen/type.text = G.AMULET_NAME[G.AMULET_ID[keys[i]]]
+			$amulet_frags_screen/type.text = tr(G.AMULET_NAME[G.AMULET_ID[keys[i]]])
 			$amulet_frags_screen/count.text = "x " + str(loot["amulet_frags"][keys[i]])
 			$amulet_frags_screen/anim.play("anim")
 			$amulet_frags_screen/anim.seek(0, true)
@@ -308,8 +308,8 @@ func open_gui(what = null):
 		show_screen("gadget_screen")
 		G.ach.complete(Achievements.HELP_FROM_INSIDE)
 		for i in loot["gadget"]:
-			$gadget_screen/label/class.text = G.CLASSES[i]
-			$gadget_screen/desc/label.text = G.GADGETS[i]
+			$gadget_screen/label/class.text = tr(G.CLASSES[i])
+			$gadget_screen/desc/label.text = tr(G.GADGETS[i])
 			$gadget_screen/anim.play("anim")
 			$gadget_screen/anim.seek(0, true)
 			glow_items -= 1
@@ -322,8 +322,8 @@ func open_gui(what = null):
 		show_screen("soul_power_screen")
 		G.ach.complete(Achievements.SOUL_MASTER)
 		for i in loot["soul_power"]:
-			$soul_power_screen/label/class.text = G.CLASSES[i]
-			$soul_power_screen/desc/label.text = G.SOUL_POWERS[i]
+			$soul_power_screen/label/class.text = tr(G.CLASSES[i])
+			$soul_power_screen/desc/label.text = tr(G.SOUL_POWERS[i])
 			$soul_power_screen/anim.play("anim")
 			$soul_power_screen/anim.seek(0, true)
 			glow_items -= 1
@@ -359,7 +359,7 @@ func open_gui(what = null):
 		for i in range(loot["tokens"].size()):
 			$tokens_screen/token.self_modulate = G.CLASS_COLORS[keys[i]]
 			$tokens_screen/token/class.texture = CLASS_ICONS[keys[i]]
-			$tokens_screen/token/label.text = G.CLASSES[keys[i]]
+			$tokens_screen/token/label.text = tr(G.CLASSES[keys[i]])
 			$tokens_screen/count.text = "x " + str(loot["tokens"][keys[i]])
 			var real_tokens = G.getv(keys[i] + "_tokens", 0)
 			tokens_bar.max_value = G.getv(keys[i] + "_level", 0) * 10 + 10
@@ -385,7 +385,7 @@ func open_gui(what = null):
 		for i in range(loot["ulti_tokens"].size()):
 			$ulti_tokens_screen/token.self_modulate = G.CLASS_COLORS[keys[i]]
 			$ulti_tokens_screen/token/class.texture = ULTI_ICONS[keys[i]]
-			$ulti_tokens_screen/token/label.text = G.ULTIS[keys[i]]
+			$ulti_tokens_screen/token/label.text = tr(G.ULTIS[keys[i]])
 			$ulti_tokens_screen/count.text = "x " + str(loot["ulti_tokens"][keys[i]])
 			var real_tokens = G.getv(keys[i] + "_ulti_tokens", 0)
 			ulti_tokens_bar.max_value = G.getv(keys[i] + "_ulti_level", 1) * 30 + 30
@@ -484,7 +484,7 @@ func open_gui(what = null):
 			var node = you_get.instance()
 			node.self_modulate = Color.aquamarine
 			node.get_node("icon").texture = gadget
-			node.get_node("label").text = G.CLASSES[i]
+			node.get_node("label").text = tr(G.CLASSES[i])
 #			yield(get_tree().create_timer(0.15), "timeout")
 			if items_showed < 8:
 				ygsi0.add_child(node)
@@ -496,7 +496,7 @@ func open_gui(what = null):
 			var node = you_get.instance()
 			node.self_modulate = Color.darkorange
 			node.get_node("icon").texture = soul_power
-			node.get_node("label").text = G.CLASSES[i]
+			node.get_node("label").text = tr(G.CLASSES[i])
 #			yield(get_tree().create_timer(0.15), "timeout")
 			if items_showed < 8:
 				ygsi0.add_child(node)

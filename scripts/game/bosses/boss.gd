@@ -20,6 +20,7 @@ var fill_height = 30
 var tp_pos = Vector2()
 var next_attack_time_min = 1
 var next_attack_time_max = 2
+var hurt_part = load("res://prefabs/effects/hurt_part.scn")
 onready var anim = $anim
 onready var ms := $MultiplayerSynchronizer as MultiplayerSynchronizer
 
@@ -44,6 +45,8 @@ func _ready():
 	boss_hp.text = str(mob.current_health) + "/" + str(mob.max_health)
 	boss_bar.max_value = mob.max_health
 	boss_bar.value = mob.current_health
+	mob.connect("hurt", self, "_on_mob_hurt")
+	mob.connect("died", self, "_on_mob_hurt")
 
 
 func start_fight():
@@ -99,8 +102,6 @@ func _process(delta):
 	if mob.is_queued_for_deletion():
 		boss_bar.hide()
 		return
-	boss_hp.text = str(mob.current_health) + "/" + str(mob.max_health)
-	boss_bar.value = mob.current_health
 
 
 func process_attack(delta):
@@ -168,3 +169,14 @@ func is_mob_alive():
 	if mob.current_health <= 0:
 		return false
 	return true
+
+
+func _on_mob_hurt():
+	var prev_hp = boss_bar.value
+	var curr_hp = mob.current_health
+	boss_hp.text = str(curr_hp) + "/" + str(mob.max_health)
+	boss_bar.value = curr_hp
+	var hp = hurt_part.instance()
+	hp.get_node("part").anchor_left = curr_hp / mob.max_health
+	hp.get_node("part").anchor_right = prev_hp / mob.max_health
+	boss_bar.add_child(hp)

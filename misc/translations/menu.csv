@@ -1,0 +1,258 @@
+keys,ru,en
+menu.play,Играть,Play
+menu.achvs,Достижения,Achievements
+menu.settings,Настройки,Settings
+menu.about,Об игре,About
+menu.lang,Язык,Language
+menu.more,Ещё игры,More games
+menu.change,Сменить,Change
+menu.cancel,Отмена,Cancel
+menu.yes,Да,Yes
+menu.noo,НЕТ!,NO!
+menu.yess,да,yes
+menu.version,Версия: ,Version: 
+menu.save_id,ID сохранения: ,Save ID: 
+menu.creation_date,Дата создания: ,Creation date: 
+menu.back,Назад,Back
+menu.about.text,"Разработчик, графический и звуковой дизайнер:
+Михаил (Summersay415)
+
+Дизайнер уровней:
+Артём (NETRASH)
+
+Композитор:
+Арсений (шИш)
+
+Поддерживают и тестируют:
+Андрей, Матвей, Кирилл, Гоша
+
+Звуки с Zapsplat, Freesound","Developer, graphic and sound designer:
+Michael (Summersay415)
+
+Level designer:
+Artem (NETRASH)
+
+Music writer:
+Arseniy (shIsh)
+
+Testers:
+Andrew, Matvey, Kirill, Gosha
+
+Sounds from Zapsplat, Freesound"
+menu.thanks,Спасибо за игру!,Thanks for playing!
+menu.s_thanks,Благодарности,Special Thanks
+menu.licenses,Лицензии,Licenses
+menu.tg,Следить за новостями можно в нашем Telegram-канале: ,You can follow the news in our Telegram channel:
+menu.licenses.text,"Эта игра использует движок Godot Engine, распространяемый под лицензией MIT. Текст лицензии:","This game uses Godot Engine, distributed under MIT license. License text:"
+menu.s_thanks.text,"Вдохновлено Brawl Stars, Match Land, Alpha Platformer Adventure.
+
+Говорю спасибо:
+Кириллу - как хорошему другу.
+Андрею - за его бесконечную критику и тестировку.
+Матвею - за очень хорошую поддержку.
+Фёдору - за поддержку и материальное вложение. Без Фёдора наших игр не было бы в Google Play.
+Арсению - за музыку, поддержку и заинтересованность.
+Гоше - за страданиями над моей первой игрой...
+Вадиму - за тестирование.
+Учитель физики - Гордон Глеб Владимирович.
+И всем тем, кто заинтересовался бета-версиями этой игры.
+Спасибо и тебе, игрок.
+
+СПАСИБО!!!","Inspired by Brawl Stars, Match Land, Alpha Platformer Adventure
+
+Thanks to:
+Kirill — for being a good friend.
+Andrew — for endless criticism and testing.
+Matvey — for very good support.
+Fedor — for support and material investment. Without Fedor, our games would not be on Google Play.
+Arseniy — for music, support and interest.
+Gosha — for suffering over my first game…
+Vadim — for testing.
+Physics teacher — Gordon Gleb Vladimirovich.
+And to all those who are interested in the beta versions of this game.
+Thank you, too, player.
+
+THANK YOU!!!"
+menu.stats,Статистика,Statistics
+stat.level,Уровень: ,Level:
+stat.levels,Уровней завершено: ,Levels completed:
+stat.coins,Монет: ,Coins:
+stat.gems,Кристаллов: ,Gems:
+stat.classes,Классов открыто:,Classes opened:
+stat.kills,Убийств:,Kills:
+stat.boss_kills,Боссов побеждено:,Bosses defeated:
+stat.damaged,Получен урон:,Damaged:
+stat.falls,Упал с высоты:,Fall damaged:
+stat.beartraped,Попал в капкан:,Catched in beartrap:
+stat.jumps,Прыжков: ,Jumps:
+stat.skills,Навык использован: ,Skill used:
+stat.deaths,Смертей: ,Deaths:
+stat.revives,Возрождений: ,Revives:
+stat.potions1,Зелий 1-го уровня: ,1st level potions:
+stat.potions2,Зелий 2-го уровня: ,2nd level potions:
+stat.potions3,Зелий 3-го уровня: ,3rd level potions:
+stat.potions_used,Зелий выпито: ,Potions used:
+stat.boxes,Ящиков открыто:,Boxes opened:
+stat.mp_levels,Пройдено уровней в м/п:,Levels in m/p completed:
+stat.mp_revives,Игроков воскрешено:,Players revived:
+stat.reznya,Резня пройдена: ,Massacre completed:
+stat.dyh,Изб. от нен. пройдена:,Destroy your hate completed:
+stat.ls,Посл. волны пройдены: ,Last waves completed:
+stat.pd,Уровней в P. Dash: ,Levels in P. Dash:
+stat.garden,Урожай в саду собран: ,Garden harvest collected:
+stat.2d_wins,Побед в 2Д-шутере: ,Victories in 2D Shooter:
+stat.fnas,Ночь во FNaS: ,FnaS night:
+stat.achvs,Достижений получено: ,Achievements got:
+stat.time,Времени проведено: ,Time elapsed:
+menu.message,Сообщение!,Message!
+menu.setting.music,Громкость музыки:,Music volume:
+menu.setting.sfx,Громкость звуков:,SFX volume:
+menu.setting.graphics,Графика:,Graphics:
+menu.graphics.setup,Настроить…,Set up…
+menu.setting.scm,Плавное движение камеры:,Smooth camera movement:
+menu.setting.damping,Резкость камеры:,Camera damping:
+menu.press,Нажми!,Tap!
+menu.tip.smc,"Если выключено, камера будет точно повторять движения игрока.","If not enabled, the camera will precisely copy player’s movement."
+menu.tip.damping,"Чем выше значение, тем быстрее камера будет следовать за игроком.","The higher the value, the faster the camera will follow the player."
+menu.controls,Сменить управление,Change controls
+menu.controls.pc,Управление (ПК),Controls (PC)
+menu.change_name,Сменить имя,Change name
+menu.delete,Удалить сохранение,Delete save
+menu.deletion,Удаление,Deleting
+menu.deletion.text,Действительно хочешь удалить это сохранение без возможности восстановления?,Do you really want to delete this save without the possibility of recovery?
+menu.last_confirm,Удалить сохранение?,Delete save?
+menu.last_confirm.text,Ты уверен?,Are you sure?
+menu.current_name,Текущее имя: ,Current name: 
+menu.changing_name,Смена имени,Changing name
+menu.controls.pc.text,"Стрелка влево/A - Движение влево
+Стрелка вправо/D - Движение вправо
+Стрелка вверх/Пробел/W - Прыжок
+Стрелка вниз/C/Нажатие правой кнопки мыши - Атака
+Enter/X - Использовать навык
+Shift/Z - Использовать душ. навык
+1/2/3 - Использовать зелье уровня 1/2/3
+Прицеливание осуществляется мышью.","Left arrow/A — Movement to the left
+Right arrow/D — Movement to the right
+Up arrow/Space/W — Jump
+Down arrow/C/Right Mouse Button — Attack
+Enter/X — Use skill
+Shift/Z — Use soul skill
+1/2/3 — Use level 1/2/3 potion
+Aiming is done with mouse."
+menu.warning,Предупреждение!,Warning!
+menu.blw.text,"Опция ""Красивый свет"" может привести к потере производительности, рекомендуем её включать только на ПК или мощном смартфоне.","The ""Beautiful light"" option can lead to a loss of performance, we recommend turning it on only on a PC or a powerful smartphone."
+menu.gr.proj_effects,Эффекты снарядов,Projectile effects
+menu.gr.proj_effects.standard,Стандартные,Standard
+menu.gr.proj_effects.simple,Упрощённые,Simple
+menu.gr.proj_effects.off,Выключить,Disable
+menu.gr.grass,Трава,Grass
+menu.gr.grass.gpu,Анимированная (GPU),GPU-animated
+menu.gr.grass.cpu,Анимированная (CPU),CPU-animated
+menu.gr.grass.static,Статичная,Static
+menu.gr.misc,Прочее,Miscellaneous
+menu.gr.misc.beauty_light,Красивый свет,Beautiful light
+menu.gr.misc.beauty_water,Красивая вода,Beautiful water
+menu.gr.misc.beauty_lava,Красивая лава,Beautiful lava
+menu.gr.misc.beauty_fire,Красивый огонь,Beautiful fire
+menu.change_name.placeholder,Введите новое имя…,Enter new name…
+menu.skip,Пропустить обучение,Skip tutorial
+achv.boss1,Это мои овцы,These sheeps are mine
+achv.boss1.desc,Победите Пастуха.,Defeat the Shepherd.
+achv.boss2,Экологический борец,Ecologic fighter
+achv.boss2.desc,Победите Лесоруба.,Defeat the Lumberjack.
+achv.boss3,Белый маг,White Wizard
+achv.boss3.desc,Победите Чёрного мага.,Defeat the Black Wizard.
+achv.boss4,Фехтовальщик,Fencer
+achv.boss4.desc,Победите Великого рыцаря.,Defeat the Great Knight.
+achv.boss5,Без талона,Without a coupon
+achv.boss5.desc,Победите Хирурга.,Defeat the Surgeon.
+achv.boss6,Пожарный,Fireman
+achv.boss6.desc,Победите Огненного стража.,Defeat the Fire Guard.
+achv.what_is_it,Это что?,What is it?
+achv.what_is_it.desc,Откройте первый класс.,Unlock your first class.
+achv.master,Мастер всех оружий,Master of all weapons
+achv.master.desc,Откройте все классы.,Unlock all classes.
+achv.im_power,Сама сила,I’m power
+achv.im_power.desc,Прокачайте класс на максимум.,Level a class up to the maximum.
+achv.lucky_amulet,На удачу,For luck
+achv.lucky_amulet.desc,Откройте первый амулет.,Open your first amulet.
+achv.help_from_inside,Помощь изнутри,Help from inside
+achv.help_from_inside.desc,Откройте первый душевный навык.,Open your first soul skill.
+achv.soul_master,Мастер души,Soul master
+achv.soul_master.desc,Откройте первую душевную силу.,Open your first soul power.
+achv.dark_creation,Воплощение тьмы,Dark creation
+achv.dark_creation.desc,Встретьте саму Смерть.,Meet the Death.
+achv.potion_man,Зельеман,Potions lover
+achv.potion_man.desc,Используйте зелья 10 раз.,Use potions 10 times.
+achv.prozapass,Прозапас,For everything
+achv.prozapass.desc,Получите по 5 зелий каждого вида.,Get 5 potions of each kind.
+achv.burn_her_faster,Кремируйте её быстрее!,Cremate her faster!
+achv.burn_her_faster.desc,Сожгите врага.,Burn an enemy.
+achv.this_is_sparta,Это... Спарта,This… is… Sparta!
+achv.this_is_sparta.desc,Заставьте монстра умереть от падения.,Make a monster die from falling.
+achv.fuck,ДА ТЫ ЧТО..,"OH, REALLY.."
+achv.fuck.desc,Умрите во время использования зелья…,Die while using the potion…
+achv.some_peoples,Какие-то человеки..,Some peoples..
+achv.some_peoples.desc,Посмотрите создателей игры.,Check out the creators of the game.
+achv.reznya,Резня,Massacre
+achv.reznya.desc,"Пройдите мини-игру ""Резня"".",Complete the «Massacre» mini-game.
+achv.cleared,Очищение,Cleared
+achv.cleared.desc,"Пройдите мини-игру ""Изб. от ненависти"".",Complete the «Destroy Your Hate» mini-game.
+achv.diamonds,АЛМАЗЫ!!,DIAMONDS!!
+achv.diamonds.desc,"Подберите кристалл в ""Симуляторе камня"".",Pick up a gem in «Stone Simulator».
+achv.last_stander,Последний оплот,Last Hero
+achv.last_stander.desc,"Пройдите мини-игру ""Последние волны"".",Complete the «Last Waves» mini-game.
+achv.dasher.desc,"Пройдите уровень в мини-игре ""Platformer Dash"".",Complete a level in the «Platformer Dash» mini-game.
+achv.loot,Урожай,Harvest
+achv.loot.desc,"Соберите награду с 3 растений в ""Саду"".",Collect reward from 3 plants in «Garden».
+achv.victory_royale.desc,"Выиграйте 1 игру в ""2Д-шутере"".",Win 1 game in «2D-shooter».
+achv.escape,Побег,Escape
+achv.escape.desc,"Пройдите мини-игру ""FNaS""…",Complete the «Fnas» mini-game…
+achv.untouched,Неприкасаемый,Untouched
+achv.untouched.desc,"Пройдите уровень, не получив урон.",Complete a level without taking any damage.
+achv.better_together,Вместе сильнее,Stronger together
+achv.better_together.desc,Пройдите любой уровень в мультиплеере.,Complete any level in multiplayer.
+achv.good_partner,Надёжный товарищ,Good partner
+achv.good_partner.desc,Воскресите напарника 5 раз.,Revive your partner 5 times.
+achv.screw_it,Беззаботность,Carefree
+achv.screw_it.desc,"Дайте товарищу завершить уровень, пока вы лежите на земле.",Let your partner complete the level while you are lying on the ground.
+achv.what_a_waste,Какая жалость!,What a pity!
+achv.what_a_waste.desc,Пройдите уровень с 0 здоровья.,Complete a level with 0 health.
+achv.on_the_edge,На грани,On the edge
+achv.on_the_edge.desc,"Завершите уровень с меньше, чем 10% здоровья.",Complete a level with less than 10% health.
+achv.origin,Начало,Origin
+achv.origin.desc,Вспомните своё прошлое.,Remember your past.
+achv.killer,Убийца,Killer
+achv.killer.desc,Совершите 250 убийств.,Make 250 kills.
+achv.you_missed,Ха! Не попал,Ha! You missed
+achv.you_missed.desc,Уклонитесь от атаки.,Dodge an attack.
+amulet.none,Нет,None
+amulet.power,Сила,Power
+amulet.defense,Защита,Defense
+amulet.health,Здоровье,Health
+amulet.reload,Перезарядка,Reload
+amulet.speed,Скорость,Speed
+amulet.ulti,Навык,Skill
+ulti.flurry,ШКВАЛ,FLURRY
+ulti.smash,УДАР,SMASH
+ulti.stun,ОГЛУШЕНИЕ,STUN
+ulti.heal,ЛЕЧЕНИЕ,HEAL
+ulti.blitz,НАЛЁТ,BLITZ
+ulti.death,РЫВОК СМЕРТИ,DEATH DASH
+ulti.hero,АВИАУДАР,AIR STRIKE
+class.knight,РЫЦАРЬ,KNIGHT
+class.butcher,МЯСНИК,BUTCHER
+class.spearman,КОПЬЕНОСЕЦ,SPEARMAN
+class.wizard,МАГ,WIZARD
+class.archer,ЛУЧНИК,ARCHER
+class.none,НЕТ,NONE
+gadgets.knight,Следующие 2 секунды Рыцарь будет уклоняться от атак.,"For the next 2 seconds, the Knight will dodge attacks."
+gadgets.butcher,"Мясник прыгает на среднюю высоту. При приземлении отбрасывает ближайших врагов, нанося им 110 ед. урона.","The Butcher jumps to an average height. When landing, it throws away nearby enemies, dealing 110 damage to them."
+gadgets.spearman,"Копьеносец делает мощный удар вблизи, сильно отбрасывая врага и нанося ему 250 ед. урона.","The Spearman makes a powerful blow close by, throwing the enemy hard and dealing 250 damage to him."
+gadgets.wizard,Немедленно заряжает навык Мага на 40%.,Immediately charges the Wizard’s skill by 40%.
+gadgets.archer,"Создаёт град стрел над Лучником, летящих вниз, даже сквозь препятствия. Наносит 150 ед. урона вргам и отбрасывает их.","Creates a hail of arrows over the Archer, flying down, even through obstacles. Deals 150 damage to enemies and knocks back them."
+sp.knight,Даёт шанс в 20% уклониться от атаки.,Gives you a 20% chance to dodge an attack.
+sp.butcher,Даёт шанс в 20% зарядить навык на 15% при получении урона.,Gives a 20% chance to charge the skill by 15% when taking damage.
+sp.spearman,Даёт шанс в 20% оглушить врага атакой вблизи на 1.25 секунды.,Gives a 20% chance to stun an enemy with a close-range attack for 1.25 seconds.
+sp.wizard,Даёт шанс в 15% исцелиться на 10% при попадании по врагу дальнобойной атакой.,Gives a 15% chance to heal by 10% when hitting an enemy with a long-range attack.
+sp.archer,Даёт шанс в 45% при попадании ближней атакой нанести 50 ед. урона всем врагам в радиусе 2 блоков.,Gives a 45% chance of dealing 50 damage to all enemies within a radius of 2 blocks when hitting an enemy by a melee attack.

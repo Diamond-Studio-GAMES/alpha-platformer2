@@ -3,9 +3,9 @@ class_name Globals, "res://textures/gui/alpha_text.png"
 
 
 const VERSION = "0.8.0"
-const VERSION_STATUS = "beta"
-const VERSION_STATUS_NUMBER = "3"
-const VERSION_CODE = 63
+const VERSION_STATUS = ""
+const VERSION_STATUS_NUMBER = ""
+const VERSION_CODE = 64
 
 var main_file: ConfigFile
 var save_file: ConfigFile
@@ -50,33 +50,33 @@ const RIM_NUMBERS = {
 	5 : "V"
 }
 const GADGETS = {
-	"knight" : "При активации следующие 2 секунды Рыцарь уклониться от любых атак.",
-	"butcher" : "При активации Мясник прыгает на среднюю высоту, и при приземлении отбрасывает близжайщих врагов, нанося им 110 ед. урона.",
-	"spearman" : "При активация Копьеносец наносит мощный удар вблизи, сильно отбрасывая врага и нанося ему 250 ед. урона.",
-	"wizard" : "При активация Маг немедленно заряжает особый навык на 40%.",
-	"archer" : "При активации Лучник создаёт град стрел над собой, летящих вниз, даже сквозь препятствия. Наносит 150 ед. урона и отбрасывает."
+	"knight" : "gadgets.knight",
+	"butcher" : "gadgets.butcher",
+	"spearman" : "gadgets.spearman",
+	"wizard" : "gadgets.wizard",
+	"archer" : "gadgets.archer"
 }
 const SOUL_POWERS = {
-	"knight" : "Даёт 20% шанс уклониться от атаки.",
-	"butcher" : "Шанс 20% зарядить навык на 15% при получении урона.",
-	"spearman" : "20% шанс атакой вблизи оглушить врага на 1.25 секунды.",
-	"wizard" : "Даёт 15% шанс исцелиться на 10% при попадании дальнобойной атаки.",
-	"archer" : "45% шанс при попадании ближней атакой нанести этот урон всем врагам в радиусе 2 блоков."
+	"knight" : "sp.knight",
+	"butcher" : "sp.butcher",
+	"spearman" : "sp.spearman",
+	"wizard" : "sp.wizard",
+	"archer" : "sp.archer"
 }
 const CLASSES = {
-	"knight" : "РЫЦАРЬ",
-	"butcher" : "МЯСНИК",
-	"spearman" : "КОПЬЕНОСЕЦ",
-	"wizard" : "МАГ",
-	"archer" : "ЛУЧНИК",
-	"player" : "НЕТ"
+	"knight" : "class.knight",
+	"butcher" : "class.butcher",
+	"spearman" : "class.spearman",
+	"wizard" : "class.wizard",
+	"archer" : "class.archer",
+	"player" : "class.none"
 }
 const ULTIS = {
-	"knight" : "ШКВАЛ",
-	"butcher" : "УДАР",
-	"spearman" : "ОГЛУШЕНИЕ",
-	"wizard" : "ЛЕЧЕНИЕ",
-	"archer" : "НАЛЁТ"
+	"knight" : "ulti.flurry",
+	"butcher" : "ulti.smash",
+	"spearman" : "ulti.stun",
+	"wizard" : "ulti.heal",
+	"archer" : "ulti.blitz"
 }
 const CLASS_COLORS = {
 	"knight" : Color(0.8, 0, 0),
@@ -127,13 +127,13 @@ const AMULET_ID = {
 	"ulti" : 5,
 }
 const AMULET_NAME = {
-	-1 : "Нет",
-	0 : "Сила",
-	1 : "Защита",
-	2 : "Здоровье",
-	3 : "Скорость",
-	4 : "Перезарядка",
-	5 : "Навык",
+	-1 : "amulet.none",
+	0 : "amulet.power",
+	1 : "amulet.defense",
+	2 : "amulet.health",
+	3 : "amulet.speed",
+	4 : "amulet.reload",
+	5 : "amulet.ulti",
 }
 const AMULET_MAX = {
 	-1 : 0,
@@ -200,7 +200,7 @@ func _ready():
 	add_child(ad)
 	ach = Achievements.new()
 	ach.name = "achievements"
-	ach.layer = 80
+	ach.layer = 128
 	ach.pause_mode = PAUSE_MODE_PROCESS
 	add_child(ach)
 	music = AudioStreamPlayer.new()

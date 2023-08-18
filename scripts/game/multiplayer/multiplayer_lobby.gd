@@ -152,7 +152,7 @@ func register_player(info):
 	var label = Label.new()
 	label.size_flags_horizontal = SIZE_EXPAND_FILL
 	label.valign = VALIGN_CENTER
-	label.text = info["name"] + ": " + G.CLASSES[info["class"]] + ", Сила: " + str(info["power"]) + ",  Навык: " + str(info["ulti_power"])
+	label.text = info["name"] + ": " + tr(G.CLASSES[info["class"]]) + ", Сила: " + str(info["power"]) + ",  Навык: " + str(info["ulti_power"])
 	hboxcont.add_child(label)
 	update_start_game_button()
 
@@ -181,7 +181,7 @@ func register_player_self():
 	var label = Label.new()
 	label.size_flags_horizontal = SIZE_EXPAND_FILL
 	label.valign = VALIGN_CENTER
-	label.text = "(Вы)" + info["name"] + ": " + G.CLASSES[info["class"]] + ", Сила: " + str(info["power"]) + ",  Навык: " + str(info["ulti_power"])
+	label.text = "(Вы)" + info["name"] + ": " + tr(G.CLASSES[info["class"]]) + ", Сила: " + str(info["power"]) + ",  Навык: " + str(info["ulti_power"])
 	hboxcont.add_child(label)
 
 

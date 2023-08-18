@@ -92,6 +92,8 @@ func axe_throw():
 	ids.shuffle()
 	ids = ids.slice(0, 2)
 	for i in ids:
+		if not is_mob_alive():
+			return
 		var point = axe_points.get_node("pos" + str(i))
 		point.get_node("sprite").show()
 		yield(get_tree().create_timer(0.8, false), "timeout")

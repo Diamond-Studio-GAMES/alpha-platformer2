@@ -38,7 +38,7 @@ func _ready():
 	current_health = max_health
 	current_armor = max_armor
 	_update_all_bars()
-	$camera/gui/base/ulti_use/ulti_name.text = "АВИАУДАР"
+	$camera/gui/base/ulti_use/ulti_name.text = tr("ulti.hero")
 	_attack_visual.hide()
 	_attack_shape.disabled = true
 	_ulti = load("res://minigames/minigame4/hero_ulti.scn")
