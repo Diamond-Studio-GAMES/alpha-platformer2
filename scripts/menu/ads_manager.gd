@@ -21,7 +21,7 @@ func ads_available():
 
 
 func initialize(age):
-	admob.initialize(true, age < 13, "PG" if age < 13 else "MA", false)
+	admob.initialize(true, age < 13, "G" if age < 13 else "MA", false)
 	admob.request_user_consent()
 	admob.connect("user_earned_rewarded", self, "_on_rewarded_video_finished")
 	admob.connect("rewarded_ad_failed_to_load", self, "_load_rewarded")
