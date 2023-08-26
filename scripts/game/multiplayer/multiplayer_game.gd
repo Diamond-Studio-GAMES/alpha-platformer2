@@ -55,7 +55,7 @@ remote func refused(reason, data):
 func close_multiplayer():
 	if state in [State.LOADING, State.IN_GAME]:
 		G.dialog_in_menu = "Все игроки отключились!" if another_dialog else "Разорвано соединение с сервером!"
-		get_tree().change_scene("res://scenes/menu/menu.scn")
+		get_tree().change_scene("res://scenes/menu/menu.tscn")
 	queue_free()
 
 
@@ -71,7 +71,7 @@ func begin_game():
 
 remotesync func start_load():
 	state = State.LOADING
-	G.change_to_scene("res://scenes/levels/level_" + G.current_level + ".scn")
+	G.change_to_scene("res://scenes/levels/level_" + G.current_level + ".tscn")
 	yield(G, "loaded_to_scene")
 	if get_tree().is_network_server():
 		loaded(1)

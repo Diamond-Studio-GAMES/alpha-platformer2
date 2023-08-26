@@ -140,7 +140,7 @@ func show_d_win():
 func play():
 	if get_tree().current_scene.name == "game_over":
 		G.setv("go_chance", true)
-	G.change_to_scene("res://scenes/levels/level_" + curr_lvl + ".scn")
+	G.change_to_scene("res://scenes/levels/level_" + curr_lvl + ".tscn")
 
 
 func claim_reward():
@@ -158,7 +158,7 @@ func next():
 	var next_lvl = curr_lvl.split("_")[0] + "_" + str(int(curr_lvl.split("_")[1]) + 1)
 	if curr_lvl.split("_")[1] == "10":
 		next_lvl = str(int(curr_lvl.split("_")[0]) + 1) + "_1"
-	if not ResourceLoader.exists("res://scenes/levels/level_" + next_lvl + ".scn"):
+	if not ResourceLoader.exists("res://scenes/levels/level_" + next_lvl + ".tscn"):
 		return
 	$"../../select_level/select_level_dialog".show_d(next_lvl)
 	hide()
@@ -280,7 +280,7 @@ func set_win_rewards(level = ""):
 
 
 func menu():
-	get_tree().change_scene("res://scenes/menu/menu.scn")
+	get_tree().change_scene("res://scenes/menu/menu.tscn")
 
 
 func menu_pressed(id):

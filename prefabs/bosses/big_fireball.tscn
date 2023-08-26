@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=2]
+[ext_resource path="res://scripts/game/mobs/fire_attack.gd" type="Script" id=3]
+[ext_resource path="res://scripts/game/other/throwable.gd" type="Script" id=4]
+[ext_resource path="res://textures/mobs/fire_wizard/fireball_big.png" type="Texture" id=5]
+[ext_resource path="res://shaders/materials/big_fireball.tres" type="Material" id=6]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Animation" id=3]
+resource_name = "start"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 20.0
+
+[node name="big_fireball" type="Node2D" groups=["spawnable"]]
+script = ExtResource( 4 )
+SPEED = 250.0
+destroy_time = 5.0
+is_player_projectile = false
+is_enemy_projectile = true
+effect_wall = "res://prefabs/effects/destroy_effects/effect_big_fireball_hit.tscn"
+effect_hit = "res://prefabs/effects/destroy_effects/effect_big_fireball_hit.tscn"
+effect_end_of_range = "res://prefabs/effects/destroy_effects/effect_big_fireball_hit.tscn"
+effect_reject = "res://prefabs/effects/destroy_effects/effect_big_fireball_hit.tscn"
+simple_effect_color = Color( 1, 0.501961, 0, 1 )
+simple_effect_scale = Vector2( 2, 2 )
+simple_effect_destroy_sound_hit = "res://sounds/sfx/randomed/magicball_hit.tres"
+simple_effect_destroy_sound_wall = "res://sounds/sfx/randomed/magicball_hit.tres"
+
+[node name="fire" type="Sprite" parent="."]
+material = ExtResource( 6 )
+scale = Vector2( 2.1, 2.1 )
+texture = ExtResource( 5 )
+
+[node name="smoke" type="CPUParticles2D" parent="fire"]
+show_behind_parent = true
+preprocess = 1.0
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 8.0
+gravity = Vector2( 0, 0 )
+scale_amount = 8.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 2 )
+color = Color( 0.501961, 0.501961, 0.501961, 1 )
+
+[node name="anim" type="AnimationPlayer" parent="fire"]
+autoplay = "start"
+anims/start = SubResource( 3 )
+
+[node name="attack" type="Area2D" parent="."]
+position = Vector2( 0, 8 )
+collision_layer = 16
+collision_mask = 18
+script = ExtResource( 3 )
+defense_allowed = false
+is_enemy_attack = true
+damage_source = "enemy"
+lifetime = 0.0
+on_entity_damage_ticks = 3
+on_entity_damage = 25
+
+[node name="shape" type="CollisionShape2D" parent="attack"]
+shape = SubResource( 1 )
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath("../attack"), NodePath("../fire") ]
+spawn_sync_data_properties = [ "global_position", "rotation_degrees", "damage", "rotation" ]
+auto_despawn = false
+
+[node name="MultiplayerSynchronizer" type="Node" parent="."]
+script = ExtResource( 2 )
+unreliable_sync_node_paths = [ NodePath(".."), NodePath(".."), NodePath("..") ]
+unreliable_sync_properties_names = [ "global_position", "angle", "rotation_degrees" ]

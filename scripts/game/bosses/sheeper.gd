@@ -1,9 +1,9 @@
 extends Boss
 
 
-var knives_attack = load("res://prefabs/bosses/knife_attack_sheeper.scn")
-var big_knife_attack = load("res://prefabs/bosses/knife_sheeper_big.scn")
-var sheep_bomb = load("res://prefabs/bosses/sheep_bomb.scn")
+var knives_attack = load("res://prefabs/bosses/knife_attack_sheeper.tscn")
+var big_knife_attack = load("res://prefabs/bosses/knife_sheeper_big.tscn")
+var sheep_bomb = load("res://prefabs/bosses/sheep_bomb.tscn")
 
 
 func _ready():

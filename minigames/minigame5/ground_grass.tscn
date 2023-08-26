@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://minigames/minigame5/resources/kill_player.gd" type="Script" id=1]
+[ext_resource path="res://minigames/minigame5/resources/ground_grass.png" type="Texture" id=2]
+[ext_resource path="res://minigames/minigame5/resources/underground_grass.png" type="Texture" id=3]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends StaticBody2D
+
+
+var need_move = false
+
+func move():
+	need_move = true
+
+
+func _physics_process(delta):
+	if need_move:
+		need_move = false
+		position += Vector2.RIGHT * 192
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 480, 16 )
+
+[node name="ground" type="StaticBody2D"]
+script = SubResource( 2 )
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( 160, 16 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 960, 32 )
+
+[node name="sprite2" type="Sprite" parent="."]
+position = Vector2( 160, 112 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 960, 160 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( 160, 16 )
+shape = SubResource( 1 )
+
+[node name="visibility_notifier" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 640, -8 )
+rect = Rect2( -40, -640, 80, 800 )
+
+[node name="kill" type="Area2D" parent="."]
+position = Vector2( 0, -640 )
+script = ExtResource( 1 )
+
+[node name="shape" type="CollisionShape2D" parent="kill"]
+position = Vector2( 160, 0 )
+shape = SubResource( 1 )
+
+[connection signal="screen_entered" from="visibility_notifier" to="." method="move"]

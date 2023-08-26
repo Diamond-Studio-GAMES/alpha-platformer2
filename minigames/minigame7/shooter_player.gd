@@ -23,7 +23,7 @@ var player_name = ""
 var direction = Vector2.ZERO
 var is_pc = false
 var is_cool_aim = false
-var effect = load("res://minigames/minigame7/death_effect.scn")
+var effect = load("res://minigames/minigame7/death_effect.tscn")
 
 
 func _ready():

@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=2]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=3]
+[ext_resource path="res://textures/mobs/sheeper/knife.png" type="Texture" id=4]
+[ext_resource path="res://scripts/game/other/throwable.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 4 )
+
+[node name="knife_big" type="Node2D" groups=["spawnable"]]
+scale = Vector2( 2.5, 2.5 )
+script = ExtResource( 5 )
+SPEED = 175.0
+is_player_projectile = false
+is_enemy_projectile = true
+destroyable_by_attacks = false
+effect_wall = "res://prefabs/effects/destroy_effects/effect_knife_big_sheeper_wall.tscn"
+effect_hit = "res://prefabs/effects/destroy_effects/effect_knife_big_sheeper_hit.tscn"
+simple_effect_color = Color( 0.627451, 0.627451, 0.627451, 1 )
+simple_effect_offset = Vector2( 17, 0 )
+simple_effect_destroy_sound_hit = "res://sounds/sfx/randomed/sword_hit.tres"
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( -9.6, 0 )
+rotation = 1.5708
+z_index = -5
+texture = ExtResource( 4 )
+
+[node name="attack" type="Area2D" parent="."]
+position = Vector2( -25.6, 0 )
+collision_layer = 16
+collision_mask = 19
+script = ExtResource( 2 )
+is_enemy_attack = true
+lifetime = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="attack"]
+position = Vector2( 16, 0 )
+shape = SubResource( 1 )
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath("../attack") ]
+spawn_sync_data_properties = [ "global_position", "rotation_degrees", "damage" ]
+auto_despawn = false
+
+[node name="MultiplayerSynchronizer" type="Node" parent="."]
+script = ExtResource( 3 )
+unreliable_sync_node_paths = [ NodePath(".."), NodePath(".."), NodePath("..") ]
+unreliable_sync_properties_names = [ "global_position", "angle", "rotation_degrees" ]

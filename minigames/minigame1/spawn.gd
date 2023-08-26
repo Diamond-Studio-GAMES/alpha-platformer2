@@ -2,12 +2,12 @@ extends Node2D
 
 
 export (float) var spawn_interval = 5
-var mobs = [load("res://minigames/minigame1/mob_knife_man_reznya.scn"),
-		load("res://minigames/minigame1/mob_shooter_reznya.scn"), 
-		load("res://minigames/minigame1/mob_sportsman_reznya.scn"),
-		load("res://minigames/minigame1/mob_knight_reznya.scn"),
-		load("res://minigames/minigame1/mob_doctor_reznya.scn"),
-		load("res://minigames/minigame1/mob_spartan_reznya.scn")]
+var mobs = [load("res://minigames/minigame1/mob_knife_man_reznya.tscn"),
+		load("res://minigames/minigame1/mob_shooter_reznya.tscn"), 
+		load("res://minigames/minigame1/mob_sportsman_reznya.tscn"),
+		load("res://minigames/minigame1/mob_knight_reznya.tscn"),
+		load("res://minigames/minigame1/mob_doctor_reznya.tscn"),
+		load("res://minigames/minigame1/mob_spartan_reznya.tscn")]
 var timer = null
 var timer_time = 120
 var won = false
@@ -24,8 +24,8 @@ func _ready():
 	yield(get_tree(), "idle_frame")
 	player = $"../player"
 	player_camera = player.get_node("camera")
-	player.custom_respawn_scene = "res://minigames/minigame1/minigame.scn"
-	var n = load("res://minigames/minigame1/timer.scn").instance()
+	player.custom_respawn_scene = "res://minigames/minigame1/minigame.tscn"
+	var n = load("res://minigames/minigame1/timer.tscn").instance()
 	player.add_child(n)
 	timer = n.get_node("timer/bar")
 	player.make_dialog("Награда за выживание: 2 золотых ящика", 10, Color.red)
@@ -52,7 +52,7 @@ func _process(delta):
 			reward_claimed = true
 			G.addv("reznya_completed", 1)
 			G.ach.complete(Achievements.REZNYA)
-			get_tree().change_scene("res://scenes/menu/menu.scn")
+			get_tree().change_scene("res://scenes/menu/menu.tscn")
 			G.receive_loot({"gold_box" : 2})
 	spawn_timer += delta
 	if spawn_timer > spawn_interval:

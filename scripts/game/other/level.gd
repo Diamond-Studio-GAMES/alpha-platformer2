@@ -25,9 +25,9 @@ func _ready():
 	G.setv("go_chance", false)
 	if G.percent_chance(chance) and name.begins_with("level"):
 		print("death")
-		player = load("res://prefabs/classes/death.scn").instance()
+		player = load("res://prefabs/classes/death.tscn").instance()
 	else:
-		player = load("res://prefabs/classes/" + G.getv("selected_class", "player") + ".scn").instance()
+		player = load("res://prefabs/classes/" + G.getv("selected_class", "player") + ".tscn").instance()
 	player.get_node("camera/gui/base/intro/text/main").text = level_name
 	player.get_node("camera/gui/base/intro/text/location").text = location
 	player.position = pos.position

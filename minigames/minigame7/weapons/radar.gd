@@ -11,7 +11,7 @@ export (float) var reload_time = 2
 var is_active = false
 var reload_timer = 0
 var delay_timer = 0
-var bullet = load("res://minigames/minigame7/weapons/radar_arrow.scn")
+var bullet = load("res://minigames/minigame7/weapons/radar_arrow.tscn")
 
 
 func _ready():

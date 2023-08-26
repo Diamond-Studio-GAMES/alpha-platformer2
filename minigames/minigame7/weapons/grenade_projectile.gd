@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 var speed = 600
 var bullet_lifetime = 1.5
-var blast = load("res://minigames/minigame7/weapons/blast.scn")
+var blast = load("res://minigames/minigame7/weapons/blast.tscn")
 var by_who = ""
 
 

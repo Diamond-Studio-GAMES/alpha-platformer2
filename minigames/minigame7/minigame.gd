@@ -3,9 +3,9 @@ extends Control
 
 func select_mode(mode):
 	if mode == 0:
-		get_tree().change_scene("res://minigames/minigame7/royale.scn")
+		get_tree().change_scene("res://minigames/minigame7/royale.tscn")
 	if mode == 1:
-		get_tree().change_scene("res://minigames/minigame7/wipeout.scn")
+		get_tree().change_scene("res://minigames/minigame7/wipeout.tscn")
 
 
 func _ready():
@@ -18,7 +18,7 @@ func _ready():
 
 
 func exit():
-	get_tree().change_scene("res://scenes/menu/levels.scn")
+	get_tree().change_scene("res://scenes/menu/levels.tscn")
 
 
 func _on_aim_mode_item_selected(index):

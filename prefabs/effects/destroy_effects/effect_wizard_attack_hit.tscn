@@ -1,0 +1,109 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sounds/sfx/randomed/magicball_hit.tres" type="AudioStream" id=1]
+[ext_resource path="res://textures/effects/attacks/wizard_despawn_particle.png" type="Texture" id=2]
+[ext_resource path="res://textures/effects/attacks/wizard_hit_splash.png" type="Texture" id=3]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0.777959 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.658523 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.403727, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.35, 0.35 ), Vector2( 0.6, 0.6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("particles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="attack" type="Node2D"]
+
+[node name="particles" type="CPUParticles2D" parent="."]
+position = Vector2( 32, 0 )
+scale = Vector2( 0.15, 0.15 )
+emitting = false
+amount = 6
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+texture = ExtResource( 2 )
+emission_shape = 1
+emission_sphere_radius = 32.0
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 250.0
+initial_velocity_random = 0.5
+scale_amount = 1.5
+scale_amount_curve = SubResource( 2 )
+color = Color( 1, 0.462745, 0.984314, 1 )
+color_ramp = SubResource( 3 )
+hue_variation = 0.05
+hue_variation_random = 1.0
+
+[node name="sprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 0.827451, 1, 1 )
+position = Vector2( 32, 0 )
+scale = Vector2( 0.6, 0.6 )
+z_index = 1
+texture = ExtResource( 3 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "hit"
+anims/hit = SubResource( 4 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+max_distance = 800.0
+bus = "sfx"

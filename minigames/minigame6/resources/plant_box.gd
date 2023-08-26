@@ -71,7 +71,7 @@ func open_box():
 		plants = plants_common
 		$semen_screen/pack.texture = pack_c
 	else:
-		get_tree().change_scene("res://minigames/minigame6/minigame.scn")
+		get_tree().change_scene("res://minigames/minigame6/minigame.tscn")
 		return
 	$fert_screen.hide()
 	$semen_screen.show()
@@ -82,4 +82,4 @@ func open_box():
 	$semen_screen/pack/label.text = got_plant.name
 	$semen_screen/anim.play("get")
 	yield(self, "next")
-	get_tree().change_scene("res://minigames/minigame6/minigame.scn")
+	get_tree().change_scene("res://minigames/minigame6/minigame.tscn")

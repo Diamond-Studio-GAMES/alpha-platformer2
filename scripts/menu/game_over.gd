@@ -54,4 +54,4 @@ func menu():
 		get_tree().quit()
 		return
 	G.custom_respawn_scene = ""
-	get_tree().change_scene("res://scenes/menu/menu.scn")
+	get_tree().change_scene("res://scenes/menu/menu.tscn")

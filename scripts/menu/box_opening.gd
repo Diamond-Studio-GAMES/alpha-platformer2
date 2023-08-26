@@ -43,11 +43,11 @@ var CLASS_ICONS = {
 	"archer" : load("res://textures/classes/archer_helmet.png") 
 }
 var ULTI_ICONS = {
-	"knight" : load("res://textures/gui/ulti_icon_0.res"),
-	"butcher" : load("res://textures/gui/ulti_icon_1.res"),
-	"spearman" : load("res://textures/gui/ulti_icon_2.res"),
-	"wizard" : load("res://textures/gui/ulti_icon_3.res"),
-	"archer" : load("res://textures/gui/ulti_icon_4.res")
+	"knight" : load("res://textures/gui/ulti_icon_0.tres"),
+	"butcher" : load("res://textures/gui/ulti_icon_1.tres"),
+	"spearman" : load("res://textures/gui/ulti_icon_2.tres"),
+	"wizard" : load("res://textures/gui/ulti_icon_3.tres"),
+	"archer" : load("res://textures/gui/ulti_icon_4.tres")
 }
 var AMULET_ICONS = {
 	"power" : load("res://textures/items/amulet_power_frag.png"),
@@ -66,7 +66,7 @@ var ulti_token = load("res://textures/items/ulti_token.png")
 var token = load("res://textures/items/token.png")
 var coin = load("res://textures/items/coin.png")
 var gem = load("res://textures/items/gem.png")
-var you_get = load("res://prefabs/menu/you_get.scn")
+var you_get = load("res://prefabs/menu/you_get.tscn")
 var gadget = load("res://textures/items/gadget.png")
 var soul_power = load("res://textures/items/soul_power.png")
 var items = 0
@@ -632,7 +632,7 @@ func hide_screens():
 
 func show_screen(screen):
 	if not screens.has(screen):
-		var _screen = load("res://prefabs/menu/box_%s.scn" % screen).instance()
+		var _screen = load("res://prefabs/menu/box_%s.tscn" % screen).instance()
 		_screen.name = screen
 		screens[screen] = _screen
 		add_child_below_node($mega_box_screen, _screen)

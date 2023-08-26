@@ -1,0 +1,113 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://sounds/sfx/randomed/sword_hit.tres" type="AudioStream" id=2]
+[ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=3]
+[ext_resource path="res://sounds/sfx/randomed/swing.tres" type="AudioStream" id=4]
+[ext_resource path="res://sounds/sfx/randomed/sword_hit_wall.tres" type="AudioStream" id=5]
+[ext_resource path="res://textures/effects/attacks/death_attack0.tres" type="Texture" id=6]
+[ext_resource path="res://textures/effects/attacks/death_attack1.tres" type="Texture" id=7]
+[ext_resource path="res://textures/effects/attacks/death_attack2.tres" type="Texture" id=8]
+[ext_resource path="res://textures/effects/attacks/death_attack3.tres" type="Texture" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 8 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "attack",
+"speed": 16.0
+} ]
+
+[sub_resource type="Animation" id=5]
+resource_name = "attack"
+length = 0.75
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath("visual")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "attack", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("shape:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="death_attack" type="Area2D" groups=["spawnable"]]
+z_index = -8
+collision_layer = 16
+collision_mask = 23
+script = ExtResource( 3 )
+damage = 85
+is_player_attack = true
+lifetime = 0.75
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 8 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="visual" type="AnimatedSprite" parent="."]
+self_modulate = Color( 0.117647, 0.117647, 0.117647, 1 )
+position = Vector2( 0, 8 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 2 )
+animation = "attack"
+flip_h = true
+
+[node name="swing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+bus = "sfx"
+
+[node name="hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+bus = "sfx"
+
+[node name="hit_wall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+bus = "sfx"
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "attack"
+anims/attack = SubResource( 5 )
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath(".."), NodePath("..") ]
+spawn_sync_data_properties = [ "global_position", "modulate", "scale", "damage" ]
+auto_despawn = false
+
+[connection signal="hit_enemy" from="." to="hit" method="play"]
+[connection signal="hit_wall" from="." to="hit_wall" method="play"]

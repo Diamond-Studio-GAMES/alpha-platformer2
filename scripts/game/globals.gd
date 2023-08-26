@@ -2,10 +2,10 @@ extends Node
 class_name Globals, "res://textures/gui/alpha_text.png"
 
 
-const VERSION = "0.8.0"
-const VERSION_STATUS = ""
-const VERSION_STATUS_NUMBER = ""
-const VERSION_CODE = 65
+const VERSION = "0.9.0"
+const VERSION_STATUS = "build"
+const VERSION_STATUS_NUMBER = "1"
+const VERSION_CODE = 66
 
 var main_file: ConfigFile
 var save_file: ConfigFile
@@ -23,8 +23,8 @@ var music
 var time_timer
 var ad: AdsManager
 var ach: Achievements
-var loading_scene = load("res://scenes/menu/loading.scn")
-var box = load("res://scenes/menu/box.scn")
+var loading_scene = load("res://scenes/menu/loading.tscn")
+var box = load("res://scenes/menu/box.tscn")
 const CLASSES_ID = {
 	-1 : "player",
 	0 : "knight",
@@ -208,7 +208,7 @@ func _ready():
 	music.bus = "music"
 	music.stream = load("res://sounds/music/menu/menu.ogg")
 	add_child(music)
-	fps_text = load("res://prefabs/menu/fps_counter.scn").instance()
+	fps_text = load("res://prefabs/menu/fps_counter.tscn").instance()
 	fps_text.visible = G.main_getv("fps", false)
 	add_child(fps_text)
 	time_timer = Timer.new()
@@ -219,7 +219,7 @@ func _ready():
 	time_timer.connect("timeout", self, "update_timer")
 	time_timer.start()
 	if OS.has_feature("editor") or OS.has_feature("cheats"):
-		var ch = load("res://prefabs/menu/cheats.scn").instance()
+		var ch = load("res://prefabs/menu/cheats.tscn").instance()
 		add_child(ch)
 
 

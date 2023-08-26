@@ -2,9 +2,9 @@ extends Boss
 
 
 var alive_doctors = []
-var doctor = load("res://prefabs/bosses/doctor_boss.scn")
-var knife = load("res://prefabs/bosses/doctor_knife.scn")
-var swipe = load("res://prefabs/bosses/doctor_swipe.scn")
+var doctor = load("res://prefabs/bosses/doctor_boss.tscn")
+var knife = load("res://prefabs/bosses/doctor_knife.tscn")
+var swipe = load("res://prefabs/bosses/doctor_swipe.tscn")
 onready var timer = $swipe_timer
 onready var spawn_pos = $doctor_spawn_pos
 onready var spawn_poses = [$swipe_pos0.global_position, $swipe_pos1.global_position, $swipe_pos2.global_position]

@@ -3,8 +3,8 @@ extends Boss
 
 onready var beartrap_points = $beartrap_points
 onready var axe_points = $axe_points
-var beartrap = load("res://prefabs/bosses/boss_beartrap.scn")
-var axe = load("res://prefabs/bosses/axe_throw.scn")
+var beartrap = load("res://prefabs/bosses/boss_beartrap.tscn")
+var axe = load("res://prefabs/bosses/axe_throw.tscn")
 
 
 func _ready():

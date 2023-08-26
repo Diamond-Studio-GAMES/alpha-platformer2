@@ -1,0 +1,1736 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://scripts/menu/menu.gd" type="Script" id=1]
+[ext_resource path="res://themes/font_headers.tres" type="DynamicFont" id=2]
+[ext_resource path="res://textures/gui/save_pins.png" type="Texture" id=3]
+[ext_resource path="res://textures/effects/backgrounds/forest_bg.png" type="Texture" id=4]
+[ext_resource path="res://textures/effects/backgrounds/cave_bg.png" type="Texture" id=5]
+[ext_resource path="res://themes/theme.tres" type="Theme" id=6]
+[ext_resource path="res://textures/effects/backgrounds/mountain_bg.png" type="Texture" id=7]
+[ext_resource path="res://textures/effects/backgrounds/field_bg.png" type="Texture" id=8]
+[ext_resource path="res://textures/effects/backgrounds/red_world_cave_bg.png" type="Texture" id=9]
+[ext_resource path="res://textures/effects/backgrounds/red_world_bg.png" type="Texture" id=10]
+[ext_resource path="res://prefabs/menu/help_info.tscn" type="PackedScene" id=11]
+[ext_resource path="res://prefabs/menu/education.tscn" type="PackedScene" id=12]
+[ext_resource path="res://prefabs/menu/name_of_game.tscn" type="PackedScene" id=13]
+
+[sub_resource type="Animation" id=1]
+resource_name = "main"
+length = 75.75
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("bg0:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 7.5, 74, 75.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -216, 0 ), Vector2( -84, 0 ), Vector2( -251.2, 0 ), Vector2( -216, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bg0:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.75, 6.75, 8.25, 74.25, 75.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("bg1:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 6.75, 8.25, 14.25, 15.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.910112 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("bg1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 6.75, 15.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -216, 0 ), Vector2( -84, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("bg2:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 14.25, 15.75, 21.75, 23.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.898734 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("bg2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 14.25, 23.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -216, 0 ), Vector2( -84, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("bg3:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.15, 21.75, 23.25, 29.25, 30.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.870588 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("bg3:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 21.75, 30.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -216, 0 ), Vector2( -84, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("bg4:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 29.25, 30.75, 36.75, 38.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("bg4:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 29.25, 38.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -216, 0 ), Vector2( -84, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("bg5:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 36.75, 38.25, 44.25, 45.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("bg5:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 36.75, 45.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -216, 0 ), Vector2( -84, 0 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("bg6:self_modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 44.25, 45.75, 51.75, 53.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("bg6:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 44.25, 53.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -216, 0 ), Vector2( -84, 0 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("bg7:self_modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 51.75, 53.25, 59.25, 60.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("bg7:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 51.75, 60.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -216, 0 ), Vector2( -84, 0 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("bg8:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 59.25, 60.75, 66.75, 68.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("bg8:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 59.25, 68.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -216, 0 ), Vector2( -84, 0 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("bg9:self_modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 66.75, 68.25, 74.25, 75.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("bg9:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 66.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -84, 0 ), Vector2( -216, 0 ) ]
+}
+
+[sub_resource type="StyleBoxEmpty" id=3]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 16, 16 )
+
+[node name="menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 6 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="Node2D" parent="."]
+z_index = -50
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bg0" type="Sprite" parent="bg"]
+position = Vector2( -216, 0 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="bg1" type="Sprite" parent="bg"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -202.652, 0 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="bg2" type="Sprite" parent="bg"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -187.82, 0 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="bg3" type="Sprite" parent="bg"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -172.989, 0 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="bg4" type="Sprite" parent="bg"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -158.157, 0 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="bg5" type="Sprite" parent="bg"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -143.326, 0 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 10 )
+centered = false
+
+[node name="bg6" type="Sprite" parent="bg"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -128.494, 0 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="bg7" type="Sprite" parent="bg"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -113.663, 0 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="bg8" type="Sprite" parent="bg"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -98.8315, 0 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="bg9" type="Sprite" parent="bg"]
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -84, 0 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="anim" type="AnimationPlayer" parent="bg"]
+autoplay = "main"
+anims/main = SubResource( 1 )
+
+[node name="main" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="name_of_game" parent="main" instance=ExtResource( 13 )]
+
+[node name="play" type="Button" parent="main"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -136.0
+margin_top = -64.0
+margin_right = 136.0
+margin_bottom = -16.0
+text = "menu.play"
+
+[node name="achievements" type="Button" parent="main"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -136.0
+margin_top = -8.0
+margin_right = 136.0
+margin_bottom = 40.0
+text = "menu.achvs"
+
+[node name="settings" type="Button" parent="main"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -136.0
+margin_top = 49.0
+margin_right = -8.0
+margin_bottom = 97.0
+text = "menu.settings"
+clip_text = true
+
+[node name="about" type="Button" parent="main"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = 49.0
+margin_right = 136.0
+margin_bottom = 97.0
+text = "menu.about"
+
+[node name="exit" type="Button" parent="main"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -38.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 38.0
+text = "X"
+
+[node name="language" type="Button" parent="main"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -108.0
+margin_top = -48.0
+margin_right = -8.0
+margin_bottom = -8.0
+disabled = true
+text = "menu.lang"
+
+[node name="more" type="Button" parent="main"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -48.0
+margin_right = 108.0
+margin_bottom = -8.0
+text = "menu.more"
+
+[node name="about" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+theme = ExtResource( 6 )
+
+[node name="back" type="Button" parent="about"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -48.0
+margin_right = 144.0
+margin_bottom = -16.0
+text = "menu.back"
+
+[node name="version" type="Label" parent="about"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -204.0
+margin_top = -36.0
+margin_right = -8.0
+margin_bottom = -8.0
+text = "Версия: 0.7.0"
+align = 2
+valign = 2
+
+[node name="about" type="Label" parent="about"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -270.0
+margin_top = -160.0
+margin_right = 270.0
+margin_bottom = 160.0
+custom_constants/line_spacing = -4
+text = "menu.about.text"
+autowrap = true
+clip_text = true
+
+[node name="title" type="Label" parent="about"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -270.0
+margin_top = -237.0
+margin_right = 270.0
+margin_bottom = -173.0
+custom_fonts/font = ExtResource( 2 )
+text = "menu.about"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="thanks" type="Label" parent="about"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -270.0
+margin_top = 183.0
+margin_right = 270.0
+margin_bottom = 247.0
+custom_fonts/font = ExtResource( 2 )
+text = "menu.thanks"
+align = 1
+autowrap = true
+clip_text = true
+
+[node name="special_thanks" type="Button" parent="about"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -168.0
+margin_top = -152.0
+margin_right = -8.0
+margin_bottom = -112.0
+text = "menu.s_thanks"
+
+[node name="licenses" type="Button" parent="about"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -152.0
+margin_right = 168.0
+margin_bottom = -112.0
+text = "menu.licenses"
+
+[node name="info" type="AcceptDialog" parent="about"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -360.0
+margin_top = -240.0
+margin_right = 360.0
+margin_bottom = 240.0
+window_title = "menu.s_thanks"
+dialog_text = "menu.s_thanks.text"
+dialog_autowrap = true
+
+[node name="link_label" type="Label" parent="about"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -329.0
+margin_top = -96.0
+margin_right = 185.0
+margin_bottom = -72.0
+grow_horizontal = 2
+text = "menu.tg"
+align = 2
+valign = 1
+
+[node name="link" type="LinkButton" parent="about"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 182.0
+margin_top = -96.0
+margin_right = 330.0
+margin_bottom = -72.0
+grow_horizontal = 2
+text = "t.me/dsgames31"
+
+[node name="license_info" type="WindowDialog" parent="about"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -240.0
+margin_right = 320.0
+margin_bottom = 240.0
+window_title = "menu.licenses"
+
+[node name="label" type="Label" parent="about/license_info"]
+anchor_right = 1.0
+anchor_bottom = 0.1
+text = "menu.licenses.text"
+autowrap = true
+
+[node name="license" type="Label" parent="about/license_info"]
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.200001
+custom_constants/line_spacing = -2
+text = "Copyright (c) 2014-present Godot Engine contributors.
+Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+autowrap = true
+
+[node name="link" type="LinkButton" parent="about/license_info"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -24.0
+margin_right = 20.0
+grow_horizontal = 2
+text = "https://godotengine.org/license/"
+
+[node name="achievements" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+theme = ExtResource( 6 )
+
+[node name="back" type="Button" parent="achievements"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -48.0
+margin_right = 144.0
+margin_bottom = -16.0
+text = "menu.back"
+
+[node name="stats" type="Button" parent="achievements"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -160.0
+margin_top = -48.0
+margin_right = -16.0
+margin_bottom = -16.0
+text = "menu.stats"
+
+[node name="title" type="Label" parent="achievements"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -270.0
+margin_top = -253.0
+margin_right = 270.0
+margin_bottom = -189.0
+custom_fonts/font = ExtResource( 2 )
+text = "menu.achvs"
+align = 1
+valign = 1
+
+[node name="scroll" type="ScrollContainer" parent="achievements"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_top = -172.0
+margin_right = 240.0
+margin_bottom = 188.0
+custom_styles/bg = SubResource( 3 )
+scroll_horizontal_enabled = false
+
+[node name="v_box" type="VBoxContainer" parent="achievements/scroll"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 476.0
+margin_bottom = 356.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="stats_window" type="WindowDialog" parent="achievements"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -200.0
+margin_right = 320.0
+margin_bottom = 200.0
+window_title = "menu.stats"
+
+[node name="base" type="Control" parent="achievements/stats_window"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="column0" type="VBoxContainer" parent="achievements/stats_window/base"]
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_right = 288.0
+size_flags_horizontal = 3
+custom_constants/separation = 1
+
+[node name="level" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+margin_right = 264.0
+margin_bottom = 24.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column0/level"]
+margin_right = 89.0
+margin_bottom = 24.0
+text = "stat.level"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column0/level"]
+margin_left = 93.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="levels_completed" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+margin_top = 25.0
+margin_right = 264.0
+margin_bottom = 49.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column0/levels_completed"]
+margin_right = 100.0
+margin_bottom = 24.0
+text = "stat.levels"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column0/levels_completed"]
+margin_left = 104.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="coins" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+margin_top = 50.0
+margin_right = 264.0
+margin_bottom = 74.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column0/coins"]
+margin_right = 96.0
+margin_bottom = 24.0
+text = "stat.coins"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column0/coins"]
+margin_left = 100.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="gems" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+margin_top = 75.0
+margin_right = 264.0
+margin_bottom = 99.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column0/gems"]
+margin_right = 96.0
+margin_bottom = 24.0
+text = "stat.gems"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column0/gems"]
+margin_left = 100.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="classes_opened" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+margin_top = 100.0
+margin_right = 264.0
+margin_bottom = 124.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column0/classes_opened"]
+margin_right = 118.0
+margin_bottom = 24.0
+text = "stat.classes"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column0/classes_opened"]
+margin_left = 122.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="kills" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+margin_top = 125.0
+margin_right = 264.0
+margin_bottom = 149.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column0/kills"]
+margin_right = 82.0
+margin_bottom = 24.0
+text = "stat.kills"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column0/kills"]
+margin_left = 86.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="boss_kills" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+margin_top = 150.0
+margin_right = 264.0
+margin_bottom = 174.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column0/boss_kills"]
+margin_right = 137.0
+margin_bottom = 24.0
+text = "stat.boss_kills"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column0/boss_kills"]
+margin_left = 141.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="damaged" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+margin_top = 175.0
+margin_right = 264.0
+margin_bottom = 199.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column0/damaged"]
+margin_right = 129.0
+margin_bottom = 24.0
+text = "stat.damaged"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column0/damaged"]
+margin_left = 133.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="fall_damaged" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+margin_top = 200.0
+margin_right = 264.0
+margin_bottom = 224.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column0/fall_damaged"]
+margin_right = 89.0
+margin_bottom = 24.0
+text = "stat.falls"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column0/fall_damaged"]
+margin_left = 93.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="beartraped" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+margin_top = 225.0
+margin_right = 264.0
+margin_bottom = 249.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column0/beartraped"]
+margin_right = 154.0
+margin_bottom = 24.0
+text = "stat.beartraped"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column0/beartraped"]
+margin_left = 158.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="jumps" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+margin_top = 250.0
+margin_right = 264.0
+margin_bottom = 274.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column0/jumps"]
+margin_right = 102.0
+margin_bottom = 24.0
+text = "stat.jumps"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column0/jumps"]
+margin_left = 106.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="ulti_used" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+margin_top = 275.0
+margin_right = 264.0
+margin_bottom = 299.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column0/ulti_used"]
+margin_right = 93.0
+margin_bottom = 24.0
+text = "stat.skills"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column0/ulti_used"]
+margin_left = 97.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="deaths" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+margin_top = 300.0
+margin_right = 264.0
+margin_bottom = 324.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column0/deaths"]
+margin_right = 114.0
+margin_bottom = 24.0
+text = "stat.deaths"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column0/deaths"]
+margin_left = 118.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="revives" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+margin_top = 325.0
+margin_right = 264.0
+margin_bottom = 349.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column0/revives"]
+margin_right = 116.0
+margin_bottom = 24.0
+text = "stat.revives"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column0/revives"]
+margin_left = 120.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="column1" type="VBoxContainer" parent="achievements/stats_window/base"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -288.0
+margin_right = -24.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+custom_constants/separation = 1
+
+[node name="potions1" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
+margin_right = 264.0
+margin_bottom = 24.0
+grow_horizontal = 0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column1/potions1"]
+margin_right = 124.0
+margin_bottom = 24.0
+text = "stat.potions1"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column1/potions1"]
+margin_left = 128.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="potions2" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
+margin_top = 25.0
+margin_right = 264.0
+margin_bottom = 49.0
+grow_horizontal = 0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column1/potions2"]
+margin_right = 129.0
+margin_bottom = 24.0
+text = "stat.potions2"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column1/potions2"]
+margin_left = 133.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="potions3" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
+margin_top = 50.0
+margin_right = 264.0
+margin_bottom = 74.0
+grow_horizontal = 0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column1/potions3"]
+margin_right = 129.0
+margin_bottom = 24.0
+text = "stat.potions3"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column1/potions3"]
+margin_left = 133.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="potions_used" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
+margin_top = 75.0
+margin_right = 264.0
+margin_bottom = 99.0
+grow_horizontal = 0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column1/potions_used"]
+margin_right = 173.0
+margin_bottom = 24.0
+text = "stat.potions_used"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column1/potions_used"]
+margin_left = 177.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="boxes_opened" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
+margin_top = 100.0
+margin_right = 264.0
+margin_bottom = 124.0
+grow_horizontal = 0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column1/boxes_opened"]
+margin_right = 103.0
+margin_bottom = 24.0
+text = "stat.boxes"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column1/boxes_opened"]
+margin_left = 107.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="mp_levels" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
+margin_top = 125.0
+margin_right = 264.0
+margin_bottom = 149.0
+grow_horizontal = 0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column1/mp_levels"]
+margin_right = 137.0
+margin_bottom = 24.0
+text = "stat.mp_levels"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column1/mp_levels"]
+margin_left = 141.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="mp_revives" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
+margin_top = 150.0
+margin_right = 264.0
+margin_bottom = 174.0
+grow_horizontal = 0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column1/mp_revives"]
+margin_right = 153.0
+margin_bottom = 24.0
+text = "stat.mp_revives"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column1/mp_revives"]
+margin_left = 157.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="reznya_completed" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
+margin_top = 175.0
+margin_right = 264.0
+margin_bottom = 199.0
+grow_horizontal = 0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column1/reznya_completed"]
+margin_right = 112.0
+margin_bottom = 24.0
+text = "stat.reznya"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column1/reznya_completed"]
+margin_left = 116.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="dyh_completed" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
+margin_top = 200.0
+margin_right = 264.0
+margin_bottom = 224.0
+grow_horizontal = 0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column1/dyh_completed"]
+margin_right = 81.0
+margin_bottom = 24.0
+text = "stat.dyh"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column1/dyh_completed"]
+margin_left = 85.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="ls_completed" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
+margin_top = 225.0
+margin_right = 264.0
+margin_bottom = 249.0
+grow_horizontal = 0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column1/ls_completed"]
+margin_right = 63.0
+margin_bottom = 24.0
+text = "stat.ls"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column1/ls_completed"]
+margin_left = 67.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="pd_levels" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
+margin_top = 250.0
+margin_right = 264.0
+margin_bottom = 274.0
+grow_horizontal = 0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column1/pd_levels"]
+margin_right = 70.0
+margin_bottom = 24.0
+text = "stat.pd"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column1/pd_levels"]
+margin_left = 74.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="garden_looted" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
+margin_top = 275.0
+margin_right = 264.0
+margin_bottom = 299.0
+grow_horizontal = 0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column1/garden_looted"]
+margin_right = 112.0
+margin_bottom = 24.0
+text = "stat.garden"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column1/garden_looted"]
+margin_left = 116.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="royale_victories" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
+margin_top = 300.0
+margin_right = 264.0
+margin_bottom = 324.0
+grow_horizontal = 0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column1/royale_victories"]
+margin_right = 122.0
+margin_bottom = 24.0
+text = "stat.2d_wins"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column1/royale_victories"]
+margin_left = 126.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="night" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
+margin_top = 325.0
+margin_right = 264.0
+margin_bottom = 349.0
+grow_horizontal = 0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column1/night"]
+margin_right = 92.0
+margin_bottom = 24.0
+text = "stat.fnas"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column1/night"]
+margin_left = 96.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="achievements_completed" type="HBoxContainer" parent="achievements/stats_window/base"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -120.0
+margin_top = -56.0
+margin_right = 120.0
+margin_bottom = -32.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/achievements_completed"]
+margin_right = 103.0
+margin_bottom = 24.0
+text = "stat.achvs"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/achievements_completed"]
+margin_left = 107.0
+margin_right = 240.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "50"
+align = 2
+valign = 1
+
+[node name="time" type="HBoxContainer" parent="achievements/stats_window/base"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -120.0
+margin_top = -32.0
+margin_right = 120.0
+margin_bottom = -8.0
+grow_horizontal = 2
+
+[node name="name" type="Label" parent="achievements/stats_window/base/time"]
+margin_right = 89.0
+margin_bottom = 24.0
+text = "stat.time"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/time"]
+margin_left = 93.0
+margin_right = 240.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "50"
+align = 2
+valign = 1
+
+[node name="settings" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+theme = ExtResource( 6 )
+
+[node name="back" type="Button" parent="settings"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -48.0
+margin_right = 144.0
+margin_bottom = -16.0
+text = "menu.back"
+
+[node name="title" type="Label" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -270.0
+margin_top = -237.0
+margin_right = 270.0
+margin_bottom = -173.0
+custom_fonts/font = ExtResource( 2 )
+text = "menu.settings"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="mv" type="Label" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = -108.0
+margin_right = -16.0
+margin_bottom = -84.0
+text = "menu.setting.music"
+
+[node name="mv_s" type="HSlider" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -108.0
+margin_right = 240.0
+margin_bottom = -76.0
+max_value = 1.0
+step = 0.01
+
+[node name="sfxv" type="Label" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = -76.0
+margin_right = -16.0
+margin_bottom = -52.0
+text = "menu.setting.sfx"
+
+[node name="sfxv_s" type="HSlider" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -76.0
+margin_right = 240.0
+margin_bottom = -44.0
+max_value = 1.0
+step = 0.01
+ticks_on_borders = true
+
+[node name="grph" type="Label" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = -44.0
+margin_right = -16.0
+margin_bottom = -20.0
+text = "menu.setting.graphics"
+
+[node name="grph_s" type="MenuButton" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -44.0
+margin_right = 240.0
+margin_bottom = -12.0
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+text = "menu.graphics.setup"
+flat = false
+items = [ "menu.gr.proj_effects", null, 0, false, false, 0, 0, null, "", true, "menu.gr.proj_effects.standard", null, 2, false, false, 10, 0, null, "", false, "menu.gr.proj_effects.simple", null, 2, false, false, 11, 0, null, "", false, "menu.gr.proj_effects.off", null, 2, false, false, 12, 0, null, "", false, "menu.gr.grass", null, 0, false, false, 2, 0, null, "", true, "menu.gr.grass.gpu", null, 2, false, false, 20, 0, null, "", false, "menu.gr.grass.cpu", null, 2, false, false, 21, 0, null, "", false, "menu.gr.grass.static", null, 2, false, false, 22, 0, null, "", false, "menu.gr.misc", null, 0, false, false, 3, 0, null, "", true, "menu.gr.misc.beauty_light", null, 1, false, false, 30, 0, null, "", false, "menu.gr.misc.beauty_water", null, 1, true, false, 31, 0, null, "", false, "menu.gr.misc.beauty_lava", null, 1, true, false, 32, 0, null, "", false, "menu.gr.misc.beauty_fire", null, 1, true, false, 33, 0, null, "", false ]
+
+[node name="smc" type="Label" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = -12.0
+margin_right = 11.0
+margin_bottom = 12.0
+text = "menu.setting.scm"
+
+[node name="smc_c" type="CheckBox" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -12.0
+margin_right = 36.0
+margin_bottom = 20.0
+
+[node name="help_info" parent="settings/smc_c" instance=ExtResource( 11 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 206.0
+margin_top = -15.0
+margin_right = 236.0
+margin_bottom = 15.0
+info = "menu.tip.smc"
+id = "smc"
+
+[node name="dmp" type="Label" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = 20.0
+margin_right = -16.0
+margin_bottom = 44.0
+text = "menu.setting.damping"
+
+[node name="dmp_s" type="HSlider" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 240.0
+margin_bottom = 52.0
+min_value = 1.0
+max_value = 5.0
+step = 0.01
+value = 2.5
+ticks_on_borders = true
+
+[node name="help_info" parent="settings/dmp_s" instance=ExtResource( 11 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 2.0
+margin_top = -15.0
+margin_right = 32.0
+margin_bottom = 15.0
+info = "menu.tip.damping"
+id = "dmp"
+
+[node name="contr" type="Button" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -248.0
+margin_top = 57.0
+margin_right = -8.0
+margin_bottom = 87.0
+text = "menu.controls"
+
+[node name="contr_pc" type="Button" parent="settings"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -248.0
+margin_top = 57.0
+margin_right = -8.0
+margin_bottom = 87.0
+text = "menu.controls.pc"
+
+[node name="name" type="Button" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = 57.0
+margin_right = 248.0
+margin_bottom = 87.0
+text = "menu.change_name"
+
+[node name="reset" type="Button" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = 97.0
+margin_right = 120.0
+margin_bottom = 127.0
+text = "menu.delete"
+
+[node name="conf" type="ConfirmationDialog" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -100.0
+margin_right = 200.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 170, 59.5 )
+window_title = "menu.deletion"
+dialog_text = "menu.deletion.text"
+dialog_autowrap = true
+
+[node name="conf2" type="ConfirmationDialog" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -50.0
+margin_right = 200.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 170, 59.5 )
+window_title = "menu.last_confirm"
+dialog_text = "menu.last_confirm.text"
+dialog_autowrap = true
+
+[node name="name_change" type="ConfirmationDialog" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = -39.0
+margin_right = 220.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 150, 52.5 )
+window_title = "menu.changing_name"
+dialog_text = "Текущее имя: "
+
+[node name="line_edit" type="LineEdit" parent="settings/name_change"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -192.0
+margin_top = -28.0
+margin_right = 192.0
+margin_bottom = 14.0
+align = 1
+max_length = 16
+placeholder_text = "Введите новое имя..."
+
+[node name="controls" type="AcceptDialog" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -133.5
+margin_right = 300.0
+margin_bottom = 133.5
+window_title = "menu.controls.pc"
+dialog_text = "menu.controls.pc.text"
+dialog_autowrap = true
+
+[node name="save_id" type="Label" parent="settings"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = -32.0
+margin_right = -8.0
+margin_bottom = -8.0
+grow_horizontal = 0
+align = 2
+valign = 2
+
+[node name="copy" type="TextureButton" parent="settings/save_id"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -16.0
+margin_bottom = 16.0
+texture_normal = SubResource( 2 )
+texture_pressed = SubResource( 2 )
+texture_hover = SubResource( 2 )
+texture_disabled = SubResource( 2 )
+texture_focused = SubResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="creation_date" type="Label" parent="settings"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = -56.0
+margin_right = -8.0
+margin_bottom = -32.0
+grow_horizontal = 0
+align = 2
+valign = 2
+
+[node name="beauty_lights_warn" type="AcceptDialog" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_top = -66.0
+margin_right = 240.0
+margin_bottom = 66.0
+window_title = "menu.warning"
+dialog_text = "menu.blw.text"
+dialog_autowrap = true
+
+[node name="education0" parent="." instance=ExtResource( 12 )]
+visible = false
+margin_left = -79.0
+margin_top = -122.0
+margin_right = 81.0
+margin_bottom = 38.0
+first = true
+
+[node name="blocker" type="Control" parent="education0"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -50.0
+
+[node name="skip" type="Button" parent="education0"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -120.0
+margin_top = 184.0
+margin_right = 120.0
+margin_bottom = 216.0
+text = "menu.skip"
+
+[node name="dialog" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -70.0
+margin_right = 200.0
+margin_bottom = 70.0
+window_title = "menu.message"
+dialog_autowrap = true
+
+[node name="rate" type="ConfirmationDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -70.0
+margin_right = 200.0
+margin_bottom = 70.0
+window_title = "menu.rate.title"
+dialog_text = "menu.rate.text"
+dialog_autowrap = true
+
+[connection signal="pressed" from="main/play" to="." method="play"]
+[connection signal="pressed" from="main/achievements" to="." method="achievements" binds= [ true ]]
+[connection signal="pressed" from="main/settings" to="." method="settings"]
+[connection signal="pressed" from="main/about" to="." method="about"]
+[connection signal="pressed" from="main/exit" to="." method="quit"]
+[connection signal="pressed" from="main/language" to="." method="language"]
+[connection signal="pressed" from="main/more" to="." method="more"]
+[connection signal="pressed" from="about/back" to="." method="about" binds= [ false ]]
+[connection signal="pressed" from="about/special_thanks" to="about/info" method="popup_centered"]
+[connection signal="pressed" from="about/licenses" to="about/license_info" method="popup_centered"]
+[connection signal="pressed" from="about/link" to="." method="link"]
+[connection signal="pressed" from="about/license_info/link" to="." method="license"]
+[connection signal="pressed" from="achievements/back" to="." method="achievements" binds= [ false ]]
+[connection signal="pressed" from="achievements/stats" to="achievements/stats_window" method="popup_centered"]
+[connection signal="pressed" from="settings/back" to="." method="settings" binds= [ false ]]
+[connection signal="pressed" from="settings/contr" to="." method="controls"]
+[connection signal="pressed" from="settings/contr_pc" to="settings/controls" method="popup_centered"]
+[connection signal="pressed" from="settings/name" to="." method="change_name"]
+[connection signal="pressed" from="settings/reset" to="settings/conf" method="popup_centered"]
+[connection signal="confirmed" from="settings/conf" to="settings/conf2" method="popup_centered"]
+[connection signal="confirmed" from="settings/conf2" to="." method="reset"]
+[connection signal="confirmed" from="settings/name_change" to="." method="do_change"]
+[connection signal="pressed" from="settings/save_id/copy" to="." method="copy_id"]
+[connection signal="pressed" from="education0/skip" to="education0" method="end"]
+
+[editable path="education0"]

@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://textures/effects/skills/revive_2.tres" type="Texture" id=1]
+[ext_resource path="res://textures/effects/skills/revive_0.tres" type="Texture" id=2]
+[ext_resource path="res://textures/effects/skills/revive_1.tres" type="Texture" id=3]
+[ext_resource path="res://textures/effects/skills/revive_3.tres" type="Texture" id=4]
+[ext_resource path="res://textures/effects/skills/revive_heart.tres" type="Texture" id=5]
+
+[sub_resource type="Curve" id=2]
+max_value = 8.0
+_data = [ Vector2( 0, 4.00411 ), 0.0, -12.8194, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.216981, 1 )
+colors = PoolColorArray( 1, 0.984314, 0, 0.690196, 1, 0.980392, 0, 0.67451, 1, 0.960784, 0, 0.196078 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "revive_effect"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 3 ),
+"transitions": PoolRealArray( 1, 1.46408, 0.189465 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -150 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 1, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("particles")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="revive_effect" type="Node2D"]
+z_index = 30
+
+[node name="particles" type="CPUParticles2D" parent="."]
+scale = Vector2( 0.4, 0.4 )
+emitting = false
+amount = 32
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.9
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 0.4
+angular_velocity = 720.0
+linear_accel = 16.51
+linear_accel_random = 0.22
+radial_accel = 12.84
+radial_accel_random = 0.23
+tangential_accel = 22.02
+tangential_accel_random = 0.23
+scale_amount = 5.0
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+
+[node name="sprite" type="Sprite" parent="."]
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 5 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "revive_effect"
+anims/revive_effect = SubResource( 1 )

@@ -2,8 +2,8 @@ extends Node2D
 
 
 const PORT = 41512
-var player = load("res://minigames/minigame7/player.scn")
-var heal = load("res://minigames/minigame7/heal.scn")
+var player = load("res://minigames/minigame7/player.tscn")
+var heal = load("res://minigames/minigame7/heal.tscn")
 var started = false
 var alive_players = []
 var players_names = {}
@@ -120,7 +120,7 @@ func disconnected():
 
 
 func exit():
-	get_tree().change_scene("res://minigames/minigame7/minigame.scn")
+	get_tree().change_scene("res://minigames/minigame7/minigame.tscn")
 
 
 func _on_heal_timer_timeout():

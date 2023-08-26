@@ -11,11 +11,11 @@ var CLASS_ICONS = {
 	"archer" : load("res://textures/classes/archer_helmet.png") 
 }
 var ULTI_ICONS = {
-	"knight" : load("res://textures/gui/ulti_icon_0.res"),
-	"butcher" : load("res://textures/gui/ulti_icon_1.res"),
-	"spearman" : load("res://textures/gui/ulti_icon_2.res"),
-	"wizard" : load("res://textures/gui/ulti_icon_3.res"),
-	"archer" : load("res://textures/gui/ulti_icon_4.res")
+	"knight" : load("res://textures/gui/ulti_icon_0.tres"),
+	"butcher" : load("res://textures/gui/ulti_icon_1.tres"),
+	"spearman" : load("res://textures/gui/ulti_icon_2.tres"),
+	"wizard" : load("res://textures/gui/ulti_icon_3.tres"),
+	"archer" : load("res://textures/gui/ulti_icon_4.tres")
 }
 var AMULET_ICONS = {
 	"none" : load("res://textures/items/amulet_none.png"),
@@ -73,7 +73,7 @@ func _process(delta):
 
 
 func exit():
-	get_tree().change_scene("res://scenes/menu/menu.scn")
+	get_tree().change_scene("res://scenes/menu/menu.tscn")
 
 
 func classes(val = true):
@@ -543,9 +543,9 @@ func shop(val = true):
 func help():
 	G.setv("learned", false)
 	G.setv("learned_ids", [])
-	get_tree().change_scene("res://scenes/menu/story.scn")
+	get_tree().change_scene("res://scenes/menu/story.tscn")
 
 
 func try():
 	G.selected_class_to_test = selected_class
-	G.change_to_scene("res://scenes/levels/test.scn")
+	G.change_to_scene("res://scenes/levels/test.tscn")

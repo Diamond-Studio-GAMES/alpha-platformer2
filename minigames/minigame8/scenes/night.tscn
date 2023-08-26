@@ -1,0 +1,1866 @@
+[gd_scene load_steps=65 format=2]
+
+[ext_resource path="res://minigames/minigame8/textures/environment/floor2_wing1_entrance.png" type="Texture" id=1]
+[ext_resource path="res://minigames/minigame8/textures/environment/floor0_wing0.png" type="Texture" id=2]
+[ext_resource path="res://minigames/minigame8/textures/environment/floor1_sportroom.png" type="Texture" id=3]
+[ext_resource path="res://minigames/minigame8/textures/other/light.png" type="Texture" id=4]
+[ext_resource path="res://minigames/minigame8/textures/other/phone_up.png" type="Texture" id=5]
+[ext_resource path="res://minigames/minigame8/textures/environment/floor1_2_ladder.png" type="Texture" id=6]
+[ext_resource path="res://minigames/minigame8/textures/environment/floor2.png" type="Texture" id=7]
+[ext_resource path="res://minigames/minigame8/textures/other/battery.png" type="Texture" id=8]
+[ext_resource path="res://minigames/minigame8/textures/other/cam0p.png" type="Texture" id=9]
+[ext_resource path="res://minigames/minigame8/textures/other/cam1p.png" type="Texture" id=10]
+[ext_resource path="res://minigames/minigame8/misc/font_unutterable_data.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://minigames/minigame8/textures/environment/floor1_sportroom_entrance.png" type="Texture" id=12]
+[ext_resource path="res://minigames/minigame8/textures/environment/floor1_wing0.png" type="Texture" id=13]
+[ext_resource path="res://minigames/minigame8/sounds/run_in.ogg" type="AudioStream" id=14]
+[ext_resource path="res://minigames/minigame8/textures/other/phone.png" type="Texture" id=15]
+[ext_resource path="res://minigames/minigame8/textures/environment/floor2_wing1.png" type="Texture" id=16]
+[ext_resource path="res://minigames/minigame8/sounds/door_off.ogg" type="AudioStream" id=17]
+[ext_resource path="res://minigames/minigame8/textures/other/button_monitor.png" type="Texture" id=18]
+[ext_resource path="res://minigames/minigame8/sounds/breath.ogg" type="AudioStream" id=19]
+[ext_resource path="res://minigames/minigame8/sounds/run_out.ogg" type="AudioStream" id=20]
+[ext_resource path="res://minigames/minigame8/textures/other/cam0.png" type="Texture" id=21]
+[ext_resource path="res://minigames/minigame8/textures/environment/main_door.png" type="Texture" id=22]
+[ext_resource path="res://minigames/minigame8/sounds/mask_on.ogg" type="AudioStream" id=23]
+[ext_resource path="res://minigames/minigame8/textures/environment/floor1.png" type="Texture" id=24]
+[ext_resource path="res://minigames/minigame8/sounds/door_on.ogg" type="AudioStream" id=25]
+[ext_resource path="res://minigames/minigame8/textures/other/battery_empty.png" type="Texture" id=26]
+[ext_resource path="res://minigames/minigame8/textures/environment/floor1_wing0_entrance.png" type="Texture" id=27]
+[ext_resource path="res://minigames/minigame8/sounds/jumpscare_male.ogg" type="AudioStream" id=28]
+[ext_resource path="res://minigames/minigame8/textures/environment/floor1_wing1.png" type="Texture" id=29]
+[ext_resource path="res://minigames/minigame8/textures/other/cam1.png" type="Texture" id=30]
+[ext_resource path="res://minigames/minigame8/sounds/jumpscare_female.ogg" type="AudioStream" id=31]
+[ext_resource path="res://minigames/minigame8/textures/other/map.png" type="Texture" id=32]
+[ext_resource path="res://minigames/minigame8/textures/environment/floor2_wing0_entrance.png" type="Texture" id=33]
+[ext_resource path="res://minigames/minigame8/textures/environment/floor1_wing1_entrance.png" type="Texture" id=34]
+[ext_resource path="res://minigames/minigame8/misc/fnas_theme.tres" type="Theme" id=35]
+[ext_resource path="res://minigames/minigame8/textures/other/cam2.png" type="Texture" id=36]
+[ext_resource path="res://minigames/minigame8/scripts/night.gd" type="Script" id=37]
+[ext_resource path="res://minigames/minigame8/sounds/jumpscare_female_dt.ogg" type="AudioStream" id=38]
+[ext_resource path="res://minigames/minigame8/sounds/music_box.ogg" type="AudioStream" id=39]
+[ext_resource path="res://minigames/minigame8/textures/environment/floor0_1.png" type="Texture" id=40]
+[ext_resource path="res://minigames/minigame8/sounds/steps_out.ogg" type="AudioStream" id=41]
+[ext_resource path="res://minigames/minigame8/sounds/door_locked.ogg" type="AudioStream" id=42]
+[ext_resource path="res://minigames/minigame8/sounds/steps_in.ogg" type="AudioStream" id=43]
+[ext_resource path="res://minigames/minigame8/textures/other/door.png" type="Texture" id=44]
+[ext_resource path="res://minigames/minigame8/sounds/mask_off.ogg" type="AudioStream" id=45]
+[ext_resource path="res://minigames/minigame8/textures/environment/another_way.png" type="Texture" id=46]
+[ext_resource path="res://minigames/minigame8/scripts/phone_guy.gd" type="Script" id=47]
+[ext_resource path="res://minigames/minigame8/textures/other/cam2p.png" type="Texture" id=48]
+[ext_resource path="res://minigames/minigame8/textures/other/mask_visual.png" type="Texture" id=49]
+[ext_resource path="res://minigames/minigame8/textures/other/music_box_indicator.png" type="Texture" id=50]
+[ext_resource path="res://minigames/minigame8/textures/environment/floor2_wing0.png" type="Texture" id=51]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "off"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.65, 0.3 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.35, -199.893, -201.758, -0.35, 201.926, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.35 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../monitor_b:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../main:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../../../mask_off")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("../../../breath")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop"
+} ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "on"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.65, 0.3 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -201.758, -0.25, 0, 0.35, 212.569, 0, -0.35, -201.758, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.35 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../monitor_b:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../main:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../../../mask_on")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("../../../breath")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "off"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.65, 0 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.15, 222.336, 540, -0.15, -223.636, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.35 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ), ExtResource( 5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("tint0:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../main:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../mask_b:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("gui:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "on"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.65, 0 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 540, -0.25, 0, 0.15, -212.403, 0, -0.15, 231.753, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.35 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ), ExtResource( 15 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("tint0:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../main:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../mask_b:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("gui:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="ButtonGroup" id=9]
+
+[sub_resource type="DynamicFont" id=10]
+size = 80
+outline_color = Color( 1, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 11 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "jumpscare"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:margin_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -540.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:margin_bottom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 540.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 4, 4 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../tint2:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 124, -700 ), Vector2( 124, -31.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../doorb/butt:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 0, 1, 0, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../../door_on")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 124, -31.5 ), Vector2( 124, -700 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../doorb/butt:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 0, 1 ), Color( 1, 0, 0, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../../door_off")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 30, 30 )
+
+[sub_resource type="GDScript" id=8]
+script/source = "extends Sprite
+
+
+
+func _ready():
+	randomize()
+	if randi() % 10 == 6:
+		texture = load(\"res://minigames/minigame8/textures/environment/floor1_wing1_ee.png\")
+"
+
+[node name="night" type="Node2D"]
+script = ExtResource( 37 )
+
+[node name="screen" type="CanvasLayer" parent="."]
+
+[node name="base" type="Control" parent="screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 35 )
+
+[node name="main" type="Control" parent="screen/base"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="battery" type="TextureRect" parent="screen/base/main"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 132.0
+margin_bottom = 82.0
+texture = ExtResource( 26 )
+expand = true
+stretch_mode = 6
+
+[node name="progress" type="TextureProgress" parent="screen/base/main/battery"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -17.0
+margin_bottom = -5.0
+step = 0.01
+value = 100.0
+texture_progress = ExtResource( 8 )
+nine_patch_stretch = true
+
+[node name="time" type="Label" parent="screen/base/main"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -131.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = 83.0
+grow_horizontal = 0
+theme_type_variation = "LabelTitle"
+text = "5 AM"
+align = 2
+valign = 1
+
+[node name="night" type="Label" parent="screen/base/main"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -131.0
+margin_top = 80.0
+margin_right = -32.0
+margin_bottom = 108.0
+grow_horizontal = 0
+text = "Ночь 1"
+align = 2
+valign = 1
+
+[node name="light" type="ToolButton" parent="screen/base/main"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.0
+margin_top = -150.0
+margin_right = 182.0
+margin_bottom = 150.0
+focus_mode = 0
+
+[node name="another" type="TextureButton" parent="screen/base/main"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -25.0
+margin_right = 136.0
+margin_bottom = 25.0
+rect_rotation = 90.0
+rect_pivot_offset = Vector2( 100, 25 )
+texture_normal = ExtResource( 18 )
+expand = true
+stretch_mode = 5
+
+[node name="another2" type="TextureButton" parent="screen/base/main"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -136.0
+margin_top = -25.0
+margin_right = 64.0
+margin_bottom = 25.0
+rect_rotation = -90.0
+rect_pivot_offset = Vector2( 100, 25 )
+texture_normal = ExtResource( 18 )
+expand = true
+stretch_mode = 5
+
+[node name="mute" type="Button" parent="screen/base/main"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -115.5
+margin_top = 48.0
+margin_right = 115.5
+margin_bottom = 72.0
+text = "ОСТАНОВИТЬ ЗАПИСЬ"
+
+[node name="mask" type="TextureRect" parent="screen/base"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -700.0
+margin_top = -201.758
+margin_right = 700.0
+margin_bottom = 338.242
+rect_scale = Vector2( 1, 1e-05 )
+rect_pivot_offset = Vector2( 700, 0 )
+mouse_filter = 0
+texture = ExtResource( 49 )
+expand = true
+stretch_mode = 6
+
+[node name="anim" type="AnimationPlayer" parent="screen/base/mask"]
+anims/RESET = SubResource( 2 )
+anims/off = SubResource( 3 )
+anims/on = SubResource( 1 )
+
+[node name="screen" type="TextureRect" parent="screen/base"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -480.0
+margin_right = 480.0
+margin_bottom = 540.001
+rect_scale = Vector2( 1, 1e-05 )
+rect_pivot_offset = Vector2( 480, 0 )
+mouse_filter = 0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="anim" type="AnimationPlayer" parent="screen/base/screen"]
+anims/RESET = SubResource( 4 )
+anims/off = SubResource( 5 )
+anims/on = SubResource( 6 )
+
+[node name="tint0" type="ColorRect" parent="screen/base/screen"]
+visible = false
+anchor_bottom = 1.0
+margin_left = -400.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="tint1" type="ColorRect" parent="screen/base/screen/tint0"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 960.0
+margin_right = 1360.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="gui" type="Control" parent="screen/base/screen"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 120.0
+margin_top = 40.0
+margin_right = -105.0
+margin_bottom = -40.0007
+mouse_filter = 2
+
+[node name="map" type="TextureRect" parent="screen/base/screen/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -192.0
+margin_bottom = 192.0
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+
+[node name="b0_0" type="TextureButton" parent="screen/base/screen/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -115.0
+margin_top = -139.0
+margin_right = -75.0
+margin_bottom = -98.9999
+toggle_mode = true
+pressed = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+
+[node name="b0_1" type="TextureButton" parent="screen/base/screen/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -97.0
+margin_top = -40.9999
+margin_right = -57.0
+margin_bottom = -0.999939
+toggle_mode = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 21 )
+texture_pressed = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+
+[node name="b1_0" type="TextureButton" parent="screen/base/screen/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -97.0
+margin_top = 4.00006
+margin_right = -57.0
+margin_bottom = 44.0001
+toggle_mode = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 30 )
+texture_pressed = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="b1_1" type="TextureButton" parent="screen/base/screen/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = -139.0
+margin_right = -28.0
+margin_bottom = -98.9999
+toggle_mode = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 30 )
+texture_pressed = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="b1_2" type="TextureButton" parent="screen/base/screen/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -182.0
+margin_top = -77.9999
+margin_right = -142.0
+margin_bottom = -37.9999
+toggle_mode = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 30 )
+texture_pressed = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="b1_3" type="TextureButton" parent="screen/base/screen/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -292.0
+margin_top = -74.9999
+margin_right = -252.0
+margin_bottom = -34.9999
+toggle_mode = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 30 )
+texture_pressed = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="b1_4" type="TextureButton" parent="screen/base/screen/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -382.0
+margin_top = -78.9999
+margin_right = -342.0
+margin_bottom = -38.9999
+toggle_mode = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 30 )
+texture_pressed = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="b1_5" type="TextureButton" parent="screen/base/screen/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -438.0
+margin_top = -131.0
+margin_right = -398.0
+margin_bottom = -90.9999
+toggle_mode = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 30 )
+texture_pressed = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="b1_6" type="TextureButton" parent="screen/base/screen/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -381.0
+margin_top = -24.9999
+margin_right = -341.0
+margin_bottom = 15.0001
+toggle_mode = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 30 )
+texture_pressed = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="b1_7" type="TextureButton" parent="screen/base/screen/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -380.0
+margin_top = 49.0001
+margin_right = -340.0
+margin_bottom = 89.0001
+toggle_mode = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 30 )
+texture_pressed = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="b2_0" type="TextureButton" parent="screen/base/screen/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -91.0
+margin_top = -94.9999
+margin_right = -51.0
+margin_bottom = -54.9999
+toggle_mode = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 36 )
+texture_pressed = ExtResource( 48 )
+expand = true
+stretch_mode = 5
+
+[node name="b2_1" type="TextureButton" parent="screen/base/screen/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -138.0
+margin_top = -76.9999
+margin_right = -98.0
+margin_bottom = -36.9999
+toggle_mode = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 36 )
+texture_pressed = ExtResource( 48 )
+expand = true
+stretch_mode = 5
+
+[node name="b2_2" type="TextureButton" parent="screen/base/screen/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -247.0
+margin_top = -74.9999
+margin_right = -207.0
+margin_bottom = -34.9999
+toggle_mode = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 36 )
+texture_pressed = ExtResource( 48 )
+expand = true
+stretch_mode = 5
+
+[node name="b2_3" type="TextureButton" parent="screen/base/screen/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -340.0
+margin_top = -78.9999
+margin_right = -300.0
+margin_bottom = -38.9999
+toggle_mode = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 36 )
+texture_pressed = ExtResource( 48 )
+expand = true
+stretch_mode = 5
+
+[node name="b2_4" type="TextureButton" parent="screen/base/screen/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -438.0
+margin_top = -86.9999
+margin_right = -398.0
+margin_bottom = -46.9999
+toggle_mode = true
+group = SubResource( 9 )
+texture_normal = ExtResource( 36 )
+texture_pressed = ExtResource( 48 )
+expand = true
+stretch_mode = 5
+
+[node name="mb_warn" type="Label" parent="screen/base/screen/gui"]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -461.0
+margin_top = -91.0
+margin_right = -445.0
+margin_bottom = -39.0
+theme_type_variation = "LabelTitle"
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "!"
+align = 1
+valign = 1
+
+[node name="music_box" type="Label" parent="screen/base/screen/gui"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 62.0
+margin_top = 82.0
+margin_right = 320.0
+margin_bottom = 110.0
+text = "МУЗАКАЛЬНАЯ
+ШКАТУЛКА"
+align = 1
+valign = 1
+
+[node name="box" type="TextureProgress" parent="screen/base/screen/gui/music_box"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -50.0
+margin_top = -124.0
+margin_right = 50.0
+margin_bottom = -24.0
+mouse_filter = 2
+step = 0.01
+value = 100.0
+texture_progress = ExtResource( 50 )
+fill_mode = 5
+nine_patch_stretch = true
+
+[node name="wind_up" type="TextureButton" parent="screen/base/screen/gui/music_box/box"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="monitor_b" type="TextureButton" parent="screen/base"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -318.0
+margin_top = -91.0
+margin_right = -18.0
+margin_bottom = -16.0
+focus_mode = 0
+texture_normal = ExtResource( 18 )
+expand = true
+stretch_mode = 5
+
+[node name="mb_warn" type="Label" parent="screen/base/monitor_b"]
+visible = false
+margin_left = 16.0
+margin_top = -120.0
+margin_right = 42.0
+margin_bottom = -24.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "!"
+align = 1
+valign = 1
+
+[node name="mask_b" type="TextureButton" parent="screen/base"]
+self_modulate = Color( 1, 0.501961, 0.501961, 1 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 18.0
+margin_top = -91.0
+margin_right = 318.0
+margin_bottom = -16.0
+focus_mode = 0
+texture_normal = ExtResource( 18 )
+expand = true
+stretch_mode = 5
+
+[node name="tint" type="ColorRect" parent="screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="jumpscare" type="TextureRect" parent="screen"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -480.0
+margin_right = 480.0
+margin_bottom = 540.0
+rect_pivot_offset = Vector2( 480, 270 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="anim" type="AnimationPlayer" parent="screen/jumpscare"]
+anims/jumpscare = SubResource( 7 )
+
+[node name="tint2" type="ColorRect" parent="screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="another_way" type="Sprite" parent="."]
+position = Vector2( -1449, 182 )
+texture = ExtResource( 46 )
+
+[node name="camera" type="Camera2D" parent="another_way"]
+zoom = Vector2( 1.25, 1.25 )
+
+[node name="poses" type="Node2D" parent="another_way"]
+
+[node name="pos0" type="Position2D" parent="another_way/poses"]
+position = Vector2( -64, -35 )
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="another_way/poses"]
+position = Vector2( 25, -22 )
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="another_way/poses"]
+position = Vector2( -17, -17 )
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="light" type="Sprite" parent="another_way"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 0, -48 )
+z_index = 20
+texture = ExtResource( 4 )
+
+[node name="dark" type="Sprite" parent="another_way"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 0, -48 )
+z_index = 20
+texture = ExtResource( 4 )
+
+[node name="dark2" type="Sprite" parent="another_way/dark"]
+self_modulate = Color( 0, 0, 0, 1 )
+z_index = 20
+texture = ExtResource( 4 )
+
+[node name="dark3" type="Sprite" parent="another_way/dark"]
+self_modulate = Color( 0, 0, 0, 1 )
+z_index = 20
+texture = ExtResource( 4 )
+
+[node name="main" type="Sprite" parent="."]
+position = Vector2( -3405, 178 )
+texture = ExtResource( 22 )
+
+[node name="camera" type="Camera2D" parent="main"]
+current = true
+zoom = Vector2( 1.25, 1.25 )
+
+[node name="poses" type="Node2D" parent="main"]
+
+[node name="pos0" type="Position2D" parent="main/poses"]
+position = Vector2( 78, -35 )
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="main/poses"]
+position = Vector2( 124, -30 )
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="main/poses"]
+position = Vector2( 99, -6 )
+scale = Vector2( 0.4, 0.4 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="dark" type="Sprite" parent="main"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 128, -26 )
+scale = Vector2( 0.8, 1.6 )
+z_index = 20
+texture = ExtResource( 4 )
+
+[node name="dark2" type="Sprite" parent="main/dark"]
+self_modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 4 )
+
+[node name="dark3" type="Sprite" parent="main/dark"]
+self_modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 4 )
+
+[node name="door" type="Sprite" parent="main"]
+self_modulate = Color( 0.27451, 0.27451, 0.27451, 1 )
+position = Vector2( 124, -700 )
+scale = Vector2( 1.58572, 1.74783 )
+z_index = 21
+texture = ExtResource( 44 )
+
+[node name="anim" type="AnimationPlayer" parent="main/door"]
+anims/close = SubResource( 11 )
+anims/open = SubResource( 12 )
+
+[node name="light" type="Sprite" parent="main"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 128, -26 )
+z_index = 22
+texture = ExtResource( 4 )
+
+[node name="doorb" type="TouchScreenButton" parent="main"]
+modulate = Color( 0.502539, 0.502539, 0.502539, 1 )
+position = Vector2( -243, 57 )
+z_index = 23
+shape = SubResource( 13 )
+
+[node name="butt" type="ColorRect" parent="main/doorb"]
+show_behind_parent = true
+margin_right = 60.0
+margin_bottom = 60.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="label" type="Label" parent="main/doorb/butt"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_top = -32.0
+margin_right = 20.0
+margin_bottom = -4.0
+grow_horizontal = 2
+theme = ExtResource( 35 )
+text = "ДВЕРЬ"
+align = 1
+valign = 1
+
+[node name="f0w0" type="Sprite" parent="."]
+position = Vector2( -1140, -1232 )
+texture = ExtResource( 2 )
+
+[node name="camera" type="Camera2D" parent="f0w0"]
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="poses" type="Node2D" parent="f0w0"]
+
+[node name="pos0" type="Position2D" parent="f0w0/poses"]
+position = Vector2( -443, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="f0w0/poses"]
+position = Vector2( -87, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="f0w0/poses"]
+position = Vector2( 159, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos3" type="Position2D" parent="f0w0/poses"]
+position = Vector2( 494, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="f01" type="Sprite" parent="."]
+position = Vector2( 663, -1188 )
+texture = ExtResource( 40 )
+
+[node name="camera" type="Camera2D" parent="f01"]
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="poses" type="Node2D" parent="f01"]
+
+[node name="pos0" type="Position2D" parent="f01/poses"]
+position = Vector2( -443, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="f01/poses"]
+position = Vector2( -87, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="f01/poses"]
+position = Vector2( 159, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos3" type="Position2D" parent="f01/poses"]
+position = Vector2( 494, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="f12" type="Sprite" parent="."]
+position = Vector2( -1953, -4394 )
+texture = ExtResource( 6 )
+
+[node name="camera" type="Camera2D" parent="f12"]
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="poses" type="Node2D" parent="f12"]
+
+[node name="pos0" type="Position2D" parent="f12/poses"]
+position = Vector2( -443, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="f12/poses"]
+position = Vector2( -87, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="f12/poses"]
+position = Vector2( 159, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos3" type="Position2D" parent="f12/poses"]
+position = Vector2( 494, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="f1" type="Sprite" parent="."]
+position = Vector2( -144, -4368 )
+texture = ExtResource( 24 )
+
+[node name="camera" type="Camera2D" parent="f1"]
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="poses" type="Node2D" parent="f1"]
+
+[node name="pos0" type="Position2D" parent="f1/poses"]
+position = Vector2( -443, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="f1/poses"]
+position = Vector2( -87, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="f1/poses"]
+position = Vector2( 159, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos3" type="Position2D" parent="f1/poses"]
+position = Vector2( 494, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="f1se" type="Sprite" parent="."]
+position = Vector2( -2896, -1243 )
+texture = ExtResource( 12 )
+
+[node name="camera" type="Camera2D" parent="f1se"]
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="poses" type="Node2D" parent="f1se"]
+
+[node name="pos0" type="Position2D" parent="f1se/poses"]
+position = Vector2( -443, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="f1se/poses"]
+position = Vector2( -87, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="f1se/poses"]
+position = Vector2( 159, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos3" type="Position2D" parent="f1se/poses"]
+position = Vector2( 494, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="f1s" type="Sprite" parent="."]
+position = Vector2( -2904, -2247 )
+texture = ExtResource( 3 )
+
+[node name="camera" type="Camera2D" parent="f1s"]
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="poses" type="Node2D" parent="f1s"]
+
+[node name="pos0" type="Position2D" parent="f1s/poses"]
+position = Vector2( -443, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="f1s/poses"]
+position = Vector2( -87, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="f1s/poses"]
+position = Vector2( 159, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos3" type="Position2D" parent="f1s/poses"]
+position = Vector2( 494, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="f1w0" type="Sprite" parent="."]
+position = Vector2( -1174, -2248 )
+texture = ExtResource( 13 )
+
+[node name="camera" type="Camera2D" parent="f1w0"]
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="poses" type="Node2D" parent="f1w0"]
+
+[node name="pos0" type="Position2D" parent="f1w0/poses"]
+position = Vector2( -443, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="f1w0/poses"]
+position = Vector2( -87, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="f1w0/poses"]
+position = Vector2( 159, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos3" type="Position2D" parent="f1w0/poses"]
+position = Vector2( 494, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="f1w0e" type="Sprite" parent="."]
+position = Vector2( 653, -2241 )
+texture = ExtResource( 27 )
+
+[node name="camera" type="Camera2D" parent="f1w0e"]
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="poses" type="Node2D" parent="f1w0e"]
+
+[node name="pos0" type="Position2D" parent="f1w0e/poses"]
+position = Vector2( -443, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="f1w0e/poses"]
+position = Vector2( -87, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="f1w0e/poses"]
+position = Vector2( 159, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos3" type="Position2D" parent="f1w0e/poses"]
+position = Vector2( 494, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="f1w1" type="Sprite" parent="."]
+position = Vector2( 2412, -2249 )
+texture = ExtResource( 29 )
+script = SubResource( 8 )
+
+[node name="camera" type="Camera2D" parent="f1w1"]
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="poses" type="Node2D" parent="f1w1"]
+
+[node name="pos0" type="Position2D" parent="f1w1/poses"]
+position = Vector2( -443, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="f1w1/poses"]
+position = Vector2( -87, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="f1w1/poses"]
+position = Vector2( 159, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos3" type="Position2D" parent="f1w1/poses"]
+position = Vector2( 494, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="f1w1e" type="Sprite" parent="."]
+position = Vector2( 2442, -1169 )
+texture = ExtResource( 34 )
+
+[node name="camera" type="Camera2D" parent="f1w1e"]
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="poses" type="Node2D" parent="f1w1e"]
+
+[node name="pos0" type="Position2D" parent="f1w1e/poses"]
+position = Vector2( -443, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="f1w1e/poses"]
+position = Vector2( -87, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="f1w1e/poses"]
+position = Vector2( 159, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos3" type="Position2D" parent="f1w1e/poses"]
+position = Vector2( 494, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="f2" type="Sprite" parent="."]
+position = Vector2( -2886, -3279 )
+texture = ExtResource( 7 )
+
+[node name="camera" type="Camera2D" parent="f2"]
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="poses" type="Node2D" parent="f2"]
+
+[node name="pos0" type="Position2D" parent="f2/poses"]
+position = Vector2( -443, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="f2/poses"]
+position = Vector2( -87, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="f2/poses"]
+position = Vector2( 159, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos3" type="Position2D" parent="f2/poses"]
+position = Vector2( 494, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="f2w0" type="Sprite" parent="."]
+position = Vector2( -1148, -3267 )
+texture = ExtResource( 51 )
+
+[node name="camera" type="Camera2D" parent="f2w0"]
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="poses" type="Node2D" parent="f2w0"]
+
+[node name="pos0" type="Position2D" parent="f2w0/poses"]
+position = Vector2( -443, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="f2w0/poses"]
+position = Vector2( -87, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="f2w0/poses"]
+position = Vector2( 159, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos3" type="Position2D" parent="f2w0/poses"]
+position = Vector2( 494, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="f2w0e" type="Sprite" parent="."]
+position = Vector2( 638, -3267 )
+texture = ExtResource( 33 )
+
+[node name="camera" type="Camera2D" parent="f2w0e"]
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="poses" type="Node2D" parent="f2w0e"]
+
+[node name="pos0" type="Position2D" parent="f2w0e/poses"]
+position = Vector2( -443, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="f2w0e/poses"]
+position = Vector2( -87, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="f2w0e/poses"]
+position = Vector2( 159, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos3" type="Position2D" parent="f2w0e/poses"]
+position = Vector2( 494, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="f2w1" type="Sprite" parent="."]
+position = Vector2( 2424, -3303 )
+texture = ExtResource( 16 )
+
+[node name="camera" type="Camera2D" parent="f2w1"]
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="poses" type="Node2D" parent="f2w1"]
+
+[node name="pos0" type="Position2D" parent="f2w1/poses"]
+position = Vector2( -443, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="f2w1/poses"]
+position = Vector2( -87, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="f2w1/poses"]
+position = Vector2( 159, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos3" type="Position2D" parent="f2w1/poses"]
+position = Vector2( 494, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="f2w1e" type="Sprite" parent="."]
+position = Vector2( 1561, -4340 )
+texture = ExtResource( 1 )
+
+[node name="camera" type="Camera2D" parent="f2w1e"]
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="poses" type="Node2D" parent="f2w1e"]
+
+[node name="pos0" type="Position2D" parent="f2w1e/poses"]
+position = Vector2( -443, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos1" type="Position2D" parent="f2w1e/poses"]
+position = Vector2( -87, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos2" type="Position2D" parent="f2w1e/poses"]
+position = Vector2( 159, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="pos3" type="Position2D" parent="f2w1e/poses"]
+position = Vector2( 494, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="base" type="Sprite" parent="."]
+
+[node name="poses" type="Node2D" parent="base"]
+
+[node name="pos0" type="Position2D" parent="base/poses"]
+position = Vector2( -443, 190 )
+__meta__ = {
+"_gizmo_extents_": 50.0
+}
+
+[node name="steps_in" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 43 )
+bus = "sfx"
+
+[node name="steps_out" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 41 )
+bus = "sfx"
+
+[node name="door_locked" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 42 )
+bus = "sfx"
+
+[node name="run_in" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+bus = "sfx"
+
+[node name="run_out" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+bus = "sfx"
+
+[node name="jumpscare_female" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 31 )
+volume_db = 3.0
+bus = "sfx"
+
+[node name="jumpscare_male" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 28 )
+volume_db = 6.0
+bus = "sfx"
+
+[node name="jumpscare_dt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 38 )
+volume_db = 6.0
+bus = "sfx"
+
+[node name="ambient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 38 )
+bus = "music"
+
+[node name="box" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 39 )
+volume_db = 6.0
+autoplay = true
+stream_paused = true
+bus = "music"
+
+[node name="phone_guy" type="AudioStreamPlayer" parent="."]
+autoplay = true
+bus = "music"
+script = ExtResource( 47 )
+button = NodePath("../screen/base/main/mute")
+
+[node name="door_on" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 25 )
+bus = "sfx"
+
+[node name="door_off" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+bus = "sfx"
+
+[node name="mask_on" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 23 )
+bus = "sfx"
+
+[node name="mask_off" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 45 )
+bus = "sfx"
+
+[node name="breath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+bus = "sfx"
+
+[connection signal="button_down" from="screen/base/main/light" to="." method="flashlight" binds= [ true, true ]]
+[connection signal="button_up" from="screen/base/main/light" to="." method="flashlight" binds= [ true, false ]]
+[connection signal="pressed" from="screen/base/main/another" to="." method="another"]
+[connection signal="pressed" from="screen/base/main/another2" to="." method="another"]
+[connection signal="pressed" from="screen/base/screen/gui/b0_0" to="." method="change_camera" binds= [ "f0w0" ]]
+[connection signal="pressed" from="screen/base/screen/gui/b0_1" to="." method="change_camera" binds= [ "f01" ]]
+[connection signal="pressed" from="screen/base/screen/gui/b1_0" to="." method="change_camera" binds= [ "f12" ]]
+[connection signal="pressed" from="screen/base/screen/gui/b1_1" to="." method="change_camera" binds= [ "f1w0" ]]
+[connection signal="pressed" from="screen/base/screen/gui/b1_2" to="." method="change_camera" binds= [ "f1w0e" ]]
+[connection signal="pressed" from="screen/base/screen/gui/b1_3" to="." method="change_camera" binds= [ "f1" ]]
+[connection signal="pressed" from="screen/base/screen/gui/b1_4" to="." method="change_camera" binds= [ "f1w1e" ]]
+[connection signal="pressed" from="screen/base/screen/gui/b1_5" to="." method="change_camera" binds= [ "f1w1" ]]
+[connection signal="pressed" from="screen/base/screen/gui/b1_6" to="." method="change_camera" binds= [ "f1se" ]]
+[connection signal="pressed" from="screen/base/screen/gui/b1_7" to="." method="change_camera" binds= [ "f1s" ]]
+[connection signal="pressed" from="screen/base/screen/gui/b2_0" to="." method="change_camera" binds= [ "f2w0" ]]
+[connection signal="pressed" from="screen/base/screen/gui/b2_1" to="." method="change_camera" binds= [ "f2w0e" ]]
+[connection signal="pressed" from="screen/base/screen/gui/b2_2" to="." method="change_camera" binds= [ "f2" ]]
+[connection signal="pressed" from="screen/base/screen/gui/b2_3" to="." method="change_camera" binds= [ "f2w1e" ]]
+[connection signal="pressed" from="screen/base/screen/gui/b2_4" to="." method="change_camera" binds= [ "f2w1" ]]
+[connection signal="button_down" from="screen/base/screen/gui/music_box/box/wind_up" to="." method="wind_up" binds= [ true ]]
+[connection signal="button_up" from="screen/base/screen/gui/music_box/box/wind_up" to="." method="wind_up" binds= [ false ]]
+[connection signal="pressed" from="screen/base/monitor_b" to="." method="monitor"]
+[connection signal="pressed" from="screen/base/mask_b" to="." method="mask"]
+[connection signal="pressed" from="main/doorb" to="." method="door"]

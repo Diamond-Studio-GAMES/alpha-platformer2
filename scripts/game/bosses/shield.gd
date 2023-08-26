@@ -1,7 +1,7 @@
 extends Area2D
 
 
-var rb = load("res://prefabs/bosses/rejected_bullet.scn")
+var rb = load("res://prefabs/bosses/rejected_bullet.tscn")
 
 
 func area_entered(area):

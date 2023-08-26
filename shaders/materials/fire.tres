@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://shaders/fire.tres" type="Shader" id=1]
+[ext_resource path="res://textures/blocks/fire_noise.png" type="Texture" id=2]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/uv_dist = 0.35
+shader_param/pixels = 64.0
+shader_param/col1 = Color( 1, 0.501961, 0, 1 )
+shader_param/col2 = Color( 1, 1, 0, 1 )
+shader_param/col3 = Color( 1, 1, 1, 1 )
+shader_param/wind_speed = Vector2( 0.15, 0.25 )
+shader_param/step1 = 0.7
+shader_param/step2 = 0.5
+shader_param/step3 = 0.3
+shader_param/noise = ExtResource( 2 )

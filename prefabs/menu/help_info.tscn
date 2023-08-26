@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/menu/help_info.gd" type="Script" id=1]
+[ext_resource path="res://themes/theme.tres" type="Theme" id=2]
+
+[node name="help_info" type="Button"]
+margin_right = 30.0
+margin_bottom = 30.0
+theme = ExtResource( 2 )
+text = "?"
+script = ExtResource( 1 )
+
+[node name="canvas_layer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="info" type="AcceptDialog" parent="canvas_layer"]
+margin_right = 400.0
+margin_bottom = 78.0
+theme = ExtResource( 2 )
+window_title = "Информация"
+dialog_autowrap = true
+
+[connection signal="pressed" from="." to="canvas_layer/info" method="popup_centered"]
+[connection signal="confirmed" from="canvas_layer/info" to="." method="accept"]

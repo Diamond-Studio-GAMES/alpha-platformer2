@@ -1,0 +1,107 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://minigames/minigame5/resources/minigame.gd" type="Script" id=2]
+
+[node name="minigame" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.670588, 0.592157, 1, 1 )
+
+[node name="title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -164.0
+margin_top = 16.0
+margin_right = 164.0
+margin_bottom = 68.0
+grow_horizontal = 2
+theme_type_variation = "LabelTitle"
+text = "Platformer Dash"
+align = 1
+valign = 1
+
+[node name="select" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -164.0
+margin_top = 72.0
+margin_right = 164.0
+margin_bottom = 124.0
+grow_horizontal = 2
+theme_type_variation = "LabelTitle"
+text = "Выбери уровень:"
+align = 1
+valign = 1
+
+[node name="easy" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -388.0
+margin_top = -24.0
+margin_right = -188.0
+margin_bottom = 56.0
+text = "Обширное поле"
+
+[node name="normal" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -24.0
+margin_right = 100.0
+margin_bottom = 56.0
+text = "Брождение по лесу"
+
+[node name="hard" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 188.0
+margin_top = -24.0
+margin_right = 388.0
+margin_bottom = 56.0
+text = "Горное безумие"
+
+[node name="custom" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = 216.0
+margin_right = 100.0
+margin_bottom = 256.0
+text = "Свой уровень"
+
+[node name="edit" type="Button" parent="custom"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_right = 53.0
+text = "Ред."
+
+[node name="exit" type="Button" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 96.0
+margin_bottom = 46.0
+text = "Выйти"
+
+[connection signal="pressed" from="easy" to="." method="open_level" binds= [ "1" ]]
+[connection signal="pressed" from="normal" to="." method="open_level" binds= [ "2" ]]
+[connection signal="pressed" from="hard" to="." method="open_level" binds= [ "3" ]]
+[connection signal="pressed" from="custom" to="." method="open_level" binds= [ "_custom" ]]
+[connection signal="pressed" from="custom/edit" to="." method="open_level" binds= [ "_custom_edit" ]]
+[connection signal="pressed" from="exit" to="." method="back"]

@@ -7,8 +7,8 @@ var level = 1
 var power = 0
 var attack_power = 20
 var has_amulet = false
-var _effect = load("res://prefabs/effects/effect_spearman_ulti.scn")
-var _ulti_attack = load("res://prefabs/classes/spearman_ulti_attack.scn")
+var _effect = load("res://prefabs/effects/effect_spearman_ulti.tscn")
+var _ulti_attack = load("res://prefabs/classes/spearman_ulti_attack.tscn")
 onready var _level = get_tree().current_scene
 
 

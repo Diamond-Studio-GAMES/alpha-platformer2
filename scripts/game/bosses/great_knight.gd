@@ -5,9 +5,9 @@ const OFFSET_X = 128
 const OFFSET_Y = 96
 onready var timer = $swipe_timer
 var swords_down_poses = []
-var swipe_effect = load("res://prefabs/bosses/sword_swipe.scn")
-var sword_throw = load("res://prefabs/bosses/sword_throw.scn")
-var sword_down_attack = load("res://prefabs/bosses/sword_down_attack.scn")
+var swipe_effect = load("res://prefabs/bosses/sword_swipe.tscn")
+var sword_throw = load("res://prefabs/bosses/sword_throw.tscn")
+var sword_down_attack = load("res://prefabs/bosses/sword_down_attack.tscn")
 
 
 func _ready():

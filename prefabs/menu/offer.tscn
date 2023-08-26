@@ -1,0 +1,200 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://textures/items/coin.png" type="Texture" id=2]
+[ext_resource path="res://textures/items/gem.png" type="Texture" id=3]
+[ext_resource path="res://textures/classes/knight_helmet.png" type="Texture" id=4]
+[ext_resource path="res://textures/items/token.png" type="Texture" id=5]
+[ext_resource path="res://scripts/menu/offer.gd" type="Script" id=6]
+
+[node name="offer" type="Panel"]
+margin_right = 200.0
+margin_bottom = 420.0
+rect_min_size = Vector2( 200, 420 )
+mouse_filter = 1
+theme = ExtResource( 1 )
+script = ExtResource( 6 )
+
+[node name="title" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 40.0
+text = "КРИСТАЛЛЫ"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="buy" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -60.0
+margin_top = -46.0
+margin_right = 60.0
+margin_bottom = -12.0
+text = "100"
+icon = ExtResource( 3 )
+expand_icon = true
+
+[node name="items" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -92.0
+margin_top = -170.0
+margin_right = 92.0
+margin_bottom = 158.0
+alignment = 1
+
+[node name="item0" type="Control" parent="items"]
+visible = false
+margin_top = 116.0
+margin_right = 184.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 184, 96 )
+mouse_filter = 1
+
+[node name="icon" type="TextureRect" parent="items/item0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="sub" type="TextureRect" parent="items/item0/icon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="items/item0"]
+margin_left = 32.0
+margin_right = 184.0
+margin_bottom = 24.0
+text = "МОНЕТЫ"
+valign = 1
+
+[node name="count" type="Label" parent="items/item0"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -104.0
+margin_top = -24.0
+margin_right = -40.0
+text = "x10000"
+align = 2
+valign = 1
+
+[node name="item1" type="Control" parent="items"]
+visible = false
+margin_top = 116.0
+margin_right = 184.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 184, 96 )
+mouse_filter = 1
+
+[node name="icon" type="TextureRect" parent="items/item1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="sub" type="TextureRect" parent="items/item1/icon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="items/item1"]
+margin_left = 32.0
+margin_right = 184.0
+margin_bottom = 24.0
+text = "ЖЕТОНЫ СИЛЫ"
+valign = 1
+
+[node name="count" type="Label" parent="items/item1"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -104.0
+margin_top = -24.0
+margin_right = -40.0
+text = "x1000"
+align = 2
+valign = 1
+
+[node name="item2" type="Control" parent="items"]
+visible = false
+margin_top = 116.0
+margin_right = 184.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 184, 96 )
+mouse_filter = 1
+
+[node name="icon" type="TextureRect" parent="items/item2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="sub" type="TextureRect" parent="items/item2/icon"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="items/item2"]
+margin_left = 32.0
+margin_right = 184.0
+margin_bottom = 24.0
+text = "КЛАСС"
+valign = 1
+
+[node name="count" type="Label" parent="items/item2"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -104.0
+margin_top = -24.0
+margin_right = -40.0
+align = 2
+valign = 1

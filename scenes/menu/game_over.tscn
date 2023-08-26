@@ -1,0 +1,339 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://scripts/game/player/soul_color.gd" type="Script" id=1]
+[ext_resource path="res://themes/theme.tres" type="Theme" id=2]
+[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://textures/effects/backgrounds/game_over.png" type="Texture" id=4]
+[ext_resource path="res://textures/classes/butcher_helmet.png" type="Texture" id=5]
+[ext_resource path="res://sounds/music/menu/game_over.ogg" type="AudioStream" id=6]
+[ext_resource path="res://prefabs/menu/level_dialog.tscn" type="PackedScene" id=7]
+[ext_resource path="res://textures/gui/soul_break.png" type="Texture" id=8]
+[ext_resource path="res://textures/classes/spearman_helmet.png" type="Texture" id=9]
+[ext_resource path="res://prefabs/menu/class_visuals.tscn" type="PackedScene" id=10]
+[ext_resource path="res://textures/classes/wizard_helmet.png" type="Texture" id=11]
+[ext_resource path="res://textures/classes/archer_helmet.png" type="Texture" id=12]
+[ext_resource path="res://textures/classes/knight_helmet.png" type="Texture" id=13]
+[ext_resource path="res://textures/gui/soul.png" type="Texture" id=14]
+[ext_resource path="res://scripts/menu/game_over.gd" type="Script" id=15]
+
+[sub_resource type="Animation" id=1]
+resource_name = "defeat"
+length = 4.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("soul:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 20, 20 ), Vector2( 25, 23 ), Vector2( 20, 20 ), Vector2( 28, 25 ), Vector2( 15, 32 ), Vector2( 21, 30 ), Vector2( 5, 29 ), Vector2( 15, 32 ), Vector2( 18, 36 ), Vector2( 25, 39 ), Vector2( 15, 43 ), Vector2( 16, 31 ), Vector2( 23, 29 ), Vector2( 29, 35 ), Vector2( 23, 34 ), Vector2( 11, 29 ), Vector2( 17, 35 ), Vector2( 19, 34 ), Vector2( 17, 28 ), Vector2( 24, 25 ), Vector2( 20, 20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("soul:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("soul_b:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("particles")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("..:time_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.15, 2.2, 2.4, 3 ),
+"transitions": PoolRealArray( 1, 1e-05, 1, 1e-05, 1e-05 ),
+"update": 0,
+"values": [ 1.0, 1.0, 0.2, 0.2, 1.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../game_over:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../game_over:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("../music")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("..:time_scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = false
+tracks/8/keys = {
+"times": PoolRealArray( 1.9, 2, 2.2, 2.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.1, 0.01, 0.1, 1.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("soul:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=66]
+resource_name = "defeat2"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("soul:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 6.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 6.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "menu"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("soul:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("soul_b:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+outline_size = 2
+font_data = ExtResource( 3 )
+
+[node name="game_over" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 15 )
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "music"
+
+[node name="select_level" parent="." instance=ExtResource( 7 )]
+
+[node name="select_level_dialog" parent="select_level" index="0"]
+popup_exclusive = true
+
+[node name="menu" parent="select_level/select_level_dialog/play" index="0"]
+items = [ "Создать комнату...", null, 0, false, false, 0, 0, null, "", false, "Присоединиться...", null, 0, false, false, 1, 0, null, "", false ]
+
+[node name="class2" parent="select_level/select_level_dialog" index="11"]
+items = [ "Рыцарь", ExtResource( 13 ), false, 0, null, "Мясник", ExtResource( 5 ), false, 1, null, "Копьеносец", ExtResource( 9 ), false, 2, null, "Маг", ExtResource( 11 ), false, 3, null, "Лучник", ExtResource( 12 ), false, 4, null, "Без класса", null, false, 5, null ]
+
+[node name="soul" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 20, 20 )
+
+[node name="soul" type="Sprite" parent="soul"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 20, 20 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 14 )
+script = ExtResource( 1 )
+
+[node name="soul_b" type="Sprite" parent="soul"]
+visible = false
+position = Vector2( 20, 20 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 8 )
+script = ExtResource( 1 )
+
+[node name="particles" type="CPUParticles2D" parent="soul"]
+position = Vector2( -20, -20 )
+scale = Vector2( 5, 5 )
+emitting = false
+amount = 256
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_points = PoolVector2Array( 0, 2, 0, 3, 0, 4, 0, 5, 1, 1, 1, 2, 1, 3, 1, 4, 1, 5, 1, 6, 1, 7, 2, 0, 2, 1, 2, 2, 2, 3, 2, 4, 2, 5, 2, 6, 2, 7, 2, 8, 3, 0, 3, 1, 3, 2, 3, 3, 3, 4, 3, 5, 3, 6, 3, 7, 3, 8, 3, 9, 4, 0, 4, 1, 4, 2, 4, 3, 4, 4, 4, 5, 4, 6, 4, 7, 4, 8, 4, 9, 4, 10, 4, 11, 5, 1, 5, 2, 5, 3, 5, 4, 5, 5, 5, 6, 5, 7, 5, 8, 5, 9, 5, 10, 5, 11, 5, 12, 6, 2, 6, 3, 6, 4, 6, 5, 6, 6, 6, 7, 6, 8, 6, 9, 6, 10, 6, 11, 6, 12, 6, 13, 7, 3, 7, 4, 7, 5, 7, 6, 7, 7, 7, 8, 7, 9, 7, 10, 7, 11, 7, 12, 7, 13, 7, 14, 8, 3, 8, 4, 8, 5, 8, 6, 8, 7, 8, 8, 8, 9, 8, 10, 8, 11, 8, 12, 8, 13, 8, 14, 9, 2, 9, 3, 9, 4, 9, 5, 9, 6, 9, 7, 9, 8, 9, 9, 9, 10, 9, 11, 9, 12, 9, 13, 10, 1, 10, 2, 10, 3, 10, 4, 10, 5, 10, 6, 10, 7, 10, 8, 10, 9, 10, 10, 10, 11, 10, 12, 11, 0, 11, 1, 11, 2, 11, 3, 11, 4, 11, 5, 11, 6, 11, 7, 11, 8, 11, 9, 11, 10, 11, 11, 12, 0, 12, 1, 12, 2, 12, 3, 12, 4, 12, 5, 12, 6, 12, 7, 12, 8, 12, 9, 13, 0, 13, 1, 13, 2, 13, 3, 13, 4, 13, 5, 13, 6, 13, 7, 13, 8, 14, 1, 14, 2, 14, 3, 14, 4, 14, 5, 14, 6, 14, 7, 15, 2, 15, 3, 15, 4, 15, 5 )
+emission_colors = PoolColorArray(  )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 1 )
+initial_velocity = 200.0
+initial_velocity_random = 0.8
+angular_velocity = 360.0
+angular_velocity_random = 1.0
+color = Color( 0.764706, 0.764706, 0.764706, 1 )
+script = ExtResource( 1 )
+
+[node name="anim" type="AnimationPlayer" parent="soul"]
+anims/defeat = SubResource( 1 )
+anims/defeat2 = SubResource( 66 )
+
+[node name="game_over" type="Label" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -197.5
+margin_top = 64.0
+margin_right = 197.5
+margin_bottom = 134.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "ИГРА ОКОНЧЕНА"
+
+[node name="retry" type="Button" parent="game_over"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = 280.0
+margin_right = 100.0
+margin_bottom = 310.0
+text = "Попробовать снова"
+
+[node name="menu" type="Button" parent="game_over"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = 320.0
+margin_right = 100.0
+margin_bottom = 350.0
+text = "Выйти в меню"
+
+[node name="texture_rect" type="TextureRect" parent="game_over"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -120.0
+margin_right = 120.0
+margin_bottom = 240.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="class_visuals" parent="." instance=ExtResource( 10 )]
+
+[connection signal="pressed" from="game_over/retry" to="." method="retry"]
+[connection signal="pressed" from="game_over/menu" to="." method="menu"]
+
+[editable path="select_level"]

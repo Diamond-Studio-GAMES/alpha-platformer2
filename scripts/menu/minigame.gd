@@ -30,7 +30,7 @@ func _process(delta):
 
 func open_or_buy():
 	if bought:
-		get_tree().change_scene("res://minigames/minigame" + str(id) + "/minigame.scn")
+		get_tree().change_scene("res://minigames/minigame" + str(id) + "/minigame.tscn")
 	else:
 		$"../buy".get_ok().connect("pressed", self, "buy", [], CONNECT_REFERENCE_COUNTED)
 		$"../buy".connect("popup_hide", self, "disconnect_signal", [], CONNECT_ONESHOT)

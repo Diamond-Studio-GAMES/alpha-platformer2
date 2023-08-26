@@ -7,7 +7,7 @@ var going_to_plant = false
 var going_to_fertilize = false
 var going_to_dig_up = false
 var selected_plant = ""
-var plant_element = load("res://minigames/minigame6/element_of_plant_list.scn")
+var plant_element = load("res://minigames/minigame6/element_of_plant_list.tscn")
 onready var current_day = Time.get_date_dict_from_system()["day"]
 onready var current_unix_time = Time.get_unix_time_from_system()
 signal plant_selected(canceled)
@@ -35,11 +35,11 @@ func buy_box():
 
 
 func get_box():
-	get_tree().change_scene("res://minigames/minigame6/plant_box_open.scn")
+	get_tree().change_scene("res://minigames/minigame6/plant_box_open.tscn")
 
 
 func exit():
-	get_tree().change_scene("res://scenes/menu/levels.scn")
+	get_tree().change_scene("res://scenes/menu/levels.tscn")
 
 
 func check_for_gift():
@@ -103,13 +103,15 @@ func open_list_of_plants():
 			var new_plants = plants.duplicate(true)
 			new_plants.erase(i)
 			G.setv("garden_plants", new_plants)
-			continue
-		if i.get_extension() == "tres":
+			open_list_of_plants()
+			break
+		if i.get_extension() == "res":
 			var new_plants = plants.duplicate(true)
 			new_plants.erase(i)
-			new_plants.append((i as String).get_basename() + ".res")
+			new_plants.append((i as String).get_basename() + ".tres")
 			G.setv("garden_plants", new_plants)
-			continue
+			open_list_of_plants()
+			break
 		plant_showed.append(i)
 		var plant_data = load(i) as PlantResource
 		var node = plant_element.instance()

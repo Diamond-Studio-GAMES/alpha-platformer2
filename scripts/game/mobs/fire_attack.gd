@@ -14,7 +14,7 @@ var damage_ticks = 0
 
 func _ready():
 	if custom_path.empty():
-		fire_on_entity = load("res://prefabs/effects/fire_on_entity.scn")
+		fire_on_entity = load("res://prefabs/effects/fire_on_entity.tscn")
 	else:
 		fire_on_entity = load(custom_path)
 

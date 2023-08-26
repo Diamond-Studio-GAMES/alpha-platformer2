@@ -16,7 +16,7 @@ func continue_():
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
-	get_tree().change_scene("res://minigames/minigame8/scenes/night{0}.scn".format([str(G.getv("night", 1))]))
+	get_tree().change_scene("res://minigames/minigame8/scenes/night{0}.tscn".format([str(G.getv("night", 1))]))
 
 
 func begin():
@@ -25,4 +25,4 @@ func begin():
 
 
 func quit():
-	get_tree().change_scene("res://scenes/menu/levels.scn")
+	get_tree().change_scene("res://scenes/menu/levels.tscn")

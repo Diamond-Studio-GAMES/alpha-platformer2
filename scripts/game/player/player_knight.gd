@@ -15,7 +15,7 @@ func _ready():
 	max_health = power * 20 + 100 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
 	defense = power + 5 + (5 if is_amulet(G.Amulet.DEFENSE) else 0)
 	$visual/body/knight_attack.damage = power * 5 + 25  + (15 if  is_amulet(G.Amulet.POWER) else 0)
-	_ulti = load("res://prefabs/classes/knight_ulti.scn")
+	_ulti = load("res://prefabs/classes/knight_ulti.tscn")
 	current_health = max_health
 	_health_bar.max_value = max_health
 	_health_change_bar.max_value = max_health

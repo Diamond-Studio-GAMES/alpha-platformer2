@@ -1,9 +1,9 @@
 extends Boss
 
 
-var fireball_small = load("res://prefabs/bosses/fireball.scn")
-var fireball_big = load("res://prefabs/bosses/big_fireball.scn")
-var oil = load("res://prefabs/bosses/oil.scn")
+var fireball_small = load("res://prefabs/bosses/fireball.tscn")
+var fireball_big = load("res://prefabs/bosses/big_fireball.tscn")
+var oil = load("res://prefabs/bosses/oil.tscn")
 onready var timer = $timer
 
 

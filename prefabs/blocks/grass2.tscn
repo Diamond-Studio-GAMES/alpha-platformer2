@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/game/other/grass.gd" type="Script" id=1]
+[ext_resource path="res://shaders/materials/grass2.tres" type="Material" id=2]
+[ext_resource path="res://textures/blocks/grass.png" type="Texture" id=3]
+[ext_resource path="res://shaders/materials/grass.tres" type="Material" id=4]
+
+[node name="grass" type="Node2D"]
+
+[node name="sprite2" type="Sprite" parent="."]
+self_modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+material = ExtResource( 2 )
+position = Vector2( -1.49012e-08, -16 )
+z_index = -5
+texture = ExtResource( 3 )
+flip_h = true
+script = ExtResource( 1 )
+wind_speed = 0.8
+wind_power = 0.13
+offset_to_origin = Vector2( 0, -16 )
+
+[node name="sprite" type="Sprite" parent="."]
+material = ExtResource( 4 )
+position = Vector2( 4.76837e-07, -16 )
+z_index = -1
+texture = ExtResource( 3 )
+script = ExtResource( 1 )
+offset_to_origin = Vector2( 0, -16 )

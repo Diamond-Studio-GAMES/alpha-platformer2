@@ -20,7 +20,7 @@ var fill_height = 30
 var tp_pos = Vector2()
 var next_attack_time_min = 1
 var next_attack_time_max = 2
-var hurt_part = load("res://prefabs/effects/hurt_part.scn")
+var hurt_part = load("res://prefabs/effects/hurt_part.tscn")
 onready var anim = $anim
 onready var ms := $MultiplayerSynchronizer as MultiplayerSynchronizer
 

@@ -1,0 +1,106 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://scripts/game/player/player_knight_ulti.gd" type="Script" id=2]
+[ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=3]
+[ext_resource path="res://textures/effects/skills/revive_shield.tres" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 320.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "knockback_effect"
+length = 0.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("knockback_effect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 3, 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("knockback_effect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("attack:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.01, 0.01 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("attack/shape:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 48.0
+
+[node name="knight_ulti" type="Area2D" groups=["spawnable"]]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "knockback_effect"
+anims/knockback_effect = SubResource( 2 )
+
+[node name="knockback_effect" type="Sprite" parent="."]
+scale = Vector2( 1e-05, 1e-05 )
+z_index = 35
+texture = ExtResource( 4 )
+
+[node name="attack" type="Area2D" parent="."]
+z_index = -5
+collision_layer = 16
+collision_mask = 6
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+damage = 10
+knockback = 3.0
+custom_invincibility_time = 2.0
+custom_immobility_time = 1.0
+defense_allowed = false
+is_player_attack = true
+lifetime = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="attack"]
+shape = SubResource( 3 )
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath("..") ]
+spawn_sync_data_properties = [ "global_position" ]

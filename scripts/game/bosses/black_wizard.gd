@@ -3,8 +3,8 @@ extends Boss
 
 var shield_timer = 0
 var under_shield = false
-var blackball = load("res://prefabs/bosses/blackball.scn")
-var mob_shooter = load("res://prefabs/bosses/shooter_boss.scn")
+var blackball = load("res://prefabs/bosses/blackball.tscn")
+var mob_shooter = load("res://prefabs/bosses/shooter_boss.tscn")
 onready var lightnings = $lightnings.get_children()
 
 

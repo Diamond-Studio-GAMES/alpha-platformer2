@@ -1,0 +1,559 @@
+[gd_scene load_steps=65 format=2]
+
+[ext_resource path="res://textures/effects/other/glow.png" type="Texture" id=1]
+[ext_resource path="res://themes/theme.tres" type="Theme" id=2]
+[ext_resource path="res://minigames/minigame6/plants/common/pt_bush0.tres" type="Resource" id=3]
+[ext_resource path="res://minigames/minigame6/plants/common/pt_flower0.tres" type="Resource" id=4]
+[ext_resource path="res://minigames/minigame6/plants/common/st_bush0.tres" type="Resource" id=5]
+[ext_resource path="res://minigames/minigame6/resources/seed_packet_legendary.png" type="Texture" id=6]
+[ext_resource path="res://minigames/minigame6/plants/legendary/diamond_box3.tres" type="Resource" id=7]
+[ext_resource path="res://minigames/minigame6/plants/common/gem_bush0.tres" type="Resource" id=8]
+[ext_resource path="res://minigames/minigame6/resources/fertilizer.png" type="Texture" id=9]
+[ext_resource path="res://textures/effects/other/star.png" type="Texture" id=10]
+[ext_resource path="res://minigames/minigame6/plants/rare/pt_flower1.tres" type="Resource" id=11]
+[ext_resource path="res://minigames/minigame6/plants/epic/gold_box2.tres" type="Resource" id=12]
+[ext_resource path="res://minigames/minigame6/plants/legendary/pt_flower3.tres" type="Resource" id=13]
+[ext_resource path="res://minigames/minigame6/resources/water.png" type="Texture" id=14]
+[ext_resource path="res://minigames/minigame6/plants/legendary/potion0_flower3.tres" type="Resource" id=15]
+[ext_resource path="res://minigames/minigame6/plants/epic/coin_tree2.tres" type="Resource" id=16]
+[ext_resource path="res://minigames/minigame6/plants/epic/gem_flower2.tres" type="Resource" id=17]
+[ext_resource path="res://minigames/minigame6/plants/epic/gem_bush2.tres" type="Resource" id=18]
+[ext_resource path="res://minigames/minigame6/plants/rare/coin_flower1.tres" type="Resource" id=19]
+[ext_resource path="res://minigames/minigame6/plants/legendary/coin_tree3.tres" type="Resource" id=20]
+[ext_resource path="res://minigames/minigame6/plants/rare/gem_bush1.tres" type="Resource" id=21]
+[ext_resource path="res://minigames/minigame6/plants/legendary/st_flower3.tres" type="Resource" id=22]
+[ext_resource path="res://minigames/minigame6/plants/epic/gem_tree2.tres" type="Resource" id=23]
+[ext_resource path="res://sounds/sfx/menu/open_box.wav" type="AudioStream" id=24]
+[ext_resource path="res://minigames/minigame6/plants/legendary/coin_bush3.tres" type="Resource" id=25]
+[ext_resource path="res://textures/gui/bg_light.png" type="Texture" id=26]
+[ext_resource path="res://minigames/minigame6/resources/plant_gem_flower.png" type="Texture" id=27]
+[ext_resource path="res://minigames/minigame6/plants/rare/pt_bush1.tres" type="Resource" id=28]
+[ext_resource path="res://minigames/minigame6/plants/common/coin_flower0.tres" type="Resource" id=29]
+[ext_resource path="res://minigames/minigame6/plants/legendary/potion1_flower3.tres" type="Resource" id=30]
+[ext_resource path="res://minigames/minigame6/plants/legendary/coin_flower3.tres" type="Resource" id=31]
+[ext_resource path="res://minigames/minigame6/plants/epic/coin_flower2.tres" type="Resource" id=32]
+[ext_resource path="res://minigames/minigame6/plants/legendary/gem_tree3.tres" type="Resource" id=33]
+[ext_resource path="res://minigames/minigame6/plants/epic/st_bush2.tres" type="Resource" id=34]
+[ext_resource path="res://minigames/minigame6/plants/legendary/gem_flower3.tres" type="Resource" id=35]
+[ext_resource path="res://minigames/minigame6/plants/legendary/pt_bush3.tres" type="Resource" id=36]
+[ext_resource path="res://minigames/minigame6/plants/common/gem_flower0.tres" type="Resource" id=37]
+[ext_resource path="res://textures/gui/class_drop_bg.png" type="Texture" id=38]
+[ext_resource path="res://minigames/minigame6/plants/rare/gem_flower1.tres" type="Resource" id=39]
+[ext_resource path="res://minigames/minigame6/plants/rare/st_bush1.tres" type="Resource" id=40]
+[ext_resource path="res://minigames/minigame6/plants/rare/box1.tres" type="Resource" id=41]
+[ext_resource path="res://minigames/minigame6/plants/common/st_flower0.tres" type="Resource" id=42]
+[ext_resource path="res://minigames/minigame6/plants/rare/st_flower1.tres" type="Resource" id=43]
+[ext_resource path="res://minigames/minigame6/plants/rare/coin_bush1.tres" type="Resource" id=44]
+[ext_resource path="res://minigames/minigame6/plants/legendary/gem_bush3.tres" type="Resource" id=45]
+[ext_resource path="res://minigames/minigame6/resources/box.png" type="Texture" id=46]
+[ext_resource path="res://minigames/minigame6/plants/epic/pt_flower2.tres" type="Resource" id=47]
+[ext_resource path="res://minigames/minigame6/plants/legendary/st_bush3.tres" type="Resource" id=48]
+[ext_resource path="res://minigames/minigame6/plants/epic/pt_bush2.tres" type="Resource" id=49]
+[ext_resource path="res://minigames/minigame6/resources/opened_box.png" type="Texture" id=50]
+[ext_resource path="res://minigames/minigame6/plants/common/coin_bush0.tres" type="Resource" id=51]
+[ext_resource path="res://minigames/minigame6/plants/epic/coin_bush2.tres" type="Resource" id=52]
+[ext_resource path="res://minigames/minigame6/plants/epic/potion0_flower2.tres" type="Resource" id=53]
+[ext_resource path="res://minigames/minigame6/plants/epic/st_flower2.tres" type="Resource" id=54]
+[ext_resource path="res://sounds/sfx/menu/tokens.wav" type="AudioStream" id=55]
+[ext_resource path="res://sounds/sfx/menu/potions.wav" type="AudioStream" id=56]
+[ext_resource path="res://minigames/minigame6/resources/plant_box.gd" type="Script" id=57]
+
+[sub_resource type="Animation" id=2]
+resource_name = "appear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("box:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "open"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("box:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.5 ), Vector2( 1, 0.5 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("box:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 46 ), ExtResource( 50 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("glow:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 50, 50 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("glow:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("../sfx")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 24 )
+} ],
+"times": PoolRealArray( 0.7 )
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "open_box"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "get"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("water:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1 ), Vector2( 0.5, 2 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("../sfx")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 55 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "get"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("fert:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1 ), Vector2( 0.5, 2 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("../sfx")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 55 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "rotate"
+length = 20.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.508073, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Animation" id=5]
+resource_name = "get"
+tracks/0/type = "value"
+tracks/0/path = NodePath("pack:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1 ), Vector2( 0.5, 2 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("../sfx")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 56 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[node name="plant_box" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 57 )
+plants_common = [ ExtResource( 51 ), ExtResource( 29 ), ExtResource( 8 ), ExtResource( 37 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 42 ) ]
+plants_epic = [ ExtResource( 52 ), ExtResource( 32 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 23 ), ExtResource( 12 ), ExtResource( 53 ), ExtResource( 49 ), ExtResource( 47 ), ExtResource( 34 ), ExtResource( 54 ) ]
+plants_legendary = [ ExtResource( 25 ), ExtResource( 31 ), ExtResource( 20 ), ExtResource( 7 ), ExtResource( 45 ), ExtResource( 35 ), ExtResource( 33 ), ExtResource( 15 ), ExtResource( 30 ), ExtResource( 36 ), ExtResource( 13 ), ExtResource( 48 ), ExtResource( 22 ) ]
+plants_rare = [ ExtResource( 41 ), ExtResource( 44 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 39 ), ExtResource( 28 ), ExtResource( 11 ), ExtResource( 40 ), ExtResource( 43 ) ]
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+bus = "sfx"
+
+[node name="box_screen" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="bg" type="ColorRect" parent="box_screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.215686, 0, 1 )
+
+[node name="box" type="TextureRect" parent="box_screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 200.0
+margin_bottom = 200.0
+rect_pivot_offset = Vector2( 200, 200 )
+texture = ExtResource( 46 )
+expand = true
+stretch_mode = 6
+
+[node name="glow" type="TextureRect" parent="box_screen"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 20, 20 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="anim" type="AnimationPlayer" parent="box_screen"]
+autoplay = "appear"
+anims/appear = SubResource( 2 )
+anims/open = SubResource( 1 )
+
+[node name="water_screen" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="bg" type="ColorRect" parent="water_screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0.333333, 1 )
+
+[node name="water" type="TextureRect" parent="water_screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -120.0
+margin_right = 120.0
+margin_bottom = 120.0
+rect_scale = Vector2( 1e-05, 1 )
+rect_pivot_offset = Vector2( 120, 120 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+
+[node name="title" type="Label" parent="water_screen/water"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -64.0
+margin_top = -102.0
+margin_right = 64.0
+margin_bottom = -32.0
+grow_horizontal = 2
+theme_type_variation = "LabelTitleLarge"
+text = "ВОДА"
+align = 1
+valign = 1
+
+[node name="label" type="Label" parent="water_screen/water"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -52.0
+margin_top = 38.0
+margin_right = 52.0
+margin_bottom = 90.0
+grow_horizontal = 2
+theme_type_variation = "LabelTitle"
+text = "x 999"
+align = 1
+valign = 1
+
+[node name="anim" type="AnimationPlayer" parent="water_screen"]
+anims/get = SubResource( 3 )
+
+[node name="fert_screen" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="bg" type="ColorRect" parent="fert_screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.333333, 0.164706, 0, 1 )
+
+[node name="fert" type="TextureRect" parent="fert_screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -120.0
+margin_right = 120.0
+margin_bottom = 120.0
+rect_scale = Vector2( 1e-05, 1 )
+rect_pivot_offset = Vector2( 120, 120 )
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="title" type="Label" parent="fert_screen/fert"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -64.0
+margin_top = -102.0
+margin_right = 64.0
+margin_bottom = -32.0
+grow_horizontal = 2
+theme_type_variation = "LabelTitleLarge"
+text = "УДОБРЕНИЕ"
+align = 1
+valign = 1
+
+[node name="label" type="Label" parent="fert_screen/fert"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -52.0
+margin_top = 38.0
+margin_right = 52.0
+margin_bottom = 90.0
+grow_horizontal = 2
+theme_type_variation = "LabelTitle"
+text = "x 999"
+align = 1
+valign = 1
+
+[node name="anim" type="AnimationPlayer" parent="fert_screen"]
+anims/get = SubResource( 4 )
+
+[node name="semen_screen" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="bg" type="ColorRect" parent="semen_screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0901961, 0.333333, 0, 1 )
+
+[node name="pack" type="TextureRect" parent="semen_screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -120.0
+margin_right = 120.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 120, 120 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="title" type="Label" parent="semen_screen/pack"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -64.0
+margin_top = -102.0
+margin_right = 64.0
+margin_bottom = -32.0
+grow_horizontal = 2
+theme_type_variation = "LabelTitleLarge"
+text = "СЕМЕНА РАСТЕНИЯ"
+align = 1
+valign = 1
+
+[node name="rarity" type="Label" parent="semen_screen/pack"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -229.0
+margin_top = -30.0
+margin_right = 230.0
+margin_bottom = -6.0
+grow_horizontal = 2
+text = "Легендарное"
+align = 1
+
+[node name="label" type="Label" parent="semen_screen/pack"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -52.0
+margin_top = 38.0
+margin_right = 52.0
+margin_bottom = 90.0
+grow_horizontal = 2
+theme_type_variation = "LabelTitle"
+text = "Кристальный цветок"
+align = 1
+valign = 1
+
+[node name="plant" type="TextureRect" parent="semen_screen/pack"]
+anchor_left = 0.28
+anchor_top = 0.345
+anchor_right = 0.72
+anchor_bottom = 0.655
+texture = ExtResource( 27 )
+expand = true
+stretch_mode = 6
+
+[node name="glow" type="TextureRect" parent="semen_screen/pack"]
+visible = false
+self_modulate = Color( 1, 1, 0, 0.501961 )
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -160.0
+margin_right = 160.0
+margin_bottom = 160.0
+mouse_filter = 2
+texture = ExtResource( 26 )
+expand = true
+stretch_mode = 6
+
+[node name="light" type="TextureRect" parent="semen_screen/pack/glow"]
+self_modulate = Color( 1, 1, 0, 0.25098 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -160.0
+margin_right = 160.0
+margin_bottom = 160.0
+rect_pivot_offset = Vector2( 160, 160 )
+texture = ExtResource( 38 )
+expand = true
+stretch_mode = 6
+
+[node name="anim" type="AnimationPlayer" parent="semen_screen/pack/glow/light"]
+autoplay = "rotate"
+anims/rotate = SubResource( 6 )
+
+[node name="stars" type="CPUParticles2D" parent="semen_screen/pack/glow"]
+position = Vector2( 160, 160 )
+z_index = 1
+lifetime = 2.0
+texture = ExtResource( 10 )
+emission_shape = 2
+emission_rect_extents = Vector2( 80, 80 )
+direction = Vector2( 0, 0 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+angular_velocity = 90.0
+scale_amount = 2.0
+scale_amount_curve = SubResource( 7 )
+
+[node name="anim" type="AnimationPlayer" parent="semen_screen"]
+anims/get = SubResource( 5 )

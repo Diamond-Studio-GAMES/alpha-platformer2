@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://textures/blocks/lava_mask.png" type="Texture" id=1]
+[ext_resource path="res://shaders/lava.tres" type="Shader" id=2]
+[ext_resource path="res://textures/blocks/water_noise.png" type="Texture" id=3]
+
+[resource]
+shader = ExtResource( 2 )
+shader_param/time_mul = 0.2
+shader_param/dist_dir = Vector2( 0.1, 1 )
+shader_param/dist_n = 0.1
+shader_param/time_mul_n = 0.5
+shader_param/dist_n_dir = Vector2( 1, 1 )
+shader_param/rounds_color = Color( 1, 1, 0, 1 )
+shader_param/lava_mask = ExtResource( 1 )
+shader_param/lava_uv_mask = ExtResource( 3 )

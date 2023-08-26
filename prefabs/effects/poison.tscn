@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://textures/effects/attacks/poison.png" type="Texture" id=2]
+[ext_resource path="res://scripts/game/mobs/fire_attack.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 4.0
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0 ), 0.0, 5.72727, 0, 0, Vector2( 0.497143, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0090909 ), -5.56818, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.284404, 0.685015, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="poison" type="Area2D" groups=["spawnable"]]
+collision_layer = 16
+collision_mask = 38
+script = ExtResource( 3 )
+custom_invincibility_time = 1.0
+custom_immobility_time = 0.0
+defense_allowed = false
+lifetime = 0.0
+is_on_entity = true
+on_entity_damage_ticks = 3
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="poison" type="CPUParticles2D" parent="."]
+amount = 4
+lifetime = 2.0
+texture = ExtResource( 2 )
+emission_shape = 2
+emission_rect_extents = Vector2( 16, 32 )
+direction = Vector2( 0, -1 )
+gravity = Vector2( 0, 0 )
+scale_amount_curve = SubResource( 3 )
+color_ramp = SubResource( 4 )
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath("..") ]
+spawn_sync_data_properties = [ "position", "damage" ]

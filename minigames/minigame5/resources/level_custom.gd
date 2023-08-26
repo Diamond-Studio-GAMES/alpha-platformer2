@@ -7,21 +7,21 @@ var SONGS_BY_ID = {
 	2 : "res://sounds/music/forest_boss.ogg",
 }
 var BG_BY_ID = {
-	0 : "res://prefabs/effects/background.scn",
-	1 : "res://prefabs/effects/background_forest.scn",
+	0 : "res://prefabs/effects/background.tscn",
+	1 : "res://prefabs/effects/background_forest.tscn",
 }
 var GR_BY_ID = {
-	0 : "res://minigames/minigame5/ground_grass.scn",
-	1 : "res://minigames/minigame5/ground_stone.scn",
+	0 : "res://minigames/minigame5/ground_grass.tscn",
+	1 : "res://minigames/minigame5/ground_stone.tscn",
 }
 
 
 func _ready():
-	var tilemap = load("user://custom_levels/" + G.getv("save_id", "lol") + ".scn").instance()
+	var tilemap = load("user://custom_levels/" + G.getv("save_id", "lol") + ".tscn").instance()
 	add_child(tilemap)
-	var load_bg = load("res://minigames/minigame5/load_bg.scn").instance()
+	var load_bg = load("res://minigames/minigame5/load_bg.tscn").instance()
 	tilemap.add_child(load_bg)
-	var end = load("res://minigames/minigame5/end.scn").instance()
+	var end = load("res://minigames/minigame5/end.tscn").instance()
 	tilemap.add_child(end)
 	var music = AudioStreamPlayer.new()
 	music.name = "music"
@@ -34,6 +34,6 @@ func _ready():
 	tilemap.add_child(bg)
 	tilemap.set_script(load("res://minigames/minigame5/resources/level_dash.gd"))
 	tilemap._ready()
-	var dasher = load("res://minigames/minigame5/dasher.scn").instance()
+	var dasher = load("res://minigames/minigame5/dasher.tscn").instance()
 	dasher.global_position = Vector2(0, -16)
 	tilemap.add_child(dasher)

@@ -26,7 +26,7 @@ func finish():
 	if file.file_exists(path.plus_file("apa2_patch.pck")):
 		if G.main_getv("patch_code", 0) == G.VERSION_CODE:
 			ProjectSettings.load_resource_pack(path.plus_file("apa2_patch.pck"))
-	get_tree().change_scene("res://scenes/menu/save_loader.scn")
+	get_tree().change_scene("res://scenes/menu/save_loader.tscn")
 
 
 func _ready():

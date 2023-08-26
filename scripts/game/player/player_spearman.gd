@@ -6,8 +6,8 @@ var anima
 var trck_idx
 var key_idx0
 var key_idx1
-var spear = load("res://prefabs/classes/spear.scn")
-var gadget = load("res://prefabs/classes/spear_attack_gadget.scn")
+var spear = load("res://prefabs/classes/spear.tscn")
+var gadget = load("res://prefabs/classes/spear_attack_gadget.tscn")
 onready var joystick = $camera/gui/base/buttons/buttons_1/joystick
 onready var aim_line = $aim_line
 onready var _attack_visual = $visual/body/spear_attack/visual
@@ -35,7 +35,7 @@ func _ready():
 	$camera/gui/base/ulti_use/ulti_name.text = tr(G.ULTIS[class_nam]) + " " + G.RIM_NUMBERS[ulti_power]
 	_attack_visual.hide()
 	_attack_shape.disabled = true
-	_ulti = load("res://prefabs/classes/spearman_ulti.scn")
+	_ulti = load("res://prefabs/classes/spearman_ulti.tscn")
 	RECHARGE_SPEED = 0.8 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
 	SPEED += (7 if is_amulet(G.Amulet.SPEED) else 0)
 	gen.randomize()

@@ -1,0 +1,186 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://textures/effects/backgrounds/sun.png" type="Texture" id=1]
+[ext_resource path="res://textures/effects/backgrounds/big_cloud.png" type="Texture" id=2]
+[ext_resource path="res://textures/effects/backgrounds/background.png" type="Texture" id=3]
+[ext_resource path="res://textures/effects/backgrounds/mini_cloud.png" type="Texture" id=4]
+[ext_resource path="res://textures/effects/backgrounds/cloud.png" type="Texture" id=5]
+
+[node name="background" type="ParallaxBackground"]
+scroll_base_scale = Vector2( 1, 0.1 )
+scroll_ignore_camera_zoom = true
+
+[node name="big_cloud0" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+
+[node name="sky" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 1920, 1080 )
+
+[node name="sky" type="Sprite" parent="sky"]
+self_modulate = Color( 0, 0.466667, 0.772549, 1 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="sun" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0, 0.1 )
+motion_offset = Vector2( 0, -270 )
+
+[node name="sun" type="Sprite" parent="sun"]
+self_modulate = Color( 1, 1, 0, 1 )
+position = Vector2( 0, 128 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 128, 128 )
+
+[node name="mini_clouds" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_offset = Vector2( 0, -270 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="mini_cloud0" type="Sprite" parent="mini_clouds"]
+position = Vector2( 105, 77 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="mini_cloud1" type="Sprite" parent="mini_clouds"]
+position = Vector2( 215, 157 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="mini_cloud2" type="Sprite" parent="mini_clouds"]
+position = Vector2( 456, 142 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="mini_cloud3" type="Sprite" parent="mini_clouds"]
+position = Vector2( 539, 99 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="mini_cloud4" type="Sprite" parent="mini_clouds"]
+position = Vector2( 786, 118 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="mini_cloud5" type="Sprite" parent="mini_clouds"]
+position = Vector2( 862, 54 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="mini_cloud6" type="Sprite" parent="mini_clouds"]
+position = Vector2( 267, 39 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="mini_cloud7" type="Sprite" parent="mini_clouds"]
+position = Vector2( 1057, 77 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="mini_cloud8" type="Sprite" parent="mini_clouds"]
+position = Vector2( 1167, 157 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="mini_cloud9" type="Sprite" parent="mini_clouds"]
+position = Vector2( 1408, 142 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="mini_cloud10" type="Sprite" parent="mini_clouds"]
+position = Vector2( 1491, 99 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="mini_cloud11" type="Sprite" parent="mini_clouds"]
+position = Vector2( 1738, 118 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="mini_cloud12" type="Sprite" parent="mini_clouds"]
+position = Vector2( 1814, 54 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="mini_cloud13" type="Sprite" parent="mini_clouds"]
+position = Vector2( 1219, 39 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="clouds" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.3, 0.25 )
+motion_offset = Vector2( 0, -270 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="cloud0" type="Sprite" parent="clouds"]
+position = Vector2( 121, 175 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="cloud1" type="Sprite" parent="clouds"]
+position = Vector2( 370, 205 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="cloud2" type="Sprite" parent="clouds"]
+position = Vector2( 367, 83 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="cloud3" type="Sprite" parent="clouds"]
+position = Vector2( 615, 186 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="cloud4" type="Sprite" parent="clouds"]
+position = Vector2( 869, 162 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="cloud5" type="Sprite" parent="clouds"]
+position = Vector2( 648, 81 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="cloud6" type="Sprite" parent="clouds"]
+position = Vector2( 207, 98 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="cloud7" type="Sprite" parent="clouds"]
+position = Vector2( 1073, 175 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="cloud8" type="Sprite" parent="clouds"]
+position = Vector2( 1322, 205 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="cloud9" type="Sprite" parent="clouds"]
+position = Vector2( 1319, 83 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="cloud10" type="Sprite" parent="clouds"]
+position = Vector2( 1567, 186 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="cloud11" type="Sprite" parent="clouds"]
+position = Vector2( 1821, 162 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="cloud12" type="Sprite" parent="clouds"]
+position = Vector2( 1600, 81 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="cloud13" type="Sprite" parent="clouds"]
+position = Vector2( 1159, 98 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )

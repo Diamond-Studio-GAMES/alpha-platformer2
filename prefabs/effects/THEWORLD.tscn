@@ -1,0 +1,369 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://sounds/sfx/ZAWARKA.wav" type="AudioStream" id=1]
+[ext_resource path="res://shaders/materials/grayscale.tres" type="Material" id=2]
+[ext_resource path="res://sounds/sfx/TIMESTOP.ogg" type="AudioStream" id=3]
+[ext_resource path="res://shaders/materials/THE_WORLD.tres" type="Material" id=4]
+[ext_resource path="res://textures/effects/skills/THEWORLD.png" type="Texture" id=5]
+[ext_resource path="res://textures/effects/backgrounds/time_stop_cloud.png" type="Texture" id=6]
+[ext_resource path="res://scripts/game/player/soul_color.gd" type="Script" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "THEWORLD"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("invert:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6, 1.1 ),
+"transitions": PoolRealArray( 1, 5, 0.2, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0, 0 ), Vector2( 80, 80 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("gray:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("sfx")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.2,
+"start_offset": 0.2,
+"stream": ExtResource( 1 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("gray:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("soul_color:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 0.7, 1.2 ),
+"transitions": PoolRealArray( 5, 1, 0.2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 80, 80 ), Vector2( 80, 80 ), Vector2( 0, 0 ) ]
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("sfx_time_stop")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+} ],
+"times": PoolRealArray( -0.00649994, 0, 2 )
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("sfx_time_stop:pitch_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 2.0, 0.65 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("sfx_time_stop:volume_db")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1.3, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 3.0, 0.0, -60.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("clouds:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("clouds/clouds_layer:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "ZERO"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("gray:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("gray:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("sfx_time_stop")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+} ],
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("sfx_time_stop:pitch_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.65, 2.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("sfx_time_stop:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -12.5, 5.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("clouds:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("clouds/clouds_layer:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="THEWORLD" type="Node2D"]
+pause_mode = 2
+z_index = 100
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "THEWORLD"
+anims/THEWORLD = SubResource( 1 )
+anims/ZERO = SubResource( 5 )
+
+[node name="invert" type="Sprite" parent="."]
+material = ExtResource( 4 )
+scale = Vector2( 1e-05, 1e-05 )
+z_index = 1
+texture = ExtResource( 5 )
+
+[node name="soul_color" type="Sprite" parent="."]
+material = ExtResource( 2 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 5 )
+script = ExtResource( 7 )
+
+[node name="gray" type="Sprite" parent="."]
+visible = false
+material = ExtResource( 2 )
+scale = Vector2( 80, 80 )
+z_index = -1
+texture = ExtResource( 5 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+volume_db = 6.0
+bus = "sfx"
+
+[node name="sfx_time_stop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = 3.0
+pitch_scale = 2.0
+bus = "sfx"
+
+[node name="clouds" type="ParallaxBackground" parent="."]
+layer = 1
+visible = false
+scroll_ignore_camera_zoom = true
+
+[node name="clouds_layer" type="ParallaxLayer" parent="clouds"]
+modulate = Color( 1, 1, 1, 0 )
+motion_scale = Vector2( 3.33, 3.33 )
+motion_offset = Vector2( 0, -270 )
+motion_mirroring = Vector2( 1920, 540 )
+
+[node name="cloud" type="Sprite" parent="clouds/clouds_layer"]
+position = Vector2( 92, 130 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 6 )
+
+[node name="cloud2" type="Sprite" parent="clouds/clouds_layer"]
+position = Vector2( 326, 368 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 6 )
+
+[node name="cloud3" type="Sprite" parent="clouds/clouds_layer"]
+position = Vector2( 706, 254 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 6 )
+
+[node name="cloud4" type="Sprite" parent="clouds/clouds_layer"]
+position = Vector2( 1016, 112 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 6 )
+
+[node name="cloud5" type="Sprite" parent="clouds/clouds_layer"]
+position = Vector2( 436, 100 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 6 )
+
+[node name="cloud6" type="Sprite" parent="clouds/clouds_layer"]
+position = Vector2( 852, 460 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 6 )
+
+[node name="cloud7" type="Sprite" parent="clouds/clouds_layer"]
+position = Vector2( -19.9999, 426 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 6 )
+
+[node name="cloud8" type="Sprite" parent="clouds/clouds_layer"]
+position = Vector2( 1098, 366 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 6 )
+
+[node name="cloud9" type="Sprite" parent="clouds/clouds_layer"]
+position = Vector2( 1322, 170 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 6 )
+
+[node name="cloud10" type="Sprite" parent="clouds/clouds_layer"]
+position = Vector2( 1548, 460 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 6 )
+
+[node name="cloud11" type="Sprite" parent="clouds/clouds_layer"]
+position = Vector2( 1662, 90 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 6 )

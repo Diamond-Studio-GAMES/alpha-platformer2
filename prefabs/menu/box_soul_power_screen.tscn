@@ -1,0 +1,251 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://themes/font_headers.tres" type="DynamicFont" id=1]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=2]
+[ext_resource path="res://themes/theme.tres" type="Theme" id=3]
+[ext_resource path="res://textures/gui/bg_light.png" type="Texture" id=4]
+[ext_resource path="res://textures/effects/other/star.png" type="Texture" id=5]
+[ext_resource path="res://textures/gui/class_drop_bg.png" type="Texture" id=6]
+[ext_resource path="res://textures/items/soul_power.png" type="Texture" id=7]
+[ext_resource path="res://sounds/sfx/menu/skill.wav" type="AudioStream" id=8]
+
+[sub_resource type="Animation" id=139]
+resource_name = "rotate"
+length = 12.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("rotated:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Curve" id=134]
+_data = [ Vector2( 0.0138308, 0.00325739 ), 0.0, 0.0, 0, 0, Vector2( 0.499217, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="DynamicFont" id=97]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=99]
+resource_name = "anim"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("label:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 2, 2 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sp:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("desc:rect_position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 800, -0.25, 0, 0.25, 0, 800, -0.25, 0, 0.1, -239.333, 350, -0.1, 262.264, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.7, 1 )
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../bg:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.52549, 0.243137, 0.0901961, 1 ) ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("../sfx")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0.05 )
+}
+
+[node name="soul_power_screen" type="Control"]
+pause_mode = 1
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+color = Color( 0.52549, 0.243137, 0.0901961, 1 )
+
+[node name="glow" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="glow" type="Node2D" parent="glow"]
+modulate = Color( 1, 0.470588, 0, 1 )
+position = Vector2( 20, -12 )
+scale = Vector2( 1.2, 1.2 )
+
+[node name="rotated" type="Sprite" parent="glow/glow"]
+modulate = Color( 1, 1, 1, 0.12549 )
+texture = ExtResource( 6 )
+
+[node name="glow" type="Sprite" parent="glow/glow"]
+texture = ExtResource( 4 )
+
+[node name="anim" type="AnimationPlayer" parent="glow/glow"]
+autoplay = "rotate"
+anims/rotate = SubResource( 139 )
+
+[node name="particles" type="CPUParticles2D" parent="glow"]
+position = Vector2( 20, -12 )
+z_index = 1
+lifetime = 1.5
+texture = ExtResource( 5 )
+emission_shape = 2
+emission_rect_extents = Vector2( 80, 80 )
+gravity = Vector2( 0, 0 )
+angular_velocity = 90.0
+scale_amount = 2.0
+scale_amount_curve = SubResource( 134 )
+
+[node name="label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -230.0
+margin_top = -195.0
+margin_right = 230.0
+margin_bottom = -125.0
+rect_pivot_offset = Vector2( 230, 35 )
+custom_fonts/font = ExtResource( 1 )
+text = "ДУШЕВНАЯ СИЛА"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="class" type="Label" parent="label"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -230.0
+margin_top = -99.0
+margin_right = 230.0
+margin_bottom = -29.0
+rect_pivot_offset = Vector2( 230, 35 )
+custom_fonts/font = SubResource( 97 )
+text = "РЫЦАРЬ"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sp" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.0
+margin_top = -128.0
+margin_right = 96.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 96, 96 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="desc" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = 80.0
+margin_right = 200.0
+margin_bottom = 180.0
+rect_pivot_offset = Vector2( 200, 50 )
+
+[node name="label" type="Label" parent="desc"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = -40.0
+margin_right = 180.0
+margin_bottom = 40.0
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/anim = SubResource( 99 )

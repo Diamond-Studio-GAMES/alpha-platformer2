@@ -6,8 +6,8 @@ var level = 1
 var power = 0
 var attack_power = 25
 var has_amulet = false
-var _ulti_attack = load("res://prefabs/classes/butcher_ulti_attack.scn")
-var _effect = load("res://prefabs/effects/effect_butcher_ulti.scn")
+var _ulti_attack = load("res://prefabs/classes/butcher_ulti_attack.tscn")
+var _effect = load("res://prefabs/effects/effect_butcher_ulti.tscn")
 onready var _level = get_tree().current_scene
 
 

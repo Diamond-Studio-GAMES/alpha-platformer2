@@ -4,7 +4,7 @@ extends "res://minigames/minigame8/scripts/enemy.gd"
 export (float) var time_to_paint = 3
 var paint_timer = 0
 var painted_cameras = []
-var paint = load("res://minigames/minigame8/misc/paint.scn")
+var paint = load("res://minigames/minigame8/misc/paint.tscn")
 
 
 func _process(delta):

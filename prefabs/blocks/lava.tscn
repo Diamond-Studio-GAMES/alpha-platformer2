@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://textures/blocks/lava.png" type="Texture" id=1]
+[ext_resource path="res://shaders/materials/lava.tres" type="Material" id=2]
+[ext_resource path="res://scripts/game/other/graphics_setup.gd" type="Script" id=3]
+[ext_resource path="res://scripts/game/mobs/fire_attack.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 14, 14 )
+
+[node name="lava" type="Area2D"]
+collision_layer = 16
+collision_mask = 6
+script = ExtResource( 4 )
+damage = 50
+custom_invincibility_time = 1.0
+custom_immobility_time = 0.0
+defense_allowed = false
+damage_source = "fire"
+lifetime = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="sprite" type="Sprite" parent="."]
+material = ExtResource( 2 )
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+to_manage = 1
+is_lava_up = false

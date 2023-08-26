@@ -1,0 +1,173 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://textures/blocks/door.png" type="Texture" id=2]
+[ext_resource path="res://scripts/game/other/doors.gd" type="Script" id=3]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "enter"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("tint:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 48, 32 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 50, 16 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "enter"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("door0/sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.2, 1 ), Vector2( 0.2, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("door0/sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -12.8, 0 ), Vector2( -12.8, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("door1/sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.2, 1 ), Vector2( 0.2, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("door1/sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -12.8, 0 ), Vector2( -12.8, 0 ), Vector2( 0, 0 ) ]
+}
+
+[node name="doors" type="Node2D"]
+z_index = -8
+script = ExtResource( 3 )
+
+[node name="layer" type="CanvasLayer" parent="."]
+layer = 25
+
+[node name="tint" type="ColorRect" parent="layer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+
+[node name="anim" type="AnimationPlayer" parent="layer"]
+anims/enter = SubResource( 1 )
+
+[node name="door0" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+monitorable = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="sprite" type="Sprite" parent="door0"]
+texture = ExtResource( 2 )
+
+[node name="shape" type="CollisionShape2D" parent="door0"]
+shape = SubResource( 5 )
+
+[node name="button" type="Button" parent="door0"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -52.0
+margin_right = 75.0
+margin_bottom = -20.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 1 )
+text = "Перейти"
+
+[node name="mask" type="TouchScreenButton" parent="door0/button"]
+shape = SubResource( 4 )
+
+[node name="door1" type="Area2D" parent="."]
+position = Vector2( 0, -512 )
+collision_layer = 8
+collision_mask = 2
+monitorable = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="sprite" type="Sprite" parent="door1"]
+texture = ExtResource( 2 )
+
+[node name="shape" type="CollisionShape2D" parent="door1"]
+shape = SubResource( 5 )
+
+[node name="button" type="Button" parent="door1"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -52.0
+margin_right = 75.0
+margin_bottom = -20.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 1 )
+text = "Перейти"
+
+[node name="mask" type="TouchScreenButton" parent="door1/button"]
+shape = SubResource( 4 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/enter = SubResource( 3 )
+
+[node name="MultiplayerSynchronizer" type="Node" parent="."]
+script = ExtResource( 4 )
+syncing = false
+
+[connection signal="body_entered" from="door0" to="." method="_on_door_body_entered" binds= [ 0 ]]
+[connection signal="body_exited" from="door0" to="." method="_on_door_body_exited" binds= [ 0 ]]
+[connection signal="pressed" from="door0/button/mask" to="." method="enter" binds= [ 0 ]]
+[connection signal="body_entered" from="door1" to="." method="_on_door_body_entered" binds= [ 1 ]]
+[connection signal="body_exited" from="door1" to="." method="_on_door_body_exited" binds= [ 1 ]]
+[connection signal="pressed" from="door1/button/mask" to="." method="enter" binds= [ 1 ]]

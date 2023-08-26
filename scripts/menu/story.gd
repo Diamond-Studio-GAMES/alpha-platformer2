@@ -24,7 +24,7 @@ onready var text = $text
 
 func skip():
 	G.current_level = "1_1"
-	G.change_to_scene("res://scenes/levels/level_" + G.current_level + ".scn")
+	G.change_to_scene("res://scenes/levels/level_" + G.current_level + ".tscn")
 
 
 func _ready():

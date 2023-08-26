@@ -8,7 +8,7 @@ onready var jump_ray1 = $jump_ray_cast2
 onready var path_ray_left = $path_ray_cast_left
 onready var path_ray_right = $path_ray_cast_right
 onready var shoot = $visual/body/arm_right/hand/weapon
-var bullet = load("res://prefabs/mobs/syringe.scn")
+var bullet = load("res://prefabs/mobs/syringe.tscn")
 var _min_distance = 0
 var anima
 var trck_idx = 0

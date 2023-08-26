@@ -1,0 +1,4346 @@
+[gd_scene load_steps=147 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=2]
+[ext_resource path="res://textures/effects/other/glow.png" type="Texture" id=3]
+[ext_resource path="res://themes/theme.tres" type="Theme" id=4]
+[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://sounds/sfx/bow_shoot.wav" type="AudioStream" id=6]
+[ext_resource path="res://textures/mobs/player/leg2.tres" type="Texture" id=7]
+[ext_resource path="res://textures/gui/ulti_bar.tres" type="Texture" id=8]
+[ext_resource path="res://textures/items/normal_potion.png" type="Texture" id=9]
+[ext_resource path="res://textures/items/ulti_token.png" type="Texture" id=10]
+[ext_resource path="res://sounds/sfx/hurt.wav" type="AudioStream" id=11]
+[ext_resource path="res://textures/gui/pause_icon.png" type="Texture" id=12]
+[ext_resource path="res://textures/gui/soul.png" type="Texture" id=13]
+[ext_resource path="res://textures/gui/joystick_tip_arrows.png" type="Texture" id=14]
+[ext_resource path="res://textures/gui/strike_bar.tres" type="Texture" id=15]
+[ext_resource path="res://scripts/game/other/virtual_joystick.gd" type="Script" id=16]
+[ext_resource path="res://textures/gui/health_bar_empty.tres" type="Texture" id=17]
+[ext_resource path="res://prefabs/classes/knight_attack.tscn" type="PackedScene" id=18]
+[ext_resource path="res://textures/classes/archer_weapon2.tres" type="Texture" id=19]
+[ext_resource path="res://textures/mobs/player/leg1.tres" type="Texture" id=20]
+[ext_resource path="res://textures/gui/attack.png" type="Texture" id=21]
+[ext_resource path="res://textures/gui/button_attack1_active.tres" type="Texture" id=22]
+[ext_resource path="res://textures/classes/player_control.tres" type="Texture" id=23]
+[ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=24]
+[ext_resource path="res://textures/classes/archer_weapon1.tres" type="Texture" id=25]
+[ext_resource path="res://scripts/game/player/player_archer.gd" type="Script" id=26]
+[ext_resource path="res://textures/items/small_potion.png" type="Texture" id=27]
+[ext_resource path="res://textures/items/gem.png" type="Texture" id=28]
+[ext_resource path="res://sounds/sfx/heal.wav" type="AudioStream" id=29]
+[ext_resource path="res://textures/gui/health_bar.tres" type="Texture" id=30]
+[ext_resource path="res://scripts/game/player/revive_multiplayer.gd" type="Script" id=31]
+[ext_resource path="res://textures/gui/button_move.tres" type="Texture" id=32]
+[ext_resource path="res://textures/gui/button_attack2_active.tres" type="Texture" id=33]
+[ext_resource path="res://textures/effects/other/dodge_star.png" type="Texture" id=34]
+[ext_resource path="res://textures/items/big_potion.png" type="Texture" id=35]
+[ext_resource path="res://textures/mobs/player/hair_woman.tres" type="Texture" id=36]
+[ext_resource path="res://textures/gui/ulti_button.png" type="Texture" id=37]
+[ext_resource path="res://textures/items/gadget.png" type="Texture" id=38]
+[ext_resource path="res://sounds/sfx/skill_use.wav" type="AudioStream" id=39]
+[ext_resource path="res://sounds/sfx/menu/game_over.wav" type="AudioStream" id=40]
+[ext_resource path="res://textures/gui/joystick_base_outline.png" type="Texture" id=41]
+[ext_resource path="res://textures/classes/archer_arrow.png" type="Texture" id=42]
+[ext_resource path="res://scripts/game/player/soul_color.gd" type="Script" id=43]
+[ext_resource path="res://textures/gui/strike_bar_empty.tres" type="Texture" id=44]
+[ext_resource path="res://sounds/sfx/stun.wav" type="AudioStream" id=45]
+[ext_resource path="res://textures/gui/boss_bar_empty.png" type="Texture" id=46]
+[ext_resource path="res://textures/mobs/player/hand2.tres" type="Texture" id=47]
+[ext_resource path="res://textures/gui/ulti_bar_empty.tres" type="Texture" id=48]
+[ext_resource path="res://scripts/game/player/revive.gd" type="Script" id=49]
+[ext_resource path="res://textures/effects/other/heal_plus.png" type="Texture" id=50]
+[ext_resource path="res://textures/mobs/player/hair_man.tres" type="Texture" id=51]
+[ext_resource path="res://textures/gui/button_move_active.tres" type="Texture" id=52]
+[ext_resource path="res://textures/gui/button_attack1.tres" type="Texture" id=53]
+[ext_resource path="res://textures/mobs/player/hand1.tres" type="Texture" id=54]
+[ext_resource path="res://textures/mobs/player/body.tres" type="Texture" id=55]
+[ext_resource path="res://textures/gui/ulti_icon_4.tres" type="Texture" id=56]
+[ext_resource path="res://textures/effects/skills/revive_shield.tres" type="Texture" id=57]
+[ext_resource path="res://scripts/game/other/pause.gd" type="Script" id=58]
+[ext_resource path="res://textures/gui/breath_indicator.png" type="Texture" id=59]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=60]
+[ext_resource path="res://textures/mobs/player/head.tres" type="Texture" id=61]
+[ext_resource path="res://textures/classes/player_control_with_sp.tres" type="Texture" id=62]
+[ext_resource path="res://sounds/sfx/bow_charging.wav" type="AudioStream" id=63]
+[ext_resource path="res://textures/classes/archer_helmet.png" type="Texture" id=64]
+[ext_resource path="res://sounds/sfx/gadget_use.wav" type="AudioStream" id=65]
+[ext_resource path="res://textures/gui/boss_bar.png" type="Texture" id=66]
+[ext_resource path="res://textures/classes/archer_weapon0.tres" type="Texture" id=67]
+[ext_resource path="res://sounds/sfx/randomed/punch_hit.tres" type="AudioStream" id=68]
+[ext_resource path="res://sounds/sfx/revive.wav" type="AudioStream" id=69]
+[ext_resource path="res://textures/effects/other/use_item_0.tres" type="Texture" id=70]
+[ext_resource path="res://textures/gui/ulti_button_pressed.png" type="Texture" id=71]
+[ext_resource path="res://textures/gui/button_attack2.tres" type="Texture" id=72]
+
+[sub_resource type="Curve" id=17]
+min_value = 1.0
+max_value = 2.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 2 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=18]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="AudioStreamRandomPitch" id=71]
+audio_stream = ExtResource( 63 )
+random_pitch = 1.2
+
+[sub_resource type="AudioStreamRandomPitch" id=70]
+audio_stream = ExtResource( 6 )
+random_pitch = 1.2
+
+[sub_resource type="RectangleShape2D" id=61]
+extents = Vector2( 6, 10 )
+
+[sub_resource type="Animation" id=100]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/head/helmet:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -11.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body/head:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/body/arm_left/hand:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -20.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visual/body/arm_left:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.841847, -10.3828 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visual/body/arm_left:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 20.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("visual/body/arm_right/hand:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 20.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("visual/body/arm_right:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.84, -10.38 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("visual/body/arm_right/hand/weapon:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("visual/body/leg_left:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("visual/body/leg_left/foot:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("visual/body/leg_right:rotation_degrees")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("visual/body/leg_right/foot:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("visual:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("visual/body/head/hair:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("visual/body/arm_left/hand/item:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("visual/body/arm_right:rotation_degrees")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -20.0 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("visual/body/arm_right/hand/weapon/stage0:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("visual/body/arm_right/hand/weapon/stage1:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("visual/body/arm_right/hand/weapon/stage2:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("visual/body/head/helmet:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -29.3 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("visual/body:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=60]
+resource_name = "aiming"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/head/helmet:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/head:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body/arm_left/hand:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.45, 0.55, 0.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -20.0, -60.0, -120.0, -160.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/body/arm_left:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.45, 0.55, 0.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 20.0, -60.0, -30.0, -10.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visual/body/arm_right/hand:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.45 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 20.0, 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visual/body/arm_right:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.45 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -20.0, -90.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("visual/body/arm_right/hand/weapon:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("visual/body/leg_left:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("visual/body/leg_left/foot:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("visual/body/leg_right:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("visual/body/leg_right/foot:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("visual:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("visual/body/head/hair:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("visual/body/arm_left/hand/item:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("visual/body/arm_right/hand/weapon/stage0:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.55, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("visual/body/arm_right/hand/weapon/stage1:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.55, 0.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, false ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("visual/body/arm_right/hand/weapon/stage2:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/18/type = "audio"
+tracks/18/path = NodePath("visual/body/arm_right/hand/weapon/sfx")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource( 71 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=58]
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/head/helmet:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/head:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2001, 0.4669 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -5.0, 5.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body/arm_left/hand:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -20.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/body/arm_left:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2001, 0.2668, 0.4669 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 20.0, -109.841, -114.344, -15.145 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visual/body/arm_right/hand:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2001, 0.2668, 0.4669 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 20.0, -32.9349, -21.4442, -12.6903 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visual/body/arm_right:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2001, 0.2668, 0.4669 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -20.0, -103.498, -115.174, -16.0455 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("visual/body/arm_right/hand/weapon:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2001, 0.4669 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 90.0, 178.956, 158.157 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("visual/body/leg_left:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("visual/body/leg_left/foot:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("visual/body/leg_right:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("visual/body/leg_right/foot:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("visual/body/arm_right/hand/weapon/stage0:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("visual/body/arm_right/hand/weapon/stage1:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("visual/body/arm_right/hand/weapon/stage2:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=59]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/head/helmet:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 69.4473, 66.6681 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/head:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 15.65 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -5.83363, 0.176777 ), Vector2( -11.3137, 25.9862 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -83.411 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/body/arm_left/hand:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -20.0, 1.37814, 1.11767 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visual/body/arm_left:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 20.0, 22.709, 3.01816 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visual/body/arm_right/hand:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 20.0, -0.160007, 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("visual/body/arm_right:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -20.0, 18.6889, -3.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("visual/body/arm_right/hand/weapon:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 90.0, 90.0, 4.66812 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("visual/body/leg_left:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 15.0, -11.8721, -2.43469 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("visual/body/leg_left/foot:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -15.0, -0.530119, -0.407038 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("visual/body/leg_right:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -15.0, -26.3625, -1.5996 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("visual/body/leg_right/foot:rotation_degrees")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 15.0, -1.39808, -1.32288 ]
+}
+tracks/13/type = "method"
+tracks/13/path = NodePath("hurt")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("visual/body/head/helmet:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -29.3 ), Vector2( 0, -29.3 ), Vector2( -23.3535, -44.5027 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("visual/body/arm_right/hand/weapon/stage0:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("visual/body/arm_right/hand/weapon/stage1:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("visual/body/arm_right/hand/weapon/stage2:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "hurt"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/head/helmet:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/head:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 7.87603, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body/arm_left/hand:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -20.0, 1.24652, -20.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/body/arm_left:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 20.0, 16.5087, 20.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visual/body/arm_right/hand:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 20.0, 0.0, 20.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visual/body/arm_right:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -20.0, 15.0, -20.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("visual/body/arm_right/hand/weapon:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 90.0, 90.0, 90.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("visual/body/leg_left:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 15.0, 8.06163, 15.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("visual/body/leg_left/foot:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -15.0, -27.8299, -15.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("visual/body/leg_right:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -15.0, -13.0454, -15.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("visual/body/leg_right/foot:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 15.0, -1.3452, 15.0 ]
+}
+tracks/12/type = "method"
+tracks/12/path = NodePath("hurt")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+
+[sub_resource type="Animation" id=52]
+resource_name = "idle"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/head/helmet:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -11.5 ), Vector2( 0, -11 ), Vector2( 0, -11.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body/head:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 5.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/body/arm_left/hand:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -20.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visual/body/arm_left:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.841847, -10.3828 ), Vector2( -0.84, -9.88 ), Vector2( -0.841847, -10.3828 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visual/body/arm_left:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 20.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("visual/body/arm_right/hand:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 20.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("visual/body/arm_right:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.84, -10.38 ), Vector2( 0.84, -9.88 ), Vector2( 0.84, -10.38 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("visual/body/arm_right/hand/weapon:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("visual/body/leg_left:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("visual/body/leg_left/foot:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("visual/body/leg_right:rotation_degrees")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("visual/body/leg_right/foot:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("visual:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("visual/body/head/hair:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("visual/body/arm_left/hand/item:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("visual/body/arm_right:rotation_degrees")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -20.0 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("visual/body/head/helmet:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -29.3 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("visual/body:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("visual/body/arm_right/hand/weapon/stage0:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("visual/body/arm_right/hand/weapon/stage1:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("visual/body/arm_right/hand/weapon/stage2:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/head/helmet:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/head:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body/arm_left/hand:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -20.0, 107.788, -20.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/body/arm_left:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 20.0, 26.9975, 20.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visual/body/arm_right/hand:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 20.0, -107.0, 20.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visual/body/arm_right:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -20.0, -27.0, -20.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("visual/body/arm_right/hand/weapon:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 90.0, 90.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("visual/body/leg_left:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 15.0, 15.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("visual/body/leg_left/foot:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -15.0, -15.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("visual/body/leg_right:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -15.0, -15.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("visual/body/leg_right/foot:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 15.0, 15.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("visual:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( -1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("visual/body/arm_right/hand/weapon/stage0:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("visual/body/arm_right/hand/weapon/stage1:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("visual/body/arm_right/hand/weapon/stage2:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/head/helmet:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/head:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 6.01429, -13.8493, -13.8493 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body/arm_left/hand:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -20.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/body/arm_left:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 20.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visual/body/arm_right/hand:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 20.0, -0.537197, -0.184325 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visual/body/arm_right:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -20.0, -148.309, -147.572 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("visual/body/arm_right/hand/weapon:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 90.0, 159.355 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("visual/body/leg_left:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("visual/body/leg_left/foot:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("visual/body/leg_right:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("visual/body/leg_right/foot:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/12/type = "method"
+tracks/12/path = NodePath(".")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "make_effect"
+} ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("visual/body/arm_right/hand/weapon/stage0:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("visual/body/arm_right/hand/weapon/stage1:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("visual/body/arm_right/hand/weapon/stage2:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=106]
+resource_name = "use_potion"
+length = 1.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/head/helmet:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/head:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( -0.01, 0.6, 0.8, 1, 1.2, 1.4, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -24.0, -16.0, -24.0, -16.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body/arm_left/hand:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.6, 0.8, 1.4, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -20.0, -50.5006, -67.1899, -34.8828, -9.34141, -112.106, -112.106, -20.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/body/arm_left:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( -0.01, 0.2, 0.3, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 20.0, 23.1048, 29.5112, 16.0192, -80.8654, -85.0188, -76.23, -85.0188, -76.23, 20.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visual/body/arm_right/hand:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 20.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visual/body/arm_right:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -20.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("visual/body/arm_right/hand/weapon:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("visual/body/leg_left:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("visual/body/leg_left/foot:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("visual/body/leg_right:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("visual/body/leg_right/foot:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("visual:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("visual/body/arm_left/hand/item:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.4, 1.575 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 1.5
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/head/helmet:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/head:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body/arm_left/hand:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 0.75, 1.15, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.18079, 1.17796, 1.27693, 1.24732, 1.1601 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/body/arm_left:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4, 0.75, 1.15, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -2.0753, -25.6293, -4.2651, 17.2095, -3.04229 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visual/body/arm_right/hand:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -1.29708 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visual/body/arm_right:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.38, 0.74, 1.13, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.53659, 28.7258, 4.40265, -19.9416, 1.36202 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("visual/body/arm_right/hand/weapon:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("visual/body/leg_left:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.375, 0.75, 1.125, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.522197, -18.785, -2.51317, 15.5951, 0.772741 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("visual/body/leg_left/foot:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.375, 0.75, 1.125, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -0.815722, -0.399624, -0.424542, -0.448139, -0.386073 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("visual/body/leg_right:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.375, 0.75, 1.125, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.10903, 19.1457, 4.96345, -18.204, 2.65866 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("visual/body/leg_right/foot:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.375, 0.75, 1.125, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -1.30989, -1.34326, -1.30945, -1.37409, -1.34401 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=97]
+animation = "aiming"
+
+[sub_resource type="AnimationNodeBlend2" id=101]
+filter_enabled = true
+filters = [ "visual/body/arm_left/hand:rotation_degrees", "visual/body/arm_left:rotation_degrees", "visual/body/arm_right/hand/weapon/sfx", "visual/body/arm_right/hand/weapon/stage0:visible", "visual/body/arm_right/hand/weapon/stage1:visible", "visual/body/arm_right/hand/weapon/stage2:visible", "visual/body/arm_right/hand/weapon:rotation_degrees", "visual/body/arm_right/hand:rotation_degrees", "visual/body/arm_right:rotation_degrees", "visual/body/head:rotation_degrees" ]
+
+[sub_resource type="AnimationNodeTimeSeek" id=103]
+
+[sub_resource type="AnimationNodeTimeScale" id=102]
+
+[sub_resource type="AnimationNodeAnimation" id=75]
+animation = "attack"
+
+[sub_resource type="AnimationNodeTimeSeek" id=89]
+
+[sub_resource type="AnimationNodeOneShot" id=76]
+filter_enabled = true
+filters = [ "visual/body/arm_left/hand:rotation_degrees", "visual/body/arm_left:rotation_degrees", "visual/body/arm_right/hand/end:rotation_degrees", "visual/body/arm_right/hand/weapon:rotation_degrees", "visual/body/arm_right/hand:rotation_degrees", "visual/body/arm_right:rotation_degrees", "visual/body/attack0/swing", "visual/body/attack1/swing", "visual/body/head:rotation_degrees" ]
+fadein_time = 0.2
+fadeout_time = 0.15
+
+[sub_resource type="AnimationNodeAnimation" id=82]
+animation = "death"
+
+[sub_resource type="AnimationNodeTransition" id=85]
+input_count = 2
+xfade_time = 0.1
+input_0/name = "in"
+input_0/auto_advance = false
+input_1/name = "death"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeAnimation" id=83]
+animation = "hurt"
+
+[sub_resource type="AnimationNodeOneShot" id=84]
+
+[sub_resource type="AnimationNodeAnimation" id=78]
+animation = "idle"
+
+[sub_resource type="AnimationNodeTransition" id=86]
+input_count = 2
+xfade_time = 0.15
+input_0/name = "idle"
+input_0/auto_advance = false
+input_1/name = "walk"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeAnimation" id=87]
+animation = "use_potion"
+
+[sub_resource type="AnimationNodeTimeSeek" id=91]
+
+[sub_resource type="AnimationNodeOneShot" id=88]
+filter_enabled = true
+filters = [ "visual/body/arm_left/hand/item:scale", "visual/body/arm_left/hand/item:texture", "visual/body/arm_left/hand/item:visible", "visual/body/arm_left/hand:rotation_degrees", "visual/body/arm_left:rotation_degrees", "visual/body/head:rotation_degrees" ]
+fadeout_time = 0.2
+
+[sub_resource type="AnimationNodeAnimation" id=95]
+animation = "skill_use"
+
+[sub_resource type="AnimationNodeOneShot" id=96]
+filter_enabled = true
+filters = [ ".", "visual/body/arm_right/hand/weapon:rotation_degrees", "visual/body/arm_right/hand:rotation_degrees", "visual/body/arm_right:rotation_degrees", "visual/body/head:rotation_degrees" ]
+fadeout_time = 0.2
+
+[sub_resource type="AnimationNodeAnimation" id=79]
+animation = "walk"
+
+[sub_resource type="AnimationNodeBlendTree" id=94]
+graph_offset = Vector2( -78, 52 )
+nodes/aim/node = SubResource( 97 )
+nodes/aim/position = Vector2( 70.5882, 423.529 )
+nodes/aim_blend/node = SubResource( 101 )
+nodes/aim_blend/position = Vector2( 541.176, 94.1176 )
+nodes/aim_seek/node = SubResource( 103 )
+nodes/aim_seek/position = Vector2( 258.824, 329.412 )
+nodes/aim_ts/node = SubResource( 102 )
+nodes/aim_ts/position = Vector2( 400, 258.824 )
+nodes/attack/node = SubResource( 75 )
+nodes/attack/position = Vector2( -94.1176, 329.412 )
+nodes/attack_seek/node = SubResource( 89 )
+nodes/attack_seek/position = Vector2( 70.5882, 282.353 )
+nodes/attack_shot/node = SubResource( 76 )
+nodes/attack_shot/position = Vector2( 211.765, 94.1176 )
+nodes/death/node = SubResource( 82 )
+nodes/death/position = Vector2( 1129.41, 352.941 )
+nodes/death_trans/node = SubResource( 85 )
+nodes/death_trans/position = Vector2( 1317.65, 211.765 )
+nodes/hurt/node = SubResource( 83 )
+nodes/hurt/position = Vector2( -282.353, 305.882 )
+nodes/hurt_shot/node = SubResource( 84 )
+nodes/hurt_shot/position = Vector2( -94.1176, 70.5882 )
+nodes/idle/node = SubResource( 78 )
+nodes/idle/position = Vector2( -564.706, 94.1176 )
+nodes/iw_trans/node = SubResource( 86 )
+nodes/iw_trans/position = Vector2( -305.882, 117.647 )
+nodes/output/position = Vector2( 1529.41, 235.294 )
+nodes/potion/node = SubResource( 87 )
+nodes/potion/position = Vector2( 400, 447.059 )
+nodes/potion_seek/node = SubResource( 91 )
+nodes/potion_seek/position = Vector2( 611.765, 305.882 )
+nodes/potion_shot/node = SubResource( 88 )
+nodes/potion_shot/position = Vector2( 800, 94.1176 )
+nodes/ulti/node = SubResource( 95 )
+nodes/ulti/position = Vector2( 870.588, 305.882 )
+nodes/ulti_shot/node = SubResource( 96 )
+nodes/ulti_shot/position = Vector2( 1058.82, 141.176 )
+nodes/walk/node = SubResource( 79 )
+nodes/walk/position = Vector2( -564.706, 211.765 )
+node_connections = [ "output", 0, "death_trans", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "aim_seek", 0, "aim", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "aim_blend", 0, "attack_shot", "aim_blend", 1, "aim_ts", "attack_seek", 0, "attack", "aim_ts", 0, "aim_seek", "potion_shot", 0, "aim_blend", "potion_shot", 1, "potion_seek", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "potion_seek", 0, "potion", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
+
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 8.24788
+height = 41.1497
+
+[sub_resource type="DynamicFont" id=104]
+size = 27
+font_data = ExtResource( 5 )
+
+[sub_resource type="CapsuleShape2D" id=105]
+radius = 8.0
+height = 42.0
+
+[sub_resource type="DynamicFont" id=30]
+size = 28
+outline_size = 4
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=31]
+resource_name = "ulti_use"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../camera/gui/base/ulti_use:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.501961 ), Color( 0, 0, 0, 0.501961 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../camera/gui/base/ulti_use/ulti_name:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 1.6, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 2, 2 ), Vector2( 1.5, 1.5 ), Vector2( 1.5, 1.5 ), Vector2( 2, 2 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 16, 10 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 16, 10 )
+
+[sub_resource type="DynamicFont" id=73]
+size = 28
+font_data = ExtResource( 5 )
+
+[sub_resource type="RectangleShape2D" id=74]
+extents = Vector2( 60, 60 )
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 16, 10 )
+
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 10, 16 )
+
+[sub_resource type="Curve" id=26]
+max_value = 2.0
+_data = [ Vector2( 0, 0.977413 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.6345 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=27]
+offsets = PoolRealArray( 0, 0.988095 )
+colors = PoolColorArray( 1, 1, 1, 0.784314, 1, 1, 1, 0 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.247059, 0.247059, 0.247059, 0.752941 )
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Animation" id=13]
+resource_name = "empty"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 107, 43.5 ), Vector2( 96, 43.5 ), Vector2( 118, 43.5 ), Vector2( 107, 43.5 ) ]
+}
+
+[sub_resource type="Curve" id=32]
+min_value = 0.75
+max_value = 1.5
+_data = [ Vector2( 0, 0.75 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.5 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="RectangleShape2D" id=93]
+extents = Vector2( 20, 20 )
+
+[sub_resource type="DynamicFont" id=68]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="InputEventAction" id=48]
+action = "pause"
+
+[sub_resource type="ShortCut" id=49]
+shortcut = SubResource( 48 )
+
+[sub_resource type="DynamicFont" id=64]
+size = 34
+outline_size = 6
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=65]
+resource_name = "dying"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("fg:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.15, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 0.752941 ), Color( 1, 0, 0, 0.25098 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("defeat:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 2, 2 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=66]
+resource_name = "hurting"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("fg:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0.25098 ), Color( 1, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=67]
+resource_name = "reviving"
+length = 1.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("fg:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 0, 1 ), Color( 0, 1, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("defeat:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("revive:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 1.5, 1.6, 1.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 2, 2 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.25, 1.25 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=28]
+size = 28
+outline_size = 3
+outline_color = Color( 0, 0.505882, 1, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=29]
+resource_name = "intro"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("text:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 2, 2 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("text:rect_position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 170, -0.25, 0, 0.25, 0, 170, -0.25, 0, 0.25, 0, -300, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.4, 2 )
+}
+
+[sub_resource type="Animation" id=11]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 90.0 ]
+}
+
+[sub_resource type="Curve" id=16]
+max_value = 5.0
+_data = [ Vector2( 0, 5 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=15]
+_data = [ Vector2( 0, 0.490247 ), 0.0, 0.0, 0, 0, Vector2( 0.497789, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.233573 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Animation" id=53]
+resource_name = "nope"
+tracks/0/type = "value"
+tracks/0/path = NodePath("../control_indicator:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 0.501961 ) ]
+}
+
+[sub_resource type="Animation" id=54]
+resource_name = "ulti_charged"
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath("../camera/gui/base/hero_panel/ulti_bar/effect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../camera/gui/base/buttons/buttons_1/ulti/particles")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../control_indicator:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../control_indicator/standard/effect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../control_indicator/sp/effect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+
+[sub_resource type="Animation" id=55]
+resource_name = "ulti_now_charged"
+tracks/0/type = "method"
+tracks/0/path = NodePath("../camera/gui/base/hero_panel/ulti_bar/effect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../camera/gui/base/buttons/buttons_1/ulti/particles")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../control_indicator:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 1, 1 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../control_indicator/sp/effect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../control_indicator/standard/effect")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+
+[sub_resource type="CircleShape2D" id=40]
+radius = 2.5
+
+[sub_resource type="Curve" id=43]
+max_value = 3.0
+_data = [ Vector2( 0, 0.274128 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.46304 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=44]
+offsets = PoolRealArray( 0, 0.452381, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="Curve" id=47]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.505159, 0.497433 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=50]
+offsets = PoolRealArray( 0, 0.320574, 0.665072, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="CircleShape2D" id=62]
+radius = 64.0
+
+[sub_resource type="Animation" id=63]
+resource_name = "def"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("shape:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="player" type="KinematicBody2D" groups=["spawnable"]]
+position = Vector2( 1, 0 )
+collision_layer = 2
+collision_mask = 29
+script = ExtResource( 26 )
+__meta__ = {
+"_editor_description_": ""
+}
+SPEED = 78.0
+ulti_filled = Color( 0, 1, 1, 1 )
+ulti_empty = Color( 0, 0.74902, 0.74902, 1 )
+
+[node name="control_indicator" type="Node2D" parent="."]
+modulate = Color( 1, 0, 1, 1 )
+position = Vector2( 0, 30 )
+z_index = 30
+
+[node name="standard" type="Sprite" parent="control_indicator"]
+visible = false
+position = Vector2( 0, 8 )
+z_index = 10
+texture = ExtResource( 23 )
+
+[node name="effect" type="CPUParticles2D" parent="control_indicator/standard"]
+emitting = false
+amount = 3
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.3
+texture = ExtResource( 23 )
+direction = Vector2( 0, 0 )
+gravity = Vector2( 0, 0 )
+scale_amount_curve = SubResource( 17 )
+color_ramp = SubResource( 18 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="sp" type="Sprite" parent="control_indicator"]
+visible = false
+position = Vector2( 0, 8 )
+z_index = 10
+texture = ExtResource( 62 )
+
+[node name="effect" type="CPUParticles2D" parent="control_indicator/sp"]
+emitting = false
+amount = 3
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.3
+texture = ExtResource( 62 )
+direction = Vector2( 0, 0 )
+gravity = Vector2( 0, 0 )
+scale_amount_curve = SubResource( 17 )
+color_ramp = SubResource( 18 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="visual" type="Node2D" parent="."]
+z_index = -3
+
+[node name="body" type="Sprite" parent="visual"]
+texture = ExtResource( 55 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="head" type="Sprite" parent="visual/body"]
+position = Vector2( 0, -11.5 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 61 )
+offset = Vector2( 0, -16 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="hair" type="Node2D" parent="visual/body/head"]
+position = Vector2( 0, -28 )
+
+[node name="hair_man" type="Sprite" parent="visual/body/head/hair"]
+texture = ExtResource( 51 )
+
+[node name="hair_woman" type="Sprite" parent="visual/body/head/hair"]
+visible = false
+position = Vector2( -1.06, 4.5 )
+scale = Vector2( 1.15, 1.15 )
+texture = ExtResource( 36 )
+
+[node name="helmet" type="Sprite" parent="visual/body/head"]
+position = Vector2( 0, -29.3 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 64 )
+
+[node name="end" type="Position2D" parent="visual/body/head"]
+position = Vector2( 0, -10 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="arm_left" type="Sprite" parent="visual/body"]
+position = Vector2( -0.841847, -10.3828 )
+rotation = 0.349066
+scale = Vector2( 0.7, 0.7 )
+z_index = -1
+texture = ExtResource( 54 )
+offset = Vector2( 0, 7 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="hand" type="Sprite" parent="visual/body/arm_left"]
+position = Vector2( -0.280607, 13.0937 )
+rotation = -0.349066
+texture = ExtResource( 47 )
+offset = Vector2( 0.5, 7.5 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="end" type="Position2D" parent="visual/body/arm_left/hand"]
+position = Vector2( 0, 12.8571 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="item" type="Sprite" parent="visual/body/arm_left/hand"]
+visible = false
+show_behind_parent = true
+position = Vector2( -4, 13 )
+rotation = 1.5708
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 27 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="arm_right" type="Sprite" parent="visual/body"]
+show_behind_parent = true
+position = Vector2( 0.84, -10.38 )
+rotation = -0.349066
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 54 )
+offset = Vector2( 0, 7 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="hand" type="Sprite" parent="visual/body/arm_right"]
+position = Vector2( 0.224804, 13.1596 )
+rotation = 0.349066
+z_index = -1
+texture = ExtResource( 47 )
+offset = Vector2( 0.5, 7.5 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="weapon" type="Node2D" parent="visual/body/arm_right/hand"]
+show_behind_parent = true
+position = Vector2( 0, 12.8571 )
+rotation = 1.5708
+scale = Vector2( 1.25, 1.25 )
+
+[node name="stage0" type="Sprite" parent="visual/body/arm_right/hand/weapon"]
+texture = ExtResource( 67 )
+offset = Vector2( -3, 0 )
+
+[node name="string" type="Line2D" parent="visual/body/arm_right/hand/weapon/stage0"]
+show_behind_parent = true
+points = PoolVector2Array( -6, -15, -6, 15 )
+width = 0.5
+default_color = Color( 0.658824, 0.658824, 0.658824, 1 )
+
+[node name="stage1" type="Sprite" parent="visual/body/arm_right/hand/weapon"]
+visible = false
+texture = ExtResource( 25 )
+offset = Vector2( -3, 0 )
+
+[node name="string" type="Line2D" parent="visual/body/arm_right/hand/weapon/stage1"]
+show_behind_parent = true
+points = PoolVector2Array( -7, -15, -14, 0, -7, 15 )
+width = 0.5
+default_color = Color( 0.658824, 0.658824, 0.658824, 1 )
+
+[node name="arrow" type="Sprite" parent="visual/body/arm_right/hand/weapon/stage1"]
+rotation = 1.5708
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 42 )
+offset = Vector2( 0, 2 )
+
+[node name="stage2" type="Sprite" parent="visual/body/arm_right/hand/weapon"]
+visible = false
+texture = ExtResource( 19 )
+offset = Vector2( -3, 0 )
+
+[node name="string" type="Line2D" parent="visual/body/arm_right/hand/weapon/stage2"]
+show_behind_parent = true
+points = PoolVector2Array( -8, -15, -20, 0, -8, 15 )
+width = 0.5
+default_color = Color( 0.658824, 0.658824, 0.658824, 1 )
+
+[node name="arrow" type="Sprite" parent="visual/body/arm_right/hand/weapon/stage2"]
+rotation = 1.5708
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 42 )
+offset = Vector2( 0, 10 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="visual/body/arm_right/hand/weapon"]
+stream = SubResource( 71 )
+volume_db = -14.4249
+bus = "sfx"
+
+[node name="sfx2" type="AudioStreamPlayer2D" parent="visual/body/arm_right/hand/weapon"]
+stream = SubResource( 70 )
+bus = "sfx"
+
+[node name="end" type="Position2D" parent="visual/body/arm_right/hand"]
+position = Vector2( 0.178571, 12.5 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="leg_left" type="Sprite" parent="visual/body"]
+position = Vector2( 0, 10.5 )
+rotation = 0.261799
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 20 )
+offset = Vector2( 0, 8 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="foot" type="Sprite" parent="visual/body/leg_left"]
+position = Vector2( -0.368991, 13.4578 )
+rotation = -0.261799
+texture = ExtResource( 7 )
+offset = Vector2( 1.64733, 7.80969 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="end" type="Position2D" parent="visual/body/leg_left/foot"]
+position = Vector2( -0.496038, 13.9185 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="leg_right" type="Sprite" parent="visual/body"]
+position = Vector2( 0.625524, 10.3214 )
+rotation = -0.261799
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 20 )
+offset = Vector2( -0.75, 8 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="foot" type="Sprite" parent="visual/body/leg_right"]
+position = Vector2( 0.22895, 13.6094 )
+rotation = 0.261799
+texture = ExtResource( 7 )
+offset = Vector2( 0.75, 8 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="end" type="Position2D" parent="visual/body/leg_right/foot"]
+position = Vector2( -0.0941293, 14.1841 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="knight_attack" parent="visual/body" instance=ExtResource( 18 )]
+
+[node name="visual" parent="visual/body/knight_attack" index="0"]
+position = Vector2( 10.8571, -2.3 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="shape" parent="visual/body/knight_attack" index="1"]
+position = Vector2( 11.8571, -2.7 )
+shape = SubResource( 61 )
+
+[node name="swing" parent="visual/body/knight_attack" index="2"]
+bus = "Master"
+
+[node name="hit" parent="visual/body/knight_attack" index="3"]
+stream = ExtResource( 68 )
+bus = "Master"
+
+[node name="hit_wall" parent="visual/body/knight_attack" index="4"]
+stream = ExtResource( 68 )
+bus = "Master"
+
+[node name="anim" type="AnimationPlayer" parent="."]
+playback_default_blend_time = 0.01
+anims/RESET = SubResource( 100 )
+anims/aiming = SubResource( 60 )
+anims/attack = SubResource( 58 )
+anims/death = SubResource( 59 )
+anims/hurt = SubResource( 3 )
+anims/idle = SubResource( 52 )
+anims/miss = SubResource( 5 )
+anims/skill_use = SubResource( 7 )
+anims/use_potion = SubResource( 106 )
+anims/walk = SubResource( 8 )
+next/attack = "idle"
+next/hurt = "idle"
+next/miss = "idle"
+next/skill_use = "idle"
+blend_times = [ "aiming", "idle", 0.3, "attack", "attack", 0.3, "attack", "idle", 0.3, "attack", "skill_use", 0.3, "attack", "walk", 0.5, "death", "attack", 0.3, "death", "miss", 0.3, "death", "skill_use", 0.3, "death", "walk", 0.5, "hurt", "attack", 0.3, "hurt", "idle", 0.3, "hurt", "skill_use", 0.3, "hurt", "walk", 0.5, "idle", "attack", 0.3, "idle", "idle", 0.3, "idle", "skill_use", 0.3, "idle", "walk", 0.5, "miss", "attack", 0.3, "miss", "idle", 0.3, "miss", "skill_use", 0.3, "miss", "walk", 0.5, "skill_use", "attack", 0.3, "skill_use", "idle", 0.3, "skill_use", "skill_use", 0.3, "skill_use", "walk", 0.5, "use_potion", "death", 0.3, "use_potion", "hurt", 0.3, "use_potion", "idle", 0.3, "use_potion", "miss", 0.3, "use_potion", "skill_use", 0.3, "use_potion", "use_potion", 0.3, "use_potion", "walk", 0.5, "walk", "attack", 0.3, "walk", "idle", 0.3, "walk", "skill_use", 0.3, "walk", "walk", 0.5 ]
+
+[node name="anim_tree" type="AnimationTree" parent="."]
+tree_root = SubResource( 94 )
+anim_player = NodePath("../anim")
+active = true
+parameters/aim_blend/blend_amount = 0.0
+parameters/aim_seek/seek_position = -1.0
+parameters/aim_ts/scale = 1.0
+parameters/attack_seek/seek_position = -1.0
+parameters/attack_shot/active = false
+parameters/death_trans/current = 0
+parameters/hurt_shot/active = false
+parameters/iw_trans/current = 0
+parameters/potion_seek/seek_position = -1.0
+parameters/potion_shot/active = false
+parameters/ulti_shot/active = false
+
+[node name="shape" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, 1 )
+shape = SubResource( 9 )
+
+[node name="bars" type="Control" parent="."]
+visible = false
+margin_left = -26.0
+margin_top = -37.0
+margin_right = 26.0
+margin_bottom = -31.0
+mouse_filter = 2
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="progress" type="TextureProgress" parent="bars"]
+self_modulate = Color( 0, 1, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+value = 100.0
+texture_progress = ExtResource( 15 )
+nine_patch_stretch = true
+
+[node name="under" type="TextureProgress" parent="bars/progress"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+value = 100.0
+texture_progress = ExtResource( 30 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="TextureRect" parent="bars/progress/under"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 17 )
+expand = true
+
+[node name="hp" type="Label" parent="bars"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -39.0
+margin_top = -15.0
+margin_right = 221.0
+margin_bottom = 36.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 104 )
+text = "50/50"
+align = 1
+valign = 1
+
+[node name="name" type="Label" parent="bars"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -54.0
+margin_top = -23.0
+margin_right = 306.0
+margin_bottom = 28.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 104 )
+align = 1
+valign = 1
+
+[node name="revive" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 2
+monitorable = false
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="shape" type="CollisionShape2D" parent="revive"]
+visible = false
+position = Vector2( 0, 1 )
+shape = SubResource( 105 )
+
+[node name="revive_bars" type="Control" parent="revive"]
+margin_left = -26.0
+margin_top = -19.0
+margin_right = 26.0
+margin_bottom = -13.0
+mouse_filter = 2
+theme = ExtResource( 4 )
+
+[node name="progress" type="TextureProgress" parent="revive/revive_bars"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 10.0
+step = 0.01
+texture_under = ExtResource( 15 )
+texture_progress = ExtResource( 15 )
+tint_under = Color( 0, 0.501961, 0, 1 )
+tint_progress = Color( 0, 1, 0, 1 )
+nine_patch_stretch = true
+
+[node name="name" type="Label" parent="revive/revive_bars"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -54.0
+margin_top = -15.0
+margin_right = 306.0
+margin_bottom = 36.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 104 )
+text = "ВОСКРЕСИ МЕНЯ!"
+align = 1
+valign = 1
+
+[node name="camera" type="Camera2D" parent="."]
+zoom = Vector2( 0.3, 0.3 )
+script = ExtResource( 49 )
+
+[node name="gui" type="CanvasLayer" parent="camera"]
+layer = 10
+
+[node name="base" type="Control" parent="camera/gui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 4 )
+
+[node name="ulti_use" type="ColorRect" parent="camera/gui/base"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ulti_name" type="Label" parent="camera/gui/base/ulti_use"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -200.0
+margin_top = 120.0
+margin_right = 200.0
+margin_bottom = 180.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 200, 30 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 1, 1, 1 )
+custom_fonts/font = SubResource( 30 )
+text = "ШКВАЛ I"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="anim" type="AnimationPlayer" parent="camera/gui/base/ulti_use"]
+root_node = NodePath("../../../../../ulti_charge_effect")
+anims/ulti_use = SubResource( 31 )
+
+[node name="buttons" type="Control" parent="camera/gui/base"]
+anchor_top = 0.343
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 354.78
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buttons_0" type="Control" parent="camera/gui/base/buttons"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -200.0
+margin_right = 380.0
+mouse_filter = 2
+
+[node name="left" type="TouchScreenButton" parent="camera/gui/base/buttons/buttons_0"]
+position = Vector2( 20, 20 )
+scale = Vector2( 5, 5 )
+normal = ExtResource( 32 )
+pressed = ExtResource( 52 )
+shape = SubResource( 23 )
+
+[node name="right" type="TouchScreenButton" parent="camera/gui/base/buttons/buttons_0"]
+position = Vector2( 360, 20 )
+scale = Vector2( -5, 5 )
+normal = ExtResource( 32 )
+pressed = ExtResource( 52 )
+shape = SubResource( 24 )
+
+[node name="gadget" type="TextureRect" parent="camera/gui/base/buttons/buttons_0"]
+margin_left = 24.0
+margin_top = -80.0
+margin_right = 144.0
+margin_bottom = 40.0
+texture = ExtResource( 38 )
+expand = true
+stretch_mode = 6
+
+[node name="progress" type="TextureProgress" parent="camera/gui/base/buttons/buttons_0/gadget"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 10.0
+step = 0.01
+texture_progress = ExtResource( 38 )
+fill_mode = 2
+tint_progress = Color( 0.52549, 0.52549, 0.52549, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="camera/gui/base/buttons/buttons_0/gadget"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -25.0
+margin_top = -70.0
+margin_right = 25.0
+custom_fonts/font = SubResource( 73 )
+text = "3"
+align = 1
+valign = 2
+
+[node name="button" type="TouchScreenButton" parent="camera/gui/base/buttons/buttons_0/gadget"]
+shape = SubResource( 74 )
+
+[node name="buttons_1" type="Control" parent="camera/gui/base/buttons"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -380.0
+margin_top = -200.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="jump" type="TouchScreenButton" parent="camera/gui/base/buttons/buttons_1"]
+position = Vector2( 393, 20 )
+rotation = 1.5708
+scale = Vector2( 5, 5 )
+normal = ExtResource( 32 )
+pressed = ExtResource( 52 )
+shape = SubResource( 22 )
+
+[node name="attack1" type="TouchScreenButton" parent="camera/gui/base/buttons/buttons_1"]
+visible = false
+position = Vector2( 13, 21 )
+scale = Vector2( 5, 5 )
+normal = ExtResource( 53 )
+pressed = ExtResource( 22 )
+
+[node name="attack2" type="TouchScreenButton" parent="camera/gui/base/buttons/buttons_1"]
+visible = false
+position = Vector2( 47, 20 )
+scale = Vector2( 5, 5 )
+normal = ExtResource( 72 )
+pressed = ExtResource( 33 )
+
+[node name="ulti" type="TouchScreenButton" parent="camera/gui/base/buttons/buttons_1"]
+position = Vector2( 234, -155 )
+scale = Vector2( 5, 5 )
+normal = ExtResource( 37 )
+pressed = ExtResource( 71 )
+shape = SubResource( 25 )
+
+[node name="particles" type="CPUParticles2D" parent="camera/gui/base/buttons/buttons_1/ulti"]
+show_behind_parent = true
+position = Vector2( 16, 16 )
+emitting = false
+amount = 3
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.2
+texture = ExtResource( 37 )
+direction = Vector2( 0, 0 )
+gravity = Vector2( 0, 0 )
+scale_amount_curve = SubResource( 26 )
+color_ramp = SubResource( 27 )
+
+[node name="joystick" type="Control" parent="camera/gui/base/buttons/buttons_1"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -286.0
+margin_top = -179.0
+margin_right = -126.0
+margin_bottom = -19.0
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+pressed_color = Color( 0, 0, 1, 1 )
+deadzone_size = 30.0
+joystick_mode = 1
+use_input_actions = false
+
+[node name="base" type="TextureRect" parent="camera/gui/base/buttons/buttons_1/joystick"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 80, 80 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 41 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tip" type="TextureRect" parent="camera/gui/base/buttons/buttons_1/joystick/base"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 40.0
+margin_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 40, 40 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 14 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hero_panel" type="Panel" parent="camera/gui/base"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -196.0
+margin_right = 197.0
+margin_bottom = 88.0
+custom_styles/panel = SubResource( 10 )
+
+[node name="head" type="TextureRect" parent="camera/gui/base/hero_panel"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 13.0
+margin_top = -25.0
+margin_right = 63.0
+margin_bottom = 25.0
+texture = ExtResource( 61 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hair_man" type="TextureRect" parent="camera/gui/base/hero_panel/head"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -25.33
+margin_top = -5.38
+margin_right = 26.67
+margin_bottom = 20.62
+texture = ExtResource( 51 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hair_woman" type="TextureRect" parent="camera/gui/base/hero_panel/head"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -29.04
+margin_top = -5.34
+margin_right = 26.96
+margin_bottom = 34.66
+texture = ExtResource( 36 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="soul" type="TextureRect" parent="camera/gui/base/hero_panel/head"]
+self_modulate = Color( 1, 1, 0, 1 )
+margin_left = 36.0
+margin_top = 37.0
+margin_right = 52.0
+margin_bottom = 53.0
+texture = ExtResource( 13 )
+script = ExtResource( 43 )
+
+[node name="name" type="Label" parent="camera/gui/base/hero_panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -117.5
+margin_right = 117.5
+margin_bottom = 24.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Miha Loh"
+align = 1
+valign = 1
+
+[node name="health" type="TextureProgress" parent="camera/gui/base/hero_panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -91.5
+margin_top = -20.5
+margin_right = 98.5
+margin_bottom = -10.5
+value = 100.0
+texture_progress = ExtResource( 30 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="under" type="TextureRect" parent="camera/gui/base/hero_panel/health"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 17 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="health_change" type="TextureProgress" parent="camera/gui/base/hero_panel/health"]
+self_modulate = Color( 1, 0.447059, 0, 1 )
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+value = 100.0
+texture_progress = ExtResource( 15 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="soul" type="TextureRect" parent="camera/gui/base/hero_panel/health"]
+self_modulate = Color( 1, 0, 0, 1 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -11.5
+margin_right = 12.0
+margin_bottom = 8.5
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp_count" type="Label" parent="camera/gui/base/hero_panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 102.5
+margin_top = -28.0
+margin_right = 177.5
+margin_bottom = -4.0
+text = "100/100"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="strike_bar" type="TextureProgress" parent="camera/gui/base/hero_panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -89.5
+margin_top = -0.5
+margin_right = 64.5
+margin_bottom = 9.5
+value = 100.0
+texture_under = ExtResource( 44 )
+texture_progress = ExtResource( 15 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="anim" type="AnimationPlayer" parent="camera/gui/base/hero_panel/strike_bar"]
+autoplay = "empty"
+reset_on_save = false
+anims/empty = SubResource( 13 )
+
+[node name="attack" type="TextureRect" parent="camera/gui/base/hero_panel/strike_bar"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -11.0
+margin_top = -10.0
+margin_right = 9.0
+margin_bottom = 10.0
+texture = ExtResource( 21 )
+expand = true
+
+[node name="ulti_bar" type="TextureProgress" parent="camera/gui/base/hero_panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.5
+margin_top = 19.5
+margin_right = 64.5
+margin_bottom = 29.5
+step = 0.01
+texture_under = ExtResource( 48 )
+texture_progress = ExtResource( 8 )
+tint_progress = Color( 1, 0, 0, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="effect" type="CPUParticles2D" parent="camera/gui/base/hero_panel/ulti_bar"]
+position = Vector2( 0, 5 )
+emitting = false
+amount = 3
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.3
+texture = ExtResource( 10 )
+direction = Vector2( 0, 0 )
+gravity = Vector2( 0, 0 )
+scale_amount_curve = SubResource( 32 )
+color = Color( 0, 1, 1, 1 )
+color_ramp = SubResource( 18 )
+
+[node name="ulti_token" type="TextureRect" parent="camera/gui/base/hero_panel/ulti_bar"]
+self_modulate = Color( 0, 1, 1, 1 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -10.0
+margin_top = -9.0
+margin_right = 10.0
+margin_bottom = 11.0
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ulti_icon" type="TextureRect" parent="camera/gui/base/hero_panel/ulti_bar/ulti_token"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -6.0
+margin_top = -7.0
+margin_right = 6.0
+margin_bottom = 5.0
+texture = ExtResource( 56 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="potion1" type="TextureRect" parent="camera/gui/base/hero_panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 69.0
+margin_top = -6.0
+margin_right = 109.0
+margin_bottom = 34.0
+texture = ExtResource( 27 )
+expand = true
+
+[node name="count" type="Label" parent="camera/gui/base/hero_panel/potion1"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -20.0
+margin_bottom = 4.0
+text = "10"
+align = 2
+valign = 2
+
+[node name="button" type="TouchScreenButton" parent="camera/gui/base/hero_panel/potion1"]
+shape = SubResource( 93 )
+
+[node name="potion2" type="TextureRect" parent="camera/gui/base/hero_panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 109.0
+margin_top = -6.0
+margin_right = 149.0
+margin_bottom = 34.0
+texture = ExtResource( 9 )
+expand = true
+
+[node name="count" type="Label" parent="camera/gui/base/hero_panel/potion2"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -20.0
+margin_bottom = 4.0
+text = "10"
+align = 2
+valign = 2
+
+[node name="button" type="TouchScreenButton" parent="camera/gui/base/hero_panel/potion2"]
+shape = SubResource( 93 )
+
+[node name="potion3" type="TextureRect" parent="camera/gui/base/hero_panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 149.0
+margin_top = -6.0
+margin_right = 189.0
+margin_bottom = 34.0
+texture = ExtResource( 35 )
+expand = true
+
+[node name="count" type="Label" parent="camera/gui/base/hero_panel/potion3"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -20.0
+margin_bottom = 4.0
+text = "10"
+align = 2
+valign = 2
+
+[node name="button" type="TouchScreenButton" parent="camera/gui/base/hero_panel/potion3"]
+shape = SubResource( 93 )
+
+[node name="breath_indicator" type="TextureProgress" parent="camera/gui/base/hero_panel"]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 10.0
+margin_top = -20.0
+margin_right = 50.0
+margin_bottom = 20.0
+max_value = 10.0
+step = 0.01
+value = 10.0
+texture_under = ExtResource( 59 )
+texture_progress = ExtResource( 59 )
+fill_mode = 5
+tint_under = Color( 1, 1, 1, 0.25098 )
+nine_patch_stretch = true
+
+[node name="boss_bar" type="TextureProgress" parent="camera/gui/base/hero_panel"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = 8.0
+margin_right = 200.0
+margin_bottom = 32.0
+max_value = 1000.0
+texture_under = ExtResource( 46 )
+texture_progress = ExtResource( 66 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="boss_name" type="Label" parent="camera/gui/base/hero_panel/boss_bar"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "NAME OF BOSS:"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp_count" type="Label" parent="camera/gui/base/hero_panel/boss_bar"]
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 2.0
+text = "1000/1000"
+valign = 2
+
+[node name="dialog" type="Label" parent="camera/gui/base"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -116.0
+margin_right = 250.0
+margin_bottom = -92.0
+custom_fonts/font = SubResource( 68 )
+align = 1
+valign = 1
+
+[node name="pause" type="Button" parent="camera/gui/base"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 64.0
+margin_bottom = 64.0
+shortcut_in_tooltip = false
+shortcut = SubResource( 49 )
+icon = ExtResource( 12 )
+expand_icon = true
+
+[node name="tint" type="Control" parent="camera/gui/base"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 4 )
+
+[node name="fg" type="ColorRect" parent="camera/gui/base/tint"]
+self_modulate = Color( 0, 1, 0, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="defeat" type="Label" parent="camera/gui/base/tint"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -30.0
+margin_right = 120.0
+margin_bottom = 30.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 120, 30 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 64 )
+text = "Поражение!"
+align = 1
+valign = 1
+
+[node name="revive" type="Label" parent="camera/gui/base/tint"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -30.0
+margin_right = 120.0
+margin_bottom = 30.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 120, 30 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 1, 0, 1 )
+custom_fonts/font = SubResource( 64 )
+text = "Возрождение!"
+align = 1
+valign = 1
+
+[node name="anim" type="AnimationPlayer" parent="camera/gui/base/tint"]
+anims/dying = SubResource( 65 )
+anims/hurting = SubResource( 66 )
+anims/reviving = SubResource( 67 )
+
+[node name="intro" type="ColorRect" parent="camera/gui/base"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+
+[node name="text" type="Control" parent="camera/gui/base/intro"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -100.0
+margin_right = 200.0
+margin_bottom = 100.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 200, 100 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="main" type="Label" parent="camera/gui/base/intro/text"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -30.0
+margin_right = 200.0
+margin_bottom = 30.0
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 28 )
+text = "УРОВЕНЬ: ТЕСТ"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="location" type="Label" parent="camera/gui/base/intro/text"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -81.0
+margin_right = 200.0
+margin_bottom = -21.0
+custom_colors/font_color = Color( 0.694118, 0.694118, 0.694118, 1 )
+text = "Где-то"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="anim" type="AnimationPlayer" parent="camera/gui/base/intro"]
+autoplay = "intro"
+reset_on_save = false
+anims/intro = SubResource( 29 )
+
+[node name="pause_menu" type="ColorRect" parent="camera/gui/base"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.752941 )
+script = ExtResource( 58 )
+
+[node name="panel" type="Panel" parent="camera/gui/base/pause_menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -100.0
+margin_right = 80.0
+margin_bottom = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="header" type="Label" parent="camera/gui/base/pause_menu/panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -60.0
+margin_top = 12.0
+margin_right = 60.0
+margin_bottom = 36.0
+text = "Меню паузы"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="continue" type="Button" parent="camera/gui/base/pause_menu/panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -56.0
+margin_right = 64.0
+margin_bottom = -24.0
+text = "Продолжить"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="restart" type="Button" parent="camera/gui/base/pause_menu/panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -16.0
+margin_right = 64.0
+margin_bottom = 16.0
+text = "Заново"
+
+[node name="exit" type="Button" parent="camera/gui/base/pause_menu/panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = 24.0
+margin_right = 64.0
+margin_bottom = 56.0
+text = "Выйти"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="soul" type="TextureRect" parent="camera/gui/base/pause_menu/panel"]
+self_modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -16.0
+margin_top = -40.0
+margin_right = 16.0
+margin_bottom = -8.0
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 43 )
+
+[node name="death_screen" type="Control" parent="camera/gui"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tint" type="ColorRect" parent="camera/gui/death_screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.752941 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gems" type="ColorRect" parent="camera/gui/death_screen"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -104.0
+margin_top = 16.0
+margin_right = -24.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="count" type="Label" parent="camera/gui/death_screen/gems"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="camera/gui/death_screen/gems"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -24.0
+margin_top = -30.0
+margin_right = 36.0
+margin_bottom = 30.0
+texture = ExtResource( 28 )
+expand = true
+
+[node name="window" type="WindowDialog" parent="camera/gui/death_screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -100.0
+margin_right = 160.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 160, 100 )
+popup_exclusive = true
+window_title = "Возродиться?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text" type="Label" parent="camera/gui/death_screen/window"]
+anchor_right = 1.0
+margin_bottom = 80.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Не сдавайся! Пополни здоровье и вернись в битву!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="revive" type="Button" parent="camera/gui/death_screen/window"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -103.5
+margin_top = -96.0
+margin_right = 103.5
+margin_bottom = -58.0
+text = "Возродиться (10)"
+icon = ExtResource( 28 )
+
+[node name="no" type="Button" parent="camera/gui/death_screen/window"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -51.5
+margin_top = -50.0
+margin_right = 51.5
+margin_bottom = -12.0
+text = "Сдаться"
+
+[node name="shield" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 2.5, 2.5 )
+z_index = 10
+texture = ExtResource( 57 )
+
+[node name="anim" type="AnimationPlayer" parent="shield"]
+autoplay = "shield"
+reset_on_save = false
+anims/shield = SubResource( 11 )
+
+[node name="tween" type="Tween" parent="."]
+
+[node name="aim_tween" type="Tween" parent="."]
+
+[node name="hurt" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 4
+lifetime = 0.68
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 125.0
+scale_amount_curve = SubResource( 16 )
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="heal" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 4
+one_shot = true
+preprocess = 0.1
+explosiveness = 0.95
+local_coords = false
+texture = ExtResource( 50 )
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 20 )
+direction = Vector2( 0, -1 )
+spread = 22.5
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+radial_accel = 5.59
+tangential_accel = 5.59
+scale_amount_curve = SubResource( 15 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="ulti_charge_effect" type="Node2D" parent="."]
+
+[node name="tween" type="Tween" parent="ulti_charge_effect"]
+
+[node name="anim" type="AnimationPlayer" parent="ulti_charge_effect"]
+autoplay = "nope"
+reset_on_save = false
+anims/nope = SubResource( 53 )
+anims/ulti_charged = SubResource( 54 )
+anims/ulti_now_charged = SubResource( 55 )
+next/ulti_now_charged = "ulti_charged"
+
+[node name="camera_tween" type="Tween" parent="."]
+
+[node name="water_check" type="Area2D" parent="."]
+position = Vector2( 0, -20 )
+collision_layer = 8
+collision_mask = 32
+
+[node name="shape" type="CollisionShape2D" parent="water_check"]
+shape = SubResource( 40 )
+
+[node name="gadget_use" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource( 38 )
+direction = Vector2( 0, 0 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+angular_velocity = 180.0
+scale_amount_curve = SubResource( 43 )
+color_ramp = SubResource( 44 )
+
+[node name="gadget_active" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 10
+texture = ExtResource( 34 )
+emission_shape = 2
+emission_rect_extents = Vector2( 20, 40 )
+direction = Vector2( 0, 0 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+angular_velocity = 180.0
+scale_amount_curve = SubResource( 47 )
+
+[node name="stun_stars" type="CPUParticles2D" parent="."]
+visible = false
+amount = 10
+lifetime = 3.0
+preprocess = 4.0
+speed_scale = 2.0
+texture = ExtResource( 70 )
+emission_shape = 2
+emission_rect_extents = Vector2( 16, 40 )
+direction = Vector2( 0, 0 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+scale_amount = 0.5
+color = Color( 0.964706, 0.670588, 1, 1 )
+color_ramp = SubResource( 50 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="aim_line" type="Node2D" parent="."]
+visible = false
+position = Vector2( 0, -12 )
+
+[node name="line" type="Line2D" parent="aim_line"]
+position = Vector2( 8, 0 )
+points = PoolVector2Array( 0, 0, 357.5, 0 )
+default_color = Color( 1, 1, 1, 0.501961 )
+
+[node name="knockback" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 4
+script = ExtResource( 24 )
+damage = 50
+is_player_attack = true
+lifetime = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="knockback"]
+shape = SubResource( 62 )
+disabled = true
+
+[node name="sprite" type="Sprite" parent="knockback"]
+modulate = Color( 0, 1, 1, 0.25098 )
+scale = Vector2( 4, 4 )
+z_index = 1
+texture = ExtResource( 3 )
+
+[node name="anim" type="AnimationPlayer" parent="knockback"]
+anims/def = SubResource( 63 )
+
+[node name="game_over_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 40 )
+bus = "sfx"
+
+[node name="revive_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 69 )
+bus = "sfx"
+
+[node name="hurt_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+bus = "sfx"
+
+[node name="gadget_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 65 )
+bus = "sfx"
+
+[node name="skill_use_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 39 )
+bus = "sfx"
+
+[node name="stun_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 45 )
+bus = "sfx"
+
+[node name="heal_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 29 )
+bus = "sfx"
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath("..") ]
+spawn_sync_data_properties = [ "global_position" ]
+
+[node name="MultiplayerSynchronizer" type="Node" parent="."]
+script = ExtResource( 60 )
+reliable_sync_node_paths = [ NodePath("..") ]
+reliable_sync_properties_names = [ "GRAVITY_SCALE" ]
+unreliable_sync_node_paths = [ NodePath(".."), NodePath(".."), NodePath(".."), NodePath("..") ]
+unreliable_sync_properties_names = [ "global_position", "current_health", "ulti_percentage", "jout" ]
+physics_frame_delay_unreliable = 1
+
+[connection signal="pressed" from="camera/gui/base/buttons/buttons_0/left" to="." method="move_left"]
+[connection signal="released" from="camera/gui/base/buttons/buttons_0/left" to="." method="stop_left"]
+[connection signal="pressed" from="camera/gui/base/buttons/buttons_0/right" to="." method="move_right"]
+[connection signal="released" from="camera/gui/base/buttons/buttons_0/right" to="." method="stop_right"]
+[connection signal="pressed" from="camera/gui/base/buttons/buttons_0/gadget/button" to="." method="use_gadget"]
+[connection signal="pressed" from="camera/gui/base/buttons/buttons_1/jump" to="." method="jump"]
+[connection signal="pressed" from="camera/gui/base/buttons/buttons_1/attack1" to="." method="attack"]
+[connection signal="pressed" from="camera/gui/base/buttons/buttons_1/attack2" to="." method="jump"]
+[connection signal="pressed" from="camera/gui/base/buttons/buttons_1/ulti" to="." method="ulti"]
+[connection signal="pressed" from="camera/gui/base/hero_panel/potion1/button" to="." method="use_potion" binds= [ 1 ]]
+[connection signal="pressed" from="camera/gui/base/hero_panel/potion2/button" to="." method="use_potion" binds= [ 2 ]]
+[connection signal="pressed" from="camera/gui/base/hero_panel/potion3/button" to="." method="use_potion" binds= [ 3 ]]
+[connection signal="pressed" from="camera/gui/base/pause" to="camera/gui/base/pause_menu" method="pause"]
+[connection signal="pressed" from="camera/gui/base/pause_menu/panel/continue" to="camera/gui/base/pause_menu" method="unpause"]
+[connection signal="pressed" from="camera/gui/base/pause_menu/panel/restart" to="camera/gui/base/pause_menu" method="restart"]
+[connection signal="pressed" from="camera/gui/base/pause_menu/panel/exit" to="camera/gui/base/pause_menu" method="menu"]
+[connection signal="pressed" from="camera/gui/death_screen/window/revive" to="camera" method="revive_button"]
+[connection signal="pressed" from="camera/gui/death_screen/window/no" to="camera" method="give_up"]
+[connection signal="area_entered" from="water_check" to="." method="water_checked"]
+[connection signal="area_exited" from="water_check" to="." method="water_unchecked"]
+
+[editable path="visual/body/knight_attack"]

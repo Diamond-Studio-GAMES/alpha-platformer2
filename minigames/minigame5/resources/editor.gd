@@ -29,7 +29,7 @@ func _unhandled_input(event):
 
 
 func _ready():
-	tilemap = load("user://custom_levels/" + G.getv("save_id", "lol") + ".scn").instance()
+	tilemap = load("user://custom_levels/" + G.getv("save_id", "lol") + ".tscn").instance()
 	add_child(tilemap)
 	current_tile_flip_x.connect("pressed", self, "update_preview")
 	current_tile_flip_y.connect("pressed", self, "update_preview")
@@ -49,13 +49,13 @@ func zoom_out():
 
 
 func exit():
-	get_tree().change_scene("res://minigames/minigame5/minigame.scn")
+	get_tree().change_scene("res://minigames/minigame5/minigame.tscn")
 
 
 func save_and_exit():
 	var map = PackedScene.new()
 	map.pack(tilemap)
-	ResourceSaver.save("user://custom_levels/" + G.getv("save_id", "lol") + ".scn", map)
+	ResourceSaver.save("user://custom_levels/" + G.getv("save_id", "lol") + ".tscn", map)
 	exit()
 
 

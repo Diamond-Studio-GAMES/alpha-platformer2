@@ -11,8 +11,8 @@ var trck_idx1
 var key_idx0
 var key_idx1
 var is_using_gadget = false
-var bullet = load("res://minigames/minigame4/bullet.scn")
-var sp = load("res://minigames/minigame4/hero_sp.scn")
+var bullet = load("res://minigames/minigame4/bullet.tscn")
+var sp = load("res://minigames/minigame4/hero_sp.tscn")
 onready var joystick = $camera/gui/base/buttons/buttons_1/joystick
 onready var aim_line = $aim_line
 onready var _attack_visual = $visual/body/spear_attack/visual
@@ -41,7 +41,7 @@ func _ready():
 	$camera/gui/base/ulti_use/ulti_name.text = tr("ulti.hero")
 	_attack_visual.hide()
 	_attack_shape.disabled = true
-	_ulti = load("res://minigames/minigame4/hero_ulti.scn")
+	_ulti = load("res://minigames/minigame4/hero_ulti.tscn")
 	RECHARGE_SPEED = 1
 	gen.randomize()
 	have_soul_power = true

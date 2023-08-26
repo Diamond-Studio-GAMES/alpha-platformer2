@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sounds/sfx/randomed/sword_hit.tres" type="AudioStream" id=1]
+[ext_resource path="res://textures/effects/attacks/swipe_attack.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "hit"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[node name="effect_axe_throw_hit" type="Node2D"]
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( 0, 64 )
+rotation = 1.5708
+scale = Vector2( 2.5, -2.5 )
+texture = ExtResource( 2 )
+hframes = 2
+vframes = 2
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+max_distance = 800.0
+bus = "sfx"
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "hit"
+anims/hit = SubResource( 1 )

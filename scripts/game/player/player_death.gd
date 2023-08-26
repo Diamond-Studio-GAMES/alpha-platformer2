@@ -4,9 +4,9 @@ class_name Death
 
 var is_active_gadget = false
 var another_attack = false
-var _attack = load("res://prefabs/classes/death_attack.scn")
-var THEWORLD = load("res://prefabs/effects/THEWORLD.scn")
-var ORA = load("res://prefabs/classes/ORA.scn")
+var _attack = load("res://prefabs/classes/death_attack.tscn")
+var THEWORLD = load("res://prefabs/effects/THEWORLD.tscn")
+var ORA = load("res://prefabs/classes/ORA.tscn")
 var curr_lvl_loc = 1
 onready var trail = $trail
 

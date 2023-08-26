@@ -19,7 +19,7 @@ var wave_number = 1
 var mob_count = 0
 var player : MinigameHero
 var gen = RandomNumberGenerator.new()
-var hh_text = load("res://prefabs/effects/hurt_heal_text.scn")
+var hh_text = load("res://prefabs/effects/hurt_heal_text.tscn")
 
 signal wave_ended
 
@@ -56,7 +56,7 @@ func get_rewards():
 
 func _ready():
 	gen.randomize()
-	player = load("res://minigames/minigame4/hero.scn").instance()
+	player = load("res://minigames/minigame4/hero.tscn").instance()
 	player.get_node("camera/gui/base/intro/text/main").text = level_name
 	player.get_node("camera/gui/base/intro/text/location").text = location
 	player.position = pos.position
@@ -101,7 +101,7 @@ func start_wave():
 		get_rewards()
 		yield(G, "loot_end")
 		G.dialog_in_menu = "Поздравляем с победой!"
-		get_tree().change_scene("res://scenes/menu/menu.scn")
+		get_tree().change_scene("res://scenes/menu/menu.tscn")
 		return
 	player.make_dialog("Волна зачищена!", 2, Color.green)
 	wave_number += 1

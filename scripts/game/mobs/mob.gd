@@ -21,7 +21,7 @@ var find_target_timer = 0
 var player_timer = 0
 var attack_timer = 0
 var lookup_timer = 0
-var mob_death_effect = load("res://prefabs/effects/mob_death.scn")
+var mob_death_effect = load("res://prefabs/effects/mob_death.tscn")
 
 signal destroyed
 

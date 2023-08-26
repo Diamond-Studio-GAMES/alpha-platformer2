@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://minigames/minigame7/weapons/grenade_projectile.gd" type="Script" id=2]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=3]
+[ext_resource path="res://minigames/minigame7/sfx/throw.wav" type="AudioStream" id=4]
+[ext_resource path="res://minigames/minigame7/images/he_grenade.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "rotate"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 16.0
+
+[sub_resource type="AudioStreamRandomPitch" id=3]
+audio_stream = ExtResource( 4 )
+
+[node name="grenade_projectile" type="KinematicBody2D" groups=["spawnable"]]
+script = ExtResource( 2 )
+
+[node name="sprite" type="Sprite" parent="."]
+scale = Vector2( 0.16, 0.16 )
+texture = ExtResource( 5 )
+offset = Vector2( 0, -20 )
+
+[node name="anim" type="AnimationPlayer" parent="sprite"]
+autoplay = "rotate"
+anims/rotate = SubResource( 1 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath("..") ]
+spawn_sync_data_properties = [ "global_position", "rotation_degrees", "by_who" ]
+server_always_master = true
+
+[node name="MultiplayerSynchronizer" type="Node" parent="."]
+script = ExtResource( 3 )
+unreliable_sync_node_paths = [ NodePath("..") ]
+unreliable_sync_properties_names = [ "global_position" ]
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource( 3 )
+volume_db = 6.0
+autoplay = true
+bus = "sfx"

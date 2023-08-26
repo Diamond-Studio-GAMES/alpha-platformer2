@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://minigames/minigame7/weapons/shotgun.gd" type="Script" id=1]
+[ext_resource path="res://minigames/minigame7/images/shot_effect.png" type="Texture" id=2]
+[ext_resource path="res://minigames/minigame7/images/shotgun.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "shot"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0.5, 0.5 ) ]
+}
+
+[node name="shotgun" type="Sprite"]
+texture = ExtResource( 3 )
+offset = Vector2( 60, 10 )
+script = ExtResource( 1 )
+damage = 8
+ammo = 3
+per_reload_ammo = 3
+all_ammo = 21
+shoot_delay = 0.7
+reload_time = 4.0
+bullet_lifetime = 0.3
+bullet_speed = 2400.0
+
+[node name="shoot_point" type="Position2D" parent="."]
+position = Vector2( 228, -32 )
+
+[node name="line" type="Line2D" parent="shoot_point"]
+visible = false
+position = Vector2( 32, 0 )
+scale = Vector2( 2.5, 2.5 )
+points = PoolVector2Array( 0, 0, 1200, 693, 1200, -693, 0, 0 )
+default_color = Color( 0, 0, 0, 0.501961 )
+
+[node name="shot_effect" type="Sprite" parent="shoot_point"]
+visible = false
+show_behind_parent = true
+position = Vector2( 32, 0 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+offset = Vector2( 50, 0 )
+
+[node name="anim" type="AnimationPlayer" parent="shoot_point/shot_effect"]
+anims/shot = SubResource( 1 )

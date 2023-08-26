@@ -137,7 +137,7 @@ func jumpscare(visual, sound = ""):
 	$screen/jumpscare/anim.play("jumpscare")
 	get_node(sound).play()
 	yield(get_tree().create_timer(1), "timeout")
-	get_tree().change_scene("res://minigames/minigame8/scenes/game_over.scn")
+	get_tree().change_scene("res://minigames/minigame8/scenes/game_over.tscn")
 
 
 func energy_ran_out():
@@ -186,7 +186,7 @@ func _process(delta):
 		energy_ran_out = true
 		energy_ran_out()
 	if time >= 360:
-		get_tree().change_scene("res://minigames/minigame8/scenes/win.scn")
+		get_tree().change_scene("res://minigames/minigame8/scenes/win.tscn")
 	ambient_sounds_timer += delta
 	if ambient_sounds_timer >= ambient_sounds_next:
 		ambient_sounds_timer = 0

@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://textures/effects/attacks/swipe0.tres" type="Texture" id=1]
+[ext_resource path="res://textures/effects/attacks/swipe2.tres" type="Texture" id=2]
+[ext_resource path="res://textures/effects/attacks/swipe3.tres" type="Texture" id=3]
+[ext_resource path="res://sounds/sfx/randomed/sword_hit.tres" type="AudioStream" id=4]
+[ext_resource path="res://textures/effects/attacks/swipe1.tres" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ), null ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="effect_knife_sheeper_hit" type="Node2D"]
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( 16, 0 )
+rotation = -0.785398
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+max_distance = 800.0
+bus = "sfx"
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "hit"
+anims/hit = SubResource( 1 )

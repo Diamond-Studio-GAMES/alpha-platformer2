@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://shaders/materials/lava.tres" type="Material" id=1]
+[ext_resource path="res://scripts/game/mobs/fire_attack.gd" type="Script" id=2]
+[ext_resource path="res://scripts/game/other/graphics_setup.gd" type="Script" id=3]
+[ext_resource path="res://textures/blocks/lava_up.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 14, 11 )
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.917616, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.0618557, 0.118557, 0.159794, 1 )
+colors = PoolColorArray( 1, 1, 0, 1, 1, 0.501961, 0, 1, 0.447059, 0.447059, 0.447059, 1, 0.47451, 0.47451, 0.47451, 0, 0, 0, 0, 0 )
+
+[node name="lava_up" type="Area2D"]
+collision_layer = 16
+collision_mask = 6
+script = ExtResource( 2 )
+damage = 50
+knockback = 0.0
+custom_invincibility_time = 1.0
+custom_immobility_time = 0.0
+damage_source = "fire"
+lifetime = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3 )
+shape = SubResource( 1 )
+
+[node name="sprite" type="Sprite" parent="."]
+material = ExtResource( 1 )
+texture = ExtResource( 4 )
+script = ExtResource( 3 )
+to_manage = 1
+
+[node name="smoke" type="CPUParticles2D" parent="."]
+z_index = -1
+amount = 4
+lifetime = 2.0
+emission_shape = 2
+emission_rect_extents = Vector2( 16, 1 )
+gravity = Vector2( 0, -30 )
+angular_velocity = 50.0
+angular_velocity_random = 1.0
+tangential_accel = 10.0
+tangential_accel_random = 1.0
+scale_amount = 4.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 2 )
+color = Color( 0.501961, 0.501961, 0.501961, 0.752941 )
+
+[node name="sparks" type="CPUParticles2D" parent="."]
+position = Vector2( 0, -8 )
+z_index = -1
+amount = 1
+lifetime = 8.0
+emission_shape = 2
+emission_rect_extents = Vector2( 16, 1 )
+direction = Vector2( 0, -1 )
+spread = 20.0
+initial_velocity = 50.0
+color_ramp = SubResource( 3 )

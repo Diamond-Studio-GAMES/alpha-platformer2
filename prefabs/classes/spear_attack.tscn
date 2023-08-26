@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://sounds/sfx/randomed/sword_hit.tres" type="AudioStream" id=1]
+[ext_resource path="res://textures/effects/attacks/spear2.tres" type="Texture" id=2]
+[ext_resource path="res://sounds/sfx/randomed/sword_hit_wall.tres" type="AudioStream" id=3]
+[ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=4]
+[ext_resource path="res://textures/effects/attacks/spear1.tres" type="Texture" id=5]
+[ext_resource path="res://textures/effects/attacks/spear0.tres" type="Texture" id=6]
+[ext_resource path="res://sounds/sfx/randomed/swing.tres" type="AudioStream" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 2 ), null ],
+"loop": false,
+"name": "sword",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 9, 6 )
+
+[node name="spear_attack" type="Area2D"]
+scale = Vector2( 1.75, 1.75 )
+z_index = -5
+collision_layer = 16
+collision_mask = 23
+script = ExtResource( 4 )
+is_player_attack = true
+lifetime = 0.0
+
+[node name="visual" type="AnimatedSprite" parent="."]
+position = Vector2( 16, 2.28571 )
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 1 )
+animation = "sword"
+speed_scale = 1.5
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( 16, 2 )
+shape = SubResource( 2 )
+
+[node name="swing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+bus = "sfx"
+
+[node name="hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+bus = "sfx"
+
+[node name="hit_wall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+bus = "sfx"
+
+[connection signal="hit_enemy" from="." to="hit" method="play"]
+[connection signal="hit_wall" from="." to="hit_wall" method="play"]

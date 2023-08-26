@@ -1,0 +1,485 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://textures/effects/backgrounds/background.png" type="Texture" id=1]
+[ext_resource path="res://textures/effects/backgrounds/wood_column.png" type="Texture" id=2]
+
+[node name="background" type="ParallaxBackground"]
+scroll_base_scale = Vector2( 1, 0.1 )
+scroll_ignore_camera_zoom = true
+
+[node name="sky" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 1920, 1080 )
+
+[node name="sky" type="Sprite" parent="sky"]
+self_modulate = Color( 0.301961, 0.2, 0.101961, 1 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="forest2" type="ParallaxLayer" parent="."]
+modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
+motion_scale = Vector2( 0.25, 2.5 )
+motion_offset = Vector2( 0, -270 )
+motion_mirroring = Vector2( 1920, 1080 )
+
+[node name="column0" type="Sprite" parent="forest2"]
+position = Vector2( 80, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column1" type="Sprite" parent="forest2"]
+position = Vector2( 80, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column2" type="Sprite" parent="forest2"]
+position = Vector2( 208, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column3" type="Sprite" parent="forest2"]
+position = Vector2( 208, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column4" type="Sprite" parent="forest2"]
+position = Vector2( 336, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column5" type="Sprite" parent="forest2"]
+position = Vector2( 336, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column6" type="Sprite" parent="forest2"]
+position = Vector2( 464, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column7" type="Sprite" parent="forest2"]
+position = Vector2( 464, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column8" type="Sprite" parent="forest2"]
+position = Vector2( 592, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column9" type="Sprite" parent="forest2"]
+position = Vector2( 592, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column10" type="Sprite" parent="forest2"]
+position = Vector2( 720, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column11" type="Sprite" parent="forest2"]
+position = Vector2( 720, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column12" type="Sprite" parent="forest2"]
+position = Vector2( 848, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column13" type="Sprite" parent="forest2"]
+position = Vector2( 848, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column14" type="Sprite" parent="forest2"]
+position = Vector2( 976, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column15" type="Sprite" parent="forest2"]
+position = Vector2( 976, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column16" type="Sprite" parent="forest2"]
+position = Vector2( 1104, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column17" type="Sprite" parent="forest2"]
+position = Vector2( 1104, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column18" type="Sprite" parent="forest2"]
+position = Vector2( 1232, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column19" type="Sprite" parent="forest2"]
+position = Vector2( 1232, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column20" type="Sprite" parent="forest2"]
+position = Vector2( 1360, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column21" type="Sprite" parent="forest2"]
+position = Vector2( 1360, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column22" type="Sprite" parent="forest2"]
+position = Vector2( 1488, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column23" type="Sprite" parent="forest2"]
+position = Vector2( 1488, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column24" type="Sprite" parent="forest2"]
+position = Vector2( 1616, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column25" type="Sprite" parent="forest2"]
+position = Vector2( 1616, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column26" type="Sprite" parent="forest2"]
+position = Vector2( 1744, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column27" type="Sprite" parent="forest2"]
+position = Vector2( 1744, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column28" type="Sprite" parent="forest2"]
+position = Vector2( 1872, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column29" type="Sprite" parent="forest2"]
+position = Vector2( 1872, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="forest1" type="ParallaxLayer" parent="."]
+modulate = Color( 0.627451, 0.627451, 0.627451, 1 )
+motion_scale = Vector2( 0.5, 5 )
+motion_offset = Vector2( 0, -270 )
+motion_mirroring = Vector2( 1920, 1080 )
+
+[node name="column0" type="Sprite" parent="forest1"]
+position = Vector2( 32, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column1" type="Sprite" parent="forest1"]
+position = Vector2( 32, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column2" type="Sprite" parent="forest1"]
+position = Vector2( 160, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column3" type="Sprite" parent="forest1"]
+position = Vector2( 160, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column4" type="Sprite" parent="forest1"]
+position = Vector2( 288, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column5" type="Sprite" parent="forest1"]
+position = Vector2( 288, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column6" type="Sprite" parent="forest1"]
+position = Vector2( 416, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column7" type="Sprite" parent="forest1"]
+position = Vector2( 416, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column8" type="Sprite" parent="forest1"]
+position = Vector2( 544, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column9" type="Sprite" parent="forest1"]
+position = Vector2( 544, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column10" type="Sprite" parent="forest1"]
+position = Vector2( 672, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column11" type="Sprite" parent="forest1"]
+position = Vector2( 672, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column12" type="Sprite" parent="forest1"]
+position = Vector2( 800, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column13" type="Sprite" parent="forest1"]
+position = Vector2( 800, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column14" type="Sprite" parent="forest1"]
+position = Vector2( 928, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column15" type="Sprite" parent="forest1"]
+position = Vector2( 928, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column16" type="Sprite" parent="forest1"]
+position = Vector2( 1056, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column17" type="Sprite" parent="forest1"]
+position = Vector2( 1056, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column18" type="Sprite" parent="forest1"]
+position = Vector2( 1184, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column19" type="Sprite" parent="forest1"]
+position = Vector2( 1184, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column20" type="Sprite" parent="forest1"]
+position = Vector2( 1312, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column21" type="Sprite" parent="forest1"]
+position = Vector2( 1312, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column22" type="Sprite" parent="forest1"]
+position = Vector2( 1440, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column23" type="Sprite" parent="forest1"]
+position = Vector2( 1440, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column24" type="Sprite" parent="forest1"]
+position = Vector2( 1568, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column25" type="Sprite" parent="forest1"]
+position = Vector2( 1568, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column26" type="Sprite" parent="forest1"]
+position = Vector2( 1696, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column27" type="Sprite" parent="forest1"]
+position = Vector2( 1696, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column28" type="Sprite" parent="forest1"]
+position = Vector2( 1824, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column29" type="Sprite" parent="forest1"]
+position = Vector2( 1824, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="forest0" type="ParallaxLayer" parent="."]
+modulate = Color( 0.752941, 0.752941, 0.752941, 1 )
+motion_scale = Vector2( 1, 10 )
+motion_offset = Vector2( 0, -270 )
+motion_mirroring = Vector2( 1920, 1080 )
+
+[node name="column0" type="Sprite" parent="forest0"]
+position = Vector2( 0, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column1" type="Sprite" parent="forest0"]
+position = Vector2( 0, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column2" type="Sprite" parent="forest0"]
+position = Vector2( 128, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column3" type="Sprite" parent="forest0"]
+position = Vector2( 128, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column4" type="Sprite" parent="forest0"]
+position = Vector2( 256, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column5" type="Sprite" parent="forest0"]
+position = Vector2( 256, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column6" type="Sprite" parent="forest0"]
+position = Vector2( 384, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column7" type="Sprite" parent="forest0"]
+position = Vector2( 384, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column8" type="Sprite" parent="forest0"]
+position = Vector2( 512, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column9" type="Sprite" parent="forest0"]
+position = Vector2( 512, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column10" type="Sprite" parent="forest0"]
+position = Vector2( 640, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column11" type="Sprite" parent="forest0"]
+position = Vector2( 640, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column12" type="Sprite" parent="forest0"]
+position = Vector2( 768, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column13" type="Sprite" parent="forest0"]
+position = Vector2( 768, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column14" type="Sprite" parent="forest0"]
+position = Vector2( 896, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column15" type="Sprite" parent="forest0"]
+position = Vector2( 896, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column16" type="Sprite" parent="forest0"]
+position = Vector2( 1024, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column17" type="Sprite" parent="forest0"]
+position = Vector2( 1024, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column18" type="Sprite" parent="forest0"]
+position = Vector2( 1152, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column19" type="Sprite" parent="forest0"]
+position = Vector2( 1152, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column20" type="Sprite" parent="forest0"]
+position = Vector2( 1280, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column21" type="Sprite" parent="forest0"]
+position = Vector2( 1280, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column22" type="Sprite" parent="forest0"]
+position = Vector2( 1408, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column23" type="Sprite" parent="forest0"]
+position = Vector2( 1408, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column24" type="Sprite" parent="forest0"]
+position = Vector2( 1536, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column25" type="Sprite" parent="forest0"]
+position = Vector2( 1536, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column26" type="Sprite" parent="forest0"]
+position = Vector2( 1664, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column27" type="Sprite" parent="forest0"]
+position = Vector2( 1664, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column28" type="Sprite" parent="forest0"]
+position = Vector2( 1792, 288 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="column29" type="Sprite" parent="forest0"]
+position = Vector2( 1792, 864 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )

@@ -99,8 +99,8 @@ func setup_plant():
 	$water.hide()
 	var gid = "garden_plant" + id
 	current_plant = G.getv(gid, "")
-	if current_plant.get_extension() == "tres":
-		var new_plant = current_plant.get_basename() + ".res"
+	if current_plant.get_extension() == "res":
+		var new_plant = current_plant.get_basename() + ".tres"
 		G.setv(gid, new_plant)
 		setup_plant()
 		return

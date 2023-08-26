@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://minigames/minigame7/images/joystick_bg.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends \"res://minigames/minigame7/weapons/gun.gd\"
+
+
+
+func _ready():
+	bullet = load(\"res://minigames/minigame7/weapons/snowball_projectile.tscn\")
+"
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Animation" id=3]
+resource_name = "shot"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+
+[node name="snowball" type="Sprite"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+offset = Vector2( 60, 0 )
+script = SubResource( 1 )
+damage = 40
+ammo = 2
+per_reload_ammo = 2
+all_ammo = 20
+shoot_delay = 0.2
+reload_time = 1.0
+bullet_speed = 1800.0
+max_unaccuracity = 7.0
+
+[node name="shoot_point" type="Position2D" parent="."]
+position = Vector2( 284, 0 )
+
+[node name="line" type="Line2D" parent="shoot_point"]
+visible = false
+position = Vector2( -128, 0 )
+scale = Vector2( 5, 5 )
+points = PoolVector2Array( 0, 0, 1500, 0 )
+width = 40.0
+default_color = Color( 0, 0, 0, 0.501961 )
+
+[node name="shot_effect" type="CPUParticles2D" parent="shoot_point"]
+show_behind_parent = true
+position = Vector2( -134, 0 )
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource( 1 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1, 50 )
+initial_velocity = 400.0
+initial_velocity_random = 0.5
+scale_amount = 0.5
+scale_amount_curve = SubResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="shoot_point/shot_effect"]
+anims/shot = SubResource( 3 )

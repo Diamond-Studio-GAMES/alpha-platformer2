@@ -2,7 +2,7 @@ extends Control
 
 
 var pending_promocode = ""
-var promos = load("res://misc/promocodes.res")
+var promos = load("res://misc/promocodes.tres")
 onready var line = $line_edit
 onready var comment = $comment
 onready var http = $http
@@ -10,7 +10,7 @@ onready var message = $online/message
 
 
 func back():
-	get_tree().change_scene("res://scenes/menu/levels.scn")
+	get_tree().change_scene("res://scenes/menu/levels.tscn")
 
 
 func is_promocode_used(code = ""):

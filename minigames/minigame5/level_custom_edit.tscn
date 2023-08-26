@@ -1,0 +1,601 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://textures/blocks/tiles0.png" type="Texture" id=1]
+[ext_resource path="res://minigames/minigame5/resources/ship_portal.png" type="Texture" id=2]
+[ext_resource path="res://themes/theme.tres" type="Theme" id=3]
+[ext_resource path="res://textures/blocks/spikes.png" type="Texture" id=4]
+[ext_resource path="res://textures/blocks/jump_pad.png" type="Texture" id=5]
+[ext_resource path="res://minigames/minigame5/resources/gravity_portal.png" type="Texture" id=6]
+[ext_resource path="res://minigames/minigame5/resources/cube_portal.png" type="Texture" id=7]
+[ext_resource path="res://minigames/minigame5/tileset_dash.tres" type="TileSet" id=8]
+[ext_resource path="res://minigames/minigame5/resources/anti_gravity_portal.png" type="Texture" id=9]
+[ext_resource path="res://minigames/minigame5/resources/spike.png" type="Texture" id=10]
+[ext_resource path="res://minigames/minigame5/resources/grid.png" type="Texture" id=11]
+[ext_resource path="res://textures/blocks/tiles1.png" type="Texture" id=12]
+[ext_resource path="res://minigames/minigame5/resources/orb.png" type="Texture" id=13]
+[ext_resource path="res://minigames/minigame5/resources/editor.gd" type="Script" id=14]
+[ext_resource path="res://minigames/minigame5/resources/camera_move.gd" type="Script" id=15]
+
+[node name="level_edit" type="Node2D"]
+script = ExtResource( 14 )
+
+[node name="camera" type="Camera2D" parent="."]
+z_index = 10
+current = true
+limit_left = 0
+limit_top = -592
+limit_bottom = 320
+editor_draw_limits = true
+script = ExtResource( 15 )
+camera_speed = 3.0
+
+[node name="grid_lines" type="Node2D" parent="."]
+position = Vector2( 480, 0 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="grid" type="Sprite" parent="grid_lines"]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( -1600, 0 )
+z_index = 5
+texture = ExtResource( 11 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1600, 1600 )
+
+[node name="line_ground" type="Line2D" parent="grid_lines/grid"]
+z_index = 6
+points = PoolVector2Array( -800, 0, 800, 0 )
+width = 8.0
+default_color = Color( 1, 0, 0, 1 )
+texture = ExtResource( 11 )
+
+[node name="grid2" type="Sprite" parent="grid_lines"]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+z_index = 5
+texture = ExtResource( 11 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1600, 1600 )
+
+[node name="line_ground" type="Line2D" parent="grid_lines/grid2"]
+z_index = 6
+points = PoolVector2Array( -800, 0, 800, 0 )
+width = 8.0
+default_color = Color( 1, 0, 0, 1 )
+texture = ExtResource( 11 )
+
+[node name="grid3" type="Sprite" parent="grid_lines"]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 1600, 0 )
+z_index = 5
+texture = ExtResource( 11 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1600, 1600 )
+
+[node name="line_ground" type="Line2D" parent="grid_lines/grid3"]
+z_index = 6
+points = PoolVector2Array( -800, 0, 800, 0 )
+width = 8.0
+default_color = Color( 1, 0, 0, 1 )
+texture = ExtResource( 11 )
+
+[node name="grid4" type="Sprite" parent="grid_lines"]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( -3200, 0 )
+z_index = 5
+texture = ExtResource( 11 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1600, 1600 )
+
+[node name="line_ground" type="Line2D" parent="grid_lines/grid4"]
+z_index = 6
+points = PoolVector2Array( -800, 0, 800, 0 )
+width = 8.0
+default_color = Color( 1, 0, 0, 1 )
+texture = ExtResource( 11 )
+
+[node name="grid5" type="Sprite" parent="grid_lines"]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 3200, 0 )
+z_index = 5
+texture = ExtResource( 11 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1600, 1600 )
+
+[node name="line_ground" type="Line2D" parent="grid_lines/grid5"]
+z_index = 6
+points = PoolVector2Array( -800, 0, 800, 0 )
+width = 8.0
+default_color = Color( 1, 0, 0, 1 )
+texture = ExtResource( 11 )
+
+[node name="left" type="VisibilityNotifier2D" parent="grid_lines"]
+position = Vector2( -2400, 0 )
+rect = Rect2( -800, -800, 800, 1600 )
+
+[node name="right" type="VisibilityNotifier2D" parent="grid_lines"]
+position = Vector2( 2400, 0 )
+rect = Rect2( 0, -800, 800, 1600 )
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="base" type="Control" parent="ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="zoom_in" type="Button" parent="ui/base"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = -199.0
+margin_right = 40.0
+margin_bottom = -167.0
+text = "+"
+
+[node name="zoom_out" type="Button" parent="ui/base"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = -159.0
+margin_right = 40.0
+margin_bottom = -127.0
+text = "-"
+
+[node name="se" type="Button" parent="ui/base"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 200.0
+margin_bottom = 38.0
+text = "Сохранить и выйти"
+
+[node name="exit" type="Button" parent="ui/base"]
+margin_left = 208.0
+margin_top = 8.0
+margin_right = 288.0
+margin_bottom = 38.0
+text = "Выйти"
+
+[node name="settings" type="Button" parent="ui/base"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -132.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 38.0
+grow_horizontal = 0
+text = "Настройки"
+
+[node name="settings_set" type="WindowDialog" parent="ui/base"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -240.0
+margin_top = -240.0
+margin_right = 240.0
+window_title = "Настройки уровня"
+
+[node name="names" type="HBoxContainer" parent="ui/base/settings_set"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 8
+alignment = 1
+
+[node name="items_names" type="VBoxContainer" parent="ui/base/settings_set/names"]
+margin_right = 236.0
+margin_bottom = 240.0
+size_flags_horizontal = 3
+custom_constants/separation = 8
+alignment = 1
+
+[node name="bg" type="Label" parent="ui/base/settings_set/names/items_names"]
+margin_top = 76.0
+margin_right = 236.0
+margin_bottom = 100.0
+text = "Фон уровня:"
+align = 2
+valign = 1
+
+[node name="music" type="Label" parent="ui/base/settings_set/names/items_names"]
+margin_top = 108.0
+margin_right = 236.0
+margin_bottom = 132.0
+text = "Музыка уровня:"
+align = 2
+valign = 1
+
+[node name="ground" type="Label" parent="ui/base/settings_set/names/items_names"]
+margin_top = 140.0
+margin_right = 236.0
+margin_bottom = 164.0
+text = "Пол уровня:"
+align = 2
+valign = 1
+
+[node name="items_sets" type="VBoxContainer" parent="ui/base/settings_set/names"]
+margin_left = 244.0
+margin_right = 480.0
+margin_bottom = 240.0
+size_flags_horizontal = 3
+custom_constants/separation = 8
+alignment = 1
+
+[node name="bg" type="OptionButton" parent="ui/base/settings_set/names/items_sets"]
+margin_top = 67.0
+margin_right = 236.0
+margin_bottom = 97.0
+text = "Небо"
+items = [ "Небо", null, false, 0, null, "Лес", null, false, 1, null ]
+selected = 0
+
+[node name="music" type="OptionButton" parent="ui/base/settings_set/names/items_sets"]
+margin_top = 105.0
+margin_right = 236.0
+margin_bottom = 135.0
+text = "Поле"
+items = [ "Поле", null, false, 0, null, "Напряжение", null, false, 1, null, "Босс леса", null, false, 2, null ]
+selected = 0
+
+[node name="ground" type="OptionButton" parent="ui/base/settings_set/names/items_sets"]
+margin_top = 143.0
+margin_right = 236.0
+margin_bottom = 173.0
+text = "Земля"
+items = [ "Земля", null, false, 0, null, "Камень", null, false, 1, null ]
+selected = 0
+
+[node name="panel" type="Panel" parent="ui/base"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -164.0
+grow_vertical = 0
+
+[node name="scroll" type="ScrollContainer" parent="ui/base/panel"]
+anchor_right = 0.667
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+scroll_vertical_enabled = false
+
+[node name="row" type="HBoxContainer" parent="ui/base/panel/scroll"]
+margin_right = 1856.0
+margin_bottom = 140.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="0" type="Button" parent="ui/base/panel/scroll/row"]
+margin_top = 10.0
+margin_right = 120.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 120, 120 )
+mouse_filter = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="sprite" type="Sprite" parent="ui/base/panel/scroll/row/0"]
+position = Vector2( 60, 60 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="1" type="Button" parent="ui/base/panel/scroll/row"]
+margin_left = 124.0
+margin_top = 10.0
+margin_right = 244.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 120, 120 )
+mouse_filter = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="sprite" type="Sprite" parent="ui/base/panel/scroll/row/1"]
+position = Vector2( 60, 60 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 32, 32 )
+
+[node name="2" type="Button" parent="ui/base/panel/scroll/row"]
+margin_left = 248.0
+margin_top = 10.0
+margin_right = 368.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 120, 120 )
+mouse_filter = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="sprite" type="Sprite" parent="ui/base/panel/scroll/row/2"]
+position = Vector2( 60, 60 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 32, 32, 32 )
+
+[node name="3" type="Button" parent="ui/base/panel/scroll/row"]
+margin_left = 372.0
+margin_top = 10.0
+margin_right = 492.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 120, 120 )
+mouse_filter = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="sprite" type="Sprite" parent="ui/base/panel/scroll/row/3"]
+position = Vector2( 60, 60 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 32, 32, 32 )
+
+[node name="17" type="Button" parent="ui/base/panel/scroll/row"]
+margin_left = 496.0
+margin_top = 10.0
+margin_right = 616.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 120, 120 )
+mouse_filter = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="sprite" type="Sprite" parent="ui/base/panel/scroll/row/17"]
+position = Vector2( 60, 60 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="19" type="Button" parent="ui/base/panel/scroll/row"]
+margin_left = 620.0
+margin_top = 10.0
+margin_right = 740.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 120, 120 )
+mouse_filter = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="sprite" type="Sprite" parent="ui/base/panel/scroll/row/19"]
+position = Vector2( 60, 60 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 32, 32 )
+
+[node name="20" type="Button" parent="ui/base/panel/scroll/row"]
+margin_left = 744.0
+margin_top = 10.0
+margin_right = 864.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 120, 120 )
+mouse_filter = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="sprite" type="Sprite" parent="ui/base/panel/scroll/row/20"]
+position = Vector2( 60, 60 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 0, 32, 32, 32 )
+
+[node name="21" type="Button" parent="ui/base/panel/scroll/row"]
+margin_left = 868.0
+margin_top = 10.0
+margin_right = 988.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 120, 120 )
+mouse_filter = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="sprite" type="Sprite" parent="ui/base/panel/scroll/row/21"]
+position = Vector2( 60, 60 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 10 )
+
+[node name="22" type="Button" parent="ui/base/panel/scroll/row"]
+margin_left = 992.0
+margin_top = 10.0
+margin_right = 1112.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 120, 120 )
+mouse_filter = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="sprite" type="Sprite" parent="ui/base/panel/scroll/row/22"]
+position = Vector2( 60, 60 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
+
+[node name="23" type="Button" parent="ui/base/panel/scroll/row"]
+margin_left = 1116.0
+margin_top = 10.0
+margin_right = 1236.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 120, 120 )
+mouse_filter = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="sprite" type="Sprite" parent="ui/base/panel/scroll/row/23"]
+position = Vector2( 60, 60 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="26" type="Button" parent="ui/base/panel/scroll/row"]
+margin_left = 1240.0
+margin_top = 10.0
+margin_right = 1360.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 120, 120 )
+mouse_filter = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="sprite" type="Sprite" parent="ui/base/panel/scroll/row/26"]
+modulate = Color( 1, 1, 0, 1 )
+position = Vector2( 60, 60 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 13 )
+
+[node name="24" type="Button" parent="ui/base/panel/scroll/row"]
+margin_left = 1364.0
+margin_top = 10.0
+margin_right = 1484.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 120, 120 )
+mouse_filter = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="sprite" type="Sprite" parent="ui/base/panel/scroll/row/24"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 60, 85 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 9 )
+
+[node name="25" type="Button" parent="ui/base/panel/scroll/row"]
+margin_left = 1488.0
+margin_top = 10.0
+margin_right = 1608.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 120, 120 )
+mouse_filter = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="sprite" type="Sprite" parent="ui/base/panel/scroll/row/25"]
+modulate = Color( 0, 1, 0, 1 )
+position = Vector2( 60, 85 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 6 )
+
+[node name="27" type="Button" parent="ui/base/panel/scroll/row"]
+margin_left = 1612.0
+margin_top = 10.0
+margin_right = 1732.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 120, 120 )
+mouse_filter = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="sprite" type="Sprite" parent="ui/base/panel/scroll/row/27"]
+modulate = Color( 1, 1, 0, 1 )
+position = Vector2( 60, 60 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+
+[node name="28" type="Button" parent="ui/base/panel/scroll/row"]
+margin_left = 1736.0
+margin_top = 10.0
+margin_right = 1856.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 120, 120 )
+mouse_filter = 1
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="sprite" type="Sprite" parent="ui/base/panel/scroll/row/28"]
+modulate = Color( 0, 1, 1, 1 )
+position = Vector2( 60, 60 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 7 )
+
+[node name="options" type="Control" parent="ui/base/panel"]
+anchor_left = 0.667
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+
+[node name="preview" type="TileMap" parent="ui/base/panel/options"]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 24, 0 )
+
+[node name="cont" type="VBoxContainer" parent="ui/base/panel/options"]
+anchor_left = 0.29
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.0672073
+margin_right = 0.320007
+alignment = 1
+
+[node name="mov" type="CheckBox" parent="ui/base/panel/options/cont"]
+margin_top = 6.0
+margin_right = 220.0
+margin_bottom = 30.0
+text = "Перемещение камеры"
+
+[node name="del" type="CheckBox" parent="ui/base/panel/options/cont"]
+margin_top = 34.0
+margin_right = 220.0
+margin_bottom = 58.0
+text = "Стирание блоков"
+
+[node name="x" type="CheckBox" parent="ui/base/panel/options/cont"]
+margin_top = 62.0
+margin_right = 220.0
+margin_bottom = 86.0
+text = "Отражение по X"
+
+[node name="y" type="CheckBox" parent="ui/base/panel/options/cont"]
+margin_top = 90.0
+margin_right = 220.0
+margin_bottom = 114.0
+text = "Отражение по Y"
+
+[node name="tr" type="CheckBox" parent="ui/base/panel/options/cont"]
+margin_top = 118.0
+margin_right = 220.0
+margin_bottom = 142.0
+text = "Повернуть блок"
+
+[node name="preview_label" type="Label" parent="ui/base/panel/options"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -24.0
+margin_right = 40.0
+text = "Предпросмотр"
+
+[connection signal="screen_entered" from="grid_lines/left" to="grid_lines" method="translate" binds= [ Vector2( -3200, 0 ) ]]
+[connection signal="screen_entered" from="grid_lines/right" to="grid_lines" method="translate" binds= [ Vector2( 3200, 0 ) ]]
+[connection signal="pressed" from="ui/base/zoom_in" to="." method="zoom_in"]
+[connection signal="pressed" from="ui/base/zoom_out" to="." method="zoom_out"]
+[connection signal="pressed" from="ui/base/se" to="." method="save_and_exit"]
+[connection signal="pressed" from="ui/base/exit" to="." method="exit"]
+[connection signal="pressed" from="ui/base/settings" to="ui/base/settings_set" method="popup_centered"]
+[connection signal="popup_hide" from="ui/base/settings_set" to="." method="level_settings_save"]
+[connection signal="pressed" from="ui/base/panel/scroll/row/0" to="." method="change_current_id" binds= [ 0 ]]
+[connection signal="pressed" from="ui/base/panel/scroll/row/1" to="." method="change_current_id" binds= [ 1 ]]
+[connection signal="pressed" from="ui/base/panel/scroll/row/2" to="." method="change_current_id" binds= [ 2 ]]
+[connection signal="pressed" from="ui/base/panel/scroll/row/3" to="." method="change_current_id" binds= [ 3 ]]
+[connection signal="pressed" from="ui/base/panel/scroll/row/17" to="." method="change_current_id" binds= [ 17 ]]
+[connection signal="pressed" from="ui/base/panel/scroll/row/19" to="." method="change_current_id" binds= [ 19 ]]
+[connection signal="pressed" from="ui/base/panel/scroll/row/20" to="." method="change_current_id" binds= [ 20 ]]
+[connection signal="pressed" from="ui/base/panel/scroll/row/21" to="." method="change_current_id" binds= [ 21 ]]
+[connection signal="pressed" from="ui/base/panel/scroll/row/22" to="." method="change_current_id" binds= [ 22 ]]
+[connection signal="pressed" from="ui/base/panel/scroll/row/23" to="." method="change_current_id" binds= [ 23 ]]
+[connection signal="pressed" from="ui/base/panel/scroll/row/26" to="." method="change_current_id" binds= [ 26 ]]
+[connection signal="pressed" from="ui/base/panel/scroll/row/24" to="." method="change_current_id" binds= [ 24 ]]
+[connection signal="pressed" from="ui/base/panel/scroll/row/25" to="." method="change_current_id" binds= [ 25 ]]
+[connection signal="pressed" from="ui/base/panel/scroll/row/27" to="." method="change_current_id" binds= [ 27 ]]
+[connection signal="pressed" from="ui/base/panel/scroll/row/28" to="." method="change_current_id" binds= [ 28 ]]

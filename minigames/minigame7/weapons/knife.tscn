@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://minigames/minigame7/weapons/knife.gd" type="Script" id=1]
+[ext_resource path="res://minigames/minigame7/images/knife.png" type="Texture" id=2]
+
+[node name="knife" type="Sprite"]
+texture = ExtResource( 2 )
+offset = Vector2( 70, 10 )
+script = ExtResource( 1 )
+damage = 100
+all_ammo = 0.0
+reload_time = 0.5
+bullet_lifetime = 0.1
+bullet_speed = 975.0
+max_unaccuracity = 10.0
+
+[node name="shoot_point" type="Position2D" parent="."]
+position = Vector2( 16, 0 )
+
+[node name="line" type="Line2D" parent="shoot_point"]
+visible = false
+position = Vector2( 0, -168 )
+scale = Vector2( 2.5, 2.5 )
+width = 40.0
+default_color = Color( 0, 0, 0, 0.501961 )

@@ -62,7 +62,7 @@ func give_up():
 	get_tree().paused = false
 	VisualServer.set_shader_time_scale(1)
 	if $"..".custom_respawn_scene.empty():
-		get_tree().change_scene("res://scenes/menu/game_over.scn")
+		get_tree().change_scene("res://scenes/menu/game_over.tscn")
 	else:
 		G.custom_respawn_scene = $"..".custom_respawn_scene
-		get_tree().change_scene("res://scenes/menu/game_over.scn")
+		get_tree().change_scene("res://scenes/menu/game_over.tscn")

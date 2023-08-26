@@ -13,7 +13,7 @@ var current_cost = null
 var current_id = -1
 var current_day = 0
 var current_unix_time = 0
-var offer_obj = load("res://prefabs/menu/offer.scn")
+var offer_obj = load("res://prefabs/menu/offer.tscn")
 onready var p0 = $scroll/offers/resources/potion0/count
 onready var b0 = $scroll/offers/resources/potion0/buy
 onready var p1 = $scroll/offers/resources/potion1/count
@@ -41,11 +41,11 @@ var CLASS_ICONS = {
 	"archer" : load("res://textures/classes/archer_helmet.png") 
 }
 var ULTI_ICONS = {
-	"knight" : load("res://textures/gui/ulti_icon_0.res"),
-	"butcher" : load("res://textures/gui/ulti_icon_1.res"),
-	"spearman" : load("res://textures/gui/ulti_icon_2.res"),
-	"wizard" : load("res://textures/gui/ulti_icon_3.res"),
-	"archer" : load("res://textures/gui/ulti_icon_4.res")
+	"knight" : load("res://textures/gui/ulti_icon_0.tres"),
+	"butcher" : load("res://textures/gui/ulti_icon_1.tres"),
+	"spearman" : load("res://textures/gui/ulti_icon_2.tres"),
+	"wizard" : load("res://textures/gui/ulti_icon_3.tres"),
+	"archer" : load("res://textures/gui/ulti_icon_4.tres")
 }
 var POTIONS_ICONS = {
 	"small" : load("res://textures/items/small_potion.png"),
@@ -281,7 +281,7 @@ func removed_ads():
 	get_tree().paused = true
 	yield(get_tree().create_timer(0.5), "timeout")
 	get_tree().paused = false
-	get_tree().change_scene("res://scenes/menu/no_ads.scn")
+	get_tree().change_scene("res://scenes/menu/no_ads.tscn")
 
 
 func buy(costs = "", receives = "", id = -1):
@@ -439,7 +439,7 @@ func show_offers():
 	for i in G.getv("offers", []):
 		show_offer(i["costs"], i["receives"], i["id"], i["name"])
 	if not G.getv("collected_ad_bonus", false) and G.ad.ads_available():
-		var node = load("res://prefabs/menu/offer_ad.scn").instance()
+		var node = load("res://prefabs/menu/offer_ad.tscn").instance()
 		$scroll/offers.add_child(node)
 		$scroll/offers.move_child(node, 0)
 
@@ -757,7 +757,7 @@ func generate_offers():
 
 
 func promocodes():
-	get_tree().change_scene("res://scenes/menu/promocodes.scn")
+	get_tree().change_scene("res://scenes/menu/promocodes.tscn")
 
 
 func fetch_online_offers():

@@ -65,7 +65,7 @@ var power = 0
 var ulti_power = 1
 var face_left = false
 var default_camera_zoom = Vector2(0.3, 0.3)
-var _ulti_use_effect = load("res://prefabs/effects/super_use.scn")
+var _ulti_use_effect = load("res://prefabs/effects/super_use.tscn")
 var _ulti
 onready var _ulti_bar = $camera/gui/base/hero_panel/ulti_bar
 onready var _ulti_anim = $ulti_charge_effect/anim
@@ -86,21 +86,21 @@ func _ready():
 		$visual/body/head/hair/hair_woman.hide()
 		$camera/gui/base/hero_panel/head/hair_man.show()
 		$camera/gui/base/hero_panel/head/hair_woman.hide()
-		$hurt_sfx.stream = load("res://sounds/sfx/randomed/hurt.res")
+		$hurt_sfx.stream = load("res://sounds/sfx/randomed/hurt.tres")
 	else:
 		$camera/gui/base/hero_panel/head/hair_woman.show()
 		$camera/gui/base/hero_panel/head/hair_man.hide()
 		$visual/body/head/hair/hair_woman.show()
 		$visual/body/head/hair/hair_man.hide()
-		$hurt_sfx.stream = load("res://sounds/sfx/randomed/female_hurt.res")
+		$hurt_sfx.stream = load("res://sounds/sfx/randomed/female_hurt.tres")
 	_body = $visual/body
 	collision_layer = 0b10
 	collision_mask = 0b11101
 	_health_bar = $camera/gui/base/hero_panel/health
 	_health_change_bar = $camera/gui/base/hero_panel/health/health_change
 	_head = $camera/gui/base/hero_panel/head
-	_head_sprite = load("res://textures/mobs/player/head.res")
-	_head_hurt_sprite = load("res://textures/mobs/player/head_hurt.res")
+	_head_sprite = load("res://textures/mobs/player/head.tres")
+	_head_hurt_sprite = load("res://textures/mobs/player/head_hurt.tres")
 	
 	
 	_hp_count = $camera/gui/base/hero_panel/hp_count
@@ -590,7 +590,7 @@ func revive(hp_count = -1):
 			heal(max_health)
 		else:
 			heal(hp_count)
-	var node = load("res://prefabs/effects/revive.scn").instance()
+	var node = load("res://prefabs/effects/revive.tscn").instance()
 	node.global_position = global_position
 	_level.add_child(node)
 	_anim_tree["parameters/death_trans/current"] = AliveState.ALIVE

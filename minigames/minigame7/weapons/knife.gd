@@ -15,7 +15,7 @@ export (float) var max_unaccuracity = 5
 var is_active = false
 var reload_timer = 0
 var delay_timer = 0
-var bullet = load("res://minigames/minigame7/weapons/knife_projectile.scn")
+var bullet = load("res://minigames/minigame7/weapons/knife_projectile.tscn")
 
 
 func _ready():

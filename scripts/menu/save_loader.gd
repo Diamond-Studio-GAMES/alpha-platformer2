@@ -12,7 +12,7 @@ enum SoulType  {
 
 
 onready var soul = $create/soul
-var save_obj = load("res://prefabs/menu/save.scn")
+var save_obj = load("res://prefabs/menu/save.tscn")
 var id_to_delete = ""
 
 
@@ -141,7 +141,7 @@ func create():
 	G.save()
 	yield(get_tree().create_timer(2.0, false), "timeout")
 	TranslationServer.set_locale(G.getv("lang", "ru"))
-	get_tree().change_scene("res://scenes/menu/story.scn")
+	get_tree().change_scene("res://scenes/menu/story.tscn")
 
 
 func play(id):
@@ -154,7 +154,7 @@ func play(id):
 	$enter_color.mouse_filter = Control.MOUSE_FILTER_STOP
 	yield(get_tree().create_timer(1.0, false), "timeout")
 	TranslationServer.set_locale(G.getv("lang", "ru"))
-	get_tree().change_scene("res://scenes/menu/menu.scn")
+	get_tree().change_scene("res://scenes/menu/menu.tscn")
 
 
 func cancel_create():
@@ -254,8 +254,8 @@ func cancel():
 func confirm_delete():
 	var dir = Directory.new()
 	dir.remove("user://saves/".plus_file(id_to_delete + ".apa2save"))
-	if dir.file_exists("user://custom_levels/" + id_to_delete + ".scn"):
-		dir.remove("user://custom_levels/" + id_to_delete + ".scn")
+	if dir.file_exists("user://custom_levels/" + id_to_delete + ".tscn"):
+		dir.remove("user://custom_levels/" + id_to_delete + ".tscn")
 	list_saves()
 	$enter_color.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
