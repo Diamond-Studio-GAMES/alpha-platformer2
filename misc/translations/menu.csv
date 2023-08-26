@@ -156,6 +156,9 @@ menu.gr.misc.beauty_lava,Красивая лава,Beautiful lava
 menu.gr.misc.beauty_fire,Красивый огонь,Beautiful fire
 menu.change_name.placeholder,Введите новое имя…,Enter new name…
 menu.skip,Пропустить обучение,Skip tutorial
+menu.rate.title,Оцени нас!,Rate us!
+menu.rate.text,"Дорогой игрок! Мы очень старались над этой игрой и будем очень рады, если ты оценишь её на 5 звёзд!","Dear player! We worked hard on this game, and we will be very happy if you rate it 5 stars!"
+menu.rate,Оценить,Rate
 achv.boss1,Это мои овцы,These sheeps are mine
 achv.boss1.desc,Победите Пастуха.,Defeat the Shepherd.
 achv.boss2,Экологический борец,Ecologic fighter
@@ -188,7 +191,7 @@ achv.prozapass,Прозапас,For everything
 achv.prozapass.desc,Получите по 5 зелий каждого вида.,Get 5 potions of each kind.
 achv.burn_her_faster,Кремируйте её быстрее!,Cremate her faster!
 achv.burn_her_faster.desc,Сожгите врага.,Burn an enemy.
-achv.this_is_sparta,Это... Спарта,This… is… Sparta!
+achv.this_is_sparta,Это... Спарта!,This… is… Sparta!
 achv.this_is_sparta.desc,Заставьте монстра умереть от падения.,Make a monster die from falling.
 achv.fuck,ДА ТЫ ЧТО..,"OH, REALLY.."
 achv.fuck.desc,Умрите во время использования зелья…,Die while using the potion…

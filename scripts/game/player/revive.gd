@@ -31,6 +31,7 @@ func show_revive_screen():
 	if G.getv("gems", 0) < 10:
 		$gui/death_screen/window/revive.disabled = true
 	get_tree().paused = true
+	VisualServer.set_shader_time_scale(0)
 
 
 func revive_button():
@@ -38,6 +39,7 @@ func revive_button():
 		return
 	is_screen_on = false
 	get_tree().paused = false
+	VisualServer.set_shader_time_scale(1)
 	zoom = $"..".default_camera_zoom
 	G.setv("gems", G.getv("gems", 0) - 10)
 	G.save()
@@ -58,6 +60,7 @@ func give_up():
 	is_gived_up = true
 	G.addv("deaths", 1)
 	get_tree().paused = false
+	VisualServer.set_shader_time_scale(1)
 	if $"..".custom_respawn_scene.empty():
 		get_tree().change_scene("res://scenes/menu/game_over.scn")
 	else:

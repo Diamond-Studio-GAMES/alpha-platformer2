@@ -166,6 +166,7 @@ func throw(direction, aimed_time):
 		return
 	if aimed_time < 0.55:
 		attack_cooldown = RECHARGE_SPEED / 2
+		can_attack = false
 		return
 	can_attack = false
 	if MP.auth(self):
@@ -211,9 +212,13 @@ func _process(delta):
 		if MP.auth(self):
 			jout = joystick._output
 		if cjo != jout and jout.length_squared() > 0:
+			if not is_zero_approx(_anim_tree["parameters/aim_blend/blend_amount"]) and not is_aiming:
+				_aim_tween.stop_all()
+				_aim_tween.remove_all()
+				_anim_tree["parameters/aim_blend/blend_amount"] = 0
 			is_aiming = true
 			can_turn = false
-			if _anim_tree["parameters/aim_blend/blend_amount"] == 0:
+			if is_zero_approx(_anim_tree["parameters/aim_blend/blend_amount"]):
 				speed_cooficent *= 0.5
 				_anim_tree["parameters/aim_ts/scale"] = 1
 				_anim_tree["parameters/aim_seek/seek_position"] = 0

@@ -83,6 +83,14 @@ func _ready():
 		dialog.dialog_text = G.dialog_in_menu
 		G.dialog_in_menu = ""
 		dialog.popup_centered()
+	
+	if not G.getv("rated", false):
+		var curr_lvl = G.getv("level", "1_1")
+		var lvls = curr_lvl.split("_")
+		if int(lvls[0]) > 1:
+			show_rate_dialog()
+		elif int(lvls[1]) >= 5:
+			show_rate_dialog()
 
 
 func _process(delta):
@@ -172,6 +180,18 @@ func do_change():
 
 func link():
 	OS.shell_open("https://t.me/dsgames31")
+
+
+func show_rate_dialog():
+	G.setv("rated", true)
+	$rate.get_cancel().text = tr("menu.cancel")
+	$rate.get_ok().text = tr("menu.rate")
+	$rate.connect("confirmed", self, "rate")
+	$rate.popup_centered()
+
+
+func rate():
+	OS.shell_open("https://play.google.com/store/apps/details?id=ru.diamondstudio.alphaplatformer2")
 
 
 func graphics_menu_id_pressed(id):

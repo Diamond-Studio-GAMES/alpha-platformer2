@@ -62,6 +62,7 @@ onready var ms: MultiplayerSynchronizer = $MultiplayerSynchronizer as Multiplaye
 
 signal died
 signal hurt
+signal healed
 signal stun_ended
 
 
@@ -173,6 +174,7 @@ func heal(amount):
 	if current_health <= 0 and not is_in_group("player"):
 		return
 	current_health = clamp(current_health + amount, 0, max_health)
+	emit_signal("healed")
 	if is_instance_valid(_tween):
 		if _tween.is_valid():
 			_tween.kill()

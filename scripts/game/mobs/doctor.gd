@@ -53,7 +53,7 @@ func attack():
 		node.global_position = shoot.global_position
 		node.rotation_degrees = weapon_rotate
 		node.get_node("attack").damage = attack_damage
-		node.get_node("attack").on_entity_damage = attack_damage
+		node.get_node("attack").on_entity_damage = attack_damage / 2
 		_level.add_child(node, true)
 	yield(get_tree().create_timer(0.1, false), "timeout")
 	speed_cooficent /= 0.4

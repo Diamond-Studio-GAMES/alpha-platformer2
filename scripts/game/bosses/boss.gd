@@ -47,6 +47,7 @@ func _ready():
 	boss_bar.value = mob.current_health
 	mob.connect("hurt", self, "_on_mob_hurt")
 	mob.connect("died", self, "_on_mob_hurt")
+	mob.connect("healed", self, "_on_mob_healed")
 
 
 func start_fight():
@@ -180,3 +181,8 @@ func _on_mob_hurt():
 	hp.get_node("part").anchor_left = curr_hp / mob.max_health
 	hp.get_node("part").anchor_right = prev_hp / mob.max_health
 	boss_bar.add_child(hp)
+
+
+func _on_mob_healed():
+	boss_hp.text = str(mob.current_health) + "/" + str(mob.max_health)
+	boss_bar.value = mob.current_health

@@ -1,8 +1,8 @@
 extends Boss
 
 
-const OFFSET_X = 160
-const OFFSET_Y = 128
+const OFFSET_X = 128
+const OFFSET_Y = 96
 onready var timer = $swipe_timer
 var swords_down_poses = []
 var swipe_effect = load("res://prefabs/bosses/sword_swipe.scn")
@@ -55,21 +55,17 @@ func crack():
 
 func swipes():
 	ms.sync_call(self, "swipes")
-	next_attack_time += 1.6
+	next_attack_time += 2.5
 	var is_angry = mob.current_health < mob.max_health * 0.5
 	if is_angry:
-		next_attack_time += 0.4
+		next_attack_time += 0.6
 	var player_pos = player_target.global_position
-	create_swipe(player_pos)
-	timer.start(0.15)
-	yield(timer, "timeout")
-	if not is_instance_valid(mob):
-		return
 	if is_angry:
 		anim.play("swipes_angry")
 	else:
 		anim.play("swipes")
-	timer.start(0.3)
+	create_swipe(player_pos)
+	timer.start(0.45)
 	yield(timer, "timeout")
 	create_swipe(player_pos)
 	timer.start(0.45)
