@@ -17,6 +17,12 @@ var id_to_delete = ""
 
 
 func _ready():
+	#DIRTY TRANSLATION WORKAROUND
+	TranslationServer.remove_translation(load("res://misc/translations/menu.en.translation"))
+	TranslationServer.remove_translation(load("res://misc/translations/menu.ru.translation"))
+	TranslationServer.add_translation(load("res://misc/translations/menu.en.translation"))
+	TranslationServer.add_translation(load("res://misc/translations/menu.ru.translation"))
+	#END
 	if G.main_getv("volume", -1) < 0:
 		G.main_setv("volume", 0.75)
 		G.main_setv("volume_sfx", 1)
