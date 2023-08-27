@@ -94,7 +94,7 @@ func player_connected(id):
 		"level" : G.current_level,
 		"power" : G.getv(G.getv("selected_class", "player") + "_level", 0),
 		"ulti_power" : G.getv(G.getv("selected_class", "player") + "_ulti_level", 1),
-		"version" : G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER,
+		"version" : (G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER).strip_edges(),
 		"version_code" : G.VERSION_CODE
 	}
 	yield(get_tree(), "idle_frame")
@@ -123,7 +123,7 @@ func refused(reason, data):
 			var level_name = parts_of_level[0] + "-" + parts_of_level[1]
 			show_alert("Уровень комнаты (%s) не совпадает с Вашим уровнем!" % level_name)
 		Reason.VERSION:
-			var my_version = G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER
+			var my_version = (G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER).strip_edges()
 			show_alert("Версия игры комнаты (%s) не совпадает с Вашей версией: %s!" % [data, my_version])
 
 
@@ -165,7 +165,7 @@ func register_player_self():
 		"level" : G.current_level,
 		"power" : G.getv(G.getv("selected_class", "player") + "_level", 0),
 		"ulti_power" : G.getv(G.getv("selected_class", "player") + "_ulti_level", 1),
-		"version" : G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER,
+		"version" : (G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER).strip_edges(),
 		"version_code" : G.VERSION_CODE
 	}
 	players_info[id] = info

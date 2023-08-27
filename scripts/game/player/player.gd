@@ -311,17 +311,20 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 	else:
 		tint_anim.stop(true)
 		tint_anim.play("hurting")
-	state.connect("completed", self, "post_hurt")
 	state.resume()
 
 
-func post_hurt(ded):
+func _post_hurt(ded):
 	if ded:
 		yield(get_tree().create_timer(4, false), "timeout")
 		if not MP.is_active:
 			if not camera.is_screen_on and current_health <= 0:
 				camera.show_revive_screen()
-	elif not is_stunned and hurt_counter < 1:
+
+
+func _hurt_end():
+	._hurt_end()
+	if not is_zero_approx(current_health) and not is_stunned and hurt_counter < 1:
 		_player_head.texture = _head_sprite
 
 

@@ -96,11 +96,10 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 			G.ach.complete(Achievements.THIS_IS_SPARTA)
 		collision_layer = 0b0
 		collision_mask = 0b1
-	state.connect("completed", self, "post_hurt")
 	state.resume()
 
 
-func post_hurt(ded):
+func _post_hurt(ded):
 	if ded:
 		yield(get_tree().create_timer(1, false), "timeout")
 		G.addv("kills", 1)
