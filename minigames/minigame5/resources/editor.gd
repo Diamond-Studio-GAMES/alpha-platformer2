@@ -29,7 +29,7 @@ func _unhandled_input(event):
 
 
 func _ready():
-	tilemap = load("user://custom_levels/" + G.getv("save_id", "lol") + ".tscn").instance()
+	tilemap = load("user://custom_levels/" + G.getv("save_id", "lol") + ".scn").instance()
 	add_child(tilemap)
 	current_tile_flip_x.connect("pressed", self, "update_preview")
 	current_tile_flip_y.connect("pressed", self, "update_preview")
@@ -55,7 +55,7 @@ func exit():
 func save_and_exit():
 	var map = PackedScene.new()
 	map.pack(tilemap)
-	ResourceSaver.save("user://custom_levels/" + G.getv("save_id", "lol") + ".tscn", map)
+	ResourceSaver.save("user://custom_levels/" + G.getv("save_id", "lol") + ".scn", map)
 	exit()
 
 

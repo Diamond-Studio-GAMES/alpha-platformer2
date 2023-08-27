@@ -761,9 +761,9 @@ func promocodes():
 
 
 func fetch_online_offers():
-	http.download_file = OS.get_cache_dir().plus_file("online_cache.cfg")
+	http.download_file = OS.get_cache_dir().plus_file("online_offers_cache.cfg")
 	http.connect("request_completed", self, "request_online_response", [], CONNECT_ONESHOT)
-	var err = http.request("http://f0695447.xsph.ru/apa2_online.cfg")
+	var err = http.request("http://f0695447.xsph.ru/apa2/offers.cfg")
 	if err:
 		print("fetch failed:", err)
 
@@ -774,10 +774,10 @@ func request_online_response(result, code, header, body):
 		return
 	yield(get_tree(), "idle_frame")
 	var cf = ConfigFile.new()
-	var err = cf.load_encrypted_pass(OS.get_cache_dir().plus_file("online_cache.cfg"), "apa2_online")
+	var err = cf.load_encrypted_pass(OS.get_cache_dir().plus_file("online_offers_cache.cfg"), "apa2_online")
 	var dir = Directory.new()
 	dir.open(OS.get_cache_dir())
-	dir.remove("online_cache.cfg")
+	dir.remove("online_offers_cache.cfg")
 	if err:
 		print("fetch failed:", err)
 		return
