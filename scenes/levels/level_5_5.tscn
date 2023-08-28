@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://prefabs/blocks/beartrap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/game/other/end_star.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://scripts/game/other/level.gd" type="Script" id=15]
 [ext_resource path="res://prefabs/blocks/tab.tscn" type="PackedScene" id=16]
 [ext_resource path="res://textures/effects/other/star.png" type="Texture" id=17]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=18]
 
 [sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0, 0.58042, 1 )
@@ -601,6 +602,8 @@ position = Vector2( 3184, 96 )
 [node name="tab" parent="decor" instance=ExtResource( 16 )]
 position = Vector2( 1040, 128 )
 text = "Пляж 100 м"
+
+[node name="borders" parent="." instance=ExtResource( 18 )]
 
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 0, -64 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://sounds/sfx/mob_death.wav" type="AudioStream" id=1]
 [ext_resource path="res://themes/font.tres" type="DynamicFontData" id=2]
@@ -44,6 +44,7 @@
 [ext_resource path="res://sounds/sfx/randomed/swing.tres" type="AudioStream" id=42]
 [ext_resource path="res://textures/mobs/fire_wizard/hand2.tres" type="Texture" id=43]
 [ext_resource path="res://shaders/materials/fireball.tres" type="Material" id=44]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=45]
 
 [sub_resource type="Animation" id=34]
 length = 0.001
@@ -3108,7 +3109,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
+node_connections = [ "output", 0, "death_trans", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -3172,6 +3173,11 @@ extents = Vector2( 10, 39.5 )
 
 [sub_resource type="LineShape2D" id=37]
 normal = Vector2( -1, 0 )
+
+[sub_resource type="LineShape2D" id=6]
+normal = Vector2( 0, 1 )
+
+[sub_resource type="LineShape2D" id=7]
 
 [sub_resource type="DynamicFont" id=26]
 size = 64
@@ -3696,7 +3702,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/fire_wizard/mob_fw/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/fire_wizard/mob_fw/visual/body"]
-scale = Vector2( 1.25, 1.12866 )
+scale = Vector2( 1.25, 1.23438 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/fire_wizard/mob_fw"]
@@ -4056,6 +4062,28 @@ position = Vector2( 2928, -160 )
 [node name="red_grass7" parent="decor" instance=ExtResource( 28 )]
 position = Vector2( 2032, -992 )
 
+[node name="borders" parent="." instance=ExtResource( 45 )]
+
+[node name="up" parent="borders" index="0"]
+position = Vector2( 0, -1760 )
+collision_mask = 2
+
+[node name="shape" parent="borders/up" index="0"]
+shape = SubResource( 6 )
+
+[node name="down" parent="borders" index="1"]
+collision_mask = 2
+
+[node name="shape" parent="borders/down" index="0"]
+shape = SubResource( 7 )
+
+[node name="up_shape" parent="borders/physical_border" index="0"]
+position = Vector2( 0, -2000 )
+shape = SubResource( 6 )
+
+[node name="down_shape" parent="borders/physical_border" index="1"]
+shape = SubResource( 7 )
+
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 768, -64 )
 
@@ -4223,3 +4251,4 @@ bus = "music"
 [editable path="blocks/doors"]
 [editable path="blocks/doors2"]
 [editable path="decor/think"]
+[editable path="borders"]

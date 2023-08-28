@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://sounds/sfx/end_level.wav" type="AudioStream" id=1]
 [ext_resource path="res://prefabs/mobs/shooter.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://prefabs/blocks/tileset.tres" type="TileSet" id=12]
 [ext_resource path="res://prefabs/blocks/grass.tscn" type="PackedScene" id=13]
 [ext_resource path="res://sounds/music/tense.ogg" type="AudioStream" id=14]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.58042, 1 )
@@ -202,7 +203,7 @@ stats_multiplier = 2.0
 [node name="block" parent="blocks" instance=ExtResource( 5 )]
 position = Vector2( -144, -16 )
 
-[node name="sprite" parent="blocks/block" index="1"]
+[node name="sprite" parent="blocks/block" index="2"]
 region_rect = Rect2( 32, 32, 32, 32 )
 
 [node name="decor" type="Node2D" parent="."]
@@ -257,6 +258,8 @@ position = Vector2( 3472, 32 )
 
 [node name="grass16" parent="decor" instance=ExtResource( 13 )]
 position = Vector2( 3664, 32 )
+
+[node name="borders" parent="." instance=ExtResource( 15 )]
 
 [node name="background" parent="." instance=ExtResource( 8 )]
 

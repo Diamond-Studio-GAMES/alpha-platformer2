@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://themes/font.tres" type="DynamicFontData" id=1]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://textures/mobs/main_doctor/leg2.tres" type="Texture" id=39]
 [ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=40]
 [ext_resource path="res://textures/gui/strike_bar.tres" type="Texture" id=41]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=42]
 
 [sub_resource type="Curve" id=90]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.248571, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
@@ -3894,7 +3895,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
+node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -4342,7 +4343,6 @@ flip_h = true
 [node name="effect" type="Sprite" parent="mobs/main_doctor/visual/body/arm_right/hand/weapon"]
 visible = false
 show_behind_parent = true
-scale = Vector2( 1, 1 )
 texture = ExtResource( 5 )
 offset = Vector2( 0, -9 )
 flip_h = true
@@ -4441,7 +4441,6 @@ texture = ExtResource( 13 )
 
 [node name="particles0" type="CPUParticles2D" parent="mobs/main_doctor/visual/body/arm_left/hand"]
 position = Vector2( 7, 13 )
-scale = Vector2( 1, 1 )
 emitting = false
 amount = 32
 speed_scale = 2.0
@@ -4458,7 +4457,6 @@ color_ramp = SubResource( 91 )
 
 [node name="particles1" type="CPUParticles2D" parent="mobs/main_doctor/visual/body/arm_left/hand"]
 position = Vector2( 7, 13 )
-scale = Vector2( 1, 1 )
 emitting = false
 amount = 32
 one_shot = true
@@ -4554,7 +4552,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/main_doctor/mob_md/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/main_doctor/mob_md/visual/body"]
-scale = Vector2( 1.25, 1.21619 )
+scale = Vector2( 1.25, 1.19503 )
 texture = ExtResource( 33 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/main_doctor/mob_md"]
@@ -4851,6 +4849,8 @@ color = Color( 1, 0, 0.501961, 1 )
 position = Vector2( 1040, -64 )
 text = "Хирург: Блин, докторов всё меньше и меньше... Кто ж мне помогать будет?"
 time = 3.0
+
+[node name="borders" parent="." instance=ExtResource( 42 )]
 
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 768, -64 )

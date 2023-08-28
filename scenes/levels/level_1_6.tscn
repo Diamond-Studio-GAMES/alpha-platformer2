@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://textures/blocks/star_end.png" type="Texture" id=1]
 [ext_resource path="res://prefabs/blocks/tileset.tres" type="TileSet" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://scripts/game/other/level.gd" type="Script" id=15]
 [ext_resource path="res://sounds/music/field.ogg" type="AudioStream" id=16]
 [ext_resource path="res://textures/effects/other/star.png" type="Texture" id=17]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=18]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.58042, 1 )
@@ -277,6 +278,8 @@ text = "Я был не самым глупым в школе..."
 position = Vector2( -256, -32 )
 text = "Я попадал на городской этап олимпиады по географии..."
 color = Color( 1, 0, 1, 1 )
+
+[node name="borders" parent="." instance=ExtResource( 18 )]
 
 [node name="background" parent="." instance=ExtResource( 9 )]
 

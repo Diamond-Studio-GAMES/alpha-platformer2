@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://prefabs/blocks/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://sounds/music/field.ogg" type="AudioStream" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://prefabs/blocks/grass2.tscn" type="PackedScene" id=14]
 [ext_resource path="res://prefabs/blocks/block.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scripts/game/other/end_star.gd" type="Script" id=16]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.58042, 1 )
@@ -191,7 +192,7 @@ position = Vector2( 1008, -16 )
 rotation = 1.57079
 stats_multiplier = 2.0
 
-[node name="bars" parent="mobs/mob_mushroom3" index="2"]
+[node name="bars" parent="mobs/mob_mushroom3" index="3"]
 margin_left = -32.0001
 margin_top = 23.9999
 margin_right = 19.9999
@@ -215,7 +216,7 @@ max_health = 250
 [node name="block" parent="blocks" instance=ExtResource( 15 )]
 position = Vector2( 1872, 16 )
 
-[node name="sprite" parent="blocks/block" index="1"]
+[node name="sprite" parent="blocks/block" index="2"]
 region_rect = Rect2( 32, 32, 32, 32 )
 
 [node name="decor" type="Node2D" parent="."]
@@ -285,6 +286,8 @@ position = Vector2( -1456, 32 )
 position = Vector2( -240, 32 )
 text = "А в прошлом году по физике!.."
 color = Color( 1, 0, 0, 1 )
+
+[node name="borders" parent="." instance=ExtResource( 17 )]
 
 [node name="background" parent="." instance=ExtResource( 6 )]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=97 format=2]
 
 [ext_resource path="res://themes/font.tres" type="DynamicFontData" id=1]
 [ext_resource path="res://sounds/music/cave_boss.ogg" type="AudioStream" id=2]
@@ -52,6 +52,7 @@
 [ext_resource path="res://textures/mobs/great_knight/leg1.tres" type="Texture" id=50]
 [ext_resource path="res://prefabs/blocks/jump_pad.tscn" type="PackedScene" id=51]
 [ext_resource path="res://textures/mobs/sheeper/hair_woman.tres" type="Texture" id=52]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=53]
 
 [sub_resource type="RectangleShape2D" id=90]
 extents = Vector2( 21.3333, 36 )
@@ -4158,7 +4159,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
+node_connections = [ "output", 0, "death_trans", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -4770,7 +4771,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/great_knight/mob_gk/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/great_knight/mob_gk/visual/body"]
-scale = Vector2( 1.25, 1.23966 )
+scale = Vector2( 1.25, 1.13735 )
 texture = ExtResource( 46 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/great_knight/mob_gk"]
@@ -5248,6 +5249,11 @@ position = Vector2( 240, 64 )
 [node name="grass8" parent="decor" instance=ExtResource( 20 )]
 position = Vector2( -720, 64 )
 
+[node name="borders" parent="." instance=ExtResource( 53 )]
+
+[node name="up" parent="borders" index="0"]
+position = Vector2( 0, -1600 )
+
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 384, 0 )
 
@@ -5441,3 +5447,4 @@ mode = 2
 
 [editable path="blocks/fire"]
 [editable path="decor/think"]
+[editable path="borders"]

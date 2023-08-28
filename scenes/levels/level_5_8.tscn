@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://prefabs/mobs/mushroom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/mobs/doctor.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://prefabs/blocks/beartrap.tscn" type="PackedScene" id=17]
 [ext_resource path="res://prefabs/mobs/shooter.tscn" type="PackedScene" id=18]
 [ext_resource path="res://prefabs/blocks/red_grass.tscn" type="PackedScene" id=19]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=20]
 
 [sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0, 0.58042, 1 )
@@ -250,7 +251,7 @@ position = Vector2( -880, -16 )
 [node name="block" parent="blocks" instance=ExtResource( 11 )]
 position = Vector2( 176, -16 )
 
-[node name="sprite" parent="blocks/block" index="1"]
+[node name="sprite" parent="blocks/block" index="2"]
 texture = ExtResource( 6 )
 
 [node name="beartrap" parent="blocks" instance=ExtResource( 17 )]
@@ -311,6 +312,8 @@ position = Vector2( 3056, -224 )
 
 [node name="red_grass9" parent="decor" instance=ExtResource( 19 )]
 position = Vector2( 3728, -288 )
+
+[node name="borders" parent="." instance=ExtResource( 20 )]
 
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 0, -64 )

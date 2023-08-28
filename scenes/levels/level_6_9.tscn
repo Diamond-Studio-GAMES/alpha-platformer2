@@ -21,7 +21,7 @@
 [ext_resource path="res://sounds/sfx/end_level.wav" type="AudioStream" id=19]
 [ext_resource path="res://prefabs/effects/background_red_world.tscn" type="PackedScene" id=20]
 [ext_resource path="res://prefabs/blocks/tab.tscn" type="PackedScene" id=21]
-[ext_resource path="res://scripts/game/other/world_end.gd" type="Script" id=22]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=22]
 [ext_resource path="res://prefabs/mobs/knight_mob.tscn" type="PackedScene" id=23]
 [ext_resource path="res://prefabs/mobs/dummy.tscn" type="PackedScene" id=24]
 [ext_resource path="res://prefabs/mobs/doctor.tscn" type="PackedScene" id=25]
@@ -29,12 +29,12 @@
 [ext_resource path="res://prefabs/mobs/knife_man.tscn" type="PackedScene" id=27]
 [ext_resource path="res://prefabs/blocks/lever_block.tscn" type="PackedScene" id=28]
 
-[sub_resource type="LineShape2D" id=7]
+[sub_resource type="LineShape2D" id=6]
 normal = Vector2( 0, 1 )
 
-[sub_resource type="LineShape2D" id=8]
+[sub_resource type="LineShape2D" id=7]
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=8]
 offsets = PoolRealArray( 0, 0.58042, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
@@ -409,27 +409,27 @@ position = Vector2( 2384, -32 )
 [node name="red_grass5" parent="decor" instance=ExtResource( 13 )]
 position = Vector2( 3600, -256 )
 
-[node name="borders" type="Node2D" parent="."]
+[node name="borders" parent="." instance=ExtResource( 22 )]
 
-[node name="up" type="Area2D" parent="borders"]
-position = Vector2( 0, -800 )
-collision_layer = 8
+[node name="up" parent="borders" index="0"]
+position = Vector2( 0, -736 )
 collision_mask = 2
-monitorable = false
-script = ExtResource( 22 )
 
-[node name="shape" type="CollisionShape2D" parent="borders/up"]
+[node name="shape" parent="borders/up" index="0"]
+shape = SubResource( 6 )
+
+[node name="down" parent="borders" index="1"]
+collision_mask = 2
+
+[node name="shape" parent="borders/down" index="0"]
 shape = SubResource( 7 )
 
-[node name="down" type="Area2D" parent="borders"]
-position = Vector2( 0, 640 )
-collision_layer = 8
-collision_mask = 2
-monitorable = false
-script = ExtResource( 22 )
+[node name="up_shape" parent="borders/physical_border" index="0"]
+position = Vector2( 0, -1856 )
+shape = SubResource( 6 )
 
-[node name="shape" type="CollisionShape2D" parent="borders/down"]
-shape = SubResource( 8 )
+[node name="down_shape" parent="borders/physical_border" index="1"]
+shape = SubResource( 7 )
 
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 0, -64 )
@@ -468,7 +468,7 @@ angular_velocity = 80.0
 tangential_accel = 68.97
 scale_amount = 0.5
 color = Color( 1, 1, 0, 1 )
-color_ramp = SubResource( 6 )
+color_ramp = SubResource( 8 )
 
 [node name="blast" type="CPUParticles2D" parent="end_star"]
 emitting = false
@@ -485,7 +485,7 @@ angular_velocity = 80.0
 tangential_accel = 68.97
 scale_amount = 0.5
 color = Color( 1, 1, 0, 1 )
-color_ramp = SubResource( 6 )
+color_ramp = SubResource( 8 )
 
 [node name="anim" type="AnimationPlayer" parent="end_star"]
 root_node = NodePath("../visual")
@@ -525,3 +525,4 @@ bus = "music"
 [editable path="blocks/lever_block"]
 [editable path="blocks/lever_block2"]
 [editable path="blocks/teleport_portal"]
+[editable path="borders"]

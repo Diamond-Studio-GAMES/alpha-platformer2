@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://prefabs/blocks/grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/blocks/fire.tscn" type="PackedScene" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://prefabs/mobs/dummy.tscn" type="PackedScene" id=25]
 [ext_resource path="res://prefabs/blocks/lava_up.tscn" type="PackedScene" id=26]
 [ext_resource path="res://prefabs/mobs/knife_man.tscn" type="PackedScene" id=27]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=28]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.58042, 1 )
@@ -339,7 +340,7 @@ position = Vector2( 1232, 112 )
 position = Vector2( 1872, -16 )
 z_index = 20
 
-[node name="sprite" parent="blocks/block" index="1"]
+[node name="sprite" parent="blocks/block" index="2"]
 texture = ExtResource( 11 )
 region_rect = Rect2( 32, 0, 32, 32 )
 
@@ -429,6 +430,8 @@ position = Vector2( 3728, -64 )
 
 [node name="grass6" parent="decor" instance=ExtResource( 20 )]
 position = Vector2( 4496, -64 )
+
+[node name="borders" parent="." instance=ExtResource( 28 )]
 
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 0, -64 )

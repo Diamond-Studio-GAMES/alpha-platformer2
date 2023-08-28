@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://prefabs/blocks/lever.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/blocks/grass.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://prefabs/mobs/mushroom.tscn" type="PackedScene" id=17]
 [ext_resource path="res://prefabs/mobs/dummy.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scripts/game/other/level.gd" type="Script" id=19]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=20]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.58042, 1 )
@@ -337,6 +338,8 @@ position = Vector2( 3392, 32 )
 [node name="tab" parent="decor" instance=ExtResource( 5 )]
 position = Vector2( 960, 32 )
 text = "Чем ты быстрее, тем легче прыжок. Проверь скорость класса."
+
+[node name="borders" parent="." instance=ExtResource( 20 )]
 
 [node name="background" parent="." instance=ExtResource( 3 )]
 

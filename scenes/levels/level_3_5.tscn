@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://prefabs/mobs/mushroom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/blocks/beartrap.tscn" type="PackedScene" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://sounds/sfx/end_level.wav" type="AudioStream" id=21]
 [ext_resource path="res://prefabs/blocks/water.tscn" type="PackedScene" id=22]
 [ext_resource path="res://textures/blocks/star_end.png" type="Texture" id=23]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=24]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.58042, 1 )
@@ -559,6 +560,8 @@ position = Vector2( 1360, -32 )
 
 [node name="grass15" parent="decor" instance=ExtResource( 19 )]
 position = Vector2( 1744, -64 )
+
+[node name="borders" parent="." instance=ExtResource( 24 )]
 
 [node name="background" parent="." instance=ExtResource( 18 )]
 

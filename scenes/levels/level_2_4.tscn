@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://prefabs/blocks/jump_pad.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/mobs/mushroom.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://sounds/music/field.ogg" type="AudioStream" id=18]
 [ext_resource path="res://textures/blocks/star_end.png" type="Texture" id=19]
 [ext_resource path="res://prefabs/blocks/beartrap.tscn" type="PackedScene" id=20]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=21]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.58042, 1 )
@@ -301,6 +302,8 @@ position = Vector2( 880, -80 )
 text = "Прыгай туда, где нет дыма..."
 color = Color( 0.501961, 0.501961, 0.501961, 1 )
 with_leg = false
+
+[node name="borders" parent="." instance=ExtResource( 21 )]
 
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 0, -96 )

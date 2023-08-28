@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://themes/theme.tres" type="Theme" id=1]
 [ext_resource path="res://prefabs/mobs/sportsman.tscn" type="PackedScene" id=2]
@@ -43,6 +43,7 @@
 [ext_resource path="res://prefabs/mobs/shooter.tscn" type="PackedScene" id=41]
 [ext_resource path="res://prefabs/blocks/lava_up.tscn" type="PackedScene" id=42]
 [ext_resource path="res://prefabs/blocks/tileset.tres" type="TileSet" id=43]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=44]
 
 [sub_resource type="CircleShape2D" id=7]
 resource_local_to_scene = true
@@ -906,6 +907,9 @@ position = Vector2( -144, -32 )
 
 [node name="red_grass8" parent="decor" instance=ExtResource( 33 )]
 position = Vector2( -656, -128 )
+
+[node name="borders" parent="." instance=ExtResource( 44 )]
+position = Vector2( 0, -8 )
 
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 0, -64 )

@@ -30,6 +30,8 @@ func _ready():
 		player = load("res://prefabs/classes/" + G.getv("selected_class", "player") + ".tscn").instance()
 	player.get_node("camera/gui/base/intro/text/main").text = level_name
 	player.get_node("camera/gui/base/intro/text/location").text = location
+	player.get_node("camera").limit_top = $borders/up.global_position.y + 64
+	player.get_node("camera").limit_bottom = $borders/down.global_position.y - 64
 	player.position = pos.position
 	player.name = "player" + (str(get_tree().get_network_unique_id()) if MP.is_active else "")
 	add_child(player)

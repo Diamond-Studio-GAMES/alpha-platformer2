@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scripts/game/other/end_star.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/blocks/water_up.tscn" type="PackedScene" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://prefabs/blocks/fire.tscn" type="PackedScene" id=23]
 [ext_resource path="res://prefabs/blocks/tileset.tres" type="TileSet" id=24]
 [ext_resource path="res://prefabs/blocks/grass2.tscn" type="PackedScene" id=25]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=26]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.58042, 1 )
@@ -319,6 +320,8 @@ position = Vector2( 1392, -96 )
 
 [node name="grass8" parent="decor" instance=ExtResource( 20 )]
 position = Vector2( 2672, -64 )
+
+[node name="borders" parent="." instance=ExtResource( 26 )]
 
 [node name="background" parent="." instance=ExtResource( 14 )]
 

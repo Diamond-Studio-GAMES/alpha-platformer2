@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://prefabs/blocks/beartrap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/blocks/lever_block.tscn" type="PackedScene" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://prefabs/blocks/spikes.tscn" type="PackedScene" id=21]
 [ext_resource path="res://textures/blocks/star_end.png" type="Texture" id=22]
 [ext_resource path="res://textures/effects/other/star.png" type="Texture" id=23]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=24]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.58042, 1 )
@@ -395,6 +396,8 @@ position = Vector2( 2832, 64 )
 
 [node name="grass3" parent="decor" instance=ExtResource( 13 )]
 position = Vector2( 1616, 96 )
+
+[node name="borders" parent="." instance=ExtResource( 24 )]
 
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( -192, -64 )

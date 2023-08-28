@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://prefabs/blocks/fire.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/mobs/knife_man.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://scripts/game/other/end_star.gd" type="Script" id=14]
 [ext_resource path="res://prefabs/blocks/grass.tscn" type="PackedScene" id=15]
 [ext_resource path="res://prefabs/blocks/think.tscn" type="PackedScene" id=16]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.58042, 1 )
@@ -268,6 +269,8 @@ position = Vector2( 2960, 32 )
 
 [node name="grass17" parent="decor" instance=ExtResource( 15 )]
 position = Vector2( 3184, 32 )
+
+[node name="borders" parent="." instance=ExtResource( 17 )]
 
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 0, -96 )

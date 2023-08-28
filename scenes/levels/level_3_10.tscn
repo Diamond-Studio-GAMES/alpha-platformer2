@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=2]
+[gd_scene load_steps=111 format=2]
 
 [ext_resource path="res://themes/font.tres" type="DynamicFontData" id=1]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=2]
@@ -18,7 +18,7 @@
 [ext_resource path="res://textures/gui/health_bar_empty.tres" type="Texture" id=16]
 [ext_resource path="res://textures/mobs/mushroom/mushroom.tres" type="Texture" id=17]
 [ext_resource path="res://scripts/game/bosses/shield.gd" type="Script" id=18]
-[ext_resource path="res://scripts/game/other/world_end.gd" type="Script" id=19]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=19]
 [ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=20]
 [ext_resource path="res://textures/effects/other/use_item_0.tres" type="Texture" id=21]
 [ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=22]
@@ -4025,7 +4025,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
+node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -4789,11 +4789,6 @@ tracks/1/keys = {
 [sub_resource type="LineShape2D" id=37]
 normal = Vector2( -1, 0 )
 
-[sub_resource type="LineShape2D" id=66]
-normal = Vector2( 0, 1 )
-
-[sub_resource type="LineShape2D" id=67]
-
 [sub_resource type="DynamicFont" id=26]
 size = 64
 outline_size = 2
@@ -5349,7 +5344,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/black_wizard/mob_bw/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/black_wizard/mob_bw/visual/body"]
-scale = Vector2( 1.25, 1.16436 )
+scale = Vector2( 1.25, 1.2424 )
 texture = ExtResource( 17 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/black_wizard/mob_bw"]
@@ -5940,27 +5935,7 @@ position = Vector2( 3248, -64 )
 [node name="grass7" parent="decor" instance=ExtResource( 46 )]
 position = Vector2( 2896, -32 )
 
-[node name="borders" type="Node2D" parent="."]
-
-[node name="up" type="Area2D" parent="borders"]
-position = Vector2( 0, -640 )
-collision_layer = 8
-collision_mask = 2
-monitorable = false
-script = ExtResource( 19 )
-
-[node name="shape" type="CollisionShape2D" parent="borders/up"]
-shape = SubResource( 66 )
-
-[node name="down" type="Area2D" parent="borders"]
-position = Vector2( 0, 640 )
-collision_layer = 8
-collision_mask = 2
-monitorable = false
-script = ExtResource( 19 )
-
-[node name="shape" type="CollisionShape2D" parent="borders/down"]
-shape = SubResource( 67 )
+[node name="borders" parent="." instance=ExtResource( 19 )]
 
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 960, -64 )
@@ -5975,7 +5950,7 @@ layer = 20
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0 )
 
 [node name="tint2" type="ColorRect" parent="tint"]
 modulate = Color( 1, 1, 1, 0 )

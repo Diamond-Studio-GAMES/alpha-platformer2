@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://prefabs/blocks/grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/blocks/fire.tscn" type="PackedScene" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://prefabs/blocks/tab.tscn" type="PackedScene" id=24]
 [ext_resource path="res://prefabs/blocks/grass2.tscn" type="PackedScene" id=25]
 [ext_resource path="res://prefabs/blocks/tileset.tres" type="TileSet" id=26]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=27]
 
 [sub_resource type="ShaderMaterial" id=6]
 resource_local_to_scene = true
@@ -304,7 +305,7 @@ position = Vector2( 2064, 144 )
 [node name="block" parent="blocks" instance=ExtResource( 22 )]
 position = Vector2( 2448, 208 )
 
-[node name="sprite" parent="blocks/block" index="1"]
+[node name="sprite" parent="blocks/block" index="2"]
 region_rect = Rect2( 32, 32, 32, 32 )
 
 [node name="spikes3" parent="blocks" instance=ExtResource( 23 )]
@@ -349,6 +350,8 @@ position = Vector2( -624, -64 )
 
 [node name="grass8" parent="decor" instance=ExtResource( 25 )]
 position = Vector2( -976, 0 )
+
+[node name="borders" parent="." instance=ExtResource( 27 )]
 
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 0, -64 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://prefabs/blocks/grass2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/blocks/tileset.tres" type="TileSet" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://prefabs/blocks/grass.tscn" type="PackedScene" id=11]
 [ext_resource path="res://prefabs/effects/background.tscn" type="PackedScene" id=12]
 [ext_resource path="res://prefabs/mobs/knife_man.tscn" type="PackedScene" id=13]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.58042, 1 )
@@ -226,6 +227,8 @@ position = Vector2( 2576, 128 )
 position = Vector2( 2864, 160 )
 
 [node name="thinks" type="Node2D" parent="."]
+
+[node name="borders" parent="." instance=ExtResource( 14 )]
 
 [node name="background" parent="." instance=ExtResource( 12 )]
 
