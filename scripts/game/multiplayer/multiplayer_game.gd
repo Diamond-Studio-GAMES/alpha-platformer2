@@ -17,6 +17,12 @@ var state = State.LOBBY
 var players_remain_to_load = []
 var alive_players = []
 var another_dialog = false
+var ping = 0.0
+var _ping_timer = 0.0
+var _ping_time = 0.0
+var _next_ping_timer = 0.0
+var _is_pinging = false
+var _ping_counter: Label
 signal game_started
 signal player_registered(info)
 signal refused(reason, data)
@@ -27,6 +33,14 @@ func _ready():
 	MP.connect("network_closed", self, "close_multiplayer")
 	get_tree().connect("network_peer_connected", self, "refuse")
 	get_tree().connect("network_peer_disconnected", self, "check")
+	if get_tree().is_network_server():
+		return
+	var pc = load("res://prefabs/menu/ping_counter.tscn").instance()
+	if not G.getv("show_ping", false):
+		return
+	_ping_counter = pc.get_node("label")
+	pc.name = "ping_counter"
+	add_child(pc)
 
 
 func check(id):
@@ -138,3 +152,38 @@ func kill_revive_player(id, revive = false):
 		if id in alive_players:
 			alive_players.erase(id)
 	check_for_end()
+
+
+func _process(delta):
+	if not MP.is_active:
+		return
+	if get_tree().is_network_server():
+		return
+	_next_ping_timer += delta
+	if _next_ping_timer > 1 and not _is_pinging:
+		ping_server()
+	if _is_pinging:
+		_ping_timer += delta
+		if _ping_timer > 2:
+			get_tree().emit_signal("server_disconnected")
+		elif _ping_timer > 1:
+			ping = 0.999
+	if is_instance_valid(_ping_counter):
+		_ping_counter.text = tr("menu.ping") % int(ping * 1000)
+
+
+func ping_server():
+	_next_ping_timer = 0
+	_ping_timer = 0
+	_ping_time = OS.get_ticks_msec()
+	_is_pinging = true
+	rpc_id(1, "pinged")
+
+
+remote func pinged():
+	rpc_id(get_tree().get_rpc_sender_id(), "response_to_ping")
+
+
+remote func response_to_ping():
+	ping = (OS.get_ticks_msec() - _ping_time) / 1000.0
+	_is_pinging = false

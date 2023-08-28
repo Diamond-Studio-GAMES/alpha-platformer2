@@ -30,6 +30,8 @@ func _ready():
 	$settings/sfxv_s.value = G.getv("volume_sfx", 1)
 	$settings/dmp_s.value = G.getv("damping", 2.5)
 	$settings/smc_c.pressed = G.getv("smooth_camera", true)
+	$settings/fps_c.pressed = G.getv("show_fps", false)
+	$settings/ping_c.pressed = G.getv("show_ping", false)
 	$settings/save_id.text = tr("menu.save_id") + G.getv("save_id", "undefined")
 	$settings/name_change/line_edit.set_message_translation(false)
 	$settings/name_change/line_edit.notification(NOTIFICATION_TRANSLATION_CHANGED)
@@ -98,6 +100,9 @@ func _process(delta):
 	G.setv("volume_sfx", $settings/sfxv_s.value)
 	G.setv("damping", $settings/dmp_s.value)
 	G.setv("smooth_camera", $settings/smc_c.pressed)
+	G.setv("show_ping", $settings/ping_c.pressed)
+	G.setv("show_fps", $settings/fps_c.pressed)
+	G.fps_text.visible = $settings/fps_c.pressed
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("music"), linear2db($settings/mv_s.value))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("sfx"), linear2db($settings/sfxv_s.value))
 

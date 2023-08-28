@@ -259,3 +259,6 @@ sp.butcher,Даёт шанс в 20% зарядить навык на 15% при 
 sp.spearman,Даёт шанс в 20% оглушить врага атакой вблизи на 1.25 секунды.,Gives a 20% chance to stun an enemy with a close-range attack for 1.25 seconds.
 sp.wizard,Даёт шанс в 15% исцелиться на 10% при попадании по врагу дальнобойной атакой.,Gives a 15% chance to heal by 10% when hitting an enemy with a long-range attack.
 sp.archer,Даёт шанс в 45% при попадании ближней атакой нанести 50 ед. урона всем врагам в радиусе 2 блоков.,Gives a 45% chance of dealing 50 damage to all enemies within a radius of 2 blocks when hitting an enemy by a melee attack.
+menu.setting.fps,Показывать FPS:,Show FPS:
+menu.setting.ping,Показывать пинг:,Show ping:
+menu.ping,Пинг: %d мс,Ping: %d ms

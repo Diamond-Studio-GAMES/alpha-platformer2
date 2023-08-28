@@ -1353,12 +1353,35 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -236.0
-margin_top = -108.0
+margin_top = -140.0
 margin_right = -16.0
-margin_bottom = -84.0
+margin_bottom = -116.0
 text = "menu.setting.music"
 
 [node name="mv_s" type="HSlider" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = -140.0
+margin_right = 240.0
+margin_bottom = -108.0
+max_value = 1.0
+step = 0.01
+
+[node name="sfxv" type="Label" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = -108.0
+margin_right = -16.0
+margin_bottom = -84.0
+text = "menu.setting.sfx"
+
+[node name="sfxv_s" type="HSlider" parent="settings"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1369,29 +1392,6 @@ margin_right = 240.0
 margin_bottom = -76.0
 max_value = 1.0
 step = 0.01
-
-[node name="sfxv" type="Label" parent="settings"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -236.0
-margin_top = -76.0
-margin_right = -16.0
-margin_bottom = -52.0
-text = "menu.setting.sfx"
-
-[node name="sfxv_s" type="HSlider" parent="settings"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 20.0
-margin_top = -76.0
-margin_right = 240.0
-margin_bottom = -44.0
-max_value = 1.0
-step = 0.01
 ticks_on_borders = true
 
 [node name="grph" type="Label" parent="settings"]
@@ -1400,9 +1400,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -236.0
-margin_top = -44.0
+margin_top = -76.0
 margin_right = -16.0
-margin_bottom = -20.0
+margin_bottom = -52.0
 text = "menu.setting.graphics"
 
 [node name="grph_s" type="MenuButton" parent="settings"]
@@ -1411,9 +1411,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 20.0
-margin_top = -44.0
+margin_top = -76.0
 margin_right = 240.0
-margin_bottom = -12.0
+margin_bottom = -44.0
 custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
@@ -1428,9 +1428,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -236.0
-margin_top = -12.0
+margin_top = -44.0
 margin_right = 11.0
-margin_bottom = 12.0
+margin_bottom = -20.0
 text = "menu.setting.scm"
 
 [node name="smc_c" type="CheckBox" parent="settings"]
@@ -1439,9 +1439,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 20.0
-margin_top = -12.0
+margin_top = -44.0
 margin_right = 36.0
-margin_bottom = 20.0
+margin_bottom = -12.0
 
 [node name="help_info" parent="settings/smc_c" instance=ExtResource( 11 )]
 anchor_left = 1.0
@@ -1455,15 +1455,57 @@ margin_bottom = 15.0
 info = "menu.tip.smc"
 id = "smc"
 
-[node name="dmp" type="Label" parent="settings"]
+[node name="fps" type="Label" parent="settings"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -236.0
 margin_top = 20.0
-margin_right = -16.0
+margin_right = 11.0
 margin_bottom = 44.0
+text = "menu.setting.fps"
+
+[node name="fps_c" type="CheckBox" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 36.0
+margin_bottom = 52.0
+
+[node name="ping" type="Label" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = 52.0
+margin_right = 11.0
+margin_bottom = 76.0
+text = "menu.setting.ping"
+
+[node name="ping_c" type="CheckBox" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = 52.0
+margin_right = 36.0
+margin_bottom = 84.0
+
+[node name="dmp" type="Label" parent="settings"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = -12.0
+margin_right = -16.0
+margin_bottom = 12.0
 text = "menu.setting.damping"
 
 [node name="dmp_s" type="HSlider" parent="settings"]
@@ -1472,9 +1514,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 20.0
-margin_top = 20.0
+margin_top = -12.0
 margin_right = 240.0
-margin_bottom = 52.0
+margin_bottom = 20.0
 min_value = 1.0
 max_value = 5.0
 step = 0.01
@@ -1499,9 +1541,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -248.0
-margin_top = 57.0
+margin_top = 89.0
 margin_right = -8.0
-margin_bottom = 87.0
+margin_bottom = 119.0
 text = "menu.controls"
 
 [node name="contr_pc" type="Button" parent="settings"]
@@ -1511,9 +1553,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -248.0
-margin_top = 57.0
+margin_top = 89.0
 margin_right = -8.0
-margin_bottom = 87.0
+margin_bottom = 119.0
 text = "menu.controls.pc"
 
 [node name="name" type="Button" parent="settings"]
@@ -1522,9 +1564,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 8.0
-margin_top = 57.0
+margin_top = 89.0
 margin_right = 248.0
-margin_bottom = 87.0
+margin_bottom = 119.0
 text = "menu.change_name"
 
 [node name="reset" type="Button" parent="settings"]
@@ -1533,9 +1575,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -120.0
-margin_top = 97.0
+margin_top = 129.0
 margin_right = 120.0
-margin_bottom = 127.0
+margin_bottom = 159.0
 text = "menu.delete"
 
 [node name="conf" type="ConfirmationDialog" parent="settings"]

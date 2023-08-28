@@ -209,7 +209,7 @@ func _ready():
 	music.stream = load("res://sounds/music/menu/menu.ogg")
 	add_child(music)
 	fps_text = load("res://prefabs/menu/fps_counter.tscn").instance()
-	fps_text.visible = G.main_getv("fps", false)
+	fps_text.hide()
 	add_child(fps_text)
 	time_timer = Timer.new()
 	time_timer.name = "timer"

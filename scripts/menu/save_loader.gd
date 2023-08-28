@@ -21,7 +21,6 @@ func _ready():
 		G.main_setv("volume", 0.75)
 		G.main_setv("volume_sfx", 1)
 		G.main_setv("fullscr", false)
-		G.main_setv("fps", false)
 	TranslationServer.set_locale(G.main_getv("lang", "ru"))
 	$delete_window.get_label().align = Label.ALIGN_CENTER
 	$delete_window.get_cancel().text = tr("sl.delete.no")
@@ -38,7 +37,6 @@ func _ready():
 	$settings/mv_s.value = G.main_getv("volume", 0.75)
 	$settings/sfxv_s.value = G.main_getv("volume_sfx", 1)
 	$settings/fullscr.pressed = G.main_getv("fullscr", false)
-	$settings/fps.pressed = G.main_getv("fps", false)
 	$misc/check_upd.pressed = G.main_getv("check_upd", true)
 	$misc/check_patch.pressed = G.main_getv("check_patches", true)
 	$misc/check_beta.pressed = G.main_getv("check_beta", not G.VERSION_STATUS.empty())
@@ -106,11 +104,6 @@ func _process(delta):
 	G.main_setv("check_beta", $misc/check_beta.pressed)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("music"), linear2db($settings/mv_s.value))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("sfx"), linear2db($settings/sfxv_s.value))
-
-
-func fps_button_changed(state):
-	G.fps_text.visible = state
-	G.main_setv("fps", state)
 
 
 func create():
