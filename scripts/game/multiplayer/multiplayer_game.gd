@@ -68,7 +68,7 @@ remote func refused(reason, data):
 
 func close_multiplayer():
 	if state in [State.LOADING, State.IN_GAME]:
-		G.dialog_in_menu = "Все игроки отключились!" if another_dialog else "Разорвано соединение с сервером!"
+		G.dialog_in_menu = tr("menu.players_left") if another_dialog else tr("menu.disconnected")
 		get_tree().change_scene("res://scenes/menu/menu.tscn")
 	queue_free()
 

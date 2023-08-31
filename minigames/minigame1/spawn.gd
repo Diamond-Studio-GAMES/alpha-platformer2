@@ -28,9 +28,9 @@ func _ready():
 	var n = load("res://minigames/minigame1/timer.tscn").instance()
 	player.add_child(n)
 	timer = n.get_node("timer/bar")
-	player.make_dialog("Награда за выживание: 2 золотых ящика", 10, Color.red)
+	player.make_dialog(tr("1.reward"), 10, Color.red)
 	yield(get_tree().create_timer(10, false), "timeout")
-	player.make_dialog("Музыка: KSLV - Override (https://youtu.be/NS8DPG62Fto)", 10, Color.red)
+	player.make_dialog(tr("1.music"), 10, Color.red)
 
 
 func _process(delta):
@@ -43,7 +43,7 @@ func _process(delta):
 			player_camera.offset_v = rand_range(-0.03, 0.03)
 		if timer_time <= 0 and not won:
 			won = true
-			player.make_dialog("ТЫ ПОБЕДИЛ!", 2, Color.red)
+			player.make_dialog(tr("1.win"), 2, Color.red)
 	shake_timer += delta
 	timer.value = timer_time
 	if won:

@@ -80,6 +80,8 @@ onready var _camera_tween = $camera_tween
 
 func _ready():
 	add_to_group("player")
+	$camera/gui/base/hero_panel/name.set_message_translation(false)
+	$camera/gui/base/hero_panel/name.notification(NOTIFICATION_TRANSLATION_CHANGED)
 	$camera/gui/base/hero_panel/name.text = G.getv("name", "")
 	if G.getv("gender", "male") == "male":
 		$visual/body/head/hair/hair_man.show()
@@ -161,21 +163,23 @@ func _ready():
 
 
 func send_my_data():
-	ms.sync_call(self, "apply_data", [
-			{"name" : G.getv("name", ""), 
-			"gender" : G.getv("gender", "male"), 
-			"power" : power, 
-			"ulti_power" : ulti_power, 
-			"potions_1" : potions_1,
-			"potions_2" : potions_2,
-			"potions_3" : potions_3,
-			"have_gadget" : have_gadget,
-			"have_soul_power" : have_soul_power,
-			"amulet" : amulet,
-			}])
+	ms.sync_call(self, "apply_data", [{
+		"name" : G.getv("name", ""), 
+		"gender" : G.getv("gender", "male"), 
+		"power" : power, 
+		"ulti_power" : ulti_power, 
+		"potions_1" : potions_1,
+		"potions_2" : potions_2,
+		"potions_3" : potions_3,
+		"have_gadget" : have_gadget,
+		"have_soul_power" : have_soul_power,
+		"amulet" : amulet,
+	}])
 
 
 func apply_data(data):
+	$bars/name.set_message_translation(false)
+	$bars/name.notification(NOTIFICATION_TRANSLATION_CHANGED)
 	$bars/name.text = data["name"]
 	if data["gender"] == "male":
 		$visual/body/head/hair/hair_man.show()

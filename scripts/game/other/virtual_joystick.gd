@@ -4,58 +4,33 @@ extends Control
 
 # https://github.com/MarcoFazioRandom/Virtual-Joystick-Godot
 export(Color) var pressed_color := Color.gray
-
-
 export(float, 0, 200, 1) var deadzone_size : float = 10
-
 export(float, 0, 500, 1) var clampzone_size : float = 75
-
 enum JoystickMode {FIXED, DYNAMIC}
-
 export(JoystickMode) var joystick_mode := JoystickMode.FIXED
-
 enum VisibilityMode {ALWAYS , TOUCHSCREEN_ONLY }
-
 export(VisibilityMode) var visibility_mode := VisibilityMode.ALWAYS
-
 export(bool) var pc_control = true
-
 export var use_input_actions := true
-
 export var action_left := "ui_left"
 export var action_right := "ui_right"
 export var action_up := "ui_up"
 export var action_down := "ui_down"
-
-
-
 var _pressed := false setget , is_pressed
-
-
 signal released(output)
 signal pressed
-
 
 func is_pressed() -> bool:
 	return _pressed
 
-
 var _output := Vector2.ZERO
-
-
 var _touch_index : int = -1
-
 onready var _base := $base
 onready var _tip := $base/tip
-
 onready var _base_radius = _base.rect_size * _base.get_global_transform_with_canvas().get_scale() / 2
-
 onready var _base_default_position : Vector2 = _base.rect_position
 onready var _tip_default_position : Vector2 = _tip.rect_position
-
 onready var _default_color : Color = _tip.modulate
-
-
 
 func _ready() -> void:
 	pause_mode = PAUSE_MODE_PROCESS

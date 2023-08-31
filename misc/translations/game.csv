@@ -1,0 +1,62 @@
+keys,ru,en
+boss.sheeper,Пастух,Shepherd
+boss.sheeper.defeat,Убить или пощадить?,Kill or spare?
+boss.sheeper.mercy,Пастух: Ты... щадишь меня?.. Спасибо…,Shepherd: You are… sparing me?.. Thank you... 
+boss.doctor.mercy,Хирург: Спасибо... Пойду потренируюсь на других.,Surgeon: Thank you… I'm going to practice on others.
+boss.doctor.defeat,"Хирург: Операция не удалась... 
+(убить или пощадить?)","Surgeon: The operation failed...
+(kill or spare?)"
+boss.doctor,Хирург,Surgeon
+boss.knight,Великий рыцарь,Great Knight
+boss.knight.defeat,"Великий рыцарь: Ну иди…
+(убить или пощадить?)","Great Knight: Well, go…
+(kill or spare?)"
+boss.knight.mercy,"Великий рыцарь: Ты спасёшь всех, %s!","Great Knight: You will save everyone, %s!"
+boss.forester,Лесоруб,Lumberjack
+boss.forester.defeat,"Лесоруб: Что смотришь? Добей уже!
+(убить или пощадить?)","Lumberjack: What are you looking at? Finish me already!
+(kill or spare?)"
+boss.forester.mercy,Лесоруб: Чего??? Ну и ладно.,"Lumberjack: What??? Well, that's fine."
+boss.fire,Огненный страж,Fire Guardian
+boss.fire.defeat,"Огненный страж: Я... Выгорел?..
+(убить или пощадить?)","Fire Guardian: Am I... burned out?..
+(kill or spare?)"
+boss.fire.mercy,"Огненный страж: Иди, ты достоин.","Fire Guardian: Go, you are worthy."
+boss.wizard,Чёрный маг,Black Wizard
+boss.wizard.mercy,"Чёрный маг: Слава тебе, %s!","Black Wizard: Thank you, %s!"
+boss.wizard.defeat,"Чёрный маг: Я был неправ…
+(убить или пощадить?)","Black Wizard: I was wrong…
+(kill or spare?)"
+boss.pidor,,
+boss.pidor.defeat,,
+boss.pidor.mercy,,
+boss.follower1,,
+boss.follower1.mercy,,
+boss.follower1.defeat,,
+boss.follower2,,
+boss.follower2.mercy,,
+boss.follower2.defeat,,
+boss.main,,
+boss.main.defeat,,
+boss.main.mercy,,
+miss.miss,МИМО,MISS
+location.field,Поле,Field
+location.forest,Лес,Forest
+location.mountain,Горы,Mountains
+location.cave,Пещера,Cave
+location.red_world.cave,Пещера Красного мира,Red World Cave
+location.red_world,Красный мир,Red World
+location.red_world.castle,Замок Красного мира,Red World Castle
+location.village,Деревня,Village
+location.factory,Завод,Factory
+location.islands,Небесные острова,Heavenly islands
+level.1_1,,
+level.1_2,,
+level.1_3,,
+level.1_4,,
+level.1_5,,
+level.1_6,,
+level.1_7,,
+level.1_8,,
+level.1_9,,
+level.1_10,,

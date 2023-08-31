@@ -77,7 +77,7 @@ func miss(knockback_multiplier):
 	_anim_tree["parameters/miss_shot/active"] = true
 	var node = _hurt_heal_text.instance()
 	node.position = position
-	node.get_node("text").text = "МИМО"
+	node.get_node("text").text = tr("miss.miss")
 	node.get_node("text").modulate = Color.gray
 	_level.add_child(node)
 	_knockback = KNOCKBACK_POWER * clamp(sign(knockback_multiplier) * 2 + 1, -1, 1) 

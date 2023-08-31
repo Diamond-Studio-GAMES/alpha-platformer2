@@ -36,10 +36,10 @@ const AMULETS_COUNTS = {
 
 
 func _ready():
-	$help_dialog.get_cancel().text = "Отмена"
+	$help_dialog.get_cancel().text = tr("menu.cancel")
 	$other.get_popup().connect("id_pressed", self, "menu_pressed")
 	if OS.has_feature("HTML5"):
-		$multiplayer_guide.dialog_text = "Мультиплеер не доступен в веб-версии. Установи игру на телефон, чтобы сыграть в него!"
+		$multiplayer_guide.dialog_text = tr("menu.multiplayer.warn")
 	var max_lvl = false
 	for i in $levels/levels/buttons.get_children():
 		i.connect("pressed", self, "play_lvl", [i.name])
@@ -100,7 +100,7 @@ func select_class(class_n = "player"):
 	$classes/sp.hide()
 	$classes/amulet.hide()
 	$classes/stats.show()
-	$classes/stats.text = "Сила: " + str(G.getv(selected_class + "_level", 0)) + " Навык: " + str(G.getv(selected_class + "_ulti_level", 1))
+	$classes/stats.text = tr("class.power") + str(G.getv(selected_class + "_level", 0)) + tr("class.skill") + str(G.getv(selected_class + "_ulti_level", 1))
 	if G.getv(selected_class + "_gadget", false):
 		$classes/gadget.show()
 		$classes/gadget.self_modulate = Color.white
@@ -131,11 +131,11 @@ func select_class(class_n = "player"):
 		$classes/upgrade/upgrade.disabled = false
 	if G.getv(selected_class + "_level", 0) >= 20:
 		$classes/upgrade/upgrade.disabled = true
-		$classes/upgrade/upgrade.text = "МАКС."
-		$classes/upgrade/bar/label.text = "МАКСИМУМ"
+		$classes/upgrade/upgrade.text = tr("menu.max")
+		$classes/upgrade/bar/label.text = tr("menu.maximum")
 		$classes/upgrade/bar.value = 0
 		if G.getv(selected_class + "_tokens", 0) > 0:
-			$classes/upgrade/upgrade.text = "Прод."
+			$classes/upgrade/upgrade.text = tr("menu.sell")
 			$classes/upgrade/upgrade.disabled = false
 	$classes/upgrade/bar_ulti.tint_progress = Color.red if G.getv(selected_class + "_ulti_tokens", 0) < G.getv(selected_class + "_ulti_level", 1) * 30 + 30 else Color.green
 	$classes/upgrade/bar_ulti.max_value = G.getv(selected_class + "_ulti_level", 1) * 30 + 30
@@ -147,16 +147,16 @@ func select_class(class_n = "player"):
 		$classes/upgrade/upgrade_ulti.disabled = false
 	if G.getv(selected_class + "_ulti_level", 1) >= 5:
 		$classes/upgrade/upgrade_ulti.disabled = true
-		$classes/upgrade/upgrade_ulti.text = "МАКС."
-		$classes/upgrade/bar_ulti/label.text = "МАКСИМУМ"
+		$classes/upgrade/upgrade_ulti.text = tr("menu.max")
+		$classes/upgrade/bar_ulti/label.text = tr("menu.maximum")
 		$classes/upgrade/bar_ulti.value = 0
 		if G.getv(selected_class + "_ulti_tokens", 0) > 0:
-			$classes/upgrade/upgrade_ulti.text = "Прод."
+			$classes/upgrade/upgrade_ulti.text = tr("menu.sell")
 			$classes/upgrade/upgrade_ulti.disabled = false
 
 
 func amulet():
-	$classes/infos/amulet.window_title = "Амулеты класса " + tr(G.CLASSES[selected_class])
+	$classes/infos/amulet.window_title = tr("class.amulets") + tr(G.CLASSES[selected_class])
 	setup_amulets()
 	$classes/infos/amulet.popup_centered()
 
@@ -177,7 +177,7 @@ func setup_amulets():
 		var n = am.get_child(i)
 		n.self_modulate = Color.white
 		n.get_node("craft").disabled = false
-		n.get_node("craft").text = "Создать"
+		n.get_node("craft").text = tr("amulet.craft")
 		n.get_node("bar").show()
 		var count = G.getv("amulet_frags_"+G.AMULET[i], 0)
 		var max_count = AMULETS_COUNTS[selected_class][i]
@@ -190,11 +190,11 @@ func setup_amulets():
 				n.get_node("craft").disabled = true
 		else:
 			n.get_node("bar").hide()
-			n.get_node("craft").text = "Выбрать"
+			n.get_node("craft").text = tr("menu.select")
 		if i == G.getv(selected_class+"_amulet", -1):
 			n.self_modulate = Color.green
 			n.get_node("craft").disabled = true
-			n.get_node("craft").text = "Выбрано"
+			n.get_node("craft").text = tr("menu.selected")
 
 
 func craft_amulet(id):
@@ -243,7 +243,7 @@ func info(val = true):
 	else:
 		$classes/classes.hide()
 		get_node("classes/info_" + selected_class).show()
-	get_node("classes/info_" + selected_class + "/title").text = "ПОКАЗАТЕЛИ"
+	get_node("classes/info_" + selected_class + "/title").text = tr("class.statistics")
 	var node = get_node_or_null("classes/info_" + selected_class + "/upgrade") 
 	if node != null:
 		node.hide()
@@ -296,7 +296,7 @@ func info(val = true):
 			var attack_power = G.getv("spearman_ulti_level", 1)
 			var times =  G.getv("spearman_ulti_level", 1) * 1.25 + 1.25
 			$classes/info_spearman/ulti/value.text = "x" + str(attack_power)
-			$classes/info_spearman/ulti_c/value.text = str(times) + " с."
+			$classes/info_spearman/ulti_c/value.text = str(times) + tr("sec")
 		"wizard":
 			$classes/info_wizard/attack/value.text = str(G.getv(selected_class + "_level", 0) * 6 + 30)
 			$classes/info_wizard/attack2/value.text = str(G.getv(selected_class + "_level", 0) * 2 + 10)
@@ -318,8 +318,8 @@ func upgrade():
 		return
 	info(true)
 	var curr_info = get_node("classes/info_" + selected_class)
-	curr_info.get_node("title").text = "УЛУЧШИТЬ ДО " + str(G.getv(selected_class + "_level", 0) + 1) + "-Й СИЛЫ?"
-	curr_info.get_node("upgrade").show() 
+	curr_info.get_node("title").text = tr("class.upgrade.power") % str(G.getv(selected_class + "_level", 0) + 1)
+	curr_info.get_node("upgrade").show()
 	var health_mod = 0
 	var defense_mod = 0
 	var attack_mod = 0
@@ -398,28 +398,28 @@ func confirm_upgrade():
 	for i in $upgrade/upgrade/panels.get_children():
 		i.hide()
 		i.get_node("sfx_value").volume_db = -60
-	$upgrade/upgrade/panel/title.text = "Уровень"
+	$upgrade/upgrade/panel/title.text = tr("class.stat.level")
 	$upgrade/upgrade/panel/previous.text = str(G.getv(selected_class + "_level", 0) - 1)
 	$upgrade/upgrade/panel/next.text = str(G.getv(selected_class + "_level", 0))
 	$upgrade/upgrade/panels/panel0.show()
-	$upgrade/upgrade/panels/panel0/title.text = "Здоровье"
+	$upgrade/upgrade/panels/panel0/title.text = tr("class.stat.health")
 	$upgrade/upgrade/panels/panel0/previous.text = prev_h
 	$upgrade/upgrade/panels/panel0/next.text = h
 	$upgrade/upgrade/panels/panel0.get_node("sfx_value").volume_db = 0
 	if int(prev_df) != 0:
 		$upgrade/upgrade/panels/panel1.show()
-		$upgrade/upgrade/panels/panel1/title.text = "Защита"
+		$upgrade/upgrade/panels/panel1/title.text = tr("class.stat.defense")
 		$upgrade/upgrade/panels/panel1/previous.text = prev_df
 		$upgrade/upgrade/panels/panel1/next.text = df
 		$upgrade/upgrade/panels/panel1.get_node("sfx_value").volume_db = 0
 	$upgrade/upgrade/panels/panel2.show()
-	$upgrade/upgrade/panels/panel2/title.text = "Урон"
+	$upgrade/upgrade/panels/panel2/title.text = tr("class.stat.damage")
 	$upgrade/upgrade/panels/panel2/previous.text = prev_dm
 	$upgrade/upgrade/panels/panel2/next.text = dm
 	$upgrade/upgrade/panels/panel2.get_node("sfx_value").volume_db = 0
 	if int(prev_dm2) != 0:
 		$upgrade/upgrade/panels/panel3.show()
-		$upgrade/upgrade/panels/panel3/title.text = "Урон(бл.)"
+		$upgrade/upgrade/panels/panel3/title.text = tr("class.stat.mdamage")
 		$upgrade/upgrade/panels/panel3/previous.text = prev_dm2
 		$upgrade/upgrade/panels/panel3/next.text = dm2
 		$upgrade/upgrade/panels/panel3.get_node("sfx_value").volume_db = 0
@@ -433,8 +433,8 @@ func upgrade_ulti():
 	is_upgrading_ulti = true
 	info(true)
 	var curr_info = get_node("classes/info_" + selected_class)
-	curr_info.get_node("title").text = "УЛУЧШИТЬ ДО " + str(G.getv(selected_class + "_ulti_level", 1) + 1) + "-ГО НАВЫКА?"
-	curr_info.get_node("upgrade").show() 
+	curr_info.get_node("title").text = tr("class.upgrade.skill") % str(G.getv(selected_class + "_ulti_level", 1) + 1)
+	curr_info.get_node("upgrade").show()
 	var lvl = G.getv(selected_class + "_ulti_level", 1) + 1
 	var ulti_mod = ""
 	var ulti_c_mod = ""
@@ -501,7 +501,7 @@ func confirm_upgrade_ulti():
 	for i in $upgrade/upgrade/panels.get_children():
 		i.hide()
 		i.get_node("sfx_value").volume_db = -60
-	$upgrade/upgrade/panel/title.text = "Навык"
+	$upgrade/upgrade/panel/title.text = tr("class.stat.skill")
 	$upgrade/upgrade/panel/previous.text = str(G.getv(selected_class + "_ulti_level", 1) - 1)
 	$upgrade/upgrade/panel/next.text = str(G.getv(selected_class + "_ulti_level", 1))
 	if prev_u != u:

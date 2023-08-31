@@ -16,15 +16,15 @@ func _ready():
 	fill_height = 5
 	tp_pos = Vector2(54, -2)
 	attacks = ["throw", "summon", "heal", "swipes", "throw", "swipes"]
-	mercy_dialog = "Хирург: Спасибо... Пойду потренируюсь на других."
-	death_dialog = "Хирург: Операция не удалась...\n (убить или пощадить?)"
+	mercy_dialog = tr("boss.doctor.mercy")
+	death_dialog = tr("boss.doctor.defeat")
 	next_attack_time_min = 0.8
 	next_attack_time_max = 1.6
 	if MP.is_active:
 		yield($"/root/mg", "game_started")
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
-	boss_bar.get_node("boss_name").text = "ХИРУРГ" + ":"
+	boss_bar.get_node("boss_name").text = tr("boss.doctor").to_upper() + ":"
 
 
 func death():

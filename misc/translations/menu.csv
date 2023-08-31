@@ -171,6 +171,14 @@ achv.boss5,Без талона,Without a coupon
 achv.boss5.desc,Победите Хирурга.,Defeat the Surgeon.
 achv.boss6,Пожарный,Fireman
 achv.boss6.desc,Победите Огненного стража.,Defeat the Fire Guard.
+achv.boss7,,
+achv.boss7.desc,,
+achv.boss8,,
+achv.boss8.desc,,
+achv.boss9,,
+achv.boss9.desc,,
+achv.boss10,,
+achv.boss10.desc,,
 achv.what_is_it,Это что?,What is it?
 achv.what_is_it.desc,Откройте первый класс.,Unlock your first class.
 achv.master,Мастер всех оружий,Master of all weapons
@@ -229,6 +237,26 @@ achv.killer,Убийца,Killer
 achv.killer.desc,Совершите 250 убийств.,Make 250 kills.
 achv.you_missed,Ха! Не попал,Ha! You missed
 achv.you_missed.desc,Уклонитесь от атаки.,Dodge an attack.
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
 amulet.none,Нет,None
 amulet.power,Сила,Power
 amulet.defense,Защита,Defense
@@ -244,11 +272,17 @@ ulti.blitz,НАЛЁТ,BLITZ
 ulti.death,РЫВОК СМЕРТИ,DEATH DASH
 ulti.hero,АВИАУДАР,AIR STRIKE
 class.knight,РЫЦАРЬ,KNIGHT
+class.knight.l,Рыцарь,Knight
 class.butcher,МЯСНИК,BUTCHER
+class.butcher.l,Мясник,Butcher
 class.spearman,КОПЬЕНОСЕЦ,SPEARMAN
+class.spearman.l,Копьеносец,Spearman
 class.wizard,МАГ,WIZARD
+class.wizard.l,Маг,Wizard
 class.archer,ЛУЧНИК,ARCHER
+class.archer.l,Лучник,Archer
 class.none,НЕТ,NONE
+class.none.l,Нет,None
 gadgets.knight,Следующие 2 секунды Рыцарь будет уклоняться от атак.,"For the next 2 seconds, the Knight will dodge attacks."
 gadgets.butcher,"Мясник прыгает на среднюю высоту. При приземлении отбрасывает ближайших врагов, нанося им 110 ед. урона.","The Butcher jumps to an average height. When landing, it throws away nearby enemies, dealing 110 damage to them."
 gadgets.spearman,"Копьеносец делает мощный удар вблизи, сильно отбрасывая врага и нанося ему 250 ед. урона.","The Spearman makes a powerful blow close by, throwing the enemy hard and dealing 250 damage to him."
@@ -262,3 +296,115 @@ sp.archer,Даёт шанс в 45% при попадании ближней ат
 menu.setting.fps,Показывать FPS:,Show FPS:
 menu.setting.ping,Показывать пинг:,Show ping:
 menu.ping,Пинг: %d мс,Ping: %d ms
+menu.disconnected,Разорвано соединение с сервером!,Disconnected from the server!
+menu.players_left,Все игроки отключились!,All players have disconnected!
+lobby.connect_to,Присоединиться к комнате с уровнем ,Connect to room with level 
+lobby.bad_ip,Неверный IP-адрес!,Incorrect IP address!
+lobby.refuse.busy,Невозможно подключиться к комнате — игра уже началась!,Can’t connect to room — game already started!
+lobby.refuse.level,Уровень комнаты (%s) не совпадает с Вашим уровнем!,Room level (%s) doesn’t match with yours!
+lobby.refuse.version,Версия игры комнаты (%s) не совпадает с Вашей версией: %s!,Game version of room (%s) doesn’t match with your version: %s!
+lobby.info.power,", Сила: ",", Power: "
+lobby.info.ulti,",  Навык: ",", Skill: "
+lobby.info.you,(Вы),(You)
+lobby.strange_ip," (возможно, нет подключения)"," (maybe, there is no connection)"
+lobby.your_ip,Ваш IP: ,Your IP: 
+lobby.start_warn,Начать игру может только сервер.,Only server can start the game.
+lobby.level,Уровень: ,Level: 
+lobby.your_ips,Ваши локальные IP-адреса,Your local IP addresses:
+lobby.error,Ошибка!,Error!
+lobby.no_server,Не удалось найти сервер.,Can’t find a server.
+lobby.trying,Пробую IP: ,Trying IP: 
+minigame.buy.text,"Ты действительно хочешь купить мини-игру «%s» за %d монет?
+У тебя %d монет.","Are you really want to buy «%s» mini-game with %d coins?
+You have %d coins."
+menu.have,Есть,You have
+promocodes.used,Этот промокод уже использован!,This promocode is already used!
+promocodes.wrong,Введён неверный промокод!,This promocode is invalid!
+promocodes.fetch,Загрузка онлайн-промокодов…,Loading online promocodes…
+promocodes.fetch.error,Ошибка загрузки!,Error while loading!
+promocodes.fetch.check,Поиск промокода в файле…,Checking promocode in file…
+promocodes.fetch.bad,Ошибка чтения файла!,Error while reading!
+promocodes.fetch.no,Промокод не найден!,Promocode not found!
+story.0,После событий Alpha Platformer Adventure…,After the events of Alpha Platformer Adventure…
+story.1,"Когда дракону уже нужно было начинать сражение, он понимал, что шанс поражения велик. Он передал все свои знания и часть своей силы трём людям.","When the dragon had to start the battle, he understood that the chance of defeat was great. He given all his knowledge and part of his power to three people."
+story.2,"После поражения дракона и уничтожения метеорита, последователи стали собирать осколки небесного камня, надеясь его восстановить.","After defeat of the dragon and destroy of the meteorite, the followers began to collect its fragments, hoping to restore it."
+story.3,"Надеялись они не зря, ведь вскоре метеорит был воссоздан…","They hoped not in vain, because soon the meteorite was recreated…"
+story.4,И запущен…,And launched…
+story.5,Опять его надо уничтожать.,"Again, it must be destroyed."
+class.power,Сила: ,Power: 
+class.skill, Навык: , Skill: 
+level_dialog.level,Уровень ,Level 
+level_dialog.level.win,Уровень %s пройден!,Level %s completed!
+shop.you_have,У тебя: ,You have: 
+shop.bought,Куплено,Bought
+shop.confirm.text,Действительно хочешь купить эти предметы:,Are you really want to buy these items:
+shop.confirm.with, за, with
+shop.box_info.tokens, и Жетоны, and Tokens
+shop.box_info,"В ящике могут содержатся классы, монеты, жетоны и многое другое.
+Открытие золотого ящика равно открытию 3 ящиков.
+Открытие алмазного ящика равно открытию 10 ящиков.
+	
+Шансы при открытии одного обычного ящика:
+Монеты{cs}: {cc}%
+Класс: {hc}%
+Фрагмент амулета: {ac}%
+Душевный навык: {gc}%
+Душевная сила: {sc}%
+Кристаллы (как бонус): 10%
+	
+Получить душевный навык можно только на класс, достигший 15-го уровня силы, а душевную силу на класс, достигший 20-го уровня силы. Получать фрагменты амулетов можно после того, как один из классов достигнет 10-го уровня силы. После каждого открытого обычного ящика, в котором не было класса, шанс на него повышается на 0.06%. А если в ящике оказался класс, шанс падает до 1.5%. Начальный шанс - 2%. Если жетоны какого-то типа все классы не могут получить, то они конвертируются в монеты. 3 монеты за каждый жетон силы, 12 монет за каждый жетон навыка.","Box can contain classes, coins, tokens and much more.
+Opening of gold box equals to opening of 3 boxes.
+Opening of diamond box equals to opening of 10 boxes.
+
+Chances when opening one regular box:
+Coins{cs}: {cc}%
+Class: {hc}%
+Amulet fragment: {ac}%
+Soul skill: {gc}%
+Soul power: {sc}%
+Gems (as bonus): 10%
+
+You can only get soul skill for a class that has reached the 15th power level, and soul power for a class that has reached the 20th power level. You can receive fragments of amulets after one of the classes reaches the 10th power level. After each open regular box, in which there was no class, the chance of it increases by 0.06%. And if there is a class in the box, the chance drops to 1.5%. The initial chance is 2%. If all classes cannot receive tokens of some type, then they are converted into coins. 3 coins for each power token, 12 coins for each skill token."
+shop.buy,Купить,Buy
+shop.offer.title,АКЦИЯ,OFFER
+shop.offer.free,БЕСПЛАТНО,FREE
+shop.offer.gift,ПОДАРОК!,GIFT!
+shop.offer.kit,НАБОР КЛАССА,CLASS KIT
+item.coins,МОНЕТЫ,COINS
+item.gems,КРИСТАЛЛЫ,GEMS
+item.frags,ФРАГМЕНТЫ АМУЛЕТА,AMULET FRAGMENTS
+item.gadget,ДУШЕВНЫЙ НАВЫК,SOUL SKILL
+item.sp,ДУШЕВНАЯ СИЛА,SOUL POWER
+item.tokens,ЖЕТОНЫ СИЛЫ,POWER TOKENS
+item.utokens,ЖЕТОНЫ НАВЫКА,SKILL TOKENS
+item.wtokens,ЖЕТОНЫ СИЛЫ НА ЛЮБОЙ КЛАСС,POWER TOKENS FOR ANY CLASS
+item.wutokens,ЖЕТОНЫ НАВЫКА НА ЛЮБОЙ КЛАСС,SKILL TOKENS FOR ANY CLASS
+item.class,КЛАСС,CLASS
+item.potion1,МАЛЕНЬКОЕ ЗЕЛЬЕ,SMALL POTION
+item.potion2,СРЕДНЕЕ ЗЕЛЬЕ,MEDIUM POTION
+item.potion3,БОЛЬШОЕ ЗЕЛЬЕ,BIG POTION
+item.box,ЯЩИК,BOX
+item.box.big,ЗОЛОТОЙ ЯЩИК,GOLD BOX
+item.box.mega,АЛМАЗНЫЙ ЯЩИК,DIAMOND BOX
+box.remains.bonus,ОСТАЛОСЬ БОНУСОВ:,BONUSES REMAINING:
+box.remains,ОСТАЛОСЬ ПРЕДМЕТОВ:,ITEMS REMAINING:
+box.class_num,-й из 5 классов,/5 classes
+menu.multiplayer.warn,"Мультиплеер не доступен в веб-версии. Установи игру на телефон, чтобы сыграть в него!",
+menu.max,МАКС.,MAX
+menu.maximum,МАКСИМУМ,MAXIMUM
+menu.sell,Прод.,Sell
+class.amulets,Амулеты класса ,Amulets of class 
+amulet.craft,Создать,Craft
+menu.select,Выбрать,Select
+menu.selected,Выбрано,Selected
+class.statistics,ПОКАЗАТЕЛИ,STATISTICS
+sec, с, s
+class.upgrade.power,УЛУЧШИТЬ ДО %s-Й СИЛЫ?,UPGRADE TO %s POWER LEVEL?
+class.stat.level,Уровень,Level
+class.stat.health,Здоровье,Health
+class.stat.defense,Защита,Defense
+class.stat.damage,Урон,Damage
+class.stat.mdamage,Урон(бл.),Damage(melee)
+class.upgrade.skill,УЛУЧШИТЬ ДО %s-ГО НАВЫКА?,UPGRADE TO %s SKILL LEVEL?
+class.stat.skill,Навык,Skill
+class.select,Класс: ,Class: 

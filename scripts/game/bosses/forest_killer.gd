@@ -12,15 +12,15 @@ func _ready():
 	attacks = ["beartraps", "spikes", "charge_axe", "axe_sides", "axe_throw", "axe_throw"]
 	fill_x = 57
 	tp_pos = Vector2(58, -2)
-	mercy_dialog = "Лесоруб: Чего??? Ну и ладно."
-	death_dialog = "Лесоруб: Что смотришь? Добей уже!\n (убить или пощадить?)"
+	mercy_dialog = tr("boss.forester.mercy")
+	death_dialog = tr("boss.forester.defeat")
 	next_attack_time_min = 0.75
 	next_attack_time_max = 2
 	if MP.is_active:
 		yield($"/root/mg", "game_started")
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
-	boss_bar.get_node("boss_name").text = "ЛЕСОРУБ" + ":"
+	boss_bar.get_node("boss_name").text = tr("boss.forester").to_upper() + ":"
 
 
 func death():

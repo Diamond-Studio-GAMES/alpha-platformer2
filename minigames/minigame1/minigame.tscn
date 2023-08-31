@@ -47,7 +47,8 @@ margin_right = 144.0
 margin_bottom = 84.0
 theme_type_variation = "LabelTitle"
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Выбери класс:"
+text = "1.select"
+align = 1
 
 [node name="class2" type="OptionButton" parent="."]
 anchor_left = 0.5
@@ -58,11 +59,11 @@ margin_left = -160.0
 margin_top = -32.0
 margin_right = 160.0
 margin_bottom = 32.0
-text = "Рыцарь"
+text = "class.knight.l"
 icon = ExtResource( 6 )
 align = 1
 expand_icon = true
-items = [ "Рыцарь", ExtResource( 6 ), false, 0, null, "Мясник", ExtResource( 2 ), false, 1, null, "Копьеносец", ExtResource( 3 ), false, 2, null, "Маг", ExtResource( 4 ), false, 3, null, "Лучник", ExtResource( 5 ), false, 4, null, "Без класса", null, false, 5, null ]
+items = [ "class.knight.l", ExtResource( 6 ), false, 0, null, "class.butcher.l", ExtResource( 2 ), false, 1, null, "class.spearman.l", ExtResource( 3 ), false, 2, null, "class.wizard.l", ExtResource( 4 ), false, 3, null, "class.archer.l", ExtResource( 5 ), false, 4, null, "class.none.l", null, false, 5, null ]
 selected = 0
 
 [node name="start" type="Button" parent="."]
@@ -75,7 +76,7 @@ margin_top = -110.0
 margin_right = 60.0
 margin_bottom = -80.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "НАЧАТЬ"
+text = "1.begin"
 
 [connection signal="item_selected" from="class2" to="." method="select_class"]
 [connection signal="pressed" from="start" to="." method="start"]

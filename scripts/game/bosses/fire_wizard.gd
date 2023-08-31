@@ -13,15 +13,15 @@ func _ready():
 	fill_height = 16
 	tp_pos = Vector2(54, -2)
 	attacks = ["fireball", "fireballs", "oil", "fire_rain"]
-	mercy_dialog = "Огненный страж: Иди, ты достоин."
-	death_dialog = "Огненный страж: Я... Выгорел?..\n (убить или пощадить?)"
+	mercy_dialog = tr("boss.fire.mercy")
+	death_dialog = tr("boss.fire.defeat")
 	next_attack_time_min = 1
 	next_attack_time_max = 2
 	if MP.is_active:
 		yield($"/root/mg", "game_started")
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
-	boss_bar.get_node("boss_name").text = "ОГНЕННЫЙ СТРАЖ" + ":"
+	boss_bar.get_node("boss_name").text = tr("boss.fire").to_upper() + ":"
 
 
 func death():

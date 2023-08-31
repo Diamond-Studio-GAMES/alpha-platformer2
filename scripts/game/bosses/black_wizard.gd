@@ -14,14 +14,14 @@ func _ready():
 	tp_pos = Vector2(54, -2)
 	next_attack_time_min = 1.5
 	next_attack_time_max = 2
-	mercy_dialog = "Чёрный маг: Слава тебе, %s!" % G.getv("name", "")
-	death_dialog = "Чёрный маг: Я был не прав...\n (убить или пощадить?)"
+	mercy_dialog = tr("boss.wizard.mercy") % G.getv("name", "")
+	death_dialog = tr("boss.wizard.defeat")
 	attacks = ["blackball", "lightnings", "mob_spawn", "blackball", "lightnings"]
 	if MP.is_active:
 		yield($"/root/mg", "game_started")
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
-	boss_bar.get_node("boss_name").text = "ЧЁРНЫЙ МАГ" + ":"
+	boss_bar.get_node("boss_name").text = tr("boss.wizard").to_upper() + ":"
 
 
 func _process(delta):

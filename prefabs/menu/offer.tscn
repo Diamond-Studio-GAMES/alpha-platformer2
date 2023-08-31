@@ -85,7 +85,7 @@ stretch_mode = 6
 margin_left = 32.0
 margin_right = 184.0
 margin_bottom = 24.0
-text = "МОНЕТЫ"
+grow_horizontal = 0
 valign = 1
 
 [node name="count" type="Label" parent="items/item0"]
@@ -135,6 +135,7 @@ stretch_mode = 6
 margin_left = 32.0
 margin_right = 184.0
 margin_bottom = 24.0
+grow_horizontal = 0
 text = "ЖЕТОНЫ СИЛЫ"
 valign = 1
 
@@ -185,6 +186,7 @@ stretch_mode = 6
 margin_left = 32.0
 margin_right = 184.0
 margin_bottom = 24.0
+grow_horizontal = 0
 text = "КЛАСС"
 valign = 1
 

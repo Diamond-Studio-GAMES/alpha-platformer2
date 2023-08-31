@@ -90,7 +90,7 @@ func select_class(id):
 	if G.getv(selected_class + "_level", 0) >= 10:
 		$amulet.show()
 		$amulet.texture_normal = AMULET_ICONS[G.AMULET[G.getv(selected_class + "_amulet", -1)]]
-	$stats.text = "Сила: " + str(G.getv(selected_class + "_level", 0)) + " Навык: " + str(G.getv(selected_class + "_ulti_level", 1))
+	$stats.text = tr("class.power") + str(G.getv(selected_class + "_level", 0)) + tr("class.skill") + str(G.getv(selected_class + "_ulti_level", 1))
 
 
 func show_d(lvl = "1_1"):
@@ -98,7 +98,7 @@ func show_d(lvl = "1_1"):
 	curr_lvl = lvl
 	G.current_level = curr_lvl
 	popup_centered()
-	window_title = "Уровень " + curr_lvl.split("_")[0] + "-" + curr_lvl.split("_")[1]
+	window_title = tr("level_dialog.level") + curr_lvl.split("_")[0] + "-" + curr_lvl.split("_")[1]
 	$class2.select(G.CLASSES_BY_ID[G.getv("selected_class", "player")])
 	display_rewards(lvl)
 
@@ -133,7 +133,7 @@ func show_d_win():
 			i.show()
 			$"../..".get_node("class_visuals/%s/%s/anim" % [i.name, i.name]).play("attack")
 	popup_centered()
-	window_title = "Уровень " + curr_lvl.split("_")[0] + "-" + curr_lvl.split("_")[1] + " пройден!"
+	window_title = tr("level_dialog.level.win") % (curr_lvl.split("_")[0] + "-" + curr_lvl.split("_")[1])
 	set_win_rewards(G.current_level)
 
 
