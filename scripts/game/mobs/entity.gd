@@ -104,7 +104,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 	var real_defense = defense
 	if not defense_allowed:
 		real_defense = 0
-	current_health = clamp(current_health - max(damage - real_defense, 0), 0, max_health)
+	current_health = round(clamp(current_health - max(damage - real_defense, 0), 0, max_health))
 	if fatal:
 		current_health = 0
 		damage = max_health
@@ -150,7 +150,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 	var time0 = 0
 	var time1 = 0
 	var difference = 0
-	if current_health > 0:
+	if not died:
 		time0 = min(custom_immobility_time, 0.1)
 		time1 = max(custom_immobility_time - 0.1, 0)
 		difference = max(custom_invincibility_time - custom_immobility_time, 0)

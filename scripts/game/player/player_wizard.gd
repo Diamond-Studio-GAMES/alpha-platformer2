@@ -163,6 +163,11 @@ func _process(delta):
 		aim_line.visible = false
 
 
+func revive(hpc = -1):
+	_anim_tree["parameters/throw_shot/active"] = false
+	.revive(hpc)
+
+
 func use_gadget():
 	if gadget_cooldown > 0 or gadget_count <= 0 or not can_control:
 		return

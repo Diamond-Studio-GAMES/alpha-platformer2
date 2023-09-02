@@ -366,6 +366,8 @@ func use_potion(level):
 			_anim_tree["parameters/potion_seek/seek_position"] = 0
 			_anim_tree["parameters/potion_shot/active"] = true
 			yield(get_tree().create_timer(0.8, false), "timeout")
+			if current_health <= 0:
+				return
 			$shield.show()
 			_is_ultiing = true
 			for i in range(4):
@@ -392,6 +394,8 @@ func use_potion(level):
 			_anim_tree["parameters/potion_seek/seek_position"] = 0
 			_anim_tree["parameters/potion_shot/active"] = true
 			yield(get_tree().create_timer(0.8, false), "timeout")
+			if current_health <= 0:
+				return
 			$shield.show()
 			_is_ultiing = true
 			for i in range(4):
@@ -418,6 +422,8 @@ func use_potion(level):
 			_anim_tree["parameters/potion_seek/seek_position"] = 0
 			_anim_tree["parameters/potion_shot/active"] = true
 			yield(get_tree().create_timer(0.8, false), "timeout")
+			if current_health <= 0:
+				return
 			$shield.show()
 			_is_ultiing = true
 			for i in range(4):
@@ -604,6 +610,8 @@ func revive(hp_count = -1):
 	node.global_position = global_position
 	_level.add_child(node)
 	_anim_tree["parameters/death_trans/current"] = AliveState.ALIVE
+	_anim_tree["parameters/attack_shot/active"] = false
+	_anim_tree["parameters/potion_shot/active"] = false
 	_buttons.show()
 	yield(get_tree().create_timer(0.4, false), "timeout")
 	$shield/anim.seek(0, true)

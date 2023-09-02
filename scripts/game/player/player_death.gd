@@ -145,6 +145,11 @@ func _process(delta):
 		use_gadget()
 
 
+func revive(hpc = -1):
+	_anim_tree["parameters/ora_shot/active"] = false
+	.revive(hpc)
+
+
 func use_gadget():
 	if gadget_cooldown > 0 or gadget_count <= 0 or _is_drinking or _is_ultiing or not can_control:
 		return
