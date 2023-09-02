@@ -1423,7 +1423,8 @@ margin_bottom = -110.0
 rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 180, 35 )
 custom_fonts/font = ExtResource( 1 )
-text = "ЖЕТОНЫ СИЛЫ"
+text = "item.tokens"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1529,7 +1530,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 4.0
 margin_bottom = 48.0
-text = "Доступно улучшение!"
+text = "box.canupgrade"
 align = 1
 valign = 1
 
@@ -1604,7 +1605,8 @@ margin_bottom = -109.0
 rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 210, 35 )
 custom_fonts/font = ExtResource( 1 )
-text = "ЖЕТОНЫ НАВЫКА"
+text = "item.utokens"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1713,7 +1715,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 4.0
 margin_bottom = 48.0
-text = "Доступно улучшение!"
+text = "box.canupgrade"
 align = 1
 valign = 1
 
@@ -1787,7 +1789,7 @@ margin_bottom = -133.0
 rect_scale = Vector2( 0.3, 0.3 )
 rect_pivot_offset = Vector2( 130, 35 )
 custom_fonts/font = SubResource( 123 )
-text = "ПОЛУЧЕНО:"
+text = "box.youget"
 align = 1
 valign = 2
 __meta__ = {
@@ -1858,7 +1860,7 @@ margin_top = -12.0
 margin_right = -8.0
 margin_bottom = 12.0
 custom_fonts/font = SubResource( 122 )
-text = "ОСТАЛОСЬ ПРЕДМЕТОВ:"
+text = "box.remains"
 align = 2
 valign = 1
 __meta__ = {

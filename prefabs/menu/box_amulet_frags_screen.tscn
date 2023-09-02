@@ -231,7 +231,7 @@ grow_horizontal = 2
 rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 250, 35 )
 custom_fonts/font = ExtResource( 1 )
-text = "ФРАГМЕНТ АМУЛЕТА"
+text = "item.frag"
 align = 1
 
 [node name="type" type="Label" parent="."]

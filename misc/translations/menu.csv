@@ -376,12 +376,13 @@ shop.offer.kit,НАБОР КЛАССА,CLASS KIT
 item.coins,МОНЕТЫ,COINS
 item.gems,КРИСТАЛЛЫ,GEMS
 item.frags,ФРАГМЕНТЫ АМУЛЕТА,AMULET FRAGMENTS
+item.frag,ФРАГМЕНТ АМУЛЕТА,AMULET FRAGMENT
 item.gadget,ДУШЕВНЫЙ НАВЫК,SOUL SKILL
 item.sp,ДУШЕВНАЯ СИЛА,SOUL POWER
 item.tokens,ЖЕТОНЫ СИЛЫ,POWER TOKENS
 item.utokens,ЖЕТОНЫ НАВЫКА,SKILL TOKENS
-item.wtokens,ЖЕТОНЫ СИЛЫ НА ЛЮБОЙ КЛАСС,POWER TOKENS FOR ANY CLASS
-item.wutokens,ЖЕТОНЫ НАВЫКА НА ЛЮБОЙ КЛАСС,SKILL TOKENS FOR ANY CLASS
+item.wtokens,ЖЕТОНЫ СИЛЫ ДЛЯ ЛЮБОГО КЛАССА,POWER TOKENS FOR ANY CLASS
+item.wutokens,ЖЕТОНЫ НАВЫКА ДЛЯ ЛЮБОГО КЛАССА,SKILL TOKENS FOR ANY CLASS
 item.class,КЛАСС,CLASS
 item.potion1,МАЛЕНЬКОЕ ЗЕЛЬЕ,SMALL POTION
 item.potion2,СРЕДНЕЕ ЗЕЛЬЕ,MEDIUM POTION
@@ -411,3 +412,13 @@ class.stat.mdamage,Урон(бл.),Damage(melee)
 class.upgrade.skill,УЛУЧШИТЬ ДО %s-ГО НАВЫКА?,UPGRADE TO %s SKILL LEVEL?
 class.stat.skill,Навык,Skill
 class.select,Класс: ,Class: 
+box.youget,ПОЛУЧЕНО:,YOU GOT:
+box.tocoins,В МОНЕТЫ,TO COINS
+box.selectclass,"Выбери класс, который их получит","Select class, which will get them"
+box.canupgrade,Доступно улучшение!,Upgrade available!
+box.newclass,НОВЫЙ КЛАСС!,NEW CLASS!
+class.knight.boxdesc,"Атакуя мечом, наносит средний урон. Его особый навык — нанесение случайного урона случайным целям!","Attacking with sword, deals average damage. His special skill is dealing random damage to random targets!"
+class.butcher.boxdesc,"Мясник с долгим размахом атакует топором, нанося высокий урон. Его особый навык — нанесение огромного урона одному врагу!","Butcher attacks with axe with long swing, dealing high damage. His special skill is dealing huge damage to one enemy!"
+class.spearman.boxdesc,"Он колет вблизи также больно, как при метании. Его особый навык — нанесение оглушительного удара врагу!",It stabs near as painful as when throwing. His special skill is striking a deafening blow to the enemy!
+class.wizard.boxdesc,"Маг специализируется на дальних дистанциях, атакуя магическими сферами. Его особый навык — исцеление себя и всех союзников поблизости!",Wizard specializes in long-range attacks with magic spheres. His special skill is healing himself and all allies nearby!
+class.archer.boxdesc,Урон выпущенной стрелы зависит от времени натягивания лука. Особый навык Лучника — нанесение урона всем врагам поблизости!,The damage of the released arrow depends on the time of pulling the bow. Archer's special skill is dealing damage to all enemies nearby!

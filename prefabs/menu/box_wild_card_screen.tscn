@@ -89,16 +89,16 @@ scale_amount_curve = SubResource( 134 )
 [node name="title" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -438.5
+margin_left = -275.0
 margin_top = 16.0
-margin_right = 438.5
+margin_right = 275.0
 margin_bottom = 159.0
 theme_type_variation = "LabelTitleLarge"
 custom_constants/line_spacing = -10
-text = "ЖЕТОНЫ СИЛЫ
-ДЛЯ ЛЮБОГО КЛАССА"
+text = "item.wtokens"
 align = 1
 valign = 1
+autowrap = true
 
 [node name="icon" type="TextureRect" parent="."]
 anchor_left = 0.5
@@ -131,7 +131,7 @@ margin_top = -88.0
 margin_right = 20.0
 margin_bottom = -64.0
 grow_horizontal = 2
-text = "Выбери класс, который их получит"
+text = "box.selectclass"
 align = 1
 valign = 1
 
@@ -164,7 +164,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "РЫЦАРЬ"
+text = "class.knight"
 align = 1
 valign = 1
 
@@ -196,7 +196,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "МЯСНИК"
+text = "class.butcher"
 align = 1
 valign = 1
 
@@ -228,7 +228,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "КОПЬЕНОСЕЦ"
+text = "class.spearman"
 align = 1
 valign = 1
 
@@ -260,7 +260,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "МАГ"
+text = "class.wizard"
 align = 1
 valign = 1
 
@@ -292,7 +292,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "ЛУЧНИК"
+text = "class.archer"
 align = 1
 valign = 1
 
@@ -325,6 +325,6 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "В МОНЕТЫ"
+text = "box.tocoins"
 align = 1
 valign = 1

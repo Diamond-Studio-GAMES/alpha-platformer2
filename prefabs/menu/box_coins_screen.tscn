@@ -172,7 +172,7 @@ margin_right = 180.0
 margin_bottom = 154.0
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 1 )
-text = "МОНЕТЫ"
+text = "item.coins"
 align = 1
 valign = 1
 

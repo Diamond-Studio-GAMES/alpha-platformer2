@@ -999,7 +999,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 800.0
-margin_right = 800.002
+margin_right = 800.003
 
 [node name="class_name" type="TextureRect" parent="knight/class/ui/text"]
 self_modulate = Color( 1, 0.12549, 0.12549, 1 )
@@ -1022,7 +1022,7 @@ anchor_bottom = 1.0
 margin_left = 39.0
 margin_bottom = -51.0
 custom_fonts/font = SubResource( 3 )
-text = "РЫЦАРЬ"
+text = "class.knight"
 valign = 1
 
 [node name="count" type="Label" parent="knight/class/ui/text/class_name"]
@@ -1049,7 +1049,7 @@ margin_right = 455.5
 margin_bottom = -129.0
 custom_colors/font_color = Color( 1, 0.823529, 0.823529, 1 )
 custom_fonts/font = SubResource( 4 )
-text = "НОВЫЙ КЛАСС!"
+text = "box.newclass"
 
 [node name="label" type="Label" parent="knight/class/ui/text"]
 anchor_left = 0.5
@@ -1061,7 +1061,7 @@ margin_top = 17.0
 margin_right = 429.0
 margin_bottom = 198.0
 custom_fonts/font = SubResource( 34 )
-text = "Атакуя мечом, наносит средний урон. Его особый навык - нанесение случайного урона случайным целям!"
+text = "class.knight.boxdesc"
 autowrap = true
 clip_text = true
 __meta__ = {
@@ -1082,6 +1082,7 @@ __meta__ = {
 }
 
 [node name="knight" type="Sprite" parent="knight/class/ui/class"]
+position = Vector2( -240, 0 )
 z_index = 10
 script = ExtResource( 10 )
 use_custom_path = true
@@ -1268,7 +1269,7 @@ anchor_bottom = 1.0
 margin_left = 39.0
 margin_bottom = -51.0
 custom_fonts/font = SubResource( 3 )
-text = "МЯСНИК"
+text = "class.butcher"
 valign = 1
 
 [node name="count" type="Label" parent="butcher/class/ui/text/class_name"]
@@ -1295,7 +1296,7 @@ margin_right = 455.5
 margin_bottom = -129.0
 custom_colors/font_color = Color( 1, 0.513726, 0, 1 )
 custom_fonts/font = SubResource( 4 )
-text = "НОВЫЙ КЛАСС!"
+text = "box.newclass"
 
 [node name="label" type="Label" parent="butcher/class/ui/text"]
 anchor_left = 0.5
@@ -1307,7 +1308,7 @@ margin_top = 17.0
 margin_right = 430.0
 margin_bottom = 198.0
 custom_fonts/font = SubResource( 34 )
-text = "Мясник с долгим размахом атакует топором, нанося высокий урон. Его особый навык - нанесение огромного урона одному врагу!"
+text = "class.butcher.boxdesc"
 autowrap = true
 clip_text = true
 __meta__ = {
@@ -1511,7 +1512,7 @@ anchor_bottom = 1.0
 margin_left = 39.0
 margin_bottom = -51.0
 custom_fonts/font = SubResource( 3 )
-text = "КОПЬЕНОСЕЦ"
+text = "class.spearman"
 valign = 1
 
 [node name="count" type="Label" parent="spearman/class/ui/text/class_name"]
@@ -1538,7 +1539,7 @@ margin_right = 455.5
 margin_bottom = -129.0
 custom_colors/font_color = Color( 0.521569, 1, 0.486275, 1 )
 custom_fonts/font = SubResource( 4 )
-text = "НОВЫЙ КЛАСС!"
+text = "box.newclass"
 
 [node name="label" type="Label" parent="spearman/class/ui/text"]
 anchor_left = 0.5
@@ -1550,7 +1551,7 @@ margin_top = 17.0
 margin_right = 429.0
 margin_bottom = 198.0
 custom_fonts/font = SubResource( 34 )
-text = "Он может колоть вблизи так же, как может метать копьё. Его особый навык - нанесение оглушительного удара врагу!"
+text = "class.spearman.boxdesc"
 autowrap = true
 clip_text = true
 __meta__ = {
@@ -1753,7 +1754,7 @@ anchor_bottom = 1.0
 margin_left = 39.0
 margin_bottom = -51.0
 custom_fonts/font = SubResource( 3 )
-text = "МАГ"
+text = "class.wizard"
 valign = 1
 
 [node name="count" type="Label" parent="wizard/class/ui/text/class_name"]
@@ -1780,7 +1781,7 @@ margin_right = 455.5
 margin_bottom = -129.0
 custom_colors/font_color = Color( 1, 0.709804, 1, 1 )
 custom_fonts/font = SubResource( 4 )
-text = "НОВЫЙ КЛАСС!"
+text = "box.newclass"
 
 [node name="label" type="Label" parent="wizard/class/ui/text"]
 anchor_left = 0.5
@@ -1792,7 +1793,7 @@ margin_top = 17.0
 margin_right = 429.0
 margin_bottom = 198.0
 custom_fonts/font = SubResource( 34 )
-text = "Маг специализируется на дальних дистанциях, атакую магическими сферами. Его особый навык - исцеление себя и всех союзников поблизости!"
+text = "class.wizard.boxdesc"
 autowrap = true
 clip_text = true
 __meta__ = {
@@ -1991,7 +1992,7 @@ anchor_bottom = 1.0
 margin_left = 39.0
 margin_bottom = -51.0
 custom_fonts/font = SubResource( 3 )
-text = "ЛУЧНИК"
+text = "class.archer"
 valign = 1
 
 [node name="count" type="Label" parent="archer/class/ui/text/class_name"]
@@ -2018,7 +2019,7 @@ margin_right = 455.5
 margin_bottom = -129.0
 custom_colors/font_color = Color( 0, 0.647059, 1, 1 )
 custom_fonts/font = SubResource( 4 )
-text = "НОВЫЙ КЛАСС!"
+text = "box.newclass"
 
 [node name="label" type="Label" parent="archer/class/ui/text"]
 anchor_left = 0.5
@@ -2030,7 +2031,7 @@ margin_top = 17.0
 margin_right = 429.0
 margin_bottom = 198.0
 custom_fonts/font = SubResource( 34 )
-text = "Урон выпущенной стрелы зависит от времени натягивания лука. Особый навык - нанесение урона всем врагам поблизости!"
+text = "class.archer.boxdesc"
 autowrap = true
 clip_text = true
 __meta__ = {
@@ -2066,5 +2067,23 @@ stream = ExtResource( 8 )
 bus = "sfx"
 
 [node name="class_visuals" parent="." instance=ExtResource( 7 )]
+
+[node name="anim" parent="class_visuals/knight/knight" index="1"]
+blend_times = [ "attack", "idle", 0.3, "idle", "attack", 0.3, "idle", "idle", 0.3, "idle", "skill_use", 0.3, "skill_use", "attack", 0.3, "skill_use", "idle", 0.3, "skill_use", "skill_use", 0.3 ]
+
+[node name="anim" parent="class_visuals/butcher/butcher" index="1"]
+blend_times = [ "attack", "idle", 0.3, "attack", "skill_use", 0.3, "idle", "skill_use", 0.3, "skill_use", "attack", 0.3, "skill_use", "idle", 0.3 ]
+
+[node name="anim" parent="class_visuals/spearman/spearman" index="1"]
+blend_times = [ "attack", "idle", 0.3, "attack", "skill_use", 0.3, "attack_throw", "attack", 0.3, "attack_throw", "idle", 0.3, "idle", "attack", 0.3, "idle", "idle", 0.3, "idle", "skill_use", 0.3, "skill_use", "attack", 0.3, "skill_use", "attack_throw", 0.3, "skill_use", "idle", 0.3 ]
+
+[node name="anim" parent="class_visuals/wizard/wizard" index="1"]
+blend_times = [ "attack", "idle", 0.3, "attack", "skill_use", 0.3, "attack_throw", "attack", 0.3, "attack_throw", "idle", 0.3, "attack_throw", "skill_use", 0.3, "skill_use", "attack", 0.3, "skill_use", "attack_throw", 0.3, "skill_use", "idle", 0.3 ]
+
+[node name="anim" parent="class_visuals/archer/archer" index="1"]
+blend_times = [ "aiming", "attack", 0.3, "aiming", "idle", 0.3, "attack", "idle", 0.3, "skill_use", "aiming", 0.3, "skill_use", "attack", 0.3, "skill_use", "idle", 0.3 ]
+
+[node name="anim" parent="class_visuals/player/player" index="1"]
+blend_times = [ "attack", "idle", 0.3 ]
 
 [editable path="class_visuals"]
