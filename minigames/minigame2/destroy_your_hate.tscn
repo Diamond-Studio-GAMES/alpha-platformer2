@@ -126,8 +126,8 @@ radius = 16.0
 
 [node name="destroy_your_hate" type="Node2D"]
 script = ExtResource( 13 )
-location = "Освободись от"
-level_name = "НЕНАВИСТИ!!!"
+location = "2.free_from"
+level_name = "2.hateee"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -202,7 +202,7 @@ position = Vector2( 1904, 48 )
 
 [node name="think" parent="decor" instance=ExtResource( 12 )]
 position = Vector2( 320, 0 )
-text = "Награда: 1 золотой ящик"
+text = "2.reward"
 time = 10.0
 color = Color( 1, 0, 0, 1 )
 

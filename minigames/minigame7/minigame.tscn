@@ -20,7 +20,8 @@ margin_left = 16.0
 margin_top = 16.0
 margin_right = 136.0
 margin_bottom = 56.0
-text = "Выйти"
+text = "menu.exit"
+clip_text = true
 
 [node name="title" type="Label" parent="."]
 anchor_left = 0.5
@@ -31,7 +32,7 @@ margin_right = 20.0
 margin_bottom = 86.0
 grow_horizontal = 2
 theme_type_variation = "LabelTitleLarge"
-text = "2Д-шутер"
+text = "7.name"
 align = 1
 valign = 1
 
@@ -44,7 +45,7 @@ margin_left = -200.0
 margin_top = -128.0
 margin_right = 200.0
 margin_bottom = -48.0
-text = "НАЧАТЬ"
+text = "7.begin"
 icon = ExtResource( 3 )
 expand_icon = true
 
@@ -57,13 +58,7 @@ margin_left = -301.0
 margin_top = -36.5
 margin_right = 301.0
 margin_bottom = 68.5
-text = "КАК ИГРАТЬ:
-1. Один игрок создаёт сервер
-2. Другие игроки подключаются к той же сети Wi-Fi, что и сервер.
-3. Игроки вводят IP сервера, который появится у него на экране.
-4. После того, как все подключились, сервер должен нажать \"Начать игру\".
-5. Игра началась! Побеждает последний выживший!
-"
+text = "7.guide"
 autowrap = true
 
 [node name="settings" type="Button" parent="."]
@@ -75,7 +70,8 @@ margin_left = -64.0
 margin_top = -68.0
 margin_right = 64.0
 margin_bottom = -32.0
-text = "Настройки"
+text = "menu.settings"
+clip_text = true
 
 [node name="setting_dialog" type="WindowDialog" parent="."]
 anchor_left = 0.5
@@ -86,15 +82,14 @@ margin_left = -206.0
 margin_top = -119.5
 margin_right = 206.0
 margin_bottom = 119.5
-window_title = "Настройки"
+window_title = "menu.settings"
 
 [node name="guide" type="Label" parent="setting_dialog"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -130.0
-text = "Режим \"Только прицеливание\" - джойстик прицела выполняет только прицеливание.
-Режим \"Прицеливание + выстрел\" - джойстик прицела и стреляет, и прицеливается."
+text = "7.settings.tip"
 align = 1
 autowrap = true
 
@@ -108,15 +103,15 @@ margin_top = -63.0
 margin_right = 111.0
 margin_bottom = -33.0
 grow_horizontal = 2
-text = "Только прицеливание"
-items = [ "Только прицеливание", null, false, 0, null, "Прицеливание + выстрел", null, false, 1, null ]
+text = "7.setting.aimonly"
+items = [ "7.setting.aimonly", null, false, 0, null, "7.setting.aimwithshoot", null, false, 1, null ]
 selected = 0
 
 [node name="label" type="Label" parent="setting_dialog"]
 anchor_right = 1.0
 margin_top = 24.0
 margin_bottom = 48.0
-text = "Режим джойстика прицела:"
+text = "7.settings.text"
 align = 1
 
 [connection signal="pressed" from="exit" to="." method="exit"]

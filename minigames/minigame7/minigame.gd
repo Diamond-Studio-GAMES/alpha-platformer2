@@ -11,10 +11,10 @@ func select_mode(mode):
 func _ready():
 	$setting_dialog/aim_mode.select(G.getv("shooter_aim_mode"))
 	if OS.has_feature("pc"):
-		$setting_dialog/guide.text = "WASD - движение, Средняя кнопка мыши - смена оружия, правая кнопка мыши - стрельба. Прицеливание джойстиком."
+		$setting_dialog/guide.text = tr("7.pccontrols")
 	if OS.has_feature("web"):
 		$royale.disabled = true
-		$guide.text = "К сожалению, данная мини-игра не доступна в веб-версии из-за особенностей веб-платформы."
+		$guide.text = tr("7.web")
 
 
 func exit():

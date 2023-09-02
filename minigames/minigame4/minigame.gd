@@ -83,7 +83,7 @@ func _ready():
 func start_wave():
 	$shop.hide()
 	player.can_control = true
-	player.make_dialog("Волна %d началась!" % wave_number, 5, Color.red)
+	player.make_dialog(tr("4.wave.start") % wave_number, 5, Color.red)
 	mob_count = round(wave_number * 0.65) + gen.randi_range(0, 3)
 	if wave_number == 20:
 		mob_count = 4
@@ -91,7 +91,7 @@ func start_wave():
 		spawn_mob(i)
 		st.start(gen.randf_range(0.7, 1.5))
 		yield(st, "timeout")
-	player.make_dialog("Все враги появились!")
+	player.make_dialog(tr("4.wave.end"))
 	yield(self, "wave_ended")
 	if wave_number == 20:
 		G.addv("ls_completed", 1)
@@ -100,10 +100,10 @@ func start_wave():
 		G.ach.complete(Achievements.LAST_STANDER)
 		get_rewards()
 		yield(G, "loot_end")
-		G.dialog_in_menu = "Поздравляем с победой!"
+		G.dialog_in_menu = tr("4.win")
 		get_tree().change_scene("res://scenes/menu/menu.tscn")
 		return
-	player.make_dialog("Волна зачищена!", 2, Color.green)
+	player.make_dialog(tr("4.wave.clear"), 2, Color.green)
 	wave_number += 1
 	yield(get_tree().create_timer(2, false), "timeout")
 	player.stop()
@@ -138,7 +138,7 @@ func mob_died(node):
 	if not node is Mob:
 		return
 	mob_count -= 1
-	player.make_dialog("Врагов осталось: " + str(mob_count))
+	player.make_dialog(tr("4.wave.left") + str(mob_count))
 	if mob_count <= 0:
 		emit_signal("wave_ended")
 	var amount = round(node.stats_multiplier * gen.randf_range(1, 2.5)) + gen.randi_range(1, 4)

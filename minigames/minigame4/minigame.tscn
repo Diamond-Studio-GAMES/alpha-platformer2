@@ -315,8 +315,8 @@ tracks/0/keys = {
 
 [node name="minigame" type="Node2D"]
 script = ExtResource( 2 )
-location = "Последние волны"
-level_name = "Отбивайся от волн врагов!"
+location = "4.name"
+level_name = "4.tip"
 mobs = [ ExtResource( 16 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 22 ), ExtResource( 6 ) ]
 
 [node name="tilemap" type="TileMap" parent="."]
@@ -622,7 +622,7 @@ margin_top = -32.0
 margin_right = 91.5
 margin_bottom = -8.0
 grow_horizontal = 2
-text = "Магазин улучшений"
+text = "4.shop.title"
 align = 1
 valign = 1
 
@@ -679,7 +679,7 @@ margin_left = 8.0
 margin_top = -36.0
 margin_right = -8.0
 margin_bottom = 48.0
-text = "+20 здоровья"
+text = "4.shop.hp"
 align = 1
 autowrap = true
 clip_text = true
@@ -734,7 +734,7 @@ margin_left = 8.0
 margin_top = -36.0
 margin_right = -8.0
 margin_bottom = 48.0
-text = "+15 брони"
+text = "4.shop.arm"
 align = 1
 autowrap = true
 clip_text = true
@@ -790,7 +790,7 @@ margin_left = 8.0
 margin_top = -36.0
 margin_right = -8.0
 margin_bottom = 48.0
-text = "+1 защита"
+text = "4.shop.def"
 align = 1
 autowrap = true
 clip_text = true
@@ -845,7 +845,7 @@ margin_left = 8.0
 margin_top = -36.0
 margin_right = -8.0
 margin_bottom = 48.0
-text = "+6 атаки"
+text = "4.shop.atk"
 align = 1
 autowrap = true
 clip_text = true
@@ -866,7 +866,7 @@ expand_icon = true
 margin_top = 194.0
 margin_right = 384.0
 margin_bottom = 224.0
-text = "Начать волну"
+text = "4.shop.start"
 
 [connection signal="pressed" from="shop/shop/panel/base/start_wave" to="." method="start_wave"]
 

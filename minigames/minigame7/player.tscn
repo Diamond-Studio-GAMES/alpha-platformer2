@@ -95,7 +95,6 @@ visible = false
 
 [node name="radar" parent="sprite/weapon" instance=ExtResource( 20 )]
 visible = false
-scale = Vector2( 1, 1 )
 
 [node name="theworld" parent="sprite/weapon" instance=ExtResource( 6 )]
 visible = false
@@ -118,7 +117,7 @@ margin_top = 16.0
 margin_right = -16.0
 margin_bottom = 46.0
 grow_horizontal = 0
-text = "Отключиться"
+text = "lobby.disconnect"
 
 [node name="change_weapon" type="Button" parent="camera/gui/gui"]
 anchor_left = 1.0
@@ -130,7 +129,7 @@ margin_top = -132.0
 margin_right = -16.0
 margin_bottom = -92.0
 grow_horizontal = 0
-text = "Сменить оружие"
+text = "7.change"
 
 [node name="button" type="TouchScreenButton" parent="camera/gui/gui/change_weapon"]
 shape = SubResource( 3 )
@@ -247,7 +246,7 @@ margin_right = 80.0
 margin_bottom = 144.0
 grow_horizontal = 2
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Начать игру"
+text = "lobby.start"
 
 [node name="ammo" type="Label" parent="camera/gui/gui"]
 anchor_left = 1.0

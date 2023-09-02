@@ -60,14 +60,14 @@ func open_box():
 		$semen_screen/pack/rarity.add_color_override("font_color", Color.magenta)
 		plants = plants_epic
 		$semen_screen/pack.texture = pack_e
-		$semen_screen/pack/rarity.text = "Эпическое"
+		$semen_screen/pack/rarity.text = tr("6.rarity.epic")
 	elif rare:
 		plants = plants_rare
 		$semen_screen/pack/rarity.add_color_override("font_color", Color.green)
 		$semen_screen/pack.texture = pack_r
-		$semen_screen/pack/rarity.text = "Редкое"
+		$semen_screen/pack/rarity.text = tr("6.rarity.rare")
 	elif common:
-		$semen_screen/pack/rarity.text = "Обычное"
+		$semen_screen/pack/rarity.text = tr("6.rarity.common")
 		plants = plants_common
 		$semen_screen/pack.texture = pack_c
 	else:
@@ -76,10 +76,10 @@ func open_box():
 	$fert_screen.hide()
 	$semen_screen.show()
 	plants.shuffle()
-	var got_plant : PlantResource = plants[0] as PlantResource
+	var got_plant := plants[0] as PlantResource
 	G.addv("garden_plants", [got_plant.resource_path], [])
 	$semen_screen/pack/plant.texture = got_plant.texture
-	$semen_screen/pack/label.text = got_plant.name
+	$semen_screen/pack/label.text = tr(got_plant.name)
 	$semen_screen/anim.play("get")
 	yield(self, "next")
 	get_tree().change_scene("res://minigames/minigame6/minigame.tscn")

@@ -1,7 +1,7 @@
 extends Node2D
 
 
-const PORT = 41512
+const PORT = 41513
 var player = load("res://minigames/minigame7/player.tscn")
 var heal = load("res://minigames/minigame7/heal.tscn")
 var started = false
@@ -16,7 +16,7 @@ func alert(text = ""):
 
 
 func _ready():
-	$lobby/gui/panel/port.text = "Порт: " + str(PORT)
+	$lobby/gui/panel/port.text = tr("7.port") + str(PORT)
 	get_tree().connect("connected_to_server", self, "connected_ok")
 	get_tree().connect("connection_failed", self, "alert", ["Ошибка подключения!"])
 	get_tree().connect("server_disconnected", self, "server_disconnect")
@@ -31,7 +31,7 @@ func refuse(id):
 
 
 func server_disconnect():
-	alert("Разорвано соединение с сервером или игра уже началась.")
+	alert(tr("7.disconnected"))
 	$lobby.show()
 
 
@@ -66,14 +66,17 @@ func kill_player(id, by):
 		if alive_players[0] == get_tree().get_network_unique_id():
 			G.addv("royale_victories", 1)
 			G.ach.complete(Achievements.VICTORY_ROYALE)
-			my_player.make_text("ВЫ ПОБЕДИЛИ!")
+			my_player.make_text(tr("7.victory"))
 		else:
-			my_player.make_text("ПОБЕДИТЕЛЬ: " + players_names[alive_players[0]])
+			my_player.make_text(tr("7.winner") + players_names[alive_players[0]])
 	else:
 		if by == "disconnect":
-			my_player.make_text("Игрок %s отключился!" % players_names[id])
+			my_player.make_text(tr("7.disconnected.player") % players_names[id])
 			return
-		my_player.make_text(by + " убивает игрока " + players_names[id] + "!")
+		if id == get_tree().get_network_unique_id():
+			my_player.make_text(tr("7.defeat") + ("\n" + tr("7.defeat.server") if get_tree().is_network_server() else ""))
+		else:
+			my_player.make_text(by + tr("7.kill") + players_names[id] + "!")
 
 
 remotesync func start_game():
@@ -89,7 +92,7 @@ remotesync func start_game():
 	players_names = {}
 	for i in alive_players:
 		players_names[i] = get_node("player" + str(i) + "/label").text
-	my_player.make_text("Игра началась!")
+	my_player.make_text(tr("7.started"))
 
 
 remotesync func player_died(id, by):
@@ -98,7 +101,7 @@ remotesync func player_died(id, by):
 
 func client():
 	if not $lobby/gui/panel/ip.text.is_valid_ip_address():
-		alert("Введён неверный IP-адрес!")
+		alert(tr("lobby.bad_ip"))
 		return
 	started = false
 	MP.create_client($lobby/gui/panel/ip.text, PORT)

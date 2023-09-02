@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 2 )
-name = "Цветок жетонов навыка"
+name = "6.plant.st.flower"
 texture = ExtResource( 1 )
 custom_scale = Vector2( 1, 1 )
 rarity = 2

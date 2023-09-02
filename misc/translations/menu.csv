@@ -1,5 +1,6 @@
 keys,ru,en
 menu.play,Играть,Play
+menu.exit,Выйти,Quit
 menu.achvs,Достижения,Achievements
 menu.settings,Настройки,Settings
 menu.about,Об игре,About
@@ -298,6 +299,7 @@ menu.setting.ping,Показывать пинг:,Show ping:
 menu.ping,Пинг: %d мс,Ping: %d ms
 menu.disconnected,Разорвано соединение с сервером!,Disconnected from the server!
 menu.players_left,Все игроки отключились!,All players have disconnected!
+lobby.disconnect,Отключиться,Disconnect
 lobby.connect_to,Присоединиться к комнате с уровнем ,Connect to room with level 
 lobby.bad_ip,Неверный IP-адрес!,Incorrect IP address!
 lobby.refuse.busy,Невозможно подключиться к комнате — игра уже началась!,Can’t connect to room — game already started!
@@ -309,6 +311,7 @@ lobby.info.you,(Вы),(You)
 lobby.strange_ip," (возможно, нет подключения)"," (maybe, there is no connection)"
 lobby.your_ip,Ваш IP: ,Your IP: 
 lobby.start_warn,Начать игру может только сервер.,Only server can start the game.
+lobby.start,Начать игру,Start game
 lobby.level,Уровень: ,Level: 
 lobby.your_ips,Ваши локальные IP-адреса,Your local IP addresses:
 lobby.error,Ошибка!,Error!

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Кристальное дерево"
+name = "6.plant.gem.tree"
 texture = ExtResource( 2 )
 custom_scale = Vector2( 2, 2 )
 rarity = 3

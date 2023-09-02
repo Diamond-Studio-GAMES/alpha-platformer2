@@ -308,6 +308,7 @@ current = true
 zoom = Vector2( 0.53, 0.53 )
 limit_top = -592
 drag_margin_v_enabled = true
+smoothing_enabled = true
 drag_margin_top = 0.6
 drag_margin_bottom = 0.1
 editor_draw_limits = true

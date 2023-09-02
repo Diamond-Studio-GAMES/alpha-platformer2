@@ -15,20 +15,20 @@ signal plant_selected(canceled)
 
 func _ready():
 	$base_list_of_plants/list_of_plants.get_close_button().connect("pressed", self, "select_plant", [""])
-	$base_buy/buy.get_cancel().text = "Отмена"
-	$base_buy/buy.get_ok().text = "Купить"
-	$base_gift/gift.get_ok().text = "Забрать"
+	$base_buy/buy.get_cancel().text = tr("menu.cancel")
+	$base_buy/buy.get_ok().text = tr("shop.buy")
+	$base_gift/gift.get_ok().text = tr("6.gift.collect")
 	check_for_gift()
 
 
 func open_box():
-	$base_buy/buy.dialog_text = "Действительно хочешь купить садовый ящик за 5 кристаллов?\nУ тебя: " + str(G.getv("gems", 10))
+	$base_buy/buy.dialog_text = tr("6.buy.text") + str(G.getv("gems", 10))
 	$base_buy/buy.popup_centered()
 
 
 func buy_box():
 	if G.getv("gems", 10) < 5:
-		show_warning("Недостаточно кристаллов!")
+		show_warning(tr("6.no.gems"))
 		return
 	G.addv("gems", -5, 10)
 	get_box()
@@ -71,7 +71,7 @@ func plant_pressed():
 	if canceled:
 		going_to_plant = false
 		return
-	$tip.text = "Выбери горшок для посадки (нажми кнопку ещё раз, чтобы отменить)"
+	$tip.text = tr("6.tip.plant")
 	$tip.visible = going_to_plant
 
 
@@ -79,7 +79,7 @@ func dig_up_pressed():
 	going_to_fertilize = false
 	going_to_plant = false
 	going_to_dig_up = not going_to_dig_up
-	$tip.text = "Выбери растение для выкапыванния (нажми кнопку ещё раз, чтобы отменить)"
+	$tip.text = tr("6.tip.remove")
 	$tip.visible = going_to_dig_up
 
 
@@ -87,7 +87,7 @@ func fert_up_pressed():
 	going_to_plant = false
 	going_to_dig_up = false
 	going_to_fertilize = not going_to_fertilize
-	$tip.text = "Выбери растение для удобрения (нажми кнопку ещё раз, чтобы отменить)"
+	$tip.text = tr("6.tip.fert")
 	$tip.visible = going_to_fertilize
 
 
@@ -116,7 +116,7 @@ func open_list_of_plants():
 		var plant_data = load(i) as PlantResource
 		var node = plant_element.instance()
 		node.get_node("tex").texture_normal = plant_data.texture
-		node.get_node("name").text = plant_data.name + " x " + str(G.getv("garden_plants", []).count(i))
+		node.get_node("name").text = tr(plant_data.name) + " x " + str(G.getv("garden_plants", []).count(i))
 		node.get_node("name").add_color_override("font_color", RARITY_COLORS[plant_data.rarity])
 		node.get_node("tex").connect("pressed", self, "select_plant", [i])
 		$base_list_of_plants/list_of_plants/scroll/grid.add_child(node)

@@ -140,7 +140,7 @@ margin_left = 16.0
 margin_top = 16.0
 margin_right = 192.0
 margin_bottom = 40.0
-text = "Всего заработано:"
+text = "3.total"
 valign = 1
 
 [node name="coins" type="Label" parent="base/gui/base"]
@@ -188,7 +188,7 @@ margin_left = -112.0
 margin_top = 16.0
 margin_right = -16.0
 margin_bottom = 46.0
-text = "Выйти"
+text = "menu.exit"
 
 [node name="spawn_pos" type="Position3D" parent="base"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52469, 0 )

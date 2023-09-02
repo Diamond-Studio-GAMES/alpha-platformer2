@@ -678,7 +678,7 @@ margin_left = -115.5
 margin_top = 48.0
 margin_right = 115.5
 margin_bottom = 72.0
-text = "ОСТАНОВИТЬ ЗАПИСЬ"
+text = "8.mute"
 
 [node name="mask" type="TextureRect" parent="screen/base"]
 anchor_left = 0.5
@@ -1013,15 +1013,13 @@ align = 1
 valign = 1
 
 [node name="music_box" type="Label" parent="screen/base/screen/gui"]
-visible = false
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 62.0
 margin_top = 82.0
 margin_right = 320.0
 margin_bottom = 110.0
-text = "МУЗАКАЛЬНАЯ
-ШКАТУЛКА"
+text = "8.music_box"
 align = 1
 valign = 1
 
@@ -1258,7 +1256,7 @@ margin_right = 20.0
 margin_bottom = -4.0
 grow_horizontal = 2
 theme = ExtResource( 35 )
-text = "ДВЕРЬ"
+text = "8.door"
 align = 1
 valign = 1
 

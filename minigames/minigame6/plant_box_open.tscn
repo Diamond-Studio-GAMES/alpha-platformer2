@@ -355,7 +355,7 @@ margin_right = 64.0
 margin_bottom = -32.0
 grow_horizontal = 2
 theme_type_variation = "LabelTitleLarge"
-text = "ВОДА"
+text = "6.box.water"
 align = 1
 valign = 1
 
@@ -411,7 +411,7 @@ margin_right = 64.0
 margin_bottom = -32.0
 grow_horizontal = 2
 theme_type_variation = "LabelTitleLarge"
-text = "УДОБРЕНИЕ"
+text = "6.box.fert"
 align = 1
 valign = 1
 
@@ -466,7 +466,7 @@ margin_right = 64.0
 margin_bottom = -32.0
 grow_horizontal = 2
 theme_type_variation = "LabelTitleLarge"
-text = "СЕМЕНА РАСТЕНИЯ"
+text = "6.box.semen"
 align = 1
 valign = 1
 
@@ -478,7 +478,7 @@ margin_top = -30.0
 margin_right = 230.0
 margin_bottom = -6.0
 grow_horizontal = 2
-text = "Легендарное"
+text = "6.rarity.legendary"
 align = 1
 
 [node name="label" type="Label" parent="semen_screen/pack"]

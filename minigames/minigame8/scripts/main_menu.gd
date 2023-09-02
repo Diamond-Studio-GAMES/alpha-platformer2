@@ -5,7 +5,7 @@ extends Control
 func _ready():
 	if G.getv("night") == 0:
 		G.setv("night", 1)
-	$continue/label.text = "НОЧЬ " + str(G.getv("night", 1))
+	$continue/label.text = tr("8.night") + str(G.getv("night", 1))
 
 
 func continue_():

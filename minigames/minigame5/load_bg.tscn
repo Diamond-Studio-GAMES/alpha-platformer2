@@ -27,7 +27,8 @@ margin_bottom = 46.0
 theme = ExtResource( 1 )
 shortcut_in_tooltip = false
 shortcut = SubResource( 3 )
-text = "Назад"
+text = "menu.exit"
+clip_text = true
 script = SubResource( 4 )
 
 [node name="bg" type="ColorRect" parent="."]

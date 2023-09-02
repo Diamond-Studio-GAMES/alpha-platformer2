@@ -14,7 +14,7 @@ script = ExtResource( 7 )
 __meta__ = {
 "_editor_description_": ""
 }
-location = "1.loc"
+location = "1.name"
 level_name = "1.level"
 
 [node name="tilemap" type="TileMap" parent="."]

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Куст жетонов силы"
+name = "6.plant.pt.bush"
 texture = ExtResource( 2 )
 custom_scale = Vector2( 1, 1 )
 rarity = 0

@@ -16,8 +16,8 @@ flashlight_loss_per_sec = 0.225
 door_loss_per_sec = 0.55
 cameras_loss_per_sec = 0.2
 
-[node name="night" parent="screen/base/main" index="2"]
-text = "Ночь 2"
+[node name="night" parent="screen/base/main" index="1"]
+text = "8.night.2"
 
 [node name="b0_0" parent="screen/base/screen/gui" index="1"]
 group = SubResource( 1 )

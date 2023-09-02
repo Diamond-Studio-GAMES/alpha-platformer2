@@ -16,6 +16,9 @@ door_loss_per_sec = 0.5
 cameras_loss_per_sec = 0.15
 music_box_loss_per_sec = 0.0
 
+[node name="night" parent="screen/base/main" index="2"]
+text = "8.night.1"
+
 [node name="b0_0" parent="screen/base/screen/gui" index="1"]
 group = SubResource( 1 )
 

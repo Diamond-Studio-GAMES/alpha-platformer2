@@ -36,7 +36,7 @@ margin_right = 164.0
 margin_bottom = 124.0
 grow_horizontal = 2
 theme_type_variation = "LabelTitle"
-text = "Выбери уровень:"
+text = "5.select"
 align = 1
 valign = 1
 
@@ -49,7 +49,7 @@ margin_left = -388.0
 margin_top = -24.0
 margin_right = -188.0
 margin_bottom = 56.0
-text = "Обширное поле"
+text = "5.easy"
 
 [node name="normal" type="Button" parent="."]
 anchor_left = 0.5
@@ -60,7 +60,7 @@ margin_left = -100.0
 margin_top = -24.0
 margin_right = 100.0
 margin_bottom = 56.0
-text = "Брождение по лесу"
+text = "5.normal"
 
 [node name="hard" type="Button" parent="."]
 anchor_left = 0.5
@@ -71,7 +71,7 @@ margin_left = 188.0
 margin_top = -24.0
 margin_right = 388.0
 margin_bottom = 56.0
-text = "Горное безумие"
+text = "5.hard"
 
 [node name="custom" type="Button" parent="."]
 anchor_left = 0.5
@@ -82,7 +82,7 @@ margin_left = -100.0
 margin_top = 216.0
 margin_right = 100.0
 margin_bottom = 256.0
-text = "Свой уровень"
+text = "5.custom"
 
 [node name="edit" type="Button" parent="custom"]
 anchor_left = 1.0
@@ -90,14 +90,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
 margin_right = 53.0
-text = "Ред."
+text = "5.custom.edit"
+clip_text = true
 
 [node name="exit" type="Button" parent="."]
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 96.0
 margin_bottom = 46.0
-text = "Выйти"
+text = "menu.exit"
+clip_text = true
 
 [connection signal="pressed" from="easy" to="." method="open_level" binds= [ "1" ]]
 [connection signal="pressed" from="normal" to="." method="open_level" binds= [ "2" ]]

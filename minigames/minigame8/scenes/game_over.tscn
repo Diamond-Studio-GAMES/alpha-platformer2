@@ -195,7 +195,7 @@ margin_right = 178.5
 margin_bottom = 25.5
 grow_horizontal = 2
 theme_type_variation = "LabelTitle"
-text = "ИГРА ОКОНЧЕНА"
+text = "8.game_over"
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )

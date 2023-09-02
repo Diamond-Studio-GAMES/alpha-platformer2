@@ -345,6 +345,9 @@ func heal(amount):
 func use_potion(level):
 	if _is_drinking or is_hurt or is_stunned or is_reviving or _is_ultiing or _is_attacking or not can_control:
 		return
+	if current_health >= max_health:
+		make_dialog(tr("player.fullhp"), 1, Color.white)
+		return
 	ms.sync_call(self, "use_potion", [level])
 	match level:
 		1:
