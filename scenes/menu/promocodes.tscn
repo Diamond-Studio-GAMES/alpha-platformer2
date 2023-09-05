@@ -193,16 +193,15 @@ margin_right = 176.0
 margin_bottom = -94.0
 grow_horizontal = 2
 theme_type_variation = "LabelTitle"
-text = "Ввести промокод:"
+text = "promocodes.title"
 align = 1
-valign = 1
 
 [node name="back" type="Button" parent="."]
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 96.0
 margin_bottom = 46.0
-text = "Назад"
+text = "menu.back"
 
 [node name="line_edit" type="LineEdit" parent="."]
 anchor_left = 0.5
@@ -214,7 +213,7 @@ margin_top = -80.0
 margin_right = 160.0
 margin_bottom = -32.0
 align = 1
-placeholder_text = "Код..."
+placeholder_text = "promocodes.placeholder"
 
 [node name="enter" type="Button" parent="."]
 anchor_left = 0.5
@@ -225,7 +224,8 @@ margin_left = -80.0
 margin_top = -20.0
 margin_right = 80.0
 margin_bottom = 20.0
-text = "Подтвердить"
+grow_horizontal = 2
+text = "promocodes.confirm"
 
 [node name="comment" type="Label" parent="."]
 anchor_left = 0.5

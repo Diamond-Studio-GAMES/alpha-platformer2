@@ -35,7 +35,7 @@ func _ready():
 	_attack_visual.hide()
 	_attack_shape.disabled = true
 	_ulti = load("res://prefabs/classes/wizard_ulti.tscn")
-	RECHARGE_SPEED = 1.5 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
+	RECHARGE_SPEED = 1.4 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
 	SPEED += (7 if is_amulet(G.Amulet.SPEED) else 0)
 	gen.randomize()
 	have_soul_power = G.getv("wizard_soul_power", false)

@@ -20,7 +20,7 @@ onready var p1 = $scroll/offers/resources/potion1/count
 onready var b1 = $scroll/offers/resources/potion1/buy
 onready var p2 = $scroll/offers/resources/potion2/count
 onready var b2 = $scroll/offers/resources/potion2/buy
-onready var na = $scroll/offers/resources/no_ads/buy
+onready var na = $scroll/offers/other/no_ads/buy
 onready var http = $http_request
 var gem = load("res://textures/items/gem.png")
 var coin = load("res://textures/items/coin.png")
@@ -70,7 +70,7 @@ var payment
 onready var butt_gem0 = $scroll/offers/resources/gems0/buy
 onready var butt_gem1 = $scroll/offers/resources/gems1/buy
 onready var butt_gem2 = $scroll/offers/resources/gems2/buy
-onready var butt_no_ads = $scroll/offers/resources/no_ads/buy
+onready var butt_no_ads = $scroll/offers/other/no_ads/buy
 
 
 func init_iap():
@@ -164,6 +164,7 @@ func _on_purchase_consumed(purchase_token):
 
 func _on_purchase_error(code, message):
 	printerr("Purchase error %d: %s" % [code, message])
+	$error.popup_centered()
 
 
 func _on_purchase_acknowledgement_error(code, message, purchase_token):
@@ -216,21 +217,25 @@ func buy_gems500():
 	var response = payment.purchase(GEMS_500_SKU)
 	if response.status != OK:
 		print("Purchase error %s: %s" % [response.response_code, response.debug_message])
+		$error.popup_centered()
 
 func buy_gems1250():
 	var response = payment.purchase(GEMS_1250_SKU)
 	if response.status != OK:
 		print("Purchase error %s: %s" % [response.response_code, response.debug_message])
+		$error.popup_centered()
 
 func buy_gems2500():
 	var response = payment.purchase(GEMS_2500_SKU)
 	if response.status != OK:
 		print("Purchase error %s: %s" % [response.response_code, response.debug_message])
+		$error.popup_centered()
 
 func buy_no_ads():
 	var response = payment.purchase(NO_ADS_SKU)
 	if response.status != OK:
 		print("Purchase error %s: %s" % [response.response_code, response.debug_message])
+		$error.popup_centered()
 # END OF IAP
 
 func _process(delta):
@@ -320,10 +325,10 @@ func buy(costs = "", receives = "", id = -1):
 					add += tr("item.class").to_lower() + " (" + tr(G.CLASSES[j])
 			"tokens":
 				for j in receive[i]:
-					add += tr("item.tokens").to_lower() + " (" + tr(G.CLASSES[j]) + "," + str(receive[i][j])
+					add += tr("item.tokens").to_lower() + " (" + tr(G.CLASSES[j]) + ", " + str(receive[i][j])
 			"ulti_tokens":
 				for j in receive[i]:
-					add += tr("item.utokens").to_lower() + " (" + tr(G.CLASSES[j]) + "," + str(receive[i][j])
+					add += tr("item.utokens").to_lower() + " (" + tr(G.CLASSES[j]) + ", " + str(receive[i][j])
 			"wild_tokens":
 				add += tr("item.wtokens").to_lower() + " (" + str(receive[i])
 			"wild_ulti_tokens":

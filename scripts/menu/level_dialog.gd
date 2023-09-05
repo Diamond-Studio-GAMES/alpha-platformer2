@@ -187,15 +187,21 @@ func get_power_ulti_classes():
 
 
 func display_rewards(level = ""):
+	var new_level = G.getv(level + "_c", {}).empty()
+	var is_boss = level.split("_")[1] == "10"
+	var new_day = G.getv(level + "_c", {"day":50})["day"] != Time.get_date_dict_from_system()["day"] \
+			and G.getv(level + "_c_ut", 0) <= Time.get_unix_time_from_system()
+	
 	var mod_lvl = 1 + float(level.split("_")[0]) * 0.4
-	var mod_day = 1.5 if G.getv(level + "_c", {"day":50})["day"] != Time.get_date_dict_from_system()["day"] and G.getv(level + "_c_ut", 0) <= Time.get_unix_time_from_system() else 1
-	mod_day = 2 if G.getv(level + "_c", {}).hash() == {}.hash() else mod_day
-	mod_day = 5 if G.getv(level + "_c", {}).hash() == {}.hash() and level.split("_")[1] == "10" else mod_day
+	var mod_day = 1.5 if new_day else 1
+	mod_day = 2 if new_level else mod_day
+	mod_day = 5 if new_level and is_boss else mod_day
 	var coins_count = str(round(20 * mod_lvl * mod_day / 5) * 5) + "-" + str(round(45 * mod_lvl * mod_day / 5) * 5)
 	var tokens_chance = 30 if get_power_ulti_classes()[0] else 0
 	var ulti_chance = 20 if get_power_ulti_classes()[1] else 0
 	var tokens_count = str(round(4 * mod_lvl * mod_day)) + "-" + str(round(9 * mod_lvl * mod_day))
 	var ulti_tokens_count = str(round(1 * mod_lvl * mod_day)) + "-" + str(round(2 * mod_lvl * mod_day))
+	var diamond_box_chance = 100 if is_boss and new_level else 0 
 	var gold_box_chance = clamp(-20 + (mod_day - 1) * 70, 0, 100)
 	var box_chance = clamp((mod_lvl - 1) * 25 + (mod_day - 1) * 500, 0, 100)
 	var potion_chance = round((mod_lvl - 1) * 2.5)
@@ -204,8 +210,12 @@ func display_rewards(level = ""):
 		text += "/[img=24x24]res://textures/items/wild_token.png[/img] {count} ({chance}%)".format({"count" : tokens_count, "chance" : tokens_chance})
 	if ulti_chance > 0:
 		text += "/[img=24x24]res://textures/items/wild_ulti_token.png[/img] {count} ({chance}%)".format({"count" : ulti_tokens_count, "chance" : ulti_chance})
-	if gold_box_chance > 0 or box_chance > 0:
+	if gold_box_chance > 0 or box_chance > 0 or diamond_box_chance > 0:
 		text += "\n"
+	if diamond_box_chance > 0:
+		box_chance = 0
+		gold_box_chance = 0
+		text += "[img=24x24]res://textures/items/diamond_box.png[/img] 1 (100%)"
 	if gold_box_chance > 0:
 		if box_chance > 0:
 			box_chance -= gold_box_chance
@@ -219,10 +229,15 @@ func display_rewards(level = ""):
 
 
 func set_win_rewards(level = ""):
+	var new_level = G.getv(level + "_c", {}).empty()
+	var is_boss = level.split("_")[1] == "10"
+	var new_day = G.getv(level + "_c", {"day":50})["day"] != Time.get_date_dict_from_system()["day"] \
+			and G.getv(level + "_c_ut", 0) <= Time.get_unix_time_from_system()
+	
 	var mod_lvl = 1 + float(level.split("_")[0]) * 0.4
-	var mod_day = 1.5 if G.getv(level + "_c", {"day":50})["day"] != Time.get_date_dict_from_system()["day"]  and G.getv(level + "_c_ut", 0) <= Time.get_unix_time_from_system() else 1
-	mod_day = 2 if G.getv(level + "_c", {}).hash() == {}.hash() else mod_day
-	mod_day = 5 if G.getv(level + "_c", {}).hash() == {}.hash() and level.split("_")[1] == "10" else mod_day
+	var mod_day = 1.5 if new_day else 1
+	mod_day = 2 if new_level else mod_day
+	mod_day = 5 if new_level and is_boss else mod_day
 	var coins_count_min = round(20 * mod_lvl * mod_day / 5) * 5
 	var coins_count_max = round(45 * mod_lvl * mod_day / 5) * 5
 	var tokens_chance = 30 if get_power_ulti_classes()[0] else 0
@@ -231,6 +246,7 @@ func set_win_rewards(level = ""):
 	var tokens_count_max = round(9 * mod_lvl * mod_day)
 	var ulti_tokens_count_min = round(1 * mod_lvl * mod_day)
 	var ulti_tokens_count_max = round(2 * mod_lvl * mod_day)
+	var diamond_box_chance = 100 if is_boss and new_level else 0
 	var gold_box_chance = clamp(-20 + (mod_day - 1) * 70, 0, 100)
 	var box_chance = clamp((mod_lvl - 1) * 25 + (mod_day - 1) * 500, 0, 100)
 	var potion_chance = round((mod_lvl - 1) * 2.5)
@@ -240,6 +256,7 @@ func set_win_rewards(level = ""):
 	var give_ulti_tokens = G.percent_chance(ulti_chance)
 	var give_box = G.percent_chance(box_chance)
 	var give_gold_box = G.percent_chance(gold_box_chance)
+	var give_diamond_box = G.percent_chance(diamond_box_chance)
 	var give_potion = G.percent_chance(potion_chance)
 	if give_ulti_tokens:
 		end_rewards["wild_ulti_tokens"] = gen.randi_range(ulti_tokens_count_min, ulti_tokens_count_max)
@@ -247,7 +264,9 @@ func set_win_rewards(level = ""):
 		end_rewards["wild_tokens"] = gen.randi_range(tokens_count_min, tokens_count_max)
 	else:
 		end_rewards["coins"] = gen.randi_range(coins_count_min / 5, coins_count_max / 5) * 5
-	if give_gold_box:
+	if give_diamond_box:
+		end_rewards["diamond_box"] = 1
+	elif give_gold_box:
 		end_rewards["gold_box"] = 1
 	elif give_box:
 		end_rewards["box"] = 1
@@ -272,6 +291,8 @@ func set_win_rewards(level = ""):
 				text += "[img=24x24]res://textures/items/box.png[/img] 1"
 			"gold_box":
 				text += "[img=24x24]res://textures/items/gold_box.png[/img] 1"
+			"diamond_box":
+				text += "[img=24x24]res://textures/items/diamond_box.png[/img] 1"
 			"potions1":
 				text += "[img=24x24]res://textures/items/small_potion.png[/img] 1"
 		text += "\n"

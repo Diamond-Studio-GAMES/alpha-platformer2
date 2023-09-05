@@ -23,7 +23,7 @@ func _ready():
 	$camera/gui/base/ulti_use/ulti_name.text = tr(G.ULTIS[class_nam]) + " " + G.RIM_NUMBERS[ulti_power]
 	_attack_visual.hide()
 	_attack_shape.disabled = true
-	RECHARGE_SPEED = 0.725 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
+	RECHARGE_SPEED = 0.75 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
 	SPEED += (7 if is_amulet(G.Amulet.SPEED) else 0)
 	gen.randomize()
 	have_soul_power = G.getv("knight_soul_power", false)

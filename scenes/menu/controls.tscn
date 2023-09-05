@@ -215,7 +215,8 @@ margin_left = -309.5
 margin_right = 309.5
 margin_bottom = 70.0
 custom_fonts/font = ExtResource( 3 )
-text = "Настройка управления"
+text = "controls.title"
+align = 1
 
 [node name="guide" type="Label" parent="."]
 anchor_left = 0.5
@@ -224,7 +225,7 @@ margin_left = -309.0
 margin_top = 72.0
 margin_right = 310.0
 margin_bottom = 103.0
-text = "Настрой управление под себя, перетаскивая кнопки!"
+text = "controls.guide"
 align = 1
 
 [node name="back" type="Button" parent="."]
@@ -232,7 +233,7 @@ margin_left = 16.0
 margin_top = 16.0
 margin_right = 116.0
 margin_bottom = 46.0
-text = "Выйти"
+text = "menu.exit"
 
 [node name="reset" type="Button" parent="."]
 anchor_left = 1.0
@@ -241,7 +242,8 @@ margin_left = -116.0
 margin_top = 16.0
 margin_right = -16.0
 margin_bottom = 46.0
-text = "Сбросить"
+text = "controls.reset"
+clip_text = true
 
 [connection signal="pressed" from="back" to="." method="exit"]
 [connection signal="pressed" from="reset" to="." method="reset_button"]

@@ -42,6 +42,8 @@ func _ready():
 			yield(get_tree().create_timer(0.05, false), "timeout")
 			if j == "." or j == ",":
 				yield(get_tree().create_timer(0.45, false), "timeout")
+			elif j == "…":
+				yield(get_tree().create_timer(1.45, false), "timeout")
 		yield(get_tree().create_timer(0.5, false), "timeout")
 		tw.interpolate_property(s_tex, "self_modulate", Color.white, Color.black, 0.5)
 		tw.start()

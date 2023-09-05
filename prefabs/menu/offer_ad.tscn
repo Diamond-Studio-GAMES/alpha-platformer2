@@ -18,7 +18,7 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = -8.0
 margin_bottom = 40.0
-text = "РЕКЛАМА"
+text = "shop.watch_ad"
 align = 1
 valign = 1
 autowrap = true
@@ -32,7 +32,8 @@ margin_left = -60.0
 margin_top = -46.0
 margin_right = 60.0
 margin_bottom = -12.0
-text = "РЕКЛАМА"
+text = "shop.watch_ad"
+clip_text = true
 expand_icon = true
 
 [node name="items" type="VBoxContainer" parent="."]
@@ -80,7 +81,7 @@ stretch_mode = 6
 margin_left = 32.0
 margin_right = 184.0
 margin_bottom = 24.0
-text = "ЗОЛОТОЙ ЯЩИК"
+text = "item.box.big"
 valign = 1
 
 [node name="count" type="Label" parent="items/item0"]

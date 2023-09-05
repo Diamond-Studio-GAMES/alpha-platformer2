@@ -51,6 +51,7 @@ func _ready():
 			max_lvl = true
 			if G.getv("learned", false):
 				i.grab_focus()
+				$levels.call_deferred("ensure_control_visible", i)
 
 
 func menu_pressed(id):

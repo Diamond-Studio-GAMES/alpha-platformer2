@@ -146,9 +146,10 @@ margin_left = -134.0
 margin_top = -228.0
 margin_right = -4.0
 margin_bottom = -204.0
-text = "Класс:"
+text = "level_dialog.class"
 align = 2
 valign = 1
+clip_text = true
 
 [node name="stats" type="Label" parent="select_level_dialog"]
 anchor_left = 0.5
@@ -157,7 +158,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 4.0
 margin_top = -184.0
-margin_right = 244.0
+margin_right = 172.0
 margin_bottom = -152.0
 text = "Сила: 20 Навык:5"
 valign = 1
@@ -218,7 +219,9 @@ margin_left = -42.5
 margin_top = 20.0
 margin_right = 42.5
 margin_bottom = 44.0
-text = "НАГРАДЫ:"
+grow_horizontal = 2
+text = "level_dialog.rewards"
+align = 1
 
 [node name="rc" type="RichTextLabel" parent="select_level_dialog"]
 anchor_left = 0.5
@@ -243,7 +246,8 @@ margin_left = -40.0
 margin_top = -48.0
 margin_right = 40.0
 margin_bottom = -16.0
-text = "Играть"
+text = "menu.play"
+clip_text = true
 
 [node name="menu" type="MenuButton" parent="select_level_dialog/play"]
 anchor_left = 1.0
@@ -254,7 +258,7 @@ margin_right = 34.0
 icon = ExtResource( 3 )
 flat = false
 icon_align = 1
-items = [ "Создать комнату...", null, 0, false, false, 0, 0, null, "", false, "Присоединиться...", null, 0, false, false, 1, 0, null, "", false ]
+items = [ "level_dialog.multiplayer.create", null, 0, false, false, 0, 0, null, "", false, "level_dialog.multiplayer.join", null, 0, false, false, 1, 0, null, "", false ]
 
 [node name="class2" type="OptionButton" parent="select_level_dialog"]
 anchor_left = 0.5
@@ -265,11 +269,11 @@ margin_left = 4.0
 margin_top = -228.0
 margin_right = 134.0
 margin_bottom = -198.0
-text = "Рыцарь"
+text = "class.knight.l"
 icon = ExtResource( 9 )
 align = 1
 expand_icon = true
-items = [ "Рыцарь", ExtResource( 9 ), false, 0, null, "Мясник", ExtResource( 4 ), false, 1, null, "Копьеносец", ExtResource( 13 ), false, 2, null, "Маг", ExtResource( 6 ), false, 3, null, "Лучник", ExtResource( 12 ), false, 4, null, "Без класса", null, false, 5, null ]
+items = [ "class.knight.l", ExtResource( 9 ), false, 0, null, "class.butcher.l", ExtResource( 4 ), false, 1, null, "class.spearman.l", ExtResource( 13 ), false, 2, null, "class.wizard.l", ExtResource( 6 ), false, 3, null, "class.archer.l", ExtResource( 12 ), false, 4, null, "class.none.l", null, false, 5, null ]
 selected = 0
 
 [node name="lobby_dialog" type="WindowDialog" parent="."]
@@ -283,7 +287,7 @@ margin_right = 300.0
 margin_bottom = 160.0
 theme = ExtResource( 1 )
 popup_exclusive = true
-window_title = "Мультиплеер"
+window_title = "lobby.title"
 script = ExtResource( 11 )
 
 [node name="lobby" type="Control" parent="lobby_dialog"]
@@ -309,7 +313,7 @@ margin_top = -48.0
 margin_right = 80.0
 margin_bottom = -16.0
 disabled = true
-text = "Начать игру"
+text = "lobby.start"
 
 [node name="disconnect" type="Button" parent="lobby_dialog/lobby"]
 anchor_left = 1.0
@@ -318,7 +322,8 @@ margin_left = -176.0
 margin_top = 12.0
 margin_right = -16.0
 margin_bottom = 44.0
-text = "Отключиться"
+text = "lobby.disconnect"
+clip_text = true
 
 [node name="players" type="Label" parent="lobby_dialog/lobby"]
 anchor_left = 0.5
@@ -330,7 +335,7 @@ margin_top = -124.0
 margin_right = 20.0
 margin_bottom = -100.0
 grow_horizontal = 2
-text = "Игроки:"
+text = "lobby.players"
 align = 1
 valign = 1
 
@@ -358,7 +363,7 @@ margin_top = -72.0
 margin_right = 32.0
 margin_bottom = -48.0
 grow_horizontal = 2
-text = "Все IP..."
+text = "lobby.ips"
 
 [node name="scroll" type="ScrollContainer" parent="lobby_dialog/lobby"]
 anchor_left = 0.5
@@ -409,7 +414,7 @@ alignment = 1
 margin_right = 198.0
 margin_bottom = 48.0
 size_flags_horizontal = 3
-text = "Подключиться по IP"
+text = "lobby.connect.ip"
 
 [node name="ip" type="LineEdit" parent="lobby_dialog/connect/ip"]
 margin_left = 202.0
@@ -418,7 +423,7 @@ margin_bottom = 48.0
 size_flags_horizontal = 3
 align = 1
 max_length = 15
-placeholder_text = "Введите IP сервера..."
+placeholder_text = "lobby.enter_ip"
 
 [node name="tip" type="Label" parent="lobby_dialog/connect"]
 anchor_left = 0.5
@@ -429,7 +434,7 @@ margin_left = -157.0
 margin_top = -24.0
 margin_right = 157.0
 grow_horizontal = 2
-text = "IP можно найти на экране сервера."
+text = "lobby.connect.tip"
 align = 1
 valign = 1
 
@@ -443,7 +448,7 @@ margin_top = 16.0
 margin_right = 200.0
 margin_bottom = 64.0
 size_flags_horizontal = 3
-text = "Подключиться автоматически"
+text = "lobby.connect.auto"
 
 [node name="warning" type="Label" parent="lobby_dialog/connect"]
 anchor_left = 0.5
@@ -455,7 +460,7 @@ margin_top = 76.0
 margin_right = 277.5
 margin_bottom = 127.0
 grow_horizontal = 2
-text = "Выполняет сканирование всех IP в локальной сети в поиске комнаты. Может не сработать."
+text = "lobby.connect.auto.info"
 align = 1
 valign = 1
 autowrap = true

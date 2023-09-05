@@ -14,6 +14,7 @@ enum SoulType  {
 onready var soul = $create/soul
 var save_obj = load("res://prefabs/menu/save.tscn")
 var id_to_delete = ""
+var saves_objs_dict = {}
 
 
 func _ready():
@@ -62,6 +63,7 @@ func list_saves():
 	if list != G.main_getv("saves_list", []):
 		reload_meta_from_saves()
 		G.main_setv("saves_list", list)
+	saves_objs_dict.clear()
 	var list_of_saves = []
 	list_of_saves = get_save_ids_list()
 	if list_of_saves.size() <= 0:
@@ -69,6 +71,7 @@ func list_saves():
 		return
 	for i in list_of_saves:
 		var node = save_obj.instance()
+		node.name = i
 		node.get_node("name").text = G.get_save_meta(i, "name", "???")
 		var date = G.get_save_meta(i, "last_opened", Time.get_date_dict_from_system())
 		var date_str = "%02d/%02d/%d" % [date["day"], date["month"], date["year"]]
@@ -78,6 +81,15 @@ func list_saves():
 		node.get_node("copy").connect("pressed", self, "duplicate_save", [i])
 		node.get_node("delete").connect("pressed", self, "delete_save", [i])
 		$saves/scroll/saves.add_child(node)
+		saves_objs_dict[G.get_save_meta(i, "name", "???")] = node
+	sort_saves()
+
+
+func sort_saves():
+	var sorted = saves_objs_dict.keys().duplicate()
+	sorted.sort()
+	for i in range(sorted.size()):
+		$saves/scroll/saves.move_child(saves_objs_dict[sorted[i]], i)
 
 
 func _process(delta):

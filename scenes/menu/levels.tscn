@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://themes/font_headers2.tres" type="DynamicFont" id=1]
 [ext_resource path="res://themes/font_headers.tres" type="DynamicFont" id=2]
@@ -706,6 +706,9 @@ tracks/13/keys = {
 "times": PoolRealArray( 0.1 )
 }
 
+[sub_resource type="CanvasItemMaterial" id=279]
+blend_mode = 4
+
 [node name="levels" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1353,8 +1356,9 @@ margin_left = 16.0
 margin_top = -64.0
 margin_right = 144.0
 margin_bottom = -16.0
-text = "Магазин"
+text = "shop.name"
 icon = ExtResource( 48 )
+clip_text = true
 expand_icon = true
 
 [node name="classes_button" type="Button" parent="."]
@@ -1364,8 +1368,9 @@ margin_left = 160.0
 margin_top = -64.0
 margin_right = 288.0
 margin_bottom = -16.0
-text = "Классы"
+text = "classes.name"
 icon = ExtResource( 31 )
+clip_text = true
 expand_icon = true
 
 [node name="exit" type="Button" parent="."]
@@ -1377,8 +1382,9 @@ margin_left = -144.0
 margin_top = -64.0
 margin_right = -16.0
 margin_bottom = -16.0
-text = "Выход"
+text = "menu.exit"
 icon = ExtResource( 35 )
+clip_text = true
 expand_icon = true
 
 [node name="help_button" type="Button" parent="."]
@@ -1398,7 +1404,7 @@ margin_bottom = 56.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "..."
 flat = false
-items = [ "Мультиплеер", null, 0, false, false, 0, 0, null, "", false, "Мини-игры", null, 0, false, false, 1, 0, null, "", false ]
+items = [ "lobby.title", null, 0, false, false, 0, 0, null, "", false, "minigame.s", null, 0, false, false, 1, 0, null, "", false ]
 
 [node name="shop" type="Panel" parent="."]
 visible = false
@@ -1419,17 +1425,18 @@ anchor_right = 0.5
 margin_left = -112.0
 margin_right = 112.0
 margin_bottom = 70.0
+grow_horizontal = 2
 custom_fonts/font = ExtResource( 2 )
-text = "Магазин"
+text = "shop.name"
 align = 1
-valign = 1
 
 [node name="close" type="Button" parent="shop"]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 88.0
 margin_bottom = 48.0
-text = "Назад"
+text = "menu.back"
+clip_text = true
 
 [node name="gems" type="Label" parent="shop"]
 anchor_left = 1.0
@@ -1481,13 +1488,13 @@ margin_bottom = -16.0
 scroll_vertical_enabled = false
 
 [node name="offers" type="HBoxContainer" parent="shop/scroll"]
-margin_right = 1558.0
+margin_right = 1594.0
 margin_bottom = 420.0
 
 [node name="resources" type="Panel" parent="shop/scroll/offers"]
-margin_right = 1558.0
+margin_right = 1178.0
 margin_bottom = 420.0
-rect_min_size = Vector2( 1558, 420 )
+rect_min_size = Vector2( 1178, 420 )
 mouse_filter = 1
 
 [node name="title" type="Label" parent="shop/scroll/offers/resources"]
@@ -1497,16 +1504,18 @@ margin_left = -40.5
 margin_top = 8.0
 margin_right = 40.5
 margin_bottom = 32.0
-text = "РЕСУРСЫ"
+grow_horizontal = 2
+text = "shop.resources"
+align = 1
 
 [node name="big_box" type="TextureRect" parent="shop/scroll/offers/resources"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -760.0
+margin_left = -569.0
 margin_top = -178.0
-margin_right = -580.0
+margin_right = -389.0
 margin_bottom = 2.0
 rect_clip_content = true
 texture = SubResource( 267 )
@@ -1528,7 +1537,7 @@ expand = true
 [node name="title" type="Label" parent="shop/scroll/offers/resources/big_box"]
 anchor_right = 1.0
 margin_bottom = 24.0
-text = "ЗОЛОТОЙ ЯЩИК"
+text = "item.box.big"
 align = 1
 valign = 1
 
@@ -1559,9 +1568,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -760.0
+margin_left = -569.0
 margin_top = 14.0
-margin_right = -580.0
+margin_right = -389.0
 margin_bottom = 194.0
 rect_clip_content = true
 texture = SubResource( 267 )
@@ -1583,7 +1592,7 @@ expand = true
 [node name="title" type="Label" parent="shop/scroll/offers/resources/megabox"]
 anchor_right = 1.0
 margin_bottom = 24.0
-text = "АЛМАЗНЫЙ ЯЩИК"
+text = "item.box.mega"
 align = 1
 valign = 1
 
@@ -1614,9 +1623,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -568.0
+margin_left = -377.0
 margin_top = 14.0
-margin_right = -388.0
+margin_right = -197.0
 margin_bottom = 194.0
 rect_clip_content = true
 texture = SubResource( 269 )
@@ -1638,7 +1647,7 @@ expand = true
 [node name="title" type="Label" parent="shop/scroll/offers/resources/gems0"]
 anchor_right = 1.0
 margin_bottom = 24.0
-text = "500 КРИСТАЛЛОВ"
+text = "shop.500gems"
 align = 1
 valign = 1
 
@@ -1660,9 +1669,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -376.0
+margin_left = -185.0
 margin_top = 14.0
-margin_right = -196.0
+margin_right = -5.0
 margin_bottom = 194.0
 rect_clip_content = true
 texture = SubResource( 269 )
@@ -1710,7 +1719,7 @@ expand = true
 [node name="title" type="Label" parent="shop/scroll/offers/resources/gems1"]
 anchor_right = 1.0
 margin_bottom = 24.0
-text = "1250 КРИСТАЛЛОВ"
+text = "shop.1250gems"
 align = 1
 valign = 1
 
@@ -1732,9 +1741,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -184.0
+margin_left = 7.0
 margin_top = 14.0
-margin_right = -4.0
+margin_right = 187.0
 margin_bottom = 194.0
 rect_clip_content = true
 texture = SubResource( 269 )
@@ -1807,7 +1816,7 @@ expand = true
 [node name="title" type="Label" parent="shop/scroll/offers/resources/gems2"]
 anchor_right = 1.0
 margin_bottom = 24.0
-text = "2500 КРИСТАЛЛОВ"
+text = "shop.2500gems"
 align = 1
 valign = 1
 
@@ -1829,9 +1838,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -568.0
+margin_left = -377.0
 margin_top = -178.0
-margin_right = -388.0
+margin_right = -197.0
 margin_bottom = 2.0
 rect_clip_content = true
 texture = SubResource( 271 )
@@ -1855,7 +1864,7 @@ expand = true
 [node name="title" type="Label" parent="shop/scroll/offers/resources/coins0"]
 anchor_right = 1.0
 margin_bottom = 24.0
-text = "2250 МОНЕТ"
+text = "shop.2250coins"
 align = 1
 valign = 1
 
@@ -1877,9 +1886,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -376.0
+margin_left = -185.0
 margin_top = -178.0
-margin_right = -196.0
+margin_right = -5.0
 margin_bottom = 2.0
 rect_clip_content = true
 texture = SubResource( 271 )
@@ -1903,7 +1912,7 @@ expand = true
 [node name="title" type="Label" parent="shop/scroll/offers/resources/coins1"]
 anchor_right = 1.0
 margin_bottom = 24.0
-text = "4500 МОНЕТ"
+text = "shop.4500coins"
 align = 1
 valign = 1
 
@@ -1925,9 +1934,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -184.0
+margin_left = 7.0
 margin_top = -178.0
-margin_right = -4.0
+margin_right = 187.0
 margin_bottom = 2.0
 rect_clip_content = true
 texture = SubResource( 271 )
@@ -1950,7 +1959,8 @@ expand = true
 [node name="title" type="Label" parent="shop/scroll/offers/resources/coins2"]
 anchor_right = 1.0
 margin_bottom = 24.0
-text = "9000 МОНЕТ"
+rect_pivot_offset = Vector2( 378, 88 )
+text = "shop.9000coins"
 align = 1
 valign = 1
 
@@ -1972,9 +1982,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 8.0
+margin_left = 199.0
 margin_top = -178.0
-margin_right = 188.0
+margin_right = 379.0
 margin_bottom = 2.0
 rect_clip_content = true
 texture = SubResource( 273 )
@@ -1996,7 +2006,7 @@ expand = true
 [node name="title" type="Label" parent="shop/scroll/offers/resources/potion0"]
 anchor_right = 1.0
 margin_bottom = 24.0
-text = "МАЛЕНЬКОЕ ЗЕЛЬЕ"
+text = "item.potion1"
 align = 1
 valign = 1
 
@@ -2049,9 +2059,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 8.0
+margin_left = 199.0
 margin_top = 14.0
-margin_right = 188.0
+margin_right = 379.0
 margin_bottom = 194.0
 rect_clip_content = true
 texture = SubResource( 273 )
@@ -2073,7 +2083,7 @@ expand = true
 [node name="title" type="Label" parent="shop/scroll/offers/resources/potion1"]
 anchor_right = 1.0
 margin_bottom = 24.0
-text = "СРЕДНЕЕ ЗЕЛЬЕ"
+text = "item.potion2"
 align = 1
 valign = 1
 
@@ -2114,9 +2124,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 200.0
+margin_left = 391.0
 margin_top = -178.0
-margin_right = 380.0
+margin_right = 571.0
 margin_bottom = 194.0
 rect_clip_content = true
 texture = SubResource( 274 )
@@ -2138,7 +2148,7 @@ expand = true
 [node name="title" type="Label" parent="shop/scroll/offers/resources/potion2"]
 anchor_right = 1.0
 margin_bottom = 24.0
-text = "БОЛЬШОЕ ЗЕЛЬЕ"
+text = "item.potion3"
 align = 1
 valign = 1
 
@@ -2174,20 +2184,38 @@ text = "У тебя:999"
 align = 1
 valign = 1
 
-[node name="no_ads" type="TextureRect" parent="shop/scroll/offers/resources"]
+[node name="other" type="Panel" parent="shop/scroll/offers"]
+margin_left = 1182.0
+margin_right = 1594.0
+margin_bottom = 420.0
+rect_min_size = Vector2( 412, 420 )
+mouse_filter = 1
+
+[node name="title" type="Label" parent="shop/scroll/offers/other"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.5
+margin_top = 8.0
+margin_right = 40.5
+margin_bottom = 32.0
+grow_horizontal = 2
+text = "shop.other"
+align = 1
+
+[node name="no_ads" type="TextureRect" parent="shop/scroll/offers/other"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 392.0
+margin_left = -186.0
 margin_top = -178.0
-margin_right = 572.0
+margin_right = -6.0
 margin_bottom = 194.0
 rect_clip_content = true
 texture = SubResource( 276 )
 expand = true
 
-[node name="logo" type="TextureRect" parent="shop/scroll/offers/resources/no_ads"]
+[node name="logo" type="TextureRect" parent="shop/scroll/offers/other/no_ads"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -2199,14 +2227,14 @@ margin_bottom = 42.0
 texture = ExtResource( 43 )
 expand = true
 
-[node name="title" type="Label" parent="shop/scroll/offers/resources/no_ads"]
+[node name="title" type="Label" parent="shop/scroll/offers/other/no_ads"]
 anchor_right = 1.0
 margin_bottom = 24.0
-text = "БЕЗ РЕКЛАМЫ"
+text = "shop.noads"
 align = 1
 valign = 1
 
-[node name="buy" type="Button" parent="shop/scroll/offers/resources/no_ads"]
+[node name="buy" type="Button" parent="shop/scroll/offers/other/no_ads"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -2218,31 +2246,31 @@ margin_bottom = -8.0
 disabled = true
 text = "-"
 
-[node name="count" type="Label" parent="shop/scroll/offers/resources/no_ads"]
+[node name="count" type="Label" parent="shop/scroll/offers/other/no_ads"]
 anchor_right = 1.0
 margin_top = 16.0
 margin_bottom = 40.0
 rect_scale = Vector2( 0.75, 0.75 )
 rect_pivot_offset = Vector2( 90, 0 )
-text = "Поддержи нас!"
+text = "shop.noads.tip"
 align = 1
 valign = 1
 
-[node name="promocodes" type="TextureRect" parent="shop/scroll/offers/resources"]
+[node name="promocodes" type="TextureRect" parent="shop/scroll/offers/other"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 584.0
+margin_left = 6.0
 margin_top = -178.0
-margin_right = 764.0
+margin_right = 186.0
 margin_bottom = 194.0
 rect_clip_content = true
 texture = SubResource( 278 )
 expand = true
 stretch_mode = 6
 
-[node name="logo" type="TextureRect" parent="shop/scroll/offers/resources/promocodes"]
+[node name="logo" type="TextureRect" parent="shop/scroll/offers/other/promocodes"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -2254,14 +2282,14 @@ margin_bottom = 42.0
 texture = ExtResource( 44 )
 expand = true
 
-[node name="title" type="Label" parent="shop/scroll/offers/resources/promocodes"]
+[node name="title" type="Label" parent="shop/scroll/offers/other/promocodes"]
 anchor_right = 1.0
 margin_bottom = 24.0
-text = "ПРОМОКОДЫ"
+text = "shop.promocodes"
 align = 1
 valign = 1
 
-[node name="buy" type="Button" parent="shop/scroll/offers/resources/promocodes"]
+[node name="buy" type="Button" parent="shop/scroll/offers/other/promocodes"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -2270,7 +2298,8 @@ margin_left = -50.0
 margin_top = -38.0
 margin_right = 50.0
 margin_bottom = -8.0
-text = "Открыть"
+text = "shop.promocodes.go"
+clip_text = true
 expand_icon = true
 
 [node name="not_enough" type="Label" parent="shop"]
@@ -2285,9 +2314,8 @@ margin_top = -132.0
 margin_right = 214.5
 margin_bottom = -108.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Недостаточно ресурсов для покупки!"
+text = "shop.notenough"
 align = 1
-valign = 1
 
 [node name="anim" type="AnimationPlayer" parent="shop/not_enough"]
 anims/no = SubResource( 132 )
@@ -2301,7 +2329,7 @@ margin_left = -466.0
 margin_top = -240.0
 margin_right = 482.0
 margin_bottom = 260.0
-window_title = "Информация о ящиках"
+window_title = "shop.box_info.title"
 dialog_autowrap = true
 
 [node name="info_potions0" type="AcceptDialog" parent="shop"]
@@ -2313,8 +2341,8 @@ margin_left = -250.0
 margin_top = -60.0
 margin_right = 250.0
 margin_bottom = 60.0
-window_title = "Информация о маленьком зелье"
-dialog_text = "Восстанавливает 20% от максимального здоровья."
+window_title = "shop.potinfo.title"
+dialog_text = "shop.potinfo.1"
 dialog_autowrap = true
 
 [node name="info_potions1" type="AcceptDialog" parent="shop"]
@@ -2326,8 +2354,8 @@ margin_left = -250.0
 margin_top = -60.0
 margin_right = 250.0
 margin_bottom = 60.0
-window_title = "Информация о среднем зелье"
-dialog_text = "Восстанавливает 40% от максимального здоровья."
+window_title = "shop.potinfo.title"
+dialog_text = "shop.potinfo.2"
 dialog_autowrap = true
 
 [node name="info_potions2" type="AcceptDialog" parent="shop"]
@@ -2339,8 +2367,8 @@ margin_left = -250.0
 margin_top = -60.0
 margin_right = 250.0
 margin_bottom = 60.0
-window_title = "Информация о большом зелье"
-dialog_text = "Восстанавливает 60% от максимального здоровья."
+window_title = "shop.potinfo.title"
+dialog_text = "shop.potinfo.3"
 dialog_autowrap = true
 
 [node name="confirm" type="ConfirmationDialog" parent="shop"]
@@ -2353,7 +2381,7 @@ margin_top = 314.0
 margin_right = 412.0
 margin_bottom = 554.0
 rect_min_size = Vector2( 170, 59.5 )
-window_title = "Подтверждение покупки"
+window_title = "shop.confirm"
 dialog_autowrap = true
 
 [node name="error" type="AcceptDialog" parent="shop"]
@@ -2366,8 +2394,9 @@ margin_top = -39.0
 margin_right = 85.0
 margin_bottom = 39.0
 popup_exclusive = true
-window_title = "Ошибка!"
-dialog_text = "Ошибка покупки!"
+window_title = "shop.error"
+dialog_text = "shop.error.text"
+dialog_hide_on_ok = false
 
 [node name="http_request" type="HTTPRequest" parent="shop"]
 
@@ -2385,7 +2414,8 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = 88.0
 margin_bottom = 48.0
-text = "Назад"
+text = "menu.back"
+clip_text = true
 
 [node name="title" type="Label" parent="classes"]
 anchor_left = 0.5
@@ -2393,8 +2423,9 @@ anchor_right = 0.5
 margin_left = -101.5
 margin_right = 101.5
 margin_bottom = 70.0
+grow_horizontal = 2
 custom_fonts/font = ExtResource( 2 )
-text = "Классы"
+text = "classes.name"
 
 [node name="gems" type="Label" parent="classes"]
 anchor_left = 1.0
@@ -2453,14 +2484,14 @@ columns = 2
 margin_right = 148.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 148, 64 )
-text = "Нет"
+text = "class.none.l"
 
 [node name="class1" type="Button" parent="classes/classes_grid"]
 margin_left = 153.0
-margin_right = 301.0
+margin_right = 309.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 148, 64 )
-text = "Рыцарь"
+text = "class.knight.l"
 icon = ExtResource( 29 )
 expand_icon = true
 
@@ -2469,17 +2500,17 @@ margin_top = 69.0
 margin_right = 148.0
 margin_bottom = 133.0
 rect_min_size = Vector2( 148, 64 )
-text = "Мясник"
+text = "class.butcher.l"
 icon = ExtResource( 55 )
 expand_icon = true
 
 [node name="class3" type="Button" parent="classes/classes_grid"]
 margin_left = 153.0
 margin_top = 69.0
-margin_right = 301.0
+margin_right = 309.0
 margin_bottom = 133.0
 rect_min_size = Vector2( 148, 64 )
-text = "Копьеносец"
+text = "class.spearman.l"
 icon = ExtResource( 5 )
 expand_icon = true
 
@@ -2488,17 +2519,17 @@ margin_top = 138.0
 margin_right = 148.0
 margin_bottom = 202.0
 rect_min_size = Vector2( 148, 64 )
-text = "Маг"
+text = "class.wizard.l"
 icon = ExtResource( 31 )
 expand_icon = true
 
 [node name="class5" type="Button" parent="classes/classes_grid"]
 margin_left = 153.0
 margin_top = 138.0
-margin_right = 301.0
+margin_right = 309.0
 margin_bottom = 202.0
 rect_min_size = Vector2( 148, 64 )
-text = "Лучник"
+text = "class.archer.l"
 icon = ExtResource( 51 )
 expand_icon = true
 
@@ -2511,7 +2542,7 @@ margin_left = -392.0
 margin_top = 165.0
 margin_right = -152.0
 margin_bottom = 195.0
-text = "Испытать выбранный"
+text = "classes.try"
 
 [node name="classes" type="Control" parent="classes"]
 anchor_left = 0.675
@@ -2667,7 +2698,7 @@ margin_left = -15.0
 margin_top = 2.0
 margin_right = 15.0
 margin_bottom = 32.0
-info = "Амулеты - пассивная способность, которая повышает некоторые характеристики класса. Можно создать из фрагментов амулета."
+info = "classes.tip.amulet"
 id = "amulet"
 
 [node name="gadget" type="TextureButton" parent="classes"]
@@ -2696,7 +2727,7 @@ margin_left = -15.0
 margin_top = 2.0
 margin_right = 15.0
 margin_bottom = 32.0
-info = "Душевный навык - особая способность класса, которую можно использовать три раза за уровень. Можно найти в ящике."
+info = "classes.tip.gadget"
 id = "gadget"
 
 [node name="sp" type="TextureButton" parent="classes"]
@@ -2725,7 +2756,7 @@ margin_left = -15.0
 margin_top = 2.0
 margin_right = 15.0
 margin_bottom = 32.0
-info = "Душевная сила - пассивная способность класса, которая действует всегда. Можно найти в ящике."
+info = "classes.tip.sp"
 id = "sp"
 
 [node name="upgrade" type="Control" parent="classes"]
@@ -2874,7 +2905,8 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = 95.0
 margin_bottom = 38.0
-text = "Закрыть"
+text = "menu.close"
+clip_text = true
 
 [node name="title" type="Label" parent="classes/info_player"]
 anchor_left = 0.5
@@ -2895,7 +2927,7 @@ margin_top = 64.0
 margin_right = -60.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 0, 1, 0, 1 )
-text = "Здоровье:"
+text = "class.stat.health"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_player/health"]
@@ -2913,7 +2945,7 @@ margin_top = 64.0
 margin_right = 60.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 0, 0.501961, 1, 1 )
-text = "Защита:"
+text = "class.stat.defense"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_player/defense"]
@@ -2931,7 +2963,7 @@ margin_top = 64.0
 margin_right = 180.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 1, 0, 1, 1 )
-text = "Скорость:"
+text = "class.stat.speed"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_player/speed"]
@@ -2939,7 +2971,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "ОЧЕНЬ ВЫСОКАЯ"
+text = "speed.veryhigh"
 
 [node name="attack_label" type="Label" parent="classes/info_player"]
 modulate = Color( 1, 0, 0, 1 )
@@ -2951,7 +2983,7 @@ margin_left = -180.0
 margin_top = -124.0
 margin_right = 180.0
 margin_bottom = -84.0
-text = "АТАКА: САМООБОРОНА"
+text = "none.attack.name"
 align = 1
 valign = 2
 
@@ -2964,7 +2996,7 @@ margin_left = -180.0
 margin_top = -84.0
 margin_right = 180.0
 margin_bottom = 56.0
-text = "Игрок делает два удара, один дальше и сильнее другого."
+text = "none.attack.desc"
 autowrap = true
 
 [node name="attack" type="Label" parent="classes/info_player"]
@@ -2977,7 +3009,7 @@ margin_top = 60.0
 margin_right = -60.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Урон:"
+text = "class.stat.damage"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_player/attack"]
@@ -2997,7 +3029,7 @@ margin_top = 60.0
 margin_right = 73.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Перезарядка:"
+text = "class.stat.reload"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_player/attack_cd"]
@@ -3005,7 +3037,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "ОЧЕНЬ БЫСТРАЯ"
+text = "reload.veryfast"
 
 [node name="info_knight" type="Panel" parent="classes"]
 visible = false
@@ -3031,7 +3063,8 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = 95.0
 margin_bottom = 38.0
-text = "Закрыть"
+text = "menu.close"
+clip_text = true
 
 [node name="title" type="Label" parent="classes/info_knight"]
 anchor_left = 0.5
@@ -3052,7 +3085,7 @@ margin_top = 64.0
 margin_right = -60.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 0, 1, 0, 1 )
-text = "Здоровье:"
+text = "class.stat.health"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_knight/health"]
@@ -3070,7 +3103,7 @@ margin_top = 64.0
 margin_right = 60.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 0, 0.501961, 1, 1 )
-text = "Защита:"
+text = "class.stat.defense"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_knight/defense"]
@@ -3088,7 +3121,7 @@ margin_top = 64.0
 margin_right = 180.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 1, 0, 1, 1 )
-text = "Скорость:"
+text = "class.stat.speed"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_knight/speed"]
@@ -3096,7 +3129,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "НИЗКАЯ"
+text = "speed.low"
 
 [node name="upgrade" type="Button" parent="classes/info_knight"]
 visible = false
@@ -3108,7 +3141,8 @@ margin_left = -64.5
 margin_top = -24.0
 margin_right = 64.5
 margin_bottom = 16.0
-text = "Улучшить"
+grow_horizontal = 2
+text = "classes.upgrade"
 icon = ExtResource( 12 )
 
 [node name="attack_label" type="Label" parent="classes/info_knight"]
@@ -3121,7 +3155,7 @@ margin_left = -364.0
 margin_top = -124.0
 margin_right = -4.0
 margin_bottom = -84.0
-text = "АТАКА: ВЗМАХ МЕЧОМ"
+text = "knight.attack.name"
 align = 1
 valign = 2
 
@@ -3134,7 +3168,7 @@ margin_left = -364.0
 margin_top = -84.0
 margin_right = -4.0
 margin_bottom = 56.0
-text = "Рыцарь атакует мечом, нанося урон всем попавшим в область атаки врагам."
+text = "knight.attack.desc"
 autowrap = true
 
 [node name="ulti_label" type="Label" parent="classes/info_knight"]
@@ -3147,7 +3181,7 @@ margin_left = 12.0
 margin_top = -124.0
 margin_right = 372.0
 margin_bottom = -84.0
-text = "НАВЫК: ШКВАЛ"
+text = "knight.ulti.name"
 align = 1
 valign = 2
 
@@ -3160,7 +3194,7 @@ margin_left = 12.0
 margin_top = -84.0
 margin_right = 372.0
 margin_bottom = 56.0
-text = "Рыцарь делает мощные удары по случайным врагам."
+text = "knight.ulti.desc"
 autowrap = true
 
 [node name="attack" type="Label" parent="classes/info_knight"]
@@ -3173,7 +3207,7 @@ margin_top = 60.0
 margin_right = -244.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Урон:"
+text = "class.stat.damage"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_knight/attack"]
@@ -3193,7 +3227,7 @@ margin_top = 60.0
 margin_right = -111.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Перезарядка:"
+text = "class.stat.reload"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_knight/attack_cd"]
@@ -3201,7 +3235,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "БЫСТРАЯ"
+text = "reload.fast"
 
 [node name="ulti" type="Label" parent="classes/info_knight"]
 anchor_left = 0.5
@@ -3213,7 +3247,7 @@ margin_top = 60.0
 margin_right = 132.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 1, 0, 1 )
-text = "Урон за удар:"
+text = "class.stat.dmgperhit"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_knight/ulti"]
@@ -3233,7 +3267,7 @@ margin_top = 60.0
 margin_right = 265.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 1, 0, 1 )
-text = "Кол-во ударов:"
+text = "class.stat.hits"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_knight/ulti_c"]
@@ -3267,7 +3301,8 @@ margin_left = 8.0
 margin_top = 8.0
 margin_right = 95.0
 margin_bottom = 38.0
-text = "Закрыть"
+text = "menu.close"
+clip_text = true
 
 [node name="title" type="Label" parent="classes/info_butcher"]
 anchor_left = 0.5
@@ -3288,7 +3323,7 @@ margin_top = 64.0
 margin_right = -60.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 0, 1, 0, 1 )
-text = "Здоровье:"
+text = "class.stat.health"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_butcher/health"]
@@ -3306,7 +3341,7 @@ margin_top = 64.0
 margin_right = 60.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 0, 0.501961, 1, 1 )
-text = "Защита:"
+text = "class.stat.defense"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_butcher/defense"]
@@ -3324,7 +3359,7 @@ margin_top = 64.0
 margin_right = 180.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 1, 0, 1, 1 )
-text = "Скорость:"
+text = "class.stat.speed"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_butcher/speed"]
@@ -3332,7 +3367,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "ВЫСОКАЯ"
+text = "speed.high"
 
 [node name="upgrade" type="Button" parent="classes/info_butcher"]
 visible = false
@@ -3344,7 +3379,8 @@ margin_left = -64.5
 margin_top = -24.0
 margin_right = 64.5
 margin_bottom = 16.0
-text = "Улучшить"
+grow_horizontal = 2
+text = "classes.upgrade"
 icon = ExtResource( 12 )
 
 [node name="attack_label" type="Label" parent="classes/info_butcher"]
@@ -3357,7 +3393,7 @@ margin_left = -364.0
 margin_top = -124.0
 margin_right = -4.0
 margin_bottom = -84.0
-text = "АТАКА: РУБКА МЯСА"
+text = "butcher.attack.name"
 align = 1
 valign = 2
 
@@ -3370,7 +3406,7 @@ margin_left = -364.0
 margin_top = -84.0
 margin_right = -4.0
 margin_bottom = 56.0
-text = "Мясник с задержкой махает топором, нанося хороший урон."
+text = "bucther.attack.desc"
 autowrap = true
 
 [node name="ulti_label" type="Label" parent="classes/info_butcher"]
@@ -3383,7 +3419,7 @@ margin_left = 12.0
 margin_top = -124.0
 margin_right = 372.0
 margin_bottom = -84.0
-text = "НАВЫК: УДАР"
+text = "butcher.ulti.name"
 align = 1
 valign = 2
 
@@ -3396,7 +3432,7 @@ margin_left = 12.0
 margin_top = -84.0
 margin_right = 372.0
 margin_bottom = 56.0
-text = "Мясник наносит огромный урон одному врагу с наибольшим количеством здоровья."
+text = "butcher.ulti.desc"
 autowrap = true
 
 [node name="attack" type="Label" parent="classes/info_butcher"]
@@ -3409,7 +3445,7 @@ margin_top = 60.0
 margin_right = -244.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Урон:"
+text = "class.stat.damage"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_butcher/attack"]
@@ -3429,7 +3465,7 @@ margin_top = 60.0
 margin_right = -111.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Перезарядка:"
+text = "class.stat.reload"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_butcher/attack_cd"]
@@ -3437,7 +3473,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "СРЕДНЯЯ"
+text = "reload.normal"
 
 [node name="ulti" type="Label" parent="classes/info_butcher"]
 anchor_left = 0.5
@@ -3449,7 +3485,7 @@ margin_top = 60.0
 margin_right = 132.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 1, 0, 1 )
-text = "Урон:"
+text = "class.stat.damage"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_butcher/ulti"]
@@ -3497,7 +3533,7 @@ margin_top = 64.0
 margin_right = -60.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 0, 1, 0, 1 )
-text = "Здоровье:"
+text = "class.stat.health"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_spearman/health"]
@@ -3515,7 +3551,7 @@ margin_top = 64.0
 margin_right = 60.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 0, 0.501961, 1, 1 )
-text = "Защита:"
+text = "class.stat.defense"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_spearman/defense"]
@@ -3533,7 +3569,7 @@ margin_top = 64.0
 margin_right = 180.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 1, 0, 1, 1 )
-text = "Скорость:"
+text = "class.stat.speed"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_spearman/speed"]
@@ -3541,14 +3577,15 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "ВЫСОКАЯ"
+text = "speed.high"
 
 [node name="close" type="Button" parent="classes/info_spearman"]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 95.0
 margin_bottom = 38.0
-text = "Закрыть"
+text = "menu.close"
+clip_text = true
 
 [node name="upgrade" type="Button" parent="classes/info_spearman"]
 visible = false
@@ -3560,7 +3597,8 @@ margin_left = -64.5
 margin_top = -24.0
 margin_right = 64.5
 margin_bottom = 16.0
-text = "Улучшить"
+grow_horizontal = 2
+text = "classes.upgrade"
 icon = ExtResource( 12 )
 
 [node name="attack_label" type="Label" parent="classes/info_spearman"]
@@ -3573,7 +3611,7 @@ margin_left = -364.0
 margin_top = -124.0
 margin_right = -4.0
 margin_bottom = -84.0
-text = "АТАКА: УДАР КОПЬЁМ"
+text = "spearman.attack.name"
 align = 1
 valign = 2
 
@@ -3586,7 +3624,7 @@ margin_left = -364.0
 margin_top = -84.0
 margin_right = -4.0
 margin_bottom = 56.0
-text = "Копьеносец может либо кольнуть копьём вблизи, либо его метнуть. Урон в любом случае одинаковый."
+text = "spearman.attack.desc"
 autowrap = true
 
 [node name="ulti_label" type="Label" parent="classes/info_spearman"]
@@ -3599,7 +3637,7 @@ margin_left = 12.0
 margin_top = -124.0
 margin_right = 372.0
 margin_bottom = -84.0
-text = "НАВЫК: ОГЛУШЕНИЕ"
+text = "spearman.ulti.name"
 align = 1
 valign = 2
 
@@ -3612,7 +3650,7 @@ margin_left = 12.0
 margin_top = -84.0
 margin_right = 372.0
 margin_bottom = 56.0
-text = "Копьеносец оглушает близжайшего врага и наносит ему урон."
+text = "spearman.ulti.desc"
 autowrap = true
 
 [node name="attack" type="Label" parent="classes/info_spearman"]
@@ -3625,7 +3663,7 @@ margin_top = 60.0
 margin_right = -244.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Урон:"
+text = "class.stat.damage"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_spearman/attack"]
@@ -3645,7 +3683,7 @@ margin_top = 60.0
 margin_right = -111.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Перезарядка:"
+text = "class.stat.reload"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_spearman/attack_cd"]
@@ -3653,8 +3691,27 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "БЫСТРАЯ(бл.)
-ОЧЕНЬ МЕДЛЕННАЯ"
+text = "reload.veryslow"
+
+[node name="attack_cd2" type="Label" parent="classes/info_spearman"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = 108.0
+margin_right = -64.0
+margin_bottom = 132.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.mreload"
+valign = 1
+
+[node name="value" type="Label" parent="classes/info_spearman/attack_cd2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "reload.high"
 
 [node name="ulti" type="Label" parent="classes/info_spearman"]
 anchor_left = 0.5
@@ -3666,7 +3723,7 @@ margin_top = 60.0
 margin_right = 132.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 1, 0, 1 )
-text = "Урон:"
+text = "class.stat.damage"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_spearman/ulti"]
@@ -3686,7 +3743,7 @@ margin_top = 60.0
 margin_right = 265.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 1, 0, 1 )
-text = "Длительность:"
+text = "class.stat.duration"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_spearman/ulti_c"]
@@ -3734,7 +3791,7 @@ margin_top = 64.0
 margin_right = -60.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 0, 1, 0, 1 )
-text = "Здоровье:"
+text = "class.stat.health"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_wizard/health"]
@@ -3752,7 +3809,7 @@ margin_top = 64.0
 margin_right = 60.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 0, 0.501961, 1, 1 )
-text = "Защита:"
+text = "class.stat.defense"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_wizard/defense"]
@@ -3770,7 +3827,7 @@ margin_top = 64.0
 margin_right = 180.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 1, 0, 1, 1 )
-text = "Скорость:"
+text = "class.stat.speed"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_wizard/speed"]
@@ -3778,14 +3835,15 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "НОРМАЛЬНАЯ"
+text = "speed.normal"
 
 [node name="close" type="Button" parent="classes/info_wizard"]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 95.0
 margin_bottom = 38.0
-text = "Закрыть"
+text = "menu.close"
+clip_text = true
 
 [node name="upgrade" type="Button" parent="classes/info_wizard"]
 visible = false
@@ -3797,7 +3855,8 @@ margin_left = -64.5
 margin_top = -24.0
 margin_right = 64.5
 margin_bottom = 16.0
-text = "Улучшить"
+grow_horizontal = 2
+text = "classes.upgrade"
 icon = ExtResource( 12 )
 
 [node name="attack_label" type="Label" parent="classes/info_wizard"]
@@ -3810,7 +3869,7 @@ margin_left = -364.0
 margin_top = -124.0
 margin_right = -4.0
 margin_bottom = -84.0
-text = "АТАКА: МАГИЯ ПОСОХА"
+text = "wizard.attack.name"
 align = 1
 valign = 2
 
@@ -3823,7 +3882,7 @@ margin_left = -364.0
 margin_top = -84.0
 margin_right = -4.0
 margin_bottom = 56.0
-text = "Маг стреляет во врага магической сферой. Возможна атака вблизи, но урон будет ниже."
+text = "wizard.attack.desc"
 autowrap = true
 
 [node name="ulti_label" type="Label" parent="classes/info_wizard"]
@@ -3836,7 +3895,7 @@ margin_left = 12.0
 margin_top = -124.0
 margin_right = 372.0
 margin_bottom = -84.0
-text = "НАВЫК: ЛЕЧЕНИЕ"
+text = "wizard.ulti.name"
 align = 1
 valign = 2
 
@@ -3849,7 +3908,7 @@ margin_left = 12.0
 margin_top = -84.0
 margin_right = 372.0
 margin_bottom = 56.0
-text = "Маг исцеляет себе здоровье и наносит небольшой урон всем врагам."
+text = "wizard.ulti.desc"
 autowrap = true
 
 [node name="attack" type="Label" parent="classes/info_wizard"]
@@ -3862,7 +3921,7 @@ margin_top = 60.0
 margin_right = -244.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Урон:"
+text = "class.stat.damage"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_wizard/attack"]
@@ -3882,7 +3941,7 @@ margin_top = 108.0
 margin_right = -244.0
 margin_bottom = 132.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Урон вблизи:"
+text = "class.stat.madmage"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_wizard/attack2"]
@@ -3902,7 +3961,7 @@ margin_top = 60.0
 margin_right = -111.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Перезарядка:"
+text = "class.stat.reload"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_wizard/attack_cd"]
@@ -3910,8 +3969,27 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "МЕДЛЕННАЯ
-ОЧЕНЬ МЕДЛЕННАЯ(бл.)"
+text = "reload.slow"
+
+[node name="attack_cd2" type="Label" parent="classes/info_wizard"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = 108.0
+margin_right = -79.0
+margin_bottom = 132.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.mreload"
+valign = 1
+
+[node name="value" type="Label" parent="classes/info_wizard/attack_cd2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "reload.veryslow"
 
 [node name="ulti" type="Label" parent="classes/info_wizard"]
 anchor_left = 0.5
@@ -3923,7 +4001,7 @@ margin_top = 60.0
 margin_right = 132.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 1, 0, 1 )
-text = "Урон:"
+text = "class.stat.damage"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_wizard/ulti"]
@@ -3943,7 +4021,7 @@ margin_top = 60.0
 margin_right = 265.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 1, 0, 1 )
-text = "Лечение:"
+text = "class.stat.heals"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_wizard/ulti_c"]
@@ -3991,7 +4069,7 @@ margin_top = 64.0
 margin_right = -60.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 0, 1, 0, 1 )
-text = "Здоровье:"
+text = "class.stat.health"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_archer/health"]
@@ -4009,7 +4087,7 @@ margin_top = 64.0
 margin_right = 60.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 0, 0.501961, 1, 1 )
-text = "Защита:"
+text = "class.stat.defense"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_archer/defense"]
@@ -4027,7 +4105,7 @@ margin_top = 64.0
 margin_right = 180.0
 margin_bottom = 88.0
 custom_colors/font_color = Color( 1, 0, 1, 1 )
-text = "Скорость:"
+text = "class.stat.speed"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_archer/speed"]
@@ -4035,14 +4113,15 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "НИЗКАЯ"
+text = "speed.low"
 
 [node name="close" type="Button" parent="classes/info_archer"]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 95.0
 margin_bottom = 38.0
-text = "Закрыть"
+text = "menu.close"
+clip_text = true
 
 [node name="upgrade" type="Button" parent="classes/info_archer"]
 visible = false
@@ -4054,7 +4133,8 @@ margin_left = -64.5
 margin_top = -24.0
 margin_right = 64.5
 margin_bottom = 16.0
-text = "Улучшить"
+grow_horizontal = 2
+text = "classes.upgrade"
 icon = ExtResource( 12 )
 
 [node name="attack_label" type="Label" parent="classes/info_archer"]
@@ -4067,7 +4147,7 @@ margin_left = -364.0
 margin_top = -124.0
 margin_right = -4.0
 margin_bottom = -84.0
-text = "АТАКА: ПРИЦЕЛЬНЫЙ ВЫСТРЕЛ"
+text = "archer.attack.name"
 align = 1
 valign = 2
 
@@ -4080,7 +4160,7 @@ margin_left = -364.0
 margin_top = -84.0
 margin_right = -4.0
 margin_bottom = 56.0
-text = "Лучник натягивает лук. Чем дольше натягивал, тем больше скорость и урон стрелы. Возможна атака вблизи, но урон будет ниже."
+text = "archer.attack.desc"
 autowrap = true
 
 [node name="ulti_label" type="Label" parent="classes/info_archer"]
@@ -4093,7 +4173,7 @@ margin_left = 12.0
 margin_top = -124.0
 margin_right = 372.0
 margin_bottom = -84.0
-text = "НАВЫК: НАЛЁТ"
+text = "archer.ulti.name"
 align = 1
 valign = 2
 
@@ -4106,7 +4186,7 @@ margin_left = 12.0
 margin_top = -84.0
 margin_right = 372.0
 margin_bottom = 56.0
-text = "Лучник наносит урон всем врагам."
+text = "archer.ulti.desc"
 autowrap = true
 
 [node name="attack" type="Label" parent="classes/info_archer"]
@@ -4119,7 +4199,7 @@ margin_top = 60.0
 margin_right = -244.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Урон:"
+text = "class.stat.damage"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_archer/attack"]
@@ -4139,7 +4219,7 @@ margin_top = 108.0
 margin_right = -244.0
 margin_bottom = 132.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Урон вблизи:"
+text = "class.stat.mdamage"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_archer/attack2"]
@@ -4159,7 +4239,7 @@ margin_top = 60.0
 margin_right = -111.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Перезарядка:"
+text = "class.stat.reload"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_archer/attack_cd"]
@@ -4167,8 +4247,27 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "МЕДЛЕННАЯ(бл.)
-СРЕДНЯЯ"
+text = "reload.normal"
+
+[node name="attack_cd2" type="Label" parent="classes/info_archer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = 108.0
+margin_right = -79.0
+margin_bottom = 132.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.mreload"
+valign = 1
+
+[node name="value" type="Label" parent="classes/info_archer/attack_cd2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "reload.slow"
 
 [node name="ulti" type="Label" parent="classes/info_archer"]
 anchor_left = 0.5
@@ -4180,7 +4279,7 @@ margin_top = 60.0
 margin_right = 132.0
 margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 1, 0, 1 )
-text = "Урон:"
+text = "class.stat.damage"
 valign = 1
 
 [node name="value" type="Label" parent="classes/info_archer/ulti"]
@@ -4202,7 +4301,7 @@ margin_top = -100.0
 margin_right = 100.0
 margin_bottom = 100.0
 theme = ExtResource( 3 )
-window_title = "Душевный навык"
+window_title = "item.gadget.l"
 dialog_text = "что-толдолдлодолдлодолд"
 dialog_autowrap = true
 
@@ -4216,7 +4315,7 @@ margin_top = -100.0
 margin_right = 100.0
 margin_bottom = 100.0
 theme = ExtResource( 3 )
-window_title = "Душевная сила"
+window_title = "item.sp.l"
 dialog_text = "что-толдолдлодолдлодолд"
 dialog_autowrap = true
 
@@ -4259,9 +4358,10 @@ stretch_mode = 6
 anchor_right = 1.0
 margin_top = 88.0
 margin_bottom = 112.0
-text = "СИЛА"
+text = "amulet.power"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="desc" type="Label" parent="classes/infos/amulet/panels/0"]
 anchor_top = 0.5
@@ -4270,7 +4370,7 @@ anchor_bottom = 0.5
 margin_top = -12.0
 margin_bottom = 12.0
 grow_vertical = 2
-text = "+15 к урону"
+text = "amulet.power.desc"
 align = 1
 valign = 1
 autowrap = true
@@ -4283,7 +4383,8 @@ margin_left = 4.0
 margin_top = -34.0
 margin_right = -4.0
 margin_bottom = -4.0
-text = "Создать"
+text = "amulet.craft"
+clip_text = true
 
 [node name="bar" type="TextureProgress" parent="classes/infos/amulet/panels/0"]
 anchor_top = 1.0
@@ -4346,9 +4447,10 @@ stretch_mode = 6
 anchor_right = 1.0
 margin_top = 88.0
 margin_bottom = 112.0
-text = "ЗАЩИТА"
+text = "amulet.defense"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="desc" type="Label" parent="classes/infos/amulet/panels/1"]
 anchor_top = 0.5
@@ -4357,7 +4459,7 @@ anchor_bottom = 0.5
 margin_top = -12.0
 margin_bottom = 12.0
 grow_vertical = 2
-text = "+5 к защите"
+text = "amulet.defense.desc"
 align = 1
 valign = 1
 autowrap = true
@@ -4370,7 +4472,8 @@ margin_left = 4.0
 margin_top = -34.0
 margin_right = -4.0
 margin_bottom = -4.0
-text = "Создать"
+text = "amulet.craft"
+clip_text = true
 
 [node name="bar" type="TextureProgress" parent="classes/infos/amulet/panels/1"]
 anchor_top = 1.0
@@ -4433,9 +4536,10 @@ stretch_mode = 6
 anchor_right = 1.0
 margin_top = 88.0
 margin_bottom = 112.0
-text = "ЗДОРОВЬЕ"
+text = "amulet.health"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="desc" type="Label" parent="classes/infos/amulet/panels/2"]
 anchor_top = 0.5
@@ -4444,7 +4548,7 @@ anchor_bottom = 0.5
 margin_top = -12.0
 margin_bottom = 12.0
 grow_vertical = 2
-text = "+60 к здоровью"
+text = "amulet.health.desc"
 align = 1
 valign = 1
 autowrap = true
@@ -4457,7 +4561,8 @@ margin_left = 4.0
 margin_top = -34.0
 margin_right = -4.0
 margin_bottom = -4.0
-text = "Создать"
+text = "amulet.craft"
+clip_text = true
 
 [node name="bar" type="TextureProgress" parent="classes/infos/amulet/panels/2"]
 anchor_top = 1.0
@@ -4520,9 +4625,10 @@ stretch_mode = 6
 anchor_right = 1.0
 margin_top = 88.0
 margin_bottom = 112.0
-text = "СКОРОСТЬ"
+text = "amulet.speed"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="desc" type="Label" parent="classes/infos/amulet/panels/3"]
 anchor_top = 0.5
@@ -4531,7 +4637,7 @@ anchor_bottom = 0.5
 margin_top = -12.0
 margin_bottom = 12.0
 grow_vertical = 2
-text = "+7 к скорости"
+text = "amulet.speed.desc"
 align = 1
 valign = 1
 autowrap = true
@@ -4544,7 +4650,8 @@ margin_left = 4.0
 margin_top = -34.0
 margin_right = -4.0
 margin_bottom = -4.0
-text = "Создать"
+text = "amulet.craft"
+clip_text = true
 
 [node name="bar" type="TextureProgress" parent="classes/infos/amulet/panels/3"]
 anchor_top = 1.0
@@ -4607,9 +4714,10 @@ stretch_mode = 6
 anchor_right = 1.0
 margin_top = 88.0
 margin_bottom = 112.0
-text = "ПЕРЕЗАРЯДКА"
+text = "amulet.reload"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="desc" type="Label" parent="classes/infos/amulet/panels/4"]
 anchor_top = 0.5
@@ -4620,7 +4728,7 @@ margin_top = -51.0
 margin_right = 1.0
 margin_bottom = 51.0
 grow_vertical = 2
-text = "-20% от времени перезарядки"
+text = "amulet.reload.desc"
 align = 1
 valign = 1
 autowrap = true
@@ -4633,7 +4741,8 @@ margin_left = 4.0
 margin_top = -34.0
 margin_right = -4.0
 margin_bottom = -4.0
-text = "Создать"
+text = "amulet.craft"
+clip_text = true
 
 [node name="bar" type="TextureProgress" parent="classes/infos/amulet/panels/4"]
 anchor_top = 1.0
@@ -4696,9 +4805,10 @@ stretch_mode = 6
 anchor_right = 1.0
 margin_top = 88.0
 margin_bottom = 112.0
-text = "НАВЫК"
+text = "amulet.ulti"
 align = 1
 valign = 1
+clip_text = true
 
 [node name="desc" type="Label" parent="classes/infos/amulet/panels/5"]
 anchor_top = 0.5
@@ -4709,7 +4819,7 @@ margin_top = -43.0
 margin_right = 1.0
 margin_bottom = 59.0
 grow_vertical = 2
-text = "-20% от времени зарядки навыка"
+text = "amulet.ulti.desc"
 align = 1
 valign = 1
 autowrap = true
@@ -4722,7 +4832,8 @@ margin_left = 4.0
 margin_top = -34.0
 margin_right = -4.0
 margin_bottom = -4.0
-text = "Создать"
+text = "amulet.craft"
+clip_text = true
 
 [node name="bar" type="TextureProgress" parent="classes/infos/amulet/panels/5"]
 anchor_top = 1.0
@@ -5536,11 +5647,13 @@ margin_left = -100.0
 margin_top = -128.0
 margin_right = 100.0
 margin_bottom = -58.0
+grow_horizontal = 2
 rect_pivot_offset = Vector2( 100, 35 )
 theme_type_variation = "LabelTitleLarge"
-text = "АМУЛЕТ"
+text = "amulet.amulet"
 align = 1
 valign = 1
+uppercase = true
 
 [node name="type" type="Label" parent="amulet_craft/screen"]
 anchor_left = 0.5
@@ -5583,7 +5696,7 @@ margin_top = -56.0
 margin_right = -16.0
 margin_bottom = -16.0
 grow_horizontal = 0
-text = "Готово"
+text = "menu.done"
 
 [node name="anim" type="AnimationPlayer" parent="amulet_craft/screen"]
 anims/craft = SubResource( 264 )
@@ -5638,7 +5751,7 @@ margin_left = 8.0
 margin_top = -16.0
 margin_right = 368.0
 margin_bottom = 226.0
-text = "Здесь ты сможешь прокачивать свои классы, а также смотреть их способности, пользуясь кнопкой \"i\". Чтобы прокачать класс, нужно определённое количество жетонов и монет, и то, и другое падает из ящиков. Сами классы можно тоже получить из ящиков. А теперь вернись назад этой кнопкой!"
+text = "menu.edu.0"
 align = 0
 
 [node name="education2" parent="." instance=ExtResource( 27 )]
@@ -5678,7 +5791,7 @@ margin_left = 8.0
 margin_top = -16.0
 margin_right = 368.0
 margin_bottom = 144.0
-text = "Это магазин, где ты можешь покупать ресурсы. Каждый день в полночь обновляются акции и награды за уровень, появляется подарок. Заходи каждый день, чтобы ничего не пропустить! Теперь вернись назад."
+text = "menu.edu.1"
 align = 0
 
 [node name="education4" parent="." instance=ExtResource( 27 )]
@@ -5686,15 +5799,16 @@ visible = false
 next_edu = NodePath("../education3")
 
 [node name="end" type="Button" parent="education4/main" index="0"]
+material = SubResource( 279 )
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_top = -15.0
 margin_bottom = 15.0
-text = "Завершить"
+text = "menu.edu.end"
 
 [node name="text" parent="education4" index="5"]
-text = "Я рассказал об основах. Ты можешь посмотреть историю и пройти обучение повторно, нажав кнопку \"?\" в левом верхнем углу. Нажми кнопку, чтобы завершить обучение. Удачи!"
+text = "menu.edu.2"
 
 [node name="select_minigame" type="WindowDialog" parent="."]
 anchor_left = 0.5
@@ -5705,7 +5819,7 @@ margin_left = -320.0
 margin_top = -160.0
 margin_right = 320.0
 margin_bottom = 160.0
-window_title = "Выбери мини-игру"
+window_title = "minigame.select"
 
 [node name="minigame1" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -5716,10 +5830,10 @@ margin_left = -280.0
 margin_top = -120.0
 margin_right = -40.0
 margin_bottom = -72.0
-text = "Резня"
+text = "1.name"
 expand_icon = true
 script = ExtResource( 41 )
-minigame_name = "Резня"
+minigame_name = "1.name"
 
 [node name="minigame2" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -5730,10 +5844,10 @@ margin_left = -280.0
 margin_top = -56.0
 margin_right = -40.0
 margin_bottom = -8.0
-text = "Изб. от ненависти"
+text = "2.name"
 expand_icon = true
 script = ExtResource( 41 )
-minigame_name = "Изб. от ненависти"
+minigame_name = "2.name"
 id = 2
 cost = 300
 free = false
@@ -5747,10 +5861,10 @@ margin_left = -280.0
 margin_top = 8.0
 margin_right = -40.0
 margin_bottom = 56.0
-text = "Симулятор камня"
+text = "3.name"
 expand_icon = true
 script = ExtResource( 41 )
-minigame_name = "Симулятор камня"
+minigame_name = "3.name"
 id = 3
 cost = 2000
 free = false
@@ -5764,9 +5878,9 @@ margin_left = -280.0
 margin_top = 72.0
 margin_right = -40.0
 margin_bottom = 120.0
-text = "Последние волны"
+text = "4.name"
 script = ExtResource( 41 )
-minigame_name = "Последние волны"
+minigame_name = "4.name"
 id = 4
 cost = 750
 free = false
@@ -5796,10 +5910,10 @@ margin_left = 40.0
 margin_top = -56.0
 margin_right = 280.0
 margin_bottom = -8.0
-text = "Сад"
+text = "6.name"
 expand_icon = true
 script = ExtResource( 41 )
-minigame_name = "Сад"
+minigame_name = "6.name"
 id = 6
 cost = 1500
 free = false
@@ -5813,10 +5927,10 @@ margin_left = 40.0
 margin_top = 8.0
 margin_right = 280.0
 margin_bottom = 56.0
-text = "2D-шутер"
+text = "7.name"
 expand_icon = true
 script = ExtResource( 41 )
-minigame_name = "2D-шутер"
+minigame_name = "7.name"
 id = 7
 
 [node name="minigame8" type="Button" parent="select_minigame"]
@@ -5846,7 +5960,7 @@ margin_top = -120.0
 margin_right = 160.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 170, 59.5 )
-window_title = "Подтверждение..."
+window_title = "shop.confirm"
 dialog_autowrap = true
 
 [node name="no_resources" type="AcceptDialog" parent="select_minigame"]
@@ -5858,15 +5972,21 @@ margin_left = -269.5
 margin_top = -39.0
 margin_right = 269.5
 margin_bottom = 39.0
-window_title = "Недостаточно ресурсов!"
-dialog_text = "Недостаточно ресурсов для покупки данной мини-игры!"
+window_title = "minigame.no"
+dialog_text = "minigame.no.text"
 
 [node name="help_dialog" type="ConfirmationDialog" parent="."]
-margin_right = 179.0
-margin_bottom = 78.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -359.5
+margin_top = -39.0
+margin_right = 359.5
+margin_bottom = 39.0
 rect_min_size = Vector2( 170, 59.5 )
-window_title = "Обучение"
-dialog_text = "Ты действительно хочешь посмотреть историю и пройти обучение заново?"
+window_title = "menu.edu"
+dialog_text = "menu.edu.again"
 
 [node name="multiplayer_guide" type="AcceptDialog" parent="."]
 anchor_left = 0.5
@@ -5877,13 +5997,8 @@ margin_left = -360.0
 margin_top = -228.0
 margin_right = 360.0
 margin_bottom = 228.0
-window_title = "Мультиплеер"
-dialog_text = "Игра поддерживает совместный мультиплеер. Для начала игроки должны подключиться к одной сети, выбрать уровень, на котором будут играть, и игрока, который будет выступать в роли сервера. Он заходит на выбранный уровень, и рядом с кнопкой \"Играть\" нажимает стрелочку, затем \"Создать комнату...\". Другие игроки тем временем выбирают тот же уровень, нажимают ту же стрелочку, но уже \"Присоединиться...\". Есть два способа подключения:
-1. По IP-адресу. Традиционный и надёжный. IP виден на экране сервера.
-2. Автоматический. Сканирует все IP в локальной сети. Может не сработать.
-Всех подключённых игроков можно увидеть на экране. Когда все присоединятся, сервер начинает игру. Максимум игроков  - 4.
-После окончания игры (победой или поражением) комнату нужно создавать заново. Но вводить IP или ждать конца сканирования снова не придётся - всё кэшируется в пределах одной игровой сессии. Хорошего времяпровождения!
-Также многопользовательской является мини-игра \"2Д-шутер\""
+window_title = "lobby.title"
+dialog_text = "menu.multiplayer.guide"
 dialog_autowrap = true
 
 [node name="class_visuals" parent="." instance=ExtResource( 11 )]
@@ -5912,8 +6027,8 @@ dialog_autowrap = true
 [connection signal="pressed" from="shop/scroll/offers/resources/potion1/info" to="shop/info_potions1" method="popup_centered"]
 [connection signal="pressed" from="shop/scroll/offers/resources/potion2/buy" to="shop" method="buy" binds= [ "{\"coins\":1000}", "{\"potions3\":1}" ]]
 [connection signal="pressed" from="shop/scroll/offers/resources/potion2/info" to="shop/info_potions2" method="popup_centered"]
-[connection signal="pressed" from="shop/scroll/offers/resources/no_ads/buy" to="shop" method="buy_no_ads"]
-[connection signal="pressed" from="shop/scroll/offers/resources/promocodes/buy" to="shop" method="promocodes"]
+[connection signal="pressed" from="shop/scroll/offers/other/no_ads/buy" to="shop" method="buy_no_ads"]
+[connection signal="pressed" from="shop/scroll/offers/other/promocodes/buy" to="shop" method="promocodes"]
 [connection signal="confirmed" from="shop/confirm" to="shop" method="confirm_buy"]
 [connection signal="pressed" from="classes/back" to="." method="classes" binds= [ false ]]
 [connection signal="pressed" from="classes/back" to="education1" method="next"]

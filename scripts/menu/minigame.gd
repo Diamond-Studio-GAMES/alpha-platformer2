@@ -12,6 +12,7 @@ var bought = false
 func _ready():
 	connect("pressed", self, "open_or_buy")
 	$"../buy".get_cancel().text = tr("menu.cancel")
+	$"../buy".get_ok().text = tr("shop.buy")
 	if free:
 		bought = true
 	else:

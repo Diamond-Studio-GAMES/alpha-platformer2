@@ -228,10 +228,10 @@ bus = "music"
 popup_exclusive = true
 
 [node name="menu" parent="select_level/select_level_dialog/play" index="0"]
-items = [ "Создать комнату...", null, 0, false, false, 0, 0, null, "", false, "Присоединиться...", null, 0, false, false, 1, 0, null, "", false ]
+items = [ "level_dialog.multiplayer.create", null, 0, false, false, 0, 0, null, "", false, "level_dialog.multiplayer.join", null, 0, false, false, 1, 0, null, "", false ]
 
 [node name="class2" parent="select_level/select_level_dialog" index="11"]
-items = [ "Рыцарь", ExtResource( 13 ), false, 0, null, "Мясник", ExtResource( 5 ), false, 1, null, "Копьеносец", ExtResource( 9 ), false, 2, null, "Маг", ExtResource( 11 ), false, 3, null, "Лучник", ExtResource( 12 ), false, 4, null, "Без класса", null, false, 5, null ]
+items = [ "class.knight.l", ExtResource( 13 ), false, 0, null, "class.butcher.l", ExtResource( 5 ), false, 1, null, "class.spearman.l", ExtResource( 9 ), false, 2, null, "class.wizard.l", ExtResource( 11 ), false, 3, null, "class.archer.l", ExtResource( 12 ), false, 4, null, "class.none.l", null, false, 5, null ]
 
 [node name="soul" type="Control" parent="."]
 anchor_left = 0.5
@@ -245,7 +245,6 @@ margin_bottom = 20.0
 rect_pivot_offset = Vector2( 20, 20 )
 
 [node name="soul" type="Sprite" parent="soul"]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 20, 20 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 14 )
@@ -295,7 +294,8 @@ margin_bottom = 134.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "ИГРА ОКОНЧЕНА"
+text = "gameover.title"
+align = 1
 
 [node name="retry" type="Button" parent="game_over"]
 anchor_left = 0.5
@@ -306,7 +306,7 @@ margin_left = -100.0
 margin_top = 280.0
 margin_right = 100.0
 margin_bottom = 310.0
-text = "Попробовать снова"
+text = "gameover.retry"
 
 [node name="menu" type="Button" parent="game_over"]
 anchor_left = 0.5
@@ -317,7 +317,7 @@ margin_left = -100.0
 margin_top = 320.0
 margin_right = 100.0
 margin_bottom = 350.0
-text = "Выйти в меню"
+text = "gameover.menu"
 
 [node name="texture_rect" type="TextureRect" parent="game_over"]
 anchor_left = 0.5

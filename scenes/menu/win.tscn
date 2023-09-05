@@ -87,10 +87,10 @@ color = Color( 0, 0, 0, 1 )
 popup_exclusive = true
 
 [node name="menu" parent="select_level/select_level_dialog/play" index="0"]
-items = [ "Создать комнату...", null, 0, false, false, 0, 0, null, "", false, "Присоединиться...", null, 0, false, false, 1, 0, null, "", false ]
+items = [ "level_dialog.multiplayer.create", null, 0, false, false, 0, 0, null, "", false, "level_dialog.multiplayer.join", null, 0, false, false, 1, 0, null, "", false ]
 
 [node name="class2" parent="select_level/select_level_dialog" index="11"]
-items = [ "Рыцарь", ExtResource( 13 ), false, 0, null, "Мясник", ExtResource( 3 ), false, 1, null, "Копьеносец", ExtResource( 4 ), false, 2, null, "Маг", ExtResource( 11 ), false, 3, null, "Лучник", ExtResource( 9 ), false, 4, null, "Без класса", null, false, 5, null ]
+items = [ "class.knight.l", ExtResource( 13 ), false, 0, null, "class.butcher.l", ExtResource( 3 ), false, 1, null, "class.spearman.l", ExtResource( 4 ), false, 2, null, "class.wizard.l", ExtResource( 11 ), false, 3, null, "class.archer.l", ExtResource( 9 ), false, 4, null, "class.none.l", null, false, 5, null ]
 
 [node name="win_level" type="CanvasLayer" parent="."]
 
@@ -280,10 +280,12 @@ margin_left = -64.5
 margin_top = 20.0
 margin_right = 64.5
 margin_bottom = 44.0
-text = "Твоя награда:"
+grow_horizontal = 2
+text = "win.reward"
+align = 1
 uppercase = true
 
-[node name="rewards2" type="Label" parent="win_level/win_level_dialog"]
+[node name="congrats" type="Label" parent="win_level/win_level_dialog"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -292,7 +294,9 @@ margin_left = -64.5
 margin_top = -212.0
 margin_right = 64.5
 margin_bottom = -188.0
-text = "поздравляем!"
+grow_horizontal = 2
+text = "win.congrats"
+align = 1
 uppercase = true
 
 [node name="rc" type="RichTextLabel" parent="win_level/win_level_dialog"]
@@ -318,7 +322,8 @@ margin_left = -40.0
 margin_top = -48.0
 margin_right = 40.0
 margin_bottom = -16.0
-text = "Забрать"
+grow_horizontal = 2
+text = "win.claim"
 
 [node name="education0" parent="win_level/win_level_dialog/claim" instance=ExtResource( 10 )]
 visible = false
@@ -346,7 +351,8 @@ margin_left = -40.0
 margin_top = -36.0
 margin_right = 40.0
 margin_bottom = -4.0
-text = "Заново"
+text = "win.restart"
+clip_text = true
 
 [node name="menu" type="Button" parent="win_level/win_level_dialog/buttons"]
 anchor_left = 0.5
@@ -357,7 +363,8 @@ margin_left = -128.0
 margin_top = -36.0
 margin_right = -48.0
 margin_bottom = -4.0
-text = "Меню"
+text = "win.menu"
+clip_text = true
 
 [node name="next" type="Button" parent="win_level/win_level_dialog/buttons"]
 anchor_left = 0.5
@@ -368,7 +375,8 @@ margin_left = 48.0
 margin_top = -36.0
 margin_right = 128.0
 margin_bottom = -4.0
-text = "Далее"
+text = "win.next"
+clip_text = true
 
 [node name="education1" parent="win_level/win_level_dialog/buttons" instance=ExtResource( 10 )]
 visible = false

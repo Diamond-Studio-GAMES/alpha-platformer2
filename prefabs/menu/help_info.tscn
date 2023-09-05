@@ -17,7 +17,7 @@ layer = 2
 margin_right = 400.0
 margin_bottom = 78.0
 theme = ExtResource( 2 )
-window_title = "Информация"
+window_title = "menu.info"
 dialog_autowrap = true
 
 [connection signal="pressed" from="." to="canvas_layer/info" method="popup_centered"]

@@ -440,8 +440,10 @@ margin_left = -235.0
 margin_top = -112.0
 margin_right = 235.0
 margin_bottom = -42.0
+grow_horizontal = 2
 custom_fonts/font = ExtResource( 1 )
-text = "РЕКЛАМА УДАЛЕНА!"
+text = "noads.title"
+align = 1
 
 [node name="close" type="Button" parent="."]
 anchor_left = 0.5
@@ -452,5 +454,6 @@ margin_left = -40.0
 margin_top = 40.0
 margin_right = 40.0
 margin_bottom = 80.0
-text = "УРА!"
+text = "noads.ok"
+clip_text = true
 script = SubResource( 12 )
