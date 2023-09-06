@@ -2011,7 +2011,7 @@ nodes/ulti_shot/node = SubResource( 94 )
 nodes/ulti_shot/position = Vector2( 1035.29, 70.5882 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "potion_seek", 0, "potion", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "attack_seek", 0, "attack", "throw_shot", 0, "attack_shot", "throw_shot", 1, "throw", "potion_shot", 0, "throw_shot", "potion_shot", 1, "potion_seek", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "death_trans", 0, "ulti_shot", "death_trans", 1, "death" ]
+node_connections = [ "output", 0, "death_trans", "potion_shot", 0, "throw_shot", "potion_shot", 1, "potion_seek", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_seek", 0, "attack", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "potion_seek", 0, "potion", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "throw_shot", 0, "attack_shot", "throw_shot", 1, "throw" ]
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.24788
@@ -2524,7 +2524,8 @@ __meta__ = {
 }
 
 [node name="head" type="Sprite" parent="visual/body"]
-position = Vector2( 0, -11.5 )
+position = Vector2( 0, -11.0908 )
+rotation = 0.0714129
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 20 )
 offset = Vector2( 0, -16 )
@@ -2557,7 +2558,7 @@ __meta__ = {
 }
 
 [node name="arm_left" type="Sprite" parent="visual/body"]
-position = Vector2( -0.841847, -10.3828 )
+position = Vector2( -0.840336, -9.97134 )
 rotation = 0.349066
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 59 )
@@ -2595,7 +2596,7 @@ __meta__ = {
 
 [node name="arm_right" type="Sprite" parent="visual/body"]
 show_behind_parent = true
-position = Vector2( 0.84, -10.38 )
+position = Vector2( 0.84, -9.97083 )
 rotation = -0.349066
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 59 )
@@ -3531,7 +3532,7 @@ rect_pivot_offset = Vector2( 120, 30 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 61 )
-text = "Поражение!"
+text = "player.defeated"
 align = 1
 valign = 1
 
@@ -3549,7 +3550,7 @@ rect_pivot_offset = Vector2( 120, 30 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0, 1, 0, 1 )
 custom_fonts/font = SubResource( 61 )
-text = "Возрождение!"
+text = "player.revived"
 align = 1
 valign = 1
 
@@ -3647,7 +3648,7 @@ margin_left = -60.0
 margin_top = 12.0
 margin_right = 60.0
 margin_bottom = 36.0
-text = "Меню паузы"
+text = "player.pause"
 align = 1
 valign = 1
 __meta__ = {
@@ -3663,7 +3664,8 @@ margin_left = -64.0
 margin_top = -56.0
 margin_right = 64.0
 margin_bottom = -24.0
-text = "Продолжить"
+text = "player.pause.continue"
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -3677,7 +3679,8 @@ margin_left = -64.0
 margin_top = -16.0
 margin_right = 64.0
 margin_bottom = 16.0
-text = "Заново"
+text = "player.pause.restart"
+clip_text = true
 
 [node name="exit" type="Button" parent="camera/gui/base/pause_menu/panel"]
 anchor_left = 0.5
@@ -3688,7 +3691,8 @@ margin_left = -64.0
 margin_top = 24.0
 margin_right = 64.0
 margin_bottom = 56.0
-text = "Выйти"
+text = "player.pause.quit"
+clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -3769,7 +3773,7 @@ margin_top = -100.0
 margin_right = 160.0
 margin_bottom = 100.0
 rect_pivot_offset = Vector2( 160, 100 )
-window_title = "Возродиться?"
+window_title = "player.revive"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -3778,7 +3782,7 @@ __meta__ = {
 anchor_right = 1.0
 margin_bottom = 80.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "Не сдавайся! Пополни здоровье и вернись в битву!"
+text = "player.revive.text"
 align = 1
 valign = 1
 autowrap = true
@@ -3792,7 +3796,7 @@ margin_left = -103.5
 margin_top = -96.0
 margin_right = 103.5
 margin_bottom = -58.0
-text = "Возродиться (10)"
+text = "player.revive.yes"
 icon = ExtResource( 47 )
 
 [node name="no" type="Button" parent="camera/gui/death_screen/window"]
@@ -3804,7 +3808,8 @@ margin_left = -51.5
 margin_top = -50.0
 margin_right = 51.5
 margin_bottom = -12.0
-text = "Сдаться"
+text = "player.revive.no"
+clip_text = true
 
 [node name="shield" type="Sprite" parent="."]
 visible = false
