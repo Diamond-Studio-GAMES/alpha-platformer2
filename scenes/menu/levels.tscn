@@ -2051,7 +2051,7 @@ margin_left = -15.0
 margin_top = -15.0
 margin_right = 15.0
 margin_bottom = 15.0
-info = "Зелья нужны для быстрого исцеления. Ты можешь иметь максимум пять зелий каждого вида. Нажми на иконку зелья во время игры, чтобы его использовать."
+info = "shop.tip.pot1"
 id = "pot1"
 
 [node name="potion1" type="TextureRect" parent="shop/scroll/offers/resources"]

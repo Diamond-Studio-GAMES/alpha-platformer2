@@ -76,6 +76,10 @@ func get_hit(area):
 	if waiting_for_death:
 		if not MP.auth(area):
 			return
+		if not area is Attack:
+			return
+		if not area.is_player_attack:
+			return
 		waiting_for_death = false
 		anim.play("final_death")
 		G.setv("boss_" + G.current_level + "_killed", true)

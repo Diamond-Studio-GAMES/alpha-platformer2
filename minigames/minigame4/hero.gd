@@ -279,27 +279,46 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 	var time0 = 0
 	var time1 = 0
 	var difference = 0
-	if current_health > 0:
-		time0 = clamp(custom_immobility_time, 0, 0.1)
+	if not died:
+		time0 = min(custom_immobility_time, 0.1)
 		time1 = max(custom_immobility_time - 0.1, 0)
-		difference = max(custom_invincibility_time - custom_immobility_time - 0.05, 0)
+		difference = max(custom_invincibility_time - custom_immobility_time, 0)
+	_post_hurt(died)
+	_hurt_knockback(time0, time1, difference)
+
+
+func _post_hurt(died):
+	if died:
+		yield(get_tree().create_timer(4, false), "timeout")
+		if not camera.is_screen_on and current_health <= 0:
+			camera.show_revive_screen()
+
+
+func _hurt_knockback(time0, time1, difference):
 	if time0 > 0:
-		yield(get_tree().create_timer(time0, false), "timeout")
+		get_tree().create_timer(time0, false).connect("timeout", self, "_hurt_immobility", [time1, difference], CONNECT_ONESHOT)
+	else:
+		_hurt_immobility(time1, difference)
+
+func _hurt_immobility(time1, difference):
 	_knockback = 0
 	if time1 > 0:
-		yield(get_tree().create_timer(time1, false), "timeout")
+		get_tree().create_timer(time1, false).connect("timeout", self, "_hurt_invincibility", [difference], CONNECT_ONESHOT)
+	else:
+		_hurt_invincibility(difference)
+
+func _hurt_invincibility(difference):
 	if current_health > 0:
 		is_hurt = false
 	if difference > 0:
-		yield(get_tree().create_timer(difference, false), "timeout")
+		get_tree().create_timer(difference, false).connect("timeout", self, "_hurt_end", [], CONNECT_ONESHOT)
+	else:
+		_hurt_end()
+
+func _hurt_end():
 	hurt_counter -= 1
-	if current_health > 0 and not is_stunned and hurt_counter < 1:
+	if not is_zero_approx(current_health) and not is_stunned and hurt_counter < 1:
 		_head.texture = _head_sprite
-	if died:
-		yield(get_tree().create_timer(4, false), "timeout")
-		if not camera.is_screen_on:
-			camera.show_revive_screen()
-	elif not is_stunned and hurt_counter < 1:
 		_player_head.texture = _head_sprite
 
 

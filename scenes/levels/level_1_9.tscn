@@ -144,8 +144,8 @@ radius = 12.0
 
 [node name="level_1_9" type="Node2D"]
 script = ExtResource( 4 )
-location = "Поле"
-level_name = "Уровень 1-9"
+location = "location.field"
+level_name = "level.1_9"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 12 )

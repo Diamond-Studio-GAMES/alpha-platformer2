@@ -149,8 +149,8 @@ radius = 12.0
 
 [node name="level_1_5" type="Node2D"]
 script = ExtResource( 19 )
-location = "Поле"
-level_name = "Уровень 1-5"
+location = "location.field"
+level_name = "level.1_5"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 11 )
@@ -337,7 +337,7 @@ position = Vector2( 3392, 32 )
 
 [node name="tab" parent="decor" instance=ExtResource( 5 )]
 position = Vector2( 960, 32 )
-text = "Чем ты быстрее, тем легче прыжок. Проверь скорость класса."
+text = "1_5.jumptip"
 
 [node name="borders" parent="." instance=ExtResource( 20 )]
 

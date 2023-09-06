@@ -538,6 +538,7 @@ shop.potinfo.title,Информация о зелье,Potion information
 shop.potinfo.1,Восстанавливает 20% от максимального здоровья.,Heals 20% of max health.
 shop.potinfo.2,Восстанавливает 40% от максимального здоровья.,Heals 40% of max health.
 shop.potinfo.3,Восстанавливает 60% от максимального здоровья.,Heals 60% of max health.
+shop.tip.pot1,"Зелья нужны для быстрого исцеления. Ты можешь иметь максимум пять зелий каждого вида. Нажми на иконку зелья во время игры, чтобы его использовать.",Potions are needed for quick healing. You can have a maximum of five potions of each kind. Click on the potion icon during the game to use it.
 shop.confirm,Подтверждение покупки…,Please confirm...
 shop.error,Ошибка!,Error!
 shop.error.text,Ошибка покупки!,Error while purchasing!

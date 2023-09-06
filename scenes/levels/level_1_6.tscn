@@ -147,8 +147,8 @@ radius = 12.0
 
 [node name="level_1_6" type="Node2D"]
 script = ExtResource( 15 )
-location = "Поле"
-level_name = "Уровень 1-6"
+location = "location.field"
+level_name = "level.1_6"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -213,7 +213,7 @@ position = Vector2( 1040, 112 )
 
 [node name="tab" parent="decor" instance=ExtResource( 7 )]
 position = Vector2( 976, -32 )
-text = "ПРЫЖОК ВЕРЫ XD"
+text = "1_6.vera"
 color = Color( 1, 0, 0, 1 )
 
 [node name="grass" parent="decor" instance=ExtResource( 6 )]
@@ -272,11 +272,11 @@ position = Vector2( 3664, 32 )
 
 [node name="think" parent="decor" instance=ExtResource( 5 )]
 position = Vector2( -208, -32 )
-text = "Я был не самым глупым в школе..."
+text = "1_6.notfool"
 
 [node name="think2" parent="decor" instance=ExtResource( 5 )]
 position = Vector2( -256, -32 )
-text = "Я попадал на городской этап олимпиады по географии..."
+text = "1_6.geo"
 color = Color( 1, 0, 1, 1 )
 
 [node name="borders" parent="." instance=ExtResource( 18 )]

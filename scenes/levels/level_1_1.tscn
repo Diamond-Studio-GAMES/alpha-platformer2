@@ -145,8 +145,8 @@ radius = 12.0
 
 [node name="level_1_1" type="Node2D"]
 script = ExtResource( 6 )
-location = "Поле"
-level_name = "Уровень 1-1"
+location = "location.field"
+level_name = "level.1_1"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 10 )
@@ -229,7 +229,7 @@ position = Vector2( -272, 0 )
 
 [node name="tab" parent="decor" instance=ExtResource( 14 )]
 position = Vector2( -168, 0 )
-text = "Чувак..."
+text = "1_1.dude"
 
 [node name="grass10" parent="decor" instance=ExtResource( 3 )]
 position = Vector2( 3088, 0 )
@@ -249,50 +249,50 @@ position = Vector2( 3632, 0 )
 [node name="thinks" type="Node2D" parent="."]
 
 [node name="think" parent="thinks" instance=ExtResource( 11 )]
-text = "Ты куда идёшь? Иди вправо!"
+text = "1_1.goright"
 time = 3.0
 color = Color( 1, 0, 0, 1 )
 
 [node name="think2" parent="thinks" instance=ExtResource( 11 )]
 position = Vector2( 360, 0 )
-text = "Привет! Двигайся с помощью стрелок в левом нижнем углу!"
+text = "1_1.hello"
 time = 6.0
 
 [node name="think3" parent="thinks" instance=ExtResource( 11 )]
 position = Vector2( 576, 0 )
-text = "Теперь прыгни с помощью стрелки в правом нижнем углу!"
+text = "1_1.jump"
 time = 5.0
 
 [node name="think4" parent="thinks" instance=ExtResource( 11 )]
 position = Vector2( 944, 0 )
-text = "Молодец! Пришла пора драться!"
+text = "1_1.fight"
 time = 3.0
 
 [node name="think5" parent="thinks" instance=ExtResource( 11 )]
 position = Vector2( 1168, 0 )
-text = "Используй кнопку в виде ножа для атаки! Будь осторожен!"
+text = "1_1.butt"
 time = 4.0
 
 [node name="think6" parent="thinks" instance=ExtResource( 11 )]
 position = Vector2( 1304, 0 )
-text = "Так держать! Дальше ещё один враг!"
+text = "1_1.anotherone"
 time = 3.0
 color = Color( 1, 0, 0, 1 )
 
 [node name="think7" parent="thinks" instance=ExtResource( 11 )]
 position = Vector2( 1768, 0 )
-text = "Впереди манекены! Уничтожь их!"
+text = "1_1.dummies"
 time = 3.0
 
 [node name="think8" parent="thinks" instance=ExtResource( 11 )]
 position = Vector2( 2032, -32 )
-text = "Ты молодчина! Коснись звезды для завершения уровня! Приятной игры!"
+text = "1_1.end"
 time = 4.0
 color = Color( 1, 0, 1, 1 )
 
 [node name="think9" parent="thinks" instance=ExtResource( 11 )]
 position = Vector2( 1624, 0 )
-text = "Мало здоровья? Ничего не делай, оно само восстановится до 75%!"
+text = "1_1.heal"
 time = 5.0
 color = Color( 0, 1, 0, 1 )
 

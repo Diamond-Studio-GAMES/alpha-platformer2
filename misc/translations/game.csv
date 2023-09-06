@@ -3,7 +3,7 @@ player.fullhp,Полное здоровье — нельзя использов�
 boss.sheeper,Пастух,Shepherd
 boss.sheeper.defeat,Убить или пощадить?,Kill or spare?
 boss.sheeper.mercy,Пастух: Ты... щадишь меня?.. Спасибо…,Shepherd: You are… sparing me?.. Thank you... 
-boss.doctor.mercy,Хирург: Спасибо... Пойду потренируюсь на других.,Surgeon: Thank you… I'm going to practice on others.
+boss.doctor.mercy,Хирург: Спасибо... Пойду потренируюсь на других.,Surgeon: Thank you… I’m going to practice on others.
 boss.doctor.defeat,"Хирург: Операция не удалась... 
 (убить или пощадить?)","Surgeon: The operation failed...
 (kill or spare?)"
@@ -17,7 +17,7 @@ boss.forester,Лесоруб,Lumberjack
 boss.forester.defeat,"Лесоруб: Что смотришь? Добей уже!
 (убить или пощадить?)","Lumberjack: What are you looking at? Finish me already!
 (kill or spare?)"
-boss.forester.mercy,Лесоруб: Чего??? Ну и ладно.,"Lumberjack: What??? Well, that's fine."
+boss.forester.mercy,Лесоруб: Чего??? Ну и ладно.,"Lumberjack: What??? Well, that’s fine."
 boss.fire,Огненный страж,Fire Guardian
 boss.fire.defeat,"Огненный страж: Я... Выгорел?..
 (убить или пощадить?)","Fire Guardian: Am I... burned out?..
@@ -163,3 +163,31 @@ player.revived,Возрождение!,Revived!
 player.defeated,Поражение!,Defeated!
 player.revive.multiplayer,ВОСКРЕСИ МЕНЯ!,REVIVE ME!
 door.go,Перейти,Enter
+1_1.dude,Чувак…,Dude…
+1_1.goright,Ты куда идёшь? Иди вправо!,Where are you going? Go right!
+1_1.hello,Привет! Двигайся с помощью стрелок в левом нижнем углу!,Hello! Move with the arrows in the lower left corner!
+1_1.jump,Теперь прыгни с помощью стрелки в правом нижнем углу!,Now jump with the arrow in the lower right corner!
+1_1.fight,Молодец! Пришла пора драться!,Well done! It’s time to fight!
+1_1.butt,Используй кнопку в виде ножа для атаки! Будь осторожен!,Use the knife-shaped button to attack! Be careful!
+1_1.anotherone,Так держать! Дальше ещё один враг!,Keep it up! There is another enemy!
+1_1.dummies,Впереди манекены! Уничтожь их!,There are dummies ahead! Destroy them!
+1_1.end,Ты молодчина! Коснись звезды для завершения уровня! Приятной игры!,Good job! Touch the star to complete the level! Have a nice game!
+1_1.heal,"Мало здоровья? Ничего не делай, оно само восстановится до 75%!","Not enough health? Don’t do anything, it will recover to 75% by itself!"
+1_3.stones,Впереди немного камней,There are some rocks ahead
+1_5.jumptip,"Чем ты быстрее, тем легче прыжок. Проверь скорость класса.","The faster you are, the easier the jump. Check the class speed."
+1_6.vera,ПРЫЖОК ВЕРЫ XD,Jump of Hope!
+1_6.notfool,Я был не самым глупым в школе…,I wasn’t the stupidest in school…
+1_6.geo,Я в этом году попал на городской этап олимпиады по географии…,This year I got to the city stage of the Geography Olympiad…
+1_7.projectiles,Ты можешь уничтожать снаряды врагов ближней атакой! (не все),You can destroy enemy projectiles with a melee attack! (not all)
+1_8.yourend,"Дальше тебе капец!
+ - Пастух >:-)","You will die!
+ - Shepherd >:-)"
+1_8.move,Какой-то из этих камней можно двигать.,Some of these stones can be moved.
+1_8.physics,А в прошлом году — по физике!..,And last year in Physics!..
+1_10.locs,"Лес ->
+<- Поле","Forest ->
+<- Field"
+1_10.boss.0,"Пастух: Как я вижу, ты смог дойти. Я удивлён.","Shepherd: As I see, you are here. I’m surprised."
+1_10.boss.1,"Пастух: Я не думал, что ты выживешь.",Shepherd: I didn’t think you’d survive.
+1_10.boss.2,"Пастух: Ну и ладно, я разберусь с тобой сам.","Shepherd: Well, okay, I'll deal with you myself."
+1_10.boss.start,"Пастух: Покажи, на что ты способен!",Shepherd: Show what you are capable of!
