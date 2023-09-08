@@ -1,8 +1,4 @@
-[gd_resource type="Shader" format=2]
-
-[resource]
-code = "shader_type canvas_item;
-
+shader_type canvas_item;
 render_mode unshaded;
 
 uniform float time_mul = 0.5;
@@ -20,4 +16,4 @@ void fragment() {
 	vec4 rounds = texture(lava_mask, uv_n + TIME * time_mul * dist_dir);
 	rounds = vec4(1, 1, 1, rounds.r);
 	COLOR = mix(base, rounds.r * rounds_color, rounds.a * base.a);
-}"
+}

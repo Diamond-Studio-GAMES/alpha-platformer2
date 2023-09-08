@@ -156,8 +156,8 @@ radius = 12.0
 
 [node name="level_6_1" type="Node2D"]
 script = ExtResource( 23 )
-location = "Красный мир"
-level_name = "Уровень 6-1"
+location = "location.red_world"
+level_name = "level.6_1"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 12 )
@@ -361,7 +361,7 @@ __meta__ = {
 
 [node name="think" parent="decor" instance=ExtResource( 4 )]
 position = Vector2( 2384, -64 )
-text = "Какие классные виды..."
+text = "6_1.views"
 color = Color( 1, 0, 1, 1 )
 
 [node name="red_grass" parent="decor" instance=ExtResource( 25 )]

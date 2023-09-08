@@ -148,8 +148,8 @@ radius = 12.0
 
 [node name="level_5_7" type="Node2D"]
 script = ExtResource( 2 )
-location = "Пещера Красного мира"
-level_name = "Уровень 5-7"
+location = "location.red_world.cave"
+level_name = "level.5_7"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 9 )
@@ -252,7 +252,7 @@ __meta__ = {
 
 [node name="think" parent="decor" instance=ExtResource( 4 )]
 position = Vector2( 1744, 0 )
-text = "Интересно, что это за руда?"
+text = "5_7.ore"
 
 [node name="red_grass" parent="decor" instance=ExtResource( 6 )]
 position = Vector2( -144, 32 )

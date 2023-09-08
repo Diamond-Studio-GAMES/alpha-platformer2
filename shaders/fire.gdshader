@@ -1,8 +1,4 @@
-[gd_resource type="Shader" format=2]
-
-[resource]
-code = "shader_type canvas_item;
-
+shader_type canvas_item;
 render_mode unshaded;
 
 uniform sampler2D noise;
@@ -30,4 +26,3 @@ void fragment() {
 	vec4 c = c1 + c2 + c3;
 	COLOR = c;
 }
-"

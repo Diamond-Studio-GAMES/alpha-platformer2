@@ -3895,7 +3895,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
+node_connections = [ "output", 0, "death_trans", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -4228,8 +4228,8 @@ radius = 12.0
 
 [node name="level_5_10" type="Node2D"]
 script = ExtResource( 32 )
-location = "Пещера Красного мира"
-level_name = "Уровень 5-10"
+location = "location.red_world.cave"
+level_name = "level.5_10"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 21 )
@@ -4552,7 +4552,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/main_doctor/mob_md/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/main_doctor/mob_md/visual/body"]
-scale = Vector2( 1.25, 1.19503 )
+scale = Vector2( 1.25, 1.11059 )
 texture = ExtResource( 33 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/main_doctor/mob_md"]
@@ -4814,7 +4814,7 @@ __meta__ = {
 [node name="think" parent="decor" instance=ExtResource( 14 )]
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 1744, 0 )
-text = "Хирург: Та самая убийца!? Ну ничего, операция тебе поможет!"
+text = "5_10.boss.start"
 time = 4.0
 color = Color( 1, 0, 0, 1 )
 
@@ -4841,13 +4841,13 @@ position = Vector2( 4112, -64 )
 
 [node name="think2" parent="decor" instance=ExtResource( 14 )]
 position = Vector2( 1456, -64 )
-text = "Хирург: Секунду... Там кто-то идёт... Неужто это..."
+text = "5_10.boss.1"
 time = 3.0
 color = Color( 1, 0, 0.501961, 1 )
 
 [node name="think3" parent="decor" instance=ExtResource( 14 )]
 position = Vector2( 1040, -64 )
-text = "Хирург: Блин, докторов всё меньше и меньше... Кто ж мне помогать будет?"
+text = "5_10.boss.0"
 time = 3.0
 
 [node name="borders" parent="." instance=ExtResource( 42 )]
@@ -4892,7 +4892,7 @@ custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 2
 custom_constants/shadow_as_outline = 0
 custom_fonts/font = SubResource( 26 )
-text = "Хирург"
+text = "boss.doctor"
 align = 1
 
 [node name="tex" type="TextureRect" parent="tint/label"]

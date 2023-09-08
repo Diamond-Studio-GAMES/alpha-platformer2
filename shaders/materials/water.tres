@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=2]
 
-[ext_resource path="res://shaders/water.tres" type="Shader" id=1]
+[ext_resource path="res://shaders/water.gdshader" type="Shader" id=1]
 [ext_resource path="res://textures/blocks/water_noise.png" type="Texture" id=2]
 [ext_resource path="res://textures/blocks/water_noise2.png" type="Texture" id=3]
 

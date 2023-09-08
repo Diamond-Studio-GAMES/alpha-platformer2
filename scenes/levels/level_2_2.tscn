@@ -146,8 +146,8 @@ radius = 12.0
 
 [node name="level_2_2" type="Node2D"]
 script = ExtResource( 5 )
-location = "Лес"
-level_name = "Уровень 2-2"
+location = "location.forest"
+level_name = "level.2_2"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -267,7 +267,7 @@ position = Vector2( 3632, 0 )
 
 [node name="think" parent="decor" instance=ExtResource( 12 )]
 position = Vector2( -464, 0 )
-text = "Не люблю визг женщин!"
+text = "2_2.or"
 color = Color( 1, 0.305882, 0, 1 )
 
 [node name="borders" parent="." instance=ExtResource( 17 )]

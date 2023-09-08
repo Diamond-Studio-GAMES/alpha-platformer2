@@ -159,8 +159,8 @@ radius = 12.0
 
 [node name="level_6_2" type="Node2D"]
 script = ExtResource( 3 )
-location = "Красный мир"
-level_name = "Уровень 6-2"
+location = "location.red_world"
+level_name = "level.6_2"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 21 )
@@ -682,7 +682,7 @@ position = Vector2( 3920, 128 )
 
 [node name="think" parent="decor" instance=ExtResource( 30 )]
 position = Vector2( 1008, -64 )
-text = "Мне кажется, или меня попытаются столкнуть в лаву?"
+text = "6_2.tip"
 time = 3.0
 color = Color( 1, 0, 0, 1 )
 

@@ -146,8 +146,8 @@ radius = 12.0
 
 [node name="level_2_5" type="Node2D"]
 script = ExtResource( 4 )
-location = "Лес"
-level_name = "Уровень 2-5"
+location = "location.forest"
+level_name = "level.2_5"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -221,20 +221,20 @@ __meta__ = {
 [node name="tab" parent="decor" instance=ExtResource( 9 )]
 position = Vector2( 384, -116 )
 z_index = 10
-text = "КЛАДБИЩЕ"
+text = "2_5.graveyard"
 color = Color( 0.764706, 0, 0, 1 )
 with_leg = false
 
 [node name="tab2" parent="decor" instance=ExtResource( 9 )]
 position = Vector2( 496, -52 )
 z_index = -10
-text = "?/.-=,.||.,=-+%"
+text = "2_5.you"
 with_leg = false
 
 [node name="tab3" parent="decor" instance=ExtResource( 9 )]
 position = Vector2( 688, -52 )
 z_index = -10
-text = "7654987656"
+text = "3072109758"
 with_leg = false
 
 [node name="tab4" parent="decor" instance=ExtResource( 9 )]
@@ -251,8 +251,7 @@ with_leg = false
 
 [node name="tab6" parent="decor" instance=ExtResource( 9 )]
 position = Vector2( 1168, -4 )
-text = "МАМА КИРИЛЛА
-:))))))))"
+text = "2_5.kmom"
 
 [node name="grass" parent="decor" instance=ExtResource( 14 )]
 position = Vector2( -976, -4 )
@@ -286,7 +285,7 @@ position = Vector2( 2672, -4 )
 
 [node name="think" parent="decor" instance=ExtResource( 12 )]
 position = Vector2( 1616, -4 )
-text = "Женщины странные..."
+text = "2_5.women"
 color = Color( 1, 0, 1, 1 )
 
 [node name="borders" parent="." instance=ExtResource( 17 )]

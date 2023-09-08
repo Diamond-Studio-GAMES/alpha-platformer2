@@ -150,8 +150,8 @@ radius = 12.0
 
 [node name="level_5_6" type="Node2D"]
 script = ExtResource( 16 )
-location = "Пещера Красного мира"
-level_name = "Уровень 5-6"
+location = "location.red_world.cave"
+level_name = "level.5_6"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 19 )

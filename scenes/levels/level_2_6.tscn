@@ -147,8 +147,8 @@ radius = 12.0
 
 [node name="level_2_6" type="Node2D"]
 script = ExtResource( 12 )
-location = "Лес"
-level_name = "Уровень 2-6"
+location = "location.forest"
+level_name = "level.2_6"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -288,7 +288,7 @@ __meta__ = {
 
 [node name="think" parent="decor" instance=ExtResource( 8 )]
 position = Vector2( 416, 0 )
-text = "Это что, портал? Откуда?"
+text = "2_6.portal"
 
 [node name="grass" parent="decor" instance=ExtResource( 4 )]
 position = Vector2( -1008, 0 )
@@ -322,7 +322,7 @@ position = Vector2( 2192, 0 )
 
 [node name="think2" parent="decor" instance=ExtResource( 8 )]
 position = Vector2( 1376, 0 )
-text = "Как они работают?"
+text = "2_6.how"
 color = Color( 0, 1, 0, 1 )
 
 [node name="borders" parent="." instance=ExtResource( 10 )]

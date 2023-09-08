@@ -158,8 +158,8 @@ radius = 12.0
 
 [node name="level_4_9" type="Node2D"]
 script = ExtResource( 5 )
-location = "Пещера"
-level_name = "Уровень 4-9"
+location = "location.cave"
+level_name = "level.4_9"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 13 )
@@ -500,18 +500,18 @@ __meta__ = {
 
 [node name="tab" parent="decor" instance=ExtResource( 22 )]
 position = Vector2( 1264, -32 )
-text = "До портала отсалось XX.XX км!!!!!!!"
+text = "4_9.remains"
 color = Color( 1, 0, 0, 1 )
 
 [node name="think" parent="decor" instance=ExtResource( 23 )]
 position = Vector2( 3760, -64 )
-text = "Ещё чуть-чуть..."
+text = "4_9.almost"
 time = 3.0
 color = Color( 1, 0, 1, 1 )
 
 [node name="think2" parent="decor" instance=ExtResource( 23 )]
 position = Vector2( 880, -64 )
-text = "Нифига, а это как?"
+text = "4_9.what"
 time = 3.0
 color = Color( 0, 1, 0, 1 )
 

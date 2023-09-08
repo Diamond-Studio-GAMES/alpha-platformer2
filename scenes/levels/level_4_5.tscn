@@ -152,8 +152,8 @@ radius = 12.0
 
 [node name="level_4_5" type="Node2D"]
 script = ExtResource( 5 )
-location = "Пещера"
-level_name = "Уровень 4-5"
+location = "location.cave"
+level_name = "level.4_5"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 11 )
@@ -301,11 +301,11 @@ position = Vector2( -48, 0 )
 
 [node name="tab" parent="decor" instance=ExtResource( 22 )]
 position = Vector2( 624, -64 )
-text = "До портала в красный мир осталось 2.5 км"
+text = "4_5.remains"
 
 [node name="think" parent="decor" instance=ExtResource( 13 )]
 position = Vector2( 3600, 0 )
-text = "Я на правильном пути... Мне нужен портал."
+text = "4_5.portal"
 time = 3.0
 
 [node name="borders" parent="." instance=ExtResource( 23 )]

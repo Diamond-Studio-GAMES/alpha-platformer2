@@ -191,3 +191,71 @@ door.go,Перейти,Enter
 1_10.boss.1,"Пастух: Я не думал, что ты выживешь.",Shepherd: I didn’t think you’d survive.
 1_10.boss.2,"Пастух: Ну и ладно, я разберусь с тобой сам.","Shepherd: Well, okay, I'll deal with you myself."
 1_10.boss.start,"Пастух: Покажи, на что ты способен!",Shepherd: Show what you are capable of!
+2_1.pants,"Обтягивающие штаны — фигня, ненавижу!",Tight pants are strange!
+2_2.or,Не люблю же я визг женщин!..,I don't like the screeching of women!..
+2_3.flame,Костёр? Горящий?..,A bonfire? Burning?..
+2_4.tip,"Прыгай туда, где нет дыма…",Jump where there is no smoke…
+2_5.women,Женщины вообще странные…,Women are generally strange…
+2_5.graveyard,КЛАДБИЩЕ,GRAVEYARD
+2_5.kmom,"МАМА КИРИЛЛА
+:))))))))","KIRILL’S MOM
+:)))))"
+2_5.you,"?/т.-=,.||.,=ы-+%","?/y.-=,.||.,o=-+u%"
+2_6.portal,"Это что, портал? Откуда?",Is this a portal? From where?
+2_6.how,Как они работают?,How do they work?
+2_9.shlyuhi,"Я слышал, что в местных школах восьмиклассницы - пр*ст*тутки…",I've heard that eighth graders are h*rlots in local schools…
+2_10.boss.start,"Лесоруб: Ну что, сразимся???","Lumberjack: Well, shall we fight???"
+2_10.boss.0,Лесоруб: Пришёл значит…,Lumberjack: You are here…
+3_2.client,И их главный клиент - физрук…,And their main client is PE teacher…
+3_3.trimaga,Эти три мага сильны... Они используют её…,These three followers are strong... They use it…
+3_5.monsters,Тёмная энергия... Похоже из неё состоят монстры.,Dark energy... It looks like monsters are made of it.
+3_5.why,"Иначе не объяснишь, почему их так много…","Otherwise, you can't explain why there are so many of them…"
+3_8.2dshooterref,Люблю шутеры…,I love shooters…
+3_9.feeling,"Чем дальше я от дома, тем сильнее чувствуется что-то плохое…","The further away I am from home, the more something bad feels…"
+3_10.boss.1,"Чёрный маг: Очень хорошо, что он передал свои святые знания его последователям…",Black Wizard: It's very good that he passed on his holy knowledge to his followers…
+3_10.boss.0,Чёрный маг: Дракон был отличной личностью…,Black Wizard: Dragon was a great personality…
+3_10.boss.start,Чёрный маг: Не согласен???,Black Wizard: Don't you agree???
+4_1.smaller,Осторожно! Пещера сужается!,Caution! The cave is narrowing!
+4_3.remains,"До портала в красный мир осталось 3,5 км",The portal to the red world is 3.5 km away.
+4_4.hot,А здесь жарко…,And it's hot here…
+4_4.burn,ТЫ ОБЯЗАТЕЛЬНО СГОРИШЬ!!!,YOU WILL DEFINITELY BURN!!!
+4_5.remains,"До портала в красный мир осталось 2,5 км",The portal to the red world is 2.5 km away.
+4_5.portal,Я на правильном пути... Мне нужен портал.,I'm on the right way… I need a portal.
+4_7.remains,"До портала осталось 1,5 км",The portal is 1.5 km away
+4_9.remains,До портала осталось XX.XX км!!!!!!!,The portal is XX.XX km away!!!!!!!
+4_9.almost,Ещё чуть-чуть…,Almost there…
+4_9.what,А это как?,How?
+4_10.portal,"^ ПОРТАЛ ^
+| КР. МИР |","^ PORTAL ^
+|R. WORLD|"
+4_10.boss.0,"Великий рыцарь: Слышал, к порталу идёт недавний ""герой"".","Great Knight: I heard a recent ""hero"" is coming to the portal."
+4_10.boss.1,"Великий рыцарь: Хотя, он неплох, но портал ему не светит!","Great Knight: Although he's not bad, but he won't get the portal!"
+4_10.boss.2,Великий рыцарь: Так то он просто хочет более короткий путь.,Great Knight: So he just wants a shorter way.
+4_10.boss.3,Великий рыцарь: Но через меня его путь…,Great Knight: But through me his way…
+4_10.boss.start,Великий рыцарь: ПРИВЕДЁТ К СМЕРТИ!!!,Great Knight: WILL LEAD TO DEATH!!!
+5_3.love,Мне нравится эта скорость…,I like this speed…
+5_5.beach,Пляж 100 м,Beach 100 m
+5_7.ore,"Интересно, что это за руда?",I wonder what kind of ore it is?
+5_9.next,Что же ждёт меня дальше?..,What awaits me next?..
+5_9.lore,"""Это заклинание сделает твою душу одержимой, но ты получишь таинственные силы…""","""This spell will make your soul possessed, but you will receive mysterious powers…"""
+5_10.boss.0,Хирург: Докторов всё меньше и меньше... Кто ж мне помогать будет?,Surgeon: There are fewer and fewer doctors... Who will help me?
+5_10.boss.1,Хирург: Секунду... Там кто-то идёт... Неужто это…,Surgeon: Wait a second... There's someone coming... Is it really…
+5_10.boss.start,"Хирург: Та самая убийца!? Ну ничего, операция тебе поможет!","Surgeon: That killer!? Well, the operation will help you!"
+training,Тренировка,Training
+6_1.views,Какие классные виды…,What cool views…
+6_2.tip,"Мне кажется, или меня попытаются столкнуть в лаву?","Is it just me, or will they try to push me into the lava?"
+6_4.giant,На этой горе по легендам обитает ГИГАНТСКИЙ ГРИБ!!!,"According to legends, a GIANT MUSHROOM lives on this mountain!!!"
+6_4.joke,Пасутся как-то два барана…,Two sheep graze somehow…
+6_5.joke,"Один говорит: БЕЕЕЕЕЕ
+Другой:6-7дмдтмкнцэтганкдт"":;:%№№:%№","One says: BEEEEEEE
+Another: 6-7dmdtmkncetgankdt"":;:%№№:%№"
+6_7.joke,"Другой: Блин, тоже самое хотел сказать.","Another: Damn, I wanted to say the same thing."
+6_8.remains,До замка 1 км,The castle is 1 km away
+6_8.tree,"Интересно, что это за дерево такое?",I wonder what kind of tree it is?
+6_9.parts,"Обломки... замка? Понятно, куда я иду.",The wreckage… a castle? It's clear where I'm going.
+6_9.castle,Замок Красного мира,Red World Castle
+6_10.boss.0,Огненный страж: А вот и ты…,Fire Guard: And here you are…
+6_10.boss.1,Огненный страж: Сзади меня находится замок с порталом…,Fire Guard: There is a castle with a portal behind me…
+6_10.boss.2,Огненный страж: ...но ты до туда не доберёшься.,Fire Guard: ...but you won't get there.
+6_10.boss.3,"Огненный страж: Почему же, спросишь ты?","Fire Guard: Why, you ask?"
+6_10.boss.start,"Огненный страж: Да потому, что Я ИЗ ТЕБЯ ШАШЛЫК СДЕЛАЮ!!!","Fire Guard: Yes, because I'LL MAKE A BARBECUE OUT OF YOU!!!"

@@ -155,8 +155,8 @@ radius = 12.0
 
 [node name="level_3_8" type="Node2D"]
 script = ExtResource( 12 )
-location = "Горы"
-level_name = "Уровень 3-8"
+location = "location.mountain"
+level_name = "level.3_8"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 24 )
@@ -294,7 +294,7 @@ __meta__ = {
 
 [node name="think" parent="decor" instance=ExtResource( 8 )]
 position = Vector2( -528, -64 )
-text = "Люблю шутеры..."
+text = "3_8.2dshooterref"
 color = Color( 0, 1, 0, 1 )
 
 [node name="grass" parent="decor" instance=ExtResource( 20 )]

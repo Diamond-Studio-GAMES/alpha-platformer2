@@ -1,8 +1,4 @@
-[gd_resource type="Shader" format=2]
-
-[resource]
-code = "shader_type canvas_item;
-
+shader_type canvas_item;
 render_mode unshaded;
 
 uniform sampler2D distortion;
@@ -13,4 +9,4 @@ void fragment() {
 	scr_clr = mix(scr_clr, vec3(1), (abs(UV.x - 0.5) + abs(UV.y - 0.5)) * 2.0);
 	COLOR.rgb = scr_clr;
 	COLOR.a = texture(TEXTURE, UV).a;
-}"
+}

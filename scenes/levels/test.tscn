@@ -19,7 +19,7 @@
 [node name="test" type="Node2D"]
 script = ExtResource( 1 )
 location = ""
-level_name = "Тренировка"
+level_name = "training"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 8 )

@@ -1,7 +1,4 @@
-[gd_resource type="Shader" format=2]
-
-[resource]
-code = "shader_type canvas_item;
+shader_type canvas_item;
 
 uniform float distortion = 0.01;
 uniform float time_multiplier = 0.5;
@@ -18,4 +15,4 @@ void fragment() {
 	vec4 tex_clr = texture(TEXTURE, UV + vec2(0, sin(TIME * speed + UV.x * coefficent)/height));
 	COLOR.rgb = mix(textureLod(SCREEN_TEXTURE, SCREEN_UV - dist1 + dist0, 0.0).rgb, tex_clr.rgb, tex_clr.a);
 	COLOR.a = sign(tex_clr.a);
-}"
+}

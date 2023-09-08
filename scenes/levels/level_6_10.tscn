@@ -3419,8 +3419,8 @@ radius = 12.0
 
 [node name="level_6_10" type="Node2D"]
 script = ExtResource( 15 )
-location = "Красный мир"
-level_name = "Уровень 6-10"
+location = "location.red_world"
+level_name = "level.6_10"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 36 )
@@ -3702,7 +3702,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/fire_wizard/mob_fw/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/fire_wizard/mob_fw/visual/body"]
-scale = Vector2( 1.25, 1.23438 )
+scale = Vector2( 1.25, 1.22263 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/fire_wizard/mob_fw"]
@@ -4011,7 +4011,7 @@ __meta__ = {
 [node name="think" parent="decor" instance=ExtResource( 39 )]
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 1744, 0 )
-text = "Огненный страж: Да потому, что Я ИЗ ТЕБЯ ШАШЛЫК СДЕЛАЮ!!!"
+text = "6_10.boss.start"
 time = 4.0
 color = Color( 1, 0, 0, 1 )
 
@@ -4020,24 +4020,24 @@ shape = SubResource( 37 )
 
 [node name="think2" parent="decor" instance=ExtResource( 39 )]
 position = Vector2( 1040, -32 )
-text = "Огненный страж: А вот и ты..."
+text = "6_10.boss.0"
 color = Color( 1, 0.501961, 0, 1 )
 
 [node name="think3" parent="decor" instance=ExtResource( 39 )]
 position = Vector2( 1232, 32 )
-text = "Огненный страж: Сзади меня находится замок с порталом..."
+text = "6_10.boss.1"
 time = 3.0
 color = Color( 1, 0.501961, 0, 1 )
 
 [node name="think4" parent="decor" instance=ExtResource( 39 )]
 position = Vector2( 1392, -64 )
-text = "Огненный страж: ...но ты до туда не доберёшься."
+text = "6_10.boss.2"
 time = 3.0
 color = Color( 1, 0.501961, 0, 1 )
 
 [node name="think5" parent="decor" instance=ExtResource( 39 )]
 position = Vector2( 1584, -64 )
-text = "Огненный страж: Почему же, спросишь ты?"
+text = "6_10.boss.3"
 time = 3.0
 color = Color( 1, 0.501961, 0, 1 )
 
@@ -4124,7 +4124,7 @@ custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 2
 custom_constants/shadow_as_outline = 0
 custom_fonts/font = SubResource( 26 )
-text = "Огненный страж"
+text = "boss.fire"
 align = 1
 
 [node name="tex" type="TextureRect" parent="tint/label"]

@@ -147,8 +147,8 @@ radius = 12.0
 
 [node name="level_3_2" type="Node2D"]
 script = ExtResource( 6 )
-location = "Горы"
-level_name = "Уровень 3-2"
+location = "location.mountain"
+level_name = "level.3_2"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )
@@ -261,7 +261,7 @@ position = Vector2( 2576, 0 )
 
 [node name="tab" parent="decor" instance=ExtResource( 10 )]
 position = Vector2( -368, 0 )
-text = "И их главный клиент - физрук..."
+text = "3_2.client"
 
 [node name="borders" parent="." instance=ExtResource( 18 )]
 

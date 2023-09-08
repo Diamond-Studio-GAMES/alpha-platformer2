@@ -24,7 +24,7 @@
 [ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=22]
 [ext_resource path="res://prefabs/effects/portal.tscn" type="PackedScene" id=23]
 [ext_resource path="res://sounds/sfx/stun.wav" type="AudioStream" id=24]
-[ext_resource path="res://shaders/fire.tres" type="Shader" id=25]
+[ext_resource path="res://shaders/fire.gdshader" type="Shader" id=25]
 [ext_resource path="res://textures/mobs/great_knight/sword_crack.png" type="Texture" id=26]
 [ext_resource path="res://textures/mobs/great_knight/body.tres" type="Texture" id=27]
 [ext_resource path="res://scripts/game/bosses/great_knight.gd" type="Script" id=28]
@@ -4159,7 +4159,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
+node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -4477,8 +4477,8 @@ radius = 12.0
 
 [node name="level_4_10" type="Node2D"]
 script = ExtResource( 21 )
-location = "Пещера"
-level_name = "Уровень 4-10"
+location = "location.cave"
+level_name = "level.4_10"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 11 )
@@ -4771,7 +4771,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/great_knight/mob_gk/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/great_knight/mob_gk/visual/body"]
-scale = Vector2( 1.25, 1.13735 )
+scale = Vector2( 1.25, 1.21208 )
 texture = ExtResource( 46 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/great_knight/mob_gk"]
@@ -5189,7 +5189,7 @@ __meta__ = {
 [node name="think" parent="decor" instance=ExtResource( 35 )]
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 1744, 0 )
-text = "Великий рыцарь: ПРИВЕДЁТ К СМЕРТИ!!!"
+text = ""
 time = 4.0
 color = Color( 1, 0, 0, 1 )
 
@@ -5198,30 +5198,29 @@ shape = SubResource( 37 )
 
 [node name="tab" parent="decor" instance=ExtResource( 30 )]
 position = Vector2( 2576, -96 )
-text = "^ ПОРТАЛ ^
-| КР. МИР |"
+text = "4_10.portal"
 color = Color( 1, 0, 1, 1 )
 
 [node name="think2" parent="decor" instance=ExtResource( 35 )]
 position = Vector2( 624, 32 )
-text = "Великий рыкарь: Слышал, к порталу идёт недавний \"герой\"."
+text = "4_10.boss.0"
 time = 3.0
 
 [node name="think3" parent="decor" instance=ExtResource( 35 )]
 position = Vector2( 912, 0 )
-text = "Великий рыцарь: Хотя, он неплох, но портал ему не светит!"
+text = "4_10.boss.1"
 time = 3.0
 color = Color( 1, 0, 0, 1 )
 
 [node name="think4" parent="decor" instance=ExtResource( 35 )]
 position = Vector2( 1200, 64 )
-text = "Великий рыцарь: Так то он просто хочет более короткий путь."
+text = "4_10.boss.2"
 time = 3.0
 color = Color( 0.501961, 0, 0.25098, 1 )
 
 [node name="think5" parent="decor" instance=ExtResource( 35 )]
 position = Vector2( 1488, 32 )
-text = "Великий рыцарь: Но через меня его путь..."
+text = "4_10.boss.3"
 time = 3.0
 color = Color( 0.501961, 0, 0, 1 )
 
@@ -5294,7 +5293,7 @@ custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 2
 custom_constants/shadow_as_outline = 0
 custom_fonts/font = SubResource( 26 )
-text = "Великий рыцарь"
+text = "boss.knight"
 align = 1
 
 [node name="tex" type="TextureRect" parent="tint/label"]

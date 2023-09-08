@@ -141,12 +141,12 @@ func language():
 		G.setv("lang", "en")
 		G.save()
 		TranslationServer.set_locale(G.getv("lang", "en"))
-		G.change_to_scene("res://scenes/menu/menu.tscn")
+		G.change_to_scene(filename)
 	else:
 		G.setv("lang", "ru")
 		G.save()
 		TranslationServer.set_locale(G.getv("lang", "ru"))
-		G.change_to_scene("res://scenes/menu/menu.tscn")
+		G.change_to_scene(filename)
 
 
 func more():

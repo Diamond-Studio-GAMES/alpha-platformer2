@@ -155,8 +155,8 @@ radius = 12.0
 
 [node name="level_2_7" type="Node2D"]
 script = ExtResource( 1 )
-location = "Лес"
-level_name = "Уровень 2-7"
+location = "location.forest"
+level_name = "level.2_7"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 14 )

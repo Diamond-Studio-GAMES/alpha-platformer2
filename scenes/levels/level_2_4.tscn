@@ -150,8 +150,8 @@ radius = 12.0
 
 [node name="level_2_4" type="Node2D"]
 script = ExtResource( 5 )
-location = "Лес"
-level_name = "Уровень 2-4"
+location = "location.forest"
+level_name = "level.2_4"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -299,7 +299,7 @@ position = Vector2( 2864, 0 )
 
 [node name="tab" parent="decor" instance=ExtResource( 14 )]
 position = Vector2( 880, -80 )
-text = "Прыгай туда, где нет дыма..."
+text = "2_4.tip"
 color = Color( 0.501961, 0.501961, 0.501961, 1 )
 with_leg = false
 

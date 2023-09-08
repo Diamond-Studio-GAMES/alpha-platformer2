@@ -1,9 +1,8 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://prefabs/blocks/grass.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/blocks/fire.tscn" type="PackedScene" id=2]
 [ext_resource path="res://prefabs/blocks/teleport_portal.tscn" type="PackedScene" id=3]
-[ext_resource path="res://shaders/grass.tres" type="Shader" id=4]
 [ext_resource path="res://prefabs/mobs/knife_man.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/game/other/level.gd" type="Script" id=6]
 [ext_resource path="res://sounds/music/cave.ogg" type="AudioStream" id=7]
@@ -27,20 +26,6 @@
 [ext_resource path="res://prefabs/blocks/grass2.tscn" type="PackedScene" id=25]
 [ext_resource path="res://prefabs/blocks/tileset.tres" type="TileSet" id=26]
 [ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=27]
-
-[sub_resource type="ShaderMaterial" id=6]
-resource_local_to_scene = true
-shader = ExtResource( 4 )
-shader_param/wind_power = 7.0
-shader_param/wind_speed = 1.5
-shader_param/time_offset = 0.0
-
-[sub_resource type="ShaderMaterial" id=7]
-resource_local_to_scene = true
-shader = ExtResource( 4 )
-shader_param/wind_power = 8.0
-shader_param/wind_speed = 1.25
-shader_param/time_offset = 0.0
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.58042, 1 )
@@ -170,8 +155,8 @@ radius = 12.0
 
 [node name="level_4_3" type="Node2D"]
 script = ExtResource( 6 )
-location = "Пещера"
-level_name = "Уровень 4-3"
+location = "location.cave"
+level_name = "level.4_3"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 26 )
@@ -318,7 +303,7 @@ __meta__ = {
 
 [node name="tab" parent="decor" instance=ExtResource( 24 )]
 position = Vector2( 1296, 64 )
-text = "До портала в красный мир осталось 3.5 км"
+text = "4_3.remains"
 
 [node name="grass" parent="decor" instance=ExtResource( 25 )]
 position = Vector2( 2320, 160 )
@@ -333,11 +318,7 @@ position = Vector2( 1584, 32 )
 position = Vector2( 1296, 64 )
 
 [node name="sprite2" parent="decor/grass4" index="0"]
-material = SubResource( 6 )
 z_index = -11
-
-[node name="sprite" parent="decor/grass4" index="1"]
-material = SubResource( 7 )
 
 [node name="grass5" parent="decor" instance=ExtResource( 1 )]
 position = Vector2( 304, 0 )

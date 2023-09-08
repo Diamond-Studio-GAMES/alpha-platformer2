@@ -5201,7 +5201,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
+node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -5506,8 +5506,8 @@ radius = 12.0
 
 [node name="level_2_10" type="Node2D"]
 script = ExtResource( 16 )
-location = "Лес"
-level_name = "Уровень 2-10"
+location = "location.forest"
+level_name = "level.2_10"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 43 )
@@ -5597,7 +5597,7 @@ __meta__ = {
 
 [node name="arm_left" type="Sprite" parent="mobs/forest_killer/visual/body"]
 position = Vector2( -0.841847, -10.3828 )
-rotation = 1.0226
+rotation = 0.349066
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 15 )
 offset = Vector2( 0, 7 )
@@ -5608,7 +5608,7 @@ __meta__ = {
 
 [node name="hand" type="Sprite" parent="mobs/forest_killer/visual/body/arm_left"]
 position = Vector2( -0.280607, 13.0937 )
-rotation = -1.42422
+rotation = -0.349066
 texture = ExtResource( 24 )
 offset = Vector2( 0.5, 7.5 )
 __meta__ = {
@@ -5857,7 +5857,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/forest_killer/mob_fk/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/forest_killer/mob_fk/visual/body"]
-scale = Vector2( 1.25, 1.16732 )
+scale = Vector2( 1.25, 1.10045 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/forest_killer/mob_fk"]
@@ -6304,7 +6304,7 @@ __meta__ = {
 [node name="think" parent="decor" instance=ExtResource( 41 )]
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 1872, 0 )
-text = "Лесоруб: Ну что, сразимся???"
+text = "2_10.boss.start"
 time = 5.0
 color = Color( 1, 0, 0, 1 )
 
@@ -6313,7 +6313,7 @@ shape = SubResource( 35 )
 
 [node name="think2" parent="decor" instance=ExtResource( 41 )]
 position = Vector2( 1520, 0 )
-text = "Лесоруб: Пришёл значит..."
+text = "2_10.boss.0"
 color = Color( 1, 1, 1, 1 )
 
 [node name="borders" parent="." instance=ExtResource( 37 )]
@@ -6360,7 +6360,7 @@ custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 2
 custom_constants/shadow_as_outline = 0
 custom_fonts/font = SubResource( 26 )
-text = "Лесоруб"
+text = "boss.forester"
 align = 1
 
 [node name="tex" type="TextureRect" parent="tint/label"]

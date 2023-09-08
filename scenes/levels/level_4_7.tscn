@@ -157,8 +157,8 @@ radius = 12.0
 
 [node name="level_4_7" type="Node2D"]
 script = ExtResource( 8 )
-location = "Пещера"
-level_name = "Уровень 4-7"
+location = "location.cave"
+level_name = "level.4_7"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 18 )
@@ -410,7 +410,7 @@ __meta__ = {
 
 [node name="tab" parent="decor" instance=ExtResource( 10 )]
 position = Vector2( 1264, 96 )
-text = "До портала осталось 1,5 км"
+text = "4_7.remains"
 color = Color( 1, 0.501961, 0.501961, 1 )
 
 [node name="grass" parent="decor" instance=ExtResource( 20 )]
