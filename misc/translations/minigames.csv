@@ -51,7 +51,7 @@ keys,ru,en
 6.name,Сад,Garden
 6.gift.collect,Забрать,Claim
 6.buy.text,"Действительно хочешь купить садовый ящик за 5 кристаллов?
-У тебя: ","Are you really want to bug garden box with 5 gems?
+У тебя: ","Are you really want to buy garden box with 5 gems?
 You have: "
 6.no.gems,Недостаточно кристаллов!,Not enough gems!
 6.tip.plant,"Выбери горшок для посадки (нажми кнопку ещё раз, чтобы отменить)",Select pot to plant (press button again to cancel)
