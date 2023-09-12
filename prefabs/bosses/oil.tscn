@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://textures/mobs/fire_wizard/oil.png" type="Texture" id=1]
+[ext_resource path="res://textures/bosses/fire_wizard/oil.png" type="Texture" id=1]
 [ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=2]
 [ext_resource path="res://textures/effects/attacks/warn.png" type="Texture" id=3]
 [ext_resource path="res://scripts/game/bosses/oil.gd" type="Script" id=4]

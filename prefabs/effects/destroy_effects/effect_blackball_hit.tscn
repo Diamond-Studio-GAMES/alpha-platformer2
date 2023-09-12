@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://sounds/sfx/randomed/magicball_hit.tres" type="AudioStream" id=1]
-[ext_resource path="res://textures/mobs/black_wizard/fireball_attack.png" type="Texture" id=2]
+[ext_resource path="res://textures/bosses/black_wizard/fireball_attack.png" type="Texture" id=2]
 
 [sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]

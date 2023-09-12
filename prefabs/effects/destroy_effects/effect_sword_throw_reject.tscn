@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://textures/mobs/great_knight/sword.png" type="Texture" id=1]
+[ext_resource path="res://textures/bosses/great_knight/sword.png" type="Texture" id=1]
 [ext_resource path="res://sounds/sfx/randomed/sword_hit_wall.tres" type="AudioStream" id=2]
 [ext_resource path="res://textures/effects/attacks/reject_bullet_atlas.png" type="Texture" id=3]
 
