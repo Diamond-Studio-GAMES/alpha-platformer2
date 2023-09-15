@@ -28,7 +28,6 @@ func _ready():
 	RECHARGE_SPEED = 0.7
 	if MP.auth(self):
 		$control_indicator/sp.show()
-	attack()
 
 
 func apply_data(data):
@@ -120,8 +119,10 @@ func ulti():
 	var shape_owner = $ulti.shape_find_owner(0)
 	$ulti.shape_owner_set_disabled(shape_owner, false)
 	SPEED = 250
+	JUMP_POWER = 350
 	yield(get_tree().create_timer(3, false), "timeout")
 	SPEED = 95
+	JUMP_POWER = 255
 	$visual.modulate = Color.white
 	trail.hide()
 	collision_layer = 0b10

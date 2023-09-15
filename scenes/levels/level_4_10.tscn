@@ -4760,8 +4760,8 @@ defense = 999999
 reaction_speed = 0.5
 vision_distance = 1000.0
 head_path = NodePath("../visual/body/head")
-head_sprite_path = "res://textures/mobs/great_knight/head.tres"
-head_hurt_sprite_path = "res://textures/mobs/great_knight/head_hurt.tres"
+head_sprite_path = "res://textures/bosses/great_knight/head.tres"
+head_hurt_sprite_path = "res://textures/bosses/great_knight/head_hurt.tres"
 custom_mob_death_effect_path = "res://prefabs/effects/boss_death.tscn"
 
 [node name="visual" type="Node2D" parent="mobs/great_knight/mob_gk"]
@@ -4771,7 +4771,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/great_knight/mob_gk/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/great_knight/mob_gk/visual/body"]
-scale = Vector2( 1.25, 1.21208 )
+scale = Vector2( 1.25, 1.2034 )
 texture = ExtResource( 46 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/great_knight/mob_gk"]

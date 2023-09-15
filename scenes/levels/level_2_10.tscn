@@ -5201,7 +5201,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
+node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -5846,8 +5846,8 @@ defense = 999999
 reaction_speed = 0.5
 vision_distance = 1000.0
 head_path = NodePath("../visual/body/head")
-head_sprite_path = "res://textures/mobs/forest_killer/head.tres"
-head_hurt_sprite_path = "res://textures/mobs/forest_killer/head_hurt.tres"
+head_sprite_path = "res://textures/bosses/forest_killer/head.tres"
+head_hurt_sprite_path = "res://textures/bosses/forest_killer/head_hurt.tres"
 custom_mob_death_effect_path = "res://prefabs/effects/boss_death.tscn"
 
 [node name="visual" type="Node2D" parent="mobs/forest_killer/mob_fk"]
@@ -5857,7 +5857,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/forest_killer/mob_fk/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/forest_killer/mob_fk/visual/body"]
-scale = Vector2( 1.25, 1.10045 )
+scale = Vector2( 1.25, 1.15404 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/forest_killer/mob_fk"]

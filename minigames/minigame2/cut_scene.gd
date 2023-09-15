@@ -4,9 +4,6 @@ var got_death = true
 
 func _ready():
 	randomize()
-	if randi() % 6 < 4:
-		got_death = false
-		$tint/tint/label.hide()
 
 
 func reward():

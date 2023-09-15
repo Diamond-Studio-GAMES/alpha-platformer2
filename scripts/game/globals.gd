@@ -17,7 +17,6 @@ var cached_ip = ""
 var cached_suff = 0
 var custom_respawn_scene = ""
 var dialog_in_menu = ""
-var time_scale_change = 1
 var fps_text
 var music
 var time_timer
@@ -181,17 +180,6 @@ func _ready():
 	var dir = Directory.new()
 	if not dir.dir_exists("user://saves/"):
 		dir.make_dir_recursive("user://saves/")
-	if dir.file_exists("user://saves.game"):
-		var cf = ConfigFile.new()
-		cf.load("user://saves.game")
-		for i in cf.get_sections():
-			if i == "main":
-				continue
-			var file = ConfigFile.new()
-			for j in cf.get_section_keys(i):
-				file.set_value("save", j, cf.get_value(i, j))
-			file.save_encrypted_pass("user://saves/".plus_file(cf.get_value(i, "save_id", "file" + str(randi())) + ".apa2save"), "apa2_save")
-		dir.remove("user://saves.game")
 	
 	randomize()
 	get_tree().connect("node_added", self, "_node_added")
@@ -225,17 +213,16 @@ func _ready():
 
 func _process(delta):
 	save_timer += delta
-	if save_timer >= 20:
+	if save_timer >= 10:
 		save()
 		save_timer = 0
 
 
 func _notification(what):
 	match what:
-		NOTIFICATION_APP_PAUSED, NOTIFICATION_PAUSED, \
-		NOTIFICATION_WM_GO_BACK_REQUEST, NOTIFICATION_WM_UNFOCUS_REQUEST, \
-		NOTIFICATION_WM_QUIT_REQUEST, NOTIFICATION_EXIT_TREE:
-			Engine.time_scale = time_scale_change
+		NOTIFICATION_APP_PAUSED, NOTIFICATION_EXIT_TREE, \
+		NOTIFICATION_WM_GO_BACK_REQUEST, NOTIFICATION_WM_QUIT_REQUEST, \
+		NOTIFICATION_WM_FOCUS_OUT:
 			save()
 
 

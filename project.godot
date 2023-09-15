@@ -115,6 +115,11 @@ _global_script_classes=[ {
 "path": "res://scripts/game/multiplayer/multiplayer_lobby.gd"
 }, {
 "base": "Mob",
+"class": "Magician",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/magician.gd"
+}, {
+"base": "Mob",
 "class": "Mechanic",
 "language": "GDScript",
 "path": "res://scripts/game/mobs/mechanic.gd"
@@ -261,6 +266,7 @@ _global_script_class_icons={
 "KnightMob": "",
 "Level": "",
 "Lobby": "",
+"Magician": "",
 "Mechanic": "",
 "MinigameHero": "",
 "Mob": "",

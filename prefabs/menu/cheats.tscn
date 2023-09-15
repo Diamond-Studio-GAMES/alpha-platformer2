@@ -6,6 +6,9 @@
 script/source = "extends CanvasLayer
 
 
+var time_scale_change = 1.5
+
+
 func get_value():
 	if G.save_file != null:
 		$base/menu/list/get_value/value.text = str(G.getv($base/menu/list/get_value/edit.text))
@@ -26,6 +29,14 @@ func change_scene():
 
 func set_node_value():
 	get_tree().current_scene.get_node($base/menu/list/set_node_value/node_edit.text).set($base/menu/list/set_node_value/value_edit.text, str2var($base/menu/list/set_node_value/set_value_edit.text))
+
+
+func _notification(what):
+	match what:
+		NOTIFICATION_WM_FOCUS_OUT:
+			var tsc = time_scale_change
+			time_scale_change = Engine.time_scale
+			Engine.time_scale = tsc
 "
 
 [node name="cheats" type="CanvasLayer"]
