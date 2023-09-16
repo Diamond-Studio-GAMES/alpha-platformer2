@@ -65,7 +65,7 @@ var power = 0
 var ulti_power = 1
 var face_left = false
 var default_camera_zoom = Vector2(0.3, 0.3)
-var _ulti_use_effect = load("res://prefabs/effects/super_use.scn")
+var _ulti_use_effect = load("res://prefabs/effects/super_use.tscn")
 var _ulti
 onready var _ulti_bar = $camera/gui/base/hero_panel/ulti_bar
 onready var _ulti_anim = $ulti_charge_effect/anim
@@ -80,27 +80,29 @@ onready var _camera_tween = $camera_tween
 
 func _ready():
 	add_to_group("player")
+	$camera/gui/base/hero_panel/name.set_message_translation(false)
+	$camera/gui/base/hero_panel/name.notification(NOTIFICATION_TRANSLATION_CHANGED)
 	$camera/gui/base/hero_panel/name.text = G.getv("name", "")
 	if G.getv("gender", "male") == "male":
 		$visual/body/head/hair/hair_man.show()
 		$visual/body/head/hair/hair_woman.hide()
 		$camera/gui/base/hero_panel/head/hair_man.show()
 		$camera/gui/base/hero_panel/head/hair_woman.hide()
-		$hurt_sfx.stream = load("res://sounds/sfx/randomed/hurt.res")
+		$hurt_sfx.stream = load("res://sounds/sfx/randomed/hurt.tres")
 	else:
 		$camera/gui/base/hero_panel/head/hair_woman.show()
 		$camera/gui/base/hero_panel/head/hair_man.hide()
 		$visual/body/head/hair/hair_woman.show()
 		$visual/body/head/hair/hair_man.hide()
-		$hurt_sfx.stream = load("res://sounds/sfx/randomed/female_hurt.res")
+		$hurt_sfx.stream = load("res://sounds/sfx/randomed/female_hurt.tres")
 	_body = $visual/body
 	collision_layer = 0b10
 	collision_mask = 0b11101
 	_health_bar = $camera/gui/base/hero_panel/health
 	_health_change_bar = $camera/gui/base/hero_panel/health/health_change
 	_head = $camera/gui/base/hero_panel/head
-	_head_sprite = load("res://textures/mobs/player/head.res")
-	_head_hurt_sprite = load("res://textures/mobs/player/head_hurt.res")
+	_head_sprite = load("res://textures/mobs/player/head.tres")
+	_head_hurt_sprite = load("res://textures/mobs/player/head_hurt.tres")
 	
 	
 	_hp_count = $camera/gui/base/hero_panel/hp_count
@@ -161,21 +163,23 @@ func _ready():
 
 
 func send_my_data():
-	ms.sync_call(self, "apply_data", [
-			{"name" : G.getv("name", ""), 
-			"gender" : G.getv("gender", "male"), 
-			"power" : power, 
-			"ulti_power" : ulti_power, 
-			"potions_1" : potions_1,
-			"potions_2" : potions_2,
-			"potions_3" : potions_3,
-			"have_gadget" : have_gadget,
-			"have_soul_power" : have_soul_power,
-			"amulet" : amulet,
-			}])
+	ms.sync_call(self, "apply_data", [{
+		"name" : G.getv("name", ""), 
+		"gender" : G.getv("gender", "male"), 
+		"power" : power, 
+		"ulti_power" : ulti_power, 
+		"potions_1" : potions_1,
+		"potions_2" : potions_2,
+		"potions_3" : potions_3,
+		"have_gadget" : have_gadget,
+		"have_soul_power" : have_soul_power,
+		"amulet" : amulet,
+	}])
 
 
 func apply_data(data):
+	$bars/name.set_message_translation(false)
+	$bars/name.notification(NOTIFICATION_TRANSLATION_CHANGED)
 	$bars/name.text = data["name"]
 	if data["gender"] == "male":
 		$visual/body/head/hair/hair_man.show()
@@ -311,17 +315,20 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 	else:
 		tint_anim.stop(true)
 		tint_anim.play("hurting")
-	state.connect("completed", self, "post_hurt")
 	state.resume()
 
 
-func post_hurt(ded):
+func _post_hurt(ded):
 	if ded:
 		yield(get_tree().create_timer(4, false), "timeout")
 		if not MP.is_active:
 			if not camera.is_screen_on and current_health <= 0:
 				camera.show_revive_screen()
-	elif not is_stunned and hurt_counter < 1:
+
+
+func _hurt_end():
+	._hurt_end()
+	if not is_zero_approx(current_health) and not is_stunned and hurt_counter < 1:
 		_player_head.texture = _head_sprite
 
 
@@ -337,6 +344,9 @@ func heal(amount):
 
 func use_potion(level):
 	if _is_drinking or is_hurt or is_stunned or is_reviving or _is_ultiing or _is_attacking or not can_control:
+		return
+	if current_health >= max_health:
+		make_dialog(tr("player.fullhp"), 1, Color.white)
 		return
 	ms.sync_call(self, "use_potion", [level])
 	match level:
@@ -356,6 +366,8 @@ func use_potion(level):
 			_anim_tree["parameters/potion_seek/seek_position"] = 0
 			_anim_tree["parameters/potion_shot/active"] = true
 			yield(get_tree().create_timer(0.8, false), "timeout")
+			if current_health <= 0:
+				return
 			$shield.show()
 			_is_ultiing = true
 			for i in range(4):
@@ -382,6 +394,8 @@ func use_potion(level):
 			_anim_tree["parameters/potion_seek/seek_position"] = 0
 			_anim_tree["parameters/potion_shot/active"] = true
 			yield(get_tree().create_timer(0.8, false), "timeout")
+			if current_health <= 0:
+				return
 			$shield.show()
 			_is_ultiing = true
 			for i in range(4):
@@ -408,6 +422,8 @@ func use_potion(level):
 			_anim_tree["parameters/potion_seek/seek_position"] = 0
 			_anim_tree["parameters/potion_shot/active"] = true
 			yield(get_tree().create_timer(0.8, false), "timeout")
+			if current_health <= 0:
+				return
 			$shield.show()
 			_is_ultiing = true
 			for i in range(4):
@@ -590,10 +606,12 @@ func revive(hp_count = -1):
 			heal(max_health)
 		else:
 			heal(hp_count)
-	var node = load("res://prefabs/effects/revive.scn").instance()
+	var node = load("res://prefabs/effects/revive.tscn").instance()
 	node.global_position = global_position
 	_level.add_child(node)
 	_anim_tree["parameters/death_trans/current"] = AliveState.ALIVE
+	_anim_tree["parameters/attack_shot/active"] = false
+	_anim_tree["parameters/potion_shot/active"] = false
 	_buttons.show()
 	yield(get_tree().create_timer(0.4, false), "timeout")
 	$shield/anim.seek(0, true)

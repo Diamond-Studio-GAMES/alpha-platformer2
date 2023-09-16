@@ -20,7 +20,7 @@ var fill_height = 30
 var tp_pos = Vector2()
 var next_attack_time_min = 1
 var next_attack_time_max = 2
-var hurt_part = load("res://prefabs/effects/hurt_part.scn")
+var hurt_part = load("res://prefabs/effects/hurt_part.tscn")
 onready var anim = $anim
 onready var ms := $MultiplayerSynchronizer as MultiplayerSynchronizer
 
@@ -75,6 +75,10 @@ remote func move_player_to_start():
 func get_hit(area):
 	if waiting_for_death:
 		if not MP.auth(area):
+			return
+		if not area is Attack:
+			return
+		if not area.is_player_attack:
 			return
 		waiting_for_death = false
 		anim.play("final_death")

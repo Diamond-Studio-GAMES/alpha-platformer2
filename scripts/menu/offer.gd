@@ -55,53 +55,53 @@ func update_offer():
 		for i in offer_rec["class"]:
 			if not i in classes_to_unlock:
 				buy_button.disabled = true
-				buy_button.text = "Есть"
+				buy_button.text = tr("menu.have")
 	if offer_rec.has("amulet_frags"):
 		for i in offer_rec["amulet_frags"]:
 			if not i in amulet_types:
 				buy_button.disabled = true
-				buy_button.text = "Есть"
+				buy_button.text = tr("menu.have")
 	if offer_rec.has("gadget"):
 		for i in offer_rec["gadget"]:
 			if not i in gadget_classes:
 				buy_button.disabled = true
-				buy_button.text = "Есть"
+				buy_button.text = tr("menu.have")
 	if offer_rec.has("soul_power"):
 		for i in offer_rec["soul_power"]:
 			if not i in soul_power_classes:
 				buy_button.disabled = true
-				buy_button.text = "Есть"
+				buy_button.text = tr("menu.have")
 	if offer_rec.has("potions1"):
 		if offer_rec["potions1"] + G.getv("potions1", 0) > 5:
 			buy_button.disabled = true
-			buy_button.text = "Есть"
+			buy_button.text = tr("menu.have")
 	if offer_rec.has("potions2"):
 		if offer_rec["potions2"] + G.getv("potions2", 0) > 5:
 			buy_button.disabled = true
-			buy_button.text = "Есть"
+			buy_button.text = tr("menu.have")
 	if offer_rec.has("potions3"):
 		if offer_rec["potions3"] + G.getv("potions3", 0) > 5:
 			buy_button.disabled = true
-			buy_button.text = "Есть"
+			buy_button.text = tr("menu.have")
 	if offer_rec.has("tokens"):
 		for i in offer_rec["tokens"]:
 			if i in classes_to_unlock:
 				continue
 			if not i in power_classes:
 				buy_button.disabled = true
-				buy_button.text = "Есть"
+				buy_button.text = tr("menu.have")
 	if offer_rec.has("ulti_tokens"):
 		for i in offer_rec["ulti_tokens"]:
 			if i in classes_to_unlock:
 				continue
 			if not i in ulti_classes:
 				buy_button.disabled = true
-				buy_button.text = "Есть"
+				buy_button.text = tr("menu.have")
 	if offer_rec.has("wild_tokens"):
 		if power_classes.empty():
 			buy_button.disabled = true
-			buy_button.text = "Есть"
+			buy_button.text = tr("menu.have")
 	if offer_rec.has("wild_ulti_tokens"):
 		if ulti_classes.empty():
 			buy_button.disabled = true
-			buy_button.text = "Есть"
+			buy_button.text = tr("menu.have")

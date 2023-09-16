@@ -2,11 +2,11 @@ extends TextureButton
 
 
 export (String) var id = "0"
-onready var garden : Garden = $".."
+onready var garden: Garden = $".."
 var current_plant = ""
 onready var current_day = Time.get_date_dict_from_system()["day"]
 onready var current_unix_time = Time.get_unix_time_from_system()
-var current_plant_data : PlantResource
+var current_plant_data: PlantResource
 var plant_mini_tex = load("res://minigames/minigame6/resources/plant_start.png")
 
 
@@ -52,13 +52,13 @@ func dig_up():
 func fertilize():
 	var gid = "garden_plant" + id
 	if G.getv(gid + "_days_grow", 0) >= current_plant_data.days_to_grow:
-		garden.show_warning("Нельзя удобрить выросшее растение!")
+		garden.show_warning(tr("6.cant.grown"))
 		return
 	if not G.getv(gid + "_watered", false):
-		garden.show_warning("Нельзя удобрить неполитое растение!")
+		garden.show_warning(tr("6.cant.nowater"))
 		return
 	if G.getv("garden_fert", 0) < current_plant_data.fertilizer_needs:
-		garden.show_warning("Недостаточно удобрений! (требуется {0})".format([current_plant_data.fertilizer_needs]))
+		garden.show_warning(tr("6.no.fert").format([current_plant_data.fertilizer_needs]))
 		return
 	G.addv("garden_fert", -current_plant_data.fertilizer_needs, 0)
 	G.setv(gid + "_watered_day", current_day - 1)
@@ -70,7 +70,7 @@ func fertilize():
 func do_water():
 	var gid = "garden_plant" + id
 	if G.getv("garden_water", 0) < current_plant_data.water_needs:
-		garden.show_warning("Недостаточно воды!")
+		garden.show_warning(tr("6.no.water"))
 		return
 	G.addv("garden_water", -current_plant_data.water_needs, 0)
 	G.setv(gid + "_watered_day", current_day)
@@ -99,8 +99,8 @@ func setup_plant():
 	$water.hide()
 	var gid = "garden_plant" + id
 	current_plant = G.getv(gid, "")
-	if current_plant.get_extension() == "tres":
-		var new_plant = current_plant.get_basename() + ".res"
+	if current_plant.get_extension() == "res":
+		var new_plant = current_plant.get_basename() + ".tres"
 		G.setv(gid, new_plant)
 		setup_plant()
 		return

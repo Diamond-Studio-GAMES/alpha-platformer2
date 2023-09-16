@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://sounds/sfx/landing.wav" type="AudioStream" id=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.190476, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "destroy"
+length = 4.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("particles")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("sfx")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[node name="fall_effect" type="Node2D" groups=["spawnable"]]
+
+[node name="particles" type="CPUParticles2D" parent="."]
+emitting = false
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.25
+emission_shape = 2
+emission_rect_extents = Vector2( 16, 0 )
+direction = Vector2( 0, -1 )
+initial_velocity = 80.0
+scale_amount = 5.0
+color = Color( 0.501961, 0.25098, 0, 1 )
+color_ramp = SubResource( 1 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "destroy"
+anims/destroy = SubResource( 2 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+volume_db = 6.0
+max_distance = 800.0
+bus = "sfx"
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath("..") ]
+spawn_sync_data_properties = [ "global_position" ]

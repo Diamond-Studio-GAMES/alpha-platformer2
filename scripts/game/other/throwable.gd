@@ -23,16 +23,16 @@ export (bool) var is_player_projectile = true
 export (bool) var is_enemy_projectile = false
 export (bool) var destroyable_by_attacks = true
 export (bool) var collides = true
-export (String, FILE, "*.scn") var effect_wall = ""
-export (String, FILE, "*.scn") var effect_hit = ""
-export (String, FILE, "*.scn") var effect_end_of_range = ""
-export (String, FILE, "*.scn") var effect_reject = ""
-var destroy_effect_simple_path = "res://prefabs/effects/destroy_effect.scn"
+export (String, FILE, "*.tscn") var effect_wall = ""
+export (String, FILE, "*.tscn") var effect_hit = ""
+export (String, FILE, "*.tscn") var effect_end_of_range = ""
+export (String, FILE, "*.tscn") var effect_reject = ""
+var destroy_effect_simple_path = "res://prefabs/effects/destroy_effect.tscn"
 export (Color) var simple_effect_color = Color.white
 export (Vector2) var simple_effect_scale = Vector2.ONE
 export (Vector2) var simple_effect_offset = Vector2.ZERO
-export (String, FILE, "*.wav, *.ogg, *.res") var simple_effect_destroy_sound_hit = ""
-export (String, FILE, "*.wav, *.ogg, *.res") var simple_effect_destroy_sound_wall = ""
+export (String, FILE, "*.wav, *.ogg, *.tres") var simple_effect_destroy_sound_hit = ""
+export (String, FILE, "*.wav, *.ogg, *.tres") var simple_effect_destroy_sound_wall = ""
 
 
 func _ready():

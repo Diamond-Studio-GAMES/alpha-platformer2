@@ -1,0 +1,177 @@
+keys,ru,en
+1.name,Резня,Bloodbath
+1.reward,Награда за выживание: 2 золотых ящика,Reward for surviving: 2 gold boxes
+1.music,Музыка: KSLV - Override (https://youtu.be/NS8DPG62Fto),Music: KSLV - Override (https://youtu.be/NS8DPG62Fto)
+1.win,ТЫ ПОБЕДИЛ!,YOU WIN!
+1.level,ВЫЖИВИ 2 МИНУТЫ!!!,SURVIVE 2 MINUTES!!!
+1.select,Выбери класс:,Select class:
+1.begin,НАЧАТЬ,START
+2.name,Изб. от ненависти,Destroy Your Hate
+2.reward,Награда: 1 золотой ящик,Reward: 1 gold box
+2.free_from,Освободись от,Destroy your
+2.hateee,НЕНАВИСТИ!!!,HATE!!!
+2.death,Смерть ждёт тебя…,Death is waiting for you…
+3.total,Всего заработано:,Earned total:
+3.name,Симулятор камня,Stone Simulator
+4.name,Последние волны,Last Waves
+4.wave.start,Волна %d началась!,Wave %d started!
+4.wave.end,Все враги появились!,All enemies spawned!
+4.wave.clear,Волна зачищена!,Wave cleared!
+4.win,Поздравляем с победой!,You win!
+4.wave.left,Врагов осталось: ,Enemies remaining: 
+4.tip,Отбивайся от волн врагов!,Fight back to waves of enemies!
+4.shop.title,Магазин улучшений,Shop of upgrades
+4.shop.def,+1 защита,+1 defense
+4.shop.atk,+6 атаки,+6 attack
+4.shop.hp,+20 здоровья,+20 health
+4.shop.arm,+15 брони,+15 armor
+4.shop.start,Начать волну,Start wave
+5.preview,Предпросмотр,Preview
+5.camera,Перемещение камеры,Move camera mode
+5.erase,Стирание блоков,Eraser mode
+5.flip.x,Отражение по X,Flip X
+5.flip.y,Отражение по Y,Flip Y
+5.rotate,Повернуть блок,Rotate block
+5.exit.save,Сохранить и выйти,Save & Exit
+5.settings,Настройки уровня,Level Settings
+5.settings.bg,Фон уровня:,Background:
+5.settings.music,Музыка уровня:,Music:
+5.settings.gr,Пол уровня:,Ground:
+5.bg.sky,Небо,Sky
+5.music.tense,Напряжение,Tense
+5.music.boss,Босс леса,Forest boss
+5.gr.dirt,Земля,Grass
+5.gr.stone,Камень,Stone
+5.select,Выбери уровень:,Select level:
+5.custom,Свой уровень,Custom level
+5.custom.edit,Ред.,Edit
+5.easy,Обширное поле,Big field
+5.normal,Брождение по лесу,Forest walks
+5.hard,Горное безумие,Mountain madness
+6.name,Сад,Garden
+6.gift.collect,Забрать,Claim
+6.buy.text,"Действительно хочешь купить садовый ящик за 5 кристаллов?
+У тебя: ","Are you really want to buy garden box with 5 gems?
+You have: "
+6.no.gems,Недостаточно кристаллов!,Not enough gems!
+6.tip.plant,"Выбери горшок для посадки (нажми кнопку ещё раз, чтобы отменить)",Select pot to plant (press button again to cancel)
+6.tip.remove,"Выбери растение для выкапыванния (нажми кнопку ещё раз, чтобы отменить)",Select plant to dig out (press button again to cancel)
+6.tip.fert,"Выбери растение для удобрения (нажми кнопку ещё раз, чтобы отменить)",Select plant to fertilize (press button again to cancel)
+6.rarity.common,Обычное,Common
+6.rarity.rare,Редкое,Rare
+6.rarity.epic,Эпическое,Epic
+6.rarity.legendary,Легендарное,Legendary
+6.cant.grown,Нельзя удобрить выросшее растение!,Can’t fertilize a grown plant!
+6.cant.nowater,Нельзя удобрить неполитое растение!,Can’t fertilize a unwatered plant!
+6.no.fert,Недостаточно удобрений! (требуется {0}),Not enough fertilizer! (you need {0})
+6.no.water,Недостаточно воды!,Not enough water!
+6.act.plant,Посадить,Plant
+6.act.remove,Выкопать,Dig out
+6.act.fert,Удобрить,Fertilize
+6.help,"Эта мини-игра позволяет выращивать растения из семян и получать за это награды. У растений есть 4 редкости: обычное, редкое, эпическое и легендарное. Чем выше редкость, тем выше награда и требования для роста. Для того, чтобы растение росло, его нужно ежедневно поливать определённым количеством воды. По желанию можно ускорить рост за счёт удобрения - оно убирает 1 день ожидания. Все ресурсы получаются из ящиков. Раз в день можно открыть один бесплатно. Хорошего урожая!","This mini-game allows you to grow plants from seeds and get rewards for it. Plants have 4 rarities: common, rare, epic and legendary. The higher the rarity, the higher the reward and the requirements for growth. In order for the plant to grow, it needs to be watered daily with a certain amount of water. If desired, you can accelerate growth due to fertilizer - it removes 1 day of waiting. All resources are obtained from the boxes. Once a day, you can open one for free. Have a good harvest!"
+6.buying,Покупка ящика…,Purchasing a box…
+6.gift.title,Подарок!,Gift!
+6.gift.text,Подарок за вход: садовый ящик!,Gift for visit: garden box!
+6.plant.select,Выбери растение…,Select the plant…
+6.buy.cost,5 кристаллов (ящик),5 gems (box)
+6.claim,Собрать,Collect
+6.box.water,ВОДА,WATER
+6.box.fert,УДОБРЕНИЕ,FERTILIZER
+6.box.semen,СЕМЕНА РАСТЕНИЯ,PLANT SEEDS
+6.plant.coin.bush,Монетный куст,Coin bush
+6.plant.coin.flower,Монетный цветок,Coin flower
+6.plant.coin.tree,Монетное дерево,Coin tree
+6.plant.box.diamond,Алмазный ящик,Diamond box
+6.plant.box.gold,Золотой ящик,Gold box
+6.plant.box,Ящик,Box
+6.plant.gem.bush,Кристальный куст,Gem bush
+6.plant.gem.flower,Кристальный цветок,Gem flower
+6.plant.gem.tree,Кристальное дерево,Gem tree
+6.plant.potion1,Цветок маленького зелья,Small potion flower
+6.plant.potion2,Цветок среднего зелья,Medium potion flower
+6.plant.pt.bush,Куст жетонов силы,Power tokens bush
+6.plant.pt.flower,Цветок жетонов силы,Power tokens flower
+6.plant.st.bush,Куст жетонов навыка,Skill tokens bush
+6.plant.st.flower,Цветок жетонов навыка,Skill tokens flower
+7.name,2Д-шутер,2D shooter
+7.begin,НАЧАТЬ,START
+7.guide,"КАК ИГРАТЬ:
+1. Один игрок создаёт сервер.
+2. Другие игроки подключаются к той же сети Wi-Fi, что и сервер.
+3. Игроки вводят IP сервера, который появится у него на экране.
+4. После того, как все подключились, сервер должен нажать ""Начать игру"".
+5. Игра началась! Побеждает последний выживший!","HOW TO PLAY:
+1. One player creates server.
+2. Other players connect to the same Wi-Fi network as the server.
+3. Players enter the IP of the server, which will appear on his screen.
+4. After all players have connected, server should press «Start game».
+5. Game started! Last survived player wins!"
+7.settings.tip,"Режим ""Только прицеливание"" — джойстик прицела выполняет только прицеливание.
+Режим ""Прицеливание + выстрел"" — джойстик прицела и стреляет, и прицеливается.","«Only aim» mode — aim joystick only aims.
+«Aim + shoot» mode — aim joystick aims and shoots."
+7.settings.text,Режим джойстика прицела:,Aim joysctick mode:
+7.setting.aimonly,Только прицеливание,Only aim
+7.setting.aimwithshoot,Прицеливание + выстрел,Aim + shoot
+7.change,Сменить оружие,Change weapon
+7.pccontrols,"WASD — движение, Средняя кнопка мыши — смена оружия, правая кнопка мыши — стрельба. Прицеливание джойстиком.","WASD — movement, Middle mouse button — change weapon, right mouse button — shoot, aim with joystick."
+7.web,"К сожалению, данная мини-игра не доступна в веб-версии из-за ограничений веб-платформы.","Sorry, but this game is not available on web due to limitations of web platform"
+7.defeat,ПОРАЖЕНИЕ!,DEFEAT!
+7.defeat.server,"Если ты сервер, подожди, пока матч закончится!","If you’re a server, wait until the match is over!"
+7.disconnected,Разорвано соединение с сервером или игра уже началась.,Disconnected from server or game already started!
+7.victory,ВЫ ПОБЕДИЛИ!,VICTORY!
+7.winner,ПОБЕДИТЕЛЬ: ,WINNER: 
+7.disconnected.player,Игрок %s отключился!,%s disconnected!
+7.kill, убивает игрока , kills 
+7.started,Игра началась!,Game started!
+7.port,Порт: ,Port: 
+7.enter_ip,Введите IP…,Enter IP…
+7.error,Ошибка!,Error!
+7.server,Создать сервер,Create server
+7.client,Подключиться,Connect
+8.guide,Справка,Guide
+8.new,НОВАЯ ИГРА,NEW GAME
+8.continue,ПРОДОЛЖИТЬ,CONTINUE
+8.loading,ЗАГРУЗКА…,LOADING…
+8.warning," ВНИМАНИЕ: В этой мини-игре есть много 
+скримеров. Не советую играть эпилептикам!"," WARNING: this game contains many
+jumpscares. I don’t advise epileptics to play!"
+8.guide.0,РУСИЧКА,ENGLISH
+8.guide.1,МАТЕМАТ.,MATH
+8.guide.2,ФИЗИК,PHYSICS
+8.guide.3,ТЕХНОЛОГ,TECHNOL.
+8.guide.4,ФИЗРУК,PE
+8.guide.5,МУЗИЧКА,MUSIC
+8.guide.6,ИСТОРИК,HISTORY
+8.guide.7,ОБЩЕСТВ.,SOCIAL ST.
+8.guide.8,ИЗИЧКА,ART
+8.guide.9,ГЕОГРАФ.,GEOGR.
+8.guide.10,ХИМИЧКА,CHEMISTRY
+8.guide.11,РУСИЧКА(5),ENGLISH(5)
+8.night,НОЧЬ ,NIGHT
+8.game_over,ИГРА ОКОНЧЕНА,GAME OVER
+8.music_box,"МУЗАКАЛЬНАЯ
+ШКАТУЛКА","MUSIC
+BOX"
+8.door,ДВЕРЬ,DOOR
+8.mute,ОСТАНОВИТЬ ЗАПИСЬ,MUTE CALL
+8.night.1,Ночь 1,NIGHT 1
+8.night.2,Ночь 2,NIGHT 2
+8.night.3,Ночь 3,NIGHT 3
+8.night.4,Ночь 4,NIGHT 4
+8.night.5,Ночь 5,NIGHT 5
+8.test.title,ТЕСТ ПО ИНФОРМАТИКЕ!,INFORMATICS TEST!
+8.test.0.question,Вопрос: КАКОЕ ЧИСЛО ЯВЛЯЕТСЯ ПАЛИНДРОМОМ?,QUESTION: WHAT NUMBER IS PALINDROME?
+8.test.0.a0,1. В КОТОРОМ ВСЕ ЦИФРЫ ОДИНАКОВЫЕ,1. IN WHICH ALL THE NUMBERS ARE THE SAME
+8.test.0.a1,2. ПРОСТОЕ ЧИСЛО,2. PRIME NUMBER
+8.test.0.a2,3. КОТОРОЕ РАВНО САМОМУ СЕБЕ ПРИ ПЕРЕВОРОТЕ,3. WHICH IS EQUAL TO ITSELF IN A COUP
+8.test.answer,ОТВЕТИТЬ,ANSWER
+8.test.fail,ТЫ ПРОВАЛИЛ ТЕСТ!!!,YOU FAILED TEST!!!
+8.test.lock,Монитор заблокирован до конца ночи!,MONITOR IS LOCKED UNTIL THE END OF NIGHT!
+8.test.1.question,Вопрос: ГДЕ НАПИСАНЫ ТОЛЬКО УСТРОЙСТВА ВВОДА?,Question: WHERE ARE ONLY INPUT DEVICES WRITTEN?
+8.test.1.a0,"1. Клавиатура, Мышь, граф. планшет","1. KEYBOARD, MOUSE, GRAPHICAL TABLET"
+8.test.1.a1,"2. МЫШЬ, МОНИТОР, клавиаТУРА, МИКРОФОН","2. MOUSE, MONITOR, KEYBOARD, MICROPHONE"
+8.test.1.a2,"3. МИКРОФОН, ГРАФ. ПЛАНШЕТ, КОЛОНКИ, МЫШЬ","3. MICROPHONE, GRAPHICAL TABLET, SPEAKERS, MOUSE"
+8.test.2.question,Вопрос: значение выражения 62*5-8?,QUESTION: 62*5-8?
+8.test.2.a0,1. 320,1. 320
+8.test.2.a1,2. 302,2. 302
+8.test.2.a2,3. 312,3. 312

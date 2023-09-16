@@ -1,0 +1,120 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://minigames/minigame7/minigame.gd" type="Script" id=2]
+[ext_resource path="res://minigames/minigame7/images/gun.png" type="Texture" id=3]
+
+[node name="minigame" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.501961, 0.501961, 0.501961, 1 )
+
+[node name="exit" type="Button" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 136.0
+margin_bottom = 56.0
+text = "menu.exit"
+clip_text = true
+
+[node name="title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_top = 16.0
+margin_right = 20.0
+margin_bottom = 86.0
+grow_horizontal = 2
+theme_type_variation = "LabelTitleLarge"
+text = "7.name"
+align = 1
+valign = 1
+
+[node name="royale" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -128.0
+margin_right = 200.0
+margin_bottom = -48.0
+text = "7.begin"
+icon = ExtResource( 3 )
+expand_icon = true
+
+[node name="guide" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -301.0
+margin_top = -36.5
+margin_right = 301.0
+margin_bottom = 68.5
+text = "7.guide"
+autowrap = true
+
+[node name="settings" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -68.0
+margin_right = 64.0
+margin_bottom = -32.0
+text = "menu.settings"
+clip_text = true
+
+[node name="setting_dialog" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -206.0
+margin_top = -119.5
+margin_right = 206.0
+margin_bottom = 119.5
+window_title = "menu.settings"
+
+[node name="guide" type="Label" parent="setting_dialog"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -130.0
+text = "7.settings.tip"
+align = 1
+autowrap = true
+
+[node name="aim_mode" type="OptionButton" parent="setting_dialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -111.0
+margin_top = -63.0
+margin_right = 111.0
+margin_bottom = -33.0
+grow_horizontal = 2
+text = "7.setting.aimonly"
+items = [ "7.setting.aimonly", null, false, 0, null, "7.setting.aimwithshoot", null, false, 1, null ]
+selected = 0
+
+[node name="label" type="Label" parent="setting_dialog"]
+anchor_right = 1.0
+margin_top = 24.0
+margin_bottom = 48.0
+text = "7.settings.text"
+align = 1
+
+[connection signal="pressed" from="exit" to="." method="exit"]
+[connection signal="pressed" from="royale" to="." method="select_mode" binds= [ 0 ]]
+[connection signal="pressed" from="settings" to="setting_dialog" method="popup_centered"]
+[connection signal="item_selected" from="setting_dialog/aim_mode" to="." method="_on_aim_mode_item_selected"]

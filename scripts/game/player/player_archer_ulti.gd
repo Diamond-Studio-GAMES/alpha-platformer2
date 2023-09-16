@@ -7,8 +7,8 @@ var power = 0
 var attack_power = 25
 var has_amulet = false
 onready var _level = get_tree().current_scene
-var _ulti_attack = load("res://prefabs/classes/archer_ulti_attack.scn")
-var _effect = load("res://prefabs/effects/effect_archer_ulti.scn")
+var _ulti_attack = load("res://prefabs/classes/archer_ulti_attack.tscn")
+var _effect = load("res://prefabs/effects/effect_archer_ulti.tscn")
 
 
 func _ready():

@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://minigames/minigame7/images/shot_effect.png" type="Texture" id=1]
+[ext_resource path="res://minigames/minigame7/weapons/gun.gd" type="Script" id=2]
+[ext_resource path="res://minigames/minigame7/images/gun.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "shot"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0.5, 0.5 ) ]
+}
+
+[node name="gun" type="Sprite"]
+texture = ExtResource( 3 )
+offset = Vector2( 60, 0 )
+script = ExtResource( 2 )
+damage = 45
+reload_time = 3.0
+bullet_lifetime = 0.5
+bullet_speed = 3000.0
+max_unaccuracity = 3.0
+
+[node name="shoot_point" type="Position2D" parent="."]
+position = Vector2( 157, -27 )
+
+[node name="line" type="Line2D" parent="shoot_point"]
+visible = false
+scale = Vector2( 2.5, 2.5 )
+points = PoolVector2Array( 0, 0, 1500, 0 )
+default_color = Color( 0, 0, 0, 0.501961 )
+
+[node name="shot_effect" type="Sprite" parent="shoot_point"]
+show_behind_parent = true
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 1 )
+offset = Vector2( 50, 0 )
+
+[node name="anim" type="AnimationPlayer" parent="shoot_point/shot_effect"]
+anims/shot = SubResource( 1 )

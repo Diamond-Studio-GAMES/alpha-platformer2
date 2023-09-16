@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/game/other/think.gd" type="Script" id=1]
+[ext_resource path="res://textures/classes/player_control.tres" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "up_down"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -64 ), Vector2( 0, -48 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 62 )
+
+[node name="think" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource( 1 )
+color = Color( 0, 0, 1, 1 )
+
+[node name="visual" type="Node2D" parent="."]
+
+[node name="sprite" type="Sprite" parent="visual"]
+position = Vector2( 0, -64 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="anim" type="AnimationPlayer" parent="visual"]
+autoplay = "up_down"
+anims/up_down = SubResource( 1 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -64 )
+shape = SubResource( 2 )

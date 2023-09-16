@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://minigames/minigame8/sounds/phone_guy4.ogg" type="AudioStream" id=1]
+[ext_resource path="res://minigames/minigame8/misc/test.tscn" type="PackedScene" id=2]
+[ext_resource path="res://minigames/minigame8/textures/enemies/himichka_fake.png" type="Texture" id=5]
+[ext_resource path="res://minigames/minigame8/scripts/rusichka.gd" type="Script" id=6]
+[ext_resource path="res://minigames/minigame8/scenes/night.tscn" type="PackedScene" id=7]
+[ext_resource path="res://minigames/minigame8/textures/enemies/rusichka.png" type="Texture" id=8]
+[ext_resource path="res://minigames/minigame8/textures/enemies/izichka_fake.png" type="Texture" id=9]
+[ext_resource path="res://minigames/minigame8/scripts/himichka.gd" type="Script" id=10]
+[ext_resource path="res://minigames/minigame8/scripts/izichka.gd" type="Script" id=11]
+
+[sub_resource type="ButtonGroup" id=1]
+
+[node name="night5" instance=ExtResource( 7 )]
+energy_loss_per_sec = 0.07
+flashlight_loss_per_sec = 0.2
+door_loss_per_sec = 0.6
+cameras_loss_per_sec = 0.2
+music_box_loss_per_sec = 2.5
+
+[node name="night" parent="screen/base/main" index="2"]
+text = "8.night.5"
+
+[node name="b0_0" parent="screen/base/screen/gui" index="1"]
+group = SubResource( 1 )
+
+[node name="b0_1" parent="screen/base/screen/gui" index="2"]
+group = SubResource( 1 )
+
+[node name="b1_0" parent="screen/base/screen/gui" index="3"]
+group = SubResource( 1 )
+
+[node name="b1_1" parent="screen/base/screen/gui" index="4"]
+group = SubResource( 1 )
+
+[node name="b1_2" parent="screen/base/screen/gui" index="5"]
+group = SubResource( 1 )
+
+[node name="b1_3" parent="screen/base/screen/gui" index="6"]
+group = SubResource( 1 )
+
+[node name="b1_4" parent="screen/base/screen/gui" index="7"]
+group = SubResource( 1 )
+
+[node name="b1_5" parent="screen/base/screen/gui" index="8"]
+group = SubResource( 1 )
+
+[node name="b1_6" parent="screen/base/screen/gui" index="9"]
+group = SubResource( 1 )
+
+[node name="b1_7" parent="screen/base/screen/gui" index="10"]
+group = SubResource( 1 )
+
+[node name="b2_0" parent="screen/base/screen/gui" index="11"]
+group = SubResource( 1 )
+
+[node name="b2_1" parent="screen/base/screen/gui" index="12"]
+group = SubResource( 1 )
+
+[node name="b2_2" parent="screen/base/screen/gui" index="13"]
+group = SubResource( 1 )
+
+[node name="b2_3" parent="screen/base/screen/gui" index="14"]
+group = SubResource( 1 )
+
+[node name="b2_4" parent="screen/base/screen/gui" index="15"]
+group = SubResource( 1 )
+
+[node name="test" parent="screen/base/screen/gui" index="18" instance=ExtResource( 2 )]
+chance = 6
+
+[node name="rusichka" type="Sprite" parent="base/poses/pos0" index="0"]
+self_modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
+texture = ExtResource( 8 )
+script = ExtResource( 6 )
+paths = [ [ "base", "f2w1", "f2w1e", "f2", "f12", "f01", "main" ], [ "base", "f1w1", "f1w1e", "f1", "f01", "main" ], [ "base", "f0w0", "another_way" ] ]
+AI = 20
+AI_time_custom = 3
+defense_time = 6.0
+
+[node name="izichka" type="Sprite" parent="base/poses/pos0" index="1"]
+self_modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
+texture = ExtResource( 9 )
+script = ExtResource( 11 )
+paths = [ [ "f1w1", "f1w1e", "f1se", "f1", "f1w0e", "f1w0", "f1w0e", "f1", "f01", "f0w0" ], [ "f2w1", "f2w1e", "f2", "f2w0e", "f2w0", "f2w0e", "f2", "f12", "f1w0" ] ]
+AI = 16
+time_to_paint = 2.5
+
+[node name="himichka" type="Sprite" parent="base/poses/pos0" index="2"]
+self_modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
+texture = ExtResource( 5 )
+script = ExtResource( 10 )
+paths = [ [ "base", "f01", "f2w1", "f1w1", "f2w0e", "f2w1e", "f1", "f1s", "f2", "f1w1e", "f2w0", "f1w0", "f1w0e", "f12", "f1se", "f0w0" ] ]
+AI = 20
+kill_on_monitor = false
+time_to_kill = 2.0
+
+[node name="phone_guy" parent="." index="29"]
+stream = ExtResource( 1 )

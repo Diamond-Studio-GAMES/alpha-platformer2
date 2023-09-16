@@ -21,4 +21,4 @@ func _on_died():
 	if player.current_health <= 0:
 		died = true
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("music"), false)
-		get_tree().change_scene("res://scenes/menu/levels.scn")
+		get_tree().change_scene("res://scenes/menu/levels.tscn")

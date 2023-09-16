@@ -26,7 +26,7 @@ func finish():
 	if file.file_exists(path.plus_file("apa2_patch.pck")):
 		if G.main_getv("patch_code", 0) == G.VERSION_CODE:
 			ProjectSettings.load_resource_pack(path.plus_file("apa2_patch.pck"))
-	get_tree().change_scene("res://scenes/menu/save_loader.scn")
+	get_tree().change_scene("res://scenes/menu/save_loader.tscn")
 
 
 func _ready():
@@ -63,7 +63,7 @@ func check_updates():
 		return
 	label.text = tr("ss.status.check.upd")
 	http.connect("request_completed", self, "update_request", [], CONNECT_ONESHOT)
-	var err = http.request("http://f0695447.xsph.ru/versions.json")
+	var err = http.request("http://f0695447.xsph.ru/apa2/versions.cfg")
 	if err:
 		check_patches()
 
@@ -72,15 +72,15 @@ func update_request(result, code, header, body):
 	if result != HTTPRequest.RESULT_SUCCESS:
 		check_patches()
 		return
-	var data = JSON.parse(body.get_string_from_utf8())
-	if data.error:
+	var cf = ConfigFile.new()
+	if cf.parse(body.get_string_from_utf8()):
 		check_patches()
 		return
-	if data.result.beta > G.VERSION_CODE and G.main_getv("check_beta", not G.VERSION_STATUS.empty()):
+	if cf.get_value("versions", "stable", G.VERSION_CODE) > G.VERSION_CODE:
+		can_update = true
+	elif cf.get_value("versions", "beta", G.VERSION_CODE) > G.VERSION_CODE and G.main_getv("check_beta", not G.VERSION_STATUS.empty()):
 		$update.window_title = tr("ss.update.title") + " (BETA)"
 		$update.dialog_text = tr("ss.update.text") + " (BETA)"
-		can_update = true
-	if data.result.stable > G.VERSION_CODE:
 		can_update = true
 	check_patches()
 
@@ -91,7 +91,7 @@ func check_patches():
 		return
 	label.text = tr("ss.status.check.patch")
 	http.connect("request_completed", self, "patch_request", [], CONNECT_ONESHOT)
-	var err = http.request("http://f0695447.xsph.ru/patches.json")
+	var err = http.request("http://f0695447.xsph.ru/apa2/patches.cfg")
 	if err:
 		end_check()
 
@@ -100,15 +100,15 @@ func patch_request(result, code, header, body):
 	if result != HTTPRequest.RESULT_SUCCESS:
 		end_check()
 		return
-	var data = JSON.parse(body.get_string_from_utf8())
-	if data.error:
+	var cf = ConfigFile.new()
+	if cf.parse(body.get_string_from_utf8()):
 		end_check()
 		return
-	if data.result.has(str(G.VERSION_CODE)):
-		if data.result[str(G.VERSION_CODE)] > G.main_getv("patch_version", 0):
+	if cf.has_section_key("patches", str(G.VERSION_CODE)):
+		if cf.get_value("patches", str(G.VERSION_CODE), 0) > G.main_getv("patch_version", 0):
 			http.download_file = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir().plus_file("apa2_patch.pck")
-			http.connect("request_completed", self, "download_patch", [data.result[str(G.VERSION_CODE)]], CONNECT_ONESHOT)
-			var err = http.request("http://f0695447.xsph.ru/" + str(G.VERSION_CODE) + "patch.pck")
+			http.connect("request_completed", self, "download_patch", [cf.get_value("pacthes", str(G.VERSION_CODE))], CONNECT_ONESHOT)
+			var err = http.request("http://f0695447.xsph.ru/apa2/patches/" + str(G.VERSION_CODE) + ".pck")
 			label.text = tr("ss.status.download")
 			if err:
 				end_check()

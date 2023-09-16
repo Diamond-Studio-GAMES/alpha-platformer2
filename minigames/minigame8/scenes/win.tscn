@@ -1,0 +1,181 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://minigames/minigame8/misc/fnas_ending.ogv" type="VideoStream" id=1]
+[ext_resource path="res://minigames/minigame8/misc/font_unutterable_data.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://sounds/sfx/menu/win.wav" type="AudioStream" id=3]
+[ext_resource path="res://minigames/minigame8/misc/fnas_theme.tres" type="Theme" id=4]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Control
+
+
+
+func _ready():
+	if G.getv(\"night\", 1) < 5:
+		var new_night = clamp(G.getv(\"night\", 1) + 1, 1, 5)
+		G.setv(\"night\", new_night)
+	yield(get_tree().create_timer(8), \"timeout\")
+	if G.getv(\"night\", 1) < 5:
+		get_tree().change_scene(\"res://minigames/minigame8/minigame.tscn\")
+		return
+	G.ach.complete(Achievements.ESCAPE)
+	yield(get_tree().create_timer(10), \"timeout\")
+	get_tree().change_scene(\"res://minigames/minigame8/minigame.tscn\")
+"
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "win"
+length = 18.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 0 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "5 AM", "6 AM" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 7, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("particles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../sfx")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../video_player:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 8.2, 9, 16, 18 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("../video_player")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 8.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+} ]
+}
+
+[node name="win" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+script = SubResource( 3 )
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="label" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.0
+margin_top = -45.0
+margin_right = 90.0
+margin_bottom = 45.0
+rect_rotation = 360.0
+rect_pivot_offset = Vector2( 90, 45 )
+custom_fonts/font = SubResource( 1 )
+text = "5 AM"
+align = 1
+valign = 1
+
+[node name="particles" type="CPUParticles2D" parent="label"]
+show_behind_parent = true
+position = Vector2( 90, 45 )
+emitting = false
+amount = 16
+lifetime = 6.0
+one_shot = true
+explosiveness = 1.0
+direction = Vector2( 0, 1 )
+spread = 180.0
+initial_velocity = 300.0
+initial_velocity_random = 0.4
+angular_velocity = 360.0
+scale_amount = 20.0
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[node name="anim" type="AnimationPlayer" parent="label"]
+autoplay = "win"
+anims/win = SubResource( 2 )
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "sfx"
+
+[node name="video_player" type="VideoPlayer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+stream = ExtResource( 1 )
+bus = "music"

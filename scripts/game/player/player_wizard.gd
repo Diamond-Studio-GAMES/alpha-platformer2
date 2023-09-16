@@ -6,7 +6,7 @@ var anima
 var trck_idx
 var key_idx0
 var key_idx1
-var wizard_attack = load("res://prefabs/classes/wizard_attack.scn")
+var wizard_attack = load("res://prefabs/classes/wizard_attack.tscn")
 onready var _attack_visual = $visual/body/knight_attack/visual
 onready var _attack_shape = $visual/body/knight_attack/shape
 onready var joystick = $camera/gui/base/buttons/buttons_1/joystick
@@ -34,8 +34,8 @@ func _ready():
 	$camera/gui/base/ulti_use/ulti_name.text = tr(G.ULTIS[class_nam]) + " " + G.RIM_NUMBERS[ulti_power]
 	_attack_visual.hide()
 	_attack_shape.disabled = true
-	_ulti = load("res://prefabs/classes/wizard_ulti.scn")
-	RECHARGE_SPEED = 1.5 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
+	_ulti = load("res://prefabs/classes/wizard_ulti.tscn")
+	RECHARGE_SPEED = 1.4 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
 	SPEED += (7 if is_amulet(G.Amulet.SPEED) else 0)
 	gen.randomize()
 	have_soul_power = G.getv("wizard_soul_power", false)
@@ -161,6 +161,11 @@ func _process(delta):
 		aim_line.modulate = Color.red if attack_cooldown > 0 else Color.white
 	else:
 		aim_line.visible = false
+
+
+func revive(hpc = -1):
+	_anim_tree["parameters/throw_shot/active"] = false
+	.revive(hpc)
 
 
 func use_gadget():

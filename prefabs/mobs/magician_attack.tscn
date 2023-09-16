@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=1]
+[ext_resource path="res://textures/mobs/magician/ground_attack.png" type="Texture" id=2]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=3]
+[ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12, 2 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "anim"
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 2 ), Vector2( 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("shape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("particles")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.402299, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="magician_attack" type="Area2D" groups=["spawnable"]]
+script = ExtResource( 1 )
+knockback = 0.0
+custom_invincibility_time = 1.0
+custom_immobility_time = 0.8
+is_enemy_attack = true
+damage_source = "mob"
+
+[node name="sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+offset = Vector2( 0, -16 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -4 )
+shape = SubResource( 1 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "anim"
+anims/anim = SubResource( 2 )
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 3 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath("..") ]
+spawn_sync_data_properties = [ "global_position", "damage" ]
+auto_despawn = false
+
+[node name="particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource( 4 )
+emission_shape = 2
+emission_rect_extents = Vector2( 16, 0 )
+direction = Vector2( 0, -1 )
+spread = 5.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 60.0
+initial_velocity_random = 0.8
+color = Color( 0, 1, 0, 1 )
+color_ramp = SubResource( 3 )

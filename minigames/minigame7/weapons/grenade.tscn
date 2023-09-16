@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://minigames/minigame7/weapons/grenade.gd" type="Script" id=1]
+[ext_resource path="res://minigames/minigame7/images/he_grenade.png" type="Texture" id=2]
+
+[node name="grenade" type="Sprite"]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="shoot_point" type="Position2D" parent="."]
+position = Vector2( 80, 0 )
+
+[node name="line" type="Line2D" parent="shoot_point"]
+visible = false
+scale = Vector2( 2.5, 2.5 )
+points = PoolVector2Array( 0, 0, 2400, 0 )
+width = 80.0
+default_color = Color( 0, 0, 0, 0.501961 )

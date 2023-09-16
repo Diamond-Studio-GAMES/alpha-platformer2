@@ -3,7 +3,7 @@ class_name Butcher
 
 var gen = RandomNumberGenerator.new()
 var is_active_gadget = false
-var gadget_crack = load("res://prefabs/classes/butcher_gadget.scn")
+var gadget_crack = load("res://prefabs/classes/butcher_gadget.tscn")
 onready var _attack_visual = $visual/body/knight_attack/visual
 onready var _attack_shape = $visual/body/knight_attack/shape
 
@@ -24,7 +24,7 @@ func _ready():
 	$camera/gui/base/ulti_use/ulti_name.text = tr(G.ULTIS[class_nam]) + " " + G.RIM_NUMBERS[ulti_power]
 	_attack_visual.hide()
 	_attack_shape.disabled = true
-	_ulti = load("res://prefabs/classes/butcher_ulti.scn")
+	_ulti = load("res://prefabs/classes/butcher_ulti.tscn")
 	RECHARGE_SPEED = 1.1 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
 	SPEED += (7 if is_amulet(G.Amulet.SPEED) else 0)
 	gen.randomize()

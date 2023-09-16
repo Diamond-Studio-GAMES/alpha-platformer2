@@ -4,9 +4,9 @@ class_name Death
 
 var is_active_gadget = false
 var another_attack = false
-var _attack = load("res://prefabs/classes/death_attack.scn")
-var THEWORLD = load("res://prefabs/effects/THEWORLD.scn")
-var ORA = load("res://prefabs/classes/ORA.scn")
+var _attack = load("res://prefabs/classes/death_attack.tscn")
+var THEWORLD = load("res://prefabs/effects/THEWORLD.tscn")
+var ORA = load("res://prefabs/classes/ORA.tscn")
 var curr_lvl_loc = 1
 onready var trail = $trail
 
@@ -28,7 +28,6 @@ func _ready():
 	RECHARGE_SPEED = 0.7
 	if MP.auth(self):
 		$control_indicator/sp.show()
-	attack()
 
 
 func apply_data(data):
@@ -120,8 +119,10 @@ func ulti():
 	var shape_owner = $ulti.shape_find_owner(0)
 	$ulti.shape_owner_set_disabled(shape_owner, false)
 	SPEED = 250
+	JUMP_POWER = 350
 	yield(get_tree().create_timer(3, false), "timeout")
 	SPEED = 95
+	JUMP_POWER = 255
 	$visual.modulate = Color.white
 	trail.hide()
 	collision_layer = 0b10
@@ -143,6 +144,11 @@ func _process(delta):
 		ulti()
 	if Input.is_action_just_pressed("gadget") and have_gadget:
 		use_gadget()
+
+
+func revive(hpc = -1):
+	_anim_tree["parameters/ora_shot/active"] = false
+	.revive(hpc)
 
 
 func use_gadget():

@@ -15,6 +15,6 @@ func _ready():
 
 func player_entered(body):
 	if body is Player and MP.auth(body):
-		body.make_dialog(text, time, color)
+		body.make_dialog(tr(text), time, color)
 		emit_signal("player_entered")
 		queue_free()

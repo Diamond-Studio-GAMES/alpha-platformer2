@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://textures/effects/attacks/swipe0.tres" type="Texture" id=2]
+[ext_resource path="res://sounds/sfx/randomed/swing.tres" type="AudioStream" id=3]
+[ext_resource path="res://sounds/sfx/randomed/sword_hit.tres" type="AudioStream" id=4]
+[ext_resource path="res://textures/effects/attacks/swipe3.tres" type="Texture" id=5]
+[ext_resource path="res://textures/effects/attacks/swipe2.tres" type="Texture" id=6]
+[ext_resource path="res://textures/effects/attacks/swipe1.tres" type="Texture" id=7]
+[ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=8]
+
+[sub_resource type="Animation" id=92]
+resource_name = "attack"
+length = 1.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.1, 1.2, 1.3, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), null ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("shape:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.95, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 0.1, 1.03526e-05, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 1, 0 ), Color( 0, 0, 1, 0.25098 ), Color( 1, 1, 1, 1 ), Color( 0, 0.501961, 1, 1 ), Color( 0, 0, 1, 1 ) ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("sfx")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 1 )
+}
+
+[node name="swipe" type="Area2D" groups=["spawnable"]]
+scale = Vector2( 4, 4 )
+collision_layer = 16
+collision_mask = 23
+script = ExtResource( 8 )
+damage = 45
+is_enemy_attack = true
+lifetime = 1.6
+
+[node name="shape" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PoolVector2Array( 64, 0, 0, -2, -64, 0, 0, 2 )
+disabled = true
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "attack"
+anims/attack = SubResource( 92 )
+
+[node name="visual" type="Sprite" parent="."]
+self_modulate = Color( 0, 0, 1, 1 )
+rotation = -1.5708
+scale = Vector2( 0.5, 2 )
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath("..") ]
+spawn_sync_data_properties = [ "global_position", "rotation_degrees" ]
+auto_despawn = false
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+max_distance = 800.0
+bus = "sfx"
+
+[node name="hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+max_distance = 800.0
+bus = "sfx"
+
+[connection signal="hit_player" from="." to="hit" method="play"]

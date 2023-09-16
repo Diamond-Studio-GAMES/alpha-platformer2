@@ -5,9 +5,9 @@ const OFFSET_X = 128
 const OFFSET_Y = 96
 onready var timer = $swipe_timer
 var swords_down_poses = []
-var swipe_effect = load("res://prefabs/bosses/sword_swipe.scn")
-var sword_throw = load("res://prefabs/bosses/sword_throw.scn")
-var sword_down_attack = load("res://prefabs/bosses/sword_down_attack.scn")
+var swipe_effect = load("res://prefabs/bosses/sword_swipe.tscn")
+var sword_throw = load("res://prefabs/bosses/sword_throw.tscn")
+var sword_down_attack = load("res://prefabs/bosses/sword_down_attack.tscn")
 
 
 func _ready():
@@ -15,15 +15,15 @@ func _ready():
 	fill_x = 53
 	tp_pos = Vector2(54, -2)
 	attacks = ["crack", "swipes", "throw", "swords_down"]
-	mercy_dialog = "Великий рыцарь: Ты спасёшь всех, %s!" % G.getv("name", "")
-	death_dialog = "Великий рыцарь: Ну иди...\n (убить или пощадить?)"
+	mercy_dialog = tr("boss.knight.mercy") % G.getv("name", "")
+	death_dialog = tr("boss.knight.defeat")
 	next_attack_time_min = 1
 	next_attack_time_max = 2
 	if MP.is_active:
 		yield($"/root/mg", "game_started")
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
-	boss_bar.get_node("boss_name").text = "ВЕЛИКИЙ РЫЦАРЬ" + ":"
+	boss_bar.get_node("boss_name").text = tr("boss.knight").to_upper() + ":"
 	for i in $swords_spawn_points.get_children():
 		swords_down_poses.append(i.global_position)
 

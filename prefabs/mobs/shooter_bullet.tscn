@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://scripts/game/other/throwable.gd" type="Script" id=2]
+[ext_resource path="res://textures/mobs/shooter/bullet.tres" type="Texture" id=3]
+[ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=4]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1, 1 )
+
+[node name="bullet" type="Node2D" groups=["spawnable"]]
+script = ExtResource( 2 )
+destroy_time = 2.5
+is_player_projectile = false
+is_enemy_projectile = true
+effect_wall = "res://prefabs/effects/destroy_effects/effect_shooter_bullet_hit.tscn"
+effect_hit = "res://prefabs/effects/destroy_effects/effect_shooter_bullet_hit.tscn"
+effect_reject = "res://prefabs/effects/destroy_effects/effect_shooter_bullet_hit.tscn"
+simple_effect_color = Color( 0.4, 0.2, 0.6, 1 )
+simple_effect_scale = Vector2( 0.5, 0.5 )
+simple_effect_destroy_sound_hit = "res://sounds/sfx/shooter_hit.wav"
+simple_effect_destroy_sound_wall = "res://sounds/sfx/shooter_hit.wav"
+
+[node name="sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+z_index = -5
+texture = ExtResource( 3 )
+
+[node name="attack" type="Area2D" parent="."]
+position = Vector2( -16, 0 )
+collision_layer = 16
+collision_mask = 19
+script = ExtResource( 4 )
+is_enemy_attack = true
+lifetime = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="attack"]
+position = Vector2( 16, 0 )
+shape = SubResource( 1 )
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath("../attack") ]
+spawn_sync_data_properties = [ "global_position", "rotation_degrees", "damage" ]
+auto_despawn = false
+
+[node name="MultiplayerSynchronizer" type="Node" parent="."]
+script = ExtResource( 5 )
+unreliable_sync_node_paths = [ NodePath("..") ]
+unreliable_sync_properties_names = [ "global_position" ]

@@ -1,0 +1,178 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=1]
+[ext_resource path="res://themes/theme.tres" type="Theme" id=2]
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "get"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("panel:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("panel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 4, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("panel:margin_left")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4, 4.5 ),
+"transitions": PoolRealArray( 1, 3, 1 ),
+"update": 0,
+"values": [ -160.0, -160.0, 320.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("panel:margin_right")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4, 4.5 ),
+"transitions": PoolRealArray( 1, 3, 1 ),
+"update": 0,
+"values": [ 160.0, 160.0, 640.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("effect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1e-05, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("effect:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.6, 1.6 ) ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 4.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="achievement_complete" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 2 )
+
+[node name="effect" type="Panel" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0.627451 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -120.0
+margin_right = 160.0
+margin_bottom = -40.0
+rect_scale = Vector2( 1.6, 1.6 )
+rect_pivot_offset = Vector2( 160, 40 )
+mouse_filter = 2
+
+[node name="panel" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0.627451 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -120.0
+margin_right = 160.0
+margin_bottom = -40.0
+rect_pivot_offset = Vector2( 160, 40 )
+mouse_filter = 2
+
+[node name="bg" type="ColorRect" parent="panel"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = -32.0
+margin_right = 72.0
+margin_bottom = 32.0
+mouse_filter = 2
+color = Color( 0, 1, 1, 1 )
+
+[node name="icon" type="TextureRect" parent="panel/bg"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="name" type="Label" parent="panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -78.0
+margin_top = 8.0
+margin_right = 150.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "Мастер души!"
+
+[node name="desc" type="Label" parent="panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -78.0
+margin_top = -52.0
+margin_right = 150.0
+margin_bottom = -5.0
+custom_constants/line_spacing = -8
+custom_fonts/font = SubResource( 2 )
+text = "Дайте товарищу завершить уровень, пока вы лежите на земле."
+autowrap = true
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "get"
+anims/get = SubResource( 1 )

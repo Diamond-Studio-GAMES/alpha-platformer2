@@ -6,10 +6,10 @@ var collected_coins = 0
 var timer = 0
 var minutes_passed = 0
 var coin_counter = 0
-var effect_coins = load("res://minigames/minigame3/coins_add_effect.scn")
-var effect_gems = load("res://minigames/minigame3/gems_add_effect.scn")
-var coin = load("res://minigames/minigame3/coin.scn")
-var gem = load("res://minigames/minigame3/gem.scn")
+var effect_coins = load("res://minigames/minigame3/coins_add_effect.tscn")
+var effect_gems = load("res://minigames/minigame3/gems_add_effect.tscn")
+var coin = load("res://minigames/minigame3/coin.tscn")
+var gem = load("res://minigames/minigame3/gem.tscn")
 onready var coins_count = $gui/base/coins
 onready var gems_count = $gui/base/gems
 onready var spawn_pos = $spawn_pos.global_translation
@@ -51,7 +51,7 @@ func _process(delta):
 
 
 func quit():
-	get_tree().change_scene("res://scenes/menu/levels.scn")
+	get_tree().change_scene("res://scenes/menu/levels.tscn")
 
 
 func _on_spawn_timer_timeout():

@@ -1,0 +1,478 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://minigames/minigame8/textures/enemies/geographichka_fake.png" type="Texture" id=1]
+[ext_resource path="res://minigames/minigame8/textures/enemies/muzichka_fake.png" type="Texture" id=2]
+[ext_resource path="res://minigames/minigame8/misc/fnas_theme.tres" type="Theme" id=3]
+[ext_resource path="res://minigames/minigame8/textures/enemies/fezek_fake.png" type="Texture" id=4]
+[ext_resource path="res://minigames/minigame8/textures/enemies/himichka_fake.png" type="Texture" id=5]
+[ext_resource path="res://minigames/minigame8/textures/enemies/izichka_fake.png" type="Texture" id=6]
+[ext_resource path="res://minigames/minigame8/textures/enemies/matem_fake.png" type="Texture" id=7]
+[ext_resource path="res://minigames/minigame8/textures/environment/school.png" type="Texture" id=8]
+[ext_resource path="res://minigames/minigame8/textures/enemies/tehnolog_fake.png" type="Texture" id=9]
+[ext_resource path="res://shaders/glitch.gdshader" type="Shader" id=10]
+[ext_resource path="res://minigames/minigame8/textures/enemies/gaynomama_fake.png" type="Texture" id=11]
+[ext_resource path="res://minigames/minigame8/textures/enemies/obschestvo_fake.png" type="Texture" id=12]
+[ext_resource path="res://minigames/minigame8/textures/enemies/fizruk_fake.png" type="Texture" id=13]
+[ext_resource path="res://minigames/minigame8/textures/enemies/rusichka.png" type="Texture" id=14]
+[ext_resource path="res://minigames/minigame8/scripts/main_menu.gd" type="Script" id=15]
+
+[sub_resource type="Animation" id=3]
+resource_name = "menu"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("noise:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.2, 1.8, 2.3, 2.8, 3.4, 4, 4.5, 5, 5.4, 6.3, 6.8, 7.8, 8.4, 8.8, 9.3, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.25098 ), Color( 1, 1, 1, 0.45098 ), Color( 1, 1, 1, 0.752941 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.564706 ), Color( 1, 1, 1, 0.0431373 ), Color( 1, 1, 1, 0.25098 ), Color( 1, 1, 1, 0.752941 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.717647 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.313726 ), Color( 1, 1, 1, 0.447059 ), Color( 1, 1, 1, 0.776471 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.615686 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("noise:texture:noise_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9, 9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ), Vector2( 0, 0 ), Vector2( 454, 23 ), Vector2( 234, 677 ), Vector2( 1, 223 ), Vector2( 676, 344 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 1, 1.9, 2.4, 3.3, 3.9, 4.9, 5.3, 5.5, 5.7, 5.9, 6.5, 7.1, 7.9, 8.7, 9.2, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.419608, 0.419608, 0.419608, 1 ), Color( 0.133333, 0.133333, 0.133333, 1 ), Color( 1, 1, 1, 1 ), Color( 0.780392, 0.780392, 0.780392, 1 ), Color( 0.466667, 0.466667, 0.466667, 1 ), Color( 0.282353, 0.282353, 0.282353, 1 ), Color( 1, 1, 1, 1 ), Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0.807843, 0.807843, 0.807843, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0.372549, 0.372549, 0.372549, 1 ), Color( 0.231373, 0.231373, 0.231373, 1 ), Color( 0.713726, 0.713726, 0.713726, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("glitch:material:shader_param/glitch")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.7, 1.2, 1.201, 1.3, 1.4, 2.1, 2.2, 2.4, 2.9, 2.901, 3, 3.1, 3.8, 3.801, 3.9, 4, 4.5, 4.501, 4.6, 5.7, 6, 6.001, 6.1, 6.2, 6.7, 6.701, 6.8, 7.1, 7.5, 7.6, 7.7, 8.1, 8.4, 8.5, 9.1, 9.101, 9.2, 9.3, 9.6, 9.601, 9.7, 9.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 1.5, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.5, 0.0, 0.0, 1.5, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 10 )
+shader_param/glitch = 0.0
+
+[sub_resource type="OpenSimplexNoise" id=5]
+seed = 34
+octaves = 2
+period = 5.0
+persistence = 1.0
+lacunarity = 2.5
+
+[sub_resource type="NoiseTexture" id=2]
+flags = 3
+noise = SubResource( 5 )
+
+[node name="minigame" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+script = ExtResource( 15 )
+
+[node name="bg" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -120.0
+margin_top = -50.0
+margin_right = 120.0
+margin_bottom = 50.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="anim" type="AnimationPlayer" parent="bg"]
+autoplay = "menu"
+anims/menu = SubResource( 3 )
+
+[node name="glitch" type="ColorRect" parent="bg"]
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="noise" type="TextureRect" parent="bg"]
+modulate = Color( 1, 1, 1, 0.25098 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 2 )
+expand = true
+
+[node name="title" type="Label" parent="."]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 384.0
+margin_bottom = 73.0
+theme = ExtResource( 3 )
+theme_type_variation = "LabelTitle"
+text = "Five
+Nights
+at 
+School"
+valign = 1
+
+[node name="exit" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -56.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 40.0
+grow_horizontal = 0
+text = "menu.exit"
+
+[node name="guide_butt" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -85.0
+margin_top = 48.0
+margin_right = -16.0
+margin_bottom = 72.0
+grow_horizontal = 0
+text = "8.guide"
+
+[node name="new_game" type="Button" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 32.0
+margin_top = 40.5
+margin_right = 298.0
+margin_bottom = 87.5
+grow_vertical = 2
+theme_type_variation = "LabelTitle"
+text = "8.new"
+align = 0
+
+[node name="continue" type="Button" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 32.0
+margin_top = 104.5
+margin_right = 333.0
+margin_bottom = 151.5
+grow_vertical = 2
+theme_type_variation = "LabelTitle"
+text = "8.continue"
+align = 0
+
+[node name="label" type="Label" parent="continue"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -4.0
+margin_right = 4.0
+margin_bottom = 24.0
+text = "НОЧЬ 1"
+
+[node name="loading" type="Label" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -286.0
+margin_top = -67.0
+margin_right = -16.0
+margin_bottom = -16.0
+grow_horizontal = 0
+theme_type_variation = "LabelTitle"
+text = "8.loading"
+align = 2
+valign = 1
+
+[node name="warning" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -44.0
+margin_right = 20.0
+margin_bottom = -16.0
+grow_vertical = 0
+text = "8.warning"
+valign = 2
+
+[node name="guide" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -390.0
+margin_top = -240.0
+margin_right = 390.0
+margin_bottom = 240.0
+window_title = "8.guide"
+
+[node name="scroll" type="CenterContainer" parent="guide"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="grid" type="GridContainer" parent="guide/scroll"]
+margin_left = 5.0
+margin_top = 47.0
+margin_right = 775.0
+margin_bottom = 432.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 25
+custom_constants/hseparation = 10
+columns = 6
+
+[node name="photo0" type="TextureRect" parent="guide/scroll/grid"]
+margin_right = 120.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 120, 180 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="guide/scroll/grid/photo0"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 28.0
+text = "8.guide.0"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="photo1" type="TextureRect" parent="guide/scroll/grid"]
+margin_left = 130.0
+margin_right = 250.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 120, 180 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="guide/scroll/grid/photo1"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 28.0
+text = "8.guide.1"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="photo2" type="TextureRect" parent="guide/scroll/grid"]
+margin_left = 260.0
+margin_right = 380.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 120, 180 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="guide/scroll/grid/photo2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 28.0
+text = "8.guide.2"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="photo3" type="TextureRect" parent="guide/scroll/grid"]
+margin_left = 390.0
+margin_right = 510.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 120, 180 )
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="guide/scroll/grid/photo3"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 28.0
+text = "8.guide.3"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="photo4" type="TextureRect" parent="guide/scroll/grid"]
+margin_left = 520.0
+margin_right = 640.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 120, 180 )
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="guide/scroll/grid/photo4"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 28.0
+text = "8.guide.4"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="photo5" type="TextureRect" parent="guide/scroll/grid"]
+margin_left = 650.0
+margin_right = 770.0
+margin_bottom = 180.0
+rect_min_size = Vector2( 120, 180 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="guide/scroll/grid/photo5"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 28.0
+text = "8.guide.5"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="photo6" type="TextureRect" parent="guide/scroll/grid"]
+margin_top = 205.0
+margin_right = 120.0
+margin_bottom = 385.0
+rect_min_size = Vector2( 120, 180 )
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="guide/scroll/grid/photo6"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 28.0
+text = "8.guide.6"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="photo7" type="TextureRect" parent="guide/scroll/grid"]
+margin_left = 130.0
+margin_top = 205.0
+margin_right = 250.0
+margin_bottom = 385.0
+rect_min_size = Vector2( 120, 180 )
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="guide/scroll/grid/photo7"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 28.0
+text = "8.guide.7"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="photo8" type="TextureRect" parent="guide/scroll/grid"]
+margin_left = 260.0
+margin_top = 205.0
+margin_right = 380.0
+margin_bottom = 385.0
+rect_min_size = Vector2( 120, 180 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="guide/scroll/grid/photo8"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 28.0
+text = "8.guide.8"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="photo9" type="TextureRect" parent="guide/scroll/grid"]
+margin_left = 390.0
+margin_top = 205.0
+margin_right = 510.0
+margin_bottom = 385.0
+rect_min_size = Vector2( 120, 180 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="guide/scroll/grid/photo9"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 28.0
+text = "8.guide.9"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="photo10" type="TextureRect" parent="guide/scroll/grid"]
+margin_left = 520.0
+margin_top = 205.0
+margin_right = 640.0
+margin_bottom = 385.0
+rect_min_size = Vector2( 120, 180 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="guide/scroll/grid/photo10"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 28.0
+text = "8.guide.10"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="photo11" type="TextureRect" parent="guide/scroll/grid"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_left = 650.0
+margin_top = 205.0
+margin_right = 770.0
+margin_bottom = 385.0
+rect_min_size = Vector2( 120, 180 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="guide/scroll/grid/photo11"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 28.0
+text = "8.guide.11"
+align = 1
+valign = 1
+clip_text = true
+
+[connection signal="pressed" from="exit" to="." method="quit"]
+[connection signal="pressed" from="guide_butt" to="guide" method="popup_centered"]
+[connection signal="pressed" from="new_game" to="." method="begin"]
+[connection signal="pressed" from="continue" to="." method="continue_"]

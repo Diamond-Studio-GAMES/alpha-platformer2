@@ -45,7 +45,7 @@ func join():
 	$connect.show()
 	$lobby.hide()
 	var parts_of_level = G.current_level.split("_")
-	$connect/title.text = "Присоединиться к комнате с уровнем " + parts_of_level[0] + "-" + parts_of_level[1] + "..."
+	$connect/title.text = tr("lobby.connect_to") + parts_of_level[0] + "-" + parts_of_level[1] + "..."
 
 
 func connect_ip():
@@ -53,7 +53,7 @@ func connect_ip():
 		return
 	var ip = $connect/ip/ip.text
 	if not ip.is_valid_ip_address():
-		show_alert("Неверный IP-адрес!")
+		show_alert(tr("lobby.bad_ip"))
 		return
 	MP.create_client(ip, PORT)
 	G.cached_ip = ip
@@ -94,7 +94,7 @@ func player_connected(id):
 		"level" : G.current_level,
 		"power" : G.getv(G.getv("selected_class", "player") + "_level", 0),
 		"ulti_power" : G.getv(G.getv("selected_class", "player") + "_ulti_level", 1),
-		"version" : G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER,
+		"version" : (G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER).strip_edges(),
 		"version_code" : G.VERSION_CODE
 	}
 	yield(get_tree(), "idle_frame")
@@ -110,21 +110,21 @@ func player_disconnected(id):
 
 func server_disconnected():
 	do_disconnect()
-	show_alert("Разорвано соединение с сервером.")
+	show_alert(tr("menu.disconnected"))
 
 
 func refused(reason, data):
 	do_disconnect()
 	match reason:
 		Reason.BUSY:
-			show_alert("Невозможно подключиться к комнате - игра уже началась!")
+			show_alert(tr("lobby.refuse.busy"))
 		Reason.LEVEL:
 			var parts_of_level = data.split("_")
 			var level_name = parts_of_level[0] + "-" + parts_of_level[1]
-			show_alert("Уровень комнаты (%s) не совпадает с Вашим уровнем!" % level_name)
+			show_alert(tr("lobby.refuse.level") % level_name)
 		Reason.VERSION:
-			var my_version = G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER
-			show_alert("Версия игры комнаты (%s) не совпадает с Вашей версией: %s!" % [data, my_version])
+			var my_version = (G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER).strip_edges()
+			show_alert(tr("lobby.refuse.version") % [data, my_version])
 
 
 func register_player(info):
@@ -152,7 +152,7 @@ func register_player(info):
 	var label = Label.new()
 	label.size_flags_horizontal = SIZE_EXPAND_FILL
 	label.valign = VALIGN_CENTER
-	label.text = info["name"] + ": " + tr(G.CLASSES[info["class"]]) + ", Сила: " + str(info["power"]) + ",  Навык: " + str(info["ulti_power"])
+	label.text = info["name"] + ": " + tr(G.CLASSES[info["class"]]) + tr("lobby.info.power") + str(info["power"]) + tr("lobby.info.ulti") + str(info["ulti_power"])
 	hboxcont.add_child(label)
 	update_start_game_button()
 
@@ -165,7 +165,7 @@ func register_player_self():
 		"level" : G.current_level,
 		"power" : G.getv(G.getv("selected_class", "player") + "_level", 0),
 		"ulti_power" : G.getv(G.getv("selected_class", "player") + "_ulti_level", 1),
-		"version" : G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER,
+		"version" : (G.VERSION + " " + G.VERSION_STATUS + " " + G.VERSION_STATUS_NUMBER).strip_edges(),
 		"version_code" : G.VERSION_CODE
 	}
 	players_info[id] = info
@@ -181,7 +181,7 @@ func register_player_self():
 	var label = Label.new()
 	label.size_flags_horizontal = SIZE_EXPAND_FILL
 	label.valign = VALIGN_CENTER
-	label.text = "(Вы)" + info["name"] + ": " + tr(G.CLASSES[info["class"]]) + ", Сила: " + str(info["power"]) + ",  Навык: " + str(info["ulti_power"])
+	label.text = tr("lobby.info.you") + info["name"] + ": " + tr(G.CLASSES[info["class"]]) + tr("lobby.info.power") + str(info["power"]) + tr("lobby.info.ulti") + str(info["ulti_power"])
 	hboxcont.add_child(label)
 
 
@@ -202,16 +202,16 @@ func init_multiplayer():
 				ip = i
 				break
 		if not ip.begins_with("192.168."):
-			ip += " (возможно, нет подключения)"
-		$lobby/ip.text = "Ваш IP: " + ip
+			ip += tr("lobby.strange_ip")
+		$lobby/ip.text = tr("lobby.your_ip") + ip
 	else:
 		$lobby/ip.show()
 		$lobby/more.hide()
-		$lobby/ip.text = "Начать игру может только сервер."
+		$lobby/ip.text = tr("lobby.start_warn")
 		$lobby/start_game.hide()
 	$lobby/start_game.disabled = true
 	var parts_of_level = G.current_level.split("_")
-	$lobby/level.text = "Уровень: " + parts_of_level[0] + "-" + parts_of_level[1]
+	$lobby/level.text = tr("lobby.level") + parts_of_level[0] + "-" + parts_of_level[1]
 	register_player_self()
 	var node = MultiplayerGame.new()
 	node.name = "mg"
@@ -231,7 +231,9 @@ func show_more_ips():
 		if counter == 3:
 			counter = 0
 			text += "\n"
-	show_alert(text, "Ваши IP-адреса")
+	text = text.trim_suffix("\n")
+	text = text.trim_suffix(", ")
+	show_alert(text, tr("lobby.your_ips"))
 
 
 func start_game():
@@ -245,7 +247,7 @@ func update_start_game_button():
 	$lobby/start_game.disabled = not get_tree().get_network_connected_peers().size() > 0
 
 
-func show_alert(text, title = "Ошибка!"):
+func show_alert(text, title = tr("lobby.error")):
 	var pop = AcceptDialog.new()
 	$"../alert_layer".add_child(pop)
 	pop.dialog_text = text
@@ -262,7 +264,7 @@ func _on_timer_timeout():
 		return
 	if curr_suff > 254:
 		timer.stop()
-		show_alert("Не удалось найти сервер.")
+		show_alert(tr("lobby.no_server"))
 		try.text = ""
 		curr_suff = 0
 	else:
@@ -272,4 +274,4 @@ func _on_timer_timeout():
 		else:
 			curr_suff += 1
 		MP.create_client(ip_preffix + str(curr_suff), PORT)
-		try.text = "Пробую IP: " + ip_preffix + str(curr_suff)
+		try.text = tr("lobby.trying") + ip_preffix + str(curr_suff)

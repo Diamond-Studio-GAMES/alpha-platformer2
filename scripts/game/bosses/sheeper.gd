@@ -1,9 +1,9 @@
 extends Boss
 
 
-var knives_attack = load("res://prefabs/bosses/knife_attack_sheeper.scn")
-var big_knife_attack = load("res://prefabs/bosses/knife_sheeper_big.scn")
-var sheep_bomb = load("res://prefabs/bosses/sheep_bomb.scn")
+var knives_attack = load("res://prefabs/bosses/knife_attack_sheeper.tscn")
+var big_knife_attack = load("res://prefabs/bosses/knife_sheeper_big.tscn")
+var sheep_bomb = load("res://prefabs/bosses/sheep_bomb.tscn")
 
 
 func _ready():
@@ -11,15 +11,15 @@ func _ready():
 	fill_x = 57
 	attacks = ["knives", "spikes", "throw"]
 	tp_pos = Vector2(58, -2)
-	mercy_dialog = "Пастух: Ты... щадишь меня?.. Спасибо..."
-	death_dialog = "Убить или пощадить?"
+	mercy_dialog = tr("boss.sheeper.mercy")
+	death_dialog = tr("boss.sheeper.defeat")
 	next_attack_time_min = 3
 	next_attack_time_max = 5
 	if MP.is_active:
 		yield($"/root/mg", "game_started")
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
-	boss_bar.get_node("boss_name").text = "ПАСТУХ" + ":"
+	boss_bar.get_node("boss_name").text = tr("boss.sheeper").to_upper() + ":"
 
 
 func death():

@@ -43,11 +43,11 @@ var CLASS_ICONS = {
 	"archer" : load("res://textures/classes/archer_helmet.png") 
 }
 var ULTI_ICONS = {
-	"knight" : load("res://textures/gui/ulti_icon_0.res"),
-	"butcher" : load("res://textures/gui/ulti_icon_1.res"),
-	"spearman" : load("res://textures/gui/ulti_icon_2.res"),
-	"wizard" : load("res://textures/gui/ulti_icon_3.res"),
-	"archer" : load("res://textures/gui/ulti_icon_4.res")
+	"knight" : load("res://textures/gui/ulti_icon_0.tres"),
+	"butcher" : load("res://textures/gui/ulti_icon_1.tres"),
+	"spearman" : load("res://textures/gui/ulti_icon_2.tres"),
+	"wizard" : load("res://textures/gui/ulti_icon_3.tres"),
+	"archer" : load("res://textures/gui/ulti_icon_4.tres")
 }
 var AMULET_ICONS = {
 	"power" : load("res://textures/items/amulet_power_frag.png"),
@@ -66,7 +66,7 @@ var ulti_token = load("res://textures/items/ulti_token.png")
 var token = load("res://textures/items/token.png")
 var coin = load("res://textures/items/coin.png")
 var gem = load("res://textures/items/gem.png")
-var you_get = load("res://prefabs/menu/you_get.scn")
+var you_get = load("res://prefabs/menu/you_get.tscn")
 var gadget = load("res://textures/items/gadget.png")
 var soul_power = load("res://textures/items/soul_power.png")
 var items = 0
@@ -100,7 +100,7 @@ func _process(delta):
 		have_bonus = false
 		items += 1
 		item_counter.self_modulate = Color.yellow
-		item_counter_label.text = "ОСТАЛОСЬ БОНУСОВ:"
+		item_counter_label.text = tr("box.remains.bonus")
 	item_counter_glow.visible = glow_items > 0
 	item_counter_count.text = str(items - 1)
 
@@ -120,7 +120,6 @@ func click():
 
 
 func show_loot(what):
-#	AudioServer.set_bus_mute(AudioServer.get_bus_index("music"), true)
 	var loot = {}
 	for i in what:
 		if i.ends_with("box"):
@@ -168,7 +167,7 @@ func reset_values():
 	for i in $you_get_screen/items1.get_children():
 		i.queue_free()
 	item_counter.self_modulate = Color.red
-	item_counter_label.text = "ОСТАЛОСЬ ПРЕДМЕТОВ:"
+	item_counter_label.text = tr("box.remains")
 
 
 func open_select_class_for_tokens(count):
@@ -344,7 +343,7 @@ func open_gui(what = null):
 			$class_screen/knight.hide()
 			$class_screen/spearman.hide()
 			get_node("class_screen/" + i).show()
-			get_node("class_screen/" + i + "/class/ui/text/class_name/count").text = str(5 - classes_to_unlock.size()) + "-й из 5 классов"
+			get_node("class_screen/" + i + "/class/ui/text/class_name/count").text = str(5 - classes_to_unlock.size()) + tr("box.class_num")
 			get_node("class_screen/" + i + "/anim").play("main")
 			$class_screen/roll_out.play()
 			glow_items -= 1
@@ -409,7 +408,7 @@ func open_gui(what = null):
 		show_screen("potions_screen")
 		$potions_screen/anim.play("anim")
 		$potions_screen/anim.seek(0)
-		$potions_screen/visual/label.text = "МАЛЕНЬКОЕ ЗЕЛЬЕ"
+		$potions_screen/visual/label.text = tr("item.potion1")
 		$potions_screen/visual/count.text = "x " + str(loot["potions1"])
 		$potions_screen/visual/potion.texture = POTIONS_ICONS["small"]
 		yield(self, "next")
@@ -420,7 +419,7 @@ func open_gui(what = null):
 		show_screen("potions_screen")
 		$potions_screen/anim.play("anim")
 		$potions_screen/anim.seek(0)
-		$potions_screen/visual/label.text = "СРЕДНЕЕ ЗЕЛЬЕ"
+		$potions_screen/visual/label.text = tr("item.potion2")
 		$potions_screen/visual/count.text = "x " + str(loot["potions2"])
 		$potions_screen/visual/potion.texture = POTIONS_ICONS["normal"]
 		yield(self, "next")
@@ -431,7 +430,7 @@ func open_gui(what = null):
 		show_screen("potions_screen")
 		$potions_screen/anim.play("anim")
 		$potions_screen/anim.seek(0)
-		$potions_screen/visual/label.text = "БОЛЬШОЕ ЗЕЛЬЕ"
+		$potions_screen/visual/label.text = tr("item.potion3")
 		$potions_screen/visual/count.text = "x " + str(loot["potions3"])
 		$potions_screen/visual/potion.texture = POTIONS_ICONS["big"]
 		yield(self, "next")
@@ -446,7 +445,6 @@ func open_gui(what = null):
 		yield(self, "next")
 		items -= 1
 	if loot.size() == 1:
-#		AudioServer.set_bus_mute(AudioServer.get_bus_index("music"),false)
 		is_showing_rewards = false
 		emit_signal("end")
 		return
@@ -460,7 +458,6 @@ func open_gui(what = null):
 		node.self_modulate = Color.gold
 		node.get_node("icon").texture = coin
 		node.get_node("label").text = str(loot["coins"])
-#		yield(get_tree().create_timer(0.15), "timeout")
 		is_showing_rewards = true
 		if items_showed < 8:
 			ygsi0.add_child(node)
@@ -473,7 +470,6 @@ func open_gui(what = null):
 			node.self_modulate = Color(0, 0.5, 0, 1)
 			node.get_node("icon").texture = AMULET_ICONS[i]
 			node.get_node("label").text = str(loot["amulet_frags"][i])
-#			yield(get_tree().create_timer(0.15), "timeout")
 			if items_showed < 8:
 				ygsi0.add_child(node)
 			else:
@@ -485,7 +481,6 @@ func open_gui(what = null):
 			node.self_modulate = Color.aquamarine
 			node.get_node("icon").texture = gadget
 			node.get_node("label").text = tr(G.CLASSES[i])
-#			yield(get_tree().create_timer(0.15), "timeout")
 			if items_showed < 8:
 				ygsi0.add_child(node)
 			else:
@@ -497,7 +492,6 @@ func open_gui(what = null):
 			node.self_modulate = Color.darkorange
 			node.get_node("icon").texture = soul_power
 			node.get_node("label").text = tr(G.CLASSES[i])
-#			yield(get_tree().create_timer(0.15), "timeout")
 			if items_showed < 8:
 				ygsi0.add_child(node)
 			else:
@@ -508,8 +502,7 @@ func open_gui(what = null):
 			var node = you_get.instance()
 			node.self_modulate = G.CLASS_COLORS[i]
 			node.get_node("icon").texture = CLASS_ICONS[i]
-			node.get_node("label").text = "КЛАСС"
-#			yield(get_tree().create_timer(0.15), "timeout")
+			node.get_node("label").text = tr("item.class")
 			if items_showed < 8:
 				ygsi0.add_child(node)
 			else:
@@ -523,7 +516,6 @@ func open_gui(what = null):
 			node.get_node("icon/center").texture = CLASS_ICONS[i]
 			node.get_node("icon").self_modulate = G.CLASS_COLORS[i]
 			node.get_node("label").text = str(loot["tokens"][i])
-#			yield(get_tree().create_timer(0.15), "timeout")
 			if items_showed < 8:
 				ygsi0.add_child(node)
 			else:
@@ -537,7 +529,6 @@ func open_gui(what = null):
 			node.get_node("icon/center").texture = ULTI_ICONS[i]
 			node.get_node("icon").self_modulate = G.CLASS_COLORS[i]
 			node.get_node("label").text = str(loot["ulti_tokens"][i])
-#			yield(get_tree().create_timer(0.15), "timeout")
 			if items_showed < 8:
 				ygsi0.add_child(node)
 			else:
@@ -548,7 +539,6 @@ func open_gui(what = null):
 		node.self_modulate = Color.darkred
 		node.get_node("icon").texture = POTIONS_ICONS["small"]
 		node.get_node("label").text = str(loot["potions1"])
-#		yield(get_tree().create_timer(0.15), "timeout")
 		if items_showed < 8:
 			ygsi0.add_child(node)
 		else:
@@ -559,7 +549,6 @@ func open_gui(what = null):
 		node.self_modulate = Color.darkred
 		node.get_node("icon").texture = POTIONS_ICONS["normal"]
 		node.get_node("label").text = str(loot["potions2"])
-#		yield(get_tree().create_timer(0.15), "timeout")
 		if items_showed < 8:
 			ygsi0.add_child(node)
 		else:
@@ -570,7 +559,6 @@ func open_gui(what = null):
 		node.self_modulate = Color.darkred
 		node.get_node("icon").texture = POTIONS_ICONS["big"]
 		node.get_node("label").text = str(loot["potions3"])
-#		yield(get_tree().create_timer(0.15), "timeout")
 		if items_showed < 8:
 			ygsi0.add_child(node)
 		else:
@@ -581,7 +569,6 @@ func open_gui(what = null):
 		node.self_modulate = Color.webpurple
 		node.get_node("icon").texture = gem
 		node.get_node("label").text = str(loot["gems"])
-#		yield(get_tree().create_timer(0.15), "timeout")
 		is_showing_rewards = true
 		if items_showed < 8:
 			ygsi0.add_child(node)
@@ -590,7 +577,6 @@ func open_gui(what = null):
 		items_showed += 1
 	yield(get_tree().create_timer(0.05), "timeout")
 	yield(self, "next")
-#	AudioServer.set_bus_mute(AudioServer.get_bus_index("music"), false)
 	is_showing_rewards = false
 	emit_signal("end")
 
@@ -632,7 +618,7 @@ func hide_screens():
 
 func show_screen(screen):
 	if not screens.has(screen):
-		var _screen = load("res://prefabs/menu/box_%s.scn" % screen).instance()
+		var _screen = load("res://prefabs/menu/box_%s.tscn" % screen).instance()
 		_screen.name = screen
 		screens[screen] = _screen
 		add_child_below_node($mega_box_screen, _screen)
@@ -641,7 +627,6 @@ func show_screen(screen):
 
 
 func prepare(type):
-#	AudioServer.set_bus_mute(AudioServer.get_bus_index("music"), true)
 	$tint.self_modulate = Color(1, 1, 1, 0)
 	hide_screens()
 	box_type = type

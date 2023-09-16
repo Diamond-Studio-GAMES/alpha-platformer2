@@ -1,0 +1,407 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scripts/menu/level_dialog.gd" type="Script" id=1]
+[ext_resource path="res://themes/theme.tres" type="Theme" id=2]
+[ext_resource path="res://textures/classes/butcher_helmet.png" type="Texture" id=3]
+[ext_resource path="res://textures/classes/spearman_helmet.png" type="Texture" id=4]
+[ext_resource path="res://textures/gui/bg_light.png" type="Texture" id=5]
+[ext_resource path="res://prefabs/menu/level_dialog.tscn" type="PackedScene" id=6]
+[ext_resource path="res://prefabs/menu/class_visuals.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sounds/sfx/menu/win.wav" type="AudioStream" id=8]
+[ext_resource path="res://textures/classes/archer_helmet.png" type="Texture" id=9]
+[ext_resource path="res://prefabs/menu/education.tscn" type="PackedScene" id=10]
+[ext_resource path="res://textures/classes/wizard_helmet.png" type="Texture" id=11]
+[ext_resource path="res://scripts/menu/viewport_tex.gd" type="Script" id=12]
+[ext_resource path="res://textures/classes/knight_helmet.png" type="Texture" id=13]
+[ext_resource path="res://textures/gui/class_drop_bg.png" type="Texture" id=14]
+[ext_resource path="res://sounds/music/menu/end_level.ogg" type="AudioStream" id=15]
+
+[sub_resource type="Animation" id=128]
+resource_name = "continue"
+length = 8.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("glow:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=127]
+resource_name = "win"
+tracks/0/type = "value"
+tracks/0/path = NodePath("glow:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("glow:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 270.0, 360.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("glow:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
+}
+
+[node name="win" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="select_level" parent="." instance=ExtResource( 6 )]
+
+[node name="select_level_dialog" parent="select_level" index="0"]
+popup_exclusive = true
+
+[node name="menu" parent="select_level/select_level_dialog/play" index="0"]
+items = [ "level_dialog.multiplayer.create", null, 0, false, false, 0, 0, null, "", false, "level_dialog.multiplayer.join", null, 0, false, false, 1, 0, null, "", false ]
+
+[node name="class2" parent="select_level/select_level_dialog" index="11"]
+items = [ "class.knight.l", ExtResource( 13 ), false, 0, null, "class.butcher.l", ExtResource( 3 ), false, 1, null, "class.spearman.l", ExtResource( 4 ), false, 2, null, "class.wizard.l", ExtResource( 11 ), false, 3, null, "class.archer.l", ExtResource( 9 ), false, 4, null, "class.none.l", null, false, 5, null ]
+
+[node name="win_level" type="CanvasLayer" parent="."]
+
+[node name="win_level_dialog" type="WindowDialog" parent="win_level"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = -240.0
+margin_right = 180.0
+margin_bottom = 240.0
+theme = ExtResource( 2 )
+popup_exclusive = true
+window_title = "Уровень 1-1"
+script = ExtResource( 1 )
+type = 1
+
+[node name="bg" type="ColorRect" parent="win_level/win_level_dialog"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1600.0
+margin_top = -1200.0
+margin_right = 1600.0
+margin_bottom = 1200.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.501961 )
+
+[node name="light" type="TextureRect" parent="win_level/win_level_dialog"]
+self_modulate = Color( 1, 1, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = -252.0
+margin_right = 180.0
+margin_bottom = 108.0
+rect_pivot_offset = Vector2( 180, 180 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="glow" type="TextureRect" parent="win_level/win_level_dialog"]
+self_modulate = Color( 1, 1, 0, 0.501961 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -372.0
+margin_right = 300.0
+margin_bottom = 228.0
+rect_rotation = 270.0
+rect_pivot_offset = Vector2( 300, 300 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 6
+
+[node name="anim" type="AnimationPlayer" parent="win_level/win_level_dialog"]
+autoplay = "win"
+anims/continue = SubResource( 128 )
+anims/win = SubResource( 127 )
+next/win = "continue"
+
+[node name="particles" type="CPUParticles2D" parent="win_level/win_level_dialog"]
+position = Vector2( 180, -160 )
+z_index = 10
+amount = 64
+lifetime = 5.0
+local_coords = false
+emission_shape = 2
+emission_rect_extents = Vector2( 600, 0 )
+direction = Vector2( 0, 1 )
+initial_velocity = 60.0
+angular_velocity = 20.0
+orbit_velocity = 0.01
+orbit_velocity_random = 1.0
+scale_amount = 10.0
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[node name="classes2" type="Control" parent="win_level/win_level_dialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -92.0
+margin_right = 20.0
+margin_bottom = -52.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 20, 20 )
+
+[node name="knight" type="TextureRect" parent="win_level/win_level_dialog/classes2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 200.0
+margin_bottom = 200.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 12 )
+
+[node name="butcher" type="TextureRect" parent="win_level/win_level_dialog/classes2"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 200.0
+margin_bottom = 200.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 12 )
+
+[node name="spearman" type="TextureRect" parent="win_level/win_level_dialog/classes2"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 200.0
+margin_bottom = 200.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 12 )
+
+[node name="wizard" type="TextureRect" parent="win_level/win_level_dialog/classes2"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 200.0
+margin_bottom = 200.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 12 )
+
+[node name="archer" type="TextureRect" parent="win_level/win_level_dialog/classes2"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 200.0
+margin_bottom = 200.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 12 )
+
+[node name="player" type="TextureRect" parent="win_level/win_level_dialog/classes2"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 200.0
+margin_bottom = 200.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 12 )
+
+[node name="rewards" type="Label" parent="win_level/win_level_dialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.5
+margin_top = 20.0
+margin_right = 64.5
+margin_bottom = 44.0
+grow_horizontal = 2
+text = "win.reward"
+align = 1
+uppercase = true
+
+[node name="congrats" type="Label" parent="win_level/win_level_dialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.5
+margin_top = -212.0
+margin_right = 64.5
+margin_bottom = -188.0
+grow_horizontal = 2
+text = "win.congrats"
+align = 1
+uppercase = true
+
+[node name="rc" type="RichTextLabel" parent="win_level/win_level_dialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = 52.0
+margin_right = 160.0
+margin_bottom = 172.0
+bbcode_enabled = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="claim" type="Button" parent="win_level/win_level_dialog"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -48.0
+margin_right = 40.0
+margin_bottom = -16.0
+grow_horizontal = 2
+text = "win.claim"
+
+[node name="education0" parent="win_level/win_level_dialog/claim" instance=ExtResource( 10 )]
+visible = false
+margin_left = -82.5
+margin_right = 77.5
+first = true
+
+[node name="buttons" type="Control" parent="win_level/win_level_dialog"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -52.0
+margin_right = 20.0
+margin_bottom = -12.0
+
+[node name="restart" type="Button" parent="win_level/win_level_dialog/buttons"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -36.0
+margin_right = 40.0
+margin_bottom = -4.0
+text = "win.restart"
+clip_text = true
+
+[node name="menu" type="Button" parent="win_level/win_level_dialog/buttons"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -128.0
+margin_top = -36.0
+margin_right = -48.0
+margin_bottom = -4.0
+text = "win.menu"
+clip_text = true
+
+[node name="next" type="Button" parent="win_level/win_level_dialog/buttons"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = -36.0
+margin_right = 128.0
+margin_bottom = -4.0
+text = "win.next"
+clip_text = true
+
+[node name="education1" parent="win_level/win_level_dialog/buttons" instance=ExtResource( 10 )]
+visible = false
+margin_left = -202.0
+margin_top = -84.0
+margin_right = -42.0
+margin_bottom = 76.0
+first = true
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+autoplay = true
+bus = "music"
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+bus = "sfx"
+
+[node name="class_visuals" parent="." instance=ExtResource( 7 )]
+
+[connection signal="pressed" from="win_level/win_level_dialog/claim" to="win_level/win_level_dialog" method="claim_reward"]
+[connection signal="pressed" from="win_level/win_level_dialog/claim" to="win_level/win_level_dialog/claim/education0" method="next"]
+[connection signal="pressed" from="win_level/win_level_dialog/buttons/restart" to="win_level/win_level_dialog" method="restart"]
+[connection signal="pressed" from="win_level/win_level_dialog/buttons/menu" to="win_level/win_level_dialog" method="menu"]
+[connection signal="pressed" from="win_level/win_level_dialog/buttons/next" to="win_level/win_level_dialog" method="next"]
+
+[editable path="select_level"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=1]
+[ext_resource path="res://minigames/minigame2/hate.gd" type="Script" id=2]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, -0.471521, 0, 1, Vector2( 0.499688, 0.764386 ), -0.471521, 0.0, 1, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[node name="hate" type="CPUParticles2D"]
+amount = 32
+texture = ExtResource( 1 )
+emission_shape = 2
+emission_rect_extents = Vector2( 8, 29 )
+gravity = Vector2( 0, 0 )
+angular_velocity = 120.0
+angular_velocity_random = 0.5
+scale_amount = 8.0
+scale_amount_curve = SubResource( 1 )
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 2 )

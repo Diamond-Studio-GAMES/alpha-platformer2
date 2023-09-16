@@ -37,4 +37,4 @@ func end_level(l):
 	else:
 		if my_player.current_health <= 0:
 			G.ach.complete(Achievements.WHAT_A_WASTE)
-	get_tree().change_scene("res://scenes/menu/win.scn")
+	get_tree().change_scene("res://scenes/menu/win.tscn")

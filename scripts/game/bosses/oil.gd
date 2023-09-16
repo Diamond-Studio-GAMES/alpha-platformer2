@@ -2,7 +2,7 @@ extends Area2D
 
 
 var burned = false
-var fire = load("res://prefabs/blocks/fire.scn")
+var fire = load("res://prefabs/blocks/fire.tscn")
 
 
 func _on_oil_area_entered(area):

@@ -1,7 +1,7 @@
 extends Control
 
 
-var ach_panel = load("res://prefabs/menu/achievement_panel.scn")
+var ach_panel = load("res://prefabs/menu/achievement_panel.tscn")
 onready var pm = $settings/grph_s.get_popup()
 
 
@@ -30,6 +30,8 @@ func _ready():
 	$settings/sfxv_s.value = G.getv("volume_sfx", 1)
 	$settings/dmp_s.value = G.getv("damping", 2.5)
 	$settings/smc_c.pressed = G.getv("smooth_camera", true)
+	$settings/fps_c.pressed = G.getv("show_fps", false)
+	$settings/ping_c.pressed = G.getv("show_ping", false)
 	$settings/save_id.text = tr("menu.save_id") + G.getv("save_id", "undefined")
 	$settings/name_change/line_edit.set_message_translation(false)
 	$settings/name_change/line_edit.notification(NOTIFICATION_TRANSLATION_CHANGED)
@@ -98,6 +100,9 @@ func _process(delta):
 	G.setv("volume_sfx", $settings/sfxv_s.value)
 	G.setv("damping", $settings/dmp_s.value)
 	G.setv("smooth_camera", $settings/smc_c.pressed)
+	G.setv("show_ping", $settings/ping_c.pressed)
+	G.setv("show_fps", $settings/fps_c.pressed)
+	G.fps_text.visible = $settings/fps_c.pressed
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("music"), linear2db($settings/mv_s.value))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("sfx"), linear2db($settings/sfxv_s.value))
 
@@ -107,7 +112,7 @@ func copy_id():
 
 
 func play():
-	get_tree().change_scene("res://scenes/menu/levels.scn")
+	get_tree().change_scene("res://scenes/menu/levels.tscn")
 
 
 func achievements(val = true):
@@ -136,12 +141,12 @@ func language():
 		G.setv("lang", "en")
 		G.save()
 		TranslationServer.set_locale(G.getv("lang", "en"))
-		G.change_to_scene("res://scenes/menu/menu.scn")
+		G.change_to_scene(filename)
 	else:
 		G.setv("lang", "ru")
 		G.save()
 		TranslationServer.set_locale(G.getv("lang", "ru"))
-		G.change_to_scene("res://scenes/menu/menu.scn")
+		G.change_to_scene(filename)
 
 
 func more():
@@ -150,11 +155,11 @@ func more():
 
 func quit():
 	G.close_save()
-	get_tree().change_scene("res://scenes/menu/save_loader.scn")
+	get_tree().change_scene("res://scenes/menu/save_loader.tscn")
 
 
 func controls():
-	get_tree().change_scene("res://scenes/menu/controls.scn")
+	get_tree().change_scene("res://scenes/menu/controls.tscn")
 
 
 func reset():
@@ -162,9 +167,9 @@ func reset():
 	var id = G.getv("save_id", "ffff00")
 	G.close_save()
 	dir.remove("user://saves/".plus_file(id + ".apa2save"))
-	if dir.file_exists("user://custom_levels/" + id + ".scn"):
-		dir.remove("user://custom_levels/" + id + ".scn")
-	get_tree().change_scene("res://scenes/menu/save_loader.scn")
+	if dir.file_exists("user://custom_levels/" + id + ".tscn"):
+		dir.remove("user://custom_levels/" + id + ".tscn")
+	get_tree().change_scene("res://scenes/menu/save_loader.tscn")
 
 
 func change_name():

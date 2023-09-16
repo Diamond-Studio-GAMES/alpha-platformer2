@@ -1,0 +1,534 @@
+[gd_resource type="Resource" load_steps=49 format=2]
+
+[ext_resource path="res://scripts/menu/promocode.gd" type="Script" id=1]
+
+[sub_resource type="CryptoKey" id=2]
+script = ExtResource( 1 )
+id = "женщина"
+reward = {
+"coins": -1000.0,
+"gems": -10
+}
+comment = "Ах ты натурал!"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=3]
+script = ExtResource( 1 )
+id = "gomik"
+reward = {
+"coins": 333.0,
+"gems": 3
+}
+comment = "Одобряю"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=4]
+script = ExtResource( 1 )
+id = "накачанныемужикитоп"
+reward = {
+"coins": 750.0,
+"gems": 5
+}
+comment = "No Homo"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=5]
+script = ExtResource( 1 )
+id = "бастертоп"
+reward = {
+"coins": -500.0,
+"gems": -3
+}
+comment = "Вы потеряли девственность и получили 2-х отцов."
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=6]
+script = ExtResource( 1 )
+id = "бастерхуйня"
+reward = {
+"coins": 1000.0,
+"gems": 5
+}
+comment = "Вы вернули девственность и лишились лишних пап."
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=7]
+script = ExtResource( 1 )
+id = "миста4444"
+reward = {
+"coins": 444.0,
+"gems": 4
+}
+comment = "Мииииста, покорми нас!"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=8]
+script = ExtResource( 1 )
+id = "s1r@0o"
+reward = {
+"coins": 4500.0,
+"gems": 25
+}
+comment = "O_O"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=9]
+script = ExtResource( 1 )
+id = "brawlstars"
+reward = {
+"coins": 10.0,
+"gems": 1
+}
+comment = "Фигня для малолеток"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=10]
+script = ExtResource( 1 )
+id = "маленькийящик"
+reward = {
+"box": 1
+}
+comment = "Эль Прима"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=11]
+script = ExtResource( 1 )
+id = "matchland"
+reward = {
+"diamond_box": 1
+}
+comment = "Первоистоки!"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=12]
+script = ExtResource( 1 )
+id = "мама"
+reward = {
+"diamond_box": 1
+}
+comment = "А у меня..."
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=13]
+script = ExtResource( 1 )
+id = "феминизм"
+reward = {
+}
+comment = "УМРИ, КИБА!!!!!!!!"
+custom_method = "fem"
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=14]
+script = ExtResource( 1 )
+id = "отисгандонище"
+reward = {
+"gems": -59
+}
+comment = "Фактишь, нёрфите тварь!"
+custom_method = "otis"
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=46]
+script = ExtResource( 1 )
+id = "aestas"
+reward = {
+"gems": 15
+}
+comment = "ok."
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=16]
+script = ExtResource( 1 )
+id = "дотатоп"
+reward = {
+"coins": 1000,
+"gems": 5
+}
+comment = "+3 отца, сладкий, в кроватку идём? <3 <3 <3"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=17]
+script = ExtResource( 1 )
+id = "сииииии"
+reward = {
+"gems": 7
+}
+comment = "Две си.. и пи.."
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=15]
+script = ExtResource( 1 )
+id = "хайгитлер"
+reward = {
+"coins": -500,
+"gems": -5
+}
+comment = "Рука, опустись! Нацизм - плохо! Я осуждаю!"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=18]
+script = ExtResource( 1 )
+id = "еврей"
+reward = {
+"gems": 10
+}
+comment = "У меня тоже еврейская душа, не парься... О! Кошелёк!"
+custom_method = "evrey"
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=19]
+script = ExtResource( 1 )
+id = "ладно"
+reward = {
+"gems": 1
+}
+comment = "ладно"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=20]
+script = ExtResource( 1 )
+id = "алиэкспрессср"
+reward = {
+"coins": 111,
+"gold_box": 1
+}
+comment = "РАСПРОДАЖА НА АЛИЭКСПРЕСС, НА АЛИЭКСПРЕСС, ТОЛЬКО НА АЛИЭКСПРЕСС!!!"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=21]
+script = ExtResource( 1 )
+id = "140мегаящиков"
+reward = {
+"coins": 140,
+"gems": 1
+}
+comment = "\"компенсация\""
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=22]
+script = ExtResource( 1 )
+id = "money8800"
+reward = {
+"coins": 800,
+"gems": 8
+}
+comment = "Где деньги взять - давно известно!"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=23]
+script = ExtResource( 1 )
+id = "пизда"
+reward = {
+"gems": 10,
+"gold_box": 3
+}
+comment = "Нееееет!"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=24]
+script = ExtResource( 1 )
+id = "apa"
+reward = {
+}
+comment = "имба игра, история..."
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = true
+
+[sub_resource type="CryptoKey" id=25]
+script = ExtResource( 1 )
+id = "aurs"
+reward = {
+}
+comment = "имба игра, история..."
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = true
+
+[sub_resource type="CryptoKey" id=26]
+script = ExtResource( 1 )
+id = "kitchenchallenge"
+reward = {
+}
+comment = "имба игра, история..."
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = true
+
+[sub_resource type="CryptoKey" id=27]
+script = ExtResource( 1 )
+id = "6класс"
+reward = {
+"coins": 1
+}
+comment = "лучший!"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = true
+
+[sub_resource type="CryptoKey" id=28]
+script = ExtResource( 1 )
+id = "гиа"
+reward = {
+"coins": -1
+}
+comment = "бррррр, но было весело!"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = true
+
+[sub_resource type="CryptoKey" id=29]
+script = ExtResource( 1 )
+id = "hardcore"
+reward = {
+}
+comment = "Держи помощь!"
+custom_method = "hardcore"
+custom_method_pass = "hardcore_pass"
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=30]
+script = ExtResource( 1 )
+id = "дьяволо"
+reward = {
+}
+comment = ""
+custom_method = "diavolo"
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=31]
+script = ExtResource( 1 )
+id = "главныймаг"
+reward = {
+}
+comment = "Он настолько силен, что может управлять самим временем..."
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=32]
+script = ExtResource( 1 )
+id = "смерть"
+reward = {
+}
+comment = "Секретный класс, прибывший из другого измерения..."
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=33]
+script = ExtResource( 1 )
+id = "способности"
+reward = {
+}
+comment = "Обладает таинственной тёмной энергией, позволяющей прыгать между измерениями и управлять ими..."
+custom_method = ""
+custom_method_pass = "spos_pass"
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=34]
+script = ExtResource( 1 )
+id = "время"
+reward = {
+}
+comment = "Управлять им способны лишь полные силы существа...
+И сама СМЕРТЬ 0586785675490468567900100101001001001010010010100101010100100100000000000000000000000000000000000000000000"
+custom_method = "smer"
+custom_method_pass = "smer_pass"
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=35]
+script = ExtResource( 1 )
+id = "хемек"
+reward = {
+"coins": 3,
+"gems": 3
+}
+comment = "NaHCO3 - сода!"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=36]
+script = ExtResource( 1 )
+id = "географек"
+reward = {
+"coins": 200,
+"gems": 2
+}
+comment = "Это не про меня..."
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=37]
+script = ExtResource( 1 )
+id = "программест"
+reward = {
+"coins": 110,
+"gems": 1
+}
+comment = "0101010101010101010101"
+custom_method = "pro"
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=38]
+script = ExtResource( 1 )
+id = "прыжокверы666"
+reward = {
+"coins": 666,
+"gems": 6
+}
+comment = "Саввушки 2022 1 сезон референс"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=39]
+script = ExtResource( 1 )
+id = "юляподкамнем"
+reward = {
+"coins": 150,
+"gems": 1
+}
+comment = "Саввушки 2021 референс"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=40]
+script = ExtResource( 1 )
+id = "пенис"
+reward = {
+"wild_tokens": 123
+}
+comment = "я помню ***** большой..."
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=41]
+script = ExtResource( 1 )
+id = "гроб"
+reward = {
+"box": 15
+}
+comment = "борг"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=42]
+script = ExtResource( 1 )
+id = "3,14дверь"
+reward = {
+"coins": 314,
+"gems": 3.14
+}
+comment = "Сам такой :(((("
+custom_method = "pi"
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=43]
+script = ExtResource( 1 )
+id = "0"
+reward = {
+}
+comment = "ОШИБКА СТОП 0000000000000"
+custom_method = "zero"
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=44]
+script = ExtResource( 1 )
+id = "skiba"
+reward = {
+"coins": 6,
+"gems": 6,
+"wild_tokens": 6
+}
+comment = "suka"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=45]
+script = ExtResource( 1 )
+id = "andrey"
+reward = {
+"coins": 1750,
+"gems": 11
+}
+comment = "не Андрей а ONDREW"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=47]
+script = ExtResource( 1 )
+id = "ивангайтоп"
+reward = {
+"coins": -1000,
+"gems": -10
+}
+comment = "Пидорок он безмамный, хохол-русофоб ёбаный!"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Resource
+
+
+export (Array, CryptoKey) var promocodes = []
+"
+
+[resource]
+script = SubResource( 1 )
+promocodes = [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 46 ), SubResource( 16 ), SubResource( 17 ), SubResource( 15 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 47 ) ]

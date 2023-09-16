@@ -11,7 +11,7 @@ func _ready():
 	randomize()
 	player = $".."
 	player._soul.self_modulate = Color.black
-	player.custom_respawn_scene = "res://minigames/minigame2/minigame.scn"
+	player.custom_respawn_scene = "res://minigames/minigame2/minigame.tscn"
 
 
 func _physics_process(delta):

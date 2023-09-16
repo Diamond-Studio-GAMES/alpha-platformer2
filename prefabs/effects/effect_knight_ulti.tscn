@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://sounds/sfx/randomed/sword_hit.tres" type="AudioStream" id=2]
+
+[sub_resource type="Curve" id=2]
+max_value = 2.0
+_data = [ Vector2( 0, 2 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Animation" id=1]
+resource_name = "effect"
+length = 3.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("particles")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+
+[node name="effect_knight_ulti" type="Node2D" groups=["spawnable"]]
+z_index = 10
+
+[node name="particles" type="CPUParticles2D" parent="."]
+scale = Vector2( 1.5, 1.5 )
+emitting = false
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.95
+direction = Vector2( 0, -1 )
+gravity = Vector2( 0, -10 )
+initial_velocity = 5.0
+initial_velocity_random = 0.3
+angular_velocity = 360.0
+angular_velocity_random = 1.0
+radial_accel = 8.24
+radial_accel_random = 0.4
+scale_amount_curve = SubResource( 2 )
+color = Color( 1, 0, 0, 0.839216 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "effect"
+anims/effect = SubResource( 1 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+bus = "sfx"
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath("..") ]
+spawn_sync_data_properties = [ "global_position", "scale" ]
+auto_despawn = false

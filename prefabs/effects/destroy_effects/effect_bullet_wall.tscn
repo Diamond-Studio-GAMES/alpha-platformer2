@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sounds/sfx/randomed/bullet_hit.tres" type="AudioStream" id=1]
+[ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=2]
+
+[node name="bullet_wall_hit" type="Sprite"]
+self_modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 2 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+bus = "sfx"
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[connection signal="finished" from="sfx" to="sfx" method="queue_free"]
+[connection signal="timeout" from="timer" to="." method="queue_free"]

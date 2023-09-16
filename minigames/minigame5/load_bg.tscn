@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://themes/theme.tres" type="Theme" id=1]
+
+[sub_resource type="InputEventAction" id=2]
+action = "pause"
+pressed = true
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Button
+
+
+func back():
+	get_tree().change_scene(\"res://minigames/minigame5/minigame.tscn\")
+"
+
+[node name="load" type="CanvasLayer"]
+
+[node name="back" type="Button" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 96.0
+margin_bottom = 46.0
+theme = ExtResource( 1 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 3 )
+text = "menu.exit"
+clip_text = true
+script = SubResource( 4 )
+
+[node name="bg" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+color = Color( 0, 0, 0, 1 )
+
+[connection signal="pressed" from="back" to="back" method="back"]

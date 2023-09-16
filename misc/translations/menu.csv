@@ -1,5 +1,6 @@
 keys,ru,en
 menu.play,Играть,Play
+menu.exit,Выйти,Quit
 menu.achvs,Достижения,Achievements
 menu.settings,Настройки,Settings
 menu.about,Об игре,About
@@ -95,7 +96,7 @@ stat.potions_used,Зелий выпито: ,Potions used:
 stat.boxes,Ящиков открыто:,Boxes opened:
 stat.mp_levels,Пройдено уровней в м/п:,Levels in m/p completed:
 stat.mp_revives,Игроков воскрешено:,Players revived:
-stat.reznya,Резня пройдена: ,Massacre completed:
+stat.reznya,Резня пройдена: ,Bloodbath completed:
 stat.dyh,Изб. от нен. пройдена:,Destroy your hate completed:
 stat.ls,Посл. волны пройдены: ,Last waves completed:
 stat.pd,Уровней в P. Dash: ,Levels in P. Dash:
@@ -171,6 +172,14 @@ achv.boss5,Без талона,Without a coupon
 achv.boss5.desc,Победите Хирурга.,Defeat the Surgeon.
 achv.boss6,Пожарный,Fireman
 achv.boss6.desc,Победите Огненного стража.,Defeat the Fire Guard.
+achv.boss7,,
+achv.boss7.desc,,
+achv.boss8,,
+achv.boss8.desc,,
+achv.boss9,,
+achv.boss9.desc,,
+achv.boss10,,
+achv.boss10.desc,,
 achv.what_is_it,Это что?,What is it?
 achv.what_is_it.desc,Откройте первый класс.,Unlock your first class.
 achv.master,Мастер всех оружий,Master of all weapons
@@ -178,7 +187,7 @@ achv.master.desc,Откройте все классы.,Unlock all classes.
 achv.im_power,Сама сила,I’m power
 achv.im_power.desc,Прокачайте класс на максимум.,Level a class up to the maximum.
 achv.lucky_amulet,На удачу,For luck
-achv.lucky_amulet.desc,Откройте первый амулет.,Open your first amulet.
+achv.lucky_amulet.desc,Создайте первый амулет.,Craft your first amulet.
 achv.help_from_inside,Помощь изнутри,Help from inside
 achv.help_from_inside.desc,Откройте первый душевный навык.,Open your first soul skill.
 achv.soul_master,Мастер души,Soul master
@@ -229,13 +238,39 @@ achv.killer,Убийца,Killer
 achv.killer.desc,Совершите 250 убийств.,Make 250 kills.
 achv.you_missed,Ха! Не попал,Ha! You missed
 achv.you_missed.desc,Уклонитесь от атаки.,Dodge an attack.
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
+,,
 amulet.none,Нет,None
 amulet.power,Сила,Power
+amulet.power.desc,+15 к урону,+15 attack
 amulet.defense,Защита,Defense
+amulet.defense.desc,+5 к защите,+5 defense
 amulet.health,Здоровье,Health
+amulet.health.desc,+60 к здоровью,+60 health
 amulet.reload,Перезарядка,Reload
+amulet.reload.desc,-20% от времени перезарядки,-20% reload time
 amulet.speed,Скорость,Speed
+amulet.speed.desc,+7 к скорости,+7 speed
 amulet.ulti,Навык,Skill
+amulet.ulti.desc,-20% от времени зарядки навыка,-20% skill charge time
 ulti.flurry,ШКВАЛ,FLURRY
 ulti.smash,УДАР,SMASH
 ulti.stun,ОГЛУШЕНИЕ,STUN
@@ -244,11 +279,17 @@ ulti.blitz,НАЛЁТ,BLITZ
 ulti.death,РЫВОК СМЕРТИ,DEATH DASH
 ulti.hero,АВИАУДАР,AIR STRIKE
 class.knight,РЫЦАРЬ,KNIGHT
+class.knight.l,Рыцарь,Knight
 class.butcher,МЯСНИК,BUTCHER
+class.butcher.l,Мясник,Butcher
 class.spearman,КОПЬЕНОСЕЦ,SPEARMAN
+class.spearman.l,Копьеносец,Spearman
 class.wizard,МАГ,WIZARD
+class.wizard.l,Маг,Wizard
 class.archer,ЛУЧНИК,ARCHER
+class.archer.l,Лучник,Archer
 class.none,НЕТ,NONE
+class.none.l,Нет,None
 gadgets.knight,Следующие 2 секунды Рыцарь будет уклоняться от атак.,"For the next 2 seconds, the Knight will dodge attacks."
 gadgets.butcher,"Мясник прыгает на среднюю высоту. При приземлении отбрасывает ближайших врагов, нанося им 110 ед. урона.","The Butcher jumps to an average height. When landing, it throws away nearby enemies, dealing 110 damage to them."
 gadgets.spearman,"Копьеносец делает мощный удар вблизи, сильно отбрасывая врага и нанося ему 250 ед. урона.","The Spearman makes a powerful blow close by, throwing the enemy hard and dealing 250 damage to him."
@@ -259,3 +300,257 @@ sp.butcher,Даёт шанс в 20% зарядить навык на 15% при 
 sp.spearman,Даёт шанс в 20% оглушить врага атакой вблизи на 1.25 секунды.,Gives a 20% chance to stun an enemy with a close-range attack for 1.25 seconds.
 sp.wizard,Даёт шанс в 15% исцелиться на 10% при попадании по врагу дальнобойной атакой.,Gives a 15% chance to heal by 10% when hitting an enemy with a long-range attack.
 sp.archer,Даёт шанс в 45% при попадании ближней атакой нанести 50 ед. урона всем врагам в радиусе 2 блоков.,Gives a 45% chance of dealing 50 damage to all enemies within a radius of 2 blocks when hitting an enemy by a melee attack.
+menu.setting.fps,Показывать FPS:,Show FPS:
+menu.setting.ping,Показывать пинг:,Show ping:
+menu.ping,Пинг: %d мс,Ping: %d ms
+menu.disconnected,Разорвано соединение с сервером!,Disconnected from the server!
+menu.players_left,Все игроки отключились!,All players have disconnected!
+lobby.disconnect,Отключиться,Disconnect
+lobby.connect_to,Присоединиться к комнате с уровнем ,Connect to room with level 
+lobby.bad_ip,Неверный IP-адрес!,Incorrect IP address!
+lobby.refuse.busy,Невозможно подключиться к комнате — игра уже началась!,Can’t connect to room — game already started!
+lobby.refuse.level,Уровень комнаты (%s) не совпадает с Вашим уровнем!,Room level (%s) doesn’t match with yours!
+lobby.refuse.version,Версия игры комнаты (%s) не совпадает с Вашей версией: %s!,Game version of room (%s) doesn’t match with your version: %s!
+lobby.info.power,", Сила: ",", Power: "
+lobby.info.ulti,",  Навык: ",", Skill: "
+lobby.info.you,(Вы),(You)
+lobby.strange_ip," (возможно, нет подключения)"," (maybe, there is no connection)"
+lobby.your_ip,Ваш IP: ,Your IP: 
+lobby.start_warn,Начать игру может только сервер.,Only server can start the game.
+lobby.start,Начать игру,Start game
+lobby.level,Уровень: ,Level: 
+lobby.your_ips,Ваши локальные IP-адреса,Your local IP addresses:
+lobby.error,Ошибка!,Error!
+lobby.no_server,Не удалось найти сервер.,Can’t find a server.
+lobby.trying,Пробую IP: ,Trying IP: 
+minigame.buy.text,"Ты действительно хочешь купить мини-игру «%s» за %d монет?
+У тебя %d монет.","Are you really want to buy «%s» mini-game with %d coins?
+You have %d coins."
+menu.have,Есть,You have
+promocodes.used,Этот промокод уже использован!,This promocode is already used!
+promocodes.wrong,Введён неверный промокод!,This promocode is invalid!
+promocodes.fetch,Загрузка онлайн-промокодов…,Loading online promocodes…
+promocodes.fetch.error,Ошибка загрузки!,Error while loading!
+promocodes.fetch.check,Поиск промокода в файле…,Checking promocode in file…
+promocodes.fetch.bad,Ошибка чтения файла!,Error while reading!
+promocodes.fetch.no,Промокод не найден!,Promocode not found!
+story.0,После событий Alpha Platformer Adventure…,After the events of Alpha Platformer Adventure…
+story.1,"Когда дракону уже нужно было начинать сражение, он понимал, что шанс поражения велик. Он передал все свои знания и часть своей силы трём людям.","When the dragon had to start the battle, he understood that the chance of defeat was great. He given all his knowledge and part of his power to three people."
+story.2,"После поражения дракона и уничтожения метеорита, последователи стали собирать осколки небесного камня, надеясь его восстановить.","After defeat of the dragon and destroy of the meteorite, the followers began to collect its fragments, hoping to restore it."
+story.3,"Надеялись они не зря, ведь вскоре метеорит был воссоздан…","They hoped not in vain, because soon the meteorite was recreated…"
+story.4,И запущен…,And launched…
+story.5,Опять его надо уничтожать.,"Again, it must be destroyed."
+story.skip,Пропустить,Skip
+class.power,Сила: ,Power: 
+class.skill, Навык: , Skill: 
+level_dialog.level,Уровень ,Level 
+level_dialog.level.win,Уровень %s пройден!,Level %s completed!
+shop.you_have,У тебя: ,You have: 
+shop.bought,Куплено,Bought
+shop.confirm.text,Действительно хочешь купить эти предметы:,Are you really want to buy these items:
+shop.confirm.with, за, with
+shop.box_info.tokens, и Жетоны, and Tokens
+shop.box_info,"В ящике могут содержатся классы, монеты, жетоны и многое другое.
+Открытие золотого ящика равно открытию 3 ящиков.
+Открытие алмазного ящика равно открытию 10 ящиков.
+	
+Шансы при открытии одного обычного ящика:
+Монеты{cs}: {cc}%
+Класс: {hc}%
+Фрагмент амулета: {ac}%
+Душевный навык: {gc}%
+Душевная сила: {sc}%
+Кристаллы (как бонус): 10%
+	
+Получить душевный навык можно только на класс, достигший 15-го уровня силы, а душевную силу на класс, достигший 20-го уровня силы. Получать фрагменты амулетов можно после того, как один из классов достигнет 10-го уровня силы. После каждого открытого обычного ящика, в котором не было класса, шанс на него повышается на 0.06%. А если в ящике оказался класс, шанс падает до 1.5%. Начальный шанс - 2%. Если жетоны какого-то типа все классы не могут получить, то они конвертируются в монеты. 3 монеты за каждый жетон силы, 12 монет за каждый жетон навыка.","Box can contain classes, coins, tokens and much more.
+Opening of gold box equals to opening of 3 boxes.
+Opening of diamond box equals to opening of 10 boxes.
+
+Chances when opening one regular box:
+Coins{cs}: {cc}%
+Class: {hc}%
+Amulet fragment: {ac}%
+Soul skill: {gc}%
+Soul power: {sc}%
+Gems (as bonus): 10%
+
+You can only get soul skill for a class that has reached the 15th power level, and soul power for a class that has reached the 20th power level. You can receive fragments of amulets after one of the classes reaches the 10th power level. After each open regular box, in which there was no class, the chance of it increases by 0.06%. And if there is a class in the box, the chance drops to 1.5%. The initial chance is 2%. If all classes cannot receive tokens of some type, then they are converted into coins. 3 coins for each power token, 12 coins for each skill token."
+shop.box_info.title,Информация о ящиках,Boxes info
+shop.buy,Купить,Buy
+shop.offer.title,АКЦИЯ,OFFER
+shop.offer.free,БЕСПЛАТНО,FREE
+shop.offer.gift,ПОДАРОК!,GIFT!
+shop.offer.kit,НАБОР КЛАССА,CLASS KIT
+item.coins,МОНЕТЫ,COINS
+item.gems,КРИСТАЛЛЫ,GEMS
+item.frags,ФРАГМЕНТЫ АМУЛЕТА,AMULET FRAGMENTS
+item.frag,ФРАГМЕНТ АМУЛЕТА,AMULET FRAGMENT
+item.gadget,ДУШЕВНЫЙ НАВЫК,SOUL SKILL
+item.gadget.l,Душевный навык,Soul Skill
+item.sp,ДУШЕВНАЯ СИЛА,SOUL POWER
+item.sp.l,Душевная сила,Soul Power
+item.tokens,ЖЕТОНЫ СИЛЫ,POWER TOKENS
+item.utokens,ЖЕТОНЫ НАВЫКА,SKILL TOKENS
+item.wtokens,ЖЕТОНЫ СИЛЫ ДЛЯ ЛЮБОГО КЛАССА,POWER TOKENS FOR ANY CLASS
+item.wutokens,ЖЕТОНЫ НАВЫКА ДЛЯ ЛЮБОГО КЛАССА,SKILL TOKENS FOR ANY CLASS
+item.class,КЛАСС,CLASS
+item.potion1,МАЛЕНЬКОЕ ЗЕЛЬЕ,SMALL POTION
+item.potion2,СРЕДНЕЕ ЗЕЛЬЕ,MEDIUM POTION
+item.potion3,БОЛЬШОЕ ЗЕЛЬЕ,BIG POTION
+item.box,ЯЩИК,BOX
+item.box.big,ЗОЛОТОЙ ЯЩИК,GOLD BOX
+item.box.mega,АЛМАЗНЫЙ ЯЩИК,DIAMOND BOX
+box.remains.bonus,ОСТАЛОСЬ БОНУСОВ:,BONUSES REMAINING:
+box.remains,ОСТАЛОСЬ ПРЕДМЕТОВ:,ITEMS REMAINING:
+box.class_num,-й из 5 классов,/5 classes
+menu.multiplayer.warn,"Мультиплеер не доступен в веб-версии. Установи игру на телефон, чтобы сыграть в него!",Multiplayer is not available in web version. Install game on phone to play!
+menu.max,МАКС.,MAX
+menu.maximum,МАКСИМУМ,MAXIMUM
+menu.sell,Прод.,Sell
+class.amulets,Амулеты класса ,Amulets of class 
+amulet.craft,Создать,Craft
+menu.select,Выбрать,Select
+menu.selected,Выбрано,Selected
+class.statistics,ПОКАЗАТЕЛИ,STATISTICS
+sec, с, s
+class.upgrade.power,УЛУЧШИТЬ ДО %s-Й СИЛЫ?,UPGRADE TO %s POWER LEVEL?
+class.stat.level,Уровень,Level
+class.stat.speed,Скорость,Speed
+class.stat.reload,Перезарядка,Reload
+class.stat.mreload,Перезарядка(бл.),Reload(melee)
+class.stat.health,Здоровье,Health
+class.stat.defense,Защита,Defense
+class.stat.damage,Урон,Damage
+class.stat.dmgperhit,Урон за удар,Damage per hit
+class.stat.hits,Кол-во ударов,Hit count
+class.stat.duration,Длительность,Duration
+class.stat.heals,Лечение,Heals
+class.stat.mdamage,Урон(бл.),Dmg(melee)
+class.upgrade.skill,УЛУЧШИТЬ ДО %s-ГО НАВЫКА?,UPGRADE TO %s SKILL LEVEL?
+class.stat.skill,Навык,Skill
+class.select,Класс: ,Class: 
+box.youget,ПОЛУЧЕНО:,YOU GOT:
+box.tocoins,В МОНЕТЫ,TO COINS
+box.selectclass,"Выбери класс, который их получит","Select class, which will get them"
+box.canupgrade,Доступно улучшение!,Upgrade available!
+box.newclass,НОВЫЙ КЛАСС!,NEW CLASS!
+class.knight.boxdesc,"Атакуя мечом, наносит средний урон. Его особый навык — нанесение случайного урона случайным целям!","Attacking with sword, deals average damage. His special skill is dealing random damage to random targets!"
+class.butcher.boxdesc,"Мясник с долгим размахом атакует топором, нанося высокий урон. Его особый навык — нанесение огромного урона одному врагу!","Butcher attacks with axe with long swing, dealing high damage. His special skill is dealing huge damage to one enemy!"
+class.spearman.boxdesc,"Он колет вблизи также больно, как при метании. Его особый навык — нанесение оглушительного удара врагу!",It stabs near as painful as when throwing. His special skill is striking a deafening blow to the enemy!
+class.wizard.boxdesc,"Маг специализируется на дальних дистанциях, атакуя магическими сферами. Его особый навык — исцеление себя и всех союзников поблизости!",Wizard specializes in long-range attacks with magic spheres. His special skill is healing himself and all allies nearby!
+class.archer.boxdesc,Урон выпущенной стрелы зависит от времени натягивания лука. Особый навык Лучника — нанесение урона всем врагам поблизости!,The damage of the released arrow depends on the time of pulling the bow. Archer's special skill is dealing damage to all enemies nearby!
+menu.info,Информация,Information
+shop.watch_ad,РЕКЛАМА,WATCH AD
+level_dialog.class,Класс:,Class:
+level_dialog.rewards,НАГРАДЫ:,REWARDS:
+level_dialog.multiplayer.create,Создать комнату…,Create room…
+level_dialog.multiplayer.join,Присоединиться…,Join to room…
+lobby.title,Мультиплеер,Multiplayer
+lobby.players,Игроки:,Players:
+lobby.ips,Все IP…,All IPs…
+lobby.connect.ip,Подключиться по IP,Join with IP
+lobby.enter_ip,Введите IP сервера…,Enter server’s IP…
+lobby.connect.tip,IP можно найти на экране сервера.,You can find IP on server’s screen.
+lobby.connect.auto,Подключиться автоматически,Join automatically
+lobby.connect.auto.info,Выполняет сканирование всех IP в локальной сети в поиске комнаты. Может не сработать.,Scans all IPs in local network. May not work.
+win.congrats,Поздравляем!,Congratulations!
+win.reward,Твоя награда:,Your reward:
+win.claim,Забрать,Claim
+win.next,Далее,Next
+win.restart,Заново,Retry
+win.menu,Меню,Menu
+loading.loading,Загрузка…,Loading…
+noads.title,РЕКЛАМА УДАЛЕНА!,ADS REMOVED!
+noads.ok,УРА!,OK!
+promocodes.title,Ввести промокод:,Enter promocode:
+promocodes.placeholder,Код…,Code…
+promocodes.confirm,Подтвердить,Confirm
+controls.reset,Сбросить,Reset
+controls.title,Настройка управления,Editing controls…
+controls.guide,"Настрой управление под себя, перетаскивая кнопки!",Customize the controls for yourself by dragging buttons!
+gameover.title,ИГРА ОКОНЧЕНА,GAME OVER
+gameover.retry,Попробовать снова,Try again
+gameover.menu,Выйти в меню,Back to menu
+minigame.s,Мини-игры,Mini-games
+minigame.select,Выбери мини-игру,Select mini-game
+minigame.no,Недостаточно ресурсов!,Not enough resources!
+minigame.no.text,Недостаточно ресурсов для покупки данной мини-игры!,Not enough resources to buy this mini-game!
+menu.edu.again,Ты действительно хочешь посмотреть историю и пройти обучение заново?,Are you really want to see story and complete tutorial again?
+menu.edu,Обучение,Tutorial
+menu.multiplayer.guide,"Игра поддерживает совместный мультиплеер. Для начала игроки должны подключиться к одной сети, выбрать уровень, на котором будут играть, и игрока, который будет выступать в роли сервера. Он заходит на выбранный уровень, и рядом с кнопкой ""Играть"" нажимает стрелочку, затем ""Создать комнату..."". Другие игроки тем временем выбирают тот же уровень, нажимают ту же стрелочку, но уже ""Присоединиться..."". Есть два способа подключения:
+1. По IP-адресу. Традиционный и надёжный. IP виден на экране сервера.
+2. Автоматический. Сканирует все IP в локальной сети. Может не сработать.
+Всех подключённых игроков можно увидеть на экране. Когда все присоединятся, сервер начинает игру. Максимум игроков - 4.
+После окончания игры (победой или поражением) комнату нужно создавать заново. Но вводить IP или ждать конца сканирования снова не придётся - всё кэшируется в пределах одной игровой сессии. Хорошего времяпровождения!
+Также многопользовательской является мини-игра ""2Д-шутер""","This game supports cooperative multiplayer. To begin with, players must connect to same network, choose the level at which they will play, and the player who will act as a server. He goes to the selected level, and next to ""Play"" button presses an arrow, then ""Create room..."". Other players meanwhile choose the same level, press the same arrow, but ""Join..."" button. There are two ways to connect:
+1. By IP address. Traditional and reliable. The IP is visible on the server screen.
+2. Automatic. Scans all IP addresses on the local network. It may not work.
+All connected players can be seen on the screen. When everyone joins, the server starts the game. Maximum of 4 players.
+After the end of the game (victory or defeat), the room must be created anew. But you won't have to enter the IP or wait for the end of the scan again - everything is cached within one gaming session. Have a good time!
+Also multiplayer is a mini-game ""2D shooter"""
+menu.edu.0,"Здесь ты сможешь прокачивать свои классы, а также смотреть их способности, пользуясь кнопкой ""i"". Чтобы прокачать класс, нужно определённое количество жетонов и монет, и то, и другое падает из ящиков. Сами классы можно тоже получить из ящиков. А теперь вернись назад этой кнопкой!","Here you can upgrade your classes, as well as watch their abilities using ""i"" button. To upgrade a class, you need a certain number of tokens and coins, both of which drops from the boxes. The classes themselves can also be obtained from the boxes. And now go back with this button!"
+menu.edu.1,"Это магазин, где ты можешь покупать ресурсы. Каждый день в полночь обновляются акции и награды за уровень, появляется подарок. Заходи каждый день, чтобы ничего не пропустить! Теперь вернись назад.","This is a shop where you can buy resources. Every day at midnight, promotions and rewards for the level are updated and a gift appears. Come in every day so you don't miss anything! Now go back."
+menu.edu.2,"Я рассказал об основах. Ты можешь посмотреть историю и пройти обучение повторно, нажав кнопку ""?"" в левом верхнем углу. Нажми кнопку, чтобы завершить обучение. Удачи!","I told you about the basics. You can view the history and complete tutorial again by clicking the ""?"" button in the upper left corner. Press the button to complete the tutorial. Good luck!"
+menu.edu.end,Завершить,Complete
+amulet.amulet,Амулет,Amulet
+menu.done,Готово,Done
+shop.name,Магазин,Shop
+classes.name,Классы,Classes
+classes.tip.gadget,"Душевный навык — особая способность класса, которую можно использовать три раза за уровень. Можно найти в ящике.",Soul Skill is a special class ability that can be used 3 times per level. Can be found in a box.
+classes.tip.sp,"Душевная сила — пассивная способность класса, которая действует всегда. Можно найти в ящике.",Soul Power is a passive ability of the class that always works. Can be found in a box.
+classes.tip.amulet,"Амулеты — пассивная способность, которая повышает некоторые характеристики класса. Можно создать из фрагментов амулета.",Amulets are a passive ability that increases some class characteristics. You can create an amulet from fragments.
+classes.try,Испытать выбранный,Try selected
+classes.upgrade,Улучшить,Upgrade
+menu.close,Закрыть,Close
+reload.veryfast,ОЧЕНЬ БЫСТРАЯ,VERY FAST
+reload.fast,БЫСТРАЯ,FAST
+reload.normal,НОРМАЛЬНАЯ,NORMAL
+reload.slow,МЕДЛЕННАЯ,SLOW
+reload.veryslow,ОЧЕНЬ МЕДЛЕННАЯ,VERY SLOW
+speed.veryhigh,ОЧЕНЬ ВЫСОКАЯ,VERY HIGH
+speed.high,ВЫСОКАЯ,HIGH
+speed.normal,НОРМАЛЬНАЯ,NORMAL
+speed.low,НИЗКАЯ,LOW
+none.attack.name,АТАКА: САМООБОРОНА,ATTACK: SELF-DEFENSE
+none.attack.desc,"Герой делает два удара, один дальше и сильнее другого.","Hero makes two strikes, one farther and stronger than the other."
+knight.attack.name,АТАКА: ВЗМАХ МЕЧОМ,ATTACK: SWING OF SWORD
+knight.attack.desc,"Рыцарь атакует мечом, нанося урон всем попавшим в область атаки врагам.","Knight attacks with a sword, dealing damage to all enemies in the attack area."
+knight.ulti.name,НАВЫК: ШКВАЛ,SKILL: FLURRY
+knight.ulti.desc,Рыцарь делает мощные удары по случайным врагам.,Knight makes powerful strikes at random enemies.
+butcher.attack.name,АТАКА: РУБКА МЯСА,ATTACK: MEAT CHOPPING
+bucther.attack.desc,"Мясник с задержкой махает топором, нанося хороший урон.","Butcher swings the axe with a delay, causing good damage."
+butcher.ulti.name,НАВЫК: УДАР,SKILL: SMASH
+butcher.ulti.desc,Мясник наносит огромный урон одному врагу с наибольшим количеством здоровья.,Butcher deals massive damage to the one enemy with the most health.
+spearman.attack.name,АТАКА: УДАР КОПЬЁМ,ATTACK: SPEAR STRIKE
+spearman.attack.desc,"Копьеносец может либо кольнуть копьём вблизи, либо его метнуть. Урон всегда одинаковый.","Spearman can either stab a spear near, or throw it. The damage is always the same."
+spearman.ulti.name,НАВЫК: ОГЛУШЕНИЕ,SKILL: STUN
+spearman.ulti.desc,Копьеносец оглушает ближайшего врага и наносит ему урон.,Spearman stuns the nearest enemy and deals damage to him.
+wizard.attack.name,АТАКА: МАГИЯ ПОСОХА,ATTACK: STAFF MAGIC
+wizard.attack.desc,"Маг стреляет во врага магической сферой. Также можно ударить посохом, но урон будет ниже.","Wizard shoots the enemy with a magic sphere. You can also hit with a staff, but the damage will be lower."
+wizard.ulti.name,НАВЫК: ЛЕЧЕНИЕ,SKILL: HEAL
+wizard.ulti.desc,"Маг исцеляет себя и союзников поблизости, а также наносит небольшой урон всем врагам поблизости.","The magician heals himself and allies nearby, and also deals small damage to all enemies nearby."
+archer.attack.name,АТАКА: ПРИЦЕЛЬНЫЙ ВЫСТРЕЛ,ATTACK: PRECISE SHOT
+archer.attack.desc,"Лучник натягивает лук. Чем дольше натягивал, тем больше скорость и урон стрелы. Также можно ударить луком, но урон будет ниже.","Archer pulls the bow. The longer he pulled, the greater the speed and damage of the arrow. You can also hit with a bow, but the damage will be lower."
+archer.ulti.name,НАВЫК: НАЛЁТ,SKILL: BLITZ
+archer.ulti.desc,Лучник наносит урон всем врагам поблизости.,Archer deals damage to all enemies nearby.
+shop.notenough,Недостаточно ресурсов для покупки!,Not enough resources!
+shop.potinfo.title,Информация о зелье,Potion information
+shop.potinfo.1,Восстанавливает 20% от максимального здоровья.,Heals 20% of max health.
+shop.potinfo.2,Восстанавливает 40% от максимального здоровья.,Heals 40% of max health.
+shop.potinfo.3,Восстанавливает 60% от максимального здоровья.,Heals 60% of max health.
+shop.tip.pot1,"Зелья нужны для быстрого исцеления. Ты можешь иметь максимум пять зелий каждого вида. Нажми на иконку зелья во время игры, чтобы его использовать.",Potions are needed for quick healing. You can have a maximum of five potions of each kind. Click on the potion icon during the game to use it.
+shop.confirm,Подтверждение покупки…,Please confirm...
+shop.error,Ошибка!,Error!
+shop.error.text,Ошибка покупки!,Error while purchasing!
+shop.resources,РЕСУРСЫ,RESOURCES
+shop.promocodes,ПРОМОКОДЫ,PROMOCODES
+shop.promocodes.go,Открыть,Open
+shop.noads,БЕЗ РЕКЛАМЫ,REMOVE ADS
+shop.noads.tip,Поддержи нас!,Support us!
+shop.other,ПРОЧЕЕ,OTHER
+shop.500gems,500 КРИСТАЛЛОВ,500 GEMS
+shop.1250gems,1250 КРИСТАЛЛОВ,1250 GEMS
+shop.2500gems,2500 КРИСТАЛЛОВ,2500 GEMS
+shop.2250coins,2250 МОНЕТ,2250 COINS
+shop.4500coins,4500 МОНЕТ,4500 COINS
+shop.9000coins,9000 МОНЕТ,9000 COINS

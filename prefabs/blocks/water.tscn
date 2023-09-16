@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://textures/blocks/water.png" type="Texture" id=1]
+[ext_resource path="res://shaders/materials/water.tres" type="Material" id=2]
+[ext_resource path="res://scripts/game/other/graphics_setup.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15, 15 )
+
+[node name="water" type="Area2D"]
+material = ExtResource( 2 )
+collision_layer = 32
+collision_mask = 8
+monitoring = false
+
+[node name="shader" type="Sprite" parent="."]
+material = ExtResource( 2 )
+position = Vector2( -8.34465e-07, -3.57628e-07 )
+z_index = 20
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+shape = SubResource( 1 )

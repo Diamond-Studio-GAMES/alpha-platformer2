@@ -9,14 +9,14 @@ const AG_PORTAL_ID = 24
 const G_PORTAL_ID = 25
 const JUMP_PAD_ID = 23
 const ORB_ID = 26
-var spike = load("res://minigames/minigame5/spike.scn")
-var spikes = load("res://minigames/minigame5/spikes.scn")
-var ship_portal = load("res://minigames/minigame5/ship_portal_dash.scn")
-var cube_portal = load("res://minigames/minigame5/cube_portal_dash.scn")
-var ag_portal = load("res://minigames/minigame5/anti_gravity_portal_dash.scn")
-var g_portal = load("res://minigames/minigame5/gravity_portal_dash.scn")
-var jump_pad = load("res://minigames/minigame5/jump_pad.scn")
-var orb = load("res://minigames/minigame5/orb.scn")
+var spike = load("res://minigames/minigame5/spike.tscn")
+var spikes = load("res://minigames/minigame5/spikes.tscn")
+var ship_portal = load("res://minigames/minigame5/ship_portal_dash.tscn")
+var cube_portal = load("res://minigames/minigame5/cube_portal_dash.tscn")
+var ag_portal = load("res://minigames/minigame5/anti_gravity_portal_dash.tscn")
+var g_portal = load("res://minigames/minigame5/gravity_portal_dash.tscn")
+var jump_pad = load("res://minigames/minigame5/jump_pad.tscn")
+var orb = load("res://minigames/minigame5/orb.tscn")
 
 
 func _ready():

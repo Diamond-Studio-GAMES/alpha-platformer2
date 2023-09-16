@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://sounds/sfx/randomed/sword_hit.tres" type="AudioStream" id=1]
+
+[node name="bullet_hit" type="AudioStreamPlayer2D"]
+stream = ExtResource( 1 )
+autoplay = true
+bus = "sfx"
+
+[connection signal="finished" from="." to="." method="queue_free"]

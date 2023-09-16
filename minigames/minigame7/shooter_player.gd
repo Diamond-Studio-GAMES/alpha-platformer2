@@ -23,7 +23,7 @@ var player_name = ""
 var direction = Vector2.ZERO
 var is_pc = false
 var is_cool_aim = false
-var effect = load("res://minigames/minigame7/death_effect.scn")
+var effect = load("res://minigames/minigame7/death_effect.tscn")
 
 
 func _ready():
@@ -49,8 +49,8 @@ func _ready():
 				ip_founded = true
 				break
 		if not ip_founded:
-			ip += " (возможно, нет подключения)"
-		ip_text.text = "Ваш IP: " + ip
+			ip += tr("lobby.strange_ip")
+		ip_text.text = tr("lobby.your_ip") + ip
 		$camera/gui/gui/start.show()
 	is_cool_aim = bool(G.getv("shooter_aim_mode"))
 	is_pc = OS.has_feature("pc")
@@ -120,7 +120,6 @@ func hurt(dmg, by):
 		$shape.set_deferred("disabled", true)
 		if MP.has_multiplayer_authority(self):
 			parent.rpc("player_died", get_tree().get_network_unique_id(), by)
-		ip_text.text = "ПОРАЖЕНИЕ!" + ("\n Если ты сервер, подожди пока матч закончится!" if get_tree().is_network_server() else "")
 
 
 func do_disconnect():

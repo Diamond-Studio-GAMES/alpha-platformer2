@@ -1,0 +1,298 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=2]
+[ext_resource path="res://themes/theme.tres" type="Theme" id=3]
+[ext_resource path="res://minigames/minigame7/shooter_player.gd" type="Script" id=4]
+[ext_resource path="res://minigames/minigame7/weapons/sniper_rifle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://minigames/minigame7/weapons/theworld.tscn" type="PackedScene" id=6]
+[ext_resource path="res://minigames/minigame7/weapons/p_90.tscn" type="PackedScene" id=7]
+[ext_resource path="res://minigames/minigame7/images/joystick_bg.png" type="Texture" id=8]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=9]
+[ext_resource path="res://minigames/minigame7/weapons/knife.tscn" type="PackedScene" id=10]
+[ext_resource path="res://minigames/minigame7/weapons/gun.tscn" type="PackedScene" id=11]
+[ext_resource path="res://misc/virtual_joystick.tscn" type="PackedScene" id=12]
+[ext_resource path="res://minigames/minigame7/weapons/ak_47.tscn" type="PackedScene" id=13]
+[ext_resource path="res://minigames/minigame7/weapons/shotgun.tscn" type="PackedScene" id=14]
+[ext_resource path="res://minigames/minigame7/weapons/grenade.tscn" type="PackedScene" id=15]
+[ext_resource path="res://minigames/minigame7/images/aim_icon.png" type="Texture" id=16]
+[ext_resource path="res://minigames/minigame7/images/player.png" type="Texture" id=17]
+[ext_resource path="res://minigames/minigame7/images/move_icon.png" type="Texture" id=18]
+[ext_resource path="res://minigames/minigame7/weapons/snowball.tscn" type="PackedScene" id=19]
+[ext_resource path="res://minigames/minigame7/weapons/radar.tscn" type="PackedScene" id=20]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 38.0
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 80, 20 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 0, 0, 1 )
+border_width_bottom = 17
+border_color = Color( 0.8, 0, 0, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.12549, 0.12549, 0.12549, 1 )
+border_width_bottom = 16
+border_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 240, 80 )
+
+[sub_resource type="DynamicFont" id=6]
+outline_size = 2
+font_data = ExtResource( 2 )
+
+[node name="player" type="KinematicBody2D" groups=["spawnable"]]
+collision_layer = 2
+collision_mask = 21
+script = ExtResource( 4 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="sprite" type="Sprite" parent="."]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 17 )
+
+[node name="weapon" type="Position2D" parent="sprite"]
+position = Vector2( 40, 30 )
+__meta__ = {
+"_gizmo_extents_": 20.0
+}
+
+[node name="gun" parent="sprite/weapon" instance=ExtResource( 11 )]
+
+[node name="ak_47" parent="sprite/weapon" instance=ExtResource( 13 )]
+visible = false
+
+[node name="p_90" parent="sprite/weapon" instance=ExtResource( 7 )]
+visible = false
+
+[node name="sniper_rifle" parent="sprite/weapon" instance=ExtResource( 5 )]
+visible = false
+
+[node name="shotgun" parent="sprite/weapon" instance=ExtResource( 14 )]
+visible = false
+
+[node name="knife" parent="sprite/weapon" instance=ExtResource( 10 )]
+visible = false
+
+[node name="snowball" parent="sprite/weapon" instance=ExtResource( 19 )]
+visible = false
+
+[node name="grenade" parent="sprite/weapon" instance=ExtResource( 15 )]
+visible = false
+
+[node name="radar" parent="sprite/weapon" instance=ExtResource( 20 )]
+visible = false
+
+[node name="theworld" parent="sprite/weapon" instance=ExtResource( 6 )]
+visible = false
+
+[node name="camera" type="Camera2D" parent="."]
+
+[node name="gui" type="CanvasLayer" parent="camera"]
+
+[node name="gui" type="Control" parent="camera/gui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+
+[node name="disconnect" type="Button" parent="camera/gui/gui"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -28.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 46.0
+grow_horizontal = 0
+text = "lobby.disconnect"
+
+[node name="change_weapon" type="Button" parent="camera/gui/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -176.0
+margin_top = -132.0
+margin_right = -16.0
+margin_bottom = -92.0
+grow_horizontal = 0
+text = "7.change"
+
+[node name="button" type="TouchScreenButton" parent="camera/gui/gui/change_weapon"]
+shape = SubResource( 3 )
+
+[node name="hp" type="ProgressBar" parent="camera/gui/gui"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -180.0
+margin_top = 16.0
+margin_right = 180.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
+step = 1.0
+value = 100.0
+
+[node name="joystick" parent="camera/gui/gui" instance=ExtResource( 12 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 80.0
+margin_top = -36.0
+margin_right = 280.0
+margin_bottom = 164.0
+deadzone_size = 0.0
+joystick_mode = 1
+pc_control = false
+
+[node name="base" parent="camera/gui/gui/joystick" index="0"]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+texture = ExtResource( 8 )
+
+[node name="tip" parent="camera/gui/gui/joystick/base" index="0"]
+texture = ExtResource( 8 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="camera/gui/gui/joystick/base/tip" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 12.0
+margin_right = -12.0
+margin_bottom = -12.0
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 6
+
+[node name="joystick2" parent="camera/gui/gui" instance=ExtResource( 12 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -280.0
+margin_top = -36.0
+margin_right = -80.0
+margin_bottom = 164.0
+joystick_mode = 1
+pc_control = false
+
+[node name="base" parent="camera/gui/gui/joystick2" index="0"]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+texture = ExtResource( 8 )
+
+[node name="tip" parent="camera/gui/gui/joystick2/base" index="0"]
+texture = ExtResource( 8 )
+expand = true
+
+[node name="icon" type="TextureRect" parent="camera/gui/gui/joystick2/base/tip" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 12.0
+margin_right = -12.0
+margin_bottom = -12.0
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+
+[node name="shoot" type="TouchScreenButton" parent="camera/gui/gui"]
+shape = SubResource( 2 )
+
+[node name="hint" type="TextureRect" parent="camera/gui/gui/shoot"]
+margin_left = 200.0
+margin_top = 40.0
+margin_right = 280.0
+margin_bottom = 120.0
+mouse_filter = 2
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+
+[node name="ip" type="Label" parent="camera/gui/gui"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -240.0
+margin_top = 72.0
+margin_right = 240.0
+margin_bottom = 96.0
+grow_horizontal = 2
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 6 )
+align = 1
+valign = 1
+autowrap = true
+
+[node name="start" type="Button" parent="camera/gui/gui"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -80.0
+margin_top = 112.0
+margin_right = 80.0
+margin_bottom = 144.0
+grow_horizontal = 2
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "lobby.start"
+
+[node name="ammo" type="Label" parent="camera/gui/gui"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -56.0
+margin_top = -84.0
+margin_right = -16.0
+margin_bottom = -60.0
+grow_horizontal = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 6 )
+align = 1
+valign = 1
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath("..") ]
+spawn_sync_data_properties = [ "global_position", "current_weapon", "player_name" ]
+
+[node name="MultiplayerSynchronizer" type="Node" parent="."]
+script = ExtResource( 9 )
+reliable_sync_node_paths = [ NodePath("..") ]
+reliable_sync_properties_names = [ "current_weapon" ]
+unreliable_sync_node_paths = [ NodePath(".."), NodePath("../sprite"), NodePath(".."), NodePath(".."), NodePath("..") ]
+unreliable_sync_properties_names = [ "global_position", "scale", "aim_vector", "hp", "direction" ]
+
+[node name="label" type="Label" parent="."]
+margin_left = -56.0
+margin_top = -72.0
+margin_right = 54.0
+margin_bottom = -48.0
+grow_horizontal = 2
+theme = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "PLAYERNAME"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="camera/gui/gui/disconnect" to="." method="do_disconnect"]
+[connection signal="released" from="camera/gui/gui/change_weapon/button" to="." method="change_weapon"]
+[connection signal="pressed" from="camera/gui/gui/shoot" to="." method="shoot" binds= [ true ]]
+[connection signal="released" from="camera/gui/gui/shoot" to="." method="shoot" binds= [ false ]]
+[connection signal="pressed" from="camera/gui/gui/start" to="." method="start_game"]
+
+[editable path="camera/gui/gui/joystick"]
+[editable path="camera/gui/gui/joystick2"]

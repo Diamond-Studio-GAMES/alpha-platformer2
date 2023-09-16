@@ -1,0 +1,386 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://textures/mobs/dummy/dummy.tres" type="Texture" id=2]
+[ext_resource path="res://scripts/game/mobs/mob.gd" type="Script" id=3]
+[ext_resource path="res://sounds/sfx/heal.wav" type="AudioStream" id=4]
+[ext_resource path="res://textures/gui/strike_bar.tres" type="Texture" id=5]
+[ext_resource path="res://textures/effects/other/use_item_0.tres" type="Texture" id=6]
+[ext_resource path="res://textures/gui/health_bar.tres" type="Texture" id=7]
+[ext_resource path="res://textures/effects/other/heal_plus.png" type="Texture" id=8]
+[ext_resource path="res://scripts/game/mobs/optimizer.gd" type="Script" id=9]
+[ext_resource path="res://sounds/sfx/stun.wav" type="AudioStream" id=10]
+[ext_resource path="res://textures/gui/health_bar_empty.tres" type="Texture" id=11]
+[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=13]
+
+[sub_resource type="DynamicFont" id=1]
+size = 27
+font_data = ExtResource( 12 )
+
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "attack"
+
+[sub_resource type="Animation" id=2]
+resource_name = "death"
+tracks/0/type = "method"
+tracks/0/path = NodePath("hurt")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -2.97002, -2.1858 ), Vector2( -6.27375, -3.37047 ), Vector2( -9.30634, -3.49144 ), Vector2( -12.0052, -2.58744 ), Vector2( -15.4271, -1.21069 ), Vector2( -18.4486, 0.833482 ), Vector2( -21.8038, 4.04564 ), Vector2( -24.714, 7.25779 ), Vector2( -27.7911, 10.47 ), Vector2( -30.5345, 15.6844 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body/sprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "hurt"
+tracks/0/type = "method"
+tracks/0/path = NodePath("hurt")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/sprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=82]
+animation = "death"
+
+[sub_resource type="AnimationNodeTransition" id=85]
+input_count = 2
+xfade_time = 0.1
+input_0/name = "in"
+input_0/auto_advance = false
+input_1/name = "death"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeAnimation" id=83]
+animation = "hurt"
+
+[sub_resource type="AnimationNodeOneShot" id=84]
+
+[sub_resource type="AnimationNodeAnimation" id=78]
+animation = "idle"
+
+[sub_resource type="AnimationNodeTransition" id=86]
+input_count = 2
+xfade_time = 0.15
+input_0/name = "idle"
+input_0/auto_advance = false
+input_1/name = "walk"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeAnimation" id=79]
+animation = "walk"
+
+[sub_resource type="AnimationNodeBlendTree" id=90]
+graph_offset = Vector2( -297.294, -22.9695 )
+nodes/death/node = SubResource( 82 )
+nodes/death/position = Vector2( 423.529, 282.353 )
+nodes/death_trans/node = SubResource( 85 )
+nodes/death_trans/position = Vector2( 588.235, 141.176 )
+nodes/hurt/node = SubResource( 83 )
+nodes/hurt/position = Vector2( -282.353, 305.882 )
+nodes/hurt_shot/node = SubResource( 84 )
+nodes/hurt_shot/position = Vector2( -94.1176, 70.5882 )
+nodes/idle/node = SubResource( 78 )
+nodes/idle/position = Vector2( -564.706, 94.1176 )
+nodes/iw_trans/node = SubResource( 86 )
+nodes/iw_trans/position = Vector2( -305.882, 117.647 )
+nodes/output/position = Vector2( 776.471, 164.706 )
+nodes/walk/node = SubResource( 79 )
+nodes/walk/position = Vector2( -564.706, 211.765 )
+node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
+
+[sub_resource type="Curve" id=15]
+max_value = 5.0
+_data = [ Vector2( 0, 5 ), 0.0, -0.518896, 0, 0, Vector2( 1, 0 ), -18.6169, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=17]
+_data = [ Vector2( 0, 0.490247 ), 0.0, 0.0, 0, 0, Vector2( 0.497789, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.233573 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CircleShape2D" id=18]
+radius = 5.0
+
+[sub_resource type="Gradient" id=19]
+offsets = PoolRealArray( 0, 0.320574, 0.665072, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="mob_dummy" type="KinematicBody2D"]
+z_index = -2
+collision_layer = 4
+collision_mask = 23
+input_pickable = true
+script = ExtResource( 3 )
+defense = 0
+immune_to_fall_damage = true
+head_path = NodePath("visual/body/sprite")
+head_sprite_path = "res://textures/mobs/dummy/dummy.tres"
+head_hurt_sprite_path = "res://textures/mobs/dummy/dummy_hurt.tres"
+
+[node name="optimizer" type="VisibilityEnabler2D" parent="."]
+position = Vector2( 0, 1.90735e-06 )
+rect = Rect2( -32, -64, 64, 128 )
+script = ExtResource( 9 )
+
+[node name="visual" type="Node2D" parent="."]
+
+[node name="body" type="Node2D" parent="visual"]
+
+[node name="sprite" type="Sprite" parent="visual/body"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
+[node name="shape" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -6, -30, -6, -18, -14, -16, -14, 12, 0, 30, 14, 12, 14, -16, 6, -18, 6, -30 )
+
+[node name="bars" type="Control" parent="."]
+margin_left = -26.0
+margin_top = -40.0
+margin_right = 26.0
+margin_bottom = -34.0
+mouse_filter = 2
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="progress" type="TextureProgress" parent="bars"]
+self_modulate = Color( 0, 1, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+value = 100.0
+texture_progress = ExtResource( 5 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="under" type="TextureProgress" parent="bars/progress"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+value = 100.0
+texture_progress = ExtResource( 7 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="TextureRect" parent="bars/progress/under"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="hp" type="Label" parent="bars"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -39.0
+margin_top = -15.0
+margin_right = 221.0
+margin_bottom = 36.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 1 )
+text = "50/50"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tween" type="Tween" parent="."]
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/RESET = SubResource( 16 )
+anims/attack = SubResource( 5 )
+anims/death = SubResource( 2 )
+anims/hurt = SubResource( 3 )
+anims/idle = SubResource( 4 )
+next/hurt = "idle"
+
+[node name="anim_tree" type="AnimationTree" parent="."]
+tree_root = SubResource( 90 )
+anim_player = NodePath("../anim")
+active = true
+parameters/death_trans/current = 0
+parameters/hurt_shot/active = false
+parameters/iw_trans/current = 0
+
+[node name="hurt" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 50.0
+scale_amount_curve = SubResource( 15 )
+color = Color( 0.898039, 0.764706, 0, 1 )
+
+[node name="heal" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 4
+one_shot = true
+preprocess = 0.1
+explosiveness = 0.95
+local_coords = false
+texture = ExtResource( 8 )
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 20 )
+direction = Vector2( 0, -1 )
+spread = 22.5
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+radial_accel = 5.59
+tangential_accel = 5.59
+scale_amount_curve = SubResource( 17 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="check_water" type="Area2D" parent="."]
+position = Vector2( 0, -24 )
+collision_layer = 8
+collision_mask = 32
+
+[node name="shape" type="CollisionShape2D" parent="check_water"]
+shape = SubResource( 18 )
+
+[node name="stun_stars" type="CPUParticles2D" parent="."]
+visible = false
+amount = 10
+lifetime = 3.0
+preprocess = 3.0
+texture = ExtResource( 6 )
+emission_shape = 2
+emission_rect_extents = Vector2( 16, 40 )
+direction = Vector2( 0, 0 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+scale_amount = 0.5
+color = Color( 0.964706, 0.670588, 1, 1 )
+color_ramp = SubResource( 19 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="hurt_sfx" type="AudioStreamPlayer2D" parent="."]
+max_distance = 800.0
+bus = "sfx"
+
+[node name="stun_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+max_distance = 800.0
+bus = "sfx"
+
+[node name="heal_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+max_distance = 800.0
+bus = "sfx"
+
+[node name="MultiplayerSynchronizer" type="Node" parent="."]
+script = ExtResource( 13 )
+reliable_sync_node_paths = [ NodePath("..") ]
+reliable_sync_properties_names = [ "GRAVITY_SCALE" ]
+unreliable_sync_node_paths = [ NodePath(".."), NodePath("..") ]
+unreliable_sync_properties_names = [ "global_position", "current_health" ]
+syncing = false
+
+[connection signal="area_entered" from="check_water" to="." method="water_checked"]
+[connection signal="area_exited" from="check_water" to="." method="water_unchecked"]

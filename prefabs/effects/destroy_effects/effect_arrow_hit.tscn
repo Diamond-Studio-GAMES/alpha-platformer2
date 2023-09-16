@@ -1,0 +1,205 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://textures/effects/attacks/spear_hit_atlas.png" type="Texture" id=1]
+[ext_resource path="res://sounds/sfx/randomed/arrow_hit.tres" type="AudioStream" id=2]
+[ext_resource path="res://textures/effects/attacks/arrow_hit_atlas.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "hit"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("effect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.075, 0.15, 0.225 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("effect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("stripe/stripe0:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1334, 0.2668 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 0 ), Vector2( 9, 0 ), Vector2( 13, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("stripe/stripe0:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1334, 0.2668, 0.30015 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 8, 1 ), Vector2( 1, 1 ), Vector2( 0, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("stripe2/stripe0:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1334, 0.2668 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 0 ), Vector2( 9, 0 ), Vector2( 13, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("stripe2/stripe0:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1334, 0.2668, 0.30015 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 8, 1 ), Vector2( 1, 1 ), Vector2( 0, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("stripe3/stripe0:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1334, 0.2668 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 0 ), Vector2( 9, 0 ), Vector2( 13, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("stripe3/stripe0:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1334, 0.2668, 0.30015 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 8, 1 ), Vector2( 1, 1 ), Vector2( 0, 1 ) ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("particles:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0.518458 ), 0.0, 0.0, 0, 0, Vector2( 0.491369, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.279588 ), 0.0, 0.0, 0, 0 ]
+
+[node name="effect_arrow_hit" type="Node2D"]
+__meta__ = {
+"_edit_vertical_guides_": [ 19.0 ]
+}
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "hit"
+anims/hit = SubResource( 1 )
+
+[node name="effect" type="Sprite" parent="."]
+self_modulate = Color( 0, 1, 1, 1 )
+position = Vector2( 31, 0 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
+hframes = 2
+vframes = 2
+
+[node name="stripe" type="Node2D" parent="."]
+modulate = Color( 0, 1, 1, 1 )
+position = Vector2( 35, 0 )
+
+[node name="stripe0" type="Sprite" parent="stripe"]
+position = Vector2( 5, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 32, 1, 1 )
+
+[node name="stripe2" type="Node2D" parent="."]
+modulate = Color( 0, 1, 1, 1 )
+position = Vector2( 24, -2 )
+rotation = -0.523598
+
+[node name="stripe0" type="Sprite" parent="stripe2"]
+position = Vector2( 5, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 32, 1, 1 )
+
+[node name="stripe3" type="Node2D" parent="."]
+modulate = Color( 0, 1, 1, 1 )
+position = Vector2( 24, 2 )
+rotation = 0.523598
+
+[node name="stripe0" type="Sprite" parent="stripe3"]
+position = Vector2( 5, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 32, 1, 1 )
+
+[node name="particles" type="CPUParticles2D" parent="."]
+position = Vector2( 19, 0 )
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 30.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 60.0
+initial_velocity_random = 0.3
+scale_amount = 3.0
+scale_amount_curve = SubResource( 2 )
+color = Color( 0, 1, 1, 1 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+max_distance = 800.0
+bus = "sfx"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://minigames/minigame6/resources/plant_resource.gd" type="Script" id=1]
+[ext_resource path="res://minigames/minigame6/resources/plant_coin_bush.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = "6.plant.coin.bush"
+texture = ExtResource( 2 )
+custom_scale = Vector2( 1, 1 )
+rarity = 3
+days_to_grow = 2
+water_needs = 130
+fertilizer_needs = 2
+custom_reward = false
+reward = {
+"coins": 1900
+}
+custom_reward_script_data = ""

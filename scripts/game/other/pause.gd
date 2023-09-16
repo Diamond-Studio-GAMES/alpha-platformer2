@@ -50,4 +50,4 @@ func menu():
 		MP.close_network()
 	VisualServer.set_shader_time_scale(1)
 	get_tree().paused = false
-	get_tree().change_scene("res://scenes/menu/menu.scn")
+	get_tree().change_scene("res://scenes/menu/menu.tscn")

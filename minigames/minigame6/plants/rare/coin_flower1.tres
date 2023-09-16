@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://minigames/minigame6/resources/plant_coin_flower.png" type="Texture" id=1]
+[ext_resource path="res://minigames/minigame6/resources/plant_resource.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "6.plant.coin.flower"
+texture = ExtResource( 1 )
+custom_scale = Vector2( 1, 1 )
+rarity = 1
+days_to_grow = 1
+water_needs = 75
+fertilizer_needs = 1
+custom_reward = false
+reward = {
+"coins": 450
+}
+custom_reward_script_data = ""

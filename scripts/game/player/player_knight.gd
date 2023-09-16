@@ -15,7 +15,7 @@ func _ready():
 	max_health = power * 20 + 100 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
 	defense = power + 5 + (5 if is_amulet(G.Amulet.DEFENSE) else 0)
 	$visual/body/knight_attack.damage = power * 5 + 25  + (15 if  is_amulet(G.Amulet.POWER) else 0)
-	_ulti = load("res://prefabs/classes/knight_ulti.scn")
+	_ulti = load("res://prefabs/classes/knight_ulti.tscn")
 	current_health = max_health
 	_health_bar.max_value = max_health
 	_health_change_bar.max_value = max_health
@@ -23,7 +23,7 @@ func _ready():
 	$camera/gui/base/ulti_use/ulti_name.text = tr(G.ULTIS[class_nam]) + " " + G.RIM_NUMBERS[ulti_power]
 	_attack_visual.hide()
 	_attack_shape.disabled = true
-	RECHARGE_SPEED = 0.725 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
+	RECHARGE_SPEED = 0.75 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
 	SPEED += (7 if is_amulet(G.Amulet.SPEED) else 0)
 	gen.randomize()
 	have_soul_power = G.getv("knight_soul_power", false)
@@ -77,7 +77,7 @@ func miss(knockback_multiplier):
 	_anim_tree["parameters/miss_shot/active"] = true
 	var node = _hurt_heal_text.instance()
 	node.position = position
-	node.get_node("text").text = "МИМО"
+	node.get_node("text").text = tr("miss.miss")
 	node.get_node("text").modulate = Color.gray
 	_level.add_child(node)
 	_knockback = KNOCKBACK_POWER * clamp(sign(knockback_multiplier) * 2 + 1, -1, 1) 

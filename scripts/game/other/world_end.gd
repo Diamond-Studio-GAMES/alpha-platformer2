@@ -1,20 +1,22 @@
-extends Area2D
+extends Node2D
 
 
-var player: Player
+var entity: Entity
 
 
 func _ready():
-	connect("body_entered", self, "body_entered")
+	$up.connect("body_entered", self, "body_entered")
+	$down.connect("body_entered", self, "body_entered")
 
 
 func body_entered(body):
-	if body is Player:
-		player = body
-		body.can_revive = false
+	if body is Entity:
+		entity = body
+		if body is Player:
+			body.can_revive = false
 
 
 func _physics_process(delta):
-	if is_instance_valid(player):
-		if player.current_health > 0:
-			player.hurt(1, 0, false, true)
+	if is_instance_valid(entity):
+		if entity.current_health > 0:
+			entity.hurt(1, 0, false, true)

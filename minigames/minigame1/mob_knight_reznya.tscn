@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://prefabs/mobs/knight_mob.tscn" type="PackedScene" id=1]
+
+[node name="mob_knight" instance=ExtResource( 1 )]
+max_health = 50
+stats_multiplier = 2.0
+attack_damage = 60
+vision_distance = 6000.0

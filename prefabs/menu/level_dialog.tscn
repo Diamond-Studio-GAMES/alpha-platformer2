@@ -1,0 +1,495 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://textures/items/amulet_none.png" type="Texture" id=2]
+[ext_resource path="res://textures/gui/dropdown_arrow.png" type="Texture" id=3]
+[ext_resource path="res://textures/classes/butcher_helmet.png" type="Texture" id=4]
+[ext_resource path="res://textures/items/gadget.png" type="Texture" id=5]
+[ext_resource path="res://textures/classes/wizard_helmet.png" type="Texture" id=6]
+[ext_resource path="res://scripts/menu/viewport_tex.gd" type="Script" id=7]
+[ext_resource path="res://textures/items/soul_power.png" type="Texture" id=8]
+[ext_resource path="res://textures/classes/knight_helmet.png" type="Texture" id=9]
+[ext_resource path="res://scripts/menu/level_dialog.gd" type="Script" id=10]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_lobby.gd" type="Script" id=11]
+[ext_resource path="res://textures/classes/archer_helmet.png" type="Texture" id=12]
+[ext_resource path="res://textures/classes/spearman_helmet.png" type="Texture" id=13]
+
+[node name="select_level" type="CanvasLayer"]
+
+[node name="select_level_dialog" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = -240.0
+margin_right = 180.0
+margin_bottom = 240.0
+theme = ExtResource( 1 )
+window_title = "Уровень 1-1"
+script = ExtResource( 10 )
+
+[node name="bg" type="ColorRect" parent="select_level_dialog"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1600.0
+margin_top = -1200.0
+margin_right = 1600.0
+margin_bottom = 1200.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.501961 )
+
+[node name="classes" type="Control" parent="select_level_dialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -84.0
+margin_top = -92.0
+margin_right = -44.0
+margin_bottom = -52.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 20, 20 )
+
+[node name="knight" type="TextureRect" parent="select_level_dialog/classes"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 200.0
+margin_bottom = 200.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 7 )
+
+[node name="butcher" type="TextureRect" parent="select_level_dialog/classes"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 200.0
+margin_bottom = 200.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 7 )
+
+[node name="spearman" type="TextureRect" parent="select_level_dialog/classes"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 200.0
+margin_bottom = 200.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 7 )
+
+[node name="wizard" type="TextureRect" parent="select_level_dialog/classes"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 200.0
+margin_bottom = 200.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 7 )
+
+[node name="archer" type="TextureRect" parent="select_level_dialog/classes"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 200.0
+margin_bottom = 200.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 7 )
+
+[node name="player" type="TextureRect" parent="select_level_dialog/classes"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 200.0
+margin_bottom = 200.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 7 )
+
+[node name="class" type="Label" parent="select_level_dialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -134.0
+margin_top = -228.0
+margin_right = -4.0
+margin_bottom = -204.0
+text = "level_dialog.class"
+align = 2
+valign = 1
+clip_text = true
+
+[node name="stats" type="Label" parent="select_level_dialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 4.0
+margin_top = -184.0
+margin_right = 172.0
+margin_bottom = -152.0
+text = "Сила: 20 Навык:5"
+valign = 1
+
+[node name="amulet" type="TextureButton" parent="select_level_dialog"]
+anchor_left = 0.675
+anchor_top = 0.5
+anchor_right = 0.675
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -148.0
+margin_right = -12.0
+margin_bottom = -100.0
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="gadget" type="TextureButton" parent="select_level_dialog"]
+anchor_left = 0.675
+anchor_top = 0.5
+anchor_right = 0.675
+anchor_bottom = 0.5
+margin_left = -4.0
+margin_top = -148.0
+margin_right = 44.0
+margin_bottom = -100.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 5 )
+texture_focused = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="sp" type="TextureButton" parent="select_level_dialog"]
+anchor_left = 0.675
+anchor_top = 0.5
+anchor_right = 0.675
+anchor_bottom = 0.5
+margin_left = 52.0
+margin_top = -148.0
+margin_right = 100.0
+margin_bottom = -100.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 8 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+
+[node name="rewards" type="Label" parent="select_level_dialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -42.5
+margin_top = 20.0
+margin_right = 42.5
+margin_bottom = 44.0
+grow_horizontal = 2
+text = "level_dialog.rewards"
+align = 1
+
+[node name="rc" type="RichTextLabel" parent="select_level_dialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = 52.0
+margin_right = 160.0
+margin_bottom = 172.0
+bbcode_enabled = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="play" type="Button" parent="select_level_dialog"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -48.0
+margin_right = 40.0
+margin_bottom = -16.0
+text = "menu.play"
+clip_text = true
+
+[node name="menu" type="MenuButton" parent="select_level_dialog/play"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_right = 34.0
+icon = ExtResource( 3 )
+flat = false
+icon_align = 1
+items = [ "level_dialog.multiplayer.create", null, 0, false, false, 0, 0, null, "", false, "level_dialog.multiplayer.join", null, 0, false, false, 1, 0, null, "", false ]
+
+[node name="class2" type="OptionButton" parent="select_level_dialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 4.0
+margin_top = -228.0
+margin_right = 134.0
+margin_bottom = -198.0
+text = "class.knight.l"
+icon = ExtResource( 9 )
+align = 1
+expand_icon = true
+items = [ "class.knight.l", ExtResource( 9 ), false, 0, null, "class.butcher.l", ExtResource( 4 ), false, 1, null, "class.spearman.l", ExtResource( 13 ), false, 2, null, "class.wizard.l", ExtResource( 6 ), false, 3, null, "class.archer.l", ExtResource( 12 ), false, 4, null, "class.none.l", null, false, 5, null ]
+selected = 0
+
+[node name="lobby_dialog" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -160.0
+margin_right = 300.0
+margin_bottom = 160.0
+theme = ExtResource( 1 )
+popup_exclusive = true
+window_title = "lobby.title"
+script = ExtResource( 11 )
+
+[node name="lobby" type="Control" parent="lobby_dialog"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="level" type="Label" parent="lobby_dialog/lobby"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 56.0
+margin_bottom = 40.0
+text = "Уровень: 1-1"
+valign = 1
+
+[node name="start_game" type="Button" parent="lobby_dialog/lobby"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -80.0
+margin_top = -48.0
+margin_right = 80.0
+margin_bottom = -16.0
+disabled = true
+text = "lobby.start"
+
+[node name="disconnect" type="Button" parent="lobby_dialog/lobby"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -176.0
+margin_top = 12.0
+margin_right = -16.0
+margin_bottom = 44.0
+text = "lobby.disconnect"
+clip_text = true
+
+[node name="players" type="Label" parent="lobby_dialog/lobby"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -124.0
+margin_right = 20.0
+margin_bottom = -100.0
+grow_horizontal = 2
+text = "lobby.players"
+align = 1
+valign = 1
+
+[node name="ip" type="Label" parent="lobby_dialog/lobby"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -96.0
+margin_top = -92.0
+margin_right = 96.0
+margin_bottom = -68.0
+grow_horizontal = 2
+text = "Ваш IP: 192.168.143.255"
+align = 1
+valign = 1
+
+[node name="more" type="LinkButton" parent="lobby_dialog/lobby"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -32.0
+margin_top = -72.0
+margin_right = 32.0
+margin_bottom = -48.0
+grow_horizontal = 2
+text = "lobby.ips"
+
+[node name="scroll" type="ScrollContainer" parent="lobby_dialog/lobby"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -96.0
+margin_right = 256.0
+margin_bottom = 64.0
+scroll_horizontal_enabled = false
+
+[node name="list" type="VBoxContainer" parent="lobby_dialog/lobby/scroll"]
+margin_right = 512.0
+margin_bottom = 160.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="connect" type="Control" parent="lobby_dialog"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="title" type="Label" parent="lobby_dialog/connect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -133.0
+margin_top = 24.0
+margin_right = 133.0
+margin_bottom = 48.0
+grow_horizontal = 2
+text = "Присоединиться к комнате... "
+align = 1
+valign = 1
+
+[node name="ip" type="HBoxContainer" parent="lobby_dialog/connect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -88.0
+margin_right = 200.0
+margin_bottom = -40.0
+alignment = 1
+
+[node name="connect" type="Button" parent="lobby_dialog/connect/ip"]
+margin_right = 198.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+text = "lobby.connect.ip"
+
+[node name="ip" type="LineEdit" parent="lobby_dialog/connect/ip"]
+margin_left = 202.0
+margin_right = 400.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+align = 1
+max_length = 15
+placeholder_text = "lobby.enter_ip"
+
+[node name="tip" type="Label" parent="lobby_dialog/connect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -157.0
+margin_top = -24.0
+margin_right = 157.0
+grow_horizontal = 2
+text = "lobby.connect.tip"
+align = 1
+valign = 1
+
+[node name="auto_connect" type="Button" parent="lobby_dialog/connect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = 16.0
+margin_right = 200.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+text = "lobby.connect.auto"
+
+[node name="warning" type="Label" parent="lobby_dialog/connect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -277.5
+margin_top = 76.0
+margin_right = 277.5
+margin_bottom = 127.0
+grow_horizontal = 2
+text = "lobby.connect.auto.info"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="try" type="Label" parent="lobby_dialog/connect"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -157.0
+margin_top = -32.0
+margin_right = 157.0
+margin_bottom = -8.0
+grow_horizontal = 2
+align = 1
+valign = 1
+
+[node name="timer" type="Timer" parent="lobby_dialog/connect"]
+process_mode = 0
+wait_time = 0.1
+
+[node name="alert_layer" type="CanvasLayer" parent="."]
+layer = 2
+
+[connection signal="pressed" from="select_level_dialog/play" to="select_level_dialog" method="play"]
+[connection signal="item_selected" from="select_level_dialog/class2" to="select_level_dialog" method="select_class"]
+[connection signal="pressed" from="lobby_dialog/lobby/start_game" to="lobby_dialog" method="start_game"]
+[connection signal="pressed" from="lobby_dialog/lobby/disconnect" to="lobby_dialog" method="do_disconnect"]
+[connection signal="pressed" from="lobby_dialog/lobby/more" to="lobby_dialog" method="show_more_ips"]
+[connection signal="pressed" from="lobby_dialog/connect/ip/connect" to="lobby_dialog" method="connect_ip"]
+[connection signal="pressed" from="lobby_dialog/connect/auto_connect" to="lobby_dialog" method="connect_auto"]
+[connection signal="timeout" from="lobby_dialog/connect/timer" to="lobby_dialog" method="_on_timer_timeout"]

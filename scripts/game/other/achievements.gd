@@ -49,7 +49,7 @@ const SKILL_UPGRADING = "skill_used_10"
 
 signal effect_completed
 var blocked_counter = 0
-var achievement_get = load("res://prefabs/menu/achievement_complete.scn")
+var achievement_get = load("res://prefabs/menu/achievement_complete.tscn")
 var achievements = {
 	BOSS1 : {
 		"icon" : load("res://textures/achievements/boss1.png"),

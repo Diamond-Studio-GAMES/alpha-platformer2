@@ -58,12 +58,14 @@ func enter(id):
 		0:
 			var fall_distance = player._start_falling_y - player.global_position.y
 			player.global_position = $door1.global_position
+			player.get_node("camera").global_position = $door1.global_position
 			player._start_falling_y = player.global_position.y + fall_distance
 		1:
 			var fall_distance = player._start_falling_y - player.global_position.y
 			player.global_position = $door0.global_position
+			player.get_node("camera").global_position = $door0.global_position
 			player._start_falling_y = player.global_position.y + fall_distance
-	yield(get_tree().create_timer(1.5, false), "timeout")
+	yield(get_tree().create_timer(1, false), "timeout")
 	entering = false
 	player.can_control = true
 	if id == 1:

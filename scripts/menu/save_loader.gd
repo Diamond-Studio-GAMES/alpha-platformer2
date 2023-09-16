@@ -12,8 +12,9 @@ enum SoulType  {
 
 
 onready var soul = $create/soul
-var save_obj = load("res://prefabs/menu/save.scn")
+var save_obj = load("res://prefabs/menu/save.tscn")
 var id_to_delete = ""
+var saves_objs_dict = {}
 
 
 func _ready():
@@ -27,7 +28,6 @@ func _ready():
 		G.main_setv("volume", 0.75)
 		G.main_setv("volume_sfx", 1)
 		G.main_setv("fullscr", false)
-		G.main_setv("fps", false)
 	TranslationServer.set_locale(G.main_getv("lang", "ru"))
 	$delete_window.get_label().align = Label.ALIGN_CENTER
 	$delete_window.get_cancel().text = tr("sl.delete.no")
@@ -44,7 +44,6 @@ func _ready():
 	$settings/mv_s.value = G.main_getv("volume", 0.75)
 	$settings/sfxv_s.value = G.main_getv("volume_sfx", 1)
 	$settings/fullscr.pressed = G.main_getv("fullscr", false)
-	$settings/fps.pressed = G.main_getv("fps", false)
 	$misc/check_upd.pressed = G.main_getv("check_upd", true)
 	$misc/check_patch.pressed = G.main_getv("check_patches", true)
 	$misc/check_beta.pressed = G.main_getv("check_beta", not G.VERSION_STATUS.empty())
@@ -70,6 +69,7 @@ func list_saves():
 	if list != G.main_getv("saves_list", []):
 		reload_meta_from_saves()
 		G.main_setv("saves_list", list)
+	saves_objs_dict.clear()
 	var list_of_saves = []
 	list_of_saves = get_save_ids_list()
 	if list_of_saves.size() <= 0:
@@ -77,6 +77,7 @@ func list_saves():
 		return
 	for i in list_of_saves:
 		var node = save_obj.instance()
+		node.name = i
 		node.get_node("name").text = G.get_save_meta(i, "name", "???")
 		var date = G.get_save_meta(i, "last_opened", Time.get_date_dict_from_system())
 		var date_str = "%02d/%02d/%d" % [date["day"], date["month"], date["year"]]
@@ -86,6 +87,15 @@ func list_saves():
 		node.get_node("copy").connect("pressed", self, "duplicate_save", [i])
 		node.get_node("delete").connect("pressed", self, "delete_save", [i])
 		$saves/scroll/saves.add_child(node)
+		saves_objs_dict[G.get_save_meta(i, "name", "???")] = node
+	sort_saves()
+
+
+func sort_saves():
+	var sorted = saves_objs_dict.keys().duplicate()
+	sorted.sort()
+	for i in range(sorted.size()):
+		$saves/scroll/saves.move_child(saves_objs_dict[sorted[i]], i)
 
 
 func _process(delta):
@@ -112,11 +122,6 @@ func _process(delta):
 	G.main_setv("check_beta", $misc/check_beta.pressed)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("music"), linear2db($settings/mv_s.value))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("sfx"), linear2db($settings/sfxv_s.value))
-
-
-func fps_button_changed(state):
-	G.fps_text.visible = state
-	G.main_setv("fps", state)
 
 
 func create():
@@ -147,7 +152,7 @@ func create():
 	G.save()
 	yield(get_tree().create_timer(2.0, false), "timeout")
 	TranslationServer.set_locale(G.getv("lang", "ru"))
-	get_tree().change_scene("res://scenes/menu/story.scn")
+	get_tree().change_scene("res://scenes/menu/story.tscn")
 
 
 func play(id):
@@ -160,7 +165,7 @@ func play(id):
 	$enter_color.mouse_filter = Control.MOUSE_FILTER_STOP
 	yield(get_tree().create_timer(1.0, false), "timeout")
 	TranslationServer.set_locale(G.getv("lang", "ru"))
-	get_tree().change_scene("res://scenes/menu/menu.scn")
+	get_tree().change_scene("res://scenes/menu/menu.tscn")
 
 
 func cancel_create():
@@ -260,8 +265,8 @@ func cancel():
 func confirm_delete():
 	var dir = Directory.new()
 	dir.remove("user://saves/".plus_file(id_to_delete + ".apa2save"))
-	if dir.file_exists("user://custom_levels/" + id_to_delete + ".scn"):
-		dir.remove("user://custom_levels/" + id_to_delete + ".scn")
+	if dir.file_exists("user://custom_levels/" + id_to_delete + ".tscn"):
+		dir.remove("user://custom_levels/" + id_to_delete + ".tscn")
 	list_saves()
 	$enter_color.mouse_filter = Control.MOUSE_FILTER_IGNORE
 

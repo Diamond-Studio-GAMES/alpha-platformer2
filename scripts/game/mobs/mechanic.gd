@@ -11,7 +11,7 @@ onready var jump_ray1 = $jump_ray_cast2
 onready var path_ray_left = $path_ray_cast_left
 onready var path_ray_right = $path_ray_cast_right
 var _min_distance = 0
-var transform_effect = load("res://prefabs/effects/transform_mechanic.scn")
+var transform_effect = load("res://prefabs/effects/transform_mechanic.tscn")
 var transform_timer = 0
 
 

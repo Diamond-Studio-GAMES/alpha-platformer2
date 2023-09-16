@@ -1,7 +1,7 @@
 extends Node
 
 
-export (String) var load_path = "res://scenes/menu/menu.scn"
+export (String) var load_path = "res://scenes/menu/menu.tscn"
 var loader
 var time_max = 16
 var wait_frames = 3
@@ -20,7 +20,7 @@ func start_load():
 	loader = ResourceLoader.load_interactive(load_path)
 	if loader == null:
 		print("Can't load!")
-		get_tree().change_scene("res://scenes/splash_screen.scn")
+		get_tree().change_scene("res://scenes/splash_screen.tscn")
 		queue_free()
 		return
 
@@ -43,7 +43,7 @@ func _process(time):
 			$loading/bar.value = float(loader.get_stage()) / loader.get_stage_count() * 100
 		else:
 			print("Can't load: ", err)
-			get_tree().change_scene("res://scenes/splash_screen.scn")
+			get_tree().change_scene("res://scenes/splash_screen.tscn")
 			G.emit_signal("loaded_to_scene", "error")
 			queue_free()
 			break

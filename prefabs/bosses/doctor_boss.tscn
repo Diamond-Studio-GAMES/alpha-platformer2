@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://prefabs/mobs/doctor.tscn" type="PackedScene" id=2]
+
+[node name="mob_doctor_boss" groups=["spawnable"] instance=ExtResource( 2 )]
+stats_multiplier = 2.0
+
+[node name="MultiplayerSynchronizer" parent="." index="17"]
+syncing = true
+
+[node name="MultiplayerSpawnable" type="Node" parent="." index="18"]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+spawn_sync_data_node_paths = [ NodePath("..") ]
+spawn_sync_data_properties = [ "global_position" ]
+auto_despawn = false

@@ -13,14 +13,14 @@ var current_cost = null
 var current_id = -1
 var current_day = 0
 var current_unix_time = 0
-var offer_obj = load("res://prefabs/menu/offer.scn")
+var offer_obj = load("res://prefabs/menu/offer.tscn")
 onready var p0 = $scroll/offers/resources/potion0/count
 onready var b0 = $scroll/offers/resources/potion0/buy
 onready var p1 = $scroll/offers/resources/potion1/count
 onready var b1 = $scroll/offers/resources/potion1/buy
 onready var p2 = $scroll/offers/resources/potion2/count
 onready var b2 = $scroll/offers/resources/potion2/buy
-onready var na = $scroll/offers/resources/no_ads/buy
+onready var na = $scroll/offers/other/no_ads/buy
 onready var http = $http_request
 var gem = load("res://textures/items/gem.png")
 var coin = load("res://textures/items/coin.png")
@@ -41,11 +41,11 @@ var CLASS_ICONS = {
 	"archer" : load("res://textures/classes/archer_helmet.png") 
 }
 var ULTI_ICONS = {
-	"knight" : load("res://textures/gui/ulti_icon_0.res"),
-	"butcher" : load("res://textures/gui/ulti_icon_1.res"),
-	"spearman" : load("res://textures/gui/ulti_icon_2.res"),
-	"wizard" : load("res://textures/gui/ulti_icon_3.res"),
-	"archer" : load("res://textures/gui/ulti_icon_4.res")
+	"knight" : load("res://textures/gui/ulti_icon_0.tres"),
+	"butcher" : load("res://textures/gui/ulti_icon_1.tres"),
+	"spearman" : load("res://textures/gui/ulti_icon_2.tres"),
+	"wizard" : load("res://textures/gui/ulti_icon_3.tres"),
+	"archer" : load("res://textures/gui/ulti_icon_4.tres")
 }
 var POTIONS_ICONS = {
 	"small" : load("res://textures/items/small_potion.png"),
@@ -70,7 +70,7 @@ var payment
 onready var butt_gem0 = $scroll/offers/resources/gems0/buy
 onready var butt_gem1 = $scroll/offers/resources/gems1/buy
 onready var butt_gem2 = $scroll/offers/resources/gems2/buy
-onready var butt_no_ads = $scroll/offers/resources/no_ads/buy
+onready var butt_no_ads = $scroll/offers/other/no_ads/buy
 
 
 func init_iap():
@@ -164,6 +164,7 @@ func _on_purchase_consumed(purchase_token):
 
 func _on_purchase_error(code, message):
 	printerr("Purchase error %d: %s" % [code, message])
+	$error.popup_centered()
 
 
 func _on_purchase_acknowledgement_error(code, message, purchase_token):
@@ -216,21 +217,25 @@ func buy_gems500():
 	var response = payment.purchase(GEMS_500_SKU)
 	if response.status != OK:
 		print("Purchase error %s: %s" % [response.response_code, response.debug_message])
+		$error.popup_centered()
 
 func buy_gems1250():
 	var response = payment.purchase(GEMS_1250_SKU)
 	if response.status != OK:
 		print("Purchase error %s: %s" % [response.response_code, response.debug_message])
+		$error.popup_centered()
 
 func buy_gems2500():
 	var response = payment.purchase(GEMS_2500_SKU)
 	if response.status != OK:
 		print("Purchase error %s: %s" % [response.response_code, response.debug_message])
+		$error.popup_centered()
 
 func buy_no_ads():
 	var response = payment.purchase(NO_ADS_SKU)
 	if response.status != OK:
 		print("Purchase error %s: %s" % [response.response_code, response.debug_message])
+		$error.popup_centered()
 # END OF IAP
 
 func _process(delta):
@@ -241,7 +246,7 @@ func _process(delta):
 		b0.disabled = false
 	else:
 		b0.disabled = false
-		p0.text = "У тебя:" + str(G.getv("potions1", 0))
+		p0.text = tr("shop.you_have") + str(G.getv("potions1", 0))
 		if int(p0.text) >= 5:
 			b0.disabled = true
 	if G.getv("potions2", 0) < 1:
@@ -249,7 +254,7 @@ func _process(delta):
 		b1.disabled = false
 	else:
 		b1.disabled = false
-		p1.text = "У тебя:" + str(G.getv("potions2", 0))
+		p1.text = tr("shop.you_have") + str(G.getv("potions2", 0))
 		if int(p1.text) >= 5:
 			b1.disabled = true
 	if G.getv("potions3", 0) < 1:
@@ -257,12 +262,12 @@ func _process(delta):
 		b2.disabled = false
 	else:
 		b2.disabled = false
-		p2.text = "У тебя:" + str(G.getv("potions3", 0))
+		p2.text = tr("shop.you_have") + str(G.getv("potions3", 0))
 		if int(p2.text) >= 5:
 			b2.disabled = true
 	if G.main_getv("no_ads", false):
 		na.disabled = true
-		na.text = "Куплено"
+		na.text = tr("shop.bought")
 
 
 func get_gems(count):
@@ -281,7 +286,7 @@ func removed_ads():
 	get_tree().paused = true
 	yield(get_tree().create_timer(0.5), "timeout")
 	get_tree().paused = false
-	get_tree().change_scene("res://scenes/menu/no_ads.scn")
+	get_tree().change_scene("res://scenes/menu/no_ads.tscn")
 
 
 func buy(costs = "", receives = "", id = -1):
@@ -302,54 +307,54 @@ func buy(costs = "", receives = "", id = -1):
 		add += ", "
 		match i:
 			"coins":
-				add += "монеты" + " (" + str(receive[i])
+				add += tr("item.coins").to_lower() + " (" + str(receive[i])
 			"gems":
-				add += "кристаллы" + " (" + str(receive[i])
+				add += tr("item.gems").to_lower() + " (" + str(receive[i])
 			"amulet_frags":
 				for j in receive[i]:
-					add += "фрагменты амулета" + " (" + tr(G.AMULET_NAME[G.AMULET_ID[j]]) + \
+					add += tr("item.frags").to_lower() + " (" + tr(G.AMULET_NAME[G.AMULET_ID[j]]) + \
 							", " + str(receive[i][j])
 			"gadget":
 				for j in receive[i]:
-					add += "душевный навык" + " (" + tr(G.CLASSES[j])
+					add += tr("item.gadget").to_lower() + " (" + tr(G.CLASSES[j])
 			"soul_power":
 				for j in receive[i]:
-					add += "душевная сила" + " (" + tr(G.CLASSES[j])
+					add += tr("item.sp").to_lower() + " (" + tr(G.CLASSES[j])
 			"class":
 				for j in receive[i]:
-					add += "класс" + " (" + tr(G.CLASSES[j])
+					add += tr("item.class").to_lower() + " (" + tr(G.CLASSES[j])
 			"tokens":
 				for j in receive[i]:
-					add += "жетоны силы" + " (" + tr(G.CLASSES[j]) + "," + str(receive[i][j])
+					add += tr("item.tokens").to_lower() + " (" + tr(G.CLASSES[j]) + ", " + str(receive[i][j])
 			"ulti_tokens":
 				for j in receive[i]:
-					add += "жетоны навыка" + " (" + tr(G.CLASSES[j]) + "," + str(receive[i][j])
+					add += tr("item.utokens").to_lower() + " (" + tr(G.CLASSES[j]) + ", " + str(receive[i][j])
 			"wild_tokens":
-				add += "жетоны силы на любой класс" + " (" + str(receive[i])
+				add += tr("item.wtokens").to_lower() + " (" + str(receive[i])
 			"wild_ulti_tokens":
-				add += "жетоны навыка на любой класс" + " (" + str(receive[i])
+				add += tr("item.wutokens").to_lower() + " (" + str(receive[i])
 			"potions1":
-				add += "маленькое зелье" + " (" + str(receive[i])
+				add += tr("item.potion1").to_lower() + " (" + str(receive[i])
 			"potions2":
-				add += "среднее зелье" + " (" + str(receive[i])
+				add += tr("item.potion2").to_lower() + " (" + str(receive[i])
 			"potions3":
-				add += "большое зелье" + " (" + str(receive[i])
+				add += tr("item.potion3").to_lower() + " (" + str(receive[i])
 			"box":
-				add += "ящик" + " (" + str(receive[i])
+				add += tr("item.box").to_lower() + " (" + str(receive[i])
 			"gold_box":
-				add += "золотой ящик" + " (" + str(receive[i])
+				add += tr("item.box_big").to_lower() + " (" + str(receive[i])
 			"diamond_box":
-				add += "алмазный ящик" + " (" + str(receive[i])
+				add += tr("item.box.mega").to_lower() + " (" + str(receive[i])
 		add += ")"
 	add[0] = ""
-	add += " за"
+	add += tr("shop.confirm.with")
 	for i in cost:
 		if i == "coins":
-			add += " монеты (" + str(cost[i]) + ")"
+			add += " " + tr("item.coins").to_lower() + " (" + str(cost[i]) + ")"
 		if i == "gems":
-			add += " кристаллы (" + str(cost[i]) + ")"
-	$confirm.dialog_text = "Действительно хочешь купить" + add + "?"
-	$confirm.get_cancel().text = "Отмена"
+			add += " " + tr("item.gems").to_lower() + " (" + str(cost[i]) + ")"
+	$confirm.dialog_text = tr("shop.confirm.text") + add + "?"
+	$confirm.get_cancel().text = tr("menu.cancel")
 	$confirm.popup_centered()
 
 
@@ -403,21 +408,9 @@ func info_box():
 	var gadget_chance = 4 if not gadget_classes.empty() else 0
 	var sp_chance = 2 if not soul_power_classes.empty() else 0
 	var coins_chance = 100 - hero_chance - gadget_chance - sp_chance - amul_chance
-	var coins_suffix = " и Жетоны" if not power_classes.empty() or not ulti_classes.empty() else ""
-	$info_boxes.dialog_text = """В ящике могут содержатся классы, монеты, жетоны и многое другое.
-	Открытие золотого ящика равно открытию 3 ящиков.
-	Открытие алмазного ящика равно открытию 10 ящиков.
-	
-	Шансы при открытии одного обычного ящика:
-	Монеты{cs}: {cc}%
-	Класс: {hc}%
-	Фрагмент амулета: {ac}%
-	Душевный навык: {gc}%
-	Душевная сила: {sc}%
-	Кристаллы (как бонус): 10%
-	
-	Получить душевный навык можно только на класс, достигший 15-го уровня силы, а душевную силу на класс, достигший 20-го уровня силы. Получать фрагменты амулетов можно после того, как один из классов достигнет 10-го уровня силы. После каждого открытого обычного ящика, в котором не было класса, шанс на него повышается на 0.06%. А если в ящике оказался класс, шанс падает до 1.5%. Начальный шанс - 2%. Если жетоны какого-то типа все классы не могут получить, то они конвертируются в монеты. 3 монеты за каждый жетон силы, 12 монет за каждый жетон навыка."""\
-			.format({"cs":coins_suffix, "cc":coins_chance, "hc":hero_chance, "ac":amul_chance, "gc":gadget_chance, "sc":sp_chance})
+	var coins_suffix = tr("shop.box_info.tokens") if not power_classes.empty() or not ulti_classes.empty() else ""
+	$info_boxes.dialog_text = tr("shop.box_info").format({"cs":coins_suffix, "cc":coins_chance, 
+			"hc":hero_chance, "ac":amul_chance, "gc":gadget_chance, "sc":sp_chance})
 	$info_boxes.popup_centered()
 
 
@@ -425,7 +418,7 @@ func _ready():
 	$info_boxes.get_ok().hide()
 	fetch_online_offers()
 	init_iap()
-	$confirm.get_ok().text = "Купить"
+	$confirm.get_ok().text = tr("shop.buy")
 	current_day = Time.get_date_dict_from_system()["day"]
 	current_unix_time = Time.get_unix_time_from_system()
 	show_offers()
@@ -439,12 +432,12 @@ func show_offers():
 	for i in G.getv("offers", []):
 		show_offer(i["costs"], i["receives"], i["id"], i["name"])
 	if not G.getv("collected_ad_bonus", false) and G.ad.ads_available():
-		var node = load("res://prefabs/menu/offer_ad.scn").instance()
+		var node = load("res://prefabs/menu/offer_ad.tscn").instance()
 		$scroll/offers.add_child(node)
 		$scroll/offers.move_child(node, 0)
 
 
-func show_offer(costs, receives, id = 0, name = "АКЦИЯ"):
+func show_offer(costs, receives, id = 0, name = tr("shop.offer.title")):
 	var off = offer_obj.instance()
 	off.name = "offer" + str(id)
 	off.offer_rec = receives
@@ -453,46 +446,46 @@ func show_offer(costs, receives, id = 0, name = "АКЦИЯ"):
 		off.get_node("buy").icon = gem if costs.has("gems") else coin
 		off.get_node("buy").text = str(costs[costs.keys()[0]])
 	else:
-		off.get_node("buy").text = "БЕСПЛАТНО"
+		off.get_node("buy").text = tr("shop.offer.free")
 		off.get_node("buy").icon = null
 	var l = 0
 	for i in receives:
 		off.get_node("items/item" + str(l)).show()
 		if i == "coins":
-			off.get_node("items/item" + str(l) + "/name").text = "МОНЕТЫ"
+			off.get_node("items/item" + str(l) + "/name").text = tr("item.coins")
 			off.get_node("items/item" + str(l) + "/icon").texture = coin
 			off.get_node("items/item" + str(l) + "/count").text = "x" + str(receives[i])
 			l += 1
 		if i == "gems":
-			off.get_node("items/item" + str(l) + "/name").text = "КРИСТАЛЛЫ"
+			off.get_node("items/item" + str(l) + "/name").text = tr("item.gems")
 			off.get_node("items/item" + str(l) + "/icon").texture = gem
 			off.get_node("items/item" + str(l) + "/count").text = "x" + str(receives[i])
 			l += 1
 		if i == "gadget":
 			for j in receives[i]:
 				off.get_node("items/item" + str(l)).show()
-				off.get_node("items/item" + str(l) + "/name").text = "ДУШ. НАВЫК"
+				off.get_node("items/item" + str(l) + "/name").text = tr("item.gadget")
 				off.get_node("items/item" + str(l) + "/icon").texture = gadget
 				off.get_node("items/item" + str(l) + "/count").text = tr(G.CLASSES[j])
 				l += 1
 		if i == "soul_power":
 			for j in receives[i]:
 				off.get_node("items/item" + str(l)).show()
-				off.get_node("items/item" + str(l) + "/name").text = "ДУШ. СИЛА"
+				off.get_node("items/item" + str(l) + "/name").text = tr("item.sp")
 				off.get_node("items/item" + str(l) + "/icon").texture = sp
 				off.get_node("items/item" + str(l) + "/count").text = tr(G.CLASSES[j])
 				l += 1
 		if i == "class":
 			for j in receives[i]:
 				off.get_node("items/item" + str(l)).show()
-				off.get_node("items/item" + str(l) + "/name").text = "КЛАСС"
+				off.get_node("items/item" + str(l) + "/name").text = tr("item.class")
 				off.get_node("items/item" + str(l) + "/icon").texture = CLASS_ICONS[j]
 				off.get_node("items/item" + str(l) + "/count").text = tr(G.CLASSES[j])
 				l += 1
 		if i == "tokens":
 			for j in receives[i]:
 				off.get_node("items/item" + str(l)).show()
-				off.get_node("items/item" + str(l) + "/name").text = "ЖЕТОНЫ СИЛЫ"
+				off.get_node("items/item" + str(l) + "/name").text = tr("item.tokens")
 				off.get_node("items/item" + str(l) + "/icon").texture = token
 				off.get_node("items/item" + str(l) + "/icon").self_modulate = G.CLASS_COLORS[j]
 				off.get_node("items/item" + str(l) + "/icon/sub").texture = CLASS_ICONS[j]
@@ -501,7 +494,7 @@ func show_offer(costs, receives, id = 0, name = "АКЦИЯ"):
 		if i == "ulti_tokens":
 			for j in receives[i]:
 				off.get_node("items/item" + str(l)).show()
-				off.get_node("items/item" + str(l) + "/name").text = "ЖЕТОНЫ НАВЫКА"
+				off.get_node("items/item" + str(l) + "/name").text = tr("item.utokens")
 				off.get_node("items/item" + str(l) + "/icon").texture = ulti_token
 				off.get_node("items/item" + str(l) + "/icon").self_modulate = G.CLASS_COLORS[j]
 				off.get_node("items/item" + str(l) + "/icon/sub").texture = ULTI_ICONS[j]
@@ -510,47 +503,47 @@ func show_offer(costs, receives, id = 0, name = "АКЦИЯ"):
 		if i == "amulet_frags":
 			for j in receives[i]:
 				off.get_node("items/item" + str(l)).show()
-				off.get_node("items/item" + str(l) + "/name").text = "ФР. АМУЛЕТА"
+				off.get_node("items/item" + str(l) + "/name").text = tr("item.frags")
 				off.get_node("items/item" + str(l) + "/icon").texture = AMULET_ICONS[j]
 				off.get_node("items/item" + str(l) + "/count").text = "x" + str(receives[i][j])
 				l += 1
 		if i == "wild_tokens":
-			off.get_node("items/item" + str(l) + "/name").text = "ЖЕТОНЫ СИЛЫ"
+			off.get_node("items/item" + str(l) + "/name").text = tr("item.tokens")
 			off.get_node("items/item" + str(l) + "/icon").texture = wild_token
 			off.get_node("items/item" + str(l) + "/count").text = "x" + str(receives[i])
 			l += 1
 		if i == "wild_ulti_tokens":
-			off.get_node("items/item" + str(l) + "/name").text = "ЖЕТОНЫ НАВЫКА"
+			off.get_node("items/item" + str(l) + "/name").text = tr("item.utokens")
 			off.get_node("items/item" + str(l) + "/icon").texture = wild_ulti_token
 			off.get_node("items/item" + str(l) + "/count").text = "x" + str(receives[i])
 			l += 1
 		if i == "potions1":
-			off.get_node("items/item" + str(l) + "/name").text = "МАЛЕНЬКОЕ ЗЕЛЬЕ"
+			off.get_node("items/item" + str(l) + "/name").text = tr("item.potion1")
 			off.get_node("items/item" + str(l) + "/icon").texture = POTIONS_ICONS["small"]
 			off.get_node("items/item" + str(l) + "/count").text = "x" + str(receives[i])
 			l += 1
 		if i == "potions2":
-			off.get_node("items/item" + str(l) + "/name").text = "СРЕДНЕЕ ЗЕЛЬЕ"
+			off.get_node("items/item" + str(l) + "/name").text = tr("item.potion2")
 			off.get_node("items/item" + str(l) + "/icon").texture = POTIONS_ICONS["normal"]
 			off.get_node("items/item" + str(l) + "/count").text = "x" + str(receives[i])
 			l += 1
 		if i == "potions3":
-			off.get_node("items/item" + str(l) + "/name").text = "БОЛЬШОЕ ЗЕЛЬЕ"
+			off.get_node("items/item" + str(l) + "/name").text = tr("item.potion3")
 			off.get_node("items/item" + str(l) + "/icon").texture = POTIONS_ICONS["big"]
 			off.get_node("items/item" + str(l) + "/count").text = "x" + str(receives[i])
 			l += 1
 		if i == "box":
-			off.get_node("items/item" + str(l) + "/name").text = "ЯЩИК"
+			off.get_node("items/item" + str(l) + "/name").text = tr("item.box")
 			off.get_node("items/item" + str(l) + "/icon").texture = box
 			off.get_node("items/item" + str(l) + "/count").text = "x" + str(receives[i])
 			l += 1
 		if i == "gold_box":
-			off.get_node("items/item" + str(l) + "/name").text = "ЗОЛОТОЙ ЯЩИК"
+			off.get_node("items/item" + str(l) + "/name").text = tr("item.box.big")
 			off.get_node("items/item" + str(l) + "/icon").texture = gold_box
 			off.get_node("items/item" + str(l) + "/count").text = "x" + str(receives[i])
 			l += 1
 		if i == "diamond_box":
-			off.get_node("items/item" + str(l) + "/name").text = "АЛМАЗНЫЙ ЯЩИК"
+			off.get_node("items/item" + str(l) + "/name").text = tr("item.box.mega")
 			off.get_node("items/item" + str(l) + "/icon").texture = diamond_box
 			off.get_node("items/item" + str(l) + "/count").text = "x" + str(receives[i])
 			l += 1
@@ -614,7 +607,7 @@ func generate_offers():
 			discount.shuffle()
 			var cc = 2250 * mul[1] * discount[3]
 			var cost = 15 if mul[1] == 1 else 25 if mul[1] == 2 else 45
-			offer = {"costs": {"gems" : cost}, "receives" : {"coins" : cc}, "id" : i, "name" : "АКЦИЯ"}
+			offer = {"costs": {"gems" : cost}, "receives" : {"coins" : cc}, "id" : i, "name" : tr("shop.offer.title")}
 		if type == 1:
 			#POTIONS
 			var t = ["1", "1", "2", "2", "3"]
@@ -626,28 +619,28 @@ func generate_offers():
 			var cost = cost_1 * c * discount[1]
 			if G.getv("potions" + t[2], 0) + c > 5:
 				continue
-			offer = {"costs": {"coins" : cost}, "receives" : {"potions" + t[2] : c}, "id" : i, "name" : "АКЦИЯ"}
+			offer = {"costs": {"coins" : cost}, "receives" : {"potions" + t[2] : c}, "id" : i, "name" : tr("shop.offer.title")}
 		if type == 2:
 			#BOX
 			var cost = gen.randi_range(2, 3)
 			var count = gen.randi_range(2, 10)
-			offer = {"costs": {"gems" : cost * count}, "receives" : {"box" : count}, "id" : i, "name" : "АКЦИЯ"}
+			offer = {"costs": {"gems" : cost * count}, "receives" : {"box" : count}, "id" : i, "name" : tr("shop.offer.title")}
 		if type == 3:
 			#BOX GOLD
 			var cost = 10 - gen.randi_range(2, 4)
 			var count = gen.randi_range(1, 5)
-			offer = {"costs": {"gems" : cost * count}, "receives" : {"gold_box" : count}, "id" : i, "name" : "АКЦИЯ"}
+			offer = {"costs": {"gems" : cost * count}, "receives" : {"gold_box" : count}, "id" : i, "name" : tr("shop.offer.title")}
 		if type == 4:
 			#DIAMOND BOX
 			var cost = 30 - gen.randi_range(1, 3) * 5
 			var count = gen.randi_range(1, 3)
-			offer = {"costs": {"gems" : cost * count}, "receives" : {"diamond_box" : count}, "id" : i, "name" : "АКЦИЯ"}
+			offer = {"costs": {"gems" : cost * count}, "receives" : {"diamond_box" : count}, "id" : i, "name" : tr("shop.offer.title")}
 		if type == 5:
 			#GADGET
 			if not gadget_classes.empty():
 				gadget_classes.shuffle()
 				var to = gadget_classes[0]
-				offer = {"costs": {"coins" : 500}, "receives" : {"gadget" : [to]}, "id" : i, "name" : "АКЦИЯ"}
+				offer = {"costs": {"coins" : 500}, "receives" : {"gadget" : [to]}, "id" : i, "name" : tr("shop.offer.title")}
 			else:
 				continue
 		if type == 6:
@@ -655,7 +648,7 @@ func generate_offers():
 			if not soul_power_classes.empty():
 				soul_power_classes.shuffle()
 				var to = soul_power_classes[0]
-				offer = {"costs": {"coins" : 1000}, "receives" : {"soul_power" : [to]}, "id" : i, "name" : "АКЦИЯ"}
+				offer = {"costs": {"coins" : 1000}, "receives" : {"soul_power" : [to]}, "id" : i, "name" : tr("shop.offer.title")}
 			else:
 				continue
 		if type == 7:
@@ -667,7 +660,7 @@ func generate_offers():
 				power_classes.shuffle()
 				var to = power_classes[0]
 				var count = 20 + gen.randi_range(0, 10) * 10
-				offer = {"costs": {"coins" : count * 5}, "receives" : {"tokens" : {to: count }}, "id" : i, "name" : "АКЦИЯ"}
+				offer = {"costs": {"coins" : count * 5}, "receives" : {"tokens" : {to: count }}, "id" : i, "name" : tr("shop.offer.title")}
 			else:
 				#ULTI
 				if ulti_classes.empty():
@@ -675,7 +668,7 @@ func generate_offers():
 				ulti_classes.shuffle()
 				var to = ulti_classes[0]
 				var count = 10 + gen.randi_range(0, 15)
-				offer = {"costs": {"coins" : count * 20}, "receives" : {"ulti_tokens" : {to: count }}, "id" : i, "name" : "АКЦИЯ"}
+				offer = {"costs": {"coins" : count * 20}, "receives" : {"ulti_tokens" : {to: count }}, "id" : i, "name" : tr("shop.offer.title")}
 		if type == 8:
 			#CLASS
 			if classes_to_unlock.empty():
@@ -698,26 +691,26 @@ func generate_offers():
 				else:
 					cost += 7
 			if count_of_pt == 0 and count_of_ut == 0:
-				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what]}, "id" : i, "name" : "КЛАСС"}
+				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what]}, "id" : i, "name" : tr("item.class")}
 			elif count_of_pt == 0 and count_of_ut != 0:
-				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "ulti_tokens" : {what: count_of_ut }}, "id" : i, "name" : "НАБОР КЛАССА"}
+				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "ulti_tokens" : {what: count_of_ut }}, "id" : i, "name" : tr("shop.offer.kit")}
 			elif count_of_pt != 0 and count_of_ut == 0:
-				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "tokens" : {what: count_of_pt}}, "id" : i, "name" : "НАБОР КЛАССА"}
+				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "tokens" : {what: count_of_pt}}, "id" : i, "name" : tr("shop.offer.kit")}
 			else:
-				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "tokens" : {what: count_of_pt}, "ulti_tokens" : {what: count_of_ut}}, "id" : i, "name" : "НАБОР КЛАССА"}
+				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "tokens" : {what: count_of_pt}, "ulti_tokens" : {what: count_of_ut}}, "id" : i, "name" : tr("shop.offer.kit")}
 		if type == 9: #WILD TOKENS
 			if randi() % 2 == 1:
 				#POWER
 				if power_classes.empty():
 					continue
 				var count = 20 + gen.randi_range(0, 10) * 10
-				offer = {"costs": {"coins" : count * 7}, "receives" : {"wild_tokens" : count}, "id" : i, "name" : "АКЦИЯ"}
+				offer = {"costs": {"coins" : count * 7}, "receives" : {"wild_tokens" : count}, "id" : i, "name" : tr("shop.offer.title")}
 			else:
 				#ULTI
 				if ulti_classes.empty():
 					continue
 				var count = 10 + gen.randi_range(0, 15)
-				offer = {"costs": {"coins" : count * 25}, "receives" : {"wild_ulti_tokens" : count}, "id" : i, "name" : "АКЦИЯ"}
+				offer = {"costs": {"coins" : count * 25}, "receives" : {"wild_ulti_tokens" : count}, "id" : i, "name" : tr("shop.offer.title")}
 		if type == 10:
 			# AMULET FRAGS
 			if amulet_types.empty():
@@ -725,7 +718,7 @@ func generate_offers():
 			var count = randi() % 2 + 1
 			amulet_types.shuffle()
 			var am_type = amulet_types[0]
-			offer = {"costs": {"coins" : count * 150}, "receives" : {"amulet_frags": {am_type:count}}, "id" : i, "name" : "АКЦИЯ"}
+			offer = {"costs": {"coins" : count * 150}, "receives" : {"amulet_frags": {am_type:count}}, "id" : i, "name" : tr("shop.offer.title")}
 		var exists = false
 		for y in G.getv("offers", []):
 			if offer["receives"].hash() == y["receives"].hash():
@@ -748,7 +741,7 @@ func generate_offers():
 	if G.getv("potions1", 0) < 5:
 		free_receives.append({"potions1": 1})
 	free_receives.shuffle()
-	G.setv("offers", G.getv("offers", []) + [{"costs":{}, "receives":free_receives[0], "id" : 993, "name" : "ПОДАРОК!"}])
+	G.setv("offers", G.getv("offers", []) + [{"costs":{}, "receives":free_receives[0], "id" : 993, "name" : tr("shop.offer.gift")}])
 	G.save()
 	G.setv("offers_upd", Time.get_date_dict_from_system())
 	G.setv("offers_upd_time", Time.get_unix_time_from_system())
@@ -757,13 +750,13 @@ func generate_offers():
 
 
 func promocodes():
-	get_tree().change_scene("res://scenes/menu/promocodes.scn")
+	get_tree().change_scene("res://scenes/menu/promocodes.tscn")
 
 
 func fetch_online_offers():
-	http.download_file = OS.get_cache_dir().plus_file("online_cache.cfg")
+	http.download_file = OS.get_cache_dir().plus_file("online_offers_cache.cfg")
 	http.connect("request_completed", self, "request_online_response", [], CONNECT_ONESHOT)
-	var err = http.request("http://f0695447.xsph.ru/apa2_online.cfg")
+	var err = http.request("http://f0695447.xsph.ru/apa2/offers.cfg")
 	if err:
 		print("fetch failed:", err)
 
@@ -774,10 +767,10 @@ func request_online_response(result, code, header, body):
 		return
 	yield(get_tree(), "idle_frame")
 	var cf = ConfigFile.new()
-	var err = cf.load_encrypted_pass(OS.get_cache_dir().plus_file("online_cache.cfg"), "apa2_online")
+	var err = cf.load_encrypted_pass(OS.get_cache_dir().plus_file("online_offers_cache.cfg"), "apa2_online")
 	var dir = Directory.new()
 	dir.open(OS.get_cache_dir())
-	dir.remove("online_cache.cfg")
+	dir.remove("online_offers_cache.cfg")
 	if err:
 		print("fetch failed:", err)
 		return

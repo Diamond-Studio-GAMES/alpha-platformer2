@@ -115,6 +115,11 @@ _global_script_classes=[ {
 "path": "res://scripts/game/multiplayer/multiplayer_lobby.gd"
 }, {
 "base": "Mob",
+"class": "Magician",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/magician.gd"
+}, {
+"base": "Mob",
 "class": "Mechanic",
 "language": "GDScript",
 "path": "res://scripts/game/mobs/mechanic.gd"
@@ -261,6 +266,7 @@ _global_script_class_icons={
 "KnightMob": "",
 "Level": "",
 "Lobby": "",
+"Magician": "",
 "Mechanic": "",
 "MinigameHero": "",
 "Mob": "",
@@ -291,9 +297,11 @@ _global_script_class_icons={
 [application]
 
 config/name="Alpha Platformer Adventure 2: The Last Challenge"
-run/main_scene="res://scenes/splash_screen.scn"
+run/main_scene="res://scenes/splash_screen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="alpha-platformer2"
+run/delta_sync_after_draw=true
+run/delta_smoothing=false
 boot_splash/image="res://textures/misc/pre_splash_screen.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://textures/misc/icon.png"
@@ -301,7 +309,7 @@ config/quit_on_go_back=false
 
 [audio]
 
-default_bus_layout="res://misc/bus_layout.res"
+default_bus_layout="res://misc/bus_layout.tres"
 
 [autoload]
 
@@ -333,6 +341,7 @@ window/stretch/aspect="keep_height"
 [editor]
 
 scene_naming=2
+convert_text_resources_to_binary_on_export=true
 
 [editor_plugins]
 
@@ -386,7 +395,7 @@ attack1={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":67,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777234,"unicode":0,"echo":false,"script":null)
-, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 ulti={
@@ -446,12 +455,12 @@ shooter_down={
 }
 shooter_shoot={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 shooter_change_weapon={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":3,"pressed":false,"doubleclick":false,"script":null)
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":3,"canceled":false,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 
@@ -473,7 +482,7 @@ pointing/emulate_touch_from_mouse=true
 [locale]
 
 locale_filter=[ 1, [ "en", "ru" ] ]
-translations=PoolStringArray( "res://misc/translations/begin.en.translation", "res://misc/translations/begin.ru.translation", "res://misc/translations/menu.en.translation", "res://misc/translations/menu.ru.translation" )
+translations=PoolStringArray( "res://misc/translations/begin.en.translation", "res://misc/translations/begin.ru.translation", "res://misc/translations/menu.en.translation", "res://misc/translations/menu.ru.translation", "res://misc/translations/game.en.translation", "res://misc/translations/game.ru.translation", "res://misc/translations/minigames.en.translation", "res://misc/translations/minigames.ru.translation" )
 translation_remaps={
 "res://minigames/minigame8/textures/enemies/fezek_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/fezek.png:en" ),
 "res://minigames/minigame8/textures/enemies/fizruk_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/fizruk.png:en" ),
@@ -512,7 +521,7 @@ quality/intended_usage/framebuffer_allocation.mobile=0
 vram_compression/import_etc=true
 quality/shading/force_vertex_shading=true
 batching/precision/uv_contract=true
-environment/default_environment="res://misc/env.res"
+environment/default_environment="res://misc/env.tres"
 
 [world]
 

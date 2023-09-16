@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://shaders/THE_WORLD.gdshader" type="Shader" id=1]
+[ext_resource path="res://textures/effects/skills/THEWORLD_dist.png" type="Texture" id=2]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/dist_power = 0.05
+shader_param/distortion = ExtResource( 2 )

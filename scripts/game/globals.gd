@@ -2,10 +2,10 @@ extends Node
 class_name Globals, "res://textures/gui/alpha_text.png"
 
 
-const VERSION = "0.8.0"
-const VERSION_STATUS = ""
-const VERSION_STATUS_NUMBER = ""
-const VERSION_CODE = 65
+const VERSION = "0.9.0"
+const VERSION_STATUS = "build"
+const VERSION_STATUS_NUMBER = "3"
+const VERSION_CODE = 68
 
 var main_file: ConfigFile
 var save_file: ConfigFile
@@ -17,14 +17,13 @@ var cached_ip = ""
 var cached_suff = 0
 var custom_respawn_scene = ""
 var dialog_in_menu = ""
-var time_scale_change = 1
 var fps_text
 var music
 var time_timer
 var ad: AdsManager
 var ach: Achievements
-var loading_scene = load("res://scenes/menu/loading.scn")
-var box = load("res://scenes/menu/box.scn")
+var loading_scene = load("res://scenes/menu/loading.tscn")
+var box = load("res://scenes/menu/box.tscn")
 const CLASSES_ID = {
 	-1 : "player",
 	0 : "knight",
@@ -181,17 +180,6 @@ func _ready():
 	var dir = Directory.new()
 	if not dir.dir_exists("user://saves/"):
 		dir.make_dir_recursive("user://saves/")
-	if dir.file_exists("user://saves.game"):
-		var cf = ConfigFile.new()
-		cf.load("user://saves.game")
-		for i in cf.get_sections():
-			if i == "main":
-				continue
-			var file = ConfigFile.new()
-			for j in cf.get_section_keys(i):
-				file.set_value("save", j, cf.get_value(i, j))
-			file.save_encrypted_pass("user://saves/".plus_file(cf.get_value(i, "save_id", "file" + str(randi())) + ".apa2save"), "apa2_save")
-		dir.remove("user://saves.game")
 	
 	randomize()
 	get_tree().connect("node_added", self, "_node_added")
@@ -208,8 +196,8 @@ func _ready():
 	music.bus = "music"
 	music.stream = load("res://sounds/music/menu/menu.ogg")
 	add_child(music)
-	fps_text = load("res://prefabs/menu/fps_counter.scn").instance()
-	fps_text.visible = G.main_getv("fps", false)
+	fps_text = load("res://prefabs/menu/fps_counter.tscn").instance()
+	fps_text.hide()
 	add_child(fps_text)
 	time_timer = Timer.new()
 	time_timer.name = "timer"
@@ -219,23 +207,22 @@ func _ready():
 	time_timer.connect("timeout", self, "update_timer")
 	time_timer.start()
 	if OS.has_feature("editor") or OS.has_feature("cheats"):
-		var ch = load("res://prefabs/menu/cheats.scn").instance()
+		var ch = load("res://prefabs/menu/cheats.tscn").instance()
 		add_child(ch)
 
 
 func _process(delta):
 	save_timer += delta
-	if save_timer >= 20:
+	if save_timer >= 10:
 		save()
 		save_timer = 0
 
 
 func _notification(what):
 	match what:
-		NOTIFICATION_APP_PAUSED, NOTIFICATION_PAUSED, \
-		NOTIFICATION_WM_GO_BACK_REQUEST, NOTIFICATION_WM_UNFOCUS_REQUEST, \
-		NOTIFICATION_WM_QUIT_REQUEST, NOTIFICATION_EXIT_TREE:
-			Engine.time_scale = time_scale_change
+		NOTIFICATION_APP_PAUSED, NOTIFICATION_EXIT_TREE, \
+		NOTIFICATION_WM_GO_BACK_REQUEST, NOTIFICATION_WM_QUIT_REQUEST, \
+		NOTIFICATION_WM_FOCUS_OUT:
 			save()
 
 

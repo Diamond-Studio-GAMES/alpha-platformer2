@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=2]
+[ext_resource path="res://sounds/sfx/randomed/swing.tres" type="AudioStream" id=3]
+[ext_resource path="res://textures/bosses/great_knight/sword.png" type="Texture" id=4]
+[ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=5]
+[ext_resource path="res://scripts/game/other/throwable.gd" type="Script" id=6]
+
+[sub_resource type="Animation" id=95]
+resource_name = "appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=94]
+extents = Vector2( 40, 8.4 )
+
+[node name="sword_throw" type="Node2D" groups=["spawnable"]]
+script = ExtResource( 6 )
+SPEED = 100.0
+destroy_time = 8.0
+is_player_projectile = false
+is_enemy_projectile = true
+effect_hit = "res://prefabs/effects/destroy_effects/effect_sword_throw_hit.tscn"
+effect_reject = "res://prefabs/effects/destroy_effects/effect_sword_throw_reject.tscn"
+simple_effect_color = Color( 0.627451, 0.627451, 0.627451, 1 )
+simple_effect_scale = Vector2( 2, 2 )
+simple_effect_destroy_sound_hit = "res://sounds/sfx/randomed/sword_hit.tres"
+simple_effect_destroy_sound_wall = "res://sounds/sfx/randomed/sword_hit_wall.tres"
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( -67.2, 0 )
+rotation = 1.5708
+scale = Vector2( 2.1, 2.1 )
+texture = ExtResource( 4 )
+
+[node name="anim" type="AnimationPlayer" parent="sprite"]
+autoplay = "appear"
+anims/appear = SubResource( 95 )
+
+[node name="attack" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 18
+script = ExtResource( 5 )
+damage = 40
+knockback = 2.0
+is_enemy_attack = true
+lifetime = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="attack"]
+position = Vector2( -40, 0 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 94 )
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath("../attack") ]
+spawn_sync_data_properties = [ "global_position", "rotation_degrees", "damage" ]
+auto_despawn = false
+
+[node name="MultiplayerSynchronizer" type="Node" parent="."]
+script = ExtResource( 2 )
+unreliable_sync_node_paths = [ NodePath("..") ]
+unreliable_sync_properties_names = [ "global_position" ]
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+max_distance = 800.0
+bus = "sfx"

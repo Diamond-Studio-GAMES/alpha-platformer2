@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/game/other/grass.gd" type="Script" id=1]
+[ext_resource path="res://textures/blocks/grass.png" type="Texture" id=2]
+[ext_resource path="res://shaders/materials/grass.tres" type="Material" id=3]
+
+[node name="grass" type="Node2D"]
+
+[node name="sprite" type="Sprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 0, -16 )
+scale = Vector2( 1, 1 )
+z_index = -1
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+offset_to_origin = Vector2( 0, -16 )

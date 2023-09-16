@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://scripts/game/other/throwable.gd" type="Script" id=2]
+[ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=3]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=4]
+[ext_resource path="res://textures/classes/spearman_weapon_throw.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 4 )
+
+[node name="spear" type="Node2D" groups=["spawnable"]]
+script = ExtResource( 2 )
+SPEED = 175.0
+destroy_time = 2.0
+effect_wall = "res://prefabs/effects/destroy_effects/effect_spear_wall.tscn"
+effect_hit = "res://prefabs/effects/destroy_effects/effect_spear_hit.tscn"
+effect_end_of_range = "res://prefabs/effects/destroy_effects/effect_spear_eor.tscn"
+effect_reject = "res://prefabs/effects/destroy_effects/effect_spear_reject.tscn"
+simple_effect_color = Color( 0, 1, 0, 1 )
+simple_effect_scale = Vector2( 0.5, 0.5 )
+simple_effect_offset = Vector2( 32, 0 )
+simple_effect_destroy_sound_hit = "res://sounds/sfx/randomed/sword_hit.tres"
+simple_effect_destroy_sound_wall = "res://sounds/sfx/randomed/sword_hit_wall.tres"
+
+[node name="attack" type="Area2D" parent="."]
+position = Vector2( 24, 0 )
+z_index = 5
+collision_layer = 16
+collision_mask = 23
+script = ExtResource( 3 )
+is_player_attack = true
+emit_hit_attack_signal = true
+lifetime = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="attack"]
+shape = SubResource( 1 )
+
+[node name="sprite" type="Sprite" parent="."]
+position = Vector2( 32, 0 )
+rotation = 1.5708
+z_index = -5
+texture = ExtResource( 5 )
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath("../attack") ]
+spawn_sync_data_properties = [ "global_position", "rotation_degrees", "damage" ]
+auto_despawn = false
+
+[node name="MultiplayerSynchronizer" type="Node" parent="."]
+script = ExtResource( 4 )
+unreliable_sync_node_paths = [ NodePath("..") ]
+unreliable_sync_properties_names = [ "global_position" ]
+physics_frame_delay_unreliable = 2

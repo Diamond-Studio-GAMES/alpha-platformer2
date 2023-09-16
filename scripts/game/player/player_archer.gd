@@ -13,8 +13,8 @@ var is_aiming = false
 var aim_time = 0
 var jout = Vector2()
 var cjo = Vector2()
-var gadget_attack = load("res://prefabs/classes/arrows.scn")
-var arrow = load("res://prefabs/classes/arrow.scn")
+var gadget_attack = load("res://prefabs/classes/arrows.tscn")
+var arrow = load("res://prefabs/classes/arrow.tscn")
 onready var joystick = $camera/gui/base/buttons/buttons_1/joystick
 onready var aim_line = $aim_line
 onready var _attack_visual = $visual/body/knight_attack/visual
@@ -45,7 +45,7 @@ func _ready():
 	$camera/gui/base/ulti_use/ulti_name.text = tr(G.ULTIS[class_nam]) + " " + G.RIM_NUMBERS[ulti_power]
 	_attack_visual.hide()
 	_attack_shape.disabled = true
-	_ulti = load("res://prefabs/classes/archer_ulti.scn")
+	_ulti = load("res://prefabs/classes/archer_ulti.tscn")
 	RECHARGE_SPEED = 1.1 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
 	SPEED += (7 if is_amulet(G.Amulet.SPEED) else 0)
 	gen.randomize()

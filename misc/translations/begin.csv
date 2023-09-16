@@ -6,7 +6,6 @@ sl.create,СОЗДАТЬ,CREATE
 sl.settings.volm,Громкость музыки:,Music volume:
 sl.settings.vols,Громкость звуков:,SFX volume:
 sl.settings.fullscr,Полный экран,Fullscreen
-sl.settings.showfps,Отображать FPS,Show FPS
 sl.settings.lang,СМЕНИТЬ ЯЗЫК,CHANGE LANGUAGE
 sl.create.pname,Введите имя…,Enter name…
 gender,Пол,Gender
@@ -31,7 +30,7 @@ sl.delete.yes,да,yes
 sl.delete.no,НЕТ!!!,NO!!!
 sl.nosaves,"Пока что тут пусто, но ты можешь начать игру кнопкой ниже!",You can start game with button below!
 sl.ei,ЭКСПОРТ/ИМПОРТ,EXPORT/IMPORT
-sl.ei.title,Экспорт/импорт сохранений,
+sl.ei.title,Экспорт/импорт сохранений,Export/import of saves
 sl.ei.step0,Шаг 1: Выдай разрешение на чтение и запись файлов (начиная с Android 6),Step 1: Give permission to read and write external storage (from Android 6)
 sl.ei.step1,"Шаг 2: Экспортируй сохранения кнопкой ниже
 Сохранится в: ","Step 2: Export saves with button below.

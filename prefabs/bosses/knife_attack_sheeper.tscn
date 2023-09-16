@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://prefabs/bosses/knife_sheeper.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/game/bosses/knife_attack_sheeper.gd" type="Script" id=2]
+
+[node name="knife_attack" type="Node2D"]
+script = ExtResource( 2 )
+kn = ExtResource( 1 )
+times = 12
+interval = 0.35

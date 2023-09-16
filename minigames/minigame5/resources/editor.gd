@@ -49,7 +49,7 @@ func zoom_out():
 
 
 func exit():
-	get_tree().change_scene("res://minigames/minigame5/minigame.scn")
+	get_tree().change_scene("res://minigames/minigame5/minigame.tscn")
 
 
 func save_and_exit():
