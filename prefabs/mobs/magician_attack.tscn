@@ -6,7 +6,7 @@
 [ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12, 4 )
+extents = Vector2( 12, 2 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "anim"
@@ -78,7 +78,7 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, -16 )
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -6 )
+position = Vector2( 0, -4 )
 shape = SubResource( 1 )
 
 [node name="anim" type="AnimationPlayer" parent="."]

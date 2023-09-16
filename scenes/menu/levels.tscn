@@ -1349,6 +1349,106 @@ margin_top = 42.0
 margin_right = 471.0
 margin_bottom = 82.0
 
+[node name="7_1" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 480.0
+margin_top = 50.0
+margin_right = 520.0
+margin_bottom = 90.0
+
+[node name="7_2" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 530.0
+margin_top = 42.0
+margin_right = 570.0
+margin_bottom = 82.0
+
+[node name="7_3" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 579.0
+margin_top = 48.0
+margin_right = 619.0
+margin_bottom = 88.0
+
+[node name="7_4" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 629.0
+margin_top = 36.0
+margin_right = 669.0
+margin_bottom = 76.0
+
+[node name="7_5" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 680.0
+margin_top = 42.0
+margin_right = 720.0
+margin_bottom = 82.0
+
+[node name="7_6" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 728.0
+margin_top = 26.0
+margin_right = 768.0
+margin_bottom = 66.0
+
+[node name="7_7" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 781.0
+margin_top = 12.0
+margin_right = 821.0
+margin_bottom = 52.0
+
+[node name="7_8" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 832.0
+margin_top = 29.0
+margin_right = 872.0
+margin_bottom = 69.0
+
+[node name="7_9" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 882.0
+margin_top = 21.0
+margin_right = 922.0
+margin_bottom = 61.0
+
+[node name="7_10" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 933.0
+margin_top = 31.0
+margin_right = 973.0
+margin_bottom = 71.0
+
 [node name="shop_button" type="Button" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0

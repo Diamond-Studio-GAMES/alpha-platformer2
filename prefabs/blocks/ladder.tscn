@@ -7,6 +7,8 @@ extents = Vector2( 12, 2 )
 
 [node name="ladder" type="StaticBody2D"]
 z_index = -5
+collision_layer = 8
+collision_mask = 6
 
 [node name="sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
