@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://themes/theme.tres" type="Theme" id=1]
 [ext_resource path="res://textures/gui/strike_bar.tres" type="Texture" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://sounds/sfx/cast.wav" type="AudioStream" id=18]
 [ext_resource path="res://textures/effects/other/use_item_0.tres" type="Texture" id=19]
 [ext_resource path="res://sounds/sfx/heal.wav" type="AudioStream" id=20]
+[ext_resource path="res://scripts/game/mobs/heal.gd" type="Script" id=21]
+[ext_resource path="res://textures/effects/other/glow.png" type="Texture" id=22]
 [ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=24]
 [ext_resource path="res://textures/gui/health_bar.tres" type="Texture" id=26]
 [ext_resource path="res://textures/classes/knight_helmet.png" type="Texture" id=27]
@@ -668,6 +670,205 @@ tracks/15/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=104]
+resource_name = "heal"
+length = 1.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/head:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -10.3614, -10.4, -14.1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body/arm_left/hand:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -20.0, 180.0, 180.0, 0.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/body/arm_left:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 20.0, 90.0, 90.0, 167.5, 167.5 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visual/body/arm_right/hand:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 22.5, -180.0, -180.0, 0.0, 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visual/body/arm_right:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.6, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -22.5, -90.0, -90.0, -171.694, -171.694 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("visual/body/arm_right/hand/weapon:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("visual/body/leg_left:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("visual/body/leg_left/foot:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("visual/body/leg_right:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("visual/body/leg_right/foot:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("visual/body/head/hair:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("visual/body/arm_right/hand/effect:emitting")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("visual/body/arm_left/hand/effect:emitting")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/15/type = "method"
+tracks/15/path = NodePath(".")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "process_heal"
+} ]
+}
+
 [sub_resource type="Animation" id=22]
 resource_name = "hurt"
 length = 0.4
@@ -1221,6 +1422,16 @@ input_0/auto_advance = false
 input_1/name = "death"
 input_1/auto_advance = false
 
+[sub_resource type="AnimationNodeAnimation" id=105]
+animation = "heal"
+
+[sub_resource type="AnimationNodeTimeSeek" id=106]
+
+[sub_resource type="AnimationNodeOneShot" id=107]
+filter_enabled = true
+filters = [ ".", "heal_area/anim", "visual/body/arm_left/hand/effect:emitting", "visual/body/arm_left/hand:rotation_degrees", "visual/body/arm_left:rotation_degrees", "visual/body/arm_right/hand/effect:emitting", "visual/body/arm_right/hand:rotation_degrees", "visual/body/arm_right:rotation_degrees", "visual/body/head:rotation_degrees" ]
+fadeout_time = 0.3
+
 [sub_resource type="AnimationNodeAnimation" id=83]
 animation = "hurt"
 
@@ -1242,17 +1453,23 @@ input_1/auto_advance = false
 animation = "walk"
 
 [sub_resource type="AnimationNodeBlendTree" id=97]
-graph_offset = Vector2( -453, 71 )
+graph_offset = Vector2( -116.708, 119.983 )
 nodes/attack/node = SubResource( 75 )
-nodes/attack/position = Vector2( -94.1176, 329.412 )
+nodes/attack/position = Vector2( -100, 320 )
 nodes/attack_seek/node = SubResource( 89 )
-nodes/attack_seek/position = Vector2( 47.0588, 282.353 )
+nodes/attack_seek/position = Vector2( 60, 280 )
 nodes/attack_shot/node = SubResource( 76 )
-nodes/attack_shot/position = Vector2( 188.235, 94.1176 )
+nodes/attack_shot/position = Vector2( 200, 100 )
 nodes/death/node = SubResource( 82 )
-nodes/death/position = Vector2( 352.941, 305.882 )
+nodes/death/position = Vector2( 660, 300 )
 nodes/death_trans/node = SubResource( 85 )
-nodes/death_trans/position = Vector2( 588.235, 141.176 )
+nodes/death_trans/position = Vector2( 900, 140 )
+nodes/heal/node = SubResource( 105 )
+nodes/heal/position = Vector2( 160, 400 )
+nodes/heal_seek/node = SubResource( 106 )
+nodes/heal_seek/position = Vector2( 320, 320 )
+nodes/heal_shot/node = SubResource( 107 )
+nodes/heal_shot/position = Vector2( 480, 120 )
 nodes/hurt/node = SubResource( 83 )
 nodes/hurt/position = Vector2( -282.353, 305.882 )
 nodes/hurt_shot/node = SubResource( 84 )
@@ -1261,10 +1478,10 @@ nodes/idle/node = SubResource( 78 )
 nodes/idle/position = Vector2( -564.706, 94.1176 )
 nodes/iw_trans/node = SubResource( 86 )
 nodes/iw_trans/position = Vector2( -305.882, 117.647 )
-nodes/output/position = Vector2( 776.471, 164.706 )
+nodes/output/position = Vector2( 1080, 160 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "death_trans", 0, "attack_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "attack_seek", 0, "attack" ]
+node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_seek", 0, "attack", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "heal_seek", 0, "heal", "death_trans", 0, "heal_shot", "death_trans", 1, "death", "heal_shot", 0, "attack_shot", "heal_shot", 1, "heal_seek" ]
 
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 8.0
@@ -1287,6 +1504,63 @@ radius = 5.0
 [sub_resource type="Gradient" id=19]
 offsets = PoolRealArray( 0, 0.320574, 0.665072, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="CircleShape2D" id=101]
+radius = 120.0
+
+[sub_resource type="Animation" id=102]
+resource_name = "heal"
+tracks/0/type = "value"
+tracks/0/path = NodePath("plus:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("plus:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.7, 1 ),
+"transitions": PoolRealArray( 0.287175, 2.82843, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 4, 4 ), Vector2( 2, 2 ), Vector2( 2, 2 ), Vector2( 4, 4 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("area:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 1 ),
+"transitions": PoolRealArray( 1e-05, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("shape:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="CircleShape2D" id=103]
+radius = 120.0
 
 [node name="mob_magician" type="KinematicBody2D"]
 z_index = -2
@@ -1510,6 +1784,7 @@ autoplay = "idle"
 anims/RESET = SubResource( 96 )
 anims/attack = SubResource( 100 )
 anims/death = SubResource( 21 )
+anims/heal = SubResource( 104 )
 anims/hurt = SubResource( 22 )
 anims/idle = SubResource( 23 )
 anims/walk = SubResource( 98 )
@@ -1523,6 +1798,8 @@ active = true
 parameters/attack_seek/seek_position = -1.0
 parameters/attack_shot/active = false
 parameters/death_trans/current = 0
+parameters/heal_seek/seek_position = -1.0
+parameters/heal_shot/active = false
 parameters/hurt_shot/active = false
 parameters/iw_trans/current = 0
 
@@ -1697,5 +1974,42 @@ unreliable_sync_node_paths = [ NodePath(".."), NodePath("..") ]
 unreliable_sync_properties_names = [ "global_position", "current_health" ]
 syncing = false
 
+[node name="heal_area" type="Area2D" parent="."]
+position = Vector2( 0, -48 )
+z_index = -1
+collision_layer = 8
+collision_mask = 4
+script = ExtResource( 21 )
+is_enemy_heal = true
+
+[node name="plus" type="Sprite" parent="heal_area"]
+self_modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 10 )
+
+[node name="area" type="Sprite" parent="heal_area"]
+modulate = Color( 0, 1, 0, 0.25098 )
+self_modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 22 )
+
+[node name="shape" type="CollisionShape2D" parent="heal_area"]
+shape = SubResource( 101 )
+disabled = true
+
+[node name="anim" type="AnimationPlayer" parent="heal_area"]
+anims/heal = SubResource( 102 )
+
+[node name="mob_detector" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+monitorable = false
+
+[node name="shape" type="CollisionShape2D" parent="mob_detector"]
+visible = false
+shape = SubResource( 103 )
+
 [connection signal="area_entered" from="check_water" to="." method="water_checked"]
 [connection signal="area_exited" from="check_water" to="." method="water_unchecked"]
+[connection signal="body_entered" from="mob_detector" to="." method="_on_mob_detector_body_entered"]
+[connection signal="body_exited" from="mob_detector" to="." method="_on_mob_detector_body_exited"]

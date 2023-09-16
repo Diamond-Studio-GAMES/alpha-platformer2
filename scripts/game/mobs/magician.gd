@@ -4,6 +4,8 @@ class_name Magician
 
 export (float) var min_distance = 50
 var should_move = true
+var should_heal = false
+var next_attack = false
 var attack_scene = load("res://prefabs/mobs/magician_attack.tscn")
 onready var jump_ray0 = $jump_ray_cast
 onready var jump_ray1 = $jump_ray_cast2
@@ -12,6 +14,7 @@ onready var path_ray_right = $path_ray_cast_right
 onready var detect_ray = $detect_ray_cast
 var _min_distance = 0
 var _min_distance_true = 0
+var _mobs = []
 
 
 func _ready():
@@ -20,6 +23,7 @@ func _ready():
 	reaction_speed += rand_range(-0.05, 0.1)
 	attack_speed += rand_range(-0.1, 0.2)
 	attack_damage = round(stats_multiplier * attack_damage)
+	$heal_area.heal_amount = attack_damage
 
 
 func attack():
@@ -34,7 +38,7 @@ func attack():
 		# ATTACK
 		var tm := detect_ray.get_collider() as TileMap
 		if tm:
-			var cc = tm.world_to_map(global_position + Vector2.DOWN * 48 * GRAVITY_SCALE)
+			var cc = tm.world_to_map(detect_ray.get_collision_point() + Vector2.DOWN * 16 * GRAVITY_SCALE)
 			spawn_attack(tm.map_to_world(cc))
 			for i in range(1, 5):
 				if tm.get_cell(cc.x + i, cc.y) >= 0 and tm.get_cell(cc.x + i, cc.y - GRAVITY_SCALE) < 0:
@@ -56,6 +60,19 @@ func attack():
 					break
 	yield(get_tree().create_timer(0.4, false), "timeout")
 	should_move = true
+
+
+func do_heal():
+	should_move = false
+	_anim_tree["parameters/heal_seek/seek_position"] = 0
+	_anim_tree["parameters/heal_shot/active"] = true
+	yield(get_tree().create_timer(1.6, false), "timeout")
+	should_move = true
+
+
+func process_heal():
+	if current_health > 0:
+		$heal_area/anim.play("heal")
 
 
 func spawn_attack(cc: Vector2):
@@ -102,8 +119,16 @@ func _physics_process(delta):
 		if under_water and breath_time < 2 and not immune_to_water:
 			jump()
 	attack_timer += delta
-	if attack_timer > attack_speed and player_distance < 16384:
-		attack()
+	if attack_timer > attack_speed:
+		if player_distance < 16384:
+			if should_heal and not next_attack:
+				do_heal()
+				next_attack = true
+			else:
+				attack()
+				next_attack = false
+		elif should_heal:
+			do_heal()
 		attack_timer = 0
 	lookup_timer += delta
 	if lookup_timer > lookup_speed:
@@ -114,3 +139,31 @@ func _physics_process(delta):
 			stop()
 		elif _move_direction.x < 0 and not _is_move_safe(path_ray_left):
 			stop()
+
+
+func update_strategy():
+	if _mobs.empty():
+		should_heal = false
+		_min_distance = _min_distance_true
+		next_attack = false
+	else:
+		should_heal = true
+		_min_distance = min_distance * min_distance
+
+
+func _on_mob_detector_body_entered(body):
+	if not MP.auth(self):
+		return
+	if body == self:
+		return
+	if body is Mob:
+		_mobs.append(body)
+		update_strategy()
+
+
+func _on_mob_detector_body_exited(body):
+	if not MP.auth(self):
+		return
+	if body in _mobs:
+		_mobs.erase(body)
+		update_strategy()

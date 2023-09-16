@@ -12,6 +12,7 @@ var bodies = []
 signal hit_enemy
 signal hit_wall
 signal hit_player
+signal hit_attack
 
 
 func _ready():
