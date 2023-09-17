@@ -18,12 +18,6 @@ var saves_objs_dict = {}
 
 
 func _ready():
-	#DIRTY TRANSLATION WORKAROUND
-	TranslationServer.remove_translation(load("res://misc/translations/menu.en.translation"))
-	TranslationServer.remove_translation(load("res://misc/translations/menu.ru.translation"))
-	TranslationServer.add_translation(load("res://misc/translations/menu.en.translation"))
-	TranslationServer.add_translation(load("res://misc/translations/menu.ru.translation"))
-	#END
 	if G.main_getv("volume", -1) < 0:
 		G.main_setv("volume", 0.75)
 		G.main_setv("volume_sfx", 1)
@@ -242,7 +236,6 @@ func lang():
 		G.main_setv("lang", "ru")
 		G.save()
 		TranslationServer.set_locale(G.main_getv("lang", "ru"))
-	get_tree().reload_current_scene()
 
 
 func delete_save(id):
