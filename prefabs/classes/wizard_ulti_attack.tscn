@@ -43,13 +43,10 @@ extents = Vector2( 1, 1 )
 collision_layer = 16
 collision_mask = 23
 script = ExtResource( 5 )
+knockback = 0
 defense_allowed = false
 is_player_attack = true
-knockback = 0
 lifetime = 0.45
-custom_invincibility_time = 0.75
-custom_immobility_time = 0.5
-can_ignored = false
 
 [node name="sprite" type="Sprite" parent="."]
 modulate = Color( 1, 0, 1, 0.752941 )

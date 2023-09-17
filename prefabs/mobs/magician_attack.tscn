@@ -6,7 +6,7 @@
 [ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12, 2 )
+extents = Vector2( 8, 2 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "anim"

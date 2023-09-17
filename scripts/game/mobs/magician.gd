@@ -40,24 +40,44 @@ func attack():
 		if tm:
 			var cc = tm.world_to_map(detect_ray.get_collision_point() + Vector2.DOWN * 16 * GRAVITY_SCALE)
 			spawn_attack(tm.map_to_world(cc))
-			for i in range(1, 5):
-				if tm.get_cell(cc.x + i, cc.y) >= 0 and tm.get_cell(cc.x + i, cc.y - GRAVITY_SCALE) < 0:
-					spawn_attack(tm.map_to_world(cc + Vector2.RIGHT * i))
-				elif tm.get_cell(cc.x + i, cc.y + GRAVITY_SCALE) >= 0 and tm.get_cell(cc.x + i, cc.y - 1 + GRAVITY_SCALE) < 0:
-					spawn_attack(tm.map_to_world(cc + Vector2.RIGHT * i + Vector2.DOWN * GRAVITY_SCALE))
-				elif tm.get_cell(cc.x + i, cc.y - GRAVITY_SCALE) >= 0 and tm.get_cell(cc.x + i, cc.y - 1 - GRAVITY_SCALE) < 0:
-					spawn_attack(tm.map_to_world(cc + Vector2.RIGHT * i + Vector2.UP))
-				else:
-					break
-			for i in range(1, 5):
-				if tm.get_cell(cc.x - i, cc.y) >= 0 and tm.get_cell(cc.x - i, cc.y - GRAVITY_SCALE) < 0:
-					spawn_attack(tm.map_to_world(cc + Vector2.LEFT * i))
-				elif tm.get_cell(cc.x - i, cc.y + GRAVITY_SCALE) >= 0 and tm.get_cell(cc.x - i, cc.y - 1 + GRAVITY_SCALE) < 0:
-					spawn_attack(tm.map_to_world(cc + Vector2.LEFT * i + Vector2.DOWN * GRAVITY_SCALE))
-				elif tm.get_cell(cc.x - i, cc.y - GRAVITY_SCALE) >= 0 and tm.get_cell(cc.x - i, cc.y - 1 - GRAVITY_SCALE) < 0:
-					spawn_attack(tm.map_to_world(cc + Vector2.LEFT * i + Vector2.UP * GRAVITY_SCALE))
-				else:
-					break
+			if GRAVITY_SCALE > 0:
+				for i in range(1, 5):
+					if tm.get_cell(cc.x + i, cc.y) >= 0 and tm.get_cell(cc.x + i, cc.y - 1) < 0:
+						spawn_attack(tm.map_to_world(cc + Vector2.RIGHT * i))
+					elif tm.get_cell(cc.x + i, cc.y + 1) >= 0 and tm.get_cell(cc.x + i, cc.y) < 0:
+						spawn_attack(tm.map_to_world(cc + Vector2.RIGHT * i + Vector2.DOWN))
+					elif tm.get_cell(cc.x + i, cc.y - 1) >= 0 and tm.get_cell(cc.x + i, cc.y - 2) < 0:
+						spawn_attack(tm.map_to_world(cc + Vector2.RIGHT * i + Vector2.UP))
+					else:
+						break
+				for i in range(1, 5):
+					if tm.get_cell(cc.x - i, cc.y) >= 0 and tm.get_cell(cc.x - i, cc.y - 1) < 0:
+						spawn_attack(tm.map_to_world(cc + Vector2.LEFT * i))
+					elif tm.get_cell(cc.x - i, cc.y + 1) >= 0 and tm.get_cell(cc.x - i, cc.y) < 0:
+						spawn_attack(tm.map_to_world(cc + Vector2.LEFT * i + Vector2.DOWN))
+					elif tm.get_cell(cc.x - i, cc.y - 1) >= 0 and tm.get_cell(cc.x - i, cc.y - 2) < 0:
+						spawn_attack(tm.map_to_world(cc + Vector2.LEFT * i + Vector2.UP))
+					else:
+						break
+			else:
+				for i in range(1, 5):
+					if tm.get_cell(cc.x + i, cc.y) >= 0 and tm.get_cell(cc.x + i, cc.y + 1) < 0:
+						spawn_attack(tm.map_to_world(cc + Vector2.RIGHT * i))
+					elif tm.get_cell(cc.x + i, cc.y + 1) >= 0 and tm.get_cell(cc.x + i, cc.y + 2) < 0:
+						spawn_attack(tm.map_to_world(cc + Vector2.RIGHT * i + Vector2.DOWN))
+					elif tm.get_cell(cc.x + i, cc.y - 1) >= 0 and tm.get_cell(cc.x + i, cc.y) < 0:
+						spawn_attack(tm.map_to_world(cc + Vector2.RIGHT * i + Vector2.UP))
+					else:
+						break
+				for i in range(1, 5):
+					if tm.get_cell(cc.x - i, cc.y) >= 0 and tm.get_cell(cc.x - i, cc.y - 1) < 0:
+						spawn_attack(tm.map_to_world(cc + Vector2.LEFT * i))
+					elif tm.get_cell(cc.x - i, cc.y + 1) >= 0 and tm.get_cell(cc.x - i, cc.y + 2) < 0:
+						spawn_attack(tm.map_to_world(cc + Vector2.LEFT * i + Vector2.DOWN))
+					elif tm.get_cell(cc.x - i, cc.y - 1) >= 0 and tm.get_cell(cc.x - i, cc.y) < 0:
+						spawn_attack(tm.map_to_world(cc + Vector2.LEFT * i + Vector2.UP))
+					else:
+						break
 	yield(get_tree().create_timer(0.4, false), "timeout")
 	should_move = true
 
