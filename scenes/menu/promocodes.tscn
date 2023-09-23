@@ -3,8 +3,6 @@
 [ext_resource path="res://scripts/menu/promocodes.gd" type="Script" id=1]
 [ext_resource path="res://textures/effects/other/glow.png" type="Texture" id=2]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=3]
-[ext_resource path="res://textures/items/opened_diamond_box.png" type="Texture" id=4]
-[ext_resource path="res://textures/items/diamond_box.png" type="Texture" id=5]
 [ext_resource path="res://textures/gui/bg_light.png" type="Texture" id=6]
 [ext_resource path="res://sounds/sfx/menu/open_box.wav" type="AudioStream" id=7]
 
@@ -12,23 +10,37 @@
 script/source = "extends Control
 
 
+var loop_started = false
+
+
 func _input(event):
+	if not visible:
+		return
 	if event is InputEventMouseButton:
 		if event.pressed:
-			if visible:
-				if not $box_screen/anim.is_playing():
-					$box_screen/anim.play(\"open\")
-					yield(get_tree().create_timer(3, false), \"timeout\")
-					$box_screen/anim.playback_speed = 2
-					yield(get_tree().create_timer(3, false), \"timeout\")
-					$box_screen/anim.playback_speed = 4
-					yield(get_tree().create_timer(3, false), \"timeout\")
-					$box_screen/anim.playback_speed = 8
-					yield(get_tree().create_timer(3, false), \"timeout\")
-					$box_screen/anim.playback_speed = 16
-					yield(get_tree().create_timer(3, false), \"timeout\")
-					G.save()
-					get_tree().quit()
+			if not loop_started:
+				loop_started = true
+				$box_screen/anim.play(\"open\")
+				yield(get_tree().create_timer(3, false), \"timeout\")
+				$box_screen/anim.playback_speed = 1.5
+				$box_screen/box_visual/viewport/base/gold_box/anim.playback_speed = 1.5
+				yield(get_tree().create_timer(3, false), \"timeout\")
+				$box_screen/anim.playback_speed = 2
+				$box_screen/box_visual/viewport/base/gold_box/anim.playback_speed = 2
+				yield(get_tree().create_timer(3, false), \"timeout\")
+				$box_screen/anim.playback_speed = 3
+				$box_screen/box_visual/viewport/base/gold_box/anim.playback_speed = 3
+				yield(get_tree().create_timer(3, false), \"timeout\")
+				$box_screen/anim.playback_speed = 4
+				$box_screen/box_visual/viewport/base/gold_box/anim.playback_speed = 4
+				yield(get_tree().create_timer(3, false), \"timeout\")
+				G.save()
+				get_tree().quit()
+
+
+func _on_diavolo_visibility_changed():
+	$box_screen/anim.play(\"start\")
+	$box_screen/box_visual.replace_by_instance()
 "
 
 [sub_resource type="Animation" id=1]
@@ -37,84 +49,60 @@ length = 0.8
 loop = true
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("box:rect_scale")
+tracks/0/path = NodePath("../tint/glow/glow:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.5, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1e-05, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 0.6 ), Vector2( 1, 0.6 ), Vector2( 1, 1.2 ), Vector2( 1, 1.2 ), Vector2( 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("box:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 5 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../tint/glow/glow:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 48, 48 ) ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("../tint/glow/glow:self_modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/1/type = "value"
+tracks/1/path = NodePath("../tint/glow/glow:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1e-05, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.752941 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("../tint:self_modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("../tint:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("bg:self_modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
+tracks/3/type = "value"
+tracks/3/path = NodePath("bg:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 0.133333, 0.439216, 0.85098, 0.678431 ) ]
 }
-tracks/6/type = "audio"
-tracks/6/path = NodePath("../sfx")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
+tracks/4/type = "audio"
+tracks/4/path = NodePath("../sfx")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -122,53 +110,44 @@ tracks/6/keys = {
 } ],
 "times": PoolRealArray( 0.35 )
 }
-tracks/7/type = "value"
-tracks/7/path = NodePath("box:margin_left")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ -125.0, -125.0 ]
+tracks/5/type = "animation"
+tracks/5/path = NodePath("box_visual/viewport/base/gold_box/anim")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": PoolStringArray( "open", "stay" ),
+"times": PoolRealArray( 0, 0.6 )
 }
-tracks/8/type = "value"
-tracks/8/path = NodePath("box:margin_top")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ -187.5, -187.5 ]
+
+[sub_resource type="Animation" id=3]
+resource_name = "start"
+length = 0.7
+tracks/0/type = "animation"
+tracks/0/path = NodePath("box_visual/viewport/base/gold_box/anim")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "start" ),
+"times": PoolRealArray( 0 )
 }
-tracks/9/type = "value"
-tracks/9/path = NodePath("box:margin_right")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 125.0, 125.0 ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("box:margin_bottom")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 187.496, 187.496 ]
+
+[sub_resource type="Animation" id=4]
+resource_name = "stay"
+length = 2.0
+loop = true
+tracks/0/type = "animation"
+tracks/0/path = NodePath("box_visual/viewport/base/gold_box/anim")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "stay" ),
+"times": PoolRealArray( 0 )
 }
 
 [node name="promocodes" type="Control"]
@@ -278,20 +257,11 @@ __meta__ = {
 
 [node name="anim" type="AnimationPlayer" parent="diavolo/box_screen"]
 anims/open = SubResource( 1 )
+anims/start = SubResource( 3 )
+anims/stay = SubResource( 4 )
+next/start = "stay"
 
-[node name="box" type="TextureRect" parent="diavolo/box_screen"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -125.0
-margin_top = -187.5
-margin_right = 125.0
-margin_bottom = 187.496
-rect_pivot_offset = Vector2( 125, 187 )
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 6
+[node name="box_visual" parent="diavolo/box_screen" instance_placeholder="res://prefabs/menu/gold_box_visual.scn"]
 
 [node name="sfx" type="AudioStreamPlayer" parent="diavolo"]
 stream = ExtResource( 7 )
@@ -316,6 +286,7 @@ margin_bottom = 0.5
 mouse_filter = 2
 
 [node name="glow" type="Sprite" parent="diavolo/tint/glow"]
+self_modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 2 )
 
@@ -350,3 +321,4 @@ timeout = 30.0
 
 [connection signal="pressed" from="back" to="." method="back"]
 [connection signal="pressed" from="enter" to="." method="enter"]
+[connection signal="visibility_changed" from="diavolo" to="diavolo" method="_on_diavolo_visibility_changed"]

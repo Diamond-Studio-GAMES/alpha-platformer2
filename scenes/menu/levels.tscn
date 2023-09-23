@@ -2420,18 +2420,6 @@ align = 1
 [node name="anim" type="AnimationPlayer" parent="shop/not_enough"]
 anims/no = SubResource( 132 )
 
-[node name="info_boxes" type="AcceptDialog" parent="shop"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -466.0
-margin_top = -240.0
-margin_right = 482.0
-margin_bottom = 260.0
-window_title = "shop.box_info.title"
-dialog_autowrap = true
-
 [node name="info_potions0" type="AcceptDialog" parent="shop"]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -2499,6 +2487,87 @@ dialog_text = "shop.error.text"
 dialog_hide_on_ok = false
 
 [node name="http_request" type="HTTPRequest" parent="shop"]
+
+[node name="box_info" type="CanvasLayer" parent="shop"]
+layer = 2
+visible = false
+
+[node name="base" type="Control" parent="shop/box_info"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+
+[node name="bg" type="ColorRect" parent="shop/box_info/base"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.360784, 0.611765, 1, 1 )
+
+[node name="title" type="Label" parent="shop/box_info/base"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -188.0
+margin_top = 8.0
+margin_right = 188.0
+margin_bottom = 60.0
+grow_horizontal = 2
+theme_type_variation = "LabelTitle"
+text = "shop.box_info.title"
+align = 1
+
+[node name="diamond_box_visual" parent="shop/box_info/base" instance_placeholder="res://prefabs/menu/diamond_box_visual.scn"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -760.0
+margin_top = -270.0
+margin_right = 200.0
+margin_bottom = 270.0
+rect_scale = Vector2( 0.8, 0.8 )
+rect_pivot_offset = Vector2( 480, 270 )
+
+[node name="gold_box_visual" parent="shop/box_info/base" instance_placeholder="res://prefabs/menu/gold_box_visual.scn"]
+margin_left = -280.0
+margin_right = -280.0
+rect_scale = Vector2( 0.8, 0.8 )
+rect_pivot_offset = Vector2( 480, 270 )
+
+[node name="info" type="VBoxContainer" parent="shop/box_info/base"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -184.0
+margin_top = -210.0
+margin_right = 456.0
+margin_bottom = 270.0
+
+[node name="brief" type="Label" parent="shop/box_info/base/info"]
+margin_right = 640.0
+margin_bottom = 24.0
+custom_constants/line_spacing = -1
+text = "shop.box_info.diamond"
+align = 1
+autowrap = true
+
+[node name="info" type="Label" parent="shop/box_info/base/info"]
+margin_top = 28.0
+margin_right = 640.0
+margin_bottom = 52.0
+custom_constants/line_spacing = -2
+text = "shop.box_info"
+align = 1
+autowrap = true
+
+[node name="back" type="Button" parent="shop/box_info/base"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -118.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 46.0
+grow_horizontal = 0
+text = "menu.back"
 
 [node name="classes" type="Panel" parent="."]
 visible = false
@@ -6112,9 +6181,9 @@ dialog_autowrap = true
 [connection signal="pressed" from="shop/close" to="." method="shop" binds= [ false ]]
 [connection signal="pressed" from="shop/close" to="education3" method="next"]
 [connection signal="pressed" from="shop/scroll/offers/resources/big_box/buy" to="shop" method="buy" binds= [ "{\"gems\":10}", "{\"gold_box\":1}" ]]
-[connection signal="pressed" from="shop/scroll/offers/resources/big_box/info" to="shop" method="info_box"]
+[connection signal="pressed" from="shop/scroll/offers/resources/big_box/info" to="shop" method="info_box" binds= [ "gold" ]]
 [connection signal="pressed" from="shop/scroll/offers/resources/megabox/buy" to="shop" method="buy" binds= [ "{\"gems\":30}", "{\"diamond_box\":1}" ]]
-[connection signal="pressed" from="shop/scroll/offers/resources/megabox/info" to="shop" method="info_box"]
+[connection signal="pressed" from="shop/scroll/offers/resources/megabox/info" to="shop" method="info_box" binds= [ "diamond" ]]
 [connection signal="pressed" from="shop/scroll/offers/resources/gems0/buy" to="shop" method="buy_gems500"]
 [connection signal="pressed" from="shop/scroll/offers/resources/gems1/buy" to="shop" method="buy_gems1250"]
 [connection signal="pressed" from="shop/scroll/offers/resources/gems2/buy" to="shop" method="buy_gems2500"]
@@ -6130,6 +6199,7 @@ dialog_autowrap = true
 [connection signal="pressed" from="shop/scroll/offers/other/no_ads/buy" to="shop" method="buy_no_ads"]
 [connection signal="pressed" from="shop/scroll/offers/other/promocodes/buy" to="shop" method="promocodes"]
 [connection signal="confirmed" from="shop/confirm" to="shop" method="confirm_buy"]
+[connection signal="pressed" from="shop/box_info/base/back" to="shop/box_info" method="hide"]
 [connection signal="pressed" from="classes/back" to="." method="classes" binds= [ false ]]
 [connection signal="pressed" from="classes/back" to="education1" method="next"]
 [connection signal="pressed" from="classes/classes_grid/class0" to="." method="select_class" binds= [ "player" ]]

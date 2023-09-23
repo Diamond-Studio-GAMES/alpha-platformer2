@@ -373,8 +373,8 @@ func receive_loot(looted):
 				setv(j + "_soul_power", true)
 		if i == "amulet_frags":
 			for j in rec[i]:
-				addv("amulet_frags_"+j, rec[i][j])
-				addv("total_amulet_frags_"+j, rec[i][j])
+				addv("amulet_frags_" + j, rec[i][j])
+				addv("total_amulet_frags_" + j, rec[i][j])
 		if i == "tokens":
 			for j in rec[i]:
 				addv(j + "_tokens", rec[i][j])

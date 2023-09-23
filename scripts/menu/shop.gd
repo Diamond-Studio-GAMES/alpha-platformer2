@@ -342,7 +342,7 @@ func buy(costs = "", receives = "", id = -1):
 			"box":
 				add += tr("item.box").to_lower() + " (" + str(receive[i])
 			"gold_box":
-				add += tr("item.box_big").to_lower() + " (" + str(receive[i])
+				add += tr("item.box.big").to_lower() + " (" + str(receive[i])
 			"diamond_box":
 				add += tr("item.box.mega").to_lower() + " (" + str(receive[i])
 		add += ")"
@@ -376,7 +376,7 @@ func confirm_buy():
 	G.receive_loot(rec)
 
 
-func info_box():
+func info_box(box_type = "gold"):
 	power_classes = []
 	gadget_classes = []
 	soul_power_classes = []
@@ -409,13 +409,19 @@ func info_box():
 	var sp_chance = 2 if not soul_power_classes.empty() else 0
 	var coins_chance = 100 - hero_chance - gadget_chance - sp_chance - amul_chance
 	var coins_suffix = tr("shop.box_info.tokens") if not power_classes.empty() or not ulti_classes.empty() else ""
-	$info_boxes.dialog_text = tr("shop.box_info").format({"cs":coins_suffix, "cc":coins_chance, 
-			"hc":hero_chance, "ac":amul_chance, "gc":gadget_chance, "sc":sp_chance})
-	$info_boxes.popup_centered()
+	if $box_info/base/diamond_box_visual is InstancePlaceholder:
+		$box_info/base/diamond_box_visual.replace_by_instance()
+		$box_info/base/gold_box_visual.replace_by_instance()
+	$box_info/base/diamond_box_visual.hide()
+	$box_info/base/gold_box_visual.hide()
+	get_node("box_info/base/%s_box_visual" % box_type).show()
+	$box_info/base/info/brief.text = tr("shop.box_info." + box_type)
+	$box_info/base/info/info.text = tr("shop.box_info").format({"cs" : coins_suffix, "cc" : coins_chance, 
+			"hc" : hero_chance, "ac" : amul_chance, "gc" : gadget_chance, "sc" : sp_chance})
+	$box_info.show()
 
 
 func _ready():
-	$info_boxes.get_ok().hide()
 	fetch_online_offers()
 	init_iap()
 	$confirm.get_ok().text = tr("shop.buy")

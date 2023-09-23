@@ -35,9 +35,9 @@ func _ready():
 	get_tree().connect("network_peer_disconnected", self, "check")
 	if get_tree().is_network_server():
 		return
-	var pc = load("res://prefabs/menu/ping_counter.tscn").instance()
 	if not G.getv("show_ping", false):
 		return
+	var pc = load("res://prefabs/menu/ping_counter.tscn").instance()
 	_ping_counter = pc.get_node("label")
 	pc.name = "ping_counter"
 	add_child(pc)

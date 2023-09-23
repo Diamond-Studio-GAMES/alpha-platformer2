@@ -95,13 +95,26 @@ func _input(event):
 			click()
 
 
+func _ready():
+	get_tree().paused = true
+	randomize()
+	gen.randomize()
+	init_values()
+	$tint.set_focus_mode(Control.FOCUS_ALL)
+	$tint.grab_focus()
+	$tint.grab_click_focus()
+	for i in get_children():
+		if i.name.ends_with("_screen"):
+			screens[i.name] = i
+
+
 func _process(delta):
 	if items <= 1 and have_bonus:
 		have_bonus = false
 		items += 1
 		item_counter.self_modulate = Color.yellow
 		item_counter_label.text = tr("box.remains.bonus")
-	item_counter_glow.visible = glow_items > 0
+	item_counter_glow.visible = glow_items > 0 and glow_items == items - 1
 	item_counter_count.text = str(items - 1)
 
 
@@ -228,7 +241,6 @@ func open_gui(what = null):
 		items += loot["ulti_tokens"].size() - 1
 	if loot.has("amulet_frags"):
 		items += loot["amulet_frags"].size() - 1
-		glow_items += loot["amulet_frags"].size()
 	if loot.has("wild_tokens"):
 		open_select_class_for_tokens(loot["wild_tokens"])
 		yield(self, "tokens_class_selected")
@@ -236,12 +248,12 @@ func open_gui(what = null):
 			if not loot.has("coins"):
 				loot["coins"] = 0
 			loot["coins"] = loot["wild_tokens"] * 3
-			G.setv("coins", G.getv("coins", 0) + loot["coins"])
+			G.addv("coins", loot["coins"])
 		else:
 			if not loot.has("tokens"):
 				loot["tokens"] = {}
 			loot["tokens"][selected_class_for_tokens] = loot["wild_tokens"]
-			G.setv(selected_class_for_tokens + "_tokens", G.getv(selected_class_for_tokens + "_tokens", 0) + loot["wild_tokens"])
+			G.addv(selected_class_for_tokens + "_tokens", loot["wild_tokens"])
 		loot.erase("wild_tokens")
 	if loot.has("wild_ulti_tokens"):
 		open_select_class_for_ulti_tokens(loot["wild_ulti_tokens"])
@@ -250,12 +262,12 @@ func open_gui(what = null):
 			if not loot.has("coins"):
 				loot["coins"] = 0
 			loot["coins"] = loot["wild_ulti_tokens"] * 12
-			G.setv("coins", G.getv("coins", 0) + loot["coins"])
+			G.addv("coins", loot["coins"])
 		else:
 			if not loot.has("ulti_tokens"):
 				loot["ulti_tokens"] = {}
 			loot["ulti_tokens"][selected_class_for_tokens] = loot["wild_ulti_tokens"]
-			G.setv(selected_class_for_tokens + "_ulti_tokens", G.getv(selected_class_for_tokens + "_ulti_tokens", 0) + loot["wild_ulti_tokens"])
+			G.addv(selected_class_for_tokens + "_ulti_tokens", loot["wild_ulti_tokens"])
 		loot.erase("wild_ulti_tokens")
 	if loot.has("gadget"):
 		items += loot["gadget"].size() - 1
@@ -302,55 +314,6 @@ func open_gui(what = null):
 			glow_items -= 1
 			yield(self, "next")
 			items -= 1
-	if loot.has("gadget"):
-		hide_screens()
-		show_screen("gadget_screen")
-		G.ach.complete(Achievements.HELP_FROM_INSIDE)
-		for i in loot["gadget"]:
-			$gadget_screen/label/class.text = tr(G.CLASSES[i])
-			$gadget_screen/desc/label.text = tr(G.GADGETS[i])
-			$gadget_screen/anim.play("anim")
-			$gadget_screen/anim.seek(0, true)
-			glow_items -= 1
-			yield(get_tree().create_timer(2), "timeout")
-			yield(self, "next")
-			items -= 1
-			item_counter_count.text = str(items)
-	if loot.has("soul_power"):
-		hide_screens()
-		show_screen("soul_power_screen")
-		G.ach.complete(Achievements.SOUL_MASTER)
-		for i in loot["soul_power"]:
-			$soul_power_screen/label/class.text = tr(G.CLASSES[i])
-			$soul_power_screen/desc/label.text = tr(G.SOUL_POWERS[i])
-			$soul_power_screen/anim.play("anim")
-			$soul_power_screen/anim.seek(0, true)
-			glow_items -= 1
-			yield(get_tree().create_timer(2), "timeout")
-			yield(self, "next")
-			items -= 1
-			item_counter_count.text = str(items)
-	if loot.has("class"):
-		hide_screens()
-		show_screen("class_screen")
-		G.ach.complete(Achievements.WHAT_IS_IT)
-		if classes_to_unlock.size() == 0:
-			G.ach.complete(Achievements.MASTER_OF_WEAPONS)
-		for i in loot["class"]:
-			$class_screen/archer.hide()
-			$class_screen/wizard.hide()
-			$class_screen/butcher.hide()
-			$class_screen/knight.hide()
-			$class_screen/spearman.hide()
-			get_node("class_screen/" + i).show()
-			get_node("class_screen/" + i + "/class/ui/text/class_name/count").text = str(5 - classes_to_unlock.size()) + tr("box.class_num")
-			get_node("class_screen/" + i + "/anim").play("main")
-			$class_screen/roll_out.play()
-			glow_items -= 1
-			yield(get_tree().create_timer(4), "timeout")
-			yield(self, "next")
-			items -= 1
-			item_counter_count.text = str(items)
 	if loot.has("tokens"):
 		hide_screens()
 		show_screen("tokens_screen")
@@ -436,6 +399,55 @@ func open_gui(what = null):
 		yield(self, "next")
 		items -= 1
 		item_counter_count.text = str(items)
+	if loot.has("gadget"):
+		hide_screens()
+		show_screen("gadget_screen")
+		G.ach.complete(Achievements.HELP_FROM_INSIDE)
+		for i in loot["gadget"]:
+			$gadget_screen/label/class.text = tr(G.CLASSES[i])
+			$gadget_screen/desc/label.text = tr(G.GADGETS[i])
+			$gadget_screen/anim.play("anim")
+			$gadget_screen/anim.seek(0, true)
+			glow_items -= 1
+			yield(get_tree().create_timer(2), "timeout")
+			yield(self, "next")
+			items -= 1
+			item_counter_count.text = str(items)
+	if loot.has("soul_power"):
+		hide_screens()
+		show_screen("soul_power_screen")
+		G.ach.complete(Achievements.SOUL_MASTER)
+		for i in loot["soul_power"]:
+			$soul_power_screen/label/class.text = tr(G.CLASSES[i])
+			$soul_power_screen/desc/label.text = tr(G.SOUL_POWERS[i])
+			$soul_power_screen/anim.play("anim")
+			$soul_power_screen/anim.seek(0, true)
+			glow_items -= 1
+			yield(get_tree().create_timer(2), "timeout")
+			yield(self, "next")
+			items -= 1
+			item_counter_count.text = str(items)
+	if loot.has("class"):
+		hide_screens()
+		show_screen("class_screen")
+		G.ach.complete(Achievements.WHAT_IS_IT)
+		if classes_to_unlock.size() == 0:
+			G.ach.complete(Achievements.MASTER_OF_WEAPONS)
+		for i in loot["class"]:
+			$class_screen/archer.hide()
+			$class_screen/wizard.hide()
+			$class_screen/butcher.hide()
+			$class_screen/knight.hide()
+			$class_screen/spearman.hide()
+			get_node("class_screen/" + i).show()
+			get_node("class_screen/" + i + "/class/ui/text/class_name/count").text = str(5 - classes_to_unlock.size()) + tr("box.class_num")
+			get_node("class_screen/" + i + "/anim").play("main")
+			$class_screen/roll_out.play()
+			glow_items -= 1
+			yield(get_tree().create_timer(4), "timeout")
+			yield(self, "next")
+			items -= 1
+			item_counter_count.text = str(items)
 	if loot.has("gems"):
 		hide_screens()
 		show_screen("gems_screen")
@@ -470,39 +482,6 @@ func open_gui(what = null):
 			node.self_modulate = Color(0, 0.5, 0, 1)
 			node.get_node("icon").texture = AMULET_ICONS[i]
 			node.get_node("label").text = str(loot["amulet_frags"][i])
-			if items_showed < 8:
-				ygsi0.add_child(node)
-			else:
-				ygsi1.add_child(node)
-			items_showed += 1
-	if loot.has("gadget"):
-		for i in loot["gadget"]:
-			var node = you_get.instance()
-			node.self_modulate = Color.aquamarine
-			node.get_node("icon").texture = gadget
-			node.get_node("label").text = tr(G.CLASSES[i])
-			if items_showed < 8:
-				ygsi0.add_child(node)
-			else:
-				ygsi1.add_child(node)
-			items_showed += 1
-	if loot.has("soul_power"):
-		for i in loot["soul_power"]:
-			var node = you_get.instance()
-			node.self_modulate = Color.darkorange
-			node.get_node("icon").texture = soul_power
-			node.get_node("label").text = tr(G.CLASSES[i])
-			if items_showed < 8:
-				ygsi0.add_child(node)
-			else:
-				ygsi1.add_child(node)
-			items_showed += 1
-	if loot.has("class"):
-		for i in loot["class"]:
-			var node = you_get.instance()
-			node.self_modulate = G.CLASS_COLORS[i]
-			node.get_node("icon").texture = CLASS_ICONS[i]
-			node.get_node("label").text = tr("item.class")
 			if items_showed < 8:
 				ygsi0.add_child(node)
 			else:
@@ -564,6 +543,39 @@ func open_gui(what = null):
 		else:
 			ygsi1.add_child(node)
 		items_showed += 1
+	if loot.has("gadget"):
+		for i in loot["gadget"]:
+			var node = you_get.instance()
+			node.self_modulate = Color.aquamarine
+			node.get_node("icon").texture = gadget
+			node.get_node("label").text = tr(G.CLASSES[i])
+			if items_showed < 8:
+				ygsi0.add_child(node)
+			else:
+				ygsi1.add_child(node)
+			items_showed += 1
+	if loot.has("soul_power"):
+		for i in loot["soul_power"]:
+			var node = you_get.instance()
+			node.self_modulate = Color.darkorange
+			node.get_node("icon").texture = soul_power
+			node.get_node("label").text = tr(G.CLASSES[i])
+			if items_showed < 8:
+				ygsi0.add_child(node)
+			else:
+				ygsi1.add_child(node)
+			items_showed += 1
+	if loot.has("class"):
+		for i in loot["class"]:
+			var node = you_get.instance()
+			node.self_modulate = G.CLASS_COLORS[i]
+			node.get_node("icon").texture = CLASS_ICONS[i]
+			node.get_node("label").text = tr("item.class")
+			if items_showed < 8:
+				ygsi0.add_child(node)
+			else:
+				ygsi1.add_child(node)
+			items_showed += 1
 	if loot.has("gems"):
 		var node = you_get.instance()
 		node.self_modulate = Color.webpurple
@@ -597,19 +609,6 @@ func open_gui_set_ulti_tokens_count(count):
 		$ulti_tokens_screen/bar/upgrade.show()
 
 
-func _ready():
-	get_tree().paused = true
-	randomize()
-	gen.randomize()
-	init_values()
-	$tint.set_focus_mode(Control.FOCUS_ALL)
-	$tint.grab_focus()
-	$tint.grab_click_focus()
-	for i in get_children():
-		if i.name.ends_with("_screen"):
-			screens[i.name] = i
-
-
 func hide_screens():
 	for i in screens.values():
 		i.hide()
@@ -632,12 +631,18 @@ func prepare(type):
 	box_type = type
 	match type:
 		BoxType.STANDARD:
+			if $box_screen/box_visual is InstancePlaceholder:
+				$box_screen/box_visual.replace_by_instance()
 			show_screen("box_screen")
 			$box_screen/anim.play("start")
 		BoxType.BIG:
+			if $big_box_screen/box_visual is InstancePlaceholder:
+				$big_box_screen/box_visual.replace_by_instance()
 			show_screen("big_box_screen")
 			$big_box_screen/anim.play("start")
 		BoxType.MEGA:
+			if $mega_box_screen/box_visual is InstancePlaceholder:
+				$mega_box_screen/box_visual.replace_by_instance()
 			show_screen("mega_box_screen")
 			$mega_box_screen/anim.play("start")
 
@@ -674,6 +679,123 @@ func init_values():
 
 
 func open_box():
+	return open_boxes(1, 2, 1)
+
+
+func open_big_box():
+	return open_boxes(3, 3, 2)
+
+
+func open_megabox():
+	return open_boxes(10, 5, 3)
+
+
+func open_boxes(count, power_count, ulti_count):
+	var boxes = []
+	var had_pclasses: Array = power_classes.duplicate()
+	var had_uclasses: Array = ulti_classes.duplicate()
+	for i in range(count):
+		boxes.append(get_box_rewards())
+	var loot = {}
+	loot["coins"] = 0
+	loot["gadget"] = []
+	loot["soul_power"] = []
+	loot["class"] = []
+	loot["gems"] = 0
+	loot["amulet_frags"] = {}
+	loot["tokens"] = {}
+	loot["ulti_tokens"] = {}
+	
+	var tokens_array = []
+	if power_count > had_pclasses.size():
+		tokens_array.resize(had_pclasses.size())
+		tokens_array.fill(0)
+	else:
+		tokens_array.resize(power_count)
+		tokens_array.fill(0)
+	var utokens_array = []
+	if ulti_count > had_uclasses.size():
+		utokens_array.resize(had_uclasses.size())
+		utokens_array.fill(0)
+	else:
+		utokens_array.resize(ulti_count)
+		utokens_array.fill(0)
+	for i in boxes:
+		loot["coins"] += i.get("coins", 0)
+		loot["gems"] += i.get("gems", 0)
+		if i.has("amulet_frags"):
+			var tib = i["amulet_frags"]
+			var keys = tib.keys()
+			var values = tib.values()
+			for j in range(tib.size()):
+				if not loot["amulet_frags"].has(keys[j]):
+					loot["amulet_frags"][keys[j]] = values[j]
+				else:
+					loot["amulet_frags"][keys[j]] += values[j]
+		if i.has("gadget"):
+			loot["gadget"].append_array(i["gadget"])
+		if i.has("soul_power"):
+			loot["soul_power"].append_array(i["soul_power"])
+		if i.has("class"):
+			loot["class"].append_array(i["class"])
+		if i.has("tokens0"):
+			if tokens_array.size() > 1:
+				var id = gen.randi_range(0, tokens_array.size() - 1)
+				tokens_array[id] += i["tokens0"]
+				tokens_array[posmod(id + 1, tokens_array.size())] += i["tokens1"]
+			elif tokens_array.size() == 1:
+				tokens_array[0] += i["tokens0"]
+				loot["coins"] += i["tokens1"] * 3
+				G.addv("coins", i["tokens1"] * 3)
+			else:
+				loot["coins"] += i["tokens1"] * 3 + i["tokens0"] * 3
+				G.addv("coins", i["tokens1"] * 3 + i["tokens0"] * 3)
+			
+			if utokens_array.size() > 0:
+				utokens_array[gen.randi_range(0, utokens_array.size() - 1)] += i["ulti_tokens0"]
+			else:
+				loot["coins"] += i["ulti_tokens0"] * 12
+				G.addv("coins", i["ulti_tokens0"] * 12)
+	
+	tokens_array.sort()
+	utokens_array.sort()
+	had_pclasses.shuffle()
+	had_uclasses.shuffle()
+	had_pclasses.resize(tokens_array.size())
+	had_uclasses.resize(utokens_array.size())
+	for i in tokens_array.size():
+		if tokens_array[i] < 1:
+			continue
+		loot["tokens"][had_pclasses[i]] = tokens_array[i]
+	for i in utokens_array.size():
+		if utokens_array[i] < 1:
+			continue
+		loot["ulti_tokens"][had_uclasses[i]] = utokens_array[i]
+	for i in loot["tokens"]:
+		G.addv(i + "_tokens", loot["tokens"][i])
+	for i in loot["ulti_tokens"]:
+		G.addv(i + "_ulti_tokens", loot["ulti_tokens"][i])
+	
+	if loot["amulet_frags"].empty():
+		loot.erase("amulet_frags")
+	if loot["tokens"].empty():
+		loot.erase("tokens")
+	if loot["ulti_tokens"].empty():
+		loot.erase("ulti_tokens")
+	if loot["gems"] <= 0:
+		loot.erase("gems")
+	if loot["coins"] <= 0:
+		loot.erase("coins")
+	if loot["gadget"].empty():
+		loot.erase("gadget")
+	if loot["soul_power"].empty():
+		loot.erase("soul_power")
+	if loot["class"].empty():
+		loot.erase("class")
+	return loot
+
+
+func get_box_rewards():
 	var hero = G.percent_chance(hero_chance) and not classes_to_unlock.empty()
 	var soul_power = G.percent_chance(2) and not soul_power_classes.empty()
 	var gadget = G.percent_chance(4) and not gadget_classes.empty()
@@ -683,18 +805,18 @@ func open_box():
 	var gems = 0
 	if gem_chance:
 		var c = gen.randi_range(0, 100)
-		if c < 80:
+		if c < 90:
 			gems = gen.randi_range(1, 2)
 		else:
-			gems = 3
+			gems = 4
 		loot["gems"] = gems
-		G.setv("gems", G.getv("gems", 0) + gems)
+		G.addv("gems", gems)
 	if hero:
 		hero_chance = 1.5
 		G.setv("hero_chance", hero_chance)
 		classes_to_unlock.shuffle()
 		var class_unlocked = classes_to_unlock[0]
-		G.setv("classes", G.getv("classes", []) + [class_unlocked])
+		G.addv("classes", [class_unlocked], [])
 		init_values()
 		loot["class"] = [class_unlocked]
 	elif soul_power:
@@ -712,8 +834,8 @@ func open_box():
 	elif amulet_frag:
 		amulet_types.shuffle()
 		var type = amulet_types[0]
-		G.addv("amulet_frags_"+type, 1, 0)
-		G.addv("total_amulet_frags_"+type, 1, 0)
+		G.addv("amulet_frags_" + type, 1, 0)
+		G.addv("total_amulet_frags_" + type, 1, 0)
 		init_values()
 		loot["amulet_frags"] = {type : 1}
 	else:
@@ -722,128 +844,33 @@ func open_box():
 		power_classes.shuffle()
 		var coins_count = 0
 		var c = gen.randi_range(0, 100)
-		if c < 80:
+		if c < 65:
 			coins_count = gen.randi_range(30, 80)
+		elif c >= 65 and c < 90:
+			coins_count = 100
 		else:
-			coins_count = gen.randi_range(80, 120)
+			coins_count = 130
 		loot["coins"] = coins_count
-		if power_classes.size() >= 0:
-			power_classes.shuffle()
-		if ulti_classes.size() >= 0:
-			ulti_classes.shuffle()
-		if power_classes.size() > 1:
-			loot["tokens"] = {
-				power_classes[0] : gen.randi_range(3, 9),
-				power_classes[1] : gen.randi_range(3, 9)
-			}
-			G.setv(power_classes[0] + "_tokens", G.getv(power_classes[0] + "_tokens", 0) + loot["tokens"][power_classes[0]])
-			G.setv(power_classes[1] + "_tokens", G.getv(power_classes[1] + "_tokens", 0) + loot["tokens"][power_classes[1]])
-		elif power_classes.size() == 1:
-			loot["tokens"] = {
-				power_classes[0] : gen.randi_range(4, 12)
-			}
-			G.setv(power_classes[0] + "_tokens", G.getv(power_classes[0] + "_tokens", 0) + loot["tokens"][power_classes[0]])
-		elif power_classes.empty():
-			loot["coins"] += gen.randi_range(6, 18) * 3
-		if ulti_classes.size() > 0:
-			loot["ulti_tokens"] = {
-				ulti_classes[0] : gen.randi_range(1, 2) + randi() % 2
-			}
-			G.setv(ulti_classes[0] + "_ulti_tokens", G.getv(ulti_classes[0] + "_ulti_tokens", 0) + loot["ulti_tokens"][ulti_classes[0]])
+		G.addv("coins", coins_count)
+		loot["tokens"] = []
+		var t0 = gen.randi_range(0, 100)
+		if t0 < 70:
+			loot["tokens0"] = gen.randi_range(2, 7)
+		elif t0 >= 70 and t0 < 92:
+			loot["tokens0"] = 10
 		else:
-			loot["coins"] += gen.randi_range(1, 2) * 12 + (randi() % 2) * 12
-		G.setv("coins", G.getv("coins", 0) + loot["coins"])
+			loot["tokens0"] = 15
+		var t1 = gen.randi_range(0, 100)
+		if t1 < 70:
+			loot["tokens1"] = gen.randi_range(2, 7)
+		elif t1 >= 70 and t1 < 92:
+			loot["tokens1"] = 10
+		else:
+			loot["tokens1"] = 15
+		var ut = gen.randi_range(0, 100)
+		if ut < 80:
+			loot["ulti_tokens0"] = gen.randi_range(1, 2)
+		else:
+			loot["ulti_tokens0"] = 4
 		init_values()
-	return loot
-
-
-func open_big_box():
-	return open_boxes(3)
-
-
-func open_megabox():
-	return open_boxes(10)
-
-
-func open_boxes(count):
-	var boxes = []
-	for i in range(count):
-		boxes.append(open_box())
-	var loot = {}
-	loot["coins"] = 0
-	for i in boxes:
-		loot["coins"] += i.get("coins", 0)
-	if loot["coins"] <= 0:
-		loot.erase("coins")
-	loot["gems"] = 0
-	for i in boxes:
-		loot["gems"] += i.get("gems", 0)
-	if loot["gems"] <= 0:
-		loot.erase("gems")
-	loot["tokens"] = {}
-	loot["ulti_tokens"] = {}
-	loot["amulet_frags"] = {}
-	for i in boxes:
-		if not i.has("tokens"):
-			continue
-		var tib = i["tokens"]
-		var keys = tib.keys()
-		var values = tib.values()
-		for j in range(tib.size()):
-			if not loot["tokens"].has(keys[j]):
-				loot["tokens"][keys[j]] = values[j]
-			else:
-				loot["tokens"][keys[j]] += values[j]
-	for i in boxes:
-		if not i.has("ulti_tokens"):
-			continue
-		var tib = i["ulti_tokens"]
-		var keys = tib.keys()
-		var values = tib.values()
-		for j in range(tib.size()):
-			if not loot["ulti_tokens"].has(keys[j]):
-				loot["ulti_tokens"][keys[j]] = values[j]
-			else:
-				loot["ulti_tokens"][keys[j]] += values[j]
-	for i in boxes:
-		if not i.has("amulet_frags"):
-			continue
-		var tib = i["amulet_frags"]
-		var keys = tib.keys()
-		var values = tib.values()
-		for j in range(tib.size()):
-			if not loot["amulet_frags"].has(keys[j]):
-				loot["amulet_frags"][keys[j]] = values[j]
-			else:
-				loot["amulet_frags"][keys[j]] += values[j]
-	if loot["tokens"].empty():
-		loot.erase("tokens")
-	if loot["ulti_tokens"].empty():
-		loot.erase("ulti_tokens")
-	if loot["amulet_frags"].empty():
-		loot.erase("amulet_frags")
-	loot["gadget"] = []
-	loot["soul_power"] = []
-	loot["class"] = []
-	for i in boxes:
-		if i.has("gadget"):
-			if loot["gadget"].has(i["gadget"][0]):
-				continue
-			loot["gadget"].append_array(i["gadget"])
-	for i in boxes:
-		if i.has("soul_power"):
-			if loot["soul_power"].has(i["soul_power"][0]):
-				continue
-			loot["soul_power"].append_array(i["soul_power"])
-	for i in boxes:
-		if i.has("class"):
-			if loot["class"].has(i["class"][0]):
-				continue
-			loot["class"].append_array(i["class"])
-	if loot["gadget"].empty():
-		loot.erase("gadget")
-	if loot["soul_power"].empty():
-		loot.erase("soul_power")
-	if loot["class"].empty():
-		loot.erase("class")
 	return loot
