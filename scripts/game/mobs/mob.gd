@@ -83,20 +83,14 @@ func calculate_fall_damage():
 	.calculate_fall_damage()
 
 
-func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
-	var state = .hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
-	if state == null:
-		return
-	if not state.is_valid():
-		return
-	if current_health <= 0:
+func _hurt_intermediate(damage_source, died):
+	if died:
 		if damage_source == "fire":
 			G.ach.complete(Achievements.BURN_HER_FASTER)
 		elif damage_source == "fall":
 			G.ach.complete(Achievements.THIS_IS_SPARTA)
 		collision_layer = 0b0
 		collision_mask = 0b1
-	state.resume()
 
 
 func _post_hurt(ded):

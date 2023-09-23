@@ -282,22 +282,19 @@ func force_jump(power = 0):
 
 #HEALTH
 func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
-	if is_reviving or current_health < 0:
-		return
-	if _is_ultiing:
-		return
-	var state = .hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
-	if state == null:
-		return
-	if not state.is_valid():
-		return
+	if is_reviving or _is_ultiing:
+		return false
+	return .hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
+
+
+func _hurt_intermediate(damage_source, died):
 	_health_timer = 0
 	_player_head.texture = _head_hurt_sprite
 	if MP.auth(self):
 		G.addv("damaged", 1)
 		if damage_source == "fall":
 			G.addv("fall_damaged", 1)
-	if current_health <= 0:
+	if died:
 		collision_layer = 0b0
 		collision_mask = 0b1
 		if MP.auth(self):
@@ -315,25 +312,24 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 	else:
 		tint_anim.stop(true)
 		tint_anim.play("hurting")
-	state.resume()
 
 
 func _post_hurt(ded):
 	if ded:
 		yield(get_tree().create_timer(4, false), "timeout")
 		if not MP.is_active:
-			if not camera.is_screen_on and current_health <= 0:
+			if not camera.is_screen_on:
 				camera.show_revive_screen()
+
+
+func end_game():
+	camera.give_up()
 
 
 func _hurt_end():
 	._hurt_end()
 	if not is_zero_approx(current_health) and not is_stunned and hurt_counter < 1:
 		_player_head.texture = _head_sprite
-
-
-func end_game():
-	camera.give_up()
 
 
 func heal(amount):

@@ -107,28 +107,11 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 		current_health = 0
 		damage = max_health
 	if current_health >= past_health:
-		return
+		return false
 	is_hurt = true
 	hurt_counter += 1
 	if stuns:
 		stun(stun_time)
-	_head.texture = _head_hurt_sprite
-	yield()
-	var node = _hurt_heal_text.instance()
-	node.get_node("text").text = str(damage - defense)
-	_level.add_child(node)
-	node.global_position = global_position
-	node.position += Vector2(randi() % 13 - 6, randi() % 13 - 6)
-	node.global_scale = Vector2(0.5, 0.5)
-	var prev_hcb_value = _health_change_bar.value
-	_update_bars()
-	_health_change_bar.value = prev_hcb_value
-	$hurt_sfx.play()
-	if is_instance_valid(_tween):
-		if _tween.is_valid():
-			_tween.kill()
-	_tween = create_tween()
-	_tween.tween_property(_health_change_bar, "value", current_health, 0.6).set_delay(0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).from_current()
 	var died = false
 	if current_health > 0:
 		emit_signal("hurt")
@@ -145,6 +128,23 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 		_visual_scale = _visual.scale
 		_body.scale = Vector2(1, 1)
 		_anim_tree["parameters/death_trans/current"] = AliveState.DEAD
+	_head.texture = _head_hurt_sprite
+	_hurt_intermediate(damage_source, died)
+	var node = _hurt_heal_text.instance()
+	node.get_node("text").text = str(damage - defense)
+	_level.add_child(node)
+	node.global_position = global_position
+	node.position += Vector2(randi() % 13 - 6, randi() % 13 - 6)
+	node.global_scale = Vector2(0.5, 0.5)
+	var prev_hcb_value = _health_change_bar.value
+	_update_bars()
+	_health_change_bar.value = prev_hcb_value
+	$hurt_sfx.play()
+	if is_instance_valid(_tween):
+		if _tween.is_valid():
+			_tween.kill()
+	_tween = create_tween()
+	_tween.tween_property(_health_change_bar, "value", current_health, 0.6).set_delay(0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).from_current()
 	var time0 = 0
 	var time1 = 0
 	var difference = 0
@@ -154,6 +154,11 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 		difference = max(custom_invincibility_time - custom_immobility_time, 0)
 	_post_hurt(died)
 	_hurt_knockback(time0, time1, difference)
+	return true
+
+
+func _hurt_intermediate(damage_source, died):
+	pass
 
 
 func _post_hurt(died):
