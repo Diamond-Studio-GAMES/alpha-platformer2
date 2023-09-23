@@ -51,17 +51,13 @@ func apply_data(data):
 	_update_bars()
 
 
-func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
-	if is_reviving:
+func _hurt_intermediate(dmg_source, died):
+	if not MP.auth(self):
 		return
-	if defense_allowed:
-		if damage - defense <= 0:
-			return
-	if have_soul_power and MP.auth(self):
+	if have_soul_power:
 		var chance = gen.randi_range(0, 100)
 		if chance < 21:
 			ulti_percentage = clamp(ulti_percentage + 15, 0, 100)
-	.hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
 
 
 func attack():

@@ -34,24 +34,25 @@ func add_body(node):
 
 func deal_damage(node):
 	if node is Player and is_player_attack:
-		return
+		return false
 	if node.is_in_group("mob") and is_enemy_attack:
-		return
-	.deal_damage(node)
+		return false
+	var success = .deal_damage(node)
 	if not MP.auth(node):
-		return
-	if is_on_entity:
-		counter += 1
-		if counter >= damage_ticks:
-			queue_free()
-	else:
-		if node.has_node(on_entity_node_name):
-			node.get_node(on_entity_node_name).counter = 0
+		return success
+	if success:
+		if is_on_entity:
+			counter += 1
+			if counter >= damage_ticks:
+				queue_free()
 		else:
-			var n = fire_on_entity.instance()
-			n.name = on_entity_node_name
-			if on_entity_damage > 0:
-				n.damage = on_entity_damage
-			n.damage_ticks = on_entity_damage_ticks
-			node.add_child(n, true)
-	
+			if node.has_node(on_entity_node_name):
+				node.get_node(on_entity_node_name).counter = 0
+			else:
+				var n = fire_on_entity.instance()
+				n.name = on_entity_node_name
+				if on_entity_damage > 0:
+					n.damage = on_entity_damage
+				n.damage_ticks = on_entity_damage_ticks
+				node.add_child(n, true)
+	return success

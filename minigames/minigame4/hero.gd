@@ -196,15 +196,13 @@ func revive(hp = -1):
 func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
 	var past_health = current_health
 	var past_armor = current_armor
-	var real_defense = defense
-	if not defense_allowed:
-		real_defense = 0
+	defense *= int(defense_allowed)
 	if current_armor <= 0:
-		current_health = clamp(current_health - max(damage - real_defense, 0), 0, max_health)
+		current_health = clamp(current_health - max(damage - defense, 0), 0, max_health)
 		if current_health >= past_health:
-			return
+			return false
 	else:
-		current_armor = min(current_armor - max(damage - real_defense, 0), max_armor)
+		current_armor = min(current_armor - max(damage - defense, 0), max_armor)
 		if current_armor < 0:
 			current_health = clamp(current_health + current_armor, 0, max_health)
 			current_armor = 0
@@ -212,7 +210,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 			_armor_indicator.show()
 			_armor_timer.start()
 		if current_armor >= past_armor:
-			return
+			return false
 	if fatal:
 		current_health = 0
 		current_armor = 0
@@ -244,7 +242,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 		tint_anim.stop(true)
 		tint_anim.play("hurting")
 	var node = _hurt_heal_text.instance()
-	node.get_node("text").text = str(damage - real_defense)
+	node.get_node("text").text = str(damage - defense)
 	_level.add_child(node)
 	node.global_position = global_position
 	node.position += Vector2(randi() % 13 - 6, randi() % 13 - 6)
@@ -285,6 +283,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 		difference = max(custom_invincibility_time - custom_immobility_time, 0)
 	_post_hurt(died)
 	_hurt_knockback(time0, time1, difference)
+	return true
 
 
 func _post_hurt(died):

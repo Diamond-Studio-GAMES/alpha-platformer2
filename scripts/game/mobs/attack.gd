@@ -67,11 +67,11 @@ func deal_damage(node):
 	exceptions.append(node)
 	exceptions_timers.append(custom_invincibility_time)
 	if node is Player and is_player_attack:
-		return
+		return false
 	if node.is_in_group("mob") and is_enemy_attack:
-		return
+		return false
 	if MP.auth(node):
-		node.hurt(damage, sign(node.global_position.x - global_position.x) * knockback, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
+		return node.hurt(damage, sign(node.global_position.x - global_position.x) * knockback, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
 
 
 func _physics_process(delta):
