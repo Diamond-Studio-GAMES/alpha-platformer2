@@ -7,7 +7,8 @@ var mobs = [load("res://minigames/minigame1/mob_knife_man_reznya.tscn"),
 		load("res://minigames/minigame1/mob_sportsman_reznya.tscn"),
 		load("res://minigames/minigame1/mob_knight_reznya.tscn"),
 		load("res://minigames/minigame1/mob_doctor_reznya.tscn"),
-		load("res://minigames/minigame1/mob_spartan_reznya.tscn")]
+		load("res://minigames/minigame1/mob_spartan_reznya.tscn"),
+		load("res://minigames/minigame1/mob_magician_reznya.tscn")]
 var timer = null
 var timer_time = 120
 var won = false

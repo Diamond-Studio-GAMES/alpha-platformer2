@@ -4159,7 +4159,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
+node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -4771,7 +4771,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/great_knight/mob_gk/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/great_knight/mob_gk/visual/body"]
-scale = Vector2( 1.25, 1.2034 )
+scale = Vector2( 1.25, 1.24277 )
 texture = ExtResource( 46 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/great_knight/mob_gk"]
@@ -5189,7 +5189,7 @@ __meta__ = {
 [node name="think" parent="decor" instance=ExtResource( 35 )]
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 1744, 0 )
-text = ""
+text = "4_10.boss.start"
 time = 4.0
 color = Color( 1, 0, 0, 1 )
 

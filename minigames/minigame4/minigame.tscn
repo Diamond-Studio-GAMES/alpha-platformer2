@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://themes/theme.tres" type="Theme" id=1]
 [ext_resource path="res://minigames/minigame4/minigame.gd" type="Script" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://prefabs/blocks/teleport_portal.tscn" type="PackedScene" id=21]
 [ext_resource path="res://prefabs/mobs/doctor.tscn" type="PackedScene" id=22]
 [ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=23]
+[ext_resource path="res://prefabs/mobs/magician.tscn" type="PackedScene" id=24]
 
 [sub_resource type="Animation" id=2]
 resource_name = "enter"
@@ -317,7 +318,7 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 location = "4.name"
 level_name = "4.tip"
-mobs = [ ExtResource( 16 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 22 ), ExtResource( 6 ) ]
+mobs = [ ExtResource( 16 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 22 ), ExtResource( 6 ), ExtResource( 24 ) ]
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 20 )

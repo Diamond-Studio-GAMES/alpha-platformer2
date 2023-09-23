@@ -1233,7 +1233,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_seek", 0, "attack", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "attack_shot", "death_trans", 1, "death" ]
+node_connections = [ "output", 0, "death_trans", "death_trans", 0, "attack_shot", "death_trans", 1, "death", "attack_seek", 0, "attack", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
 
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 8.0
@@ -1274,7 +1274,7 @@ head_hurt_sprite_path = "res://textures/mobs/shooter/head_hurt.tres"
 
 [node name="optimizer" type="VisibilityEnabler2D" parent="."]
 position = Vector2( 0, 1.90735e-06 )
-rect = Rect2( -32, -64, 64, 128 )
+rect = Rect2( -64, -64, 128, 128 )
 script = ExtResource( 15 )
 
 [node name="visual" type="Node2D" parent="."]

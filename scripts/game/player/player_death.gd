@@ -168,6 +168,7 @@ func use_gadget():
 	Engine.time_scale = 1
 	is_active_gadget = true
 	_knockback = 0
+	is_hurt = false
 	stun_time = 0
 	yield(get_tree().create_timer(0.5), "timeout")
 	var time_to_stop = 4 + floor(curr_lvl_loc / 2.0)

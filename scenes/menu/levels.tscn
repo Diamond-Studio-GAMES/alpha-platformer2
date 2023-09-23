@@ -2481,7 +2481,6 @@ margin_left = -85.0
 margin_top = -39.0
 margin_right = 85.0
 margin_bottom = 39.0
-popup_exclusive = true
 window_title = "shop.error"
 dialog_text = "shop.error.text"
 dialog_hide_on_ok = false

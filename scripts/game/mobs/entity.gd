@@ -101,10 +101,8 @@ func calculate_fall_damage():
 func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
 	ms.sync_call(self, "hurt", [damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source])
 	var past_health = current_health
-	var real_defense = defense
-	if not defense_allowed:
-		real_defense = 0
-	current_health = round(clamp(current_health - max(damage - real_defense, 0), 0, max_health))
+	defense *= int(defense_allowed)
+	current_health = round(clamp(current_health - max(damage - defense, 0), 0, max_health))
 	if fatal:
 		current_health = 0
 		damage = max_health
@@ -117,7 +115,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 	_head.texture = _head_hurt_sprite
 	yield()
 	var node = _hurt_heal_text.instance()
-	node.get_node("text").text = str(damage - real_defense)
+	node.get_node("text").text = str(damage - defense)
 	_level.add_child(node)
 	node.global_position = global_position
 	node.position += Vector2(randi() % 13 - 6, randi() % 13 - 6)

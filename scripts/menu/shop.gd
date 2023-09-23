@@ -1,13 +1,13 @@
 extends Node
 
 
+const CLASSES = ["knight", "butcher", "spearman", "wizard", "archer"]
 var classes_to_unlock = []
 var gadget_classes = []
 var power_classes = []
 var ulti_classes = []
 var soul_power_classes = []
 var amulet_types = []
-const CLASSES = ["knight", "butcher", "spearman", "wizard", "archer"]
 var current_receive = null
 var current_cost = null
 var current_id = -1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/game/other/test_level.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/mobs/dummy.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://prefabs/mobs/mushroom.tscn" type="PackedScene" id=13]
 [ext_resource path="res://prefabs/mobs/knife_man.tscn" type="PackedScene" id=14]
 [ext_resource path="res://prefabs/mobs/doctor.tscn" type="PackedScene" id=15]
+[ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=16]
 
 [node name="test" type="Node2D"]
 script = ExtResource( 1 )
@@ -281,6 +282,11 @@ position = Vector2( 3696, 672 )
 [node name="grass21" parent="decor" instance=ExtResource( 3 )]
 position = Vector2( 3952, 704 )
 
+[node name="borders" parent="." instance=ExtResource( 16 )]
+
+[node name="down" parent="borders" index="1"]
+position = Vector2( 0, 1280 )
+
 [node name="thinks" type="Node2D" parent="."]
 
 [node name="background" parent="." instance=ExtResource( 12 )]
@@ -301,3 +307,5 @@ color = Color( 0, 0, 0, 0 )
 stream = ExtResource( 5 )
 autoplay = true
 bus = "music"
+
+[editable path="borders"]

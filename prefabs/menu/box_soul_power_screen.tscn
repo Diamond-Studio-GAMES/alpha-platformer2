@@ -242,6 +242,7 @@ margin_top = -40.0
 margin_right = 180.0
 margin_bottom = 40.0
 align = 1
+valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
