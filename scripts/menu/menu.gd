@@ -1,6 +1,8 @@
 extends Control
 
 
+var achvs_inited = false
+var stats_inited = false
 var ach_panel = load("res://prefabs/menu/achievement_panel.tscn")
 onready var pm = $settings/grph_s.get_popup()
 
@@ -39,44 +41,6 @@ func _ready():
 	var date = G.getv("create_date", Time.get_date_dict_from_system())
 	var date_str = "%02d/%02d/%d" % [date["day"], date["month"], date["year"]]
 	$settings/creation_date.text = tr("menu.creation_date") + date_str
-	for i in G.ach.achievements:
-		var n = ach_panel.instance()
-		n.get_node("name").text = tr(G.ach.achievements[i]["name"])
-		n.get_node("desc").text = tr(G.ach.achievements[i]["desc"])
-		n.get_node("bg/icon").texture = G.ach.achievements[i]["icon"]
-		if not G.ach.is_completed(i):
-			n.modulate = Color(0.5, 0.5, 0.5)
-			n.get_node("bg").color = Color.black
-			n.get_node("bg/icon").self_modulate = Color.darkblue
-		$achievements/scroll/v_box.add_child(n)
-	for i in $achievements/stats_window/base/column0.get_children():
-		if i.name == "classes_opened":
-			i.get_node("count").text = str(G.getv("classes", []).size())
-			continue
-		i.get_node("count").text = str(G.getv(i.name, 0))
-	for i in $achievements/stats_window/base/column1.get_children():
-		if i.name == "classes_opened":
-			i.get_node("count").text = str(G.getv("classes", []).size())
-			continue
-		i.get_node("count").text = str(G.getv(i.name, 0))
-	var ach_get = 0
-	for i in G.ach.achievements:
-		if G.ach.is_completed(i):
-			ach_get += 1
-	$achievements/stats_window/base/achievements_completed/count.text = str(ach_get)
-	var secs = G.getv("time")
-	var mins = 0
-	var hours = 0
-	if secs < 60:
-		$achievements/stats_window/base/time/count.text = "%02d:%02d" % [mins, secs]
-	else:
-		mins = floor(secs / 60)
-		secs -= mins * 60
-		$achievements/stats_window/base/time/count.text = "%02d:%02d" % [mins, secs]
-	if mins >= 60:
-		hours = floor(mins / 60)
-		mins -= hours * 60
-		$achievements/stats_window/base/time/count.text = "%d:%02d:%02d" % [hours, mins, secs]
 	if OS.has_feature("pc"):
 		$settings/contr.hide()
 		$settings/contr_pc.show()
@@ -118,6 +82,54 @@ func play():
 func achievements(val = true):
 	$achievements.visible = val
 	$main.visible = not val
+	if achvs_inited:
+		return
+	for i in G.ach.achievements:
+		var n = ach_panel.instance()
+		n.get_node("name").text = tr(G.ach.achievements[i]["name"])
+		n.get_node("desc").text = tr(G.ach.achievements[i]["desc"])
+		n.get_node("bg/icon").texture = G.ach.achievements[i]["icon"]
+		if not G.ach.is_completed(i):
+			n.modulate = Color(0.5, 0.5, 0.5)
+			n.get_node("bg").color = Color.black
+			n.get_node("bg/icon").self_modulate = Color.darkblue
+		$achievements/scroll/v_box.add_child(n)
+	achvs_inited = true
+
+
+func statistics():
+	$achievements/stats_window.popup_centered()
+	if stats_inited:
+		return
+	for i in $achievements/stats_window/base/column0.get_children():
+		if i.name == "classes_opened":
+			i.get_node("count").text = str(G.getv("classes", []).size())
+			continue
+		i.get_node("count").text = str(G.getv(i.name, 0))
+	for i in $achievements/stats_window/base/column1.get_children():
+		if i.name == "classes_opened":
+			i.get_node("count").text = str(G.getv("classes", []).size())
+			continue
+		i.get_node("count").text = str(G.getv(i.name, 0))
+	var ach_get = 0
+	for i in G.ach.achievements:
+		if G.ach.is_completed(i):
+			ach_get += 1
+	$achievements/stats_window/base/achievements_completed/count.text = str(ach_get)
+	var secs = G.getv("time")
+	var mins = 0
+	var hours = 0
+	if secs < 60:
+		$achievements/stats_window/base/time/count.text = "%02d:%02d" % [mins, secs]
+	else:
+		mins = floor(secs / 60)
+		secs -= mins * 60
+		$achievements/stats_window/base/time/count.text = "%02d:%02d" % [mins, secs]
+	if mins >= 60:
+		hours = floor(mins / 60)
+		mins -= hours * 60
+		$achievements/stats_window/base/time/count.text = "%d:%02d:%02d" % [hours, mins, secs]
+	stats_inited = true
 
 
 func settings(val = true):

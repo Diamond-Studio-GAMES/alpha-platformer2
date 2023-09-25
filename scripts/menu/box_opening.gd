@@ -284,7 +284,7 @@ func open_gui(what = null):
 	if items > 1 or have_bonus:
 		item_counter.show()
 		item_counter_count.text = str(items)
-	if items == 0 and have_bonus:
+	if what != null:
 		item_counter.hide()
 	if loot.has("coins"):
 		hide_screens()
@@ -724,20 +724,14 @@ func open_boxes(count, power_count, ulti_count):
 		loot["coins"] += i.get("coins", 0)
 		loot["gems"] += i.get("gems", 0)
 		if i.has("amulet_frags"):
-			var tib = i["amulet_frags"]
-			var keys = tib.keys()
-			var values = tib.values()
-			for j in range(tib.size()):
-				if not loot["amulet_frags"].has(keys[j]):
-					loot["amulet_frags"][keys[j]] = values[j]
-				else:
-					loot["amulet_frags"][keys[j]] += values[j]
+			for j in i["amulet_frags"]:
+				loot["amulet_frags"][j] = i["amulet_frags"][j] + loot["amulet_frags"].get(j, 0)
 		if i.has("gadget"):
-			loot["gadget"].append_array(i["gadget"])
+			loot["gadget"] += i["gadget"]
 		if i.has("soul_power"):
-			loot["soul_power"].append_array(i["soul_power"])
+			loot["soul_power"] += i["soul_power"]
 		if i.has("class"):
-			loot["class"].append_array(i["class"])
+			loot["class"] += i["class"]
 		if i.has("tokens0"):
 			if tokens_array.size() > 1:
 				var id = gen.randi_range(0, tokens_array.size() - 1)

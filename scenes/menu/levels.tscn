@@ -5681,19 +5681,12 @@ margin_top = -8.0
 margin_right = 45.5
 margin_bottom = 16.0
 custom_colors/font_color = Color( 0, 0.501961, 0, 1 )
-text = "Улучшить"
+text = "menu.level_up"
 align = 1
 
-[node name="exit" type="Button" parent="upgrade/upgrade"]
-anchor_left = 1.0
-anchor_top = 1.0
+[node name="close" type="ToolButton" parent="upgrade/upgrade"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -176.0
-margin_top = -46.0
-margin_right = -16.0
-margin_bottom = -16.0
-text = "Готово"
 
 [node name="anim" type="AnimationPlayer" parent="upgrade/upgrade"]
 anims/upgrade = SubResource( 130 )
@@ -6230,7 +6223,7 @@ dialog_autowrap = true
 [connection signal="pressed" from="classes/infos/amulet/panels/3/craft" to="." method="craft_amulet" binds= [ 3 ]]
 [connection signal="pressed" from="classes/infos/amulet/panels/4/craft" to="." method="craft_amulet" binds= [ 4 ]]
 [connection signal="pressed" from="classes/infos/amulet/panels/5/craft" to="." method="craft_amulet" binds= [ 5 ]]
-[connection signal="pressed" from="upgrade/upgrade/exit" to="." method="close_upgrade"]
+[connection signal="pressed" from="upgrade/upgrade/close" to="." method="close_upgrade"]
 [connection signal="pressed" from="amulet_craft/screen/done" to="." method="done_amulet"]
 [connection signal="pressed" from="education4/main/end" to="education4" method="end"]
 [connection signal="confirmed" from="help_dialog" to="." method="help"]

@@ -1422,7 +1422,7 @@ custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "menu.graphics.setup"
 flat = false
-items = [ "menu.gr.proj_effects", null, 0, false, false, 0, 0, null, "", true, "menu.gr.proj_effects.standard", null, 2, false, false, 10, 0, null, "", false, "menu.gr.proj_effects.simple", null, 2, false, false, 11, 0, null, "", false, "menu.gr.proj_effects.off", null, 2, false, false, 12, 0, null, "", false, "menu.gr.grass", null, 0, false, false, 2, 0, null, "", true, "menu.gr.grass.gpu", null, 2, false, false, 20, 0, null, "", false, "menu.gr.grass.cpu", null, 2, false, false, 21, 0, null, "", false, "menu.gr.grass.static", null, 2, false, false, 22, 0, null, "", false, "menu.gr.misc", null, 0, false, false, 3, 0, null, "", true, "menu.gr.misc.beauty_light", null, 1, false, false, 30, 0, null, "", false, "menu.gr.misc.beauty_water", null, 1, true, false, 31, 0, null, "", false, "menu.gr.misc.beauty_lava", null, 1, true, false, 32, 0, null, "", false, "menu.gr.misc.beauty_fire", null, 1, true, false, 33, 0, null, "", false ]
+items = [ "menu.gr.proj_effects", null, 0, false, false, 0, 0, null, "", true, "menu.gr.proj_effects.standard", null, 2, false, false, 10, 0, null, "", false, "menu.gr.proj_effects.simple", null, 2, false, false, 11, 0, null, "", false, "menu.gr.proj_effects.off", null, 2, false, false, 12, 0, null, "", false, "menu.gr.grass", null, 0, false, false, 2, 0, null, "", true, "menu.gr.grass.gpu", null, 2, false, false, 20, 0, null, "", false, "menu.gr.grass.cpu", null, 2, false, false, 21, 0, null, "", false, "menu.gr.grass.static", null, 2, false, false, 22, 0, null, "", false, "menu.gr.misc", null, 0, false, false, 3, 0, null, "", true, "menu.gr.misc.beauty_light", null, 1, true, false, 30, 0, null, "", false, "menu.gr.misc.beauty_water", null, 1, true, false, 31, 0, null, "", false, "menu.gr.misc.beauty_lava", null, 1, true, false, 32, 0, null, "", false, "menu.gr.misc.beauty_fire", null, 1, true, false, 33, 0, null, "", false ]
 
 [node name="smc" type="Label" parent="settings"]
 anchor_left = 0.5
@@ -1766,7 +1766,7 @@ dialog_autowrap = true
 [connection signal="pressed" from="about/link" to="." method="link"]
 [connection signal="pressed" from="about/license_info/link" to="." method="license"]
 [connection signal="pressed" from="achievements/back" to="." method="achievements" binds= [ false ]]
-[connection signal="pressed" from="achievements/stats" to="achievements/stats_window" method="popup_centered"]
+[connection signal="pressed" from="achievements/stats" to="." method="statistics"]
 [connection signal="pressed" from="settings/back" to="." method="settings" binds= [ false ]]
 [connection signal="pressed" from="settings/contr" to="." method="controls"]
 [connection signal="pressed" from="settings/contr_pc" to="settings/controls" method="popup_centered"]

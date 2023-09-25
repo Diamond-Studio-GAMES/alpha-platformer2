@@ -402,6 +402,7 @@ box.class_num,-й из 5 классов,/5 classes
 menu.multiplayer.warn,"Мультиплеер не доступен в веб-версии. Установи игру на телефон, чтобы сыграть в него!",Multiplayer is not available in web version. Install game on phone to play!
 menu.max,МАКС.,MAX
 menu.maximum,МАКСИМУМ,MAXIMUM
+menu.level_up,Улучшить,Level up
 menu.sell,Прод.,Sell
 class.amulets,Амулеты класса ,Amulets of class 
 amulet.craft,Создать,Craft
