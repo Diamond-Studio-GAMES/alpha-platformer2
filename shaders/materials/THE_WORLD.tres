@@ -6,4 +6,5 @@
 [resource]
 shader = ExtResource( 1 )
 shader_param/dist_power = 0.05
+shader_param/screen_zoom = 2.0
 shader_param/distortion = ExtResource( 2 )

@@ -20,7 +20,8 @@ func start_load():
 	loader = ResourceLoader.load_interactive(load_path)
 	if loader == null:
 		print("Can't load!")
-		get_tree().change_scene("res://scenes/splash_screen.tscn")
+		G.dialog_in_menu = tr("loading.error") % load_path
+		get_tree().change_scene("res://scenes/menu/menu.tscn")
 		queue_free()
 		return
 

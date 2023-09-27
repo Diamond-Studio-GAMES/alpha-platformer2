@@ -536,7 +536,7 @@ func _physics_process(delta):
 			use_potion(2)
 		if Input.is_action_just_pressed("potion3"):
 			use_potion(3)
-	if _move.length_squared() < 5*5 and attack_cooldown == 0:
+	if _move.length_squared() < 25 and _move_direction.is_equal_approx(Vector2.ZERO) and attack_cooldown == 0:
 		_health_timer += delta * 60
 	else:
 		_health_timer = 0
@@ -548,7 +548,7 @@ func _physics_process(delta):
 	
 	if smooth_camera and MP.auth(self):
 		face_left = true if _move_direction.x < 0 else false
-		var target = Vector2()
+		var target: Vector2
 		if not face_left:
 			target = Vector2(global_position.x + offset.x, global_position.y - offset.y)
 		else:

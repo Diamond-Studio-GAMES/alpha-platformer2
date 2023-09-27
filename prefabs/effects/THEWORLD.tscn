@@ -11,6 +11,7 @@
 [sub_resource type="Animation" id=1]
 resource_name = "THEWORLD"
 length = 2.0
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("invert:scale")
 tracks/0/interp = 1
@@ -153,6 +154,18 @@ tracks/10/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("invert:material:shader_param/screen_zoom")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.3, 0.55, 0.6, 0.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, 1.0, 1.5, 1.5, 1.0 ]
 }
 
 [sub_resource type="Animation" id=5]

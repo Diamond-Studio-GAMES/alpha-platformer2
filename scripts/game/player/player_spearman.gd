@@ -25,9 +25,9 @@ func _ready():
 		amulet = G.getv(class_nam + "_amulet", -1)
 	power = G.getv(class_nam + "_level", 0)
 	ulti_power = G.getv(class_nam + "_ulti_level", 1)
-	max_health = power * 20 + 100 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
+	max_health = power * 16 + 80 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
 	defense = power * 1 + 5 + (5 if is_amulet(G.Amulet.DEFENSE) else 0)
-	_attack_node.damage = power * 4 + 20  + (15 if  is_amulet(G.Amulet.POWER) else 0)
+	_attack_node.damage = power * 5 + 25  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 	current_health = max_health
 	_health_bar.max_value = max_health
 	_health_change_bar.max_value = max_health

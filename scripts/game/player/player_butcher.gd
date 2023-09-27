@@ -52,6 +52,7 @@ func apply_data(data):
 
 
 func _hurt_intermediate(dmg_source, died):
+	._hurt_intermediate(dmg_source, died)
 	if not MP.auth(self):
 		return
 	if have_soul_power:

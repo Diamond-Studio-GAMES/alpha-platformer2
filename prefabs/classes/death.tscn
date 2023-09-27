@@ -2283,7 +2283,7 @@ nodes/ulti_shot/node = SubResource( 94 )
 nodes/ulti_shot/position = Vector2( 1035.29, 70.5882 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "potion_shot", 0, "ora_shot", "potion_shot", 1, "potion_seek", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_seek", 0, "attack", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "potion_seek", 0, "potion", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "ora_shot", 0, "attack_shot", "ora_shot", 1, "ora_seek", "ora_seek", 0, "ora" ]
+node_connections = [ "output", 0, "death_trans", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "potion_shot", 0, "ora_shot", "potion_shot", 1, "potion_seek", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "potion_seek", 0, "potion", "attack_seek", 0, "attack", "ora_seek", 0, "ora", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "ora_shot", 0, "attack_shot", "ora_shot", 1, "ora_seek" ]
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.24788
@@ -2308,7 +2308,7 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=31]
 resource_name = "ulti_use"
-length = 2.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("../camera/gui/base/ulti_use:color")
 tracks/0/interp = 1
@@ -2316,7 +2316,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 1.8, 2 ),
+"times": PoolRealArray( 0, 0.2, 3.8, 4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.501961 ), Color( 0, 0, 0, 0.501961 ), Color( 0, 0, 0, 0 ) ]
@@ -2746,7 +2746,6 @@ height = 42.0
 collision_layer = 2
 collision_mask = 29
 script = ExtResource( 46 )
-SPEED = 95.0
 max_health = 250
 defense = 15
 ulti_filled = Color( 0, 0, 0, 1 )

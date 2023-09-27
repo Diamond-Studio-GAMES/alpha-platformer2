@@ -258,19 +258,19 @@ func info(val = true):
 			match G.getv("knight_ulti_level", 1):
 				1:
 					times = 5
-					attack_power = 1 * attack_power
+					attack_power = 1
 				2:
 					times = 7
-					attack_power = 1 * attack_power
+					attack_power = 1
 				3:
 					times = 7
-					attack_power = 2 * attack_power
+					attack_power = 2
 				4:
 					times = 8
-					attack_power = 2 * attack_power
+					attack_power = 2
 				5:
 					times = 10
-					attack_power = 2 * attack_power
+					attack_power = 2
 			$classes/info_knight/ulti/value.text = "x" + str(attack_power)
 			$classes/info_knight/ulti_c/value.text = str(times)
 		"butcher":
@@ -280,22 +280,22 @@ func info(val = true):
 			var attack_power = 1
 			match G.getv("butcher_ulti_level", 1):
 				1:
-					attack_power = 5 * attack_power
+					attack_power = 5
 				2:
-					attack_power = 8 * attack_power
+					attack_power = 8
 				3:
-					attack_power = 10 * attack_power
+					attack_power = 10
 				4:
-					attack_power = 12 * attack_power
+					attack_power = 12
 				5:
-					attack_power = 16 * attack_power
+					attack_power = 16
 			$classes/info_butcher/ulti/value.text = "x" + str(attack_power)
 		"spearman":
-			$classes/info_spearman/attack/value.text = str(G.getv(selected_class + "_level", 0) * 4 + 20)
-			$classes/info_spearman/health/value.text = str(G.getv(selected_class + "_level", 0) * 20 + 100)
+			$classes/info_spearman/attack/value.text = str(G.getv(selected_class + "_level", 0) * 5 + 25)
+			$classes/info_spearman/health/value.text = str(G.getv(selected_class + "_level", 0) * 16 + 80)
 			$classes/info_spearman/defense/value.text = str(G.getv(selected_class + "_level", 0) * 1 + 5)
 			var attack_power = G.getv("spearman_ulti_level", 1)
-			var times =  G.getv("spearman_ulti_level", 1) * 1.25 + 1.25
+			var times =  G.getv("spearman_ulti_level", 1) * 1.5 + 1.5
 			$classes/info_spearman/ulti/value.text = "x" + str(attack_power)
 			$classes/info_spearman/ulti_c/value.text = str(times) + tr("sec")
 		"wizard":
@@ -335,8 +335,8 @@ func upgrade():
 			attack_mod = 6
 			defense_mod = 0
 		"spearman":
-			health_mod = 20
-			attack_mod = 4
+			health_mod = 16
+			attack_mod = 5
 			defense_mod = 1
 		"wizard":
 			health_mod = 16
@@ -458,7 +458,7 @@ func upgrade_ulti():
 					ulti_mod = "x4"
 		"spearman":
 			ulti_mod = "x1"
-			ulti_c_mod = "1,25"
+			ulti_c_mod = "1,5"
 		"wizard":
 			ulti_c_mod = "15%"
 		"archer":

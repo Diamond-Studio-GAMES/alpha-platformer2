@@ -13,23 +13,23 @@ onready var _level = get_tree().current_scene
 
 
 func _ready():
-	attack_power = 20 + power * 4  + (15 if  has_amulet else 0)
+	attack_power = 25 + power * 5  + (15 if  has_amulet else 0)
 	match level:
 		1:
 			damage = 1 * attack_power
-			stun_time = 2.5
+			stun_time = 3
 		2:
 			damage = 2 * attack_power
-			stun_time = 3.75
+			stun_time = 4.5
 		3:
 			damage = 3 * attack_power
 			stun_time = 5
 		4:
 			damage = 4 * attack_power
-			stun_time = 6.25
+			stun_time = 7.5
 		5:
 			damage = 5 * attack_power
-			stun_time = 7.5
+			stun_time = 9
 	yield(get_tree().create_timer(1.1, false), "timeout")
 	var enemies = get_overlapping_bodies()
 	var enemies_copy = enemies.duplicate()
