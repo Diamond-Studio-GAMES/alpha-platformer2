@@ -13,13 +13,11 @@ func _ready():
 
 func start_load():
 	if not is_instance_valid(get_tree().current_scene) or get_tree().current_scene == null:
-		print("stop")
 		queue_free()
 		return
 	get_tree().current_scene.queue_free()
 	loader = ResourceLoader.load_interactive(load_path)
 	if loader == null:
-		print("Can't load!")
 		G.dialog_in_menu = tr("loading.error") % load_path
 		get_tree().change_scene("res://scenes/menu/menu.tscn")
 		queue_free()
@@ -43,8 +41,8 @@ func _process(time):
 		elif err == OK:
 			$loading/bar.value = float(loader.get_stage()) / loader.get_stage_count() * 100
 		else:
-			print("Can't load: ", err)
-			get_tree().change_scene("res://scenes/splash_screen.tscn")
+			G.dialog_in_menu = tr("loading.error") % load_path
+			get_tree().change_scene("res://scenes/menu/menu.tscn")
 			G.emit_signal("loaded_to_scene", "error")
 			queue_free()
 			break

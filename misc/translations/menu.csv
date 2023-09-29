@@ -457,7 +457,7 @@ win.next,Далее,Next
 win.restart,Заново,Retry
 win.menu,Меню,Menu
 loading.loading,Загрузка…,Loading…
-loading.error,Не могу найти сцену: %s!,Can’t find scene: %s!
+loading.error,Не могу загрузить сцену: %s!,Can’t load scene: %s!
 noads.title,РЕКЛАМА УДАЛЕНА!,ADS REMOVED!
 noads.ok,УРА!,OK!
 promocodes.title,Ввести промокод:,Enter promocode:

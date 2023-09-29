@@ -11,7 +11,7 @@ normal = Vector2( 0, 1 )
 script = ExtResource( 1 )
 
 [node name="up" type="Area2D" parent="."]
-position = Vector2( 0, -640 )
+position = Vector2( 0, -672 )
 collision_layer = 8
 collision_mask = 6
 monitorable = false
@@ -20,7 +20,7 @@ monitorable = false
 shape = SubResource( 6 )
 
 [node name="down" type="Area2D" parent="."]
-position = Vector2( 0, 640 )
+position = Vector2( 0, 672 )
 collision_layer = 8
 collision_mask = 6
 monitorable = false
