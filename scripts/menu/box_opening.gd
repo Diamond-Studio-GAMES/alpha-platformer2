@@ -456,7 +456,7 @@ func open_gui(what = null):
 		$gems_screen/visual/count.text = "x " + str(loot["gems"])
 		yield(self, "next")
 		items -= 1
-	if loot.size() == 1:
+	if loot.size() == 1 or what != null:
 		is_showing_rewards = false
 		emit_signal("end")
 		return

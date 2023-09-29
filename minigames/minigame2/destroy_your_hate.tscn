@@ -48,7 +48,14 @@ func second_timer_callback():
 
 func _process(delta):
 	visible = player.current_health > 0
-"
+
+
+func _notification(what):
+	match what:
+		NOTIFICATION_PAUSED:
+			hide()
+		NOTIFICATION_APP_RESUMED:
+			show()"
 
 [sub_resource type="GDScript" id=8]
 script/source = "extends Area2D

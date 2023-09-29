@@ -29,7 +29,7 @@ var AMULET_ICONS = {
 const AMULETS_COUNTS = {
 	"knight" : [4, 4, 4, 5, 4, 5],
 	"butcher" : [5, 3, 5, 4, 4, 5],
-	"spearman" : [3, 4, 4, 4, 3, 5],
+	"spearman" : [4, 4, 5, 4, 4, 5],
 	"wizard" : [4, 4, 5, 3, 5, 5],
 	"archer" : [6, 4, 4, 5, 4, 5],
 }

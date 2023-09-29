@@ -179,24 +179,12 @@ defense = 0
 position = Vector2( 1864, -32 )
 max_health = 50
 
-[node name="mob_dummy2" parent="mobs" instance=ExtResource( 12 )]
-position = Vector2( 1864, -96 )
-max_health = 50
-
 [node name="mob_dummy3" parent="mobs" instance=ExtResource( 12 )]
 position = Vector2( 1896, -32 )
 max_health = 50
 
-[node name="mob_dummy4" parent="mobs" instance=ExtResource( 12 )]
-position = Vector2( 1896, -96 )
-max_health = 50
-
 [node name="mob_dummy5" parent="mobs" instance=ExtResource( 12 )]
 position = Vector2( 1928, -32 )
-max_health = 50
-
-[node name="mob_dummy6" parent="mobs" instance=ExtResource( 12 )]
-position = Vector2( 1928, -96 )
 max_health = 50
 
 [node name="ladders" type="Node2D" parent="."]

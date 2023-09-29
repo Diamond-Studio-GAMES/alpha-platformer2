@@ -136,11 +136,11 @@ const AMULET_NAME = {
 }
 const AMULET_MAX = {
 	-1 : 0,
-	0 : 22,
+	0 : 23,
 	1 : 19,
-	2 : 22,
+	2 : 23,
 	3 : 21,
-	4 : 20,
+	4 : 21,
 	5 : 25,
 }
 enum EffectsType {

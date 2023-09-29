@@ -16,7 +16,7 @@ func _process(delta):
 	if not Engine.editor_hint:
 		visible = false
 		return
-	if Input.is_key_pressed(OS.find_scancode_from_string("l")):
+	if Input.is_key_pressed(KEY_INSERT):
 		if not $"../music".playing:
 			$"../music".play()
 			is_moving = true
