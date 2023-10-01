@@ -18,6 +18,7 @@ var player
 var players = []
 var player_distance = 0
 var find_target_timer = 0
+var panic_timer = 0
 var player_timer = 0
 var attack_timer = 0
 var lookup_timer = 0
@@ -84,6 +85,7 @@ func calculate_fall_damage():
 
 
 func _hurt_intermediate(damage_source, died):
+	panic_timer += 1
 	if died:
 		if damage_source == "fire":
 			G.ach.complete(Achievements.BURN_HER_FASTER)
@@ -135,6 +137,7 @@ func jump(power = 0):
 
 func _process(delta):
 	find_target_timer -= delta
+	panic_timer -= delta
 
 
 func ray_colliding(ray):
@@ -149,4 +152,4 @@ func ray_colliding(ray):
 
 
 func _is_move_safe(ray):
-	return ray_colliding(ray) != Colliding.DANGER and (ray_colliding(ray) != Colliding.NO_BLOCK or under_water)
+	return (ray_colliding(ray) != Colliding.DANGER or panic_timer > 0) and (ray_colliding(ray) != Colliding.NO_BLOCK or under_water)

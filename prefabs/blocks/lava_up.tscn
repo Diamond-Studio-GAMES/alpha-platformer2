@@ -23,6 +23,7 @@ damage = 50
 knockback = 0.0
 custom_invincibility_time = 1.0
 custom_immobility_time = 0.0
+defense_allowed = false
 damage_source = "fire"
 lifetime = 0.0
 

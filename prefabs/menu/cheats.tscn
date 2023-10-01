@@ -88,13 +88,13 @@ margin_bottom = -20.0
 
 [node name="get_value" type="HBoxContainer" parent="base/menu/list"]
 margin_right = 560.0
-margin_bottom = 47.0
+margin_bottom = 38.0
 size_flags_vertical = 3
 alignment = 1
 
 [node name="edit" type="LineEdit" parent="base/menu/list/get_value"]
 margin_right = 220.0
-margin_bottom = 47.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -104,7 +104,7 @@ placeholder_text = "Ключ для получения..."
 [node name="value" type="Label" parent="base/menu/list/get_value"]
 margin_left = 224.0
 margin_right = 445.0
-margin_bottom = 47.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -116,20 +116,20 @@ autowrap = true
 [node name="do" type="Button" parent="base/menu/list/get_value"]
 margin_left = 449.0
 margin_right = 560.0
-margin_bottom = 47.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Получить"
 
 [node name="set_value" type="HBoxContainer" parent="base/menu/list"]
-margin_top = 51.0
+margin_top = 42.0
 margin_right = 560.0
-margin_bottom = 98.0
+margin_bottom = 81.0
 size_flags_vertical = 3
 
 [node name="edit" type="LineEdit" parent="base/menu/list/set_value"]
 margin_right = 236.0
-margin_bottom = 47.0
+margin_bottom = 39.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
@@ -139,7 +139,7 @@ placeholder_text = "Ключ для установки..."
 [node name="value_edit" type="LineEdit" parent="base/menu/list/set_value"]
 margin_left = 240.0
 margin_right = 477.0
-margin_bottom = 47.0
+margin_bottom = 39.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
@@ -149,20 +149,20 @@ placeholder_text = "Значение..."
 [node name="do" type="Button" parent="base/menu/list/set_value"]
 margin_left = 481.0
 margin_right = 560.0
-margin_bottom = 47.0
+margin_bottom = 39.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Задать"
 
 [node name="set_node_value" type="HBoxContainer" parent="base/menu/list"]
-margin_top = 102.0
+margin_top = 85.0
 margin_right = 560.0
-margin_bottom = 149.0
+margin_bottom = 123.0
 size_flags_vertical = 3
 
 [node name="node_edit" type="LineEdit" parent="base/menu/list/set_node_value"]
 margin_right = 156.0
-margin_bottom = 47.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -172,7 +172,7 @@ placeholder_text = "Путь..."
 [node name="value_edit" type="LineEdit" parent="base/menu/list/set_node_value"]
 margin_left = 160.0
 margin_right = 317.0
-margin_bottom = 47.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -182,7 +182,7 @@ placeholder_text = "Свойство..."
 [node name="set_value_edit" type="LineEdit" parent="base/menu/list/set_node_value"]
 margin_left = 321.0
 margin_right = 477.0
-margin_bottom = 47.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -192,20 +192,20 @@ placeholder_text = "Значение..."
 [node name="do" type="Button" parent="base/menu/list/set_node_value"]
 margin_left = 481.0
 margin_right = 560.0
-margin_bottom = 47.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Задать"
 
 [node name="go_to_scene" type="HBoxContainer" parent="base/menu/list"]
-margin_top = 153.0
+margin_top = 127.0
 margin_right = 560.0
-margin_bottom = 200.0
+margin_bottom = 166.0
 size_flags_vertical = 3
 
 [node name="scene_change_edit" type="LineEdit" parent="base/menu/list/go_to_scene"]
 margin_right = 444.0
-margin_bottom = 47.0
+margin_bottom = 39.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
@@ -215,13 +215,20 @@ placeholder_text = "Путь к сцене для перехода..."
 [node name="do" type="Button" parent="base/menu/list/go_to_scene"]
 margin_left = 448.0
 margin_right = 560.0
-margin_bottom = 47.0
+margin_bottom = 39.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Перейти"
+
+[node name="hide" type="Button" parent="base/menu/list"]
+margin_top = 170.0
+margin_right = 560.0
+margin_bottom = 200.0
+text = "Скрыть меню (нельзя отменить!)"
 
 [connection signal="pressed" from="base" to="base/menu" method="popup_centered"]
 [connection signal="pressed" from="base/menu/list/get_value/do" to="." method="get_value"]
 [connection signal="pressed" from="base/menu/list/set_value/do" to="." method="set_value"]
 [connection signal="pressed" from="base/menu/list/set_node_value/do" to="." method="set_node_value"]
 [connection signal="pressed" from="base/menu/list/go_to_scene/do" to="." method="change_scene"]
+[connection signal="pressed" from="base/menu/list/hide" to="." method="queue_free"]
