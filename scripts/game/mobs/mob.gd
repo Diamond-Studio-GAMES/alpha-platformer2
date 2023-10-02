@@ -85,7 +85,7 @@ func calculate_fall_damage():
 
 
 func _hurt_intermediate(damage_source, died):
-	panic_timer += 1
+	panic_timer = 1
 	if died:
 		if damage_source == "fire":
 			G.ach.complete(Achievements.BURN_HER_FASTER)

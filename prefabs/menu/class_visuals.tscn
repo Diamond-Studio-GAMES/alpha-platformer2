@@ -5271,7 +5271,7 @@ tracks/16/keys = {
 size = Vector2( 400, 400 )
 transparent_bg = true
 disable_3d = true
-usage = 0
+usage = 1
 render_target_v_flip = true
 gui_disable_input = true
 
@@ -5457,7 +5457,7 @@ blend_times = [ "attack", "idle", 0.3, "idle", "attack", 0.3, "idle", "idle", 0.
 size = Vector2( 400, 400 )
 transparent_bg = true
 disable_3d = true
-usage = 0
+usage = 1
 render_target_v_flip = true
 gui_disable_input = true
 
@@ -5642,7 +5642,7 @@ blend_times = [ "attack", "idle", 0.3, "attack", "skill_use", 0.3, "idle", "skil
 size = Vector2( 400, 400 )
 transparent_bg = true
 disable_3d = true
-usage = 0
+usage = 1
 render_target_v_flip = true
 gui_disable_input = true
 
@@ -5831,7 +5831,7 @@ blend_times = [ "attack", "idle", 0.3, "attack", "skill_use", 0.3, "attack_throw
 size = Vector2( 400, 400 )
 transparent_bg = true
 disable_3d = true
-usage = 0
+usage = 1
 render_target_v_flip = true
 gui_disable_input = true
 
@@ -6035,7 +6035,7 @@ blend_times = [ "attack", "idle", 0.3, "attack", "skill_use", 0.3, "attack_throw
 size = Vector2( 400, 400 )
 transparent_bg = true
 disable_3d = true
-usage = 0
+usage = 1
 render_target_v_flip = true
 gui_disable_input = true
 
@@ -6267,7 +6267,7 @@ blend_times = [ "aiming", "attack", 0.3, "aiming", "idle", 0.3, "attack", "idle"
 size = Vector2( 400, 400 )
 transparent_bg = true
 disable_3d = true
-usage = 0
+usage = 1
 render_target_v_flip = true
 gui_disable_input = true
 
