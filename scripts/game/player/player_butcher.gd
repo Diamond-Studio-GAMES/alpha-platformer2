@@ -42,7 +42,7 @@ func _ready():
 func apply_data(data):
 	.apply_data(data)
 	max_health = power * 24 + 120 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
-	defense =0 + (5 if is_amulet(G.Amulet.DEFENSE) else 0)
+	defense = (5 if is_amulet(G.Amulet.DEFENSE) else 0)
 	$visual/body/knight_attack.damage = power * 6 + 30  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 	SPEED += (7 if is_amulet(G.Amulet.SPEED) else 0)
 	RECHARGE_SPEED = 0.1

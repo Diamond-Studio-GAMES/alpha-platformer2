@@ -1481,7 +1481,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 1080, 160 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_seek", 0, "attack", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "heal_seek", 0, "heal", "death_trans", 0, "heal_shot", "death_trans", 1, "death", "heal_shot", 0, "attack_shot", "heal_shot", 1, "heal_seek" ]
+node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "heal_shot", 0, "attack_shot", "heal_shot", 1, "heal_seek", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_seek", 0, "attack", "heal_seek", 0, "heal", "death_trans", 0, "heal_shot", "death_trans", 1, "death", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek" ]
 
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 8.0
@@ -1571,7 +1571,7 @@ SPEED = 65
 max_health = 60
 reaction_speed = 0.4
 vision_distance = 400.0
-attack_speed = 4.0
+attack_speed = 5.0
 head_path = NodePath("visual/body/head")
 head_sprite_path = "res://textures/mobs/magician/head.tres"
 head_hurt_sprite_path = "res://textures/mobs/magician/head_hurt.tres"
