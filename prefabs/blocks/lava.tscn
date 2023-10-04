@@ -9,7 +9,7 @@
 extents = Vector2( 14, 14 )
 
 [node name="lava" type="Area2D"]
-collision_layer = 16
+collision_layer = 48
 collision_mask = 6
 script = ExtResource( 4 )
 damage = 50
@@ -18,6 +18,7 @@ custom_immobility_time = 0.0
 defense_allowed = false
 damage_source = "fire"
 lifetime = 0.0
+immune_to_water = true
 
 [node name="shape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

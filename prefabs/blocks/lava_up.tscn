@@ -16,7 +16,7 @@ offsets = PoolRealArray( 0, 0.0618557, 0.118557, 0.159794, 1 )
 colors = PoolColorArray( 1, 1, 0, 1, 1, 0.501961, 0, 1, 0.447059, 0.447059, 0.447059, 1, 0.47451, 0.47451, 0.47451, 0, 0, 0, 0, 0 )
 
 [node name="lava_up" type="Area2D"]
-collision_layer = 16
+collision_layer = 48
 collision_mask = 6
 script = ExtResource( 2 )
 damage = 50
@@ -26,6 +26,7 @@ custom_immobility_time = 0.0
 defense_allowed = false
 damage_source = "fire"
 lifetime = 0.0
+immune_to_water = true
 
 [node name="shape" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 3 )

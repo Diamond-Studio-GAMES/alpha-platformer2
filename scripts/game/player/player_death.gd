@@ -164,6 +164,7 @@ func use_gadget():
 	pause_mode = PAUSE_MODE_PROCESS
 	var time_scale = Engine.time_scale
 	get_tree().paused = true
+	Physics2DServer.set_active(true)
 	VisualServer.set_shader_time_scale(0)
 	Engine.time_scale = 1
 	is_active_gadget = true

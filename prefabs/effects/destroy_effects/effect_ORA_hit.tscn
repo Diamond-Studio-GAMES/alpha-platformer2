@@ -36,6 +36,7 @@ tracks/1/keys = {
 }
 
 [node name="ORA" type="Node2D"]
+pause_mode = 2
 
 [node name="sprite" type="Sprite" parent="."]
 position = Vector2( 16, 0 )

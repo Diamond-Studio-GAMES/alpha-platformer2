@@ -240,6 +240,8 @@ func _physics_process(delta):
 			_move.y = min(_move.y + GRAVITY_SPEED * delta * GRAVITY_SCALE, MAX_GRAVITY * GRAVITY_SCALE)
 		else:
 			_move.y = max(_move.y + GRAVITY_SPEED * delta * GRAVITY_SCALE, MAX_GRAVITY * GRAVITY_SCALE)
+	if is_on_floor():
+		_move -= get_floor_velocity()
 	_move = move_and_slide(_move, UP_DIRECTION * GRAVITY_SCALE)
 	
 	if _move.y * gravity_direction >= 25 and not _is_falling:
@@ -264,8 +266,8 @@ func _process(delta):
 				hurt(1, 0, false, true)
 
 
-func water_checked(area):
-	if area.name.begins_with("water"):
+func water_checked(area: Area2D):
+	if area.get_collision_layer_bit(5):
 		waters.append(area)
 		_update_water_state()
 

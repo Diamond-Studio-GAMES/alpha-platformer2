@@ -197,7 +197,6 @@ immune_to_water = true
 stats_multiplier = 2.0
 
 [node name="mob_shooter" parent="mobs" instance=ExtResource( 8 )]
-modulate = Color( 0, 1, 1, 1 )
 position = Vector2( 688, 136 )
 immune_to_water = true
 stats_multiplier = 2.5

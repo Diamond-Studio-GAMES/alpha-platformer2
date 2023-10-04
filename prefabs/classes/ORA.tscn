@@ -10,9 +10,10 @@
 radius = 4.0
 
 [node name="ORA" type="Node2D" groups=["spawnable"]]
+pause_mode = 2
 script = ExtResource( 3 )
 SPEED = 125.0
-destroy_time = 0.1
+destroy_time = 0.3
 effect_wall = "res://prefabs/effects/destroy_effects/effect_ORA_hit.tscn"
 effect_hit = "res://prefabs/effects/destroy_effects/effect_ORA_hit.tscn"
 effect_reject = "res://prefabs/effects/destroy_effects/effect_ORA_hit.tscn"

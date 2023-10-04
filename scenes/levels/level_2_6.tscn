@@ -196,9 +196,6 @@ stats_multiplier = 2.0
 [node name="mob_dummy" parent="mobs" instance=ExtResource( 9 )]
 position = Vector2( 48, -32 )
 
-[node name="mob_dummy2" parent="mobs" instance=ExtResource( 9 )]
-position = Vector2( -48, -32 )
-
 [node name="blocks" type="Node2D" parent="."]
 
 [node name="spikes" parent="blocks" instance=ExtResource( 15 )]
