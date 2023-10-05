@@ -102,7 +102,7 @@ func _post_hurt(ded):
 		G.ach.check(Achievements.KILLER)
 		var death = mob_death_effect.instance()
 		death.global_position = global_position
-		death.scale.y = sign(GRAVITY_SCALE)
+		death.scale.y = GRAVITY_SCALE
 		_level.add_child(death)
 		emit_signal("destroyed")
 		queue_free()

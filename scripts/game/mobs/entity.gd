@@ -217,8 +217,7 @@ func _physics_process(delta):
 		stun_time -= delta
 		if stun_time <= 0:
 			emit_signal("stun_ended")
-	var gravity_direction = sign(GRAVITY_SCALE)
-	scale.y = abs(scale.y) * gravity_direction
+	scale.y = abs(scale.y) * GRAVITY_SCALE
 	if not (is_stunned or is_hurt):
 		if _move_direction.x != 0:
 			if can_turn:
@@ -244,10 +243,10 @@ func _physics_process(delta):
 		_move -= get_floor_velocity()
 	_move = move_and_slide(_move, UP_DIRECTION * GRAVITY_SCALE)
 	
-	if _move.y * gravity_direction >= 25 and not _is_falling:
+	if _move.y * GRAVITY_SCALE >= 25 and not _is_falling:
 		_start_falling_y = global_position.y
 		_is_falling = true
-	if _move.y * gravity_direction <= 25 and _is_falling:
+	if _move.y * GRAVITY_SCALE <= 25 and _is_falling:
 		calculate_fall_damage()
 		_start_falling_y = global_position.y
 		_is_falling = false

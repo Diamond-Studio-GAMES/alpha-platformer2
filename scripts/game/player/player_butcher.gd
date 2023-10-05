@@ -100,7 +100,7 @@ func _physics_process(delta):
 	if is_on_floor() and is_active_gadget:
 		var node = gadget_crack.instance()
 		var pos = Vector2(global_position.x, 0)
-		pos.y = (round(global_position.y / 32) + 1 * sign(GRAVITY_SCALE)) * 32
+		pos.y = (round(global_position.y / 32) + 1 * GRAVITY_SCALE) * 32
 		node.global_position = pos
 		node.scale.y = GRAVITY_SCALE
 		_level.add_child(node, true)

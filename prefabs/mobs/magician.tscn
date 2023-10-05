@@ -1481,7 +1481,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 1080, 160 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "heal_shot", 0, "attack_shot", "heal_shot", 1, "heal_seek", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_seek", 0, "attack", "heal_seek", 0, "heal", "death_trans", 0, "heal_shot", "death_trans", 1, "death", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek" ]
+node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_seek", 0, "attack", "death_trans", 0, "heal_shot", "death_trans", 1, "death", "heal_shot", 0, "attack_shot", "heal_shot", 1, "heal_seek", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "heal_seek", 0, "heal" ]
 
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 8.0
@@ -1489,6 +1489,7 @@ height = 42.0
 
 [sub_resource type="DynamicFont" id=1]
 size = 27
+outline_size = 1
 font_data = ExtResource( 24 )
 
 [sub_resource type="Curve" id=15]

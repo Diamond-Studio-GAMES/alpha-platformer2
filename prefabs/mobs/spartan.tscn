@@ -1468,7 +1468,7 @@ nodes/iw_trans/position = Vector2( -300, 120 )
 nodes/output/position = Vector2( 1160, 200 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "death_trans", 0, "attack_left_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_left_shot", 0, "attack_shot", "attack_left_shot", 1, "attack_left_seek", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_left_seek", 0, "attack_left", "attack_seek", 0, "attack" ]
+node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_seek", 0, "attack", "death_trans", 0, "attack_left_shot", "death_trans", 1, "death", "attack_left_seek", 0, "attack_left", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "attack_left_shot", 0, "attack_shot", "attack_left_shot", 1, "attack_left_seek" ]
 
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 8.0
@@ -1476,6 +1476,7 @@ height = 42.0
 
 [sub_resource type="DynamicFont" id=1]
 size = 27
+outline_size = 1
 font_data = ExtResource( 9 )
 
 [sub_resource type="Curve" id=15]
@@ -1680,7 +1681,6 @@ position = Vector2( 22, 8 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 27 )
 animation = "attack"
-frame = 4
 playing = true
 
 [node name="shape" type="CollisionShape2D" parent="visual/body/kick_attack"]

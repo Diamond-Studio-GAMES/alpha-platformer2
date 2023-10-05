@@ -18,6 +18,7 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 27
+outline_size = 1
 font_data = ExtResource( 10 )
 
 [sub_resource type="Animation" id=16]
@@ -275,7 +276,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "attack_seek", 0, "attack", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "attack_shot", "death_trans", 1, "death" ]
+node_connections = [ "output", 0, "death_trans", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_seek", 0, "attack", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "attack_shot", "death_trans", 1, "death" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -375,9 +376,6 @@ custom_fonts/font = SubResource( 1 )
 text = "50/50"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="tween" type="Tween" parent="."]
 

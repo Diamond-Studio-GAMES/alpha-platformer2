@@ -83,6 +83,7 @@ func _ready():
 	$camera/gui/base/hero_panel/name.set_message_translation(false)
 	$camera/gui/base/hero_panel/name.notification(NOTIFICATION_TRANSLATION_CHANGED)
 	$camera/gui/base/hero_panel/name.text = G.getv("name", "")
+	dialog_text.add_color_override("font_outline_modulate", Color.white)
 	if G.getv("gender", "male") == "male":
 		$visual/body/head/hair/hair_man.show()
 		$visual/body/head/hair/hair_woman.hide()
@@ -628,7 +629,8 @@ remote func revived_player():
 
 func make_dialog(text = "", time = 2, color = Color.white):
 	dialog_text.text = text
-	dialog_text.self_modulate = color
+	dialog_text.add_color_override("font_color", color)
+	dialog_text.get_font("font").outline_color = Color.black if color.get_luminance() > 0.5 else Color.white
 	dialog_timer = time
 
 

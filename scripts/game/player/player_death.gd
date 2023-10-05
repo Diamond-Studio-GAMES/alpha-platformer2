@@ -67,6 +67,7 @@ func attack():
 		var node = _attack.instance()
 		node.global_position = global_position
 		node.scale.x = _body.scale.x
+		node.scale.y = GRAVITY_SCALE
 		node.damage = 85 + curr_lvl_loc * 8
 		if randi() % 10 == 2:
 			node.damage *= 3

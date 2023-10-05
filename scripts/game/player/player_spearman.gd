@@ -157,7 +157,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("gadget") and have_gadget:
 		use_gadget()
 	if joystick._output.length_squared() * current_health > 0:
-		var phi = Vector2(joystick._output.x, joystick._output.y * sign(GRAVITY_SCALE)).angle()
+		var phi = Vector2(joystick._output.x, joystick._output.y * GRAVITY_SCALE).angle()
 		aim_line.rotation = phi
 		aim_line.visible = true
 		aim_line.modulate = Color.red if attack_cooldown > 0 else Color.white
