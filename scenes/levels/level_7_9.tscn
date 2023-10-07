@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://textures/blocks/star_end.png" type="Texture" id=1]
 [ext_resource path="res://prefabs/blocks/slow_down_zone.tscn" type="PackedScene" id=2]
@@ -21,11 +21,13 @@
 [ext_resource path="res://prefabs/mobs/dummy.tscn" type="PackedScene" id=19]
 [ext_resource path="res://prefabs/blocks/tileset.tres" type="TileSet" id=20]
 [ext_resource path="res://scripts/game/other/end_star.gd" type="Script" id=21]
-[ext_resource path="res://sounds/music/red_world.ogg" type="AudioStream" id=22]
+[ext_resource path="res://sounds/music/tense.ogg" type="AudioStream" id=22]
 [ext_resource path="res://sounds/sfx/end_level.wav" type="AudioStream" id=23]
 [ext_resource path="res://prefabs/mobs/shooter.tscn" type="PackedScene" id=24]
 [ext_resource path="res://prefabs/mobs/mushroom.tscn" type="PackedScene" id=25]
 [ext_resource path="res://prefabs/effects/background_red_world.tscn" type="PackedScene" id=26]
+[ext_resource path="res://prefabs/blocks/orange_laser.tscn" type="PackedScene" id=27]
+[ext_resource path="res://prefabs/blocks/blue_laser.tscn" type="PackedScene" id=28]
 
 [sub_resource type="CircleShape2D" id=7]
 resource_local_to_scene = true
@@ -157,13 +159,13 @@ tracks/4/keys = {
 [sub_resource type="CircleShape2D" id=3]
 radius = 12.0
 
-[node name="level_7_8" type="Node2D"]
+[node name="level_7_9" type="Node2D"]
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 640.0, -640.0 ]
 }
 location = "location.red_world.castle"
-level_name = "level.7_8"
+level_name = "level.7_9"
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 20 )
@@ -339,6 +341,12 @@ position = Vector2( 3376, 368 )
 
 [node name="spikes4" parent="blocks" instance=ExtResource( 14 )]
 position = Vector2( 3568, -48 )
+
+[node name="orange_laser" parent="blocks" instance=ExtResource( 27 )]
+position = Vector2( 400, -48 )
+
+[node name="blue_laser" parent="blocks" instance=ExtResource( 28 )]
+position = Vector2( 80, -48 )
 
 [node name="decor" type="Node2D" parent="."]
 __meta__ = {

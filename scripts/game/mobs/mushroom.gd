@@ -24,8 +24,7 @@ func append_body(body):
 
 
 func remove_body(body):
-	if bodies.has(body):
-		bodies.erase(body)
+	bodies.erase(body)
 
 
 func _physics_process(delta):

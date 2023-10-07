@@ -303,6 +303,10 @@ text = "2_4.tip"
 color = Color( 0.501961, 0.501961, 0.501961, 1 )
 with_leg = false
 
+[node name="tab2" parent="decor" instance=ExtResource( 14 )]
+position = Vector2( 944, -128 )
+text = "2_4.jumptip"
+
 [node name="borders" parent="." instance=ExtResource( 21 )]
 
 [node name="spawn_pos" type="Position2D" parent="."]

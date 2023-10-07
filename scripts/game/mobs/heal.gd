@@ -41,8 +41,7 @@ func add_body(node):
 
 
 func remove_body(node):
-	if node in bodies:
-		bodies.erase(node)
+	bodies.erase(node)
 
 
 func heal(node):

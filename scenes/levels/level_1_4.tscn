@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://prefabs/blocks/lever.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefabs/blocks/grass.tscn" type="PackedScene" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://prefabs/blocks/grass2.tscn" type="PackedScene" id=10]
 [ext_resource path="res://prefabs/mobs/dummy.tscn" type="PackedScene" id=11]
 [ext_resource path="res://sounds/sfx/end_level.wav" type="AudioStream" id=12]
-[ext_resource path="res://prefabs/blocks/tab.tscn" type="PackedScene" id=13]
 [ext_resource path="res://prefabs/mobs/mushroom.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scripts/game/other/end_star.gd" type="Script" id=15]
 [ext_resource path="res://textures/blocks/star_end.png" type="Texture" id=16]
@@ -190,8 +189,7 @@ position = Vector2( 496, 16 )
 
 [node name="mob_knife_man" parent="mobs" instance=ExtResource( 7 )]
 position = Vector2( 1546, 91 )
-max_health = 100
-attack_damage = 25
+stats_multiplier = 1.5
 
 [node name="mob_dummy" parent="mobs" instance=ExtResource( 11 )]
 position = Vector2( 1744, 64 )
@@ -261,8 +259,6 @@ position = Vector2( 2320, 96 )
 
 [node name="grass11" parent="decor" instance=ExtResource( 2 )]
 position = Vector2( 2544, 96 )
-
-[node name="thinks" type="Node2D" parent="."]
 
 [node name="borders" parent="." instance=ExtResource( 18 )]
 
@@ -347,10 +343,6 @@ bus = "sfx"
 stream = ExtResource( 8 )
 autoplay = true
 bus = "music"
-
-[node name="tab" parent="." instance=ExtResource( 13 )]
-position = Vector2( -144, 0 )
-text = "Вадим + Даша + Миха = МИМЖЖ"
 
 [connection signal="body_entered" from="end_star" to="end_star" method="end_level"]
 

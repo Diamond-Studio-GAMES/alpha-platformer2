@@ -322,7 +322,8 @@ func make_id(save_name):
 	randomize()
 	var model = OS.get_model_name()
 	if model == "GenericDevice":
-		model = str(randi()%1000000)
+		model = str(randi() % 1000000)
+	model.replace(" ", "")
 	var hash_of_save = str(save_name.hash()).substr(0, 32)
-	var random_num = str(randi()%1000000)
+	var random_num = str(randi() % 1000000)
 	return model + hash_of_save + random_num

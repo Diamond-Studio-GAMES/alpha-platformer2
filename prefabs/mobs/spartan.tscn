@@ -1468,7 +1468,7 @@ nodes/iw_trans/position = Vector2( -300, 120 )
 nodes/output/position = Vector2( 1160, 200 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_seek", 0, "attack", "death_trans", 0, "attack_left_shot", "death_trans", 1, "death", "attack_left_seek", 0, "attack_left", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "attack_left_shot", 0, "attack_shot", "attack_left_shot", 1, "attack_left_seek" ]
+node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_left_seek", 0, "attack_left", "attack_left_shot", 0, "attack_shot", "attack_left_shot", 1, "attack_left_seek", "death_trans", 0, "attack_left_shot", "death_trans", 1, "death", "attack_seek", 0, "attack", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
 
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 8.0
@@ -1681,7 +1681,7 @@ position = Vector2( 22, 8 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 27 )
 animation = "attack"
-playing = true
+frame = 4
 
 [node name="shape" type="CollisionShape2D" parent="visual/body/kick_attack"]
 position = Vector2( 20.5, 9 )

@@ -590,6 +590,7 @@ func revive(hp_count = -1):
 	$revive_sfx.play()
 	is_hurt = false
 	is_reviving = true
+	_is_drinking = false
 	_health_timer = 0
 	_head.texture = _head_sprite
 	_player_head.texture = _head_sprite

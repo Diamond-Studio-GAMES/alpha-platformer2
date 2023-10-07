@@ -169,12 +169,15 @@ door.go,Перейти,Enter
 1_1.jump,Теперь прыгни с помощью стрелки в правом нижнем углу!,Now jump with the arrow in the lower right corner!
 1_1.fight,Молодец! Пришла пора драться!,Well done! It’s time to fight!
 1_1.butt,Используй кнопку в виде ножа для атаки! Будь осторожен!,Use the knife-shaped button to attack! Be careful!
+1_1.shroomtip,"Этот гриб ударит тебя, если его коснуться. Бей его на расстоянии.",This mushroom will hurt you if you touch it. Hit him from a distance.
 1_1.anotherone,Так держать! Дальше ещё один враг!,Keep it up! There is another enemy!
+1_1.mantip,Этот враг бьёт тебя ножом в зоне его атаки раз в несколько секунд.,This enemy stabs you in his attack zone every few seconds.
+1_1.mantip2,"Спровоцируй его атаковать, подойдя к нему, и сразу отбеги!","Provoke him to attack by approaching him, and immediately run away!"
+1_1.mantip3,И в перерыве между его атаками ты можешь безопасно его бить!,"And in between his attacks, you can safely beat him!"
 1_1.dummies,Впереди манекены! Уничтожь их!,There are dummies ahead! Destroy them!
 1_1.end,Ты молодчина! Коснись звезды для завершения уровня! Приятной игры!,Good job! Touch the star to complete the level! Have a nice game!
 1_1.heal,"Мало здоровья? Ничего не делай, оно само восстановится до 75%!","Not enough health? Don’t do anything, it will recover to 75% by itself!"
 1_3.stones,Впереди немного камней,There are some rocks ahead
-1_5.jumptip,"Чем ты быстрее, тем легче прыжок. Проверь скорость класса.","The faster you are, the easier the jump. Check the class speed."
 1_6.vera,ПРЫЖОК ВЕРЫ XD,Jump of Hope!
 1_6.notfool,Я был не самым глупым в школе…,I wasn’t the stupidest in school…
 1_6.geo,Я в этом году попал на городской этап олимпиады по географии…,This year I got to the city stage of the Geography Olympiad…
@@ -195,6 +198,7 @@ door.go,Перейти,Enter
 2_2.or,Не люблю же я визг женщин!..,I don't like the screeching of women!..
 2_3.flame,Костёр? Горящий?..,A bonfire? Burning?..
 2_4.tip,"Прыгай туда, где нет дыма…",Jump where there is no smoke…
+2_4.jumptip,"Чем ты быстрее, тем легче прыжок. Проверь скорость класса.","The faster you are, the easier the jump. Check the class speed."
 2_5.women,Женщины вообще странные…,Women are generally strange…
 2_5.graveyard,КЛАДБИЩЕ,GRAVEYARD
 2_5.kmom,"МАМА КИРИЛЛА

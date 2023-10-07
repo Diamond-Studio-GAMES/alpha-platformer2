@@ -234,6 +234,22 @@ position = Vector2( 3664, 0 )
 [node name="grass13" parent="decor" instance=ExtResource( 7 )]
 position = Vector2( 3632, 0 )
 
+[node name="tab2" parent="decor" instance=ExtResource( 14 )]
+position = Vector2( 1168, 0 )
+text = "1_1.shroomtip"
+
+[node name="tab3" parent="decor" instance=ExtResource( 14 )]
+position = Vector2( 1360, 0 )
+text = "1_1.mantip"
+
+[node name="tab4" parent="decor" instance=ExtResource( 14 )]
+position = Vector2( 1456, 0 )
+text = "1_1.mantip2"
+
+[node name="tab5" parent="decor" instance=ExtResource( 14 )]
+position = Vector2( 1552, 0 )
+text = "1_1.mantip3"
+
 [node name="thinks" type="Node2D" parent="."]
 
 [node name="think" parent="thinks" instance=ExtResource( 11 )]
@@ -257,7 +273,7 @@ text = "1_1.fight"
 time = 3.0
 
 [node name="think5" parent="thinks" instance=ExtResource( 11 )]
-position = Vector2( 1168, 0 )
+position = Vector2( 1104, 0 )
 text = "1_1.butt"
 time = 4.0
 

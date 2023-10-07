@@ -205,7 +205,7 @@ stats_multiplier = 1.5
 
 [node name="mob_knife_man" parent="mobs" instance=ExtResource( 7 )]
 position = Vector2( 1824, 0 )
-stats_multiplier = 1.33
+stats_multiplier = 1.5
 
 [node name="mob_mushroom4" parent="mobs" instance=ExtResource( 12 )]
 position = Vector2( 2320, -48 )

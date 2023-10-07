@@ -44,7 +44,7 @@ func _ready():
 
 
 func add_body(node):
-	if node.has_method("hurt"):
+	if node is Entity:
 		bodies.append(node)
 		if node is Player:
 			emit_signal("hit_player")
@@ -59,8 +59,7 @@ func add_body(node):
 
 
 func remove_body(node):
-	if node in bodies:
-		bodies.erase(node)
+	bodies.erase(node)
 
 
 func deal_damage(node):
