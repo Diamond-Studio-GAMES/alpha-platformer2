@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://themes/font_headers2.tres" type="DynamicFont" id=1]
 [ext_resource path="res://themes/font_headers.tres" type="DynamicFont" id=2]
@@ -58,6 +58,10 @@
 [ext_resource path="res://scripts/menu/levels.gd" type="Script" id=56]
 [ext_resource path="res://textures/items/small_coins.png" type="Texture" id=57]
 [ext_resource path="res://textures/items/amulet_ulti_frag.png" type="Texture" id=58]
+
+[sub_resource type="AtlasTexture" id=280]
+atlas = ExtResource( 31 )
+region = Rect2( 0, -4, 28, 28 )
 
 [sub_resource type="Gradient" id=266]
 colors = PoolColorArray( 0.25098, 0.25098, 1, 1, 0, 0, 0.541176, 1 )
@@ -1468,7 +1472,7 @@ margin_top = -64.0
 margin_right = 288.0
 margin_bottom = -16.0
 text = "classes.name"
-icon = ExtResource( 31 )
+icon = SubResource( 280 )
 clip_text = true
 expand_icon = true
 

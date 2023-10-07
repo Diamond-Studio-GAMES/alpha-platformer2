@@ -239,7 +239,7 @@ position = Vector2( 560, -16 )
 position = Vector2( 192, -16 )
 
 [node name="block" parent="blocks" instance=ExtResource( 5 )]
-position = Vector2( -336, -48 )
+position = Vector2( -112, -16 )
 
 [node name="sprite" parent="blocks/block" index="2"]
 region_rect = Rect2( 32, 32, 32, 32 )
