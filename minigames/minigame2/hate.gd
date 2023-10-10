@@ -9,9 +9,11 @@ var command = ["move_left", "move_right", "jump", "attack", "jump", "attack"]
 
 func _ready():
 	randomize()
-	player = $".."
+	player = $".." as Player
 	player._soul.self_modulate = Color.black
 	player.custom_respawn_scene = "res://minigames/minigame2/minigame.tscn"
+	player.connect("died", self, "hide")
+	player.connect("healed", self, "show")
 
 
 func _physics_process(delta):

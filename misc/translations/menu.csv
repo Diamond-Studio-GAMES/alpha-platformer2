@@ -89,9 +89,9 @@ stat.jumps,Прыжков: ,Jumps:
 stat.skills,Навык использован: ,Skill used:
 stat.deaths,Смертей: ,Deaths:
 stat.revives,Возрождений: ,Revives:
-stat.potions1,Зелий 1-го уровня: ,1st level potions:
-stat.potions2,Зелий 2-го уровня: ,2nd level potions:
-stat.potions3,Зелий 3-го уровня: ,3rd level potions:
+stat.potions1,Маленьких зелий: ,Small potions:
+stat.potions2,Средних зелий: ,Medium potions:
+stat.potions3,Больших зелий: ,Big potions:
 stat.potions_used,Зелий выпито: ,Potions used:
 stat.boxes,Ящиков открыто:,Boxes opened:
 stat.mp_levels,Пройдено уровней в м/п:,Levels in m/p completed:
@@ -172,8 +172,8 @@ achv.boss5,Без талона,Without a coupon
 achv.boss5.desc,Победите Хирурга.,Defeat the Surgeon.
 achv.boss6,Пожарный,Fireman
 achv.boss6.desc,Победите Огненного стража.,Defeat the Fire Guard.
-achv.boss7,,
-achv.boss7.desc,,
+achv.boss7,Государственный переворот,State coup
+achv.boss7.desc,Победите Красного Короля.,Defeat the Red King.
 achv.boss8,,
 achv.boss8.desc,,
 achv.boss9,,

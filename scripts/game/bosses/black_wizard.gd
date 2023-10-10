@@ -1,6 +1,7 @@
 extends Boss
 
 
+var alive_shooters = []
 var shield_timer = 0
 var under_shield = false
 var blackball = load("res://prefabs/bosses/blackball.tscn")
@@ -44,6 +45,9 @@ func _process(delta):
 
 
 func death():
+	if MP.auth(self):
+		for i in alive_shooters:
+			i.hurt(i.current_health, 0, false)
 	if not $visual/body/shield/shape.disabled:
 		$visual/body/shield/anim.play("end")
 	G.ach.complete(Achievements.BOSS3)
@@ -116,6 +120,12 @@ func mob_spawn():
 		pos = $"../pos1".global_position
 		$"../pos1/sprite/anim".play("summon")
 		ms.sync_call($"../pos1/sprite/anim", "play", ["summon"])
-	var node = mob_shooter.instance()
-	node.global_position = pos
-	get_parent().add_child(node, true)
+	var n = mob_shooter.instance()
+	n.global_position = pos
+	n.connect("tree_exiting", self, "remove_mob", [n])
+	alive_shooters.append(n)
+	get_parent().add_child(n, true)
+
+
+func remove_mob(m):
+	alive_shooters.erase(m)
