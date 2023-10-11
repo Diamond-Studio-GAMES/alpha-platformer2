@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=2]
+[gd_scene load_steps=136 format=2]
 
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
 [ext_resource path="res://themes/font.tres" type="DynamicFontData" id=2]
@@ -74,7 +74,10 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.971174, 0.997286 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=73]
-colors = PoolColorArray( 1, 0, 0, 0, 1, 0, 0, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1 )
+
+[sub_resource type="Curve" id=105]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.53169, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Animation" id=100]
 resource_name = "RESET"
@@ -491,10 +494,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.5, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -11.5 ), Vector2( 0, -11.5 ), Vector2( 0, -11.5 ), Vector2( 0, -17 ) ]
+"values": [ Vector2( 0, -11.5 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("visual/body/head:rotation_degrees")
@@ -673,7 +676,69 @@ tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/17/type = "method"
+tracks/17/path = NodePath("visual/body/effect")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("visual/body/head:self_modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("visual/body/head/hair:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("visual/body/arm_right/hand/weapon:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("visual/body/head/helmet:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -1347,6 +1412,54 @@ tracks/18/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("visual/body/head/helmet/eye:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("visual/body/head:self_modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("visual/body/arm_right/hand/weapon:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("visual/body/head/helmet:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -2245,7 +2358,7 @@ fadeout_time = 0.2
 animation = "walk"
 
 [sub_resource type="AnimationNodeBlendTree" id=96]
-graph_offset = Vector2( 302.474, -57.8467 )
+graph_offset = Vector2( 363, 78 )
 nodes/attack/node = SubResource( 95 )
 nodes/attack/position = Vector2( -94.1176, 329.412 )
 nodes/attack_seek/node = SubResource( 89 )
@@ -2255,7 +2368,7 @@ nodes/attack_shot/position = Vector2( 188.235, 94.1176 )
 nodes/death/node = SubResource( 82 )
 nodes/death/position = Vector2( 1082.35, 282.353 )
 nodes/death_trans/node = SubResource( 85 )
-nodes/death_trans/position = Vector2( 1317.65, 117.647 )
+nodes/death_trans/position = Vector2( 1320, 140 )
 nodes/hurt/node = SubResource( 83 )
 nodes/hurt/position = Vector2( -282.353, 305.882 )
 nodes/hurt_shot/node = SubResource( 84 )
@@ -2283,7 +2396,7 @@ nodes/ulti_shot/node = SubResource( 94 )
 nodes/ulti_shot/position = Vector2( 1035.29, 70.5882 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "potion_shot", 0, "ora_shot", "potion_shot", 1, "potion_seek", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "potion_seek", 0, "potion", "attack_seek", 0, "attack", "ora_seek", 0, "ora", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "ora_shot", 0, "attack_shot", "ora_shot", 1, "ora_seek" ]
+node_connections = [ "output", 0, "death_trans", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "attack_seek", 0, "attack", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "potion_shot", 0, "ora_shot", "potion_shot", 1, "potion_seek", "ora_seek", 0, "ora", "potion_seek", 0, "potion", "ora_shot", 0, "attack_shot", "ora_shot", 1, "ora_seek" ]
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.24788
@@ -2838,6 +2951,7 @@ texture = ExtResource( 50 )
 self_modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 8, -3 )
 texture = ExtResource( 13 )
+script = ExtResource( 7 )
 
 [node name="trail" type="Line2D" parent="visual/body/head/helmet/eye"]
 z_index = -1
@@ -2977,6 +3091,24 @@ __meta__ = {
 "_edit_bone_": true
 }
 
+[node name="effect" type="CPUParticles2D" parent="visual/body"]
+position = Vector2( 0.458983, 3.97358 )
+emitting = false
+amount = 128
+one_shot = true
+explosiveness = 0.9
+lifetime_randomness = 0.6
+fract_delta = false
+local_coords = false
+texture = ExtResource( 13 )
+emission_shape = 2
+emission_rect_extents = Vector2( 8, 28 )
+gravity = Vector2( 0, 0 )
+initial_velocity = 40.0
+scale_amount = 5.0
+scale_amount_curve = SubResource( 105 )
+color = Color( 0, 0, 0, 1 )
+
 [node name="anim" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 100 )
 anims/attack = SubResource( 1 )
@@ -3004,7 +3136,7 @@ parameters/attack_shot/active = false
 parameters/death_trans/current = 0
 parameters/hurt_shot/active = false
 parameters/iw_trans/current = 0
-parameters/ora_seek/seek_position = 0.0
+parameters/ora_seek/seek_position = -1.0
 parameters/ora_shot/active = false
 parameters/potion_seek/seek_position = -1.0
 parameters/potion_shot/active = false

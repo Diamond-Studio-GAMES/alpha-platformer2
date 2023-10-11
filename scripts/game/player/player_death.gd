@@ -9,6 +9,7 @@ var THEWORLD = load("res://prefabs/effects/THEWORLD.tscn")
 var ORA = load("res://prefabs/classes/ORA.tscn")
 var curr_lvl_loc = 1
 onready var trail = $trail
+onready var eye = $visual/body/head/helmet/eye
 
 
 func _ready():
@@ -28,6 +29,12 @@ func _ready():
 	RECHARGE_SPEED = 0.7
 	if MP.auth(self):
 		$control_indicator/sp.show()
+	eye.modulate = eye.self_modulate
+
+
+func send_my_data():
+	ms.sync_call(self, "apply_eye_color", [eye.modulate])
+	.send_my_data()
 
 
 func apply_data(data):
@@ -39,6 +46,11 @@ func apply_data(data):
 	_health_bar.max_value = max_health
 	_health_change_bar.max_value = max_health
 	_update_bars()
+
+
+func apply_eye_color(clr):
+	eye.modulate = clr
+	eye.self_modulate = clr
 
 
 func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
@@ -137,6 +149,7 @@ func ulti():
 func _process(delta):
 	if is_active_gadget and not get_tree().paused:
 		get_tree().paused = true
+		gadget_cooldown = 10
 	if not MP.auth(self):
 		return
 	if Input.is_action_just_pressed("attack1"):

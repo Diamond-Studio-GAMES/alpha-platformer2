@@ -911,6 +911,9 @@ position = Vector2( -656, -128 )
 [node name="borders" parent="." instance=ExtResource( 44 )]
 position = Vector2( 0, -8 )
 
+[node name="up" parent="borders" index="0"]
+position = Vector2( 0, -832 )
+
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 0, -64 )
 
@@ -1054,3 +1057,4 @@ bus = "music"
 [editable path="blocks/slow_down_zone"]
 [editable path="blocks/doors"]
 [editable path="blocks/lever_block"]
+[editable path="borders"]
