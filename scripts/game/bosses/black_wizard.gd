@@ -59,6 +59,8 @@ func do_attack():
 	if not under_shield:
 		variants.append("make_shield")
 		variants.append("make_shield")
+	if alive_shooters.size() >= 3:
+		variants.erase("mob_spawn")
 	variants.shuffle()
 	call(variants[0])
 

@@ -43,8 +43,10 @@ func do_attack():
 		melee()
 		return
 	else:
-		attacks.shuffle()
-		call(attacks[0])
+		var variants = attacks.duplicate()
+		if alive_doctors.size() >= 3:
+			variants.erase("summon")
+		call(variants[0])
 
 
 func melee():

@@ -11,6 +11,7 @@ alignment = 2
 [node name="tex" type="TextureButton" parent="."]
 margin_right = 130.0
 margin_bottom = 112.0
+mouse_filter = 1
 size_flags_vertical = 3
 texture_normal = ExtResource( 1 )
 expand = true
