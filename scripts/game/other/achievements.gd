@@ -81,6 +81,11 @@ var achievements = {
 		"name" : "achv.boss6",
 		"desc" : "achv.boss6.desc"
 	},
+	BOSS7 : {
+		"icon" : load("res://textures/achievements/boss7.png"),
+		"name" : "achv.boss7",
+		"desc" : "achv.boss7.desc"
+	},
 	WHAT_IS_IT : {
 		"icon" : load("res://textures/achievements/first_class.png"),
 		"name" : "achv.what_is_it",

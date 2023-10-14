@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fireball_attack.png-f25bcbc3edb1875e47811cf7aa25cbc3.stex"
+path="res://.import/shot_aim.png-aa34470f0a25d4e4f6246339039055ef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/bosses/black_wizard/fireball_attack.png"
-dest_files=[ "res://.import/fireball_attack.png-f25bcbc3edb1875e47811cf7aa25cbc3.stex" ]
+source_file="res://textures/bosses/red_king/shot_aim.png"
+dest_files=[ "res://.import/shot_aim.png-aa34470f0a25d4e4f6246339039055ef.stex" ]
 
 [params]
 

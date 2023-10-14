@@ -28,9 +28,9 @@ boss.wizard.mercy,"Чёрный маг: Слава тебе, %s!","Black Wizard:
 boss.wizard.defeat,"Чёрный маг: Я был неправ…
 (убить или пощадить?)","Black Wizard: I was wrong…
 (kill or spare?)"
-boss.pidor,,
-boss.pidor.defeat,,
-boss.pidor.mercy,,
+boss.king,Красный король,Red King
+boss.king.defeat,"Красный король: Ты ещё сильнее, чем я думал…",Red King: You're even stronger than I thought…
+boss.king.mercy,Красный король: Используй свою силу с умом!..,Red King: Use your power wisely!..
 boss.follower1,,
 boss.follower1.mercy,,
 boss.follower1.defeat,,
@@ -273,3 +273,8 @@ Another: 6-7dmdtmkncetgankdt"":;:%№№:%№"
 7_9.orange,"Оранжевые атаки наносят урон, если ты стоишь на месте.",Orange attacks hurt you if you’re standing still.
 7_9.blue,"Голубые же атаки напротив наносят урон, когда ты двигаешься.",Blue attacks hurt you if you’re moving.
 7_9.leave,Ещё немного и я вернусь в обычный мир!,A little more and I will return to the ordinary world!
+7_10.boss.0,Красный король: Ты.,Red King: You.
+7_10.boss.1,"Красный король: Ты нарушил порядок, установленный после падения второго метеорита.",Red King: You violated the order established after the fall of the second meteorite.
+7_10.boss.2,Красный король: Но ты силён: ты преодолел все препятствия на своём длинном пути.,Red King: But you are strong: you have overcome all the obstacles on your long journey.
+7_10.boss.3,Красный король: Это действительно достойно награды…,Red King: It's really worthy of an award…
+7_10.boss.start,Красный король: ...быть убитым МНОЙ! Ах-ха-ха-ха-ха!,Red King: ...to be killed by ME! Ah-ha-ha-ha-ha!
