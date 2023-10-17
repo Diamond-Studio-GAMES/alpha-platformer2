@@ -2280,7 +2280,7 @@ nodes/ulti_shot/node = SubResource( 96 )
 nodes/ulti_shot/position = Vector2( 1058.82, 141.176 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "aim_seek", 0, "aim", "potion_seek", 0, "potion", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "aim_ts", 0, "aim_seek", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_seek", 0, "attack", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "potion_shot", 0, "aim_blend", "potion_shot", 1, "potion_seek", "aim_blend", 0, "attack_shot", "aim_blend", 1, "aim_ts", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek" ]
+node_connections = [ "output", 0, "death_trans", "attack_seek", 0, "attack", "potion_shot", 0, "aim_blend", "potion_shot", 1, "potion_seek", "aim_seek", 0, "aim", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "potion_seek", 0, "potion", "aim_blend", 0, "attack_shot", "aim_blend", 1, "aim_ts", "aim_ts", 0, "aim_seek", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.24788
@@ -3058,16 +3058,11 @@ scale = Vector2( 0.8, 0.8 )
 position = Vector2( 11.8571, -2.7 )
 shape = SubResource( 61 )
 
-[node name="swing" parent="visual/body/knight_attack" index="2"]
-bus = "Master"
-
 [node name="hit" parent="visual/body/knight_attack" index="3"]
 stream = ExtResource( 68 )
-bus = "Master"
 
 [node name="hit_wall" parent="visual/body/knight_attack" index="4"]
 stream = ExtResource( 68 )
-bus = "Master"
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_default_blend_time = 0.01

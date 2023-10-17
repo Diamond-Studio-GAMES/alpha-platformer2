@@ -1,4 +1,5 @@
 extends Attack
+class_name ColorAttack
 
 
 enum DamageMode {

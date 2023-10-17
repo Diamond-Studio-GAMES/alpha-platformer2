@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=40 format=2]
+[gd_resource type="Theme" load_steps=41 format=2]
 
 [ext_resource path="res://themes/font_standard.tres" type="DynamicFont" id=1]
 [ext_resource path="res://textures/gui/check_box_unactive.tres" type="Texture" id=2]
@@ -126,6 +126,9 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxEmpty" id=37]
+content_margin_right = 16.0
+
 [sub_resource type="StyleBoxFlat" id=27]
 bg_color = Color( 1, 1, 1, 0.392157 )
 border_width_left = 3
@@ -139,21 +142,17 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id=31]
-bg_color = Color( 0, 1, 1, 1 )
-expand_margin_left = 2.0
-expand_margin_right = 2.0
-expand_margin_top = 1.0
-expand_margin_bottom = 1.0
+bg_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="StyleBoxFlat" id=32]
-bg_color = Color( 0, 1, 0, 1 )
+bg_color = Color( 1, 1, 1, 1 )
 expand_margin_left = 2.0
 expand_margin_right = 2.0
 expand_margin_top = 1.0
 expand_margin_bottom = 1.0
 
 [sub_resource type="StyleBoxFlat" id=33]
-bg_color = Color( 1, 0, 1, 1 )
+bg_color = Color( 1, 1, 1, 1 )
 expand_margin_left = 2.0
 expand_margin_right = 2.0
 expand_margin_top = 1.0
@@ -162,7 +161,7 @@ expand_margin_bottom = 1.0
 [sub_resource type="StyleBoxFlat" id=34]
 content_margin_left = 4.0
 content_margin_right = 4.0
-bg_color = Color( 1, 1, 1, 1 )
+bg_color = Color( 1, 1, 1, 0 )
 
 [sub_resource type="StyleBoxFlat" id=21]
 bg_color = Color( 0, 0, 0, 0.815686 )
@@ -442,7 +441,7 @@ RichTextLabel/fonts/mono_font = ExtResource( 1 )
 RichTextLabel/fonts/normal_font = ExtResource( 1 )
 RichTextLabel/styles/focus = null
 RichTextLabel/styles/normal = null
-ScrollContainer/styles/bg = null
+ScrollContainer/styles/bg = SubResource( 37 )
 SpinBox/icons/updown = null
 TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
 TabContainer/colors/font_color_disabled = Color( 0, 0, 0, 1 )

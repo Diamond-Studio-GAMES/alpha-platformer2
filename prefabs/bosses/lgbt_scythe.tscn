@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/game/other/throwable.gd" type="Script" id=1]
+[ext_resource path="res://textures/bosses/red_king/weapon2.tres" type="Texture" id=2]
+[ext_resource path="res://scripts/game/mobs/color_attack.gd" type="Script" id=3]
+[ext_resource path="res://scripts/game/other/trail.gd" type="Script" id=4]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=5]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 76.0263
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.976027, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.490909 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "rotation"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -180.0, 180.0 ]
+}
+
+[node name="lgbt_scythe" type="Node2D" groups=["spawnable"]]
+script = ExtResource( 1 )
+SPEED = 300.0
+destroy_time = 4.0
+angle = Vector2( -1, 0 )
+is_player_projectile = false
+is_enemy_projectile = true
+destroyable_by_attacks = false
+collides = false
+
+[node name="attack" type="Area2D" parent="."]
+script = ExtResource( 3 )
+damage = 80
+custom_invincibility_time = 1.0
+custom_immobility_time = 0.5
+is_enemy_attack = true
+lifetime = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="attack"]
+shape = SubResource( 1 )
+
+[node name="scythe" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+rotation = -3.14159
+scale = Vector2( -2.625, 2.625 )
+z_index = -1
+texture = ExtResource( 2 )
+offset = Vector2( 9, 2 )
+
+[node name="trail_point" type="Node2D" parent="scythe"]
+position = Vector2( 2.13145e-06, -24.381 )
+
+[node name="Trail2D" type="Line2D" parent="scythe/trail_point"]
+width = 16.0
+width_curve = SubResource( 2 )
+default_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 4 )
+
+[node name="fade" type="AnimationPlayer" parent="scythe"]
+autoplay = "fade"
+anims/fade = SubResource( 3 )
+
+[node name="rotation" type="AnimationPlayer" parent="scythe"]
+autoplay = "rotation"
+anims/rotation = SubResource( 4 )
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 5 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath("../attack"), NodePath("../scythe"), NodePath("../scythe/trail_point") ]
+spawn_sync_data_properties = [ "global_position", "damage_mode", "modulate", "modulate" ]
+
+[node name="MultiplayerSynchronizer" type="Node" parent="."]
+script = ExtResource( 6 )
+unreliable_sync_node_paths = [ NodePath("..") ]
+unreliable_sync_properties_names = [ "global_position" ]

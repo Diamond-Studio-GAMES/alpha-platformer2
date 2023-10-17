@@ -311,8 +311,29 @@ func duplicate_save(id):
 	randomize()
 	var cf = ConfigFile.new()
 	cf.load_encrypted_pass("user://saves/".plus_file(id + ".apa2save"), "apa2_save")
-	cf.set_value("save", "name", (cf.get_value("save", "name", "...") + " (копия)").substr(0, 16))
-	var new_id = make_id(cf.get_value("save", "name", "..."))
+	var old_name = cf.get_value("save", "name", "...")
+	# Checks what already copied
+	var splitted = old_name.split("(")
+	if splitted.size() > 1:
+		var last = splitted[-1]
+		last = last.rstrip(") ")
+		if last.is_valid_integer():
+			old_name = old_name.trim_suffix(" (" + last + ")") # Start copy as new
+	
+	var new_num = 2
+	var new_name = old_name
+	while true:
+		var should_end = true
+		for i in get_save_ids_list():
+			if G.get_save_meta(i, "name", "...") == new_name:
+				new_name = old_name + " (%d)" % new_num
+				new_num += 1
+				should_end = false
+				break
+		if should_end:
+			break
+	cf.set_value("save", "name", new_name)
+	var new_id = make_id(new_name)
 	cf.set_value("save", "save_id", new_id)
 	cf.save_encrypted_pass("user://saves/".plus_file(new_id + ".apa2save"), "apa2_save")
 	list_saves()

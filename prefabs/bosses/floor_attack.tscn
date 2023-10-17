@@ -1,0 +1,735 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=1]
+[ext_resource path="res://textures/bosses/red_king/weapon.tres" type="Texture" id=2]
+[ext_resource path="res://sounds/sfx/randomed/swing.tres" type="AudioStream" id=3]
+[ext_resource path="res://sounds/sfx/landing.wav" type="AudioStream" id=4]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=5]
+[ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=6]
+[ext_resource path="res://textures/effects/attacks/warn.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 240, 8 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "summon"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.75, 0.75 ), Vector2( 0.75, 0.75 ), Vector2( 0.5, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.45, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("sprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.45, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("sprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 0.45, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("sprite2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8, 0 ), Vector2( 8, 0 ), Vector2( 8, -16 ), Vector2( 8, -16 ), Vector2( 8, 0 ) ]
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("../sfx")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "attack"
+length = 1.65
+step = 0.025
+tracks/0/type = "animation"
+tracks/0/path = NodePath("tridents/anim")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "summon" ),
+"times": PoolRealArray( 0.75 )
+}
+tracks/1/type = "animation"
+tracks/1/path = NodePath("tridents2/anim")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": PoolStringArray( "summon" ),
+"times": PoolRealArray( 0.85 )
+}
+tracks/2/type = "animation"
+tracks/2/path = NodePath("tridents3/anim")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": PoolStringArray( "summon" ),
+"times": PoolRealArray( 0.825 )
+}
+tracks/3/type = "animation"
+tracks/3/path = NodePath("tridents4/anim")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": PoolStringArray( "summon" ),
+"times": PoolRealArray( 0.775 )
+}
+tracks/4/type = "animation"
+tracks/4/path = NodePath("tridents5/anim")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": PoolStringArray( "summon" ),
+"times": PoolRealArray( 0.8 )
+}
+tracks/5/type = "animation"
+tracks/5/path = NodePath("tridents6/anim")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": PoolStringArray( "summon" ),
+"times": PoolRealArray( 0.75 )
+}
+tracks/6/type = "animation"
+tracks/6/path = NodePath("tridents7/anim")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": PoolStringArray( "summon" ),
+"times": PoolRealArray( 0.85 )
+}
+tracks/7/type = "animation"
+tracks/7/path = NodePath("tridents8/anim")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"clips": PoolStringArray( "summon" ),
+"times": PoolRealArray( 0.9 )
+}
+tracks/8/type = "animation"
+tracks/8/path = NodePath("tridents9/anim")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"clips": PoolStringArray( "summon" ),
+"times": PoolRealArray( 0.775 )
+}
+tracks/9/type = "animation"
+tracks/9/path = NodePath("tridents10/anim")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"clips": PoolStringArray( "summon" ),
+"times": PoolRealArray( 0.825 )
+}
+tracks/10/type = "animation"
+tracks/10/path = NodePath("tridents11/anim")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"clips": PoolStringArray( "summon" ),
+"times": PoolRealArray( 0.9 )
+}
+tracks/11/type = "animation"
+tracks/11/path = NodePath("tridents12/anim")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"clips": PoolStringArray( "summon" ),
+"times": PoolRealArray( 0.825 )
+}
+tracks/12/type = "animation"
+tracks/12/path = NodePath("tridents13/anim")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"clips": PoolStringArray( "summon" ),
+"times": PoolRealArray( 0.8 )
+}
+tracks/13/type = "animation"
+tracks/13/path = NodePath("tridents14/anim")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"clips": PoolStringArray( "summon" ),
+"times": PoolRealArray( 0.85 )
+}
+tracks/14/type = "animation"
+tracks/14/path = NodePath("tridents15/anim")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"clips": PoolStringArray( "summon" ),
+"times": PoolRealArray( 0.75 )
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("attack/shape:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0.9, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/16/type = "method"
+tracks/16/path = NodePath(".")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 1.65 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/17/type = "method"
+tracks/17/path = NodePath("effect")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0.75 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("warn:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("warn2:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("warn2:scale")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("warn:scale")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/22/type = "audio"
+tracks/22/path = NodePath("start_sfx")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0.75 )
+}
+
+[sub_resource type="Curve" id=18]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=19]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="floor_attack" type="Node2D" groups=["spawnable"]]
+modulate = Color( 100, 100, 100, 1 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( -224, 0 )
+stream = ExtResource( 3 )
+max_distance = 800.0
+bus = "sfx"
+
+[node name="start_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+max_distance = 800.0
+bus = "sfx"
+
+[node name="attack" type="Area2D" parent="."]
+script = ExtResource( 1 )
+damage = 55
+knockback = 0.0
+custom_invincibility_time = 0.8
+custom_immobility_time = 0.6
+is_enemy_attack = true
+lifetime = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="attack"]
+visible = false
+position = Vector2( -224, -32 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="tridents" type="Node2D" parent="."]
+z_index = -1
+
+[node name="sprite" type="Sprite" parent="tridents"]
+modulate = Color( 1, 1, 1, 0 )
+rotation = -0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite2" type="Sprite" parent="tridents"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 0 )
+rotation = 0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="tridents"]
+anims/summon = SubResource( 2 )
+
+[node name="tridents2" type="Node2D" parent="."]
+position = Vector2( -32, 0 )
+z_index = -1
+
+[node name="sprite" type="Sprite" parent="tridents2"]
+modulate = Color( 1, 1, 1, 0 )
+rotation = -0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite2" type="Sprite" parent="tridents2"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 0 )
+rotation = 0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="tridents2"]
+anims/summon = SubResource( 2 )
+
+[node name="tridents3" type="Node2D" parent="."]
+position = Vector2( -64, 0 )
+z_index = -1
+
+[node name="sprite" type="Sprite" parent="tridents3"]
+modulate = Color( 1, 1, 1, 0 )
+rotation = -0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite2" type="Sprite" parent="tridents3"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 0 )
+rotation = 0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="tridents3"]
+anims/summon = SubResource( 2 )
+
+[node name="tridents4" type="Node2D" parent="."]
+position = Vector2( -96, 0 )
+z_index = -1
+
+[node name="sprite" type="Sprite" parent="tridents4"]
+modulate = Color( 1, 1, 1, 1.98682e-07 )
+position = Vector2( 0, -3.17891e-06 )
+rotation = -0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite2" type="Sprite" parent="tridents4"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 0 )
+rotation = 0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="tridents4"]
+anims/summon = SubResource( 2 )
+
+[node name="tridents5" type="Node2D" parent="."]
+position = Vector2( -128, 0 )
+z_index = -1
+
+[node name="sprite" type="Sprite" parent="tridents5"]
+modulate = Color( 1, 1, 1, 0 )
+rotation = -0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite2" type="Sprite" parent="tridents5"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 0 )
+rotation = 0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="tridents5"]
+anims/summon = SubResource( 2 )
+
+[node name="tridents6" type="Node2D" parent="."]
+position = Vector2( -160, 0 )
+z_index = -1
+
+[node name="sprite" type="Sprite" parent="tridents6"]
+modulate = Color( 1, 1, 1, 0 )
+rotation = -0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite2" type="Sprite" parent="tridents6"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 0 )
+rotation = 0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="tridents6"]
+anims/summon = SubResource( 2 )
+
+[node name="tridents7" type="Node2D" parent="."]
+position = Vector2( -192, 0 )
+z_index = -1
+
+[node name="sprite" type="Sprite" parent="tridents7"]
+modulate = Color( 1, 1, 1, 0 )
+rotation = -0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite2" type="Sprite" parent="tridents7"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 0 )
+rotation = 0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="tridents7"]
+anims/summon = SubResource( 2 )
+
+[node name="tridents8" type="Node2D" parent="."]
+position = Vector2( -224, 0 )
+z_index = -1
+
+[node name="sprite" type="Sprite" parent="tridents8"]
+modulate = Color( 1, 1, 1, 0 )
+rotation = -0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite2" type="Sprite" parent="tridents8"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 0 )
+rotation = 0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="tridents8"]
+anims/summon = SubResource( 2 )
+
+[node name="tridents9" type="Node2D" parent="."]
+position = Vector2( -256, 0 )
+z_index = -1
+
+[node name="sprite" type="Sprite" parent="tridents9"]
+modulate = Color( 1, 1, 1, 1.98682e-07 )
+position = Vector2( 0, -3.17891e-06 )
+rotation = -0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite2" type="Sprite" parent="tridents9"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 0 )
+rotation = 0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="tridents9"]
+anims/summon = SubResource( 2 )
+
+[node name="tridents10" type="Node2D" parent="."]
+position = Vector2( -288, 0 )
+z_index = -1
+
+[node name="sprite" type="Sprite" parent="tridents10"]
+modulate = Color( 1, 1, 1, 0 )
+rotation = -0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite2" type="Sprite" parent="tridents10"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 0 )
+rotation = 0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="tridents10"]
+anims/summon = SubResource( 2 )
+
+[node name="tridents11" type="Node2D" parent="."]
+position = Vector2( -320, 0 )
+z_index = -1
+
+[node name="sprite" type="Sprite" parent="tridents11"]
+modulate = Color( 1, 1, 1, 0 )
+rotation = -0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite2" type="Sprite" parent="tridents11"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 0 )
+rotation = 0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="tridents11"]
+anims/summon = SubResource( 2 )
+
+[node name="tridents12" type="Node2D" parent="."]
+position = Vector2( -352, 0 )
+z_index = -1
+
+[node name="sprite" type="Sprite" parent="tridents12"]
+modulate = Color( 1, 1, 1, 0 )
+rotation = -0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite2" type="Sprite" parent="tridents12"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 0 )
+rotation = 0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="tridents12"]
+anims/summon = SubResource( 2 )
+
+[node name="tridents13" type="Node2D" parent="."]
+position = Vector2( -384, 0 )
+z_index = -1
+
+[node name="sprite" type="Sprite" parent="tridents13"]
+modulate = Color( 1, 1, 1, 0 )
+rotation = -0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite2" type="Sprite" parent="tridents13"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 0 )
+rotation = 0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="tridents13"]
+anims/summon = SubResource( 2 )
+
+[node name="tridents14" type="Node2D" parent="."]
+position = Vector2( -416, 0 )
+z_index = -1
+
+[node name="sprite" type="Sprite" parent="tridents14"]
+modulate = Color( 1, 1, 1, 0 )
+rotation = -0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite2" type="Sprite" parent="tridents14"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 0 )
+rotation = 0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="tridents14"]
+anims/summon = SubResource( 2 )
+
+[node name="tridents15" type="Node2D" parent="."]
+position = Vector2( -448, 0 )
+z_index = -1
+
+[node name="sprite" type="Sprite" parent="tridents15"]
+modulate = Color( 1, 1, 1, 0 )
+rotation = -0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="sprite2" type="Sprite" parent="tridents15"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 8, 0 )
+rotation = 0.261799
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="tridents15"]
+anims/summon = SubResource( 2 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "attack"
+anims/attack = SubResource( 17 )
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 5 )
+spawn_sync_data_node_paths = [ NodePath("..") ]
+spawn_sync_data_properties = [ "position" ]
+
+[node name="effect" type="CPUParticles2D" parent="."]
+position = Vector2( -224, -16 )
+z_index = -1
+emitting = false
+amount = 32
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource( 6 )
+emission_shape = 2
+emission_rect_extents = Vector2( 224, 2 )
+direction = Vector2( 0, -1 )
+gravity = Vector2( 0, 0 )
+initial_velocity = 50.0
+initial_velocity_random = 0.7
+linear_accel = 20.0
+linear_accel_random = 0.5
+scale_amount = 5.0
+scale_amount_curve = SubResource( 18 )
+color = Color( 1, 0, 0, 1 )
+color_ramp = SubResource( 19 )
+
+[node name="warn" type="Sprite" parent="."]
+position = Vector2( -160, -48 )
+texture = ExtResource( 7 )
+
+[node name="warn2" type="Sprite" parent="."]
+position = Vector2( -320, -48 )
+texture = ExtResource( 7 )

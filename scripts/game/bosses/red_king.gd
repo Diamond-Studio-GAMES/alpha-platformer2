@@ -6,6 +6,9 @@ var phases_attacks = {
 	2 : ["lgbt", "throw", "floor_attack"],
 	3 : ["lgbt", "throw", "floor_attack", "two_strikes"],
 }
+var current_blue = false
+var floor_attack_scene = load("res://prefabs/bosses/floor_attack.tscn")
+var scythe = load("res://prefabs/bosses/lgbt_scythe.tscn")
 onready var timer = $timer
 
 
@@ -26,7 +29,7 @@ func _ready():
 
 
 func death():
-	G.ach.complete(Achievements.BOSS6)
+	G.ach.complete(Achievements.BOSS7)
 	.death()
 
 
@@ -58,6 +61,39 @@ func lgbt(count = 0):
 	if MP.auth(self):
 		count = randi() % 2 + get_phase()
 	ms.sync_call(self, "lgbt", [count])
+	next_attack_time += 0.5 + 1.4 * count
+	anim.play("lgbt_start")
+	if not can_mob_move():
+		anim.play("idle", 0.3)
+		return
+	for i in range(count):
+		current_blue = randi() % 2 == 0
+		set_attack_color(Color.cyan if current_blue else Color.orange)
+		anim.play("lgbt_throw", 0.2)
+		anim.seek(0, true)
+		yield(get_tree().create_timer(1.4, false), "timeout")
+		if not can_mob_move():
+			anim.play("idle", 0.3)
+			return
+	anim.play("idle", 0.3)
+
+
+func summon_scythe():
+	if not MP.auth(self):
+		return
+	if not can_mob_move():
+		return
+	var sc = scythe.instance()
+	sc.get_node("scythe").modulate = Color.cyan if current_blue else Color.orange
+	sc.get_node("scythe/trail_point").modulate = Color.cyan if current_blue else Color.orange
+	sc.get_node("attack").damage_mode = int(not current_blue)
+	sc.global_position = $visual/body/arm_right/hand/weapon2.global_position
+	get_parent().add_child(sc)
+
+
+func set_attack_color(color):
+	ms.sync_call(self, "set_attack_color", [color])
+	$visual/body/arm_right/hand/weapon2.self_modulate = color
 
 
 func throw():
@@ -75,10 +111,22 @@ func two_strikes():
 
 
 func floor_attack():
+	next_attack_time += 1.5
 	ms.sync_call(self, "floor_attack")
+	anim.play("floor_attack")
 
 
 func melee_attack():
 	ms.sync_call(self, "floor_attack")
 	anim.play("attack")
 	next_attack_time += 0.5
+
+
+func do_floor_attack():
+	if not MP.auth(self):
+		return
+	if not can_mob_move():
+		return
+	var fa = floor_attack_scene.instance()
+	add_child(fa, true)
+	fa.global_position = $floor_attack_spawn_pos.global_position
