@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=1]
 [ext_resource path="res://textures/bosses/red_king/weapon.tres" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=5]
 [ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=6]
 [ext_resource path="res://textures/effects/attacks/warn.png" type="Texture" id=7]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 240, 8 )
@@ -381,7 +382,7 @@ bus = "sfx"
 
 [node name="attack" type="Area2D" parent="."]
 script = ExtResource( 1 )
-damage = 55
+damage = 60
 knockback = 0.0
 custom_invincibility_time = 0.8
 custom_immobility_time = 0.6
@@ -733,3 +734,8 @@ texture = ExtResource( 7 )
 [node name="warn2" type="Sprite" parent="."]
 position = Vector2( -320, -48 )
 texture = ExtResource( 7 )
+
+[node name="MultiplayerSynchronizer" type="Node" parent="."]
+script = ExtResource( 8 )
+unreliable_sync_node_paths = [ NodePath("..") ]
+unreliable_sync_properties_names = [ "global_position" ]

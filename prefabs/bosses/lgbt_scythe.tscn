@@ -58,7 +58,7 @@ collides = false
 
 [node name="attack" type="Area2D" parent="."]
 script = ExtResource( 3 )
-damage = 80
+damage = 75
 custom_invincibility_time = 1.0
 custom_immobility_time = 0.5
 is_enemy_attack = true

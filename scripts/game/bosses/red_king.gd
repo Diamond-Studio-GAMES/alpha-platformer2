@@ -7,8 +7,11 @@ var phases_attacks = {
 	3 : ["lgbt", "throw", "floor_attack", "two_strikes"],
 }
 var current_blue = false
+var aims = []
 var floor_attack_scene = load("res://prefabs/bosses/floor_attack.tscn")
 var scythe = load("res://prefabs/bosses/lgbt_scythe.tscn")
+var redball = load("res://prefabs/bosses/redball.tscn")
+var aim = load("res://prefabs/bosses/aim.tscn")
 onready var timer = $timer
 
 
@@ -96,8 +99,57 @@ func set_attack_color(color):
 	$visual/body/arm_right/hand/weapon2.self_modulate = color
 
 
-func throw():
-	ms.sync_call(self, "throw")
+func throw(count = 0):
+	if MP.auth(self):
+		count = randi() % 2 + get_phase()
+	ms.sync_call(self, "throw", [count])
+	next_attack_time += 0.7 * count
+	for i in count:
+		if not can_mob_move():
+			if MP.auth(self):
+				for j in aims:
+					clear_aim(j)
+			return
+		if MP.auth(self):
+			var n = aim.instance()
+			n.global_position = player_target.global_position + Vector2.RIGHT * \
+					(randi() % 96 - 72) + Vector2.UP * (randi() % 32)
+			get_parent().add_child(n, true)
+			aims.append(n)
+		yield(get_tree().create_timer(0.2, false), "timeout")
+	
+	for i in count:
+		anim.play("throw", 0.2)
+		anim.seek(0, true)
+		yield(get_tree().create_timer(0.5, false), "timeout")
+		if not can_mob_move():
+			for j in aims:
+				clear_aim(j)
+			anim.play("idle", 0.3)
+			return
+	anim.play("idle", 0.3)
+
+
+func clear_aim(n):
+	var path = n.get_path()
+	aims.erase(n)
+	do_clear_aim(path)
+
+
+func do_clear_aim(path_to):
+	ms.sync_call(self, "do_clear_aim", [path_to])
+	get_node(path_to).get_node("anim").play("end")
+
+
+func do_throw():
+	if not MP.auth(self):
+		return
+	var curr_aim = aims[0]
+	clear_aim(curr_aim)
+	var rb = redball.instance()
+	rb.global_position = $visual/body/arm_right/hand/weapon/shoot_effect.global_position
+	rb.angle = $visual/body/arm_right/hand/weapon/shoot_effect.global_position.direction_to(curr_aim.global_position)
+	get_parent().add_child(rb, true)
 
 
 func two_strikes():
@@ -117,7 +169,7 @@ func floor_attack():
 
 
 func melee_attack():
-	ms.sync_call(self, "floor_attack")
+	ms.sync_call(self, "melee_attack")
 	anim.play("attack")
 	next_attack_time += 0.5
 
