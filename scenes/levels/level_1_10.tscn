@@ -4189,7 +4189,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
+node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -4734,6 +4734,7 @@ bus = "sfx"
 [node name="anim" type="AnimationPlayer" parent="mobs/sheeper"]
 autoplay = "idle"
 reset_on_save = false
+playback_default_blend_time = 0.1
 anims/RESET = SubResource( 88 )
 anims/attack = SubResource( 10 )
 anims/big_knife = SubResource( 36 )
@@ -4747,7 +4748,7 @@ next/attack = "idle"
 next/big_knife = "idle"
 next/knives_summon = "idle"
 next/spikes_attack = "idle"
-blend_times = [ "attack", "attack", 0.3, "attack", "idle", 0.3, "death", "attack", 0.3, "idle", "attack", 0.3, "idle", "big_knife", 0.3, "idle", "idle", 0.3, "idle", "knives_summon", 0.3, "idle", "spikes_attack", 0.3, "knives_summon", "idle", 0.3, "spikes_attack", "idle", 0.3 ]
+blend_times = [ "attack", "attack", 0.3, "attack", "idle", 0.3, "big_knife", "idle", 0.3, "death", "attack", 0.3, "idle", "attack", 0.3, "idle", "big_knife", 0.3, "idle", "idle", 0.3, "idle", "knives_summon", 0.3, "idle", "spikes_attack", 0.3, "knives_summon", "idle", 0.3, "spikes_attack", "idle", 0.3 ]
 
 [node name="mob_sh" type="KinematicBody2D" parent="mobs/sheeper"]
 collision_layer = 5
@@ -4771,7 +4772,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/sheeper/mob_sh/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/sheeper/mob_sh/visual/body"]
-scale = Vector2( 1.25, 1.16525 )
+scale = Vector2( 1.25, 1.17363 )
 texture = ExtResource( 30 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/sheeper/mob_sh"]

@@ -5307,6 +5307,7 @@ __meta__ = {
 [node name="anim" type="AnimationPlayer" parent="mobs/black_wizard"]
 autoplay = "idle"
 reset_on_save = false
+playback_default_blend_time = 0.1
 anims/RESET = SubResource( 34 )
 anims/blackball = SubResource( 44 )
 anims/death = SubResource( 11 )
@@ -5344,7 +5345,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/black_wizard/mob_bw/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/black_wizard/mob_bw/visual/body"]
-scale = Vector2( 1.25, 1.13983 )
+scale = Vector2( 1.25, 1.20384 )
 texture = ExtResource( 17 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/black_wizard/mob_bw"]
