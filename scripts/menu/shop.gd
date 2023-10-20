@@ -646,7 +646,7 @@ func generate_offers():
 			if not gadget_classes.empty():
 				gadget_classes.shuffle()
 				var to = gadget_classes[0]
-				offer = {"costs": {"coins" : 500}, "receives" : {"gadget" : [to]}, "id" : i, "name" : tr("shop.offer.title")}
+				offer = {"costs": {"coins" : 750}, "receives" : {"gadget" : [to]}, "id" : i, "name" : tr("shop.offer.title")}
 			else:
 				continue
 		if type == 6:
@@ -654,7 +654,7 @@ func generate_offers():
 			if not soul_power_classes.empty():
 				soul_power_classes.shuffle()
 				var to = soul_power_classes[0]
-				offer = {"costs": {"coins" : 1000}, "receives" : {"soul_power" : [to]}, "id" : i, "name" : tr("shop.offer.title")}
+				offer = {"costs": {"coins" : 1500}, "receives" : {"soul_power" : [to]}, "id" : i, "name" : tr("shop.offer.title")}
 			else:
 				continue
 		if type == 7:
@@ -673,7 +673,7 @@ func generate_offers():
 					continue
 				ulti_classes.shuffle()
 				var to = ulti_classes[0]
-				var count = 10 + gen.randi_range(0, 15)
+				var count = 10 + gen.randi_range(0, 10) * 2
 				offer = {"costs": {"coins" : count * 20}, "receives" : {"ulti_tokens" : {to: count }}, "id" : i, "name" : tr("shop.offer.title")}
 		if type == 8:
 			#CLASS
@@ -685,17 +685,17 @@ func generate_offers():
 			var count_of_ut = 0
 			var cost = 30
 			if randi() % 3 == 1:
-				count_of_pt = 80 + gen.randi_range(0, 1) * 40
+				count_of_pt = 100 + gen.randi_range(0, 1) * 50
 				if count_of_pt == 80:
-					cost += 5
+					cost += 3
 				else:
-					cost += 8
+					cost += 5
 			if randi() % 3 == 2:
-				count_of_ut = 20 + gen.randi_range(0, 1) * 10
+				count_of_ut = 30 + gen.randi_range(0, 1) * 30
 				if count_of_ut == 20:
-					cost += 5
+					cost += 3
 				else:
-					cost += 7
+					cost += 5
 			if count_of_pt == 0 and count_of_ut == 0:
 				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what]}, "id" : i, "name" : tr("item.class")}
 			elif count_of_pt == 0 and count_of_ut != 0:
@@ -710,7 +710,7 @@ func generate_offers():
 				if power_classes.empty():
 					continue
 				var count = 20 + gen.randi_range(0, 10) * 10
-				offer = {"costs": {"coins" : count * 7}, "receives" : {"wild_tokens" : count}, "id" : i, "name" : tr("shop.offer.title")}
+				offer = {"costs": {"coins" : count * 6}, "receives" : {"wild_tokens" : count}, "id" : i, "name" : tr("shop.offer.title")}
 			else:
 				#ULTI
 				if ulti_classes.empty():

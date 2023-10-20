@@ -292,9 +292,9 @@ func open_gui(what = null):
 		$coins_screen/anim.stop()
 		$coins_screen/anim.play("anim")
 		$coins_screen/visual/count.text = "x " + str(loot["coins"])
-		if loot["coins"] < 145:
+		if loot["coins"] <= 200:
 			$coins_screen/visual/coins.texture = coins_textures[0]
-		elif loot["coins"] >= 145 and loot["coins"] < 400:
+		elif loot["coins"] > 200 and loot["coins"] < 550:
 			$coins_screen/visual/coins.texture = coins_textures[1]
 		else:
 			$coins_screen/visual/coins.texture = coins_textures[2]
@@ -595,7 +595,7 @@ func open_gui(what = null):
 
 func open_gui_set_tokens_count(count):
 	tokens_bar.value = count
-	tokens_bar_label.text = str(round(tokens_bar.value)) + "/" + str(tokens_bar.max_value)
+	tokens_bar_label.text = str(floor(tokens_bar.value)) + "/" + str(tokens_bar.max_value)
 	if tokens_bar.value >= tokens_bar.max_value:
 		tokens_bar.tint_progress = Color(0, 1, 0)
 		$tokens_screen/bar/upgrade.show()
@@ -603,7 +603,7 @@ func open_gui_set_tokens_count(count):
 
 func open_gui_set_ulti_tokens_count(count):
 	ulti_tokens_bar.value = count
-	ulti_tokens_bar_label.text = str(round(ulti_tokens_bar.value)) + "/" + str(ulti_tokens_bar.max_value)
+	ulti_tokens_bar_label.text = str(floor(ulti_tokens_bar.value)) + "/" + str(ulti_tokens_bar.max_value)
 	if ulti_tokens_bar.value >= ulti_tokens_bar.max_value:
 		ulti_tokens_bar.tint_progress = Color(0, 1, 0)
 		$ulti_tokens_screen/bar/upgrade.show()
@@ -679,15 +679,15 @@ func init_values():
 
 
 func open_box():
-	return open_boxes(1, 2, 1)
+	return open_boxes(1, 2, 2)
 
 
 func open_big_box():
-	return open_boxes(3, 3, 2)
+	return open_boxes(3, 3, 3)
 
 
 func open_megabox():
-	return open_boxes(10, 5, 3)
+	return open_boxes(10, 4, 4)
 
 
 func open_boxes(count, power_count, ulti_count):
@@ -745,11 +745,17 @@ func open_boxes(count, power_count, ulti_count):
 				loot["coins"] += i["tokens1"] * 3 + i["tokens0"] * 3
 				G.addv("coins", i["tokens1"] * 3 + i["tokens0"] * 3)
 			
-			if utokens_array.size() > 0:
-				utokens_array[gen.randi_range(0, utokens_array.size() - 1)] += i["ulti_tokens0"]
+			if utokens_array.size() > 1:
+				var id = gen.randi_range(0, utokens_array.size() - 1)
+				utokens_array[id] += i["ulti_tokens0"]
+				utokens_array[posmod(id + 1, utokens_array.size())] += i["ulti_tokens1"]
+			elif utokens_array.size() == 1:
+				utokens_array[0] += i["ulti_tokens0"]
+				loot["coins"] += i["ulti_tokens1"] * 12
+				G.addv("coins", i["ulti_tokens1"] * 12)
 			else:
-				loot["coins"] += i["ulti_tokens0"] * 12
-				G.addv("coins", i["ulti_tokens0"] * 12)
+				loot["coins"] += i["ulti_tokens1"] * 12 + i["ulti_tokens0"] * 12
+				G.addv("coins", i["ulti_tokens1"] * 12 + i["ulti_tokens0"] * 12)
 	
 	tokens_array.sort()
 	utokens_array.sort()
@@ -838,33 +844,42 @@ func get_box_rewards():
 		power_classes.shuffle()
 		var coins_count = 0
 		var c = gen.randi_range(0, 100)
-		if c < 65:
-			coins_count = gen.randi_range(30, 80)
-		elif c >= 65 and c < 90:
-			coins_count = 100
-		else:
+		if c <= 70:
+			coins_count = gen.randi_range(40, 110)
+		elif c > 70 and c <= 92:
 			coins_count = 130
+		else:
+			coins_count = 170
 		loot["coins"] = coins_count
 		G.addv("coins", coins_count)
 		loot["tokens"] = []
 		var t0 = gen.randi_range(0, 100)
-		if t0 < 70:
+		if t0 <= 70:
 			loot["tokens0"] = gen.randi_range(2, 7)
-		elif t0 >= 70 and t0 < 92:
+		elif t0 > 70 and t0 <= 92:
 			loot["tokens0"] = 10
 		else:
 			loot["tokens0"] = 15
 		var t1 = gen.randi_range(0, 100)
-		if t1 < 70:
+		if t1 <= 70:
 			loot["tokens1"] = gen.randi_range(2, 7)
-		elif t1 >= 70 and t1 < 92:
+		elif t1 > 70 and t1 <= 92:
 			loot["tokens1"] = 10
 		else:
 			loot["tokens1"] = 15
-		var ut = gen.randi_range(0, 100)
-		if ut < 80:
+		var ut0 = gen.randi_range(0, 100)
+		if ut0 < 70:
 			loot["ulti_tokens0"] = gen.randi_range(1, 2)
+		elif ut0 > 70 and ut0 <= 92:
+			loot["ulti_tokens0"] = 3
 		else:
 			loot["ulti_tokens0"] = 4
+		var ut1 = gen.randi_range(0, 100)
+		if ut1 < 70:
+			loot["ulti_tokens1"] = gen.randi_range(1, 2)
+		elif ut1 > 70 and ut1 <= 92:
+			loot["ulti_tokens1"] = 3
+		else:
+			loot["ulti_tokens1"] = 4
 		init_values()
 	return loot
