@@ -530,7 +530,7 @@ func sell(ulti = false):
 	var suffix = "_tokens" if not ulti else "_ulti_tokens"
 	var tokens_left = G.getv(selected_class + suffix)
 	G.setv(selected_class + suffix, 0)
-	var coins_mul = 12 if ulti else 3
+	var coins_mul = 10 if ulti else 3
 	var coins_get = tokens_left * coins_mul
 	select_class(selected_class)
 	G.receive_loot({"coins":coins_get})

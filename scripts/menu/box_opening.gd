@@ -261,7 +261,7 @@ func open_gui(what = null):
 		if selected_class_for_tokens == "coins":
 			if not loot.has("coins"):
 				loot["coins"] = 0
-			loot["coins"] = loot["wild_ulti_tokens"] * 12
+			loot["coins"] = loot["wild_ulti_tokens"] * 10
 			G.addv("coins", loot["coins"])
 		else:
 			if not loot.has("ulti_tokens"):
@@ -751,11 +751,11 @@ func open_boxes(count, power_count, ulti_count):
 				utokens_array[posmod(id + 1, utokens_array.size())] += i["ulti_tokens1"]
 			elif utokens_array.size() == 1:
 				utokens_array[0] += i["ulti_tokens0"]
-				loot["coins"] += i["ulti_tokens1"] * 12
-				G.addv("coins", i["ulti_tokens1"] * 12)
+				loot["coins"] += i["ulti_tokens1"] * 10
+				G.addv("coins", i["ulti_tokens1"] * 10)
 			else:
-				loot["coins"] += i["ulti_tokens1"] * 12 + i["ulti_tokens0"] * 12
-				G.addv("coins", i["ulti_tokens1"] * 12 + i["ulti_tokens0"] * 12)
+				loot["coins"] += i["ulti_tokens1"] * 10 + i["ulti_tokens0"] * 10
+				G.addv("coins", i["ulti_tokens1"] * 10 + i["ulti_tokens0"] * 10)
 	
 	tokens_array.sort()
 	utokens_array.sort()
