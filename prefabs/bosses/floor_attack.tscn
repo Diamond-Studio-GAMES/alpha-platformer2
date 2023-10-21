@@ -10,7 +10,7 @@
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 240, 8 )
+extents = Vector2( 240, 4 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "summon"
@@ -264,7 +264,7 @@ tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0.9, 1.1 ),
+"times": PoolRealArray( 0.9, 1.225 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -390,7 +390,6 @@ is_enemy_attack = true
 lifetime = 0.0
 
 [node name="shape" type="CollisionShape2D" parent="attack"]
-visible = false
 position = Vector2( -224, -32 )
 shape = SubResource( 1 )
 disabled = true
@@ -459,8 +458,7 @@ position = Vector2( -96, 0 )
 z_index = -1
 
 [node name="sprite" type="Sprite" parent="tridents4"]
-modulate = Color( 1, 1, 1, 1.98682e-07 )
-position = Vector2( 0, -3.17891e-06 )
+modulate = Color( 1, 1, 1, 0 )
 rotation = -0.261799
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
@@ -560,8 +558,7 @@ position = Vector2( -256, 0 )
 z_index = -1
 
 [node name="sprite" type="Sprite" parent="tridents9"]
-modulate = Color( 1, 1, 1, 1.98682e-07 )
-position = Vector2( 0, -3.17891e-06 )
+modulate = Color( 1, 1, 1, 0 )
 rotation = -0.261799
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
@@ -728,11 +725,15 @@ color = Color( 1, 0, 0, 1 )
 color_ramp = SubResource( 19 )
 
 [node name="warn" type="Sprite" parent="."]
+visible = false
 position = Vector2( -160, -48 )
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 7 )
 
 [node name="warn2" type="Sprite" parent="."]
+visible = false
 position = Vector2( -320, -48 )
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 7 )
 
 [node name="MultiplayerSynchronizer" type="Node" parent="."]

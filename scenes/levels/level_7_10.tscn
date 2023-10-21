@@ -4397,7 +4397,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/red_king/mob_rk/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/red_king/mob_rk/visual/body"]
-scale = Vector2( 1.25, 1.14503 )
+scale = Vector2( 1.25, 1.22113 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/red_king/mob_rk"]
@@ -4745,7 +4745,7 @@ modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 1, 0, 0, 1 )
+color = Color( 0.752941, 0, 0, 1 )
 
 [node name="label" type="Label" parent="tint"]
 visible = false

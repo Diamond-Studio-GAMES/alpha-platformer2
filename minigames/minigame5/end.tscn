@@ -13,8 +13,8 @@ func be(b):
 				G.ach.complete(Achievements.DASHER)
 				G.addv(\"pd_levels\", 1)
 				G.getv(\"pd_level_\" + get_tree().current_scene.name, true)
-			var level = int(get_tree().current_scene.name[5])
-			G.receive_loot({\"coins\" : 150 * level, \"gems\" : level})
+				var level = int(get_tree().current_scene.name[5])
+				G.receive_loot({\"coins\" : 150 * level, \"gems\" : level})
 		get_tree().change_scene(\"res://minigames/minigame5/minigame.tscn\")
 "
 

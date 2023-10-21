@@ -3,8 +3,8 @@ class_name Globals, "res://textures/gui/alpha_text.png"
 
 
 const VERSION = "0.9.0"
-const VERSION_STATUS = ""
-const VERSION_STATUS_NUMBER = ""
+const VERSION_STATUS = "beta"
+const VERSION_STATUS_NUMBER = "2"
 const VERSION_CODE = 69
 
 var main_file: ConfigFile
@@ -390,5 +390,4 @@ func receive_loot(looted):
 		var n = box.instance()
 		get_tree().root.add_child(n)
 		n.show_loot(loot_to_show)
-		yield(n, "end_loot")
-		emit_signal("loot_end")
+		n.connect("end_loot", self, "emit_signal", ["loot_end"])

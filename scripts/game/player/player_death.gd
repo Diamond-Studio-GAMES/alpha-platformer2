@@ -147,8 +147,9 @@ func ulti():
 
 
 func _process(delta):
-	if is_active_gadget and not get_tree().paused:
-		get_tree().paused = true
+	if is_active_gadget:
+		if not get_tree().paused:
+			get_tree().paused = true
 		gadget_cooldown = 10
 	if not MP.auth(self):
 		return

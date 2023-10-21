@@ -875,11 +875,11 @@ func get_box_rewards():
 		else:
 			loot["ulti_tokens0"] = 4
 		var ut1 = gen.randi_range(0, 100)
-		if ut1 < 70:
-			loot["ulti_tokens1"] = gen.randi_range(1, 2)
-		elif ut1 > 70 and ut1 <= 92:
-			loot["ulti_tokens1"] = 3
+		if ut1 < 65:
+			loot["ulti_tokens1"] = 1
+		elif ut1 > 65 and ut1 <= 90:
+			loot["ulti_tokens1"] = 2
 		else:
-			loot["ulti_tokens1"] = 4
+			loot["ulti_tokens1"] = 3
 		init_values()
 	return loot
