@@ -258,8 +258,8 @@ func cancel():
 func confirm_delete():
 	var dir = Directory.new()
 	dir.remove("user://saves/".plus_file(id_to_delete + ".apa2save"))
-	if dir.file_exists("user://custom_levels/" + id_to_delete + ".tscn"):
-		dir.remove("user://custom_levels/" + id_to_delete + ".tscn")
+	if dir.file_exists("user://custom_levels/" + id_to_delete + ".scn"):
+		dir.remove("user://custom_levels/" + id_to_delete + ".scn")
 	list_saves()
 	$enter_color.mouse_filter = Control.MOUSE_FILTER_IGNORE
 

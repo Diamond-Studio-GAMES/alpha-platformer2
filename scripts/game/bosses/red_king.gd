@@ -70,8 +70,9 @@ func lgbt(count = 0):
 		anim.play("idle", 0.3)
 		return
 	for i in range(count):
-		current_blue = randi() % 2 == 0
-		set_attack_color(Color.cyan if current_blue else Color.orange)
+		if MP.auth(self):
+			current_blue = randi() % 2 == 0
+			set_attack_color(Color.cyan if current_blue else Color.orange)
 		anim.play("lgbt_throw", 0.2)
 		anim.seek(0, true)
 		yield(get_tree().create_timer(1.4, false), "timeout")

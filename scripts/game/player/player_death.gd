@@ -13,8 +13,6 @@ onready var eye = $visual/body/head/helmet/eye
 
 
 func _ready():
-	if MP.auth(self):
-		G.ach.complete(Achievements.DARK_CREATION)
 	curr_lvl_loc = int(get_tree().current_scene.name.trim_prefix("level_").split("_")[0])
 	randomize()
 	have_gadget = true
@@ -60,6 +58,8 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 
 
 func attack():
+	if MP.auth(self):
+		G.ach.complete(Achievements.DARK_CREATION)
 	if is_hurt or is_stunned or _is_drinking or not can_control:
 		return
 	if not can_attack:

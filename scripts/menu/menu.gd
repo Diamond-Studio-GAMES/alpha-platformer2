@@ -177,8 +177,8 @@ func reset():
 	var id = G.getv("save_id", "ffff00")
 	G.close_save()
 	dir.remove("user://saves/".plus_file(id + ".apa2save"))
-	if dir.file_exists("user://custom_levels/" + id + ".tscn"):
-		dir.remove("user://custom_levels/" + id + ".tscn")
+	if dir.file_exists("user://custom_levels/" + id + ".scn"):
+		dir.remove("user://custom_levels/" + id + ".scn")
 	get_tree().change_scene("res://scenes/menu/save_loader.tscn")
 
 

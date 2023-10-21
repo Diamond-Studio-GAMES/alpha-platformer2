@@ -100,8 +100,3 @@ func set_message(mes, abort = false):
 		$online.hide()
 		return
 	message.text = mes
-
-
-func _exit_tree():
-	var dir = Directory.new()
-	dir.remove("user://online_cache.cfg")

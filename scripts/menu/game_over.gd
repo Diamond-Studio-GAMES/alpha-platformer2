@@ -23,6 +23,8 @@ func _ready():
 		G.close_save()
 		var d = Directory.new()
 		d.remove("user://saves/".plus_file(id + ".apa2save"))
+		if d.file_exists("user://custom_levels/" + id + ".scn"):
+			d.remove("user://custom_levels/" + id + ".scn")
 	else:
 		$soul/anim.play("defeat")
 

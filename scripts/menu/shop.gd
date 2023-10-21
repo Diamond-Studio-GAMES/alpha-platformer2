@@ -791,8 +791,3 @@ func request_online_response(result, code, header, body):
 			if not G.getv("save_id", "none") in j["ids"]:
 				continue
 		show_offer(j["costs"], j["receives"], int(i), j["name"])
-
-
-func _exit_tree():
-	var dir = Directory.new()
-	dir.remove("user://online_cache.cfg")
