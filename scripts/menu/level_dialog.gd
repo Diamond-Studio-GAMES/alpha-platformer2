@@ -112,17 +112,21 @@ func show_d_win():
 		G.ad.ad_counter_win = 1
 	$particles.set_as_toplevel(true)
 	curr_lvl = G.current_level
-	var next_lvl = curr_lvl.split("_")[0] + "_" + str(int(curr_lvl.split("_")[1]) + 1)
-	if curr_lvl.split("_")[1] == "10":
-		next_lvl = str(int(curr_lvl.split("_")[0]) + 1) + "_1"
+	var curr_nums = curr_lvl.split("_")
+	var next_lvl = curr_nums[0] + "_" + str(int(curr_nums[1]) + 1)
+	if curr_nums[1] == "10":
+		next_lvl = str(int(curr_nums[0]) + 1) + "_1"
 	var max_lvl = G.getv("level", "1_1")
+	var max_nums = max_lvl.split("_")
+	var next_nums = next_lvl.split("_")
 	var set_new = true
-	if max_lvl.split("_")[0] == next_lvl.split("_")[0]:
-		if int(max_lvl.split("_")[1]) > int(next_lvl.split("_")[1]):
+	if max_nums[0] == next_nums[0]:
+		if int(max_nums[1]) > int(next_nums[1]):
 			set_new = false
-	elif int(max_lvl.split("_")[0]) > int(next_lvl.split("_")[0]):
+	elif int(max_nums[0]) > int(next_nums[0]):
 		set_new = false
-	if next_lvl.split("_")[0] == "11":
+	if not ResourceLoader.exists("res://scenes/levels/level_" + next_lvl + ".tscn"):
+		$buttons/next.disabled = true
 		set_new = false
 	if set_new:
 		G.setv("level", next_lvl)

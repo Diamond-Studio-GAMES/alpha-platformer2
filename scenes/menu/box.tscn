@@ -70,25 +70,13 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("bg:self_modulate")
+tracks/4/type = "audio"
+tracks/4/path = NodePath("../sfx")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0.133333, 0.439216, 0.85098, 0.678431 ) ]
-}
-tracks/5/type = "audio"
-tracks/5/path = NodePath("../sfx")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -96,13 +84,13 @@ tracks/5/keys = {
 } ],
 "times": PoolRealArray( 0.35 )
 }
-tracks/6/type = "animation"
-tracks/6/path = NodePath("box_visual/viewport/base/box/anim")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
+tracks/5/type = "animation"
+tracks/5/path = NodePath("box_visual/viewport/base/box/anim")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "clips": PoolStringArray( "open" ),
 "times": PoolRealArray( 0 )
 }
@@ -120,7 +108,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.133333, 0.439216, 0.85098, 0 ), Color( 0.133333, 0.439216, 0.85098, 0.678431 ) ]
+"values": [ Color( 0.133333, 0.439216, 0.85098, 0 ), Color( 0.133333, 0.439216, 0.85098, 0.784314 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../bg:color")
@@ -159,9 +147,6 @@ tracks/0/keys = {
 "clips": PoolStringArray( "stay" ),
 "times": PoolRealArray( 0 )
 }
-
-[sub_resource type="Animation" id=154]
-length = 0.001
 
 [sub_resource type="Animation" id=155]
 resource_name = "open"
@@ -216,25 +201,13 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("bg:self_modulate")
+tracks/4/type = "audio"
+tracks/4/path = NodePath("../sfx")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0.133333, 0.439216, 0.85098, 0.678431 ) ]
-}
-tracks/5/type = "audio"
-tracks/5/path = NodePath("../sfx")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -242,13 +215,13 @@ tracks/5/keys = {
 } ],
 "times": PoolRealArray( 0.35 )
 }
-tracks/6/type = "animation"
-tracks/6/path = NodePath("box_visual/viewport/base/gold_box/anim")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
+tracks/5/type = "animation"
+tracks/5/path = NodePath("box_visual/viewport/base/gold_box/anim")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "clips": PoolStringArray( "open" ),
 "times": PoolRealArray( 0 )
 }
@@ -265,7 +238,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.133333, 0.439216, 0.85098, 0.25098 ), Color( 0.133333, 0.439216, 0.85098, 0.678431 ) ]
+"values": [ Color( 0.133333, 0.439216, 0.85098, 0 ), Color( 0.133333, 0.439216, 0.85098, 0.784314 ) ]
 }
 tracks/1/type = "animation"
 tracks/1/path = NodePath("box_visual/viewport/base/gold_box/anim")
@@ -276,6 +249,18 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "clips": PoolStringArray( "start" ),
 "times": PoolRealArray( 0 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("effect_offset/particles:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -360 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=173]
@@ -293,8 +278,8 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=157]
-length = 0.001
+[sub_resource type="Curve" id=175]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.503521, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Animation" id=158]
 resource_name = "open"
@@ -398,7 +383,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.133333, 0.439216, 0.85098, 0.25098 ), Color( 0.133333, 0.439216, 0.85098, 0.678431 ) ]
+"values": [ Color( 0.133333, 0.439216, 0.85098, 0 ), Color( 0.133333, 0.439216, 0.85098, 0.784314 ) ]
 }
 tracks/1/type = "animation"
 tracks/1/path = NodePath("box_visual/viewport/base/diamond_box/anim")
@@ -409,6 +394,42 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "clips": PoolStringArray( "start" ),
 "times": PoolRealArray( 0 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("./effect_offset/particles:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -360 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("glow_offset/glow:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("glow_offset/glow:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -360 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=174]
@@ -424,6 +445,23 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "clips": PoolStringArray( "stay" ),
 "times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=176]
+resource_name = "rotate"
+length = 24.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 24 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
 }
 
 [sub_resource type="Animation" id=136]
@@ -803,7 +841,7 @@ theme = ExtResource( 4 )
 color = Color( 0.0352941, 0, 0.364706, 1 )
 
 [node name="bg" type="TextureRect" parent="box_screen"]
-self_modulate = Color( 0.133333, 0.439216, 0.85098, 0.678431 )
+self_modulate = Color( 0.133333, 0.439216, 0.85098, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -835,9 +873,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
 theme = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="bg2" type="ColorRect" parent="big_box_screen"]
 anchor_right = 1.0
@@ -846,7 +881,7 @@ theme = ExtResource( 4 )
 color = Color( 0.0352941, 0, 0.364706, 1 )
 
 [node name="bg" type="TextureRect" parent="big_box_screen"]
-self_modulate = Color( 0.133333, 0.439216, 0.85098, 0.678431 )
+self_modulate = Color( 0.133333, 0.439216, 0.85098, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -861,13 +896,36 @@ stretch_mode = 6
 
 [node name="anim" type="AnimationPlayer" parent="big_box_screen"]
 pause_mode = 2
-anims/RESET = SubResource( 154 )
 anims/open = SubResource( 155 )
 anims/start = SubResource( 156 )
 anims/stay = SubResource( 173 )
 next/start = "stay"
 
 [node name="box_visual" parent="big_box_screen" instance_placeholder="res://prefabs/menu/gold_box_visual.scn"]
+
+[node name="effect_offset" type="Control" parent="big_box_screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -12.0
+margin_top = 4.0
+margin_right = -12.0
+margin_bottom = 4.0
+
+[node name="particles" type="CPUParticles2D" parent="big_box_screen/effect_offset"]
+position = Vector2( 0, -360 )
+amount = 4
+lifetime = 2.0
+preprocess = 4.0
+texture = ExtResource( 10 )
+emission_shape = 2
+emission_rect_extents = Vector2( 120, 120 )
+direction = Vector2( 0, 0 )
+gravity = Vector2( 0, 0 )
+angular_velocity = 50.0
+scale_amount = 2.0
+scale_amount_curve = SubResource( 175 )
 
 [node name="mega_box_screen" type="Control" parent="."]
 pause_mode = 1
@@ -876,9 +934,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
 theme = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="bg2" type="ColorRect" parent="mega_box_screen"]
 anchor_right = 1.0
@@ -887,7 +942,7 @@ theme = ExtResource( 4 )
 color = Color( 0.0352941, 0, 0.364706, 1 )
 
 [node name="bg" type="TextureRect" parent="mega_box_screen"]
-self_modulate = Color( 0.133333, 0.439216, 0.85098, 0.25098 )
+self_modulate = Color( 0.133333, 0.439216, 0.85098, 0.784314 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -905,13 +960,53 @@ __meta__ = {
 
 [node name="anim" type="AnimationPlayer" parent="mega_box_screen"]
 pause_mode = 2
-anims/RESET = SubResource( 157 )
 anims/open = SubResource( 158 )
 anims/start = SubResource( 159 )
 anims/stay = SubResource( 174 )
 next/start = "stay"
 
+[node name="glow_offset" type="Control" parent="mega_box_screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -12.0
+margin_top = 4.0
+margin_right = -12.0
+margin_bottom = 4.0
+
+[node name="glow" type="Sprite" parent="mega_box_screen/glow_offset"]
+modulate = Color( 1, 1, 1, 0.12549 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 14 )
+
+[node name="anim" type="AnimationPlayer" parent="mega_box_screen/glow_offset/glow"]
+autoplay = "rotate"
+anims/rotate = SubResource( 176 )
+
 [node name="box_visual" parent="mega_box_screen" instance_placeholder="res://prefabs/menu/diamond_box_visual.scn"]
+
+[node name="effect_offset" type="Control" parent="mega_box_screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -12.0
+margin_top = 4.0
+margin_right = -12.0
+margin_bottom = 4.0
+
+[node name="particles" type="CPUParticles2D" parent="mega_box_screen/effect_offset"]
+lifetime = 2.0
+preprocess = 4.0
+texture = ExtResource( 10 )
+emission_shape = 2
+emission_rect_extents = Vector2( 120, 120 )
+direction = Vector2( 0, 0 )
+gravity = Vector2( 0, 0 )
+angular_velocity = 50.0
+scale_amount = 2.0
+scale_amount_curve = SubResource( 175 )
 
 [node name="tokens_screen" type="Control" parent="."]
 pause_mode = 1

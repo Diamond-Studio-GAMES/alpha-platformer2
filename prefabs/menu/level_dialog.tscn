@@ -382,6 +382,15 @@ margin_bottom = 160.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="help_button" type="Button" parent="lobby_dialog/lobby"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -48.0
+margin_right = 48.0
+margin_bottom = -8.0
+text = "?"
+
 [node name="connect" type="Control" parent="lobby_dialog"]
 visible = false
 anchor_right = 1.0
@@ -482,6 +491,28 @@ valign = 1
 process_mode = 0
 wait_time = 0.1
 
+[node name="help_button" type="Button" parent="lobby_dialog/connect"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -48.0
+margin_right = 48.0
+margin_bottom = -8.0
+text = "?"
+
+[node name="guide_dialog" type="AcceptDialog" parent="lobby_dialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -360.0
+margin_top = -228.0
+margin_right = 360.0
+margin_bottom = 228.0
+window_title = "multiplayer.guide"
+dialog_text = "menu.multiplayer.guide"
+dialog_autowrap = true
+
 [node name="alert_layer" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -490,6 +521,8 @@ layer = 2
 [connection signal="pressed" from="lobby_dialog/lobby/start_game" to="lobby_dialog" method="start_game"]
 [connection signal="pressed" from="lobby_dialog/lobby/disconnect" to="lobby_dialog" method="do_disconnect"]
 [connection signal="pressed" from="lobby_dialog/lobby/more" to="lobby_dialog" method="show_more_ips"]
+[connection signal="pressed" from="lobby_dialog/lobby/help_button" to="lobby_dialog/guide_dialog" method="popup_centered"]
 [connection signal="pressed" from="lobby_dialog/connect/ip/connect" to="lobby_dialog" method="connect_ip"]
 [connection signal="pressed" from="lobby_dialog/connect/auto_connect" to="lobby_dialog" method="connect_auto"]
 [connection signal="timeout" from="lobby_dialog/connect/timer" to="lobby_dialog" method="_on_timer_timeout"]
+[connection signal="pressed" from="lobby_dialog/connect/help_button" to="lobby_dialog/guide_dialog" method="popup_centered"]

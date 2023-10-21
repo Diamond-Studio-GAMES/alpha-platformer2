@@ -342,7 +342,7 @@ story.4,И запущен…,And launched…
 story.5,Опять его надо уничтожать.,"Again, it must be destroyed."
 story.skip,Пропустить,Skip
 class.power,Сила: ,Power: 
-class.skill, Навык: , Skill: 
+class.skill,", Навык: ", Skill: 
 level_dialog.level,Уровень ,Level 
 level_dialog.level.win,Уровень %s пройден!,Level %s completed!
 shop.you_have,У тебя: ,You have: 
@@ -450,6 +450,10 @@ lobby.enter_ip,Введите IP сервера…,Enter server’s IP…
 lobby.connect.tip,IP можно найти на экране сервера.,You can find IP on server’s screen.
 lobby.connect.auto,Подключиться автоматически,Join automatically
 lobby.connect.auto.info,Выполняет сканирование всех IP в локальной сети в поиске комнаты. Может не сработать.,Scans all IPs in local network. May not work.
+multiplayer.guide,Справка по мультиплееру,Multiplayer guide
+multiplayer.select_level,Выбери уровень из списка или введи его номер.,Select level from list or enter its number.
+multiplayer.loc,Локация:,Location:
+multiplayer.lvl,Уровень:,Level:
 win.congrats,Поздравляем!,Congratulations!
 win.reward,Твоя награда:,Your reward:
 win.claim,Забрать,Claim

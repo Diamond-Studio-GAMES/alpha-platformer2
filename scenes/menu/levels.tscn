@@ -1497,17 +1497,25 @@ margin_right = 56.0
 margin_bottom = 56.0
 text = "?"
 
-[node name="other" type="MenuButton" parent="."]
+[node name="minigames_button" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -56.0
+margin_left = -136.0
 margin_top = 16.0
 margin_right = -16.0
 margin_bottom = 56.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "..."
-flat = false
-items = [ "lobby.title", null, 0, false, false, 0, 0, null, "", false, "minigame.s", null, 0, false, false, 1, 0, null, "", false ]
+text = "minigame.s"
+
+[node name="multiplayer_button" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -272.0
+margin_top = 16.0
+margin_right = -152.0
+margin_bottom = 56.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "lobby.title"
 
 [node name="shop" type="Panel" parent="."]
 visible = false
@@ -6152,7 +6160,96 @@ rect_min_size = Vector2( 170, 59.5 )
 window_title = "menu.edu"
 dialog_text = "menu.edu.again"
 
-[node name="multiplayer_guide" type="AcceptDialog" parent="."]
+[node name="multiplayer" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -280.0
+margin_top = -140.0
+margin_right = 280.0
+margin_bottom = 140.0
+window_title = "lobby.title"
+
+[node name="title" type="Label" parent="multiplayer"]
+anchor_right = 1.0
+margin_top = 12.0
+margin_bottom = 36.0
+text = "multiplayer.select_level"
+align = 1
+
+[node name="location" type="SpinBox" parent="multiplayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -187.0
+margin_top = 48.0
+margin_right = -7.0
+margin_bottom = 88.0
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+align = 1
+prefix = "multiplayer.loc"
+
+[node name="level" type="SpinBox" parent="multiplayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 5.0
+margin_top = 48.0
+margin_right = 185.0
+margin_bottom = 88.0
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+align = 1
+prefix = "multiplayer.lvl"
+
+[node name="create" type="Button" parent="multiplayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -80.0
+margin_right = 100.0
+margin_bottom = -48.0
+text = "level_dialog.multiplayer.create"
+clip_text = true
+
+[node name="join" type="Button" parent="multiplayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -40.0
+margin_right = 100.0
+margin_bottom = -8.0
+text = "level_dialog.multiplayer.join"
+clip_text = true
+
+[node name="guide" type="LinkButton" parent="multiplayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -114.0
+margin_top = -120.0
+margin_right = 114.0
+margin_bottom = -96.0
+grow_horizontal = 2
+text = "multiplayer.guide"
+
+[node name="select_level" type="OptionButton" parent="multiplayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_top = 104.0
+margin_right = 100.0
+margin_bottom = 144.0
+align = 1
+
+[node name="guide_dialog" type="AcceptDialog" parent="multiplayer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -6161,8 +6258,21 @@ margin_left = -360.0
 margin_top = -228.0
 margin_right = 360.0
 margin_bottom = 228.0
-window_title = "lobby.title"
+window_title = "multiplayer.guide"
 dialog_text = "menu.multiplayer.guide"
+dialog_autowrap = true
+
+[node name="multiplayer_warn" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_top = -80.0
+margin_right = 240.0
+margin_bottom = 80.0
+window_title = "lobby.title"
+dialog_text = "menu.multiplayer.warn"
 dialog_autowrap = true
 
 [node name="class_visuals" parent="." instance=ExtResource( 11 )]
@@ -6173,6 +6283,8 @@ dialog_autowrap = true
 [connection signal="pressed" from="classes_button" to="education0" method="next"]
 [connection signal="pressed" from="exit" to="." method="exit"]
 [connection signal="pressed" from="help_button" to="help_dialog" method="popup_centered"]
+[connection signal="pressed" from="minigames_button" to="select_minigame" method="popup_centered"]
+[connection signal="pressed" from="multiplayer_button" to="multiplayer" method="popup_centered"]
 [connection signal="pressed" from="shop/close" to="." method="shop" binds= [ false ]]
 [connection signal="pressed" from="shop/close" to="education3" method="next"]
 [connection signal="pressed" from="shop/scroll/offers/resources/big_box/buy" to="shop" method="buy" binds= [ "{\"gems\":10}", "{\"gold_box\":1}" ]]
@@ -6231,6 +6343,13 @@ dialog_autowrap = true
 [connection signal="pressed" from="amulet_craft/screen/done" to="." method="done_amulet"]
 [connection signal="pressed" from="education4/main/end" to="education4" method="end"]
 [connection signal="confirmed" from="help_dialog" to="." method="help"]
+[connection signal="value_changed" from="multiplayer/location" to="." method="_on_level_location_value_changed"]
+[connection signal="changed" from="multiplayer/level" to="." method="_on_location_level_changed"]
+[connection signal="value_changed" from="multiplayer/level" to="." method="_on_level_location_value_changed"]
+[connection signal="pressed" from="multiplayer/create" to="." method="create_room"]
+[connection signal="pressed" from="multiplayer/join" to="." method="join_room"]
+[connection signal="pressed" from="multiplayer/guide" to="multiplayer/guide_dialog" method="popup_centered"]
+[connection signal="item_selected" from="multiplayer/select_level" to="." method="_on_select_level_item_selected"]
 
 [editable path="education0"]
 [editable path="education1"]
