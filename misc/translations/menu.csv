@@ -83,8 +83,8 @@ stat.classes,Классов открыто:,Classes opened:
 stat.kills,Убийств:,Kills:
 stat.boss_kills,Боссов побеждено:,Bosses defeated:
 stat.damaged,Получен урон:,Damaged:
-stat.falls,Упал с высоты:,Fall damaged:
-stat.beartraped,Попал в капкан:,Catched in beartrap:
+stat.falls,Падений с высоты:,Fall damaged:
+stat.beartraped,Попаданий в капкан:,Catched in beartrap:
 stat.jumps,Прыжков: ,Jumps:
 stat.skills,Навык использован: ,Skill used:
 stat.deaths,Смертей: ,Deaths:
@@ -161,19 +161,19 @@ menu.rate.title,Оцени нас!,Rate us!
 menu.rate.text,"Дорогой игрок! Мы очень старались над этой игрой и будем очень рады, если ты оценишь её на 5 звёзд!","Dear player! We worked hard on this game, and we will be very happy if you rate it 5 stars!"
 menu.rate,Оценить,Rate
 achv.boss1,Это мои овцы,These sheeps are mine
-achv.boss1.desc,Победите Пастуха.,Defeat the Shepherd.
+achv.boss1.desc,Победи Пастуха.,Defeat the Shepherd.
 achv.boss2,Экологический борец,Ecologic fighter
-achv.boss2.desc,Победите Лесоруба.,Defeat the Lumberjack.
+achv.boss2.desc,Победи Лесоруба.,Defeat the Lumberjack.
 achv.boss3,Белый маг,White Wizard
-achv.boss3.desc,Победите Чёрного мага.,Defeat the Black Wizard.
+achv.boss3.desc,Победи Чёрного мага.,Defeat the Black Wizard.
 achv.boss4,Фехтовальщик,Fencer
-achv.boss4.desc,Победите Великого рыцаря.,Defeat the Great Knight.
+achv.boss4.desc,Победи Великого рыцаря.,Defeat the Great Knight.
 achv.boss5,Без талона,Without a coupon
-achv.boss5.desc,Победите Хирурга.,Defeat the Surgeon.
+achv.boss5.desc,Победи Хирурга.,Defeat the Surgeon.
 achv.boss6,Пожарный,Fireman
-achv.boss6.desc,Победите Огненного стража.,Defeat the Fire Guard.
+achv.boss6.desc,Победи Огненного стража.,Defeat the Fire Guard.
 achv.boss7,Государственный переворот,State coup
-achv.boss7.desc,Победите Красного Короля.,Defeat the Red King.
+achv.boss7.desc,Победи Красного Короля.,Defeat the Red King.
 achv.boss8,,
 achv.boss8.desc,,
 achv.boss9,,
@@ -181,63 +181,63 @@ achv.boss9.desc,,
 achv.boss10,,
 achv.boss10.desc,,
 achv.what_is_it,Это что?,What is it?
-achv.what_is_it.desc,Откройте первый класс.,Unlock your first class.
+achv.what_is_it.desc,Открой первый класс.,Unlock your first class.
 achv.master,Мастер всех оружий,Master of all weapons
-achv.master.desc,Откройте все классы.,Unlock all classes.
+achv.master.desc,Открой все классы.,Unlock all classes.
 achv.im_power,Сама сила,I’m power
-achv.im_power.desc,Прокачайте класс на максимум.,Level a class up to the maximum.
+achv.im_power.desc,Прокачай класс на максимум.,Level a class up to the maximum.
 achv.lucky_amulet,На удачу,For luck
-achv.lucky_amulet.desc,Создайте первый амулет.,Craft your first amulet.
+achv.lucky_amulet.desc,Создай первый амулет.,Craft your first amulet.
 achv.help_from_inside,Помощь изнутри,Help from inside
-achv.help_from_inside.desc,Откройте первый душевный навык.,Open your first soul skill.
+achv.help_from_inside.desc,Открой первый душевный навык.,Open your first soul skill.
 achv.soul_master,Мастер души,Soul master
-achv.soul_master.desc,Откройте первую душевную силу.,Open your first soul power.
+achv.soul_master.desc,Открой первую душевную силу.,Open your first soul power.
 achv.dark_creation,Воплощение тьмы,Dark creation
-achv.dark_creation.desc,Встретьте саму Смерть.,Meet the Death.
+achv.dark_creation.desc,Встреть саму Смерть.,Meet the Death.
 achv.potion_man,Зельеман,Potions lover
-achv.potion_man.desc,Используйте зелья 10 раз.,Use potions 10 times.
+achv.potion_man.desc,Используй зелья 10 раз.,Use potions 10 times.
 achv.prozapass,Прозапас,For everything
-achv.prozapass.desc,Получите по 5 зелий каждого вида.,Get 5 potions of each kind.
+achv.prozapass.desc,Получи по 5 зелий каждого вида.,Get 5 potions of each kind.
 achv.burn_her_faster,Кремируйте её быстрее!,Cremate her faster!
-achv.burn_her_faster.desc,Сожгите врага.,Burn an enemy.
+achv.burn_her_faster.desc,Сожги врага.,Burn an enemy.
 achv.this_is_sparta,Это... Спарта!,This… is… Sparta!
-achv.this_is_sparta.desc,Заставьте монстра умереть от падения.,Make a monster die from falling.
+achv.this_is_sparta.desc,Заставь монстра умереть от падения.,Make a monster die from falling.
 achv.fuck,ДА ТЫ ЧТО..,"OH, REALLY.."
-achv.fuck.desc,Умрите во время использования зелья…,Die while using the potion…
+achv.fuck.desc,Умри во время использования зелья…,Die while using the potion…
 achv.some_peoples,Какие-то человеки..,Some peoples..
-achv.some_peoples.desc,Посмотрите создателей игры.,Check out the creators of the game.
+achv.some_peoples.desc,Посмотри создателей игры.,Check out the creators of the game.
 achv.reznya,Резня,Bloodbath
-achv.reznya.desc,"Пройдите мини-игру ""Резня"".",Complete the «Bloodbath» mini-game.
+achv.reznya.desc,"Пройди мини-игру ""Резня"".",Complete the «Bloodbath» mini-game.
 achv.cleared,Очищение,Cleared
-achv.cleared.desc,"Пройдите мини-игру ""Изб. от ненависти"".",Complete the «Destroy Your Hate» mini-game.
+achv.cleared.desc,"Пройди мини-игру ""Изб. от ненависти"".",Complete the «Destroy Your Hate» mini-game.
 achv.diamonds,АЛМАЗЫ!!,DIAMONDS!!
-achv.diamonds.desc,"Подберите кристалл в ""Симуляторе камня"".",Pick up a gem in «Stone Simulator».
+achv.diamonds.desc,"Подбери кристалл в ""Симуляторе камня"".",Pick up a gem in «Stone Simulator».
 achv.last_stander,Последний оплот,Last Hero
-achv.last_stander.desc,"Пройдите мини-игру ""Последние волны"".",Complete the «Last Waves» mini-game.
-achv.dasher.desc,"Пройдите уровень в мини-игре ""Platformer Dash"".",Complete a level in the «Platformer Dash» mini-game.
+achv.last_stander.desc,"Пройди мини-игру ""Последние волны"".",Complete the «Last Waves» mini-game.
+achv.dasher.desc,"Пройди уровень в мини-игре ""Platformer Dash"".",Complete a level in the «Platformer Dash» mini-game.
 achv.loot,Урожай,Harvest
-achv.loot.desc,"Соберите награду с 3 растений в ""Саду"".",Collect reward from 3 plants in «Garden».
-achv.victory_royale.desc,"Выиграйте 1 игру в ""2Д-шутере"".",Win 1 game in «2D-shooter».
+achv.loot.desc,"Собери награду с 3 растений в ""Саду"".",Collect reward from 3 plants in «Garden».
+achv.victory_royale.desc,"Выиграй 1 игру в ""2Д-шутере"".",Win 1 game in «2D-shooter».
 achv.escape,Побег,Escape
-achv.escape.desc,"Пройдите мини-игру ""FNaS""…",Complete the «Fnas» mini-game…
+achv.escape.desc,"Пройди мини-игру ""FNaS""…",Complete the «Fnas» mini-game…
 achv.untouched,Неприкасаемый,Untouched
-achv.untouched.desc,"Пройдите уровень, не получив урон.",Complete a level without taking any damage.
+achv.untouched.desc,"Пройди уровень, не получив урон.",Complete a level without taking any damage.
 achv.better_together,Вместе сильнее,Stronger together
-achv.better_together.desc,Пройдите любой уровень в мультиплеере.,Complete any level in multiplayer.
+achv.better_together.desc,Пройди любой уровень в мультиплеере.,Complete any level in multiplayer.
 achv.good_partner,Надёжный товарищ,Good partner
-achv.good_partner.desc,Воскресите напарника 5 раз.,Revive your partner 5 times.
+achv.good_partner.desc,Воскреси напарника 5 раз.,Revive your partner 5 times.
 achv.screw_it,Беззаботность,Carefree
-achv.screw_it.desc,"Дайте товарищу завершить уровень, пока вы лежите на земле.",Let your partner complete the level while you are lying on the ground.
+achv.screw_it.desc,"Дай товарищу завершить уровень, пока вы лежите на земле.",Let your partner complete the level while you are lying on the ground.
 achv.what_a_waste,Какая жалость!,What a pity!
-achv.what_a_waste.desc,Пройдите уровень с 0 здоровья.,Complete a level with 0 health.
+achv.what_a_waste.desc,Пройди уровень с 0 здоровья.,Complete a level with 0 health.
 achv.on_the_edge,На грани,On the edge
-achv.on_the_edge.desc,"Завершите уровень с меньше, чем 10% здоровья.",Complete a level with less than 10% health.
+achv.on_the_edge.desc,"Заверши уровень с меньше, чем 10% здоровья.",Complete a level with less than 10% health.
 achv.origin,Начало,Origin
-achv.origin.desc,Вспомните своё прошлое.,Remember your past.
+achv.origin.desc,Вспомни своё прошлое.,Remember your past.
 achv.killer,Убийца,Killer
-achv.killer.desc,Совершите 250 убийств.,Make 250 kills.
+achv.killer.desc,Соверши 250 убийств.,Make 250 kills.
 achv.you_missed,Ха! Не попал,Ha! You missed
-achv.you_missed.desc,Уклонитесь от атаки.,Dodge an attack.
+achv.you_missed.desc,Уклонись от атаки.,Dodge an attack.
 ,,
 ,,
 ,,
@@ -309,8 +309,8 @@ lobby.disconnect,Отключиться,Disconnect
 lobby.connect_to,Присоединиться к комнате с уровнем ,Connect to room with level 
 lobby.bad_ip,Неверный IP-адрес!,Incorrect IP address!
 lobby.refuse.busy,Невозможно подключиться к комнате — игра уже началась!,Can’t connect to room — game already started!
-lobby.refuse.level,Уровень комнаты (%s) не совпадает с Вашим уровнем!,Room level (%s) doesn’t match with yours!
-lobby.refuse.version,Версия игры комнаты (%s) не совпадает с Вашей версией: %s!,Game version of room (%s) doesn’t match with your version: %s!
+lobby.refuse.level,Уровень комнаты (%s) не совпадает с твоиим уровнем!,Room level (%s) doesn’t match with yours!
+lobby.refuse.version,Версия игры комнаты (%s) не совпадает с твоей версией: %s!,Game version of room (%s) doesn’t match with your version: %s!
 lobby.info.power,", Сила: ",", Power: "
 lobby.info.ulti,",  Навык: ",", Skill: "
 lobby.info.you,(Вы),(You)
@@ -319,7 +319,7 @@ lobby.your_ip,Ваш IP: ,Your IP:
 lobby.start_warn,Начать игру может только сервер.,Only server can start the game.
 lobby.start,Начать игру,Start game
 lobby.level,Уровень: ,Level: 
-lobby.your_ips,Ваши локальные IP-адреса,Your local IP addresses:
+lobby.your_ips,Твои локальные IP-адреса,Your local IP addresses:
 lobby.error,Ошибка!,Error!
 lobby.no_server,Не удалось найти сервер.,Can’t find a server.
 lobby.trying,Пробую IP: ,Trying IP: 
