@@ -94,6 +94,18 @@ tracks/5/keys = {
 "clips": PoolStringArray( "open" ),
 "times": PoolRealArray( 0 )
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("bg:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.133333, 0.439216, 0.85098, 0.784314 ) ]
+}
 
 [sub_resource type="Animation" id=89]
 resource_name = "start"
@@ -110,25 +122,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 0.133333, 0.439216, 0.85098, 0 ), Color( 0.133333, 0.439216, 0.85098, 0.784314 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("../bg:color")
+tracks/1/type = "animation"
+tracks/1/path = NodePath("box_visual/viewport/base/box/anim")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0.0352941, 0, 0.364706, 1 ) ]
-}
-tracks/2/type = "animation"
-tracks/2/path = NodePath("box_visual/viewport/base/box/anim")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "clips": PoolStringArray( "start" ),
 "times": PoolRealArray( 0 )
 }
@@ -224,6 +224,30 @@ tracks/5/enabled = true
 tracks/5/keys = {
 "clips": PoolStringArray( "open" ),
 "times": PoolRealArray( 0 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("./bg:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.133333, 0.439216, 0.85098, 0.784314 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("effect_offset/particles:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=156]
@@ -344,7 +368,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.133333, 0.439216, 0.85098, 0.678431 ) ]
+"values": [ Color( 0.133333, 0.439216, 0.85098, 0.784314 ) ]
 }
 tracks/5/type = "audio"
 tracks/5/path = NodePath("../sfx")
@@ -369,6 +393,42 @@ tracks/6/enabled = true
 tracks/6/keys = {
 "clips": PoolStringArray( "open" ),
 "times": PoolRealArray( 0 )
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("effect_offset/particles:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("glow_offset/glow:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("glow_offset/glow:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=159]
@@ -841,7 +901,7 @@ theme = ExtResource( 4 )
 color = Color( 0.0352941, 0, 0.364706, 1 )
 
 [node name="bg" type="TextureRect" parent="box_screen"]
-self_modulate = Color( 0.133333, 0.439216, 0.85098, 0 )
+self_modulate = Color( 0.133333, 0.439216, 0.85098, 0.784314 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -881,7 +941,7 @@ theme = ExtResource( 4 )
 color = Color( 0.0352941, 0, 0.364706, 1 )
 
 [node name="bg" type="TextureRect" parent="big_box_screen"]
-self_modulate = Color( 0.133333, 0.439216, 0.85098, 0 )
+self_modulate = Color( 0.133333, 0.439216, 0.85098, 0.784314 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -914,7 +974,6 @@ margin_right = -12.0
 margin_bottom = 4.0
 
 [node name="particles" type="CPUParticles2D" parent="big_box_screen/effect_offset"]
-position = Vector2( 0, -360 )
 amount = 4
 lifetime = 2.0
 preprocess = 4.0
@@ -1561,5 +1620,6 @@ margin_bottom = 0.5
 mouse_filter = 2
 
 [node name="glow" type="Sprite" parent="tint/glow"]
-scale = Vector2( 1e-05, 1e-05 )
+self_modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 48, 48 )
 texture = ExtResource( 3 )

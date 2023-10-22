@@ -3,13 +3,14 @@ extends Boss
 
 onready var beartrap_points = $beartrap_points
 onready var axe_points = $axe_points
+var beartraps_count = 0
 var beartrap = load("res://prefabs/bosses/boss_beartrap.tscn")
 var axe = load("res://prefabs/bosses/axe_throw.tscn")
 
 
 func _ready():
 	mob = $mob_fk
-	attacks = ["beartraps", "spikes", "charge_axe", "axe_sides", "axe_throw", "axe_throw"]
+	attacks = ["spikes", "charge_axe", "axe_sides", "axe_throw", "axe_throw"]
 	fill_x = 57
 	tp_pos = Vector2(58, -2)
 	mercy_dialog = tr("boss.forester.mercy")
@@ -34,8 +35,11 @@ func do_attack():
 		melee_attack()
 		return
 	else:
-		attacks.shuffle()
-		call(attacks[0])
+		var variants = attacks.duplicate()
+		if beartraps_count < 3:
+			variants.append("beartraps")
+		variants.shuffle()
+		call(variants[0])
 
 
 func melee_attack():
@@ -47,20 +51,19 @@ func beartraps():
 	if not MP.auth(self):
 		return
 	next_attack_time += 1
-	var points = [randi() % 7]
-	while points.size() < 1:
-		var num = randi() % 7
-		if num in points:
-			continue
-		points.append(num)
-	for i in points:
-		var point = beartrap_points.get_node("pos" + str(i))
-		point.get_node("sprite").show()
-		yield(get_tree().create_timer(1, false), "timeout")
-		point.get_node("sprite").hide()
-		var b = beartrap.instance()
-		b.global_position = point.global_position
-		get_tree().current_scene.add_child(b, true)
+	var point = beartrap_points.get_node("pos" + str(randi() % 7))
+	point.get_node("sprite").show()
+	yield(get_tree().create_timer(1, false), "timeout")
+	point.get_node("sprite").hide()
+	var b = beartrap.instance()
+	b.global_position = point.global_position
+	get_tree().current_scene.add_child(b, true)
+	b.connect("tree_exited", self, "decrease_bc")
+	beartraps_count += 1
+
+
+func decrease_bc():
+	beartraps_count -= 1
 
 
 func spikes():

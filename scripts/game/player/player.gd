@@ -490,7 +490,6 @@ func _process(delta):
 	
 	if current_health > 0 and not _is_ultiing:
 		ulti_percentage = clamp(ulti_percentage + 2.5 * delta * (1.25 if is_amulet(G.Amulet.ULTI) else 1), 0, 100)
-#		ulti_percentage = clamp(ulti_percentage + 10 * delta, 0, 100)
 	if not _is_ultiing:
 		_ulti_bar.value = ulti_percentage
 	if ulti_percentage >= 100:
