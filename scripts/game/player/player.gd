@@ -531,6 +531,7 @@ func _physics_process(delta):
 		_coyote_timer -= delta
 	
 	#HEALTH
+	if MP.auth(self):
 		if Input.is_action_just_pressed("potion1"):
 			use_potion(1)
 		if Input.is_action_just_pressed("potion2"):
