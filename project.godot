@@ -506,10 +506,6 @@ translation_remaps={
 
 file_logging/enable_file_logging.pc=false
 
-[network]
-
-limits/tcp/connect_timeout_seconds=10
-
 [node]
 
 name_casing=2

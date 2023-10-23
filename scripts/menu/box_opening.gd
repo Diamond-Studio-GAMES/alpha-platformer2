@@ -506,6 +506,10 @@ func open_gui(what = null):
 			node.self_modulate = Color.darkred
 			node.get_node("icon").texture = ulti_token
 			node.get_node("icon/center").texture = ULTI_ICONS[i]
+			node.get_node("icon/center").margin_left = -20
+			node.get_node("icon/center").margin_right = 20
+			node.get_node("icon/center").margin_top = -20
+			node.get_node("icon/center").margin_bottom = 20
 			node.get_node("icon").self_modulate = G.CLASS_COLORS[i]
 			node.get_node("label").text = str(loot["ulti_tokens"][i])
 			if items_showed < 8:

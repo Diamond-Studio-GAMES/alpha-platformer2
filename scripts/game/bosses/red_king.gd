@@ -53,9 +53,8 @@ func do_attack():
 		return
 	var targ_dist = global_position.distance_squared_to(player_target.global_position)
 	if targ_dist < 5625:
-		if phase < 3:
-			melee_attack()
-			return
+		melee_attack()
+		return
 	phases_attacks[phase].shuffle()
 	call(phases_attacks[phase][0])
 

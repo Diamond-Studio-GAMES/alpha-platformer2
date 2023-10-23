@@ -53,9 +53,9 @@ func _ready():
 
 func apply_data(data):
 	.apply_data(data)
-	max_health = power * 20 + 100 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
+	max_health = power * 16 + 80 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
 	defense = power + 5 + (5 if is_amulet(G.Amulet.DEFENSE) else 0)
-	_attack_node.damage = power * 4 + 20  + (15 if  is_amulet(G.Amulet.POWER) else 0)
+	_attack_node.damage = power * 5 + 25  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 	SPEED += (7 if is_amulet(G.Amulet.SPEED) else 0)
 	RECHARGE_SPEED = 0.1
 	_health_bar.max_value = max_health

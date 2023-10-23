@@ -38,6 +38,7 @@ const AMULETS_COUNTS = {
 func _ready():
 	$multiplayer/location.prefix = tr("multiplayer.loc")
 	$multiplayer/level.prefix = tr("multiplayer.lvl")
+	$multiplayer/select_level.get_popup().max_height = 480
 	$help_dialog.get_cancel().text = tr("menu.cancel")
 	if OS.has_feature("HTML5"):
 		$multiplayer_button.disconnect("pressed", $multiplayer, "popup_centered")

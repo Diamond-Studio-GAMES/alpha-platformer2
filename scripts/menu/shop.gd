@@ -504,6 +504,10 @@ func show_offer(costs, receives, id = 0, name = tr("shop.offer.title")):
 				off.get_node("items/item" + str(l) + "/icon").texture = ulti_token
 				off.get_node("items/item" + str(l) + "/icon").self_modulate = G.CLASS_COLORS[j]
 				off.get_node("items/item" + str(l) + "/icon/sub").texture = ULTI_ICONS[j]
+				off.get_node("items/item" + str(l) + "/icon/sub").margin_left = 12
+				off.get_node("items/item" + str(l) + "/icon/sub").margin_right = -12
+				off.get_node("items/item" + str(l) + "/icon/sub").margin_top = 12
+				off.get_node("items/item" + str(l) + "/icon/sub").margin_bottom = -12
 				off.get_node("items/item" + str(l) + "/count").text = "x" + str(receives[i][j])
 				l += 1
 		if i == "amulet_frags":

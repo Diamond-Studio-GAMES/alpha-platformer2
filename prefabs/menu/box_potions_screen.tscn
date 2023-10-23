@@ -49,25 +49,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 0, 1 ), Vector2( 0.5, 1.25 ), Vector2( 1, 1 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("../bg:color")
+tracks/1/type = "audio"
+tracks/1/path = NodePath("../sfx")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 0.690196, 0, 0, 1 ) ]
-}
-tracks/2/type = "audio"
-tracks/2/path = NodePath("../sfx")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
