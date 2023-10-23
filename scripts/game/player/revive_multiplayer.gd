@@ -24,17 +24,23 @@ func remove_body(node):
 		bodies.erase(node)
 
 
+remotesync func set_bar_value(value):
+	bar.value = value
+
+
 func _physics_process(delta):
 	if player.current_health > 0 or not MP.is_active:
 		timer = 0
 		visible = false
 		return
 	visible = true
+	if not MP.auth(self):
+		return
 	if not bodies.empty():
 		timer += delta
 	else:
 		timer = 0
-	bar.value = timer
+	rpc("set_bar_value", timer)
 	if timer >= REVIVE_TIME:
 		for i in bodies:
 			i.rpc("revived_player")

@@ -1,8 +1,7 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://themes/theme.tres" type="Theme" id=1]
 [ext_resource path="res://textures/gui/strike_bar.tres" type="Texture" id=2]
-[ext_resource path="res://scripts/game/mobs/optimizer.gd" type="Script" id=3]
 [ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=4]
 [ext_resource path="res://textures/mobs/magician/hair_man.tres" type="Texture" id=5]
 [ext_resource path="res://textures/mobs/magician/hand2.tres" type="Texture" id=6]
@@ -854,20 +853,6 @@ tracks/14/keys = {
 "update": 1,
 "values": [ false, true ]
 }
-tracks/15/type = "method"
-tracks/15/path = NodePath(".")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "process_heal"
-} ]
-}
 
 [sub_resource type="Animation" id=22]
 resource_name = "hurt"
@@ -1453,7 +1438,7 @@ input_1/auto_advance = false
 animation = "walk"
 
 [sub_resource type="AnimationNodeBlendTree" id=97]
-graph_offset = Vector2( -116.708, 119.983 )
+graph_offset = Vector2( -30, 41 )
 nodes/attack/node = SubResource( 75 )
 nodes/attack/position = Vector2( -100, 320 )
 nodes/attack_seek/node = SubResource( 89 )
@@ -1481,7 +1466,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 1080, 160 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_seek", 0, "attack", "death_trans", 0, "heal_shot", "death_trans", 1, "death", "heal_shot", 0, "attack_shot", "heal_shot", 1, "heal_seek", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "heal_seek", 0, "heal" ]
+node_connections = [ "output", 0, "death_trans", "attack_seek", 0, "attack", "heal_shot", 0, "attack_shot", "heal_shot", 1, "heal_seek", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "heal_seek", 0, "heal", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "heal_shot", "death_trans", 1, "death" ]
 
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 8.0
@@ -1576,11 +1561,6 @@ attack_speed = 5.0
 head_path = NodePath("visual/body/head")
 head_sprite_path = "res://textures/mobs/magician/head.tres"
 head_hurt_sprite_path = "res://textures/mobs/magician/head_hurt.tres"
-
-[node name="optimizer" type="VisibilityEnabler2D" parent="."]
-position = Vector2( 0, 1.90735e-06 )
-rect = Rect2( -32, -64, 64, 128 )
-script = ExtResource( 3 )
 
 [node name="visual" type="Node2D" parent="."]
 z_index = -3

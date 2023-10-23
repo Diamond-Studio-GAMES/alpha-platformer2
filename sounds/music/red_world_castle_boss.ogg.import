@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/red_world_castle_boss.ogg-f4ed59ed54d21606450c00274e95ec6b.oggstr"
+
+[deps]
+
+source_file="res://sounds/music/red_world_castle_boss.ogg"
+dest_files=[ "res://.import/red_world_castle_boss.ogg-f4ed59ed54d21606450c00274e95ec6b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

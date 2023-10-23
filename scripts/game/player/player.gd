@@ -580,7 +580,7 @@ func use_gadget():
 
 
 func revive(hp_count = -1):
-	ms.sync_call(self, "revive")
+	ms.sync_call(self, "revive", [hp_count])
 	if MP.is_active:
 		$"/root/mg".kill_revive_player(int(name.trim_prefix("player")), true)
 	collision_layer = 0b10

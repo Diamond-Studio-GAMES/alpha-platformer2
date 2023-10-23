@@ -27,6 +27,7 @@ func _ready():
 
 
 func attack():
+	ms.sync_call(self, "attack")
 	_anim_tree["parameters/attack_seek/seek_position"] = 0
 	_anim_tree["parameters/attack_shot/active"] = true
 	yield(get_tree().create_timer(0.6, false), "timeout")
@@ -83,10 +84,13 @@ func attack():
 
 
 func do_heal():
+	ms.sync_call(self, "do_heal")
 	should_move = false
 	_anim_tree["parameters/heal_seek/seek_position"] = 0
 	_anim_tree["parameters/heal_shot/active"] = true
-	yield(get_tree().create_timer(1.6, false), "timeout")
+	yield(get_tree().create_timer(0.6, false), "timeout")
+	process_heal()
+	yield(get_tree().create_timer(1, false), "timeout")
 	should_move = true
 
 

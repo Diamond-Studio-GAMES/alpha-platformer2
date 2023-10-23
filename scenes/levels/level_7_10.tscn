@@ -24,7 +24,7 @@
 [ext_resource path="res://textures/bosses/red_king/leg1.tres" type="Texture" id=22]
 [ext_resource path="res://textures/bosses/red_king/plasch.tres" type="Texture" id=23]
 [ext_resource path="res://textures/bosses/red_king/pin.tres" type="Texture" id=24]
-[ext_resource path="res://sounds/music/red_world_boss.ogg" type="AudioStream" id=25]
+[ext_resource path="res://sounds/music/red_world_castle_boss.ogg" type="AudioStream" id=25]
 [ext_resource path="res://textures/mobs/mushroom/mushroom.tres" type="Texture" id=26]
 [ext_resource path="res://textures/gui/health_bar_empty.tres" type="Texture" id=27]
 [ext_resource path="res://prefabs/blocks/red_grass.tscn" type="PackedScene" id=28]
@@ -3724,7 +3724,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
+node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -4400,7 +4400,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/red_king/mob_rk/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/red_king/mob_rk/visual/body"]
-scale = Vector2( 1.25, 1.19072 )
+scale = Vector2( 1.25, 1.12392 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/red_king/mob_rk"]
