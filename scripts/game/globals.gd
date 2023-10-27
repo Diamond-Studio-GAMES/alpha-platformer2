@@ -2,10 +2,10 @@ extends Node
 class_name Globals, "res://textures/gui/alpha_text.png"
 
 
-const VERSION = "0.9.0"
-const VERSION_STATUS = ""
-const VERSION_STATUS_NUMBER = ""
-const VERSION_CODE = 70
+const VERSION = "0.9.1"
+const VERSION_STATUS = "build"
+const VERSION_STATUS_NUMBER = "1"
+const VERSION_CODE = 71
 
 var main_file: ConfigFile
 var save_file: ConfigFile
