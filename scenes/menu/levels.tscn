@@ -2494,7 +2494,6 @@ margin_right = 85.0
 margin_bottom = 39.0
 window_title = "shop.error"
 dialog_text = "shop.error.text"
-dialog_hide_on_ok = false
 
 [node name="http_request" type="HTTPRequest" parent="shop"]
 

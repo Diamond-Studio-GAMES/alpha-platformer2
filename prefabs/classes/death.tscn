@@ -2396,7 +2396,7 @@ nodes/ulti_shot/node = SubResource( 94 )
 nodes/ulti_shot/position = Vector2( 1035.29, 70.5882 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "attack_seek", 0, "attack", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "potion_shot", 0, "ora_shot", "potion_shot", 1, "potion_seek", "ora_seek", 0, "ora", "potion_seek", 0, "potion", "ora_shot", 0, "attack_shot", "ora_shot", 1, "ora_seek" ]
+node_connections = [ "output", 0, "death_trans", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "attack_seek", 0, "attack", "ora_shot", 0, "attack_shot", "ora_shot", 1, "ora_seek", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "potion_shot", 0, "ora_shot", "potion_shot", 1, "potion_seek", "potion_seek", 0, "potion", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "ora_seek", 0, "ora" ]
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.24788
@@ -2404,6 +2404,7 @@ height = 41.1497
 
 [sub_resource type="DynamicFont" id=101]
 size = 27
+outline_size = 1
 font_data = ExtResource( 38 )
 
 [sub_resource type="CapsuleShape2D" id=102]

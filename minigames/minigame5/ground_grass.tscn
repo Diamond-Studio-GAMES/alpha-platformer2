@@ -24,6 +24,7 @@ func _physics_process(delta):
 extents = Vector2( 480, 16 )
 
 [node name="ground" type="StaticBody2D"]
+z_index = 1
 script = SubResource( 2 )
 
 [node name="sprite" type="Sprite" parent="."]

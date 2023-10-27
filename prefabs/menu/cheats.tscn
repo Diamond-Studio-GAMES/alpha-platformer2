@@ -32,6 +32,7 @@ func set_node_value():
 
 
 func receive_loot():
+	$base/menu.hide()
 	G.receive_loot(str2var($base/menu/list/receive_loot/receive_loot_edit.text))
 
 

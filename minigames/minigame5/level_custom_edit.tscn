@@ -186,68 +186,72 @@ window_title = "5.settings"
 [node name="names" type="HBoxContainer" parent="ui/base/settings_set"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
 custom_constants/separation = 8
 alignment = 1
 
 [node name="items_names" type="VBoxContainer" parent="ui/base/settings_set/names"]
-margin_right = 236.0
-margin_bottom = 240.0
+margin_right = 228.0
+margin_bottom = 224.0
 size_flags_horizontal = 3
 custom_constants/separation = 8
 alignment = 1
 
 [node name="bg" type="Label" parent="ui/base/settings_set/names/items_names"]
-margin_top = 76.0
-margin_right = 236.0
-margin_bottom = 100.0
+margin_top = 68.0
+margin_right = 228.0
+margin_bottom = 92.0
 text = "5.settings.bg"
 align = 2
 valign = 1
 
 [node name="music" type="Label" parent="ui/base/settings_set/names/items_names"]
-margin_top = 108.0
-margin_right = 236.0
-margin_bottom = 132.0
+margin_top = 100.0
+margin_right = 228.0
+margin_bottom = 124.0
 text = "5.settings.music"
 align = 2
 valign = 1
 
 [node name="ground" type="Label" parent="ui/base/settings_set/names/items_names"]
-margin_top = 140.0
-margin_right = 236.0
-margin_bottom = 164.0
+margin_top = 132.0
+margin_right = 228.0
+margin_bottom = 156.0
 text = "5.settings.gr"
 align = 2
 valign = 1
 
 [node name="items_sets" type="VBoxContainer" parent="ui/base/settings_set/names"]
-margin_left = 244.0
-margin_right = 480.0
-margin_bottom = 240.0
+margin_left = 236.0
+margin_right = 464.0
+margin_bottom = 224.0
 size_flags_horizontal = 3
 custom_constants/separation = 8
 alignment = 1
 
 [node name="bg" type="OptionButton" parent="ui/base/settings_set/names/items_sets"]
-margin_top = 67.0
-margin_right = 236.0
-margin_bottom = 97.0
+margin_top = 59.0
+margin_right = 228.0
+margin_bottom = 89.0
 text = "5.bg.sky"
 items = [ "5.bg.sky", null, false, 0, null, "location.forest", null, false, 1, null ]
 selected = 0
 
 [node name="music" type="OptionButton" parent="ui/base/settings_set/names/items_sets"]
-margin_top = 105.0
-margin_right = 236.0
-margin_bottom = 135.0
+margin_top = 97.0
+margin_right = 228.0
+margin_bottom = 127.0
 text = "location.field"
 items = [ "location.field", null, false, 0, null, "5.music.tense", null, false, 1, null, "5.music.boss", null, false, 2, null ]
 selected = 0
 
 [node name="ground" type="OptionButton" parent="ui/base/settings_set/names/items_sets"]
-margin_top = 143.0
-margin_right = 236.0
-margin_bottom = 173.0
+margin_top = 135.0
+margin_right = 228.0
+margin_bottom = 165.0
 text = "5.gr.dirt"
 items = [ "5.gr.dirt", null, false, 0, null, "5.gr.stone", null, false, 1, null ]
 selected = 0

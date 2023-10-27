@@ -25,6 +25,7 @@ func _ready():
 	tilemap.add_child(end)
 	var music = AudioStreamPlayer.new()
 	music.name = "music"
+	music.bus = "music"
 	music.stream = load(SONGS_BY_ID[G.getv("ld_m", 0)])
 	tilemap.add_child(music)
 	var gr = load(GR_BY_ID[G.getv("ld_gr", 0)]).instance()

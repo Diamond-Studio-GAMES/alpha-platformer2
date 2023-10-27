@@ -311,7 +311,6 @@ func open_gui(what = null):
 			$amulet_frags_screen/count.text = "x " + str(loot["amulet_frags"][keys[i]])
 			$amulet_frags_screen/anim.play("anim")
 			$amulet_frags_screen/anim.seek(0, true)
-			glow_items -= 1
 			yield(self, "next")
 			items -= 1
 	if loot.has("tokens"):
@@ -879,9 +878,9 @@ func get_box_rewards():
 		else:
 			loot["ulti_tokens0"] = 4
 		var ut1 = gen.randi_range(0, 100)
-		if ut1 < 65:
+		if ut1 < 80:
 			loot["ulti_tokens1"] = 1
-		elif ut1 > 65 and ut1 <= 90:
+		elif ut1 > 80 and ut1 <= 95:
 			loot["ulti_tokens1"] = 2
 		else:
 			loot["ulti_tokens1"] = 3
