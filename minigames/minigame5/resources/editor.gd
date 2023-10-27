@@ -25,6 +25,8 @@ func _unhandled_input(event):
 		if event.button_index == BUTTON_LEFT and event.pressed and not cam_moving.pressed:
 			var id = current_tile_id if not is_erasing.pressed else -1
 			var pos = tilemap.world_to_map(get_global_mouse_position())
+			if pos.y >= 0 and id != -1:
+				return
 			tilemap.set_cellv(pos, id, current_tile_flip_x.pressed, current_tile_flip_y.pressed, current_tile_transposed.pressed)
 
 

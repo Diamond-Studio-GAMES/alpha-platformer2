@@ -43,7 +43,7 @@ color_ramp = SubResource( 2 )
 
 [node name="visibility_enabler" type="VisibilityEnabler2D" parent="."]
 position = Vector2( 16, 32 )
-rect = Rect2( -8, -64, 16, 128 )
+rect = Rect2( -8, -512, 16, 1024 )
 pause_animations = false
 freeze_bodies = false
 pause_animated_sprites = false
