@@ -1895,7 +1895,7 @@ __meta__ = {
 [node name="bg0" type="ColorRect" parent="archer/class/ui/background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0.898039, 0.964706, 1 )
+color = Color( 0, 0.91666, 0.964706, 1 )
 
 [node name="bg1" type="Control" parent="archer/class/ui/background"]
 anchor_left = 0.5
@@ -1917,7 +1917,7 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="light" type="Sprite" parent="archer/class/ui/background/bg1"]
-modulate = Color( 0.94902, 1, 1, 1 )
+modulate = Color( 0.901961, 1, 1, 1 )
 position = Vector2( -0.000190735, 0 )
 texture = ExtResource( 3 )
 

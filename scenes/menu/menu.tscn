@@ -1705,6 +1705,31 @@ window_title = "menu.warning"
 dialog_text = "menu.blw.text"
 dialog_autowrap = true
 
+[node name="dialog" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -70.0
+margin_right = 200.0
+margin_bottom = 70.0
+window_title = "menu.message"
+dialog_autowrap = true
+
+[node name="rate" type="ConfirmationDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -70.0
+margin_right = 200.0
+margin_bottom = 70.0
+window_title = "menu.rate.title"
+dialog_text = "menu.rate.text"
+dialog_autowrap = true
+
 [node name="education0" parent="." instance=ExtResource( 12 )]
 visible = false
 margin_left = -79.0
@@ -1730,31 +1755,6 @@ margin_top = 184.0
 margin_right = 120.0
 margin_bottom = 216.0
 text = "menu.skip"
-
-[node name="dialog" type="AcceptDialog" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = -70.0
-margin_right = 200.0
-margin_bottom = 70.0
-window_title = "menu.message"
-dialog_autowrap = true
-
-[node name="rate" type="ConfirmationDialog" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = -70.0
-margin_right = 200.0
-margin_bottom = 70.0
-window_title = "menu.rate.title"
-dialog_text = "menu.rate.text"
-dialog_autowrap = true
 
 [connection signal="pressed" from="main/play" to="." method="play"]
 [connection signal="pressed" from="main/achievements" to="." method="achievements" binds= [ true ]]

@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 
 const CLASSES = ["knight", "butcher", "spearman", "wizard", "archer"]
@@ -238,7 +238,20 @@ func buy_no_ads():
 		$error.popup_centered()
 # END OF IAP
 
+func _ready():
+	fetch_online_offers()
+	init_iap()
+	$confirm.get_ok().text = tr("shop.buy")
+	current_day = Time.get_date_dict_from_system()["day"]
+	current_unix_time = Time.get_unix_time_from_system()
+	show_offers()
+	if not G.getv("learned", false):
+		G.setv("shop_visited", true)
+
+
 func _process(delta):
+	$coins.text = str(G.getv("coins", 0))
+	$gems.text = str(G.getv("gems", 0))
 	if current_day != Time.get_date_dict_from_system()["day"]:
 		_ready()
 	if G.getv("potions1", 0) < 1:
@@ -419,15 +432,6 @@ func info_box(box_type = "gold"):
 	$box_info/base/info/info.text = tr("shop.box_info").format({"cs" : coins_suffix, "cc" : coins_chance, 
 			"hc" : hero_chance, "ac" : amul_chance, "gc" : gadget_chance, "sc" : sp_chance})
 	$box_info.show()
-
-
-func _ready():
-	fetch_online_offers()
-	init_iap()
-	$confirm.get_ok().text = tr("shop.buy")
-	current_day = Time.get_date_dict_from_system()["day"]
-	current_unix_time = Time.get_unix_time_from_system()
-	show_offers()
 
 
 func show_offers():
@@ -762,6 +766,11 @@ func promocodes():
 	get_tree().change_scene("res://scenes/menu/promocodes.tscn")
 
 
+func quit():
+	G.ignore_next_music_stop = true
+	get_tree().change_scene("res://scenes/menu/levels.tscn")
+
+
 func fetch_online_offers():
 	http.download_file = OS.get_cache_dir().plus_file("online_offers_cache.cfg")
 	http.connect("request_completed", self, "request_online_response", [], CONNECT_ONESHOT)
@@ -794,3 +803,11 @@ func request_online_response(result, code, header, body):
 			if not G.getv("save_id", "none") in j["ids"]:
 				continue
 		show_offer(j["costs"], j["receives"], int(i), j["name"])
+
+
+func _enter_tree():
+	G.play_menu_music()
+
+
+func _exit_tree():
+	G.stop_menu_music()

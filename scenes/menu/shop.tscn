@@ -1,0 +1,1243 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://textures/items/gold_box.png" type="Texture" id=1]
+[ext_resource path="res://themes/font_headers.tres" type="DynamicFont" id=2]
+[ext_resource path="res://textures/items/big_potion.png" type="Texture" id=3]
+[ext_resource path="res://themes/theme.tres" type="Theme" id=4]
+[ext_resource path="res://textures/items/normal_potion.png" type="Texture" id=5]
+[ext_resource path="res://textures/items/no_ads.png" type="Texture" id=6]
+[ext_resource path="res://textures/items/gem.png" type="Texture" id=7]
+[ext_resource path="res://scripts/menu/shop.gd" type="Script" id=8]
+[ext_resource path="res://textures/items/normal_coins.png" type="Texture" id=9]
+[ext_resource path="res://prefabs/menu/help_info.tscn" type="PackedScene" id=10]
+[ext_resource path="res://textures/items/coin.png" type="Texture" id=11]
+[ext_resource path="res://textures/gui/promocodes.png" type="Texture" id=12]
+[ext_resource path="res://textures/items/small_coins.png" type="Texture" id=13]
+[ext_resource path="res://textures/items/small_potion.png" type="Texture" id=14]
+[ext_resource path="res://textures/items/big_coins.png" type="Texture" id=15]
+[ext_resource path="res://textures/items/diamond_box.png" type="Texture" id=16]
+[ext_resource path="res://prefabs/menu/education.tscn" type="PackedScene" id=17]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=18]
+
+[sub_resource type="Gradient" id=266]
+colors = PoolColorArray( 0.25098, 0.25098, 1, 1, 0, 0, 0.541176, 1 )
+
+[sub_resource type="GradientTexture2D" id=278]
+flags = 4
+gradient = SubResource( 266 )
+fill = 1
+fill_from = Vector2( 0.5, 0.8 )
+fill_to = Vector2( 0.5, 0.2 )
+
+[sub_resource type="Gradient" id=268]
+colors = PoolColorArray( 1, 0.25098, 1, 1, 0.54902, 0, 0.627451, 1 )
+
+[sub_resource type="GradientTexture2D" id=279]
+flags = 4
+gradient = SubResource( 268 )
+fill = 1
+fill_from = Vector2( 0.5, 0.8 )
+fill_to = Vector2( 0.5, 0.2 )
+
+[sub_resource type="Gradient" id=270]
+colors = PoolColorArray( 1, 1, 0, 1, 0.682353, 0.592157, 0, 1 )
+
+[sub_resource type="GradientTexture2D" id=280]
+flags = 4
+gradient = SubResource( 270 )
+fill = 1
+fill_from = Vector2( 0.5, 0.8 )
+fill_to = Vector2( 0.5, 0.2 )
+
+[sub_resource type="Gradient" id=272]
+colors = PoolColorArray( 1, 0, 0, 1, 0.639216, 0, 0, 1 )
+
+[sub_resource type="GradientTexture2D" id=281]
+flags = 4
+gradient = SubResource( 272 )
+fill = 1
+fill_from = Vector2( 0.5, 0.8 )
+fill_to = Vector2( 0.5, 0.2 )
+
+[sub_resource type="GradientTexture2D" id=282]
+flags = 4
+gradient = SubResource( 272 )
+height = 132
+fill = 1
+fill_from = Vector2( 0.5, 0.8 )
+fill_to = Vector2( 0.5, 0.2 )
+
+[sub_resource type="Gradient" id=275]
+colors = PoolColorArray( 0.686275, 0, 0, 1, 0.439216, 0, 0, 1 )
+
+[sub_resource type="GradientTexture2D" id=283]
+flags = 4
+gradient = SubResource( 275 )
+height = 132
+fill = 1
+fill_from = Vector2( 0.5, 0.6 )
+fill_to = Vector2( 0.5, 0.1 )
+
+[sub_resource type="Gradient" id=277]
+colors = PoolColorArray( 0.3125, 0.3125, 0.3125, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture2D" id=284]
+flags = 4
+gradient = SubResource( 277 )
+height = 132
+fill = 1
+fill_from = Vector2( 0.5, 0.6 )
+fill_to = Vector2( 1, 0.4 )
+
+[sub_resource type="DynamicFont" id=287]
+outline_size = 1
+font_data = ExtResource( 18 )
+
+[sub_resource type="Animation" id=285]
+resource_name = "no"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="GDScript" id=286]
+script/source = "extends \"res://scripts/menu/education.gd\"
+
+
+func _ready():
+	G.setv(\"edu_shop_visited\", true)
+"
+
+[node name="shop" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+script = ExtResource( 8 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.360784, 0.611765, 1, 1 )
+
+[node name="close" type="Button" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 96.0
+margin_bottom = 56.0
+text = "menu.back"
+clip_text = true
+
+[node name="title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -139.0
+margin_top = 8.0
+margin_right = 139.0
+margin_bottom = 78.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 2 )
+text = "shop.name"
+align = 1
+
+[node name="gems" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -88.0
+margin_top = 24.0
+margin_right = -24.0
+margin_bottom = 64.0
+text = "9999"
+valign = 1
+
+[node name="icon" type="TextureRect" parent="gems"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -20.0
+margin_right = -4.0
+margin_bottom = 20.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="coins" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -192.0
+margin_top = 24.0
+margin_right = -128.0
+margin_bottom = 64.0
+text = "9999"
+valign = 1
+
+[node name="icon" type="TextureRect" parent="coins"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -20.0
+margin_right = -4.0
+margin_bottom = 20.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="scroll" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 84.0
+margin_right = -16.0
+margin_bottom = -20.0
+scroll_vertical_enabled = false
+
+[node name="offers" type="HBoxContainer" parent="scroll"]
+margin_right = 1594.0
+margin_bottom = 420.0
+
+[node name="resources" type="Panel" parent="scroll/offers"]
+margin_right = 1178.0
+margin_bottom = 420.0
+rect_min_size = Vector2( 1178, 420 )
+mouse_filter = 1
+
+[node name="title" type="Label" parent="scroll/offers/resources"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.5
+margin_top = 8.0
+margin_right = 40.5
+margin_bottom = 32.0
+grow_horizontal = 2
+text = "shop.resources"
+align = 1
+
+[node name="big_box" type="TextureRect" parent="scroll/offers/resources"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -569.0
+margin_top = -178.0
+margin_right = -389.0
+margin_bottom = 2.0
+rect_clip_content = true
+texture = SubResource( 278 )
+expand = true
+stretch_mode = 6
+
+[node name="big_box" type="TextureRect" parent="scroll/offers/resources/big_box"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -72.0
+margin_right = 60.0
+margin_bottom = 48.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="title" type="Label" parent="scroll/offers/resources/big_box"]
+anchor_right = 1.0
+margin_bottom = 24.0
+text = "item.box.big"
+align = 1
+valign = 1
+
+[node name="buy" type="Button" parent="scroll/offers/resources/big_box"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -38.0
+margin_right = 50.0
+margin_bottom = -8.0
+text = "10"
+icon = ExtResource( 7 )
+expand_icon = true
+
+[node name="info" type="Button" parent="scroll/offers/resources/big_box"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -30.0
+margin_bottom = 30.0
+rect_scale = Vector2( 0.67, 0.67 )
+rect_pivot_offset = Vector2( 15, 15 )
+text = "i"
+
+[node name="megabox" type="TextureRect" parent="scroll/offers/resources"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -569.0
+margin_top = 14.0
+margin_right = -389.0
+margin_bottom = 194.0
+rect_clip_content = true
+texture = SubResource( 278 )
+expand = true
+stretch_mode = 6
+
+[node name="megabox" type="TextureRect" parent="scroll/offers/resources/megabox"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -72.0
+margin_right = 60.0
+margin_bottom = 48.0
+texture = ExtResource( 16 )
+expand = true
+
+[node name="title" type="Label" parent="scroll/offers/resources/megabox"]
+anchor_right = 1.0
+margin_bottom = 24.0
+text = "item.box.mega"
+align = 1
+valign = 1
+
+[node name="buy" type="Button" parent="scroll/offers/resources/megabox"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -38.0
+margin_right = 50.0
+margin_bottom = -8.0
+text = "30"
+icon = ExtResource( 7 )
+expand_icon = true
+
+[node name="info" type="Button" parent="scroll/offers/resources/megabox"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -30.0
+margin_bottom = 30.0
+rect_scale = Vector2( 0.67, 0.67 )
+rect_pivot_offset = Vector2( 15, 15 )
+text = "i"
+
+[node name="gems0" type="TextureRect" parent="scroll/offers/resources"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -377.0
+margin_top = 14.0
+margin_right = -197.0
+margin_bottom = 194.0
+rect_clip_content = true
+texture = SubResource( 279 )
+expand = true
+stretch_mode = 6
+
+[node name="gem" type="TextureRect" parent="scroll/offers/resources/gems0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -48.0
+margin_right = 40.0
+margin_bottom = 32.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="title" type="Label" parent="scroll/offers/resources/gems0"]
+anchor_right = 1.0
+margin_bottom = 24.0
+text = "shop.500gems"
+align = 1
+valign = 1
+
+[node name="buy" type="Button" parent="scroll/offers/resources/gems0"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -38.0
+margin_right = 50.0
+margin_bottom = -8.0
+disabled = true
+text = "-"
+expand_icon = true
+
+[node name="gems1" type="TextureRect" parent="scroll/offers/resources"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -185.0
+margin_top = 14.0
+margin_right = -5.0
+margin_bottom = 194.0
+rect_clip_content = true
+texture = SubResource( 279 )
+expand = true
+stretch_mode = 6
+
+[node name="gem2" type="TextureRect" parent="scroll/offers/resources/gems1"]
+self_modulate = Color( 0.843137, 0.843137, 0.843137, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -24.0
+margin_right = 72.0
+margin_bottom = 56.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="gem3" type="TextureRect" parent="scroll/offers/resources/gems1"]
+self_modulate = Color( 0.913725, 0.913725, 0.913725, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = -32.0
+margin_right = 8.0
+margin_bottom = 48.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="gem" type="TextureRect" parent="scroll/offers/resources/gems1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -48.0
+margin_right = 40.0
+margin_bottom = 32.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="title" type="Label" parent="scroll/offers/resources/gems1"]
+anchor_right = 1.0
+margin_bottom = 24.0
+text = "shop.1250gems"
+align = 1
+valign = 1
+
+[node name="buy" type="Button" parent="scroll/offers/resources/gems1"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -38.0
+margin_right = 50.0
+margin_bottom = -8.0
+disabled = true
+text = "-"
+expand_icon = true
+
+[node name="gems2" type="TextureRect" parent="scroll/offers/resources"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 7.0
+margin_top = 14.0
+margin_right = 187.0
+margin_bottom = 194.0
+rect_clip_content = true
+texture = SubResource( 279 )
+expand = true
+stretch_mode = 6
+
+[node name="gem4" type="TextureRect" parent="scroll/offers/resources/gems2"]
+self_modulate = Color( 0.752941, 0.752941, 0.752941, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -88.0
+margin_right = -28.0
+margin_bottom = 60.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="gem5" type="TextureRect" parent="scroll/offers/resources/gems2"]
+self_modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 24.0
+margin_top = 4.0
+margin_right = 84.0
+margin_bottom = 64.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="gem2" type="TextureRect" parent="scroll/offers/resources/gems2"]
+self_modulate = Color( 0.854902, 0.854902, 0.854902, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -24.0
+margin_right = 72.0
+margin_bottom = 56.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="gem3" type="TextureRect" parent="scroll/offers/resources/gems2"]
+self_modulate = Color( 0.886275, 0.886275, 0.886275, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = -32.0
+margin_right = 8.0
+margin_bottom = 48.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="gem" type="TextureRect" parent="scroll/offers/resources/gems2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -48.0
+margin_right = 40.0
+margin_bottom = 32.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="title" type="Label" parent="scroll/offers/resources/gems2"]
+anchor_right = 1.0
+margin_bottom = 24.0
+text = "shop.2500gems"
+align = 1
+valign = 1
+
+[node name="buy" type="Button" parent="scroll/offers/resources/gems2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -38.0
+margin_right = 50.0
+margin_bottom = -8.0
+disabled = true
+text = "-"
+expand_icon = true
+
+[node name="coins0" type="TextureRect" parent="scroll/offers/resources"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -377.0
+margin_top = -178.0
+margin_right = -197.0
+margin_bottom = 2.0
+rect_clip_content = true
+texture = SubResource( 280 )
+expand = true
+stretch_mode = 6
+
+[node name="coins" type="TextureRect" parent="scroll/offers/resources/coins0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -68.0
+margin_right = 60.0
+margin_bottom = 52.0
+rect_scale = Vector2( 1.75, 1.75 )
+rect_pivot_offset = Vector2( 60, 60 )
+texture = ExtResource( 13 )
+expand = true
+
+[node name="title" type="Label" parent="scroll/offers/resources/coins0"]
+anchor_right = 1.0
+margin_bottom = 24.0
+text = "shop.2250coins"
+align = 1
+valign = 1
+
+[node name="buy" type="Button" parent="scroll/offers/resources/coins0"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -38.0
+margin_right = 50.0
+margin_bottom = -8.0
+text = "15"
+icon = ExtResource( 7 )
+expand_icon = true
+
+[node name="coins1" type="TextureRect" parent="scroll/offers/resources"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -185.0
+margin_top = -178.0
+margin_right = -5.0
+margin_bottom = 2.0
+rect_clip_content = true
+texture = SubResource( 280 )
+expand = true
+stretch_mode = 6
+
+[node name="coins" type="TextureRect" parent="scroll/offers/resources/coins1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -68.0
+margin_right = 60.0
+margin_bottom = 52.0
+rect_scale = Vector2( 1.75, 1.75 )
+rect_pivot_offset = Vector2( 60, 60 )
+texture = ExtResource( 9 )
+expand = true
+
+[node name="title" type="Label" parent="scroll/offers/resources/coins1"]
+anchor_right = 1.0
+margin_bottom = 24.0
+text = "shop.4500coins"
+align = 1
+valign = 1
+
+[node name="buy" type="Button" parent="scroll/offers/resources/coins1"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -38.0
+margin_right = 50.0
+margin_bottom = -8.0
+text = "25"
+icon = ExtResource( 7 )
+expand_icon = true
+
+[node name="coins2" type="TextureRect" parent="scroll/offers/resources"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 7.0
+margin_top = -178.0
+margin_right = 187.0
+margin_bottom = 2.0
+rect_clip_content = true
+texture = SubResource( 280 )
+stretch_mode = 6
+
+[node name="coins" type="TextureRect" parent="scroll/offers/resources/coins2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -60.0
+margin_right = 60.0
+margin_bottom = 60.0
+rect_scale = Vector2( 1.25, 1.25 )
+rect_pivot_offset = Vector2( 60, 60 )
+texture = ExtResource( 15 )
+expand = true
+
+[node name="title" type="Label" parent="scroll/offers/resources/coins2"]
+anchor_right = 1.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 378, 88 )
+text = "shop.9000coins"
+align = 1
+valign = 1
+
+[node name="buy" type="Button" parent="scroll/offers/resources/coins2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -38.0
+margin_right = 50.0
+margin_bottom = -8.0
+text = "45"
+icon = ExtResource( 7 )
+expand_icon = true
+
+[node name="potion0" type="TextureRect" parent="scroll/offers/resources"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 199.0
+margin_top = -178.0
+margin_right = 379.0
+margin_bottom = 2.0
+rect_clip_content = true
+texture = SubResource( 281 )
+expand = true
+stretch_mode = 6
+
+[node name="potion" type="TextureRect" parent="scroll/offers/resources/potion0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -58.0
+margin_right = 50.0
+margin_bottom = 42.0
+texture = ExtResource( 14 )
+expand = true
+
+[node name="title" type="Label" parent="scroll/offers/resources/potion0"]
+anchor_right = 1.0
+margin_bottom = 24.0
+text = "item.potion1"
+align = 1
+valign = 1
+
+[node name="count" type="Label" parent="scroll/offers/resources/potion0"]
+anchor_right = 1.0
+margin_top = 16.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.75, 0.75 )
+rect_pivot_offset = Vector2( 90, 0 )
+text = "У тебя:999"
+align = 1
+valign = 1
+
+[node name="buy" type="Button" parent="scroll/offers/resources/potion0"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -38.0
+margin_right = 50.0
+margin_bottom = -8.0
+text = "300"
+icon = ExtResource( 11 )
+expand_icon = true
+
+[node name="info" type="Button" parent="scroll/offers/resources/potion0"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -30.0
+margin_bottom = 30.0
+rect_scale = Vector2( 0.67, 0.67 )
+rect_pivot_offset = Vector2( 15, 15 )
+text = "i"
+
+[node name="help_info" parent="scroll/offers/resources/potion0" instance=ExtResource( 10 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -15.0
+margin_top = -15.0
+margin_right = 15.0
+margin_bottom = 15.0
+info = "shop.tip.pot1"
+id = "pot1"
+
+[node name="potion1" type="TextureRect" parent="scroll/offers/resources"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 199.0
+margin_top = 14.0
+margin_right = 379.0
+margin_bottom = 194.0
+rect_clip_content = true
+texture = SubResource( 281 )
+expand = true
+stretch_mode = 6
+
+[node name="potion" type="TextureRect" parent="scroll/offers/resources/potion1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -58.0
+margin_right = 50.0
+margin_bottom = 42.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="title" type="Label" parent="scroll/offers/resources/potion1"]
+anchor_right = 1.0
+margin_bottom = 24.0
+text = "item.potion2"
+align = 1
+valign = 1
+
+[node name="buy" type="Button" parent="scroll/offers/resources/potion1"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -38.0
+margin_right = 50.0
+margin_bottom = -8.0
+text = "650"
+icon = ExtResource( 11 )
+expand_icon = true
+
+[node name="info" type="Button" parent="scroll/offers/resources/potion1"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -30.0
+margin_bottom = 30.0
+rect_scale = Vector2( 0.67, 0.67 )
+rect_pivot_offset = Vector2( 15, 15 )
+text = "i"
+
+[node name="count" type="Label" parent="scroll/offers/resources/potion1"]
+anchor_right = 1.0
+margin_top = 16.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.75, 0.75 )
+rect_pivot_offset = Vector2( 90, 0 )
+text = "У тебя:999"
+align = 1
+valign = 1
+
+[node name="potion2" type="TextureRect" parent="scroll/offers/resources"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 391.0
+margin_top = -178.0
+margin_right = 571.0
+margin_bottom = 194.0
+rect_clip_content = true
+texture = SubResource( 282 )
+expand = true
+stretch_mode = 6
+
+[node name="potion" type="TextureRect" parent="scroll/offers/resources/potion2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -58.0
+margin_right = 50.0
+margin_bottom = 42.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="title" type="Label" parent="scroll/offers/resources/potion2"]
+anchor_right = 1.0
+margin_bottom = 24.0
+text = "item.potion3"
+align = 1
+valign = 1
+
+[node name="buy" type="Button" parent="scroll/offers/resources/potion2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -38.0
+margin_right = 50.0
+margin_bottom = -8.0
+text = "1000"
+icon = ExtResource( 11 )
+expand_icon = true
+
+[node name="info" type="Button" parent="scroll/offers/resources/potion2"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -30.0
+margin_bottom = 30.0
+rect_scale = Vector2( 0.67, 0.67 )
+rect_pivot_offset = Vector2( 15, 15 )
+text = "i"
+
+[node name="count" type="Label" parent="scroll/offers/resources/potion2"]
+anchor_right = 1.0
+margin_top = 16.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.75, 0.75 )
+rect_pivot_offset = Vector2( 90, 0 )
+text = "У тебя:999"
+align = 1
+valign = 1
+
+[node name="other" type="Panel" parent="scroll/offers"]
+margin_left = 1182.0
+margin_right = 1594.0
+margin_bottom = 420.0
+rect_min_size = Vector2( 412, 420 )
+mouse_filter = 1
+
+[node name="title" type="Label" parent="scroll/offers/other"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.5
+margin_top = 8.0
+margin_right = 40.5
+margin_bottom = 32.0
+grow_horizontal = 2
+text = "shop.other"
+align = 1
+
+[node name="no_ads" type="TextureRect" parent="scroll/offers/other"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -186.0
+margin_top = -178.0
+margin_right = -6.0
+margin_bottom = 194.0
+rect_clip_content = true
+texture = SubResource( 283 )
+expand = true
+
+[node name="logo" type="TextureRect" parent="scroll/offers/other/no_ads"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -58.0
+margin_right = 50.0
+margin_bottom = 42.0
+texture = ExtResource( 6 )
+expand = true
+
+[node name="title" type="Label" parent="scroll/offers/other/no_ads"]
+anchor_right = 1.0
+margin_bottom = 24.0
+text = "shop.noads"
+align = 1
+valign = 1
+
+[node name="buy" type="Button" parent="scroll/offers/other/no_ads"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -38.0
+margin_right = 50.0
+margin_bottom = -8.0
+disabled = true
+text = "-"
+
+[node name="count" type="Label" parent="scroll/offers/other/no_ads"]
+anchor_right = 1.0
+margin_top = 16.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.75, 0.75 )
+rect_pivot_offset = Vector2( 90, 0 )
+text = "shop.noads.tip"
+align = 1
+valign = 1
+
+[node name="promocodes" type="TextureRect" parent="scroll/offers/other"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 6.0
+margin_top = -178.0
+margin_right = 186.0
+margin_bottom = 194.0
+rect_clip_content = true
+texture = SubResource( 284 )
+expand = true
+stretch_mode = 6
+
+[node name="logo" type="TextureRect" parent="scroll/offers/other/promocodes"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = -58.0
+margin_right = 50.0
+margin_bottom = 42.0
+texture = ExtResource( 12 )
+expand = true
+
+[node name="title" type="Label" parent="scroll/offers/other/promocodes"]
+anchor_right = 1.0
+margin_bottom = 24.0
+text = "shop.promocodes"
+align = 1
+valign = 1
+
+[node name="buy" type="Button" parent="scroll/offers/other/promocodes"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -38.0
+margin_right = 50.0
+margin_bottom = -8.0
+text = "shop.promocodes.go"
+clip_text = true
+expand_icon = true
+
+[node name="not_enough" type="Label" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -214.5
+margin_top = -132.0
+margin_right = 214.5
+margin_bottom = -108.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 287 )
+text = "shop.notenough"
+align = 1
+
+[node name="anim" type="AnimationPlayer" parent="not_enough"]
+anims/no = SubResource( 285 )
+
+[node name="info_potions0" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -60.0
+margin_right = 250.0
+margin_bottom = 60.0
+window_title = "shop.potinfo.title"
+dialog_text = "shop.potinfo.1"
+dialog_autowrap = true
+
+[node name="info_potions1" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -60.0
+margin_right = 250.0
+margin_bottom = 60.0
+window_title = "shop.potinfo.title"
+dialog_text = "shop.potinfo.2"
+dialog_autowrap = true
+
+[node name="info_potions2" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -60.0
+margin_right = 250.0
+margin_bottom = 60.0
+window_title = "shop.potinfo.title"
+dialog_text = "shop.potinfo.3"
+dialog_autowrap = true
+
+[node name="confirm" type="ConfirmationDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = 314.0
+margin_right = 412.0
+margin_bottom = 554.0
+rect_min_size = Vector2( 170, 59.5 )
+window_title = "shop.confirm"
+dialog_autowrap = true
+
+[node name="error" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -85.0
+margin_top = -39.0
+margin_right = 85.0
+margin_bottom = 39.0
+window_title = "shop.error"
+dialog_text = "shop.error.text"
+
+[node name="http_request" type="HTTPRequest" parent="."]
+
+[node name="box_info" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="base" type="Control" parent="box_info"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+
+[node name="bg" type="ColorRect" parent="box_info/base"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.360784, 0.611765, 1, 1 )
+
+[node name="title" type="Label" parent="box_info/base"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -188.0
+margin_top = 8.0
+margin_right = 188.0
+margin_bottom = 60.0
+grow_horizontal = 2
+theme_type_variation = "LabelTitle"
+text = "shop.box_info.title"
+align = 1
+
+[node name="diamond_box_visual" parent="box_info/base" instance_placeholder="res://prefabs/menu/diamond_box_visual.scn"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -760.0
+margin_top = -270.0
+margin_right = 200.0
+margin_bottom = 270.0
+rect_scale = Vector2( 0.8, 0.8 )
+rect_pivot_offset = Vector2( 480, 270 )
+
+[node name="gold_box_visual" parent="box_info/base" instance_placeholder="res://prefabs/menu/gold_box_visual.scn"]
+margin_left = -280.0
+margin_right = -280.0
+rect_scale = Vector2( 0.8, 0.8 )
+rect_pivot_offset = Vector2( 480, 270 )
+
+[node name="info" type="VBoxContainer" parent="box_info/base"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -184.0
+margin_top = -210.0
+margin_right = 456.0
+margin_bottom = 270.0
+
+[node name="brief" type="Label" parent="box_info/base/info"]
+margin_right = 640.0
+margin_bottom = 24.0
+custom_constants/line_spacing = -1
+text = "shop.box_info.diamond"
+align = 1
+autowrap = true
+
+[node name="info" type="Label" parent="box_info/base/info"]
+margin_top = 28.0
+margin_right = 640.0
+margin_bottom = 52.0
+custom_constants/line_spacing = -2
+text = "shop.box_info"
+align = 1
+autowrap = true
+
+[node name="back" type="Button" parent="box_info/base"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -118.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 46.0
+grow_horizontal = 0
+text = "menu.back"
+
+[node name="education3" parent="." instance=ExtResource( 17 )]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -19.0
+margin_top = -33.0
+margin_right = 141.0
+margin_bottom = 127.0
+script = SubResource( 286 )
+first = true
+
+[node name="text" parent="education3" index="5"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = -16.0
+margin_right = 368.0
+margin_bottom = 144.0
+text = "menu.edu.1"
+align = 0
+
+[connection signal="pressed" from="close" to="." method="quit"]
+[connection signal="pressed" from="scroll/offers/resources/big_box/buy" to="." method="buy" binds= [ "{\"gems\":10}", "{\"gold_box\":1}" ]]
+[connection signal="pressed" from="scroll/offers/resources/big_box/info" to="." method="info_box" binds= [ "gold" ]]
+[connection signal="pressed" from="scroll/offers/resources/megabox/buy" to="." method="buy" binds= [ "{\"gems\":30}", "{\"diamond_box\":1}" ]]
+[connection signal="pressed" from="scroll/offers/resources/megabox/info" to="." method="info_box" binds= [ "diamond" ]]
+[connection signal="pressed" from="scroll/offers/resources/gems0/buy" to="." method="buy_gems500"]
+[connection signal="pressed" from="scroll/offers/resources/gems1/buy" to="." method="buy_gems1250"]
+[connection signal="pressed" from="scroll/offers/resources/gems2/buy" to="." method="buy_gems2500"]
+[connection signal="pressed" from="scroll/offers/resources/coins0/buy" to="." method="buy" binds= [ "{\"gems\":15}", "{\"coins\":2250}" ]]
+[connection signal="pressed" from="scroll/offers/resources/coins1/buy" to="." method="buy" binds= [ "{\"gems\":25}", "{\"coins\":4500}" ]]
+[connection signal="pressed" from="scroll/offers/resources/coins2/buy" to="." method="buy" binds= [ "{\"gems\":45}", "{\"coins\":9000}" ]]
+[connection signal="pressed" from="scroll/offers/resources/potion0/buy" to="." method="buy" binds= [ "{\"coins\":300}", "{\"potions1\":1}" ]]
+[connection signal="pressed" from="scroll/offers/resources/potion0/info" to="info_potions0" method="popup_centered"]
+[connection signal="pressed" from="scroll/offers/resources/potion1/buy" to="." method="buy" binds= [ "{\"coins\":650}", "{\"potions2\":1}" ]]
+[connection signal="pressed" from="scroll/offers/resources/potion1/info" to="info_potions1" method="popup_centered"]
+[connection signal="pressed" from="scroll/offers/resources/potion2/buy" to="." method="buy" binds= [ "{\"coins\":1000}", "{\"potions3\":1}" ]]
+[connection signal="pressed" from="scroll/offers/resources/potion2/info" to="info_potions2" method="popup_centered"]
+[connection signal="pressed" from="scroll/offers/other/no_ads/buy" to="." method="buy_no_ads"]
+[connection signal="pressed" from="scroll/offers/other/promocodes/buy" to="." method="promocodes"]
+[connection signal="confirmed" from="confirm" to="." method="confirm_buy"]
+[connection signal="pressed" from="box_info/base/back" to="box_info" method="hide"]
+
+[editable path="education3"]
