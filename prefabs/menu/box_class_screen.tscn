@@ -927,14 +927,11 @@ __meta__ = {
 [node name="background" type="Control" parent="knight/class/ui"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="bg0" type="ColorRect" parent="knight/class/ui/background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.92549, 0, 0, 1 )
+color = Color( 0.686275, 0.0313726, 0.109804, 1 )
 
 [node name="bg1" type="Control" parent="knight/class/ui/background"]
 anchor_left = 0.5
@@ -950,12 +947,12 @@ __meta__ = {
 }
 
 [node name="sprite" type="Sprite" parent="knight/class/ui/background/bg1"]
-modulate = Color( 1, 0, 0, 1 )
+modulate = Color( 0.745098, 0.0588235, 0.12549, 1 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="light" type="Sprite" parent="knight/class/ui/background/bg1"]
-modulate = Color( 1, 0.403922, 0.211765, 1 )
+modulate = Color( 1, 0.568627, 0.290196, 1 )
 position = Vector2( -0.000190735, 0 )
 texture = ExtResource( 3 )
 
@@ -1178,7 +1175,7 @@ __meta__ = {
 [node name="bg0" type="ColorRect" parent="butcher/class/ui/background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 1, 0.937255, 0, 1 )
+color = Color( 0.956863, 0.882353, 0.105882, 1 )
 
 [node name="bg1" type="Control" parent="butcher/class/ui/background"]
 anchor_left = 0.5
@@ -1194,13 +1191,12 @@ __meta__ = {
 }
 
 [node name="sprite" type="Sprite" parent="butcher/class/ui/background/bg1"]
-modulate = Color( 1, 1, 0.133333, 1 )
+modulate = Color( 0.972549, 0.941176, 0.160784, 1 )
 rotation = 1.5708
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="light" type="Sprite" parent="butcher/class/ui/background/bg1"]
-modulate = Color( 1, 1, 0.733333, 1 )
 position = Vector2( -0.000190735, 0 )
 texture = ExtResource( 3 )
 
@@ -1411,9 +1407,6 @@ __meta__ = {
 [node name="ui" type="Control" parent="spearman/class"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="background" type="Control" parent="spearman/class/ui"]
 anchor_right = 1.0
@@ -1425,7 +1418,7 @@ __meta__ = {
 [node name="bg0" type="ColorRect" parent="spearman/class/ui/background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0.94902, 0, 1 )
+color = Color( 0, 0.905882, 0, 1 )
 
 [node name="bg1" type="Control" parent="spearman/class/ui/background"]
 anchor_left = 0.5
@@ -1446,12 +1439,11 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="light" type="Sprite" parent="spearman/class/ui/background/bg1"]
-modulate = Color( 0.623529, 1, 0.494118, 1 )
+modulate = Color( 0.721569, 1, 0.627451, 1 )
 position = Vector2( -0.000190735, 0 )
 texture = ExtResource( 3 )
 
 [node name="light2" type="Sprite" parent="spearman/class/ui/background/bg1/light"]
-modulate = Color( 0.623529, 1, 0.494118, 1 )
 texture = ExtResource( 3 )
 
 [node name="anim" type="AnimationPlayer" parent="spearman/class/ui/background"]
@@ -1662,7 +1654,7 @@ anchor_bottom = 1.0
 [node name="bg0" type="ColorRect" parent="wizard/class/ui/background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.968627, 0, 0.968627, 1 )
+color = Color( 0.788235, 0.152941, 0.92549, 1 )
 
 [node name="bg1" type="Control" parent="wizard/class/ui/background"]
 anchor_left = 0.5
@@ -1678,7 +1670,7 @@ __meta__ = {
 }
 
 [node name="sprite" type="Sprite" parent="wizard/class/ui/background/bg1"]
-modulate = Color( 1, 0, 1, 1 )
+modulate = Color( 0.862745, 0.211765, 0.980392, 1 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
@@ -1903,7 +1895,7 @@ __meta__ = {
 [node name="bg0" type="ColorRect" parent="archer/class/ui/background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0.960784, 0.960784, 1 )
+color = Color( 0, 0.898039, 0.964706, 1 )
 
 [node name="bg1" type="Control" parent="archer/class/ui/background"]
 anchor_left = 0.5
@@ -1920,15 +1912,16 @@ __meta__ = {
 
 [node name="sprite" type="Sprite" parent="archer/class/ui/background/bg1"]
 modulate = Color( 0, 1, 1, 1 )
+rotation = 3.56047
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="light" type="Sprite" parent="archer/class/ui/background/bg1"]
+modulate = Color( 0.94902, 1, 1, 1 )
 position = Vector2( -0.000190735, 0 )
 texture = ExtResource( 3 )
 
 [node name="light2" type="Sprite" parent="archer/class/ui/background/bg1/light"]
-modulate = Color( 0.839216, 1, 1, 1 )
 texture = ExtResource( 3 )
 
 [node name="anim" type="AnimationPlayer" parent="archer/class/ui/background"]
