@@ -15,7 +15,7 @@ var power_classes = []
 var ulti_classes = []
 var soul_power_classes = []
 var amulet_types = []
-var hero_chance = 0.5
+var hero_chance = 1.5
 var gen := RandomNumberGenerator.new()
 var tokens_tween
 onready var box_anim = $box_screen/anim
@@ -97,7 +97,6 @@ func _input(event):
 
 func _ready():
 	get_tree().paused = true
-	randomize()
 	gen.randomize()
 	init_values()
 	$tint.set_focus_mode(Control.FOCUS_ALL)
@@ -620,7 +619,7 @@ func hide_screens():
 
 func show_screen(screen):
 	if not screens.has(screen):
-		var _screen = load("res://prefabs/menu/box_%s.tscn" % screen).instance()
+		var _screen = load("res://prefabs/menu/box_screens/%s.tscn" % screen).instance()
 		_screen.name = screen
 		screens[screen] = _screen
 		add_child_below_node($mega_box_screen, _screen)

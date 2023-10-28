@@ -9,7 +9,7 @@
 [ext_resource path="res://prefabs/menu/class_visuals.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sounds/sfx/menu/char_roll_out.ogg" type="AudioStream" id=8]
 [ext_resource path="res://textures/effects/other/star.png" type="Texture" id=9]
-[ext_resource path="res://scripts/menu/viewport_tex.gd" type="Script" id=10]
+[ext_resource path="res://scripts/menu/viewport_texture.gd" type="Script" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "rotate"

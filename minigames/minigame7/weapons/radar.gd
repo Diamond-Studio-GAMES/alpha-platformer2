@@ -14,10 +14,6 @@ var delay_timer = 0
 var bullet = load("res://minigames/minigame7/weapons/radar_arrow.tscn")
 
 
-func _ready():
-	randomize()
-
-
 func _physics_process(delta):
 	if player.is_shooting:
 		if ammo > 0 and reload_timer <= 0 and is_active and delay_timer <= 0:

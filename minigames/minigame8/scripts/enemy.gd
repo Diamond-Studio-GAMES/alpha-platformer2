@@ -139,7 +139,3 @@ func _process(delta):
 						ComeInOut.RUN:
 							night.play_sound("run_out")
 			start_moving()
-
-
-func _ready():
-	randomize()

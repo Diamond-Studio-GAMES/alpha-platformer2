@@ -599,7 +599,6 @@ func generate_offers():
 				amulet_types.append(G.AMULET[i])
 	var gen = RandomNumberGenerator.new()
 	gen.randomize()
-	randomize()
 	var i = 0
 	var limit = gen.randi_range(3, 6)
 	while true:

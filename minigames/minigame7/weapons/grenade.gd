@@ -15,10 +15,6 @@ var delay_timer = 0
 var bullet = load("res://minigames/minigame7/weapons/grenade_projectile.tscn")
 
 
-func _ready():
-	randomize()
-
-
 func _physics_process(delta):
 	if player.aim_vector != Vector2.ZERO:
 		if MP.has_multiplayer_authority(self):

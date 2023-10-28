@@ -35,7 +35,6 @@ func set_cutscene(val):
 
 
 func _ready():
-	randomize()
 	if MP.is_active:
 		yield($"/root/mg", "game_started")
 	yield(get_tree(), "idle_frame")

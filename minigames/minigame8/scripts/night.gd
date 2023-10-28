@@ -198,4 +198,3 @@ func _process(delta):
 
 func _ready():
 	music_box_change = music_box_loss_per_sec
-	randomize()

@@ -75,7 +75,3 @@ func _process(delta):
 		get_node(current_test+"/time").value = (time_to_answer - timer) / time_to_answer
 		if timer >= time_to_answer:
 			block()
-
-
-func _ready():
-	randomize()

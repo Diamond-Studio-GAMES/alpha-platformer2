@@ -86,7 +86,6 @@ func create_swipe(player_position):
 		return
 	if not can_mob_move():
 		return
-	randomize()
 	var node = swipe_effect.instance()
 	node.global_position = Vector2(rand_range(player_position.x - OFFSET_X, player_position.x + OFFSET_X), rand_range(player_position.y - OFFSET_Y, player_position.y + OFFSET_Y))
 	node.rotation_degrees = rand_range(0, 360)
@@ -118,7 +117,6 @@ func swords_down():
 	yield(get_tree().create_timer(0.6, false), "timeout")
 	if not can_mob_move():
 		return
-	randomize()
 	swords_down_poses.shuffle()
 	for i in range(8 if is_angry else 6):
 		var attack = sword_down_attack.instance()

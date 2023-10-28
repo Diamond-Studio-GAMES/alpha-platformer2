@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/menu/level_dialog.gd" type="Script" id=1]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=2]
@@ -6,12 +6,11 @@
 [ext_resource path="res://textures/classes/spearman_helmet.png" type="Texture" id=4]
 [ext_resource path="res://textures/gui/bg_light.png" type="Texture" id=5]
 [ext_resource path="res://prefabs/menu/level_dialog.tscn" type="PackedScene" id=6]
-[ext_resource path="res://prefabs/menu/class_visuals.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sounds/sfx/menu/win.wav" type="AudioStream" id=8]
 [ext_resource path="res://textures/classes/archer_helmet.png" type="Texture" id=9]
 [ext_resource path="res://prefabs/menu/education.tscn" type="PackedScene" id=10]
 [ext_resource path="res://textures/classes/wizard_helmet.png" type="Texture" id=11]
-[ext_resource path="res://scripts/menu/viewport_tex.gd" type="Script" id=12]
+[ext_resource path="res://scripts/menu/viewport_texture.gd" type="Script" id=12]
 [ext_resource path="res://textures/classes/knight_helmet.png" type="Texture" id=13]
 [ext_resource path="res://textures/gui/class_drop_bg.png" type="Texture" id=14]
 [ext_resource path="res://sounds/music/menu/end_level.ogg" type="AudioStream" id=15]
@@ -395,8 +394,6 @@ bus = "music"
 stream = ExtResource( 8 )
 autoplay = true
 bus = "sfx"
-
-[node name="class_visuals" parent="." instance=ExtResource( 7 )]
 
 [connection signal="pressed" from="win_level/win_level_dialog/claim" to="win_level/win_level_dialog" method="claim_reward"]
 [connection signal="pressed" from="win_level/win_level_dialog/claim" to="win_level/win_level_dialog/claim/education0" method="next"]

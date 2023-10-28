@@ -135,7 +135,7 @@ func show_d_win():
 			i.hide()
 		else:
 			i.show()
-			$"../..".get_node("class_visuals/%s/%s/anim" % [i.name, i.name]).play("attack")
+			G.class_visuals.get_node("%s/%s/anim" % [i.name, i.name]).play("attack")
 	popup_centered()
 	window_title = tr("level_dialog.level.win") % (curr_lvl.split("_")[0] + "-" + curr_lvl.split("_")[1])
 	set_win_rewards(G.current_level)
@@ -256,7 +256,6 @@ func set_win_rewards(level = ""):
 	var potion_chance = round((mod_lvl - 1) * 2.5)
 	# Generating rewards.
 	var give_tokens = G.percent_chance(tokens_chance)
-	gen.randomize()
 	var give_ulti_tokens = G.percent_chance(ulti_chance)
 	var give_box = G.percent_chance(box_chance)
 	var give_gold_box = G.percent_chance(gold_box_chance)

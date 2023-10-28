@@ -76,6 +76,7 @@ func copy_id():
 
 
 func play():
+	G.ignore_next_music_stop = true
 	get_tree().change_scene("res://scenes/menu/levels.tscn")
 
 
@@ -232,3 +233,11 @@ func graphics_menu_id_pressed(id):
 				$settings/beauty_lights_warn.popup_centered()
 			pm.set_item_checked(idx, true)
 			G.setv("graphics", G.getv("graphics", G.Graphics.BEAUTY_DEFAULT) | (1 << (id - 30)))
+
+
+func _enter_tree():
+	G.play_menu_music()
+
+
+func _exit_tree():
+	G.stop_menu_music()

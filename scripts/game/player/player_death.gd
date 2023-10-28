@@ -14,7 +14,6 @@ onready var eye = $visual/body/head/helmet/eye
 
 func _ready():
 	curr_lvl_loc = int(get_tree().current_scene.name.trim_prefix("level_").split("_")[0])
-	randomize()
 	have_gadget = true
 	max_health = curr_lvl_loc * 25 + 250
 	defense = curr_lvl_loc + 15

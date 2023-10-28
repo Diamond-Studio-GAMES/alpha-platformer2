@@ -7,7 +7,6 @@ var direction = Vector2()
 
 
 func _ready():
-	randomize()
 	if MP.auth(self):
 		direction = Vector2(player.global_position.x - global_position.x - 72 + (randi() % 144), player.global_position.y - global_position.y)
 		direction = direction.normalized()

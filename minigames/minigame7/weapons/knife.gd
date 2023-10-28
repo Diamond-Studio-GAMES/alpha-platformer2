@@ -20,7 +20,6 @@ var bullet = load("res://minigames/minigame7/weapons/knife_projectile.tscn")
 
 func _ready():
 	all_ammo = INF
-	randomize()
 
 
 func _physics_process(delta):

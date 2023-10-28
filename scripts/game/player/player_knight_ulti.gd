@@ -15,7 +15,6 @@ onready var _level = get_tree().current_scene
 
 func _ready():
 	gen.randomize()
-	randomize()
 	attack_power = 25 + power * 5  + (15 if  has_amulet else 0)
 	match level:
 		1:

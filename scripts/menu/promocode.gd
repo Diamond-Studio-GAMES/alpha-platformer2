@@ -28,7 +28,6 @@ func fem(it):
 
 
 func hardcore(it):
-	randomize()
 	if it.get_node("/root/G").getv("classes", []).empty():
 		it.get_node("/root/G").receive_loot({"class":[it.get_node("/root/G").CLASSES_ID[randi()%5]]})
 	else:

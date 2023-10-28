@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://themes/font_headers2.tres" type="DynamicFont" id=1]
 [ext_resource path="res://themes/font_headers.tres" type="DynamicFont" id=2]
@@ -7,10 +7,9 @@
 [ext_resource path="res://textures/classes/spearman_helmet.png" type="Texture" id=5]
 [ext_resource path="res://textures/items/amulet_speed.png" type="Texture" id=6]
 [ext_resource path="res://textures/effects/backgrounds/levels_bg.png" type="Texture" id=7]
-[ext_resource path="res://scripts/menu/viewport_tex.gd" type="Script" id=8]
+[ext_resource path="res://scripts/menu/viewport_texture.gd" type="Script" id=8]
 [ext_resource path="res://prefabs/menu/help_info.tscn" type="PackedScene" id=9]
 [ext_resource path="res://textures/items/big_potion.png" type="Texture" id=10]
-[ext_resource path="res://prefabs/menu/class_visuals.tscn" type="PackedScene" id=11]
 [ext_resource path="res://textures/gui/level_up.png" type="Texture" id=12]
 [ext_resource path="res://textures/items/amulet_ulti.png" type="Texture" id=13]
 [ext_resource path="res://textures/gui/bg_light.png" type="Texture" id=14]
@@ -6273,8 +6272,6 @@ margin_bottom = 80.0
 window_title = "lobby.title"
 dialog_text = "menu.multiplayer.warn"
 dialog_autowrap = true
-
-[node name="class_visuals" parent="." instance=ExtResource( 11 )]
 
 [connection signal="pressed" from="shop_button" to="." method="shop" binds= [ true ]]
 [connection signal="pressed" from="shop_button" to="education2" method="next"]

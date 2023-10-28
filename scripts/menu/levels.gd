@@ -71,6 +71,7 @@ func _process(delta):
 
 
 func exit():
+	G.ignore_next_music_stop = true
 	get_tree().change_scene("res://scenes/menu/menu.tscn")
 
 
@@ -545,7 +546,7 @@ func help():
 
 
 func try():
-	G.selected_class_to_test = selected_class
+	G.setv("test_class", selected_class)
 	G.change_to_scene("res://scenes/levels/test.tscn")
 
 
@@ -581,3 +582,11 @@ func _on_level_location_value_changed(value):
 	$multiplayer/join.disabled = false
 	var nums = new_lvl.split("_")
 	$multiplayer/select_level.selected = (int(nums[0]) - 1) * 10 + int(nums[1]) - 1
+
+
+func _enter_tree():
+	G.play_menu_music()
+
+
+func _exit_tree():
+	G.stop_menu_music()

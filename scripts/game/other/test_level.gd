@@ -7,7 +7,7 @@ var previous_class = "player"
 
 func _enter_tree():
 	previous_class = G.getv("selected_class", "player")
-	G.setv("selected_class", G.selected_class_to_test)
+	G.setv("selected_class", G.getv("test_class", "player"))
 
 
 func _ready():
