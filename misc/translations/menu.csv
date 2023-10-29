@@ -294,7 +294,7 @@ gadgets.knight,Следующие 2 секунды Рыцарь будет ук�
 gadgets.butcher,"Мясник прыгает на среднюю высоту. При приземлении отбрасывает ближайших врагов, нанося им 110 ед. урона.","The Butcher jumps to an average height. When landing, it throws away nearby enemies, dealing 110 damage to them."
 gadgets.spearman,"Копьеносец делает мощный удар вблизи, сильно отбрасывая врага и нанося ему 300 ед. урона.","The Spearman makes a powerful blow close by, throwing the enemy hard and dealing 300 damage to him."
 gadgets.wizard,Немедленно заряжает навык Мага на 40%.,Immediately charges the Wizard’s skill by 40%.
-gadgets.archer,"Создаёт град стрел над Лучником, летящих вниз, даже сквозь препятствия. Наносит 150 ед. урона вргам и отбрасывает их.","Creates a hail of arrows over the Archer, flying down, even through obstacles. Deals 150 damage to enemies and knocks back them."
+gadgets.archer,"Создаёт град стрел над Лучником, летящих вниз, даже сквозь препятствия. Наносит 150 ед. урона врагам и отбрасывает их.","Creates a hail of arrows over the Archer, flying down, even through obstacles. Deals 150 damage to enemies and knocks back them."
 sp.knight,Даёт шанс в 20% уклониться от атаки.,Gives you a 20% chance to dodge an attack.
 sp.butcher,Даёт шанс в 20% зарядить навык на 15% при получении урона.,Gives a 20% chance to charge the skill by 15% when taking damage.
 sp.spearman,Даёт шанс в 20% оглушить врага атакой вблизи на 1.25 секунды.,Gives a 20% chance to stun an enemy with a close-range attack for 1.25 seconds.
@@ -407,7 +407,7 @@ menu.sell,Прод.,Sell
 class.amulets,Амулеты класса ,Amulets of class 
 amulet.craft,Создать,Craft
 menu.select,Выбрать,Select
-menu.selected,Выбрано,Selected
+menu.selected,Выбран,Selected
 class.statistics,ПОКАЗАТЕЛИ,STATISTICS
 sec, с, s
 class.upgrade.power,УЛУЧШИТЬ ДО %s-Й СИЛЫ?,UPGRADE TO %s POWER LEVEL?
@@ -501,7 +501,7 @@ classes.name,Классы,Classes
 classes.tip.gadget,"Душевный навык — особая способность класса, которую можно использовать три раза за уровень. Можно найти в ящике.",Soul Skill is a special class ability that can be used 3 times per level. Can be found in a box.
 classes.tip.sp,"Душевная сила — пассивная способность класса, которая действует всегда. Можно найти в ящике.",Soul Power is a passive ability of the class that always works. Can be found in a box.
 classes.tip.amulet,"Амулеты — пассивная способность, которая повышает некоторые характеристики класса. Можно создать из фрагментов амулета.",Amulets are a passive ability that increases some class characteristics. You can create an amulet from fragments.
-classes.try,Испытать выбранный,Try selected
+classes.try,Испытать,Try
 classes.upgrade,Улучшить,Upgrade
 menu.close,Закрыть,Close
 reload.veryfast,ОЧЕНЬ БЫСТРАЯ,VERY FAST

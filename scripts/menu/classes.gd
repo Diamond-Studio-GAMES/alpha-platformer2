@@ -46,15 +46,35 @@ func _process(delta):
 	$coins.text = str(G.getv("coins", 0))
 
 
+func pick_class():
+	G.setv("selected_class", selected_class)
+	select_class(selected_class)
+
+
 func select_class(class_n = "player"):
 	selected_class = class_n
+	for i in $classes_list/grid.get_children():
+		if i.name == G.getv("selected_class", "player"):
+			i.get_node("cont/label").add_color_override("font_color", Color.green)
+		elif i.name == class_n:
+			i.get_node("cont/label").add_color_override("font_color", Color.cyan)
+		else:
+			i.get_node("cont/label").add_color_override("font_color", Color.white)
 	for i in $classes.get_children():
 		if i.name != selected_class:
 			i.hide()
 		else:
 			i.show()
 	$class.text = tr(G.CLASSES[selected_class])
+	if G.getv("selected_class", "player") == class_n:
+		$select.text = tr("menu.selected").to_upper()
+		$select.disabled = true
+	else:
+		$select.text = tr("menu.select").to_upper()
+		$select.disabled = false
 	if selected_class == "player" or not selected_class in G.getv("classes", []):
+		if not selected_class in G.getv("classes", []):
+			$select.disabled = true
 		$stats.hide()
 		$upgrade.hide()
 		$gadget.hide()
@@ -204,13 +224,11 @@ func info(val = true):
 		$info_knight.hide()
 		$info_wizard.hide()
 		$info_player.hide()
-		$classes.show()
 	else:
-		$classes.hide()
 		get_node("info_" + selected_class).show()
 	get_node("info_" + selected_class + "/title").text = tr("class.statistics")
 	var node = get_node_or_null("info_" + selected_class + "/upgrade") 
-	if node != null:
+	if node:
 		node.hide()
 	match selected_class:
 		"knight":
@@ -352,43 +370,43 @@ func confirm_upgrade():
 	if curr_info.get_node_or_null("attack2/value") != null:
 		dm2 = curr_info.get_node("attack2/value").text
 	var df = curr_info.get_node("defense/value").text
-	for i in $upgrade/upgrade/classes.get_children():
+	for i in $upgrade_screen/upgrade/classes.get_children():
 		if i.name.begins_with("p"):
 			continue
 		i.hide()
-	get_node("upgrade/upgrade/classes/" + selected_class).show()
-	$upgrade/upgrade/bg.self_modulate = G.CLASS_COLORS_LIGHT[selected_class]
-	$upgrade/upgrade/glow.self_modulate = G.CLASS_COLORS_HIGHLIGHT[selected_class]
-	$upgrade/upgrade/title.text = tr(G.CLASSES[selected_class])
-	for i in $upgrade/upgrade/panels.get_children():
+	get_node("upgrade_screen/upgrade/classes/" + selected_class).show()
+	$upgrade_screen/upgrade/bg.self_modulate = G.CLASS_COLORS_LIGHT[selected_class]
+	$upgrade_screen/upgrade/glow.self_modulate = G.CLASS_COLORS_HIGHLIGHT[selected_class]
+	$upgrade_screen/upgrade/title.text = tr(G.CLASSES[selected_class])
+	for i in $upgrade_screen/upgrade/panels.get_children():
 		i.hide()
 		i.get_node("sfx_value").volume_db = -60
-	$upgrade/upgrade/panel/title.text = tr("class.stat.level")
-	$upgrade/upgrade/panel/previous.text = str(G.getv(selected_class + "_level", 0) - 1)
-	$upgrade/upgrade/panel/next.text = str(G.getv(selected_class + "_level", 0))
-	$upgrade/upgrade/panels/panel0.show()
-	$upgrade/upgrade/panels/panel0/title.text = tr("class.stat.health")
-	$upgrade/upgrade/panels/panel0/previous.text = prev_h
-	$upgrade/upgrade/panels/panel0/next.text = h
-	$upgrade/upgrade/panels/panel0.get_node("sfx_value").volume_db = 0
+	$upgrade_screen/upgrade/panel/title.text = tr("class.stat.level")
+	$upgrade_screen/upgrade/panel/previous.text = str(G.getv(selected_class + "_level", 0) - 1)
+	$upgrade_screen/upgrade/panel/next.text = str(G.getv(selected_class + "_level", 0))
+	$upgrade_screen/upgrade/panels/panel0.show()
+	$upgrade_screen/upgrade/panels/panel0/title.text = tr("class.stat.health")
+	$upgrade_screen/upgrade/panels/panel0/previous.text = prev_h
+	$upgrade_screen/upgrade/panels/panel0/next.text = h
+	$upgrade_screen/upgrade/panels/panel0.get_node("sfx_value").volume_db = 0
 	if int(prev_df) != 0:
-		$upgrade/upgrade/panels/panel1.show()
-		$upgrade/upgrade/panels/panel1/title.text = tr("class.stat.defense")
-		$upgrade/upgrade/panels/panel1/previous.text = prev_df
-		$upgrade/upgrade/panels/panel1/next.text = df
-		$upgrade/upgrade/panels/panel1.get_node("sfx_value").volume_db = 0
-	$upgrade/upgrade/panels/panel2.show()
-	$upgrade/upgrade/panels/panel2/title.text = tr("class.stat.damage")
-	$upgrade/upgrade/panels/panel2/previous.text = prev_dm
-	$upgrade/upgrade/panels/panel2/next.text = dm
-	$upgrade/upgrade/panels/panel2.get_node("sfx_value").volume_db = 0
+		$upgrade_screen/upgrade/panels/panel1.show()
+		$upgrade_screen/upgrade/panels/panel1/title.text = tr("class.stat.defense")
+		$upgrade_screen/upgrade/panels/panel1/previous.text = prev_df
+		$upgrade_screen/upgrade/panels/panel1/next.text = df
+		$upgrade_screen/upgrade/panels/panel1.get_node("sfx_value").volume_db = 0
+	$upgrade_screen/upgrade/panels/panel2.show()
+	$upgrade_screen/upgrade/panels/panel2/title.text = tr("class.stat.damage")
+	$upgrade_screen/upgrade/panels/panel2/previous.text = prev_dm
+	$upgrade_screen/upgrade/panels/panel2/next.text = dm
+	$upgrade_screen/upgrade/panels/panel2.get_node("sfx_value").volume_db = 0
 	if int(prev_dm2) != 0:
-		$upgrade/upgrade/panels/panel3.show()
-		$upgrade/upgrade/panels/panel3/title.text = tr("class.stat.mdamage")
-		$upgrade/upgrade/panels/panel3/previous.text = prev_dm2
-		$upgrade/upgrade/panels/panel3/next.text = dm2
-		$upgrade/upgrade/panels/panel3.get_node("sfx_value").volume_db = 0
-	$upgrade/upgrade/anim.play("upgrade")
+		$upgrade_screen/upgrade/panels/panel3.show()
+		$upgrade_screen/upgrade/panels/panel3/title.text = tr("class.stat.mdamage")
+		$upgrade_screen/upgrade/panels/panel3/previous.text = prev_dm2
+		$upgrade_screen/upgrade/panels/panel3/next.text = dm2
+		$upgrade_screen/upgrade/panels/panel3.get_node("sfx_value").volume_db = 0
+	$upgrade_screen/upgrade/anim.play("upgrade")
 
 
 func upgrade_ulti():
@@ -455,39 +473,39 @@ func confirm_upgrade_ulti():
 	var uc = ""
 	if curr_info.get_node_or_null("ulti_c/value") != null:
 		uc = curr_info.get_node("ulti_c/value").text
-	for i in $upgrade/upgrade/classes.get_children():
+	for i in $upgrade_screen/upgrade/classes.get_children():
 		if i.name.begins_with("p"):
 			continue
 		i.hide()
-	get_node("upgrade/upgrade/classes/" + selected_class).show()
-	$upgrade/upgrade/bg.self_modulate = G.CLASS_COLORS_LIGHT[selected_class]
-	$upgrade/upgrade/glow.self_modulate = G.CLASS_COLORS_HIGHLIGHT[selected_class]
-	$upgrade/upgrade/title.text = tr(G.CLASSES[selected_class])
-	for i in $upgrade/upgrade/panels.get_children():
+	get_node("upgrade_screen/upgrade/classes/" + selected_class).show()
+	$upgrade_screen/upgrade/bg.self_modulate = G.CLASS_COLORS_LIGHT[selected_class]
+	$upgrade_screen/upgrade/glow.self_modulate = G.CLASS_COLORS_HIGHLIGHT[selected_class]
+	$upgrade_screen/upgrade/title.text = tr(G.CLASSES[selected_class])
+	for i in $upgrade_screen/upgrade/panels.get_children():
 		i.hide()
 		i.get_node("sfx_value").volume_db = -60
-	$upgrade/upgrade/panel/title.text = tr("class.stat.skill")
-	$upgrade/upgrade/panel/previous.text = str(G.getv(selected_class + "_ulti_level", 1) - 1)
-	$upgrade/upgrade/panel/next.text = str(G.getv(selected_class + "_ulti_level", 1))
+	$upgrade_screen/upgrade/panel/title.text = tr("class.stat.skill")
+	$upgrade_screen/upgrade/panel/previous.text = str(G.getv(selected_class + "_ulti_level", 1) - 1)
+	$upgrade_screen/upgrade/panel/next.text = str(G.getv(selected_class + "_ulti_level", 1))
 	if prev_u != u:
-		$upgrade/upgrade/panels/panel0.show()
-		$upgrade/upgrade/panels/panel0/title.text = curr_info.get_node("ulti").text
-		$upgrade/upgrade/panels/panel0/previous.text = prev_u
-		$upgrade/upgrade/panels/panel0/next.text = u
-		$upgrade/upgrade/panels/panel0.get_node("sfx_value").volume_db = 0
+		$upgrade_screen/upgrade/panels/panel0.show()
+		$upgrade_screen/upgrade/panels/panel0/title.text = curr_info.get_node("ulti").text
+		$upgrade_screen/upgrade/panels/panel0/previous.text = prev_u
+		$upgrade_screen/upgrade/panels/panel0/next.text = u
+		$upgrade_screen/upgrade/panels/panel0.get_node("sfx_value").volume_db = 0
 	if not prev_uc.empty() and prev_uc != uc:
-		$upgrade/upgrade/panels/panel1.show()
-		$upgrade/upgrade/panels/panel1/title.text = curr_info.get_node("ulti_c").text
-		$upgrade/upgrade/panels/panel1/previous.text = prev_uc
-		$upgrade/upgrade/panels/panel1/next.text = uc
-		$upgrade/upgrade/panels/panel1.get_node("sfx_value").volume_db = 0
-	$upgrade/upgrade/anim.play("upgrade")
+		$upgrade_screen/upgrade/panels/panel1.show()
+		$upgrade_screen/upgrade/panels/panel1/title.text = curr_info.get_node("ulti_c").text
+		$upgrade_screen/upgrade/panels/panel1/previous.text = prev_uc
+		$upgrade_screen/upgrade/panels/panel1/next.text = uc
+		$upgrade_screen/upgrade/panels/panel1.get_node("sfx_value").volume_db = 0
+	$upgrade_screen/upgrade/anim.play("upgrade")
 
 
 func close_upgrade():
-	$upgrade/upgrade/anim.stop()
-	$upgrade/upgrade.hide()
-	$upgrade/tint/tint.color = Color(1, 1, 1, 0)
+	$upgrade_screen/upgrade/anim.stop()
+	$upgrade_screen/upgrade.hide()
+	$upgrade_screen/tint/tint.color = Color(1, 1, 1, 0)
 
 
 func sell(ulti = false):
@@ -497,7 +515,7 @@ func sell(ulti = false):
 	var coins_mul = 10 if ulti else 3
 	var coins_get = tokens_left * coins_mul
 	select_class(selected_class)
-	G.receive_loot({"coins":coins_get})
+	G.receive_loot({"coins" : coins_get})
 
 
 func try():

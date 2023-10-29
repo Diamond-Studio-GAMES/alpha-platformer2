@@ -1,6 +1,16 @@
 extends Control
 
 
+var CLASS_ICONS = {
+	"knight" : load("res://textures/classes/knight_helmet.png"),
+	"butcher" : load("res://textures/classes/butcher_helmet.png"),
+	"spearman" : load("res://textures/classes/spearman_helmet.png"),
+	"wizard" : load("res://textures/classes/wizard_helmet.png"),
+	"archer" : load("res://textures/classes/archer_helmet.png"),
+	"player" : null
+}
+
+
 func _ready():
 	$multiplayer/location.prefix = tr("multiplayer.loc")
 	$multiplayer/level.prefix = tr("multiplayer.lvl")
@@ -24,10 +34,16 @@ func _ready():
 				i.grab_focus()
 				$levels.call_deferred("ensure_control_visible", i)
 	if not G.getv("learned", false):
-		if not G.getv("shop_visited", false):
+		if not G.getv("classes_visited", false):
 			$education0.show()
+		elif not G.getv("shop_visited", false):
+			$education2.show()
 		else:
 			$education4.show()
+
+
+func _process(delta):
+	$classes_button.icon = CLASS_ICONS[G.getv("selected_class", "player")]
 
 
 func play_lvl(lvl = "1_1"):

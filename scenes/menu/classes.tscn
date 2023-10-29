@@ -597,6 +597,9 @@ anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -453, -335 )
 theme = ExtResource( 10 )
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="bg" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -615,9 +618,8 @@ clip_text = true
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -176.5
-margin_top = 8.0
 margin_right = 176.5
-margin_bottom = 78.0
+margin_bottom = 70.0
 grow_horizontal = 2
 custom_fonts/font = ExtResource( 5 )
 text = "classes.name"
@@ -627,9 +629,9 @@ align = 1
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -88.0
-margin_top = 24.0
+margin_top = 16.0
 margin_right = -24.0
-margin_bottom = 64.0
+margin_bottom = 56.0
 text = "9999"
 valign = 1
 
@@ -647,9 +649,9 @@ expand = true
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -192.0
-margin_top = 24.0
+margin_top = 16.0
 margin_right = -128.0
-margin_bottom = 64.0
+margin_bottom = 56.0
 text = "9999"
 valign = 1
 
@@ -663,81 +665,219 @@ margin_bottom = 20.0
 texture = ExtResource( 19 )
 expand = true
 
-[node name="classes_grid" type="GridContainer" parent="."]
+[node name="classes_list" type="Panel" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -422.0
-margin_top = -101.0
-margin_right = -121.0
-margin_bottom = 101.0
-custom_constants/vseparation = 5
-custom_constants/hseparation = 5
+margin_left = -374.0
+margin_top = -190.0
+margin_right = -122.0
+margin_bottom = 150.0
+
+[node name="grid" type="GridContainer" parent="classes_list"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
 columns = 2
 
-[node name="class0" type="Button" parent="classes_grid"]
-margin_right = 148.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 148, 64 )
-text = "class.none.l"
+[node name="player" type="ToolButton" parent="classes_list/grid"]
+margin_right = 120.0
+margin_bottom = 107.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="class1" type="Button" parent="classes_grid"]
-margin_left = 153.0
-margin_right = 309.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 148, 64 )
-text = "class.knight.l"
-icon = ExtResource( 27 )
-expand_icon = true
+[node name="cont" type="VBoxContainer" parent="classes_list/grid/player"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
-[node name="class2" type="Button" parent="classes_grid"]
-margin_top = 69.0
-margin_right = 148.0
-margin_bottom = 133.0
-rect_min_size = Vector2( 148, 64 )
-text = "class.butcher.l"
-icon = ExtResource( 11 )
-expand_icon = true
+[node name="label" type="Label" parent="classes_list/grid/player/cont"]
+margin_top = 41.0
+margin_right = 120.0
+margin_bottom = 65.0
+size_flags_vertical = 6
+text = "class.none"
+align = 1
+valign = 1
+clip_text = true
 
-[node name="class3" type="Button" parent="classes_grid"]
-margin_left = 153.0
-margin_top = 69.0
-margin_right = 309.0
-margin_bottom = 133.0
-rect_min_size = Vector2( 148, 64 )
-text = "class.spearman.l"
-icon = ExtResource( 34 )
-expand_icon = true
+[node name="knight" type="ToolButton" parent="classes_list/grid"]
+margin_left = 128.0
+margin_right = 248.0
+margin_bottom = 107.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="class4" type="Button" parent="classes_grid"]
-margin_top = 138.0
-margin_right = 148.0
-margin_bottom = 202.0
-rect_min_size = Vector2( 148, 64 )
-text = "class.wizard.l"
-icon = ExtResource( 22 )
-expand_icon = true
+[node name="cont" type="VBoxContainer" parent="classes_list/grid/knight"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
-[node name="class5" type="Button" parent="classes_grid"]
-margin_left = 153.0
-margin_top = 138.0
-margin_right = 309.0
-margin_bottom = 202.0
-rect_min_size = Vector2( 148, 64 )
-text = "class.archer.l"
-icon = ExtResource( 3 )
-expand_icon = true
+[node name="icon" type="TextureRect" parent="classes_list/grid/knight/cont"]
+margin_right = 120.0
+margin_bottom = 79.0
+size_flags_vertical = 3
+texture = ExtResource( 27 )
+stretch_mode = 6
+
+[node name="label" type="Label" parent="classes_list/grid/knight/cont"]
+margin_top = 83.0
+margin_right = 120.0
+margin_bottom = 107.0
+text = "class.knight"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="butcher" type="ToolButton" parent="classes_list/grid"]
+margin_top = 115.0
+margin_right = 120.0
+margin_bottom = 222.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="cont" type="VBoxContainer" parent="classes_list/grid/butcher"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="icon" type="TextureRect" parent="classes_list/grid/butcher/cont"]
+margin_right = 120.0
+margin_bottom = 79.0
+size_flags_vertical = 3
+texture = ExtResource( 11 )
+stretch_mode = 6
+
+[node name="label" type="Label" parent="classes_list/grid/butcher/cont"]
+margin_top = 83.0
+margin_right = 120.0
+margin_bottom = 107.0
+text = "class.butcher"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="spearman" type="ToolButton" parent="classes_list/grid"]
+margin_left = 128.0
+margin_top = 115.0
+margin_right = 248.0
+margin_bottom = 222.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="cont" type="VBoxContainer" parent="classes_list/grid/spearman"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="icon" type="TextureRect" parent="classes_list/grid/spearman/cont"]
+margin_right = 120.0
+margin_bottom = 79.0
+size_flags_vertical = 3
+texture = ExtResource( 34 )
+stretch_mode = 6
+
+[node name="label" type="Label" parent="classes_list/grid/spearman/cont"]
+margin_top = 83.0
+margin_right = 120.0
+margin_bottom = 107.0
+text = "class.spearman"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="wizard" type="ToolButton" parent="classes_list/grid"]
+margin_top = 230.0
+margin_right = 120.0
+margin_bottom = 336.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="cont" type="VBoxContainer" parent="classes_list/grid/wizard"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="icon" type="TextureRect" parent="classes_list/grid/wizard/cont"]
+margin_right = 120.0
+margin_bottom = 78.0
+size_flags_vertical = 3
+texture = ExtResource( 22 )
+stretch_mode = 6
+
+[node name="label" type="Label" parent="classes_list/grid/wizard/cont"]
+margin_top = 82.0
+margin_right = 120.0
+margin_bottom = 106.0
+text = "class.wizard"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="archer" type="ToolButton" parent="classes_list/grid"]
+margin_left = 128.0
+margin_top = 230.0
+margin_right = 248.0
+margin_bottom = 336.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="cont" type="VBoxContainer" parent="classes_list/grid/archer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="icon" type="TextureRect" parent="classes_list/grid/archer/cont"]
+margin_right = 120.0
+margin_bottom = 78.0
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+stretch_mode = 6
+
+[node name="label" type="Label" parent="classes_list/grid/archer/cont"]
+margin_top = 82.0
+margin_right = 120.0
+margin_bottom = 106.0
+text = "class.archer"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="class_panel" type="Panel" parent="."]
+anchor_left = 0.675
+anchor_top = 0.5
+anchor_right = 0.675
+anchor_bottom = 0.5
+margin_left = -183.0
+margin_top = -202.0
+margin_right = 195.0
+margin_bottom = 260.0
+mouse_filter = 2
+size_flags_vertical = 4
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="select" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -368.0
+margin_top = 165.0
+margin_right = -128.0
+margin_bottom = 211.0
+text = "menu.select"
 
 [node name="try" type="Button" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -392.0
-margin_top = 165.0
-margin_right = -152.0
-margin_bottom = 195.0
+margin_left = -368.0
+margin_top = 221.0
+margin_right = -128.0
+margin_bottom = 251.0
 text = "classes.try"
 
 [node name="classes" type="Control" parent="."]
@@ -745,10 +885,10 @@ anchor_left = 0.675
 anchor_top = 0.5
 anchor_right = 0.675
 anchor_bottom = 0.5
-margin_left = -20.0001
-margin_top = 20.0
-margin_right = 19.9999
-margin_bottom = 60.0
+margin_left = -15.0001
+margin_top = 29.0
+margin_right = 24.9999
+margin_bottom = 69.0
 rect_scale = Vector2( 0.75, 0.75 )
 rect_pivot_offset = Vector2( 20, 20 )
 
@@ -840,13 +980,12 @@ anchor_left = 0.675
 anchor_top = 0.5
 anchor_right = 0.675
 anchor_bottom = 0.5
-margin_left = -120.0
-margin_top = -196.0
-margin_right = 120.0
-margin_bottom = -132.0
+margin_left = -160.0
+margin_top = -204.0
+margin_right = 80.0
+margin_bottom = -140.0
 custom_fonts/font = ExtResource( 6 )
 text = "Рыцарь"
-align = 1
 valign = 1
 
 [node name="about" type="Button" parent="class"]
@@ -854,9 +993,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 2.0
+margin_left = 60.0
 margin_top = -15.0
-margin_right = 32.0
+margin_right = 90.0
 margin_bottom = 15.0
 text = "i"
 
@@ -865,10 +1004,10 @@ anchor_left = 0.675
 anchor_top = 0.5
 anchor_right = 0.675
 anchor_bottom = 0.5
-margin_left = -152.2
-margin_top = -140.0
-margin_right = 87.8
-margin_bottom = -108.0
+margin_left = -160.2
+margin_top = -148.0
+margin_right = 79.8
+margin_bottom = -116.0
 text = "Сила: 20 Навык:5"
 valign = 1
 
@@ -878,9 +1017,9 @@ anchor_top = 0.5
 anchor_right = 0.675
 anchor_bottom = 0.5
 margin_left = 3.99994
-margin_top = -148.0
+margin_top = -156.0
 margin_right = 51.9999
-margin_bottom = -100.0
+margin_bottom = -108.0
 texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 5
@@ -902,10 +1041,10 @@ anchor_left = 0.675
 anchor_top = 0.5
 anchor_right = 0.675
 anchor_bottom = 0.5
-margin_left = 59.9999
-margin_top = -148.0
-margin_right = 108.0
-margin_bottom = -100.0
+margin_left = 63.9998
+margin_top = -156.0
+margin_right = 112.0
+margin_bottom = -108.0
 texture_normal = ExtResource( 17 )
 expand = true
 stretch_mode = 5
@@ -927,10 +1066,10 @@ anchor_left = 0.675
 anchor_top = 0.5
 anchor_right = 0.675
 anchor_bottom = 0.5
-margin_left = 116.0
-margin_top = -148.0
-margin_right = 164.0
-margin_bottom = -100.0
+margin_left = 124.0
+margin_top = -156.0
+margin_right = 172.0
+margin_bottom = -108.0
 texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 12 )
@@ -957,9 +1096,9 @@ anchor_top = 0.5
 anchor_right = 0.675
 anchor_bottom = 0.5
 margin_left = -144.0
-margin_top = 132.0
+margin_top = 156.0
 margin_right = 176.0
-margin_bottom = 232.0
+margin_bottom = 256.0
 
 [node name="bar" type="TextureProgress" parent="upgrade"]
 anchor_right = 0.75
@@ -3886,6 +4025,8 @@ bus = "sfx"
 [node name="tint" type="ColorRect" parent="amulet_craft"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 18.0
+margin_bottom = 18.0
 mouse_filter = 2
 color = Color( 1, 1, 1, 0 )
 
@@ -3914,12 +4055,13 @@ text = "menu.edu.0"
 align = 0
 
 [connection signal="pressed" from="back" to="." method="quit"]
-[connection signal="pressed" from="classes_grid/class0" to="." method="select_class" binds= [ "player" ]]
-[connection signal="pressed" from="classes_grid/class1" to="." method="select_class" binds= [ "knight" ]]
-[connection signal="pressed" from="classes_grid/class2" to="." method="select_class" binds= [ "butcher" ]]
-[connection signal="pressed" from="classes_grid/class3" to="." method="select_class" binds= [ "spearman" ]]
-[connection signal="pressed" from="classes_grid/class4" to="." method="select_class" binds= [ "wizard" ]]
-[connection signal="pressed" from="classes_grid/class5" to="." method="select_class" binds= [ "archer" ]]
+[connection signal="pressed" from="classes_list/grid/player" to="." method="select_class" binds= [ "player" ]]
+[connection signal="pressed" from="classes_list/grid/knight" to="." method="select_class" binds= [ "knight" ]]
+[connection signal="pressed" from="classes_list/grid/butcher" to="." method="select_class" binds= [ "butcher" ]]
+[connection signal="pressed" from="classes_list/grid/spearman" to="." method="select_class" binds= [ "spearman" ]]
+[connection signal="pressed" from="classes_list/grid/wizard" to="." method="select_class" binds= [ "wizard" ]]
+[connection signal="pressed" from="classes_list/grid/archer" to="." method="select_class" binds= [ "archer" ]]
+[connection signal="pressed" from="select" to="." method="pick_class"]
 [connection signal="pressed" from="try" to="." method="try"]
 [connection signal="pressed" from="class/about" to="." method="info" binds= [ true ]]
 [connection signal="pressed" from="amulet" to="." method="amulet"]

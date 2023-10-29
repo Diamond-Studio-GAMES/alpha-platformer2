@@ -1,18 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://themes/theme.tres" type="Theme" id=3]
 [ext_resource path="res://textures/effects/backgrounds/levels_bg.png" type="Texture" id=7]
 [ext_resource path="res://prefabs/menu/education.tscn" type="PackedScene" id=27]
 [ext_resource path="res://prefabs/menu/level_dialog.tscn" type="PackedScene" id=30]
-[ext_resource path="res://textures/classes/wizard_helmet.png" type="Texture" id=31]
 [ext_resource path="res://textures/gui/exit.png" type="Texture" id=35]
 [ext_resource path="res://scripts/menu/minigame.gd" type="Script" id=41]
 [ext_resource path="res://textures/gui/shop_icon.png" type="Texture" id=48]
 [ext_resource path="res://scripts/menu/levels.gd" type="Script" id=56]
-
-[sub_resource type="AtlasTexture" id=280]
-atlas = ExtResource( 31 )
-region = Rect2( 0, -4, 28, 28 )
 
 [sub_resource type="CanvasItemMaterial" id=279]
 blend_mode = 4
@@ -776,7 +771,6 @@ margin_top = -64.0
 margin_right = 288.0
 margin_bottom = -16.0
 text = "classes.name"
-icon = SubResource( 280 )
 clip_text = true
 expand_icon = true
 
@@ -937,6 +931,7 @@ margin_top = 72.0
 margin_right = -40.0
 margin_bottom = 120.0
 text = "4.name"
+expand_icon = true
 script = ExtResource( 41 )
 minigame_name = "4.name"
 id = 4
