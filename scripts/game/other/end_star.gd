@@ -2,11 +2,15 @@ extends Area2D
 
 
 var damaged_count = 0
+var kills_count = 0
+var boss_kills_count = 0
 var ended = false
 
 
 func _ready():
 	damaged_count = G.getv("damaged")
+	kills_count = G.getv("kills")
+	boss_kills_count = G.getv("boss_kills", 1)
 
 
 func end_level(l):
@@ -26,6 +30,8 @@ func end_level(l):
 		G.ach.complete(Achievements.ON_THE_EDGE)
 	if damaged_count == G.getv("damaged"):
 		G.ach.complete(Achievements.UNTOUCHED)
+	if kills_count == G.getv("kills") and boss_kills_count == G.getv("boss_kills"):
+		G.ach.complete(Achievements.PACIFIST)
 	yield(get_tree().create_timer(2, false), "timeout")
 	if get_tree().is_network_server():
 		yield(get_tree().create_timer(0.5, false), "timeout")

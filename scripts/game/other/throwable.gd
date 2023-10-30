@@ -16,9 +16,7 @@ enum EntityType {
 
 export (float) var SPEED = 150
 export (float) var destroy_time = 3
-var timer = 0
 export (Vector2) var angle = Vector2.ZERO
-var is_destroying = false
 export (bool) var is_player_projectile = true
 export (bool) var is_enemy_projectile = false
 export (bool) var destroyable_by_attacks = true
@@ -27,12 +25,14 @@ export (String, FILE, "*.tscn") var effect_wall = ""
 export (String, FILE, "*.tscn") var effect_hit = ""
 export (String, FILE, "*.tscn") var effect_end_of_range = ""
 export (String, FILE, "*.tscn") var effect_reject = ""
-var destroy_effect_simple_path = "res://prefabs/effects/destroy_effect.tscn"
 export (Color) var simple_effect_color = Color.white
 export (Vector2) var simple_effect_scale = Vector2.ONE
 export (Vector2) var simple_effect_offset = Vector2.ZERO
 export (String, FILE, "*.wav, *.ogg, *.tres") var simple_effect_destroy_sound_hit = ""
 export (String, FILE, "*.wav, *.ogg, *.tres") var simple_effect_destroy_sound_wall = ""
+var timer = 0
+var is_destroying = false
+var destroy_effect_simple_path = "res://prefabs/effects/destroy_effect.tscn"
 
 
 func _ready():
@@ -52,6 +52,8 @@ func destroy_it_attack(attack):
 		return
 	if is_enemy_projectile and attack.is_enemy_attack:
 		return
+	if is_enemy_projectile and attack.is_player_attack and MP.auth(attack):
+		G.ach.complete(Achievements.REJECTED)
 	destroy_it(DestroyedReason.REJECT)
 
 

@@ -42,10 +42,16 @@ const ON_THE_EDGE = "almost_died"
 const ORIGIN = "lore_seen"
 const KILLER = "killer"
 const YOU_MISSED = "dodge_shot"
-
 const AIR = "almost_drown"
-const MY_LEG = "fall_damage"
-const SKILL_UPGRADING = "skill_used_10"
+const FALL = "fall_damaged"
+const SKILL = "skill_used"
+const BEAR = "beartraped"
+const PACIFIST = "no_kills"
+const REJECTED = "reject"
+const RETURN_TO_SENDER = "self_damage"
+const HACKER = "boxes_opened"
+const SOMETHING = "something"
+const HERO = "complete"
 
 signal effect_completed
 var blocked_counter = 0
@@ -86,6 +92,9 @@ var achievements = {
 		"name" : "achv.boss7",
 		"desc" : "achv.boss7.desc"
 	},
+	# BOSS 8
+	# BOSS 9
+	# BOSS 10
 	WHAT_IS_IT : {
 		"icon" : load("res://textures/achievements/first_class.png"),
 		"name" : "achv.what_is_it",
@@ -236,6 +245,52 @@ var achievements = {
 		"name" : "achv.you_missed",
 		"desc" : "achv.you_missed.desc"
 	},
+	AIR : {
+		"icon" : load("res://textures/achievements/almost_drown.png"),
+		"name" : "achv.air",
+		"desc" : "achv.air.desc"
+	},
+	FALL : {
+		"icon" : load("res://textures/achievements/fall_damaged.png"),
+		"name" : "achv.fall",
+		"desc" : "achv.fall.desc"
+	},
+	SKILL : {
+		"icon" : load("res://textures/achievements/skill_used.png"),
+		"name" : "achv.skill",
+		"desc" : "achv.skill.desc"
+	},
+	BEAR : {
+		"icon" : load("res://textures/achievements/beartraped.png"),
+		"name" : "achv.bear",
+		"desc" : "achv.bear.desc"
+	},
+	PACIFIST : {
+		"icon" : load("res://textures/achievements/no_kills.png"),
+		"name" : "achv.pacifist",
+		"desc" : "achv.pacifist.desc"
+	},
+	REJECTED : {
+		"icon" : load("res://textures/achievements/reject.png"),
+		"name" : "achv.rejected",
+		"desc" : "achv.rejected.desc"
+	},
+	RETURN_TO_SENDER : {
+		"icon" : load("res://textures/achievements/self_damage.png"),
+		"name" : "achv.return_to_sender",
+		"desc" : "achv.return_to_sender.desc"
+	},
+	HACKER : {
+		"icon" : load("res://textures/achievements/boxes_opened.png"),
+		"name" : "achv.hacker",
+		"desc" : "achv.hacker.desc"
+	},
+	# Missing
+	HERO : {
+		"icon" : load("res://textures/achievements/complete.png"),
+		"name" : "achv.hero",
+		"desc" : "achv.hero.desc"
+	},
 }
 
 
@@ -279,4 +334,12 @@ func check(id):
 		KILLER:
 			if G.getv("kills") >= 250:
 				complete(id)
-		
+		SKILL:
+			if G.getv("ulti_used") >= 15:
+				complete(id)
+		BEAR:
+			if G.getv("beartraped") >= 10:
+				complete(id)
+		HACKER:
+			if G.getv("boxes_opened") >= 50:
+				complete(id)

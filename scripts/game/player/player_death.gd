@@ -121,6 +121,9 @@ func ulti():
 	_ulti_tween.start()
 	_anim_tree["parameters/ulti_shot/active"] = true
 	$camera/gui/base/ulti_use/anim.play("ulti_use")
+	if MP.auth(self):
+		G.addv("ulti_used", 1)
+		G.ach.check(Achievements.SKILL)
 	yield(get_tree().create_timer(0.8, false), "timeout")
 	can_see = false
 	$visual.modulate = Color(1, 1, 1, 0.25)

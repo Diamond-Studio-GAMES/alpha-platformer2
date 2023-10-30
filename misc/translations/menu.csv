@@ -227,7 +227,7 @@ achv.better_together.desc,Пройди любой уровень в мульти
 achv.good_partner,Надёжный товарищ,Good partner
 achv.good_partner.desc,Воскреси напарника 5 раз.,Revive your partner 5 times.
 achv.screw_it,Беззаботность,Carefree
-achv.screw_it.desc,"Дай товарищу завершить уровень, пока вы лежите на земле.",Let your partner complete the level while you are lying on the ground.
+achv.screw_it.desc,"Дай товарищу завершить уровень, пока ты лежишь на земле.",Let your partner complete the level while you are lying on the ground.
 achv.what_a_waste,Какая жалость!,What a pity!
 achv.what_a_waste.desc,Пройди уровень с 0 здоровья.,Complete a level with 0 health.
 achv.on_the_edge,На грани,On the edge
@@ -238,26 +238,26 @@ achv.killer,Убийца,Killer
 achv.killer.desc,Соверши 250 убийств.,Make 250 kills.
 achv.you_missed,Ха! Не попал,Ha! You missed
 achv.you_missed.desc,Уклонись от атаки.,Dodge an attack.
+achv.air,Во-о-оздух,A-a-ai-i-ir
+achv.air.desc,Всплыви на поверхность с 20% и ниже оставшегося воздуха.,Float to the surface with 20% and less remaining air.
+achv.fall,Ай! Нога!,Ouch! My leg!
+achv.fall.desc,Получи урон от падения.,Take damage from the fall.
+achv.skill,Оттачивание навыка,Upgrading skill
+achv.skill.desc,Используй навык 15 раз.,Use skill 15 times.
+achv.bear,Как медведь,Like a bear
+achv.bear.desc,Попади в капкан 10 раз.,Fall into beartrap 10 times.
+achv.pacifist,Пацифист,Pacifist
+achv.pacifist.desc,"Пройди уровень, не дав ни одному монстру умереть.",Complete the level without letting any monster die.
+achv.rejected,Отклонение,Refuse
+achv.rejected.desc,Отрази снаряд врага.,Reject enemy’s projectile.
+achv.return_to_sender,Вернуть отправителю,Return to sender
+achv.return_to_sender.desc,"Получи урон от собственного снаряда, отражённого Чёрным магом.","Take damage from your own projectile, reflected by the Black Wizard."
+achv.hacker,Взломщик,Burglar
+achv.hacker.desc,Открой 50 ящиков.,Open 50 boxes.
 ,,
 ,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
-,,
+achv.hero,ГЕРОЙ!,THE HERO!
+achv.hero.desc,Пройди игру!,Complete the game!
 amulet.none,Нет,None
 amulet.power,Сила,Power
 amulet.power.desc,+15 к урону,+15 attack

@@ -10,7 +10,7 @@ onready var message = $online/message
 
 
 func back():
-	get_tree().change_scene("res://scenes/menu/levels.tscn")
+	get_tree().change_scene("res://scenes/menu/shop.tscn")
 
 
 func is_promocode_used(code = ""):

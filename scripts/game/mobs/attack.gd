@@ -71,6 +71,7 @@ func deal_damage(node):
 		return false
 	if MP.auth(node):
 		return node.hurt(damage, sign(node.global_position.x - global_position.x) * knockback, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
+	return true
 
 
 func _physics_process(delta):

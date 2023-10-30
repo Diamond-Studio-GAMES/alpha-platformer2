@@ -145,6 +145,7 @@ func ulti():
 	_ulti_tween.start()
 	_anim_tree["parameters/ulti_shot/active"] = true
 	G.addv("ulti_used", 1)
+	G.ach.check(Achievements.SKILL)
 	var node = _ulti.instance()
 	node.get_node("rockets_attack").damage = _attack_node.damage * 5
 	node.global_position = global_position
@@ -256,6 +257,10 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 			_tween.kill()
 	_tween = create_tween()
 	_tween.tween_property(_health_change_bar, "value", current_health, 1).set_delay(0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).from_current()
+	G.addv("damaged", 1)
+	if damage_source == "fall":
+		G.addv("fall_damaged", 1)
+		G.ach.complete(Achievements.FALL)
 	var died = false
 	if current_health > 0:
 		emit_signal("hurt")

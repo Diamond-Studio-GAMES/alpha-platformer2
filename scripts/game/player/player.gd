@@ -295,6 +295,7 @@ func _hurt_intermediate(damage_source, died):
 		G.addv("damaged", 1)
 		if damage_source == "fall":
 			G.addv("fall_damaged", 1)
+			G.ach.complete(Achievements.FALL)
 	if died:
 		collision_layer = 0b0
 		collision_mask = 0b1
@@ -448,6 +449,7 @@ func ulti():
 	_anim_tree["parameters/ulti_shot/active"] = true
 	if MP.auth(self):
 		G.addv("ulti_used", 1)
+		G.ach.check(Achievements.SKILL)
 		var node = _ulti.instance()
 		node.has_amulet = is_amulet(ulti_amulet)
 		node.level = ulti_power
@@ -657,3 +659,13 @@ func is_amulet(type):
 	if amulet == type:
 		return true
 	return false
+
+
+func _update_water_state():
+	if waters.size() > 0:
+		under_water = true
+	else:
+		under_water = false
+		if breath_time < 2 and MP.auth(self):
+			G.ach.complete(Achievements.AIR)
+		breath_time = 10

@@ -70,18 +70,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [ true, false ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("effect:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.075, 0.15, 0.225 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( 2, 2 ), Vector2( 1, 2 ), Vector2( 2, 1 ), Vector2( 2, 2 ) ]
-}
 
 [node name="effect_sword_throw_reject" type="Node2D"]
 

@@ -25,7 +25,6 @@ effect_wall = "res://prefabs/effects/destroy_effects/effect_redball_hit.tscn"
 effect_hit = "res://prefabs/effects/destroy_effects/effect_redball_hit.tscn"
 effect_reject = "res://prefabs/effects/destroy_effects/effect_redball_hit.tscn"
 simple_effect_color = Color( 1, 0, 0, 1 )
-simple_effect_offset = Vector2( 0, 80 )
 simple_effect_destroy_sound_hit = "res://sounds/sfx/randomed/magicball_hit.tres"
 simple_effect_destroy_sound_wall = "res://sounds/sfx/randomed/magicball_hit.tres"
 

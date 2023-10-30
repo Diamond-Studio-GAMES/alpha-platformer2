@@ -223,6 +223,7 @@ func open_gui(what = null):
 	var loot = {}
 	if what == null:
 		G.addv("boxes_opened", 1)
+		G.ach.check(Achievements.HACKER)
 		match box_type:
 			BoxType.STANDARD:
 				loot = open_box()

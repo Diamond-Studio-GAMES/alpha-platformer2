@@ -73,7 +73,7 @@ func select_class(class_n = "player"):
 		$select.text = tr("menu.select").to_upper()
 		$select.disabled = false
 	if selected_class == "player" or not selected_class in G.getv("classes", []):
-		if not selected_class in G.getv("classes", []):
+		if selected_class != "player":
 			$select.disabled = true
 		$stats.hide()
 		$upgrade.hide()

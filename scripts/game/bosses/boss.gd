@@ -82,6 +82,7 @@ func get_hit(area):
 		waiting_for_death = false
 		anim.play("final_death")
 		G.setv("boss_" + G.current_level + "_killed", true)
+		G.addv("kills", 1)
 
 
 func _process(delta):
