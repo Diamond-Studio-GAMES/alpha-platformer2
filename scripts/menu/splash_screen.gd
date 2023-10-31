@@ -107,7 +107,7 @@ func patch_request(result, code, header, body):
 	if cf.has_section_key("patches", str(G.VERSION_CODE)):
 		if cf.get_value("patches", str(G.VERSION_CODE), 0) > G.main_getv("patch_version", 0):
 			http.download_file = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir().plus_file("apa2_patch.pck")
-			http.connect("request_completed", self, "download_patch", [cf.get_value("pacthes", str(G.VERSION_CODE))], CONNECT_ONESHOT)
+			http.connect("request_completed", self, "download_patch", [cf.get_value("patches", str(G.VERSION_CODE))], CONNECT_ONESHOT)
 			var err = http.request("http://f0695447.xsph.ru/apa2/patches/" + str(G.VERSION_CODE) + ".pck")
 			label.text = tr("ss.status.download")
 			if err:
