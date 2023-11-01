@@ -102,3 +102,4 @@ func _on_button_pressed():
 func play_anim():
 	$MultiplayerSynchronizer.sync_call(self, "play_anim")
 	$talk_effect/anim.play("talk")
+	$talk_effect/anim.seek(0, true)

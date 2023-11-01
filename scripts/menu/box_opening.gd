@@ -466,6 +466,7 @@ func open_gui(what = null):
 	var items_showed = 0
 	if loot.has("coins"):
 		var node = you_get.instance()
+		node.get_node("timer").wait_time = 0.1 + 0.1 * items_showed
 		node.self_modulate = Color.gold
 		node.get_node("icon").texture = coin
 		node.get_node("label").text = str(loot["coins"])
@@ -478,6 +479,7 @@ func open_gui(what = null):
 	if loot.has("amulet_frags"):
 		for i in loot["amulet_frags"].keys():
 			var node = you_get.instance()
+			node.get_node("timer").wait_time = 0.1 + 0.1 * items_showed
 			node.self_modulate = Color(0, 0.5, 0, 1)
 			node.get_node("icon").texture = AMULET_ICONS[i]
 			node.get_node("label").text = str(loot["amulet_frags"][i])
@@ -489,6 +491,7 @@ func open_gui(what = null):
 	if loot.has("tokens"):
 		for i in loot["tokens"].keys():
 			var node = you_get.instance()
+			node.get_node("timer").wait_time = 0.1 + 0.1 * items_showed
 			node.self_modulate = Color.magenta
 			node.get_node("icon").texture = token
 			node.get_node("icon/center").texture = CLASS_ICONS[i]
@@ -502,6 +505,7 @@ func open_gui(what = null):
 	if loot.has("ulti_tokens"):
 		for i in loot["ulti_tokens"].keys():
 			var node = you_get.instance()
+			node.get_node("timer").wait_time = 0.1 + 0.1 * items_showed
 			node.self_modulate = Color.darkred
 			node.get_node("icon").texture = ulti_token
 			node.get_node("icon/center").texture = ULTI_ICONS[i]
@@ -518,6 +522,7 @@ func open_gui(what = null):
 			items_showed += 1
 	if loot.has("potions1"):
 		var node = you_get.instance()
+		node.get_node("timer").wait_time = 0.1 + 0.1 * items_showed
 		node.self_modulate = Color.darkred
 		node.get_node("icon").texture = POTIONS_ICONS["small"]
 		node.get_node("label").text = str(loot["potions1"])
@@ -528,6 +533,7 @@ func open_gui(what = null):
 		items_showed += 1
 	if loot.has("potions2"):
 		var node = you_get.instance()
+		node.get_node("timer").wait_time = 0.1 + 0.1 * items_showed
 		node.self_modulate = Color.darkred
 		node.get_node("icon").texture = POTIONS_ICONS["normal"]
 		node.get_node("label").text = str(loot["potions2"])
@@ -538,6 +544,7 @@ func open_gui(what = null):
 		items_showed += 1
 	if loot.has("potions3"):
 		var node = you_get.instance()
+		node.get_node("timer").wait_time = 0.1 + 0.1 * items_showed
 		node.self_modulate = Color.darkred
 		node.get_node("icon").texture = POTIONS_ICONS["big"]
 		node.get_node("label").text = str(loot["potions3"])
@@ -549,6 +556,7 @@ func open_gui(what = null):
 	if loot.has("gadget"):
 		for i in loot["gadget"]:
 			var node = you_get.instance()
+			node.get_node("timer").wait_time = 0.1 + 0.1 * items_showed
 			node.self_modulate = Color.aquamarine
 			node.get_node("icon").texture = gadget
 			node.get_node("label").text = tr(G.CLASSES[i])
@@ -560,6 +568,7 @@ func open_gui(what = null):
 	if loot.has("soul_power"):
 		for i in loot["soul_power"]:
 			var node = you_get.instance()
+			node.get_node("timer").wait_time = 0.1 + 0.1 * items_showed
 			node.self_modulate = Color.darkorange
 			node.get_node("icon").texture = soul_power
 			node.get_node("label").text = tr(G.CLASSES[i])
@@ -571,6 +580,7 @@ func open_gui(what = null):
 	if loot.has("class"):
 		for i in loot["class"]:
 			var node = you_get.instance()
+			node.get_node("timer").wait_time = 0.1 + 0.1 * items_showed
 			node.self_modulate = G.CLASS_COLORS[i]
 			node.get_node("icon").texture = CLASS_ICONS[i]
 			node.get_node("label").text = tr("item.class")
@@ -581,6 +591,7 @@ func open_gui(what = null):
 			items_showed += 1
 	if loot.has("gems"):
 		var node = you_get.instance()
+		node.get_node("timer").wait_time = 0.1 + 0.1 * items_showed
 		node.self_modulate = Color.webpurple
 		node.get_node("icon").texture = gem
 		node.get_node("label").text = str(loot["gems"])
