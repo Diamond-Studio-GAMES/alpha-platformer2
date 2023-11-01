@@ -163,6 +163,7 @@ player.revived,Возрождение!,Revived!
 player.defeated,Поражение!,Defeated!
 player.revive.multiplayer,ВОСКРЕСИ МЕНЯ!,REVIVE ME!
 door.go,Перейти,Enter
+npc.talk,Говорить,Talk
 1_1.dude,Чувак…,Dude…
 1_1.goright,Ты куда идёшь? Иди вправо!,Where are you going? Go right!
 1_1.hello,Привет! Двигайся с помощью стрелок в левом нижнем углу!,Hello! Move with the arrows in the lower left corner!

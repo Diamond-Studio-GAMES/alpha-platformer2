@@ -164,6 +164,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/game/mobs/mushroom.gd"
 }, {
+"base": "Area2D",
+"class": "NPC",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/npc.gd"
+}, {
 "base": "Node2D",
 "class": "Night",
 "language": "GDScript",
@@ -281,6 +286,7 @@ _global_script_class_icons={
 "MultiplayerSpawnable": "",
 "MultiplayerSynchronizer": "",
 "Mushroom": "",
+"NPC": "res://textures/mobs/npcs/hairs/kare.png",
 "Night": "",
 "Optimizer": "",
 "PlantResource": "res://minigames/minigame6/resources/seed_packet_legendary.png",
