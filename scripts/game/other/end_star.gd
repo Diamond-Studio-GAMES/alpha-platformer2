@@ -11,6 +11,13 @@ func _ready():
 	damaged_count = G.getv("damaged")
 	kills_count = G.getv("kills")
 	boss_kills_count = G.getv("boss_kills", 1)
+	var mob_count = 0
+	for i in $"../mobs".get_children():
+		if i is Mob or i is Boss:
+			mob_count += 1
+	if mob_count == 0:
+		damaged_count = -1
+		kills_count = -1
 
 
 func end_level(l):
