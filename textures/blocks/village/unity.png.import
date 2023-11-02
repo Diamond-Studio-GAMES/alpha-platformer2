@@ -2,20 +2,20 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gosha.png-5178a478d2bc2cf507432a603d77f42d.stex"
+path="res://.import/unity.png-04cc9d30835e606e163c87bd336a901a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/blocks/village/gosha.png"
-dest_files=[ "res://.import/gosha.png-5178a478d2bc2cf507432a603d77f42d.stex" ]
+source_file="res://textures/blocks/village/unity.png"
+dest_files=[ "res://.import/unity.png-04cc9d30835e606e163c87bd336a901a.stex" ]
 
 [params]
 
-compress/mode=1
-compress/lossy_quality=0.4
+compress/mode=0
+compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
