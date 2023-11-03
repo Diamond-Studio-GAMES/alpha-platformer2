@@ -22,7 +22,7 @@ boss.fire,Огненный страж,Fire Guardian
 boss.fire.defeat,"Огненный страж: Я... Выгорел?..
 (убить или пощадить?)","Fire Guardian: Am I... burned out?..
 (kill or spare?)"
-boss.fire.mercy,"Огненный страж: Иди, ты достоин.","Fire Guardian: Go, you are worthy."
+boss.fire.mercy,"Огненный страж: Иди, ты достоин%.","Fire Guardian: Go, you are worthy."
 boss.wizard,Чёрный маг,Black Wizard
 boss.wizard.mercy,"Чёрный маг: Слава тебе, %s!","Black Wizard: Thank you, %s!"
 boss.wizard.defeat,"Чёрный маг: Я был неправ…
@@ -180,8 +180,8 @@ npc.talk,Говорить,Talk
 1_1.heal,"Мало здоровья? Ничего не делай, оно само восстановится до 75%!","Not enough health? Don’t do anything, it will recover to 75% by itself!"
 1_3.stones,Впереди немного камней,There are some rocks ahead
 1_6.vera,ПРЫЖОК ВЕРЫ XD,Jump of Hope!
-1_6.notfool,Я был не самым глупым в школе…,I wasn’t the stupidest in school…
-1_6.geo,Я в этом году попал на городской этап олимпиады по географии…,This year I got to the city stage of the Geography Olympiad…
+1_6.notfool,Я был% не глуп% в школе…,I wasn’t the stupidest in school…
+1_6.geo,Я в этом году попал% на городской этап олимпиады по географии…,This year I got to the city stage of the Geography Olympiad…
 1_7.projectiles,Ты можешь уничтожать снаряды врагов ближней атакой! (не все),You can destroy enemy projectiles with a melee attack! (not all)
 1_8.yourend,"Дальше тебе капец!
  - Пастух >:-)","You will die!
@@ -191,10 +191,10 @@ npc.talk,Говорить,Talk
 1_10.locs,"Лес ->
 <- Поле","Forest ->
 <- Field"
-1_10.boss.0,"Пастух: Как я вижу, ты смог дойти. Я удивлён.","Shepherd: As I see, you are here. I’m surprised."
+1_10.boss.0,"Пастух: Как я вижу, ты сумел% дойти. Я удивлён.","Shepherd: As I see, you are here. I’m surprised."
 1_10.boss.1,"Пастух: Я не думал, что ты выживешь.",Shepherd: I didn’t think you’d survive.
 1_10.boss.2,"Пастух: Ну и ладно, я разберусь с тобой сам.","Shepherd: Well, okay, I'll deal with you myself."
-1_10.boss.start,"Пастух: Покажи, на что ты способен!",Shepherd: Show what you are capable of!
+1_10.boss.start,"Пастух: Покажи, на что ты способен%!",Shepherd: Show what you are capable of!
 2_1.pants,"Обтягивающие штаны — фигня, ненавижу!",Tight pants are strange!
 2_2.or,Не люблю же я визг женщин!..,I don't like the screeching of women!..
 2_3.flame,Костёр? Горящий?..,A bonfire? Burning?..
@@ -219,7 +219,7 @@ npc.talk,Говорить,Talk
 3_9.feeling,"Чем дальше я от дома, тем сильнее чувствуется что-то плохое…","The further away I am from home, the more something bad feels…"
 3_10.boss.1,"Чёрный маг: Очень хорошо, что он передал свои святые знания его последователям…",Black Wizard: It's very good that he passed on his holy knowledge to his followers…
 3_10.boss.0,Чёрный маг: Дракон был отличной личностью…,Black Wizard: Dragon was a great personality…
-3_10.boss.start,Чёрный маг: Не согласен???,Black Wizard: Don't you agree???
+3_10.boss.start,Чёрный маг: Не согласен%???,Black Wizard: Don't you agree???
 4_1.smaller,Осторожно! Пещера сужается!,Caution! The cave is narrowing!
 4_3.remains,"До портала в красный мир осталось 3,5 км",The portal to the red world is 3.5 km away.
 4_4.hot,А здесь жарко…,And it's hot here…
@@ -234,9 +234,9 @@ npc.talk,Говорить,Talk
 | КР. МИР |","^ PORTAL ^
 |R. WORLD|"
 4_10.boss.0,"Великий рыцарь: Слышал, к порталу идёт недавний ""герой"".","Great Knight: I heard a recent ""hero"" is coming to the portal."
-4_10.boss.1,"Великий рыцарь: Хотя, он неплох, но портал ему не светит!","Great Knight: Although he's not bad, but he won't get the portal!"
-4_10.boss.2,Великий рыцарь: Так то он просто хочет более короткий путь.,Great Knight: So he just wants a shorter way.
-4_10.boss.3,Великий рыцарь: Но через меня его путь…,Great Knight: But through me his way…
+4_10.boss.1,"Великий рыцарь: Хотя, он% неплох%, но к порталу никого не пропущу!","Great Knight: Although he's not bad, but he won't get the portal!"
+4_10.boss.2,Великий рыцарь: Так то он% просто хочет более короткий путь.,Great Knight: So he just wants a shorter way.
+4_10.boss.3,Великий рыцарь: Но через меня этот путь…,Great Knight: But through me his way…
 4_10.boss.start,Великий рыцарь: ПРИВЕДЁТ К СМЕРТИ!!!,Great Knight: WILL LEAD TO DEATH!!!
 5_3.love,Мне нравится эта скорость…,I like this speed…
 5_5.beach,Пляж 100 м,Beach 100 m

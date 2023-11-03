@@ -631,6 +631,10 @@ remote func revived_player():
 
 
 func make_dialog(text = "", time = 2, color = Color.white):
+	if G.getv("gender", "male") == "male":
+		text = text.replace("%", "")
+	else:
+		text = text.replace("%", "а")
 	dialog_text.text = text
 	dialog_text.add_color_override("font_color", color)
 	dialog_text.get_font("font").outline_color = Color.black if color.get_luminance() > 0.5 else Color.white

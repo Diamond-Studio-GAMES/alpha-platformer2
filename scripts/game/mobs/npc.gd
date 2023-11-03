@@ -67,10 +67,6 @@ func _ready():
 				dialog_data = hate_tier_1_dialog_data
 	for i in dialog_data:
 		var splits = i.split("|")
-		if G.getv("gender", "male") == "male":
-			splits[2] = splits[2].replace("%", "")
-		else:
-			splits[2] = splits[2].replace("%", "а")
 		dialog.append(splits[2])
 		dialog_colors.append(COLOR_TABLE[splits[0]])
 		dialog_times.append(float(splits[1]))
