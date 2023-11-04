@@ -106,7 +106,7 @@ func statistics():
 		if i.name == "classes_opened":
 			i.get_node("count").text = str(G.getv("classes", []).size())
 			continue
-		i.get_node("count").text = str(G.getv(i.name, 0))
+		i.get_node("count").text = str(G.getv(i.name, 0)).replace("_", "-")
 	for i in $achievements/stats_window/base/column1.get_children():
 		if i.name == "classes_opened":
 			i.get_node("count").text = str(G.getv("classes", []).size())

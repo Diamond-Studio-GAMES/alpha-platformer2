@@ -656,13 +656,12 @@ func get_boss_bar():
 
 
 func _exit_tree():
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("music"), false)
+	if MP.auth(self):
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("music"), false)
 
 
 func is_amulet(type):
-	if amulet == type:
-		return true
-	return false
+	return amulet == type
 
 
 func _update_water_state():

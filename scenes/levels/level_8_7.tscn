@@ -657,8 +657,6 @@ tile_data = PoolIntArray( -2752520, 20, 0, -2752519, 20, 0, -2752518, 20, 0, -28
 
 [node name="npc" parent="mobs" instance=ExtResource( 10 )]
 position = Vector2( 2160, -1280 )
-rotation = 3.14159
-scale = Vector2( 1, -1 )
 dialog_data = [ "c|3|Я всё ещё держусь...", "v|3|Вперёд, джедаи, мы победим!" ]
 
 [node name="head" parent="mobs/npc/visual/body" index="0"]
