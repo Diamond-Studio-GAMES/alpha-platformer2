@@ -1726,6 +1726,7 @@ margin_left = -200.0
 margin_top = -70.0
 margin_right = 200.0
 margin_bottom = 70.0
+rect_min_size = Vector2( 150, 52.5 )
 window_title = "menu.rate.title"
 dialog_text = "menu.rate.text"
 dialog_autowrap = true
