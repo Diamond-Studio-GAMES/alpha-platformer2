@@ -589,9 +589,9 @@ tile_data = PoolIntArray( -2883555, 20, 0, -2883554, 20, 0, -2883553, 20, 0, -28
 [node name="npc" parent="mobs" instance=ExtResource( 19 )]
 position = Vector2( 392, -1248 )
 scale = Vector2( 1, 1 )
-dialog_data = [ "y|2|Готов% к уроку по физике?", "g|2|Не забудь взять лимонад!" ]
-hate_tier_1_dialog_data = [ "y|2|Готов% к уроку по физике?" ]
-hate_tier_2_dialog_data = [ "r|2|Что-то ты мрачен%, поучи физику!.." ]
+dialog_data = [ "y|2|8_5.npc.fizikready", "g|2|8_5.npc.fiziklimonad" ]
+hate_tier_1_dialog_data = [ "y|2|8_5.npc.fizikready" ]
+hate_tier_2_dialog_data = [ "r|2|8_5.npc.fizikuchi" ]
 hate_tier_3_dialog_data = [ "r|2|..." ]
 
 [node name="head" parent="mobs/npc/visual/body" index="0"]
@@ -607,8 +607,8 @@ texture = ExtResource( 32 )
 
 [node name="npc2" parent="mobs" instance=ExtResource( 19 )]
 position = Vector2( 1008, -1280 )
-dialog_data = [ "v|2|Какой милый робот!..", "gr|2|Только что он у меня делает?.." ]
-hate_tier_2_dialog_data = [ "r|2|Что ТЫ тут делаешь?" ]
+dialog_data = [ "v|2|8_5.npc.robot", "gr|2|8_5.npc.whatrobot" ]
+hate_tier_2_dialog_data = [ "r|2|8_5.npc.you" ]
 
 [node name="head" parent="mobs/npc2/visual/body" index="0"]
 texture = ExtResource( 22 )
@@ -623,8 +623,8 @@ texture = ExtResource( 33 )
 
 [node name="npc3" parent="mobs" instance=ExtResource( 19 )]
 position = Vector2( 1456, -64 )
-dialog_data = [ "r|3|Какие-то монстры сидят у меня дома!..", "dr|2|Не советую туда идти..." ]
-hate_tier_2_dialog_data = [ "r|2|Хоть дом мне освободишь..." ]
+dialog_data = [ "r|3|8_5.npc.housemonsters", "dr|2|8_5.npc.advise" ]
+hate_tier_2_dialog_data = [ "r|2|8_5.npc.housefree" ]
 
 [node name="head" parent="mobs/npc3/visual/body" index="0"]
 texture = ExtResource( 30 )

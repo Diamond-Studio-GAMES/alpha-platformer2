@@ -554,8 +554,8 @@ tile_data = PoolIntArray( -2752522, 20, 0, -2752521, 20, 0, -2752520, 20, 0, -27
 
 [node name="npc" parent="mobs" instance=ExtResource( 29 )]
 position = Vector2( -200, -1248 )
-dialog_data = [ "dm|3|Я прошлый работник Завода...", "dr|2|Это полный ужас...", "dr|4|После этого всего там просто перестали относится к рабочим как к людям...", "r|2|И все просто сбежали.", "r|2|Пожалуйста, не иди туда..." ]
-hate_tier_2_dialog_data = [ "r|2|Не... Иди... Туда!" ]
+dialog_data = [ "dm|3|8_9.npc.past", "dr|2|8_9.npc.bad", "dr|4|8_9.npc.relation", "r|2|8_9.npc.left", "r|2|8_9.npc.dontgo" ]
+hate_tier_2_dialog_data = [ "r|2|8_9.npc.dont" ]
 hate_tier_3_dialog_data = [ "bl|2|..." ]
 
 [node name="body" parent="mobs/npc/visual" index="0"]

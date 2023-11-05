@@ -650,7 +650,7 @@ tile_data = PoolIntArray( -2949058, 20, 0, -2949057, 20, 0, -2949056, 20, 0, -29
 
 [node name="npc" parent="mobs" instance=ExtResource( 8 )]
 position = Vector2( 208, -1248 )
-dialog_data = [ "y|2|Ты думал, что я Кира Йошикаге...", "r|2|Но это был я, Дио!" ]
+dialog_data = [ "y|2|8_6.npc.kira", "r|2|8_6.npc.dio" ]
 
 [node name="head" parent="mobs/npc/visual/body" index="0"]
 texture = ExtResource( 12 )
@@ -672,8 +672,8 @@ texture = ExtResource( 13 )
 [node name="npc2" parent="mobs" instance=ExtResource( 8 )]
 position = Vector2( 752, -1280 )
 scale = Vector2( 1, 1 )
-dialog_data = [ "r|3|Ты сделал% домашнее задание на отдельном листочке по обществознанию?", "r|3|Объём не менее 2 страниц!!!", "r|3|И что ты вообще дома у меня делаешь???" ]
-hate_tier_2_dialog_data = [ "r|3|И что ты вообще дома у меня делаешь???" ]
+dialog_data = [ "r|3|8_6.npc.shlyuha0", "r|3|8_6.npc.shlyuha1", "r|3|8_6.npc.shlyuha2" ]
+hate_tier_2_dialog_data = [ "r|3|8_6.npc.shlyuha2" ]
 
 [node name="head" parent="mobs/npc2/visual/body" index="0"]
 texture = ExtResource( 21 )
@@ -688,8 +688,8 @@ texture = ExtResource( 18 )
 
 [node name="npc3" parent="mobs" instance=ExtResource( 8 )]
 position = Vector2( 1520, -1280 )
-dialog_data = [ "y|3|Привет.", "g|3|Любишь скалолазание?" ]
-hate_tier_2_dialog_data = [ "r|2|Пшёл отсюда!" ]
+dialog_data = [ "y|3|8_6.npc.hi", "g|3|8_6.npc.like" ]
+hate_tier_2_dialog_data = [ "r|2|8_6.npc.getout" ]
 
 [node name="head" parent="mobs/npc3/visual/body" index="0"]
 texture = ExtResource( 12 )
@@ -844,7 +844,7 @@ __meta__ = {
 [node name="tab" parent="decor" instance=ExtResource( 24 )]
 position = Vector2( 2064, -128 )
 z_index = -10
-text = "Хранилище грибов №2"
+text = "8_6.storage2"
 with_leg = false
 
 [node name="grass" parent="decor" instance=ExtResource( 25 )]

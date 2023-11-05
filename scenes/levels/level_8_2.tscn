@@ -914,7 +914,7 @@ stats_multiplier = 5.0
 
 [node name="npc" parent="mobs" instance=ExtResource( 19 )]
 position = Vector2( 1928, -1280 )
-dialog_data = [ "r|3|О нет! В моём доме произошло убийство!", "m|2|Хотя я даже рад, что его убили!.." ]
+dialog_data = [ "r|3|8_2.npc.kill", "m|2|8_2.npc.killrad" ]
 
 [node name="head" parent="mobs/npc/visual/body" index="0"]
 texture = ExtResource( 22 )
@@ -929,7 +929,7 @@ texture = ExtResource( 28 )
 
 [node name="npc2" parent="mobs" instance=ExtResource( 19 )]
 position = Vector2( 584, -1280 )
-dialog_data = [ "r|3|Опять домашка по обществу... Как её вообще писать!?", "g|2|Хорошо оно хоть раз в неделю..." ]
+dialog_data = [ "r|3|8_2.npc.o00", "g|2|8_2.npc.o01" ]
 
 [node name="head" parent="mobs/npc2/visual/body" index="0"]
 texture = ExtResource( 17 )
@@ -951,8 +951,8 @@ anims/idle = SubResource( 13 )
 [node name="npc3" parent="mobs" instance=ExtResource( 19 )]
 position = Vector2( 536, -1280 )
 scale = Vector2( 1, 1 )
-dialog_data = [ "m|2|Всё в порядке, сладкий!..", "m|2|Стой, а ты кто?", "v|2|Поможешь нам?.. UwU" ]
-hate_tier_2_dialog_data = [ "m|2|Всё в порядке, сладкий!..", "w|2|..." ]
+dialog_data = [ "m|2|8_2.npc.o10", "m|2|8_2.npc.o11", "v|2|8_2.npc.o12" ]
+hate_tier_2_dialog_data = [ "m|2|8_2.npc.o10", "w|2|..." ]
 
 [node name="head" parent="mobs/npc3/visual/body" index="0"]
 texture = ExtResource( 22 )
@@ -974,8 +974,8 @@ anims/idle = SubResource( 15 )
 [node name="npc4" parent="mobs" instance=ExtResource( 19 )]
 position = Vector2( -176, -32 )
 scale = Vector2( 1, 1 )
-dialog_data = [ "r|2|У меня дома гадкий гриб...", "v|2|Будь осторожен!" ]
-hate_tier_2_dialog_data = [ "r|2|У меня дома гадкий гриб..." ]
+dialog_data = [ "r|2|8_2.npc.shroom", "v|2|8_2.npc.care" ]
+hate_tier_2_dialog_data = [ "r|2|8_2.npc.shroom" ]
 
 [node name="head" parent="mobs/npc4/visual/body" index="0"]
 texture = ExtResource( 17 )

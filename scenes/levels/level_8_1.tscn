@@ -583,7 +583,7 @@ stats_multiplier = 4.5
 
 [node name="npc" parent="mobs" instance=ExtResource( 19 )]
 position = Vector2( 624, -1248 )
-dialog_data = [ "w|2|Доброе... утро?", "v|3|Я школу не проспал?" ]
+dialog_data = [ "w|2|8_1.npc.utro", "v|3|8_1.npc.school" ]
 hate_tier_3_dialog_data = [ "gr|2|..." ]
 
 [node name="head" parent="mobs/npc/visual/body" index="0"]
@@ -601,8 +601,8 @@ texture = ExtResource( 21 )
 position = Vector2( 1200, -64 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
-dialog_data = [ "w|2|Я хорошо выгляжу?" ]
-hate_tier_2_dialog_data = [ "r|3|Что у тебя за гримаса на лице?.." ]
+dialog_data = [ "w|2|8_1.npc.look" ]
+hate_tier_2_dialog_data = [ "r|3|8_1.npc.face" ]
 
 [node name="head" parent="mobs/npc2/visual/body" index="0"]
 texture = ExtResource( 17 )
@@ -708,7 +708,7 @@ __meta__ = {
 
 [node name="tab" parent="decor" instance=ExtResource( 10 )]
 position = Vector2( 272, 0 )
-text = "Добро пожаловать в деревню!"
+text = "8_1.welcome"
 
 [node name="grass" parent="decor" instance=ExtResource( 12 )]
 position = Vector2( -368, 0 )
@@ -737,7 +737,7 @@ position = Vector2( 2480, -32 )
 [node name="tab2" parent="decor" instance=ExtResource( 10 )]
 position = Vector2( 1936, -112 )
 z_index = -10
-text = "Дом Гоши"
+text = "8_1.gosha"
 with_leg = false
 
 [node name="borders" parent="." instance=ExtResource( 16 )]

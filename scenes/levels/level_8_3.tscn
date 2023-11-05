@@ -644,8 +644,8 @@ texture = ExtResource( 21 )
 
 [node name="npc2" parent="mobs" instance=ExtResource( 19 )]
 position = Vector2( 2000, -1312 )
-dialog_data = [ "v|3|Зачем нужна кровать, когда есть алмазы?", "m|2|Только дороговато вышло." ]
-hate_tier_2_dialog_data = [ "r|2|Не трогай алмазы!" ]
+dialog_data = [ "v|3|8_3.npc.bed", "m|2|8_3.npc.rich" ]
+hate_tier_2_dialog_data = [ "r|2|8_3.npc.dont" ]
 
 [node name="head" parent="mobs/npc2/visual/body" index="0"]
 texture = ExtResource( 22 )
@@ -832,7 +832,7 @@ position = Vector2( 2352, -1312 )
 [node name="tab" parent="decor" instance=ExtResource( 14 )]
 position = Vector2( 1104, -128 )
 z_index = -10
-text = "Хранилище грибов"
+text = "8_3.storage"
 with_leg = false
 
 [node name="borders" parent="." instance=ExtResource( 16 )]

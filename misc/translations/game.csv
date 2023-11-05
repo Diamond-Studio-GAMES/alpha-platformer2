@@ -276,6 +276,68 @@ Another: 6-7dmdtmkncetgankdt"":;:%№№:%№"
 7_9.leave,Ещё немного и я вернусь в обычный мир!,A little more and I will return to the ordinary world!
 7_10.boss.0,Красный король: Ты.,Red King: You.
 7_10.boss.1,"Красный король: Ты нарушил порядок, установленный после падения второго метеорита.",Red King: You violated the order established after the fall of the second meteorite.
-7_10.boss.2,Красный король: Но ты силён: ты преодолел все препятствия на своём длинном пути.,Red King: But you are strong: you have overcome all the obstacles on your long journey.
+7_10.boss.2,Красный король: Но ты силён%: ты преодолел все препятствия на своём длинном пути.,Red King: But you are strong: you have overcome all the obstacles on your long journey.
 7_10.boss.3,Красный король: Это действительно достойно награды…,Red King: It's really worthy of an award…
 7_10.boss.start,Красный король: ...быть убитым МНОЙ! Ах-ха-ха-ха-ха!,Red King: ...to be killed by ME! Ah-ha-ha-ha-ha!
+8_1.welcome,Добро пожаловать в деревню!,Welcome to the Village!
+8_1.gosha,Дом Гоши,Gosha’s house
+8_1.npc.utro,Доброе... утро?,Good… morning?
+8_1.npc.school,Я школу не проспал?,I didn't oversleep school?
+8_1.npc.look,Я хорошо выгляжу?,Am I looking good?
+8_1.npc.face,Что у тебя за гримаса на лице?..,What's that grimace on your face?..
+8_2.npc.kill,О нет! В моём доме произошло убийство!,Oh no! There's been a murder in my house!
+8_2.npc.killrad,"Хотя я даже рад, что его убили!..",Although I'm even glad that it was killed!..
+8_2.npc.o00,Опять домашка по обществу... Как её вообще писать!?,More homework on society... How to write it at all!?
+8_2.npc.o01,Хорошо оно хоть раз в неделю…,It's good to have it at least once a week…
+8_2.npc.o10,"Всё в порядке, сладкий!..","It’s all right, honey!.."
+8_2.npc.o11,"Стой, а ты кто?","Wait, who are you?"
+8_2.npc.o12,Поможешь нам?.. UwU,Will you help us? UwU
+8_2.npc.shroom,У меня дома гадкий гриб…,I have a nasty mushroom at home…
+8_2.npc.care,Будь осторожен!,Be careful!
+8_3.storage,Хранилище грибов,Mushrooms storage
+8_3.npc.dont,Не трогай алмазы!,Don’t touch the diamonds!
+8_3.npc.bed,"Зачем нужна кровать, когда есть алмазы?",Why do you need a bed when there are diamonds?
+8_3.npc.rich,Только дороговато вышло.,It just got a little expensive.
+8_4.fuuuuuuck,Да ты что... БЛ*************************!!!,"Wait, NOOOOOOOOOOOO!!!"
+8_4.npc.film,Я очень хочу на этот фильм.,I really want to see this movie.
+8_4.npc.ads,"Но, говорят, там много рекламы…","But, they say, there is a lot of ads…"
+8_4.npc.filmask,Ты пойдёшь на этот фильм?..,Will you go to this movie?..
+8_4.npc.nerd,"Сэр, вообще-то, в деревне нельзя ходить с оружием.","Uhm, actually, you can't carry a weapon in the village."
+8_4.npc.nerdleave,Прошу немедленно покинуть мой дом.,Please leave my house immediately.
+8_4.npc.nerdoh,"Сэр, вообще-то, ... Ой.","Uhm, actually, … Oh."
+8_4.npc.nerdstop,"Сэр, немедленно прекратите бессмысленное кровопролитие!","Uhm, immediately stop the senseless bloodshed!"
+8_4.npc.nerdbosses,Босссы вам не враги!,Bosses aren’t your enemies!
+8_4.npc.chests,"Хорошо, что это, сундуки остались наверху…","Well, what is it, the chests were left upstairs…"
+8_4.npc.cool,Класс вообще.,Very good.
+8_5.npc.fizikready,Готов% к уроку по физике?,Are you ready for physics lesson?
+8_5.npc.fiziklimonad,Не забудь взять лимонад!,Don't forget to take lemonade!
+8_5.npc.fizikuchi,"Что-то ты мрачен%, поучи физику!..","You're gloomy, learn physics!.."
+8_5.npc.you,Что ТЫ тут делаешь?,What are YOU doing here?
+8_5.npc.robot,Какой милый робот!..,What a cute robot!..
+8_5.npc.whatrobot,Только что он у меня делает?..,"You're gloomy, go learn some physics!.."
+8_5.npc.housefree,Хоть дом мне освободишь…,At least you'll free the house for me…
+8_5.npc.housemonsters,Какие-то монстры сидят у меня дома!..,Some monsters are sitting at my house!..
+8_5.npc.advise,Не советую туда идти…,I don’t advise you to go there…
+8_6.storage2,Хранилище грибов 2,Mushroom storage 2
+8_6.npc.kira,"Ты думал, что я Кира Йошикаге…",You thought I was Kira Yoshikage…
+8_6.npc.dio,"Но это был я, Дио!","But it was me, Dio!"
+8_6.npc.shlyuha0,Ты сделал% домашнее задание на отдельном листочке по обществознанию?,Have you done your social studies homework on a separate piece of paper?
+8_6.npc.shlyuha1,Объём не менее 2 страниц!!!,Size is not less than 2 pages!!!
+8_6.npc.shlyuha2,Что ты вообще дома у меня делаешь???,What are you doing at my house anyway???
+8_6.npc.hi,Привет.,Hi.
+8_6.npc.like,Любишь скалолазание?,Do you like climbing?
+8_6.npc.getout,Пшёл отсюда!,Get out!
+8_7.npc.good,Я всё ещё держусь…,I'm still involved…
+8_7.npc.letsgooo,"Вперёд, джедаи, мы победим!","Come on, Jedi, we will win!"
+8_7.npc.ng,С наступающим Новым Годом!,Happy New Year!
+8_7.npc.days,"Кстати, сколько до него дней осталось?","By the way, how many days are left before it?"
+8_7.npc.leave,"АААААА, УЙДИ ОТСЮДА!!!","AAAAAAH, GET OUT!!!"
+8_7.npc.dura,Пишу домашнее задание по обществу.,I'm writing my homework on society.
+8_7.npc.superdura,Обожаю этот предмет!,I love this subject!
+8_8.nonlived,Покинутые дома,Abandoned houses
+8_9.npc.dont,Не... Иди... Туда!,Don't... Go... There!
+8_9.npc.past,Я прошлый рабочий Завода...,I'm a former factory worker…
+8_9.npc.bad,Это полный ужас…,It's a complete horror…
+8_9.npc.relation,После этого всего там просто перестали относится к рабочим как к людям...,"After everything happened, there just stopped treating workers as people..."
+8_9.npc.left,И все просто сбежали.,And everyone just ran away.
+8_9.npc.dontgo,"Пожалуйста, не иди туда…","Please, don’t go there…"

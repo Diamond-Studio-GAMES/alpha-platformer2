@@ -657,7 +657,7 @@ tile_data = PoolIntArray( -2752520, 20, 0, -2752519, 20, 0, -2752518, 20, 0, -28
 
 [node name="npc" parent="mobs" instance=ExtResource( 10 )]
 position = Vector2( 2160, -1280 )
-dialog_data = [ "c|3|Я всё ещё держусь...", "v|3|Вперёд, джедаи, мы победим!" ]
+dialog_data = [ "c|3|8_7.npc.good", "v|3|8_7.npc.letsgooo" ]
 
 [node name="head" parent="mobs/npc/visual/body" index="0"]
 texture = ExtResource( 17 )
@@ -704,7 +704,8 @@ color_ramp = SubResource( 13 )
 
 [node name="npc2" parent="mobs" instance=ExtResource( 10 )]
 position = Vector2( 528, -1280 )
-dialog_data = [ "dg|3|С наступающим Новым Годом!", "v|2|Кстати, сколько до него дней осталось?" ]
+dialog_data = [ "dg|3|8_7.npc.ng", "v|2|8_7.npc.days" ]
+hate_tier_3_dialog_data = [ "r|2|..." ]
 
 [node name="head" parent="mobs/npc2/visual/body" index="0"]
 texture = ExtResource( 17 )
@@ -719,8 +720,8 @@ texture = ExtResource( 21 )
 
 [node name="npc3" parent="mobs" instance=ExtResource( 10 )]
 position = Vector2( 1360, -1248 )
-dialog_data = [ "v|2|Пишу домашнее задание по обществу.", "w|2|Обожаю этот предмет!" ]
-hate_tier_2_dialog_data = [ "r|2|АААААА, УЙДИ ОТСЮДА!!!" ]
+dialog_data = [ "v|2|8_7.npc.dura", "w|2|8_7.npc.superdura" ]
+hate_tier_2_dialog_data = [ "r|2|8_7.npc.leave" ]
 
 [node name="head" parent="mobs/npc3/visual/body" index="0"]
 texture = ExtResource( 22 )

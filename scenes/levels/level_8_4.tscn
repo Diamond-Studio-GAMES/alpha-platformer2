@@ -679,7 +679,7 @@ func _on_destroy_area_body_entered(body):
 		return
 	if body is Player and MP.auth(body):
 		destroy_house()
-		body.make_dialog(tr(\"Да ты что... БЛ*************************!!!\"), 3, Color.red)
+		body.make_dialog(tr(\"8_4.fuuuuuuck\"), 3, Color.red)
 
 
 func destroy_house():
@@ -864,8 +864,8 @@ tile_data = PoolIntArray( -3211211, 50, 0, -3211210, 50, 0, -3211209, 16, 0, -32
 
 [node name="npc" parent="mobs" instance=ExtResource( 19 )]
 position = Vector2( 504, -1280 )
-dialog_data = [ "w|2|Я очень хочу на этот фильм.", "m|3|Но, говорят, там много рекламы..." ]
-hate_tier_3_dialog_data = [ "r|3|Ты пойдёшь на этот фильм?.." ]
+dialog_data = [ "w|2|8_4.npc.film", "m|3|8_4.npc.ads" ]
+hate_tier_3_dialog_data = [ "r|3|8_4.npc.filmask" ]
 
 [node name="head" parent="mobs/npc/visual/body" index="0"]
 texture = ExtResource( 6 )
@@ -880,9 +880,9 @@ texture = ExtResource( 10 )
 
 [node name="npc2" parent="mobs" instance=ExtResource( 19 )]
 position = Vector2( 1264, -1280 )
-dialog_data = [ "y|3|Сэр, вообще-то, в деревне нельзя ходить с оружием.", "m|3|Прошу немедленно покинуть мой дом." ]
-hate_tier_2_dialog_data = [ "gr|2|Сэр, вообще-то, ... Ой." ]
-hate_tier_3_dialog_data = [ "gr|2|Сэр, немедленно прекратите бессмысленное кровопролитие.", "r|2|Босссы вам не враги." ]
+dialog_data = [ "y|3|8_4.npc.nerd", "m|3|8_4.npc.nerdleave" ]
+hate_tier_2_dialog_data = [ "gr|2|8_4.npc.nerdoh" ]
+hate_tier_3_dialog_data = [ "gr|2|8_4.npc.nerdstop", "r|2|8_4.npc.nerdbosses" ]
 
 [node name="head" parent="mobs/npc2/visual/body" index="0"]
 texture = ExtResource( 14 )
@@ -903,7 +903,7 @@ anims/idle = SubResource( 11 )
 [node name="npc3" parent="mobs" instance=ExtResource( 19 )]
 position = Vector2( 1744, -1248 )
 scale = Vector2( 1, 1 )
-dialog_data = [ "y|3|Хорошо, что это, сундуки остались наверху...", "r|2|Класс вообще." ]
+dialog_data = [ "y|3|8_4.npc.chests", "r|2|8_4.npc.cool" ]
 
 [node name="head" parent="mobs/npc3/visual/body" index="0"]
 texture = ExtResource( 22 )
