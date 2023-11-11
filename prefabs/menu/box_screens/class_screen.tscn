@@ -931,7 +931,7 @@ anchor_bottom = 1.0
 [node name="bg0" type="ColorRect" parent="knight/class/ui/background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.686275, 0.0313726, 0.109804, 1 )
+color = Color( 0.709804, 0.0313726, 0.109804, 1 )
 
 [node name="bg1" type="Control" parent="knight/class/ui/background"]
 anchor_left = 0.5
@@ -1186,9 +1186,6 @@ margin_left = -20.0
 margin_top = -20.0
 margin_right = 20.0
 margin_bottom = 20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="sprite" type="Sprite" parent="butcher/class/ui/background/bg1"]
 modulate = Color( 0.972549, 0.941176, 0.160784, 1 )
@@ -1197,11 +1194,12 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="light" type="Sprite" parent="butcher/class/ui/background/bg1"]
+self_modulate = Color( 1, 1, 0, 1 )
 position = Vector2( -0.000190735, 0 )
 texture = ExtResource( 3 )
 
 [node name="light2" type="Sprite" parent="butcher/class/ui/background/bg1/light"]
-modulate = Color( 1, 1, 0.427451, 1 )
+self_modulate = Color( 1, 1, 0.647059, 1 )
 texture = ExtResource( 3 )
 
 [node name="anim" type="AnimationPlayer" parent="butcher/class/ui/background"]
@@ -1654,7 +1652,7 @@ anchor_bottom = 1.0
 [node name="bg0" type="ColorRect" parent="wizard/class/ui/background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.788235, 0.152941, 0.92549, 1 )
+color = Color( 0.81392, 0.1632, 0.96, 1 )
 
 [node name="bg1" type="Control" parent="wizard/class/ui/background"]
 anchor_left = 0.5
@@ -1895,7 +1893,7 @@ __meta__ = {
 [node name="bg0" type="ColorRect" parent="archer/class/ui/background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0.91666, 0.964706, 1 )
+color = Color( 0, 0.941176, 0.964706, 1 )
 
 [node name="bg1" type="Control" parent="archer/class/ui/background"]
 anchor_left = 0.5

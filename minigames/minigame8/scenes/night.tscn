@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://minigames/minigame8/textures/environment/floor2_wing1_entrance.png" type="Texture" id=1]
 [ext_resource path="res://minigames/minigame8/textures/environment/floor0_wing0.png" type="Texture" id=2]
@@ -51,6 +51,14 @@
 [ext_resource path="res://minigames/minigame8/textures/other/mask_visual.png" type="Texture" id=49]
 [ext_resource path="res://minigames/minigame8/textures/other/music_box_indicator.png" type="Texture" id=50]
 [ext_resource path="res://minigames/minigame8/textures/environment/floor2_wing0.png" type="Texture" id=51]
+
+[sub_resource type="InputEventKey" id=14]
+control = true
+command = true
+pressed = true
+
+[sub_resource type="ShortCut" id=15]
+shortcut = SubResource( 14 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -642,14 +650,16 @@ margin_top = -150.0
 margin_right = 182.0
 margin_bottom = 150.0
 focus_mode = 0
+shortcut_in_tooltip = false
+shortcut = SubResource( 15 )
 
 [node name="another" type="TextureButton" parent="screen/base/main"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = -64.0
+margin_left = -48.0
 margin_top = -25.0
-margin_right = 136.0
-margin_bottom = 25.0
+margin_right = 152.0
+margin_bottom = 55.0
 rect_rotation = 90.0
 rect_pivot_offset = Vector2( 100, 25 )
 texture_normal = ExtResource( 18 )
@@ -661,10 +671,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -136.0
+margin_left = -152.0
 margin_top = -25.0
-margin_right = 64.0
-margin_bottom = 25.0
+margin_right = 48.0
+margin_bottom = 55.0
 rect_rotation = -90.0
 rect_pivot_offset = Vector2( 100, 25 )
 texture_normal = ExtResource( 18 )
@@ -756,6 +766,7 @@ expand = true
 stretch_mode = 6
 
 [node name="b0_0" type="TextureButton" parent="screen/base/screen/gui"]
+self_modulate = Color( 0, 1, 1, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -773,6 +784,7 @@ expand = true
 stretch_mode = 5
 
 [node name="b0_1" type="TextureButton" parent="screen/base/screen/gui"]
+self_modulate = Color( 0, 1, 1, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -789,6 +801,7 @@ expand = true
 stretch_mode = 5
 
 [node name="b1_0" type="TextureButton" parent="screen/base/screen/gui"]
+self_modulate = Color( 0, 1, 1, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -805,6 +818,7 @@ expand = true
 stretch_mode = 5
 
 [node name="b1_1" type="TextureButton" parent="screen/base/screen/gui"]
+self_modulate = Color( 0, 1, 1, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -821,6 +835,7 @@ expand = true
 stretch_mode = 5
 
 [node name="b1_2" type="TextureButton" parent="screen/base/screen/gui"]
+self_modulate = Color( 0, 1, 1, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -837,6 +852,7 @@ expand = true
 stretch_mode = 5
 
 [node name="b1_3" type="TextureButton" parent="screen/base/screen/gui"]
+self_modulate = Color( 0, 1, 1, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -853,6 +869,7 @@ expand = true
 stretch_mode = 5
 
 [node name="b1_4" type="TextureButton" parent="screen/base/screen/gui"]
+self_modulate = Color( 0, 1, 1, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -869,6 +886,7 @@ expand = true
 stretch_mode = 5
 
 [node name="b1_5" type="TextureButton" parent="screen/base/screen/gui"]
+self_modulate = Color( 0, 1, 1, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -885,6 +903,7 @@ expand = true
 stretch_mode = 5
 
 [node name="b1_6" type="TextureButton" parent="screen/base/screen/gui"]
+self_modulate = Color( 0, 1, 1, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -901,6 +920,7 @@ expand = true
 stretch_mode = 5
 
 [node name="b1_7" type="TextureButton" parent="screen/base/screen/gui"]
+self_modulate = Color( 0, 1, 1, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -917,6 +937,7 @@ expand = true
 stretch_mode = 5
 
 [node name="b2_0" type="TextureButton" parent="screen/base/screen/gui"]
+self_modulate = Color( 0, 1, 1, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -933,6 +954,7 @@ expand = true
 stretch_mode = 5
 
 [node name="b2_1" type="TextureButton" parent="screen/base/screen/gui"]
+self_modulate = Color( 0, 1, 1, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -949,6 +971,7 @@ expand = true
 stretch_mode = 5
 
 [node name="b2_2" type="TextureButton" parent="screen/base/screen/gui"]
+self_modulate = Color( 0, 1, 1, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -965,6 +988,7 @@ expand = true
 stretch_mode = 5
 
 [node name="b2_3" type="TextureButton" parent="screen/base/screen/gui"]
+self_modulate = Color( 0, 1, 1, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -981,6 +1005,7 @@ expand = true
 stretch_mode = 5
 
 [node name="b2_4" type="TextureButton" parent="screen/base/screen/gui"]
+self_modulate = Color( 0, 1, 1, 1 )
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -1034,7 +1059,7 @@ mouse_filter = 2
 step = 0.01
 value = 100.0
 texture_progress = ExtResource( 50 )
-fill_mode = 5
+fill_mode = 4
 nine_patch_stretch = true
 
 [node name="wind_up" type="TextureButton" parent="screen/base/screen/gui/music_box/box"]
@@ -1047,9 +1072,8 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -318.0
-margin_top = -91.0
+margin_top = -107.0
 margin_right = -18.0
-margin_bottom = -16.0
 focus_mode = 0
 texture_normal = ExtResource( 18 )
 expand = true
@@ -1058,9 +1082,9 @@ stretch_mode = 5
 [node name="mb_warn" type="Label" parent="screen/base/monitor_b"]
 visible = false
 margin_left = 16.0
-margin_top = -120.0
+margin_top = -88.0
 margin_right = 42.0
-margin_bottom = -24.0
+margin_bottom = 8.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 10 )
 text = "!"
@@ -1074,9 +1098,8 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = 18.0
-margin_top = -91.0
+margin_top = -107.0
 margin_right = 318.0
-margin_bottom = -16.0
 focus_mode = 0
 texture_normal = ExtResource( 18 )
 expand = true
@@ -1840,7 +1863,9 @@ bus = "sfx"
 
 [connection signal="button_down" from="screen/base/main/light" to="." method="flashlight" binds= [ true, true ]]
 [connection signal="button_up" from="screen/base/main/light" to="." method="flashlight" binds= [ true, false ]]
+[connection signal="mouse_entered" from="screen/base/main/another" to="." method="another"]
 [connection signal="pressed" from="screen/base/main/another" to="." method="another"]
+[connection signal="mouse_entered" from="screen/base/main/another2" to="." method="another"]
 [connection signal="pressed" from="screen/base/main/another2" to="." method="another"]
 [connection signal="pressed" from="screen/base/screen/gui/b0_0" to="." method="change_camera" binds= [ "f0w0" ]]
 [connection signal="pressed" from="screen/base/screen/gui/b0_1" to="." method="change_camera" binds= [ "f01" ]]
@@ -1859,6 +1884,8 @@ bus = "sfx"
 [connection signal="pressed" from="screen/base/screen/gui/b2_4" to="." method="change_camera" binds= [ "f2w1" ]]
 [connection signal="button_down" from="screen/base/screen/gui/music_box/box/wind_up" to="." method="wind_up" binds= [ true ]]
 [connection signal="button_up" from="screen/base/screen/gui/music_box/box/wind_up" to="." method="wind_up" binds= [ false ]]
+[connection signal="mouse_entered" from="screen/base/monitor_b" to="." method="monitor"]
 [connection signal="pressed" from="screen/base/monitor_b" to="." method="monitor"]
+[connection signal="mouse_entered" from="screen/base/mask_b" to="." method="mask"]
 [connection signal="pressed" from="screen/base/mask_b" to="." method="mask"]
 [connection signal="pressed" from="main/doorb" to="." method="door"]

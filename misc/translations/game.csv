@@ -208,9 +208,9 @@ npc.talk,Говорить,Talk
 2_5.you,"?/т.-=,.||.,=ы-+%","?/y.-=,.||.,o=-+u%"
 2_6.portal,"Это что, портал? Откуда?",Is this a portal? From where?
 2_6.how,Как они работают?,How do they work?
-2_9.shlyuhi,"Я слышал, что в местных школах восьмиклассницы - пр*ст*тутки…",I've heard that eighth graders are h*rlots in local schools…
+2_9.shlyuhi,"Я слышал%, что в местных школах восьмиклассницы - пр*ст*тутки…",I've heard that eighth graders are h*rlots in local schools…
 2_10.boss.start,"Лесоруб: Ну что, сразимся???","Lumberjack: Well, shall we fight???"
-2_10.boss.0,Лесоруб: Пришёл значит…,Lumberjack: You are here…
+2_10.boss.0,Лесоруб: Здесь ты значит…,Lumberjack: You are here…
 3_2.client,И их главный клиент - физрук…,And their main client is PE teacher…
 3_3.trimaga,Эти три мага сильны... Они используют её…,These three followers are strong... They use it…
 3_5.monsters,Тёмная энергия... Похоже из неё состоят монстры.,Dark energy... It looks like monsters are made of it.
@@ -252,8 +252,8 @@ training,Тренировка,Training
 6_4.giant,На этой горе по легендам обитает ГИГАНТСКИЙ ГРИБ!!!,"According to legends, a GIANT MUSHROOM lives on this mountain!!!"
 6_4.joke,Пасутся как-то два барана…,Two sheep graze somehow…
 6_5.joke,"Один говорит: БЕЕЕЕЕЕ
-Другой:6-7дмдтмкнцэтганкдт"":;:%№№:%№","One says: BEEEEEEE
-Another: 6-7dmdtmkncetgankdt"":;:%№№:%№"
+Другой: 6-7дмдтмкнцэтганкдт"":;:$?*№:&№","One says: BEEEEEEE
+Another: 6-7dmdtmkncetgankdt"":;:&№№:?№"
 6_7.joke,"Первый: Блин, тоже самое хотел сказать.","First one: Damn, I wanted to say the same thing."
 6_8.remains,До замка 1 км,The castle is 1 km away
 6_8.tree,"Интересно, что это за дерево такое?",I wonder what kind of tree it is?
@@ -268,15 +268,15 @@ Another: 6-7dmdtmkncetgankdt"":;:%№№:%№"
 7_2.garden,Дендрарий,Garden
 7_3.lore,Эти классы… Что это? Почему я становлюсь сильнее?..,These classes… What are they? Why I am becoming stronger?..
 7_5.storage,Склад,Storage
-7_6.ores,Месторождения водной и золотой руд,Deposits of water and gold ores
+7_6.ores,Месторождения водных и золотых руд,Deposits of water and gold ores
 7_6.whatisit,Так вот что это за руды…,So that's what these ores are…
 7_9.sisyphus,Сизиф,Sisyphus
 7_9.orange,"Оранжевые атаки наносят урон, если ты стоишь на месте.",Orange attacks hurt you if you’re standing still.
 7_9.blue,"Голубые же атаки наносят урон, когда ты двигаешься.",Blue attacks hurt you if you’re moving.
 7_9.leave,Ещё немного и я вернусь в обычный мир!,A little more and I will return to the ordinary world!
 7_10.boss.0,Красный король: Ты.,Red King: You.
-7_10.boss.1,"Красный король: Ты нарушил порядок, установленный после падения второго метеорита.",Red King: You violated the order established after the fall of the second meteorite.
-7_10.boss.2,Красный король: Но ты силён%: ты преодолел все препятствия на своём длинном пути.,Red King: But you are strong: you have overcome all the obstacles on your long journey.
+7_10.boss.1,"Красный король: Ты нарушил% порядок, установленный после падения второго метеорита.",Red King: You violated the order established after the fall of the second meteorite.
+7_10.boss.2,Красный король: Но ты не слаб%: ты преодолел% все препятствия на своём длинном пути.,Red King: But you are strong: you have overcome all the obstacles on your long journey.
 7_10.boss.3,Красный король: Это действительно достойно награды…,Red King: It's really worthy of an award…
 7_10.boss.start,Красный король: ...быть убитым МНОЙ! Ах-ха-ха-ха-ха!,Red King: ...to be killed by ME! Ah-ha-ha-ha-ha!
 8_1.welcome,Добро пожаловать в деревню!,Welcome to the Village!
@@ -293,7 +293,7 @@ Another: 6-7dmdtmkncetgankdt"":;:%№№:%№"
 8_2.npc.o11,"Стой, а ты кто?","Wait, who are you?"
 8_2.npc.o12,Поможешь нам?.. UwU,Will you help us? UwU
 8_2.npc.shroom,У меня дома гадкий гриб…,I have a nasty mushroom at home…
-8_2.npc.care,Будь осторожен!,Be careful!
+8_2.npc.care,Будь осторожен%!,Be careful!
 8_3.storage,Хранилище грибов,Mushrooms storage
 8_3.npc.dont,Не трогай алмазы!,Don’t touch the diamonds!
 8_3.npc.bed,"Зачем нужна кровать, когда есть алмазы?",Why do you need a bed when there are diamonds?
@@ -306,7 +306,7 @@ Another: 6-7dmdtmkncetgankdt"":;:%№№:%№"
 8_4.npc.nerdleave,Прошу немедленно покинуть мой дом.,Please leave my house immediately.
 8_4.npc.nerdoh,"Сэр, вообще-то, ... Ой.","Uhm, actually, … Oh."
 8_4.npc.nerdstop,"Сэр, немедленно прекратите бессмысленное кровопролитие!","Uhm, immediately stop the senseless bloodshed!"
-8_4.npc.nerdbosses,Босссы вам не враги!,Bosses aren’t your enemies!
+8_4.npc.nerdbosses,Боссы вам не враги!,Bosses aren’t your enemies!
 8_4.npc.chests,"Хорошо, что это, сундуки остались наверху…","Well, what is it, the chests were left upstairs…"
 8_4.npc.cool,Класс вообще.,Very good.
 8_5.npc.fizikready,Готов% к уроку по физике?,Are you ready for physics lesson?
@@ -326,7 +326,7 @@ Another: 6-7dmdtmkncetgankdt"":;:%№№:%№"
 8_6.npc.shlyuha2,Что ты вообще дома у меня делаешь???,What are you doing at my house anyway???
 8_6.npc.hi,Привет.,Hi.
 8_6.npc.like,Любишь скалолазание?,Do you like climbing?
-8_6.npc.getout,Пшёл отсюда!,Get out!
+8_6.npc.getout,Иди отсюда!,Get out!
 8_7.npc.good,Я всё ещё держусь…,I'm still involved…
 8_7.npc.letsgooo,"Вперёд, джедаи, мы победим!","Come on, Jedi, we will win!"
 8_7.npc.ng,С наступающим Новым Годом!,Happy New Year!
