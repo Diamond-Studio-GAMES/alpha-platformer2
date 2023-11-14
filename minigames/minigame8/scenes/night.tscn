@@ -51,14 +51,17 @@
 [ext_resource path="res://minigames/minigame8/textures/other/mask_visual.png" type="Texture" id=49]
 [ext_resource path="res://minigames/minigame8/textures/other/music_box_indicator.png" type="Texture" id=50]
 [ext_resource path="res://minigames/minigame8/textures/environment/floor2_wing0.png" type="Texture" id=51]
+[ext_resource path="res://minigames/minigame8/textures/other/flashlight_indicator.png" type="Texture" id=52]
 
-[sub_resource type="InputEventKey" id=14]
-control = true
-command = true
-pressed = true
-
-[sub_resource type="ShortCut" id=15]
-shortcut = SubResource( 14 )
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 52 )
+region_rect = Rect2( 0, 0, 32, 32 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+modulate_color = Color( 0.541176, 0.541176, 0.541176, 0.454902 )
+draw_center = false
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -650,8 +653,10 @@ margin_top = -150.0
 margin_right = 182.0
 margin_bottom = 150.0
 focus_mode = 0
-shortcut_in_tooltip = false
-shortcut = SubResource( 15 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+flat = false
 
 [node name="another" type="TextureButton" parent="screen/base/main"]
 anchor_top = 0.5
@@ -1056,7 +1061,7 @@ margin_top = -124.0
 margin_right = 50.0
 margin_bottom = -24.0
 mouse_filter = 2
-step = 0.01
+step = 5.0
 value = 100.0
 texture_progress = ExtResource( 50 )
 fill_mode = 4
@@ -1152,30 +1157,53 @@ zoom = Vector2( 1.25, 1.25 )
 
 [node name="pos0" type="Position2D" parent="another_way/poses"]
 position = Vector2( -64, -35 )
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2( 0.3, 0.3 )
 __meta__ = {
 "_gizmo_extents_": 50.0
 }
 
 [node name="pos1" type="Position2D" parent="another_way/poses"]
 position = Vector2( 25, -22 )
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2( 0.3, 0.3 )
 __meta__ = {
 "_gizmo_extents_": 50.0
 }
 
 [node name="pos2" type="Position2D" parent="another_way/poses"]
 position = Vector2( -17, -17 )
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2( 0.3, 0.3 )
 __meta__ = {
 "_gizmo_extents_": 50.0
 }
 
-[node name="light" type="Sprite" parent="another_way"]
+[node name="light" type="Node2D" parent="another_way"]
 visible = false
+
+[node name="light" type="Sprite" parent="another_way/light"]
 self_modulate = Color( 1, 1, 1, 0.501961 )
 position = Vector2( 0, -48 )
 z_index = 20
+texture = ExtResource( 4 )
+
+[node name="broken_light" type="Sprite" parent="another_way/light"]
+visible = false
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 0, -48 )
+z_index = 20
+texture = ExtResource( 4 )
+
+[node name="dark" type="Sprite" parent="another_way/light/broken_light"]
+self_modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 4 )
+
+[node name="dark2" type="Sprite" parent="another_way/light/broken_light"]
+self_modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 4 )
+
+[node name="light" type="Sprite" parent="another_way/light/broken_light"]
+self_modulate = Color( 1, 1, 1, 0.25098 )
+position = Vector2( -40, 40 )
+scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 4 )
 
 [node name="dark" type="Sprite" parent="another_way"]
@@ -1251,13 +1279,6 @@ texture = ExtResource( 44 )
 anims/close = SubResource( 11 )
 anims/open = SubResource( 12 )
 
-[node name="light" type="Sprite" parent="main"]
-visible = false
-self_modulate = Color( 1, 1, 1, 0.501961 )
-position = Vector2( 128, -26 )
-z_index = 22
-texture = ExtResource( 4 )
-
 [node name="doorb" type="TouchScreenButton" parent="main"]
 modulate = Color( 0.502539, 0.502539, 0.502539, 1 )
 position = Vector2( -243, 57 )
@@ -1282,6 +1303,44 @@ theme = ExtResource( 35 )
 text = "8.door"
 align = 1
 valign = 1
+
+[node name="light" type="Node2D" parent="main"]
+visible = false
+
+[node name="light" type="Sprite" parent="main/light"]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 128, -26 )
+z_index = 21
+texture = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="broken_light" type="Sprite" parent="main/light"]
+visible = false
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 128, -26 )
+scale = Vector2( 0.8, 1.6 )
+z_index = 19
+texture = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="dark" type="Sprite" parent="main/light/broken_light"]
+self_modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 4 )
+
+[node name="dark2" type="Sprite" parent="main/light/broken_light"]
+self_modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 4 )
+
+[node name="light" type="Sprite" parent="main/light/broken_light"]
+self_modulate = Color( 1, 1, 1, 0.25098 )
+position = Vector2( -40, 40 )
+scale = Vector2( 1, 0.5 )
+z_index = 2
+texture = ExtResource( 4 )
 
 [node name="f0w0" type="Sprite" parent="."]
 position = Vector2( -1140, -1232 )

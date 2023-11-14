@@ -31,9 +31,9 @@ boss.wizard.defeat,"Чёрный маг: Я был неправ…
 boss.king,Красный король,Red King
 boss.king.defeat,"Красный король: Ты ещё сильнее, чем я думал…",Red King: You're even stronger than I thought…
 boss.king.mercy,Красный король: Используй свою силу с умом!..,Red King: Use your power wisely!..
-boss.follower1,,
-boss.follower1.mercy,,
-boss.follower1.defeat,,
+boss.follower1,Последователь Егор,Egor The Follower
+boss.follower1.mercy,Егор: Ты… Зачем?..,Egor: You… Why?
+boss.follower1.defeat,Егор: Ну вот и всё…,"Egor: Now, that’s all…"
 boss.follower2,,
 boss.follower2.mercy,,
 boss.follower2.defeat,,
@@ -341,3 +341,16 @@ Another: 6-7dmdtmkncetgankdt"":;:&№№:?№"
 8_9.npc.relation,После этого всего там просто перестали относится к рабочим как к людям...,"After everything happened, there just stopped treating workers as people..."
 8_9.npc.left,И все просто сбежали.,And everyone just ran away.
 8_9.npc.dontgo,"Пожалуйста, не иди туда…","Please, don’t go there…"
+8_10.boss.start,Егор: Но у меня нет выбора…,Egor: But I have no choice…
+8_10.boss.0,"???: Смотри, как умею!",???: Look what I can do!
+8_10.boss.1,???: Кхм-кхм.,???: Ahem-ahem.
+8_10.boss.2,???: Я тебя поздравляю: ты преодолел% множество препятствий.,???: I congratulate you: you have overcome a lot of difficulties.
+8_10.boss.3,???: Но тебя ещё многое ждёт…,???: But there is still a lot waiting for you…
+8_10.boss.4,???: Последователи Дракона. Вот кто ещё будут стоять у тебя на пути.,???: Followers of the Dragon. That's who else will stand in your way.
+8_10.boss.5,???: Я горжусь тобой. Ты очень хорош%.,???: I'm proud of you. You're very good.
+8_10.boss.6,???: Но Дракон… Я поклялся ему в верности…,???: But the Dragon… I swore allegiance to him…
+8_10.boss.7,Последователь: ...так что мне придётся это сделать.,Follower: ...So I'll have to do it.
+8_10.boss.8,"Последователь: Пойми, мне не хочется этого!",Follower: I don't want to do this!
+8_10.boss.death.0,Егор: Прости.,Egor: Sorry.
+8_10.boss.death.1,Егор: Мне жаль.,Egor: I’m sorry.
+8_10.boss.death.2,Егор: Вот и кончилось твоё приключение…,Egor: Your adventure has ended…

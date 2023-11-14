@@ -2,20 +2,20 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/music_box_indicator.png-5f1e1217de5829d9f3131cf350b4002d.stex"
+path="res://.import/downwear.png-80989a04e199066f24ff0775fcde7dd4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/minigame8/textures/other/music_box_indicator.png"
-dest_files=[ "res://.import/music_box_indicator.png-5f1e1217de5829d9f3131cf350b4002d.stex" ]
+source_file="res://textures/bosses/egor/downwear.png"
+dest_files=[ "res://.import/downwear.png-80989a04e199066f24ff0775fcde7dd4.stex" ]
 
 [params]
 
-compress/mode=1
-compress/lossy_quality=0.0
+compress/mode=0
+compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0

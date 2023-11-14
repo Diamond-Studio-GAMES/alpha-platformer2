@@ -13,6 +13,10 @@ var is_in_another_way = false
 var is_door = false
 var is_mask = false
 var is_flashlight = false
+var is_flashlight_broken = false
+var is_flashlight_another_broken = false
+var broken_flashlight_timer = 0
+var broken_flashlight_another_timer = 0
 var is_cameras = false
 var energy = 100
 var music_box_charge = 100
@@ -43,8 +47,12 @@ onready var mask_anim = $screen/base/mask/anim
 onready var monitor_anim = $screen/base/screen/anim
 onready var door_anim = $main/door/anim
 onready var light0 = $main/light
+onready var real_light0 = $main/light/light
+onready var broken_light0 = $main/light/broken_light
 onready var dark0 = $main/dark
 onready var light1 = $another_way/light
+onready var real_light1 = $another_way/light/light
+onready var broken_light1 = $another_way/light/broken_light
 onready var dark1 = $another_way/dark
 
 
@@ -162,6 +170,19 @@ func play_sound(id = ""):
 	get_node(id).play()
 
 
+func break_flashlight(another = false):
+	if another:
+		is_flashlight_another_broken = true
+		broken_flashlight_another_timer = 1.5
+		real_light1.hide()
+		broken_light1.show()
+	else:
+		is_flashlight_broken = true
+		broken_flashlight_timer = 1.5
+		real_light0.hide()
+		broken_light0.show()
+
+
 func _process(delta):
 	energy -= energy_loss_per_sec * delta + \
 			flashlight_loss_per_sec * delta * int(is_flashlight) + \
@@ -177,7 +198,7 @@ func _process(delta):
 		music_ended = true
 		music_ended()
 	time += delta
-	var time_to_show = floor(time/60)
+	var time_to_show = floor(time / 60)
 	if time_to_show == 0:
 		time_to_show = 12
 	time_sh.text = str(time_to_show) + " AM"
@@ -194,6 +215,23 @@ func _process(delta):
 		ambient_sounds.shuffle()
 		$ambient.stream = ambient_sounds[6]
 		$ambient.play()
+	if is_flashlight_broken:
+		broken_flashlight_timer -= delta
+		if broken_flashlight_timer <= 0:
+			is_flashlight_broken = false
+			real_light0.show()
+			broken_light0.hide()
+	if is_flashlight_another_broken:
+		broken_flashlight_another_timer -= delta
+		if broken_flashlight_another_timer <= 0:
+			is_flashlight_another_broken = false
+			real_light1.show()
+			broken_light1.hide()
+	
+	if Input.is_action_just_pressed("flashlight"):
+		flashlight(true, true)
+	if Input.is_action_just_pressed("flashlight"):
+		flashlight(true, false)
 
 
 func _ready():

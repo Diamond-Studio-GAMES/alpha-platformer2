@@ -70,9 +70,9 @@ func do_move():
 		night.jumpscare(texture, sound)
 		return
 	time_to_next_move = AI_time_custom
-	if randi() % 20 > AI-1:
+	if randi() % 20 > AI - 1:
 		return
-	if curr_id+1 == len(current_path):
+	if curr_id + 1 == len(current_path):
 		start_moving()
 		return
 	move_to_room(current_path[curr_id+1])
@@ -83,6 +83,7 @@ func do_move():
 			ComeInOut.RUN:
 				night.play_sound("run_in")
 		is_in_another = current_room == "another_way"
+		night.break_flashlight(is_in_another)
 		time_to_next_move = time_to_defend
 		is_defending = true
 		monitor_was_up = true
@@ -121,7 +122,7 @@ func _process(delta):
 					defended_time += delta
 				elif defense_time >= 990:
 					move_timer = 999
-		if monitor_was_up and not night.is_cameras:
+		if monitor_was_up and not night.is_cameras and move_timer > move_timer * 0.3:
 			monitor_was_up = false
 		if kill_on_monitor and night.is_cameras and not monitor_was_up:
 			move_timer = 999
@@ -136,4 +137,5 @@ func _process(delta):
 							night.play_sound("steps_out")
 						ComeInOut.RUN:
 							night.play_sound("run_out")
+			night.break_flashlight(is_in_another)
 			start_moving()

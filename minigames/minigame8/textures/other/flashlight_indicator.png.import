@@ -2,20 +2,20 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/music_box_indicator.png-5f1e1217de5829d9f3131cf350b4002d.stex"
+path="res://.import/flashlight_indicator.png-f491eab48241e8add4616d1dce86d888.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/minigame8/textures/other/music_box_indicator.png"
-dest_files=[ "res://.import/music_box_indicator.png-5f1e1217de5829d9f3131cf350b4002d.stex" ]
+source_file="res://minigames/minigame8/textures/other/flashlight_indicator.png"
+dest_files=[ "res://.import/flashlight_indicator.png-f491eab48241e8add4616d1dce86d888.stex" ]
 
 [params]
 
-compress/mode=1
-compress/lossy_quality=0.0
+compress/mode=0
+compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
