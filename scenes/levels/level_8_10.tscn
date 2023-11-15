@@ -1503,7 +1503,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
+node_connections = [ "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "output", 0, "death_trans" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -2063,7 +2063,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/egor/mob_eg/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/egor/mob_eg/visual/body"]
-scale = Vector2( 1.25, 1.19902 )
+scale = Vector2( 1.25, 1.17359 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/egor/mob_eg"]
@@ -2403,7 +2403,7 @@ modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 1, 0.25098, 0, 1 )
+color = Color( 0.105882, 0, 0.364706, 1 )
 
 [node name="label" type="Label" parent="tint"]
 visible = false
@@ -2425,7 +2425,7 @@ custom_constants/shadow_offset_x = 1
 custom_constants/shadow_offset_y = 2
 custom_constants/shadow_as_outline = 0
 custom_fonts/font = SubResource( 26 )
-text = "boss.fire"
+text = "boss.follower1"
 align = 1
 
 [node name="tex" type="TextureRect" parent="tint/label"]
@@ -2548,6 +2548,7 @@ scroll_base_scale = Vector2( 1, 0.1 )
 scroll_ignore_camera_zoom = true
 
 [node name="sky" type="ParallaxLayer" parent="background"]
+motion_scale = Vector2( 0.05, 0.05 )
 motion_mirroring = Vector2( 1920, 1080 )
 
 [node name="sky" type="Sprite" parent="background/sky"]
@@ -2583,7 +2584,7 @@ motion_scale = Vector2( 0, 0.1 )
 motion_offset = Vector2( 0, -270 )
 
 [node name="sun" type="Sprite" parent="background/sun"]
-self_modulate = Color( 1, 1, 1, 0.780392 )
+self_modulate = Color( 0.843333, 0.848387, 1, 1 )
 position = Vector2( -248, 88 )
 texture = ExtResource( 46 )
 region_enabled = true
@@ -2750,6 +2751,7 @@ color = Color( 0.603922, 0.603922, 0.603922, 1 )
 [connection signal="area_exited" from="mobs/egor/mob_eg/check_water" to="mobs/egor/mob_eg" method="water_unchecked"]
 [connection signal="area_entered" from="mobs/egor/kill" to="mobs/egor" method="get_hit"]
 [connection signal="player_entered" from="decor/think" to="mobs/egor" method="start_fight"]
+[connection signal="player_entered" from="decor/think2" to="mobs/egor" method="night"]
 [connection signal="body_entered" from="end_star" to="end_star" method="end_level"]
 
 [editable path="decor/think"]

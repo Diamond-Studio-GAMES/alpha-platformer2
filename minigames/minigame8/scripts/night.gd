@@ -230,7 +230,7 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("flashlight"):
 		flashlight(true, true)
-	if Input.is_action_just_pressed("flashlight"):
+	if Input.is_action_just_released("flashlight"):
 		flashlight(true, false)
 
 

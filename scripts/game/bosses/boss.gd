@@ -85,18 +85,22 @@ func get_hit(area):
 		G.addv("kills", 1)
 
 
+func mercy():
+	waiting_for_death = false
+	player.make_dialog(mercy_dialog, 3)
+	anim.play("mercy")
+	set_cutscene(true)
+	yield(anim, "animation_finished")
+	set_cutscene(false)
+
+
 func _process(delta):
 	if is_attacking and player != null:
 		process_attack(delta)
 	if waiting_for_death:
 		death_timer += delta
 		if death_timer >= 5:
-			waiting_for_death = false
-			player.make_dialog(mercy_dialog, 3)
-			anim.play("mercy")
-			set_cutscene(true)
-			yield(anim, "animation_finished")
-			set_cutscene(false)
+			mercy()
 	if boss_bar == null:
 		return
 	if mob == null:

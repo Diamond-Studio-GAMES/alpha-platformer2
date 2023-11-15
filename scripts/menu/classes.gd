@@ -197,6 +197,7 @@ func craft_amulet(id):
 	G.addv("amulet_frags_" + G.AMULET[id], -AMULETS_COUNTS[selected_class][id], 0)
 	G.addv(selected_class + "_amulets", [id], [])
 	G.save()
+	craft_amulet(id)
 
 
 func done_amulet():
