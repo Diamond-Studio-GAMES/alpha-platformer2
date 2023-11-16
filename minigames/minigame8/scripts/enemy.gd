@@ -86,8 +86,6 @@ func do_move():
 		night.break_flashlight(is_in_another)
 		time_to_next_move = time_to_defend
 		is_defending = true
-		monitor_was_up = true
-		yield(get_tree().create_timer(0.5), "timeout")
 		monitor_was_up = night.is_cameras
 
 
@@ -122,9 +120,9 @@ func _process(delta):
 					defended_time += delta
 				elif defense_time >= 990:
 					move_timer = 999
-		if monitor_was_up and not night.is_cameras and move_timer > move_timer * 0.3:
+		if monitor_was_up and not night.is_cameras:
 			monitor_was_up = false
-		if kill_on_monitor and night.is_cameras and not monitor_was_up:
+		if kill_on_monitor and night.is_cameras and not monitor_was_up and move_timer > time_to_defend * 0.3:
 			move_timer = 999
 			is_defending = false
 		if defended_time >= defense_time:

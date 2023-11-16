@@ -1,6 +1,7 @@
 extends Node2D
 class_name Boss
 
+
 var mob: Mob
 var boss_bar: TextureProgress
 var boss_hp: Label

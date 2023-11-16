@@ -31,7 +31,7 @@ boss.wizard.defeat,"Чёрный маг: Я был неправ…
 boss.king,Красный король,Red King
 boss.king.defeat,"Красный король: Ты ещё сильнее, чем я думал…",Red King: You're even stronger than I thought…
 boss.king.mercy,Красный король: Используй свою силу с умом!..,Red King: Use your power wisely!..
-boss.follower1,Последователь Егор,Egor The Follower
+boss.follower1,Егор,Egor
 boss.follower1.mercy,Егор: Ты… Зачем?..,Egor: You… Why?
 boss.follower1.defeat,Егор: Ну вот и всё…,"Egor: Now, that’s all…"
 boss.follower2,,

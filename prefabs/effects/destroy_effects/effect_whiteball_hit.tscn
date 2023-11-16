@@ -1,10 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://sounds/sfx/randomed/magicball_hit.tres" type="AudioStream" id=1]
 [ext_resource path="res://textures/effects/attacks/ball_attack.png" type="Texture" id=2]
-
-[sub_resource type="Curve" id=2]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+[ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=3]
 resource_name = "effect_hit"
@@ -33,26 +31,12 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("trail")
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "restart"
-} ]
-}
-tracks/3/type = "method"
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -60,29 +44,27 @@ tracks/3/keys = {
 "method": "queue_free"
 } ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath("trail")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
 
-[node name="effect_blackball_hit" type="Node2D"]
-scale = Vector2( 2, 2 )
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[node name="trail" type="CPUParticles2D" parent="."]
-scale = Vector2( 0.5, 0.5 )
-emitting = false
-amount = 16
-preprocess = 1.0
-explosiveness = 1.0
-emission_shape = 1
-emission_sphere_radius = 16.0
-direction = Vector2( 0, 0 )
-spread = 180.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 50.0
-initial_velocity_random = 0.5
-scale_amount = 8.0
-scale_amount_curve = SubResource( 2 )
-color = Color( 0, 0, 0, 1 )
+[node name="effect_whiteball_hit" type="Node2D"]
 
 [node name="sprite" type="Sprite" parent="."]
-modulate = Color( 0, 0, 0, 1 )
 scale = Vector2( 0.5, 0.5 )
 z_index = -5
 texture = ExtResource( 2 )
@@ -96,3 +78,20 @@ stream = ExtResource( 1 )
 autoplay = true
 max_distance = 800.0
 bus = "sfx"
+
+[node name="trail" type="CPUParticles2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+emitting = false
+amount = 16
+preprocess = 1.0
+explosiveness = 1.0
+texture = ExtResource( 3 )
+emission_shape = 1
+emission_sphere_radius = 16.0
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 50.0
+initial_velocity_random = 0.5
+scale_amount = 4.0
+scale_amount_curve = SubResource( 4 )
