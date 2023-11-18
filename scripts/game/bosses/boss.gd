@@ -115,7 +115,7 @@ func _process(delta):
 
 
 func process_attack(delta):
-	if mob.is_stunned:
+	if not can_mob_move():
 		return
 	if not MP.auth(self):
 		return

@@ -1,0 +1,451 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=2]
+[ext_resource path="res://shaders/materials/chromokey.tres" type="Material" id=3]
+[ext_resource path="res://textures/bosses/egor/uv.png" type="Texture" id=4]
+[ext_resource path="res://textures/bosses/egor/time_erase_effect.ogv" type="VideoStream" id=5]
+[ext_resource path="res://shaders/uv_mapper.gdshader" type="Shader" id=6]
+[ext_resource path="res://sounds/sfx/time_erase.wav" type="AudioStream" id=7]
+[ext_resource path="res://shaders/glitch.gdshader" type="Shader" id=8]
+[ext_resource path="res://textures/effects/other/pixel.png" type="Texture" id=9]
+[ext_resource path="res://sounds/sfx/time_erase_end.wav" type="AudioStream" id=10]
+
+[sub_resource type="GDScript" id=120]
+script/source = "extends CanvasLayer
+
+
+func _ready():
+	var tex = ImageTexture.new()
+	var img = get_viewport().get_texture().get_data()
+	img.flip_y()
+	tex.create_from_image(img)
+	
+	$screen/part0.material.set_shader_param(\"mapped_texture\", tex)
+"
+
+[sub_resource type="Gradient" id=117]
+colors = PoolColorArray( 0, 0, 0.355469, 1, 0.433594, 0, 0.433594, 1 )
+
+[sub_resource type="GradientTexture2D" id=118]
+gradient = SubResource( 117 )
+width = 8
+height = 16
+fill_from = Vector2( 0.5, 0 )
+fill_to = Vector2( 0.5, 1 )
+
+[sub_resource type="Gradient" id=104]
+offsets = PoolRealArray( 0, 0.0769231, 0.93007, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="Gradient" id=103]
+offsets = PoolRealArray( 0.237762, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.368627 )
+
+[sub_resource type="ShaderMaterial" id=121]
+shader = ExtResource( 6 )
+
+[sub_resource type="ShaderMaterial" id=122]
+shader = ExtResource( 8 )
+shader_param/glitch = 0.0
+
+[sub_resource type="Animation" id=119]
+resource_name = "erase"
+length = 9.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("screen:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("effect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "play"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("effect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 1, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("bg:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 8.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("glitch_screen:material:shader_param/glitch")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.45, 0.6, 0.75, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.32, 0.0, 0.61, 0.082, 1.96, 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("screen/part0:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 0.378929, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -75.5, -58 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("screen/part1:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 0.378929, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -50, 81 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("screen/part2:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 0.378929, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 38, -63.5 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("screen/part3:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 0.378929, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -105.5, -56.5 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("screen/part4:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 0.378929, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 118.5, 35.5 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("screen/part5:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 0.378929, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -120.5, -42 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("screen/part6:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 0.378929, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 45.5, -36.5 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("screen/part0:self_modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("screen/part1:self_modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("screen/part2:self_modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("screen/part3:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("screen/part4:self_modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("screen/part5:self_modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("screen/part6:self_modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/20/type = "method"
+tracks/20/path = NodePath(".")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/21/type = "audio"
+tracks/21/path = NodePath("sfx")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0.1, 8 )
+}
+
+[node name="time_erase" type="CanvasLayer"]
+layer = 50
+visible = false
+script = SubResource( 120 )
+
+[node name="bg" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 118 )
+expand = true
+
+[node name="stars" type="Control" parent="bg"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="stars" type="CPUParticles2D" parent="bg/stars"]
+amount = 400
+lifetime = 60.0
+preprocess = 60.0
+randomness = 1.0
+texture = ExtResource( 2 )
+emission_shape = 2
+emission_rect_extents = Vector2( 640, 270 )
+direction = Vector2( -1, 0 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 0.1
+angular_velocity = 10.0
+angular_velocity_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale_amount = 4.0
+scale_amount_random = 0.5
+color_ramp = SubResource( 104 )
+color_initial_ramp = SubResource( 103 )
+
+[node name="screen" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+rect_scale = Vector2( 2, 2 )
+
+[node name="part0" type="Sprite" parent="screen"]
+material = SubResource( 121 )
+texture = ExtResource( 4 )
+offset = Vector2( -180, -85 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 120, 100 )
+
+[node name="part1" type="Sprite" parent="screen"]
+material = SubResource( 121 )
+texture = ExtResource( 4 )
+offset = Vector2( -155, 50 )
+region_enabled = true
+region_rect = Rect2( 0, 100, 170, 170 )
+
+[node name="part2" type="Sprite" parent="screen"]
+material = SubResource( 121 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, -85 )
+region_enabled = true
+region_rect = Rect2( 120, 0, 240, 100 )
+
+[node name="part3" type="Sprite" parent="screen"]
+material = SubResource( 121 )
+texture = ExtResource( 4 )
+offset = Vector2( 25, 15 )
+region_enabled = true
+region_rect = Rect2( 170, 100, 190, 100 )
+
+[node name="part4" type="Sprite" parent="screen"]
+material = SubResource( 121 )
+texture = ExtResource( 4 )
+offset = Vector2( 10, 100 )
+region_enabled = true
+region_rect = Rect2( 170, 200, 160, 70 )
+
+[node name="part5" type="Sprite" parent="screen"]
+material = SubResource( 121 )
+texture = ExtResource( 4 )
+offset = Vector2( 165, 100 )
+region_enabled = true
+region_rect = Rect2( 330, 200, 150, 70 )
+
+[node name="part6" type="Sprite" parent="screen"]
+material = SubResource( 121 )
+texture = ExtResource( 4 )
+offset = Vector2( 180, -35 )
+region_enabled = true
+region_rect = Rect2( 360, 0, 120, 200 )
+
+[node name="glitch_screen" type="TextureRect" parent="."]
+material = SubResource( 122 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 1
+
+[node name="effect" type="VideoPlayer" parent="."]
+visible = false
+material = ExtResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+stream = ExtResource( 5 )
+bus = "sfx"
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+bus = "sfx"
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "erase"
+anims/erase = SubResource( 119 )
