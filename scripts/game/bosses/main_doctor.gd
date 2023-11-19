@@ -46,6 +46,7 @@ func do_attack():
 		var variants = attacks.duplicate()
 		if alive_doctors.size() >= 3:
 			variants.erase("summon")
+		variants.shuffle()
 		call(variants[0])
 
 

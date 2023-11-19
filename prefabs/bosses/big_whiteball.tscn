@@ -1,0 +1,104 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=2]
+[ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=3]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=4]
+[ext_resource path="res://textures/effects/attacks/ball_attack.png" type="Texture" id=6]
+
+[sub_resource type="GDScript" id=109]
+script/source = "extends \"res://scripts/game/bosses/whiteball.gd\"
+
+
+var target: Player
+var is_chasing = true
+
+
+func _process(delta):
+	if not is_chasing:
+		return
+	if not MP.auth(self):
+		return
+	if not is_instance_valid(target):
+		queue_free()
+	angle = global_position.direction_to(target.global_position)
+
+
+func _on_timer_timeout():
+	is_chasing = false
+"
+
+[sub_resource type="CircleShape2D" id=105]
+radius = 16.0
+
+[sub_resource type="CanvasItemMaterial" id=108]
+blend_mode = 1
+
+[sub_resource type="Curve" id=106]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=107]
+colors = PoolColorArray( 1, 1, 1, 0.666667, 1, 1, 1, 0 )
+
+[node name="big_whiteball" type="Node2D" groups=["spawnable"]]
+script = SubResource( 109 )
+SPEED = 110.0
+destroy_time = 6.0
+is_player_projectile = false
+is_enemy_projectile = true
+effect_wall = "res://prefabs/effects/destroy_effects/effect_big_whiteball_hit.tscn"
+effect_hit = "res://prefabs/effects/destroy_effects/effect_big_whiteball_hit.tscn"
+effect_reject = "res://prefabs/effects/destroy_effects/effect_big_whiteball_hit.tscn"
+simple_effect_destroy_sound_hit = "res://sounds/sfx/randomed/magicball_hit.tres"
+simple_effect_destroy_sound_wall = "res://sounds/sfx/randomed/magicball_hit.tres"
+end_speed = 110.0
+time = 0.25
+delay = 0.5
+fade_time = 0.5
+
+[node name="attack" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 19
+script = ExtResource( 3 )
+damage = 70
+is_enemy_attack = true
+lifetime = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="attack"]
+shape = SubResource( 105 )
+
+[node name="sprite" type="Sprite" parent="."]
+material = SubResource( 108 )
+z_index = -5
+texture = ExtResource( 6 )
+
+[node name="trail" type="CPUParticles2D" parent="sprite"]
+show_behind_parent = true
+amount = 16
+local_coords = false
+texture = ExtResource( 2 )
+emission_shape = 1
+emission_sphere_radius = 16.0
+direction = Vector2( 0, 0 )
+gravity = Vector2( 0, 0 )
+scale_amount = 2.0
+scale_amount_curve = SubResource( 106 )
+color_ramp = SubResource( 107 )
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath("../attack") ]
+spawn_sync_data_properties = [ "global_position", "rotation_degrees", "damage" ]
+auto_despawn = false
+
+[node name="MultiplayerSynchronizer" type="Node" parent="."]
+script = ExtResource( 4 )
+unreliable_sync_node_paths = [ NodePath(".."), NodePath(".."), NodePath("..") ]
+unreliable_sync_properties_names = [ "global_position", "angle", "rotation_degrees" ]
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

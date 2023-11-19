@@ -1,6 +1,7 @@
 extends Node2D
 class_name Boss
 
+
 var mob: Mob
 var boss_bar: TextureProgress
 var boss_hp: Label
@@ -35,7 +36,6 @@ func set_cutscene(val):
 
 
 func _ready():
-	randomize()
 	if MP.is_active:
 		yield($"/root/mg", "game_started")
 	yield(get_tree(), "idle_frame")
@@ -83,6 +83,16 @@ func get_hit(area):
 		waiting_for_death = false
 		anim.play("final_death")
 		G.setv("boss_" + G.current_level + "_killed", true)
+		G.addv("kills", 1)
+
+
+func mercy():
+	waiting_for_death = false
+	player.make_dialog(mercy_dialog, 3)
+	anim.play("mercy")
+	set_cutscene(true)
+	yield(anim, "animation_finished")
+	set_cutscene(false)
 
 
 func _process(delta):
@@ -91,12 +101,7 @@ func _process(delta):
 	if waiting_for_death:
 		death_timer += delta
 		if death_timer >= 5:
-			waiting_for_death = false
-			player.make_dialog(mercy_dialog, 3)
-			anim.play("mercy")
-			set_cutscene(true)
-			yield(anim, "animation_finished")
-			set_cutscene(false)
+			mercy()
 	if boss_bar == null:
 		return
 	if mob == null:
@@ -110,7 +115,7 @@ func _process(delta):
 
 
 func process_attack(delta):
-	if mob.is_stunned:
+	if not can_mob_move():
 		return
 	if not MP.auth(self):
 		return

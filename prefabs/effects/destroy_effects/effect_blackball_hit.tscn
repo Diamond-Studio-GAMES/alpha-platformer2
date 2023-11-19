@@ -61,7 +61,7 @@ tracks/3/keys = {
 } ]
 }
 
-[node name="effect_rejected_bullet_hit" type="Node2D"]
+[node name="effect_blackball_hit" type="Node2D"]
 scale = Vector2( 2, 2 )
 
 [node name="trail" type="CPUParticles2D" parent="."]

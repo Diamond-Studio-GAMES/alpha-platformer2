@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scripts/menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://themes/font_headers.tres" type="DynamicFont" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://prefabs/menu/education.tscn" type="PackedScene" id=12]
 [ext_resource path="res://prefabs/menu/name_of_game.tscn" type="PackedScene" id=13]
 [ext_resource path="res://textures/effects/backgrounds/red_world_castle_bg.png" type="Texture" id=14]
+[ext_resource path="res://textures/gui/exit.png" type="Texture" id=15]
+[ext_resource path="res://textures/effects/backgrounds/village_bg.png" type="Texture" id=16]
 
 [sub_resource type="Animation" id=1]
 resource_name = "main"
@@ -343,21 +345,21 @@ centered = false
 self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -113.663, 0 )
 scale = Vector2( 1.25, 1.25 )
-texture = ExtResource( 8 )
+texture = ExtResource( 16 )
 centered = false
 
 [node name="bg8" type="Sprite" parent="bg"]
 self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -98.8315, 0 )
 scale = Vector2( 1.25, 1.25 )
-texture = ExtResource( 4 )
+texture = ExtResource( 8 )
 centered = false
 
 [node name="bg9" type="Sprite" parent="bg"]
 self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -84, 0 )
 scale = Vector2( 1.25, 1.25 )
-texture = ExtResource( 7 )
+texture = ExtResource( 4 )
 centered = false
 
 [node name="anim" type="AnimationPlayer" parent="bg"]
@@ -421,11 +423,12 @@ text = "menu.about"
 [node name="exit" type="Button" parent="main"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -38.0
+margin_left = -48.0
 margin_top = 8.0
 margin_right = -8.0
-margin_bottom = 38.0
-text = "X"
+margin_bottom = 48.0
+icon = ExtResource( 15 )
+expand_icon = true
 
 [node name="language" type="Button" parent="main"]
 anchor_left = 1.0
@@ -1703,6 +1706,32 @@ window_title = "menu.warning"
 dialog_text = "menu.blw.text"
 dialog_autowrap = true
 
+[node name="dialog" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -70.0
+margin_right = 200.0
+margin_bottom = 70.0
+window_title = "menu.message"
+dialog_autowrap = true
+
+[node name="rate" type="ConfirmationDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -70.0
+margin_right = 200.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 150, 52.5 )
+window_title = "menu.rate.title"
+dialog_text = "menu.rate.text"
+dialog_autowrap = true
+
 [node name="education0" parent="." instance=ExtResource( 12 )]
 visible = false
 margin_left = -79.0
@@ -1728,31 +1757,6 @@ margin_top = 184.0
 margin_right = 120.0
 margin_bottom = 216.0
 text = "menu.skip"
-
-[node name="dialog" type="AcceptDialog" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = -70.0
-margin_right = 200.0
-margin_bottom = 70.0
-window_title = "menu.message"
-dialog_autowrap = true
-
-[node name="rate" type="ConfirmationDialog" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = -70.0
-margin_right = 200.0
-margin_bottom = 70.0
-window_title = "menu.rate.title"
-dialog_text = "menu.rate.text"
-dialog_autowrap = true
 
 [connection signal="pressed" from="main/play" to="." method="play"]
 [connection signal="pressed" from="main/achievements" to="." method="achievements" binds= [ true ]]

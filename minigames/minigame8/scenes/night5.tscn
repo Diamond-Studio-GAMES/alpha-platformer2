@@ -14,8 +14,8 @@
 
 [node name="night5" instance=ExtResource( 7 )]
 energy_loss_per_sec = 0.07
-flashlight_loss_per_sec = 0.2
-door_loss_per_sec = 0.6
+flashlight_loss_per_sec = 0.3
+door_loss_per_sec = 0.8
 cameras_loss_per_sec = 0.2
 music_box_loss_per_sec = 2.5
 

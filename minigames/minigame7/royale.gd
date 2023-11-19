@@ -49,7 +49,6 @@ func server():
 
 func spawn_player():
 	var n = player.instance()
-	randomize()
 	var random_spawn_point_id = randi() % $spawn_poses.get_child_count()
 	n.global_position = $spawn_poses.get_child(random_spawn_point_id).global_position
 	n.name = "player" + str(get_tree().get_network_unique_id())

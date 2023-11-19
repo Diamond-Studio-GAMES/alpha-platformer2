@@ -14,7 +14,6 @@ onready var eye = $visual/body/head/helmet/eye
 
 func _ready():
 	curr_lvl_loc = int(get_tree().current_scene.name.trim_prefix("level_").split("_")[0])
-	randomize()
 	have_gadget = true
 	max_health = curr_lvl_loc * 25 + 250
 	defense = curr_lvl_loc + 15
@@ -122,6 +121,9 @@ func ulti():
 	_ulti_tween.start()
 	_anim_tree["parameters/ulti_shot/active"] = true
 	$camera/gui/base/ulti_use/anim.play("ulti_use")
+	if MP.auth(self):
+		G.addv("ulti_used", 1)
+		G.ach.check(Achievements.SKILL)
 	yield(get_tree().create_timer(0.8, false), "timeout")
 	can_see = false
 	$visual.modulate = Color(1, 1, 1, 0.25)

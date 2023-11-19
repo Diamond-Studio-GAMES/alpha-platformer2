@@ -15,12 +15,12 @@ dest_files=[ "res://.import/music_box_indicator.png-5f1e1217de5829d9f3131cf350b4
 [params]
 
 compress/mode=1
-compress/lossy_quality=0.5
+compress/lossy_quality=0.0
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

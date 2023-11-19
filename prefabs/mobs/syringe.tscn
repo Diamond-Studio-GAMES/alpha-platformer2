@@ -18,7 +18,8 @@ effect_wall = "res://prefabs/effects/destroy_effects/effect_syringe_wall.tscn"
 effect_hit = "res://prefabs/effects/destroy_effects/effect_syringe_hit.tscn"
 effect_end_of_range = "res://prefabs/effects/destroy_effects/effect_syringe_eor.tscn"
 effect_reject = "res://prefabs/effects/destroy_effects/effect_syringe_reject.tscn"
-simple_effect_color = Color( 0.54902, 1, 0.54902, 1 )
+simple_effect_color = Color( 0, 1, 0, 1 )
+simple_effect_scale = Vector2( 0.5, 0.5 )
 simple_effect_destroy_sound_hit = "res://sounds/sfx/randomed/sword_hit.tres"
 simple_effect_destroy_sound_wall = "res://sounds/sfx/randomed/sword_hit_wall.tres"
 

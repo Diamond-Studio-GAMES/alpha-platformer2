@@ -308,7 +308,6 @@ func reload_meta_from_saves():
 
 
 func duplicate_save(id):
-	randomize()
 	var cf = ConfigFile.new()
 	cf.load_encrypted_pass("user://saves/".plus_file(id + ".apa2save"), "apa2_save")
 	var old_name = cf.get_value("save", "name", "...")
@@ -340,11 +339,10 @@ func duplicate_save(id):
 
 
 func make_id(save_name):
-	randomize()
 	var model = OS.get_model_name()
 	if model == "GenericDevice":
 		model = str(randi() % 1000000)
-	model.replace(" ", "")
+	model = model.replace(" ", "")
 	var hash_of_save = str(save_name.hash()).substr(0, 32)
 	var random_num = str(randi() % 1000000)
 	return model + hash_of_save + random_num

@@ -36,7 +36,7 @@ var is_in_another = false
 var is_defending = false
 var defended_time = 0
 var monitor_was_up = false
-onready var night : Night = get_tree().current_scene as Night
+onready var night := get_tree().current_scene as Night
 
 
 func move_to_room(room):
@@ -70,9 +70,9 @@ func do_move():
 		night.jumpscare(texture, sound)
 		return
 	time_to_next_move = AI_time_custom
-	if randi() % 20 > AI-1:
+	if randi() % 20 > AI - 1:
 		return
-	if curr_id+1 == len(current_path):
+	if curr_id + 1 == len(current_path):
 		start_moving()
 		return
 	move_to_room(current_path[curr_id+1])
@@ -83,10 +83,9 @@ func do_move():
 			ComeInOut.RUN:
 				night.play_sound("run_in")
 		is_in_another = current_room == "another_way"
+		night.break_flashlight(is_in_another)
 		time_to_next_move = time_to_defend
 		is_defending = true
-		monitor_was_up = true
-		yield(get_tree().create_timer(0.5), "timeout")
 		monitor_was_up = night.is_cameras
 
 
@@ -103,8 +102,11 @@ func _process(delta):
 			EnemyType.DOOR:
 				if night.is_door:
 					if time_to_defend - move_timer < defense_time - defended_time:
-						move_timer = 999
+						move_timer = 0
+						defense_time = 999
 					defended_time += delta
+				elif defense_time >= 990:
+					move_timer = 999
 			EnemyType.LIGHT:
 				if night.is_flashlight and night.is_in_another_way == is_in_another:
 					if time_to_defend - move_timer < defense_time - defended_time:
@@ -113,20 +115,15 @@ func _process(delta):
 			EnemyType.MASK:
 				if night.is_mask:
 					if time_to_defend - move_timer < defense_time - defended_time:
-						move_timer = 999
+						move_timer = 0
+						defense_time = 999
 					defended_time += delta
+				elif defense_time >= 990:
+					move_timer = 999
 		if monitor_was_up and not night.is_cameras:
 			monitor_was_up = false
-		if kill_on_monitor and night.is_cameras and not monitor_was_up:
-			var sound = ""
-			match scream_type:
-				Scream.FEMALE:
-					sound = "jumpscare_female"
-				Scream.MALE:
-					sound = "jumpscare_male"
-				Scream.DT:
-					sound = "jumpscare_dt"
-			night.jumpscare(texture, sound)
+		if kill_on_monitor and night.is_cameras and not monitor_was_up and move_timer > time_to_defend * 0.3:
+			move_timer = 999
 			is_defending = false
 		if defended_time >= defense_time:
 			match enemy_type:
@@ -138,8 +135,5 @@ func _process(delta):
 							night.play_sound("steps_out")
 						ComeInOut.RUN:
 							night.play_sound("run_out")
+			night.break_flashlight(is_in_another)
 			start_moving()
-
-
-func _ready():
-	randomize()

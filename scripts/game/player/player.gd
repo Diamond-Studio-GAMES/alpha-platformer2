@@ -295,6 +295,7 @@ func _hurt_intermediate(damage_source, died):
 		G.addv("damaged", 1)
 		if damage_source == "fall":
 			G.addv("fall_damaged", 1)
+			G.ach.complete(Achievements.FALL)
 	if died:
 		collision_layer = 0b0
 		collision_mask = 0b1
@@ -448,6 +449,7 @@ func ulti():
 	_anim_tree["parameters/ulti_shot/active"] = true
 	if MP.auth(self):
 		G.addv("ulti_used", 1)
+		G.ach.check(Achievements.SKILL)
 		var node = _ulti.instance()
 		node.has_amulet = is_amulet(ulti_amulet)
 		node.level = ulti_power
@@ -591,6 +593,7 @@ func revive(hp_count = -1):
 	is_hurt = false
 	is_reviving = true
 	_is_drinking = false
+	can_control = false
 	_health_timer = 0
 	_head.texture = _head_sprite
 	_player_head.texture = _head_sprite
@@ -612,6 +615,7 @@ func revive(hp_count = -1):
 	_anim_tree["parameters/potion_shot/active"] = false
 	_buttons.show()
 	yield(get_tree().create_timer(0.4, false), "timeout")
+	can_control = true
 	$shield/anim.seek(0, true)
 	$shield.show()
 	_move.y = -JUMP_POWER * 1.7 * GRAVITY_SCALE
@@ -629,6 +633,10 @@ remote func revived_player():
 
 
 func make_dialog(text = "", time = 2, color = Color.white):
+	if G.getv("gender", "male") == "male":
+		text = text.replace("%", "")
+	else:
+		text = text.replace("%", "а")
 	dialog_text.text = text
 	dialog_text.add_color_override("font_color", color)
 	dialog_text.get_font("font").outline_color = Color.black if color.get_luminance() > 0.5 else Color.white
@@ -650,10 +658,19 @@ func get_boss_bar():
 
 
 func _exit_tree():
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("music"), false)
+	if MP.auth(self):
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("music"), false)
 
 
 func is_amulet(type):
-	if amulet == type:
-		return true
-	return false
+	return amulet == type
+
+
+func _update_water_state():
+	if waters.size() > 0:
+		under_water = true
+	else:
+		under_water = false
+		if breath_time < 2 and MP.auth(self):
+			G.ach.complete(Achievements.AIR)
+		breath_time = 10

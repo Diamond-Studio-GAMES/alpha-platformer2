@@ -26,6 +26,7 @@ func add_body(n):
 	if n is Player:
 		if MP.auth(n):
 			G.addv(\"beartraped\", 1)
+			G.ach.check(Achievements.BEAR)
 			get_parent().hitting()
 	.add_body(n)
 "

@@ -21,7 +21,6 @@ var spawn_timer = 0
 
 
 func _ready():
-	randomize()
 	yield(get_tree(), "idle_frame")
 	player = $"../player"
 	player_camera = player.get_node("camera")

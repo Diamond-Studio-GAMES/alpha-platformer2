@@ -1,9 +1,7 @@
 extends Node2D
 
-var got_death = true
 
-func _ready():
-	randomize()
+var got_death = true
 
 
 func reward():

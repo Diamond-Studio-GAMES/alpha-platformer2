@@ -15,10 +15,6 @@ onready var gems_count = $gui/base/gems
 onready var spawn_pos = $spawn_pos.global_translation
 
 
-func _ready():
-	randomize()
-
-
 func add_gems(gems):
 	collected_gems += gems
 	G.setv("gems", G.getv("gems", 10) + gems)

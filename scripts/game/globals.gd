@@ -2,15 +2,15 @@ extends Node
 class_name Globals, "res://textures/gui/alpha_text.png"
 
 
-const VERSION = "0.9.0"
-const VERSION_STATUS = ""
-const VERSION_STATUS_NUMBER = ""
-const VERSION_CODE = 70
+const VERSION = "0.9.1"
+const VERSION_STATUS = "beta"
+const VERSION_STATUS_NUMBER = "1"
+const VERSION_CODE = 72
 
 var main_file: ConfigFile
 var save_file: ConfigFile
 var save_timer = 0
-var selected_class_to_test = "knight"
+var ignore_next_music_stop = false
 var current_level = "1_1"
 var current_scene = ""
 var cached_ip = ""
@@ -22,6 +22,8 @@ var music
 var time_timer
 var ad: AdsManager
 var ach: Achievements
+var class_visuals
+var class_visuals_scene = load("res://prefabs/menu/class_visuals.tscn")
 var loading_scene = load("res://scenes/menu/loading.tscn")
 var box = load("res://scenes/menu/box.tscn")
 const CLASSES_ID = {
@@ -182,7 +184,6 @@ func _ready():
 		dir.make_dir_recursive("user://saves/")
 	
 	randomize()
-	get_tree().connect("node_added", self, "_node_added")
 	ad = AdsManager.new()
 	ad.name = "ads"
 	add_child(ad)
@@ -204,8 +205,9 @@ func _ready():
 	time_timer.wait_time = 1
 	time_timer.pause_mode = PAUSE_MODE_PROCESS
 	add_child(time_timer)
-	time_timer.connect("timeout", self, "update_timer")
+	time_timer.connect("timeout", self, "_update_timer")
 	time_timer.start()
+	class_visuals = class_visuals_scene.instance()
 	if OS.has_feature("editor") or OS.has_feature("cheats"):
 		var ch = load("res://prefabs/menu/cheats.tscn").instance()
 		add_child(ch)
@@ -224,11 +226,6 @@ func _notification(what):
 		NOTIFICATION_WM_GO_BACK_REQUEST, NOTIFICATION_WM_QUIT_REQUEST, \
 		NOTIFICATION_WM_FOCUS_OUT:
 			save()
-
-
-func _node_added(node):
-	if node == get_tree().current_scene:
-		update_music(node)
 
 
 func getv(name, default_value = 0):
@@ -263,12 +260,6 @@ func get_save_meta(id, meta, data):
 	return main_file.get_value(id, meta, data)
 
 
-func save():
-	main_file.save_encrypted_pass("user://main.apa2", "main")
-	if save_file != null:
-		save_file.save_encrypted_pass("user://saves/".plus_file(getv("save_id", "pass") + ".apa2save"), "apa2_save")
-
-
 func open_save(id):
 	save_file = ConfigFile.new()
 	save_file.load_encrypted_pass("user://saves/".plus_file(id + ".apa2save"), "apa2_save")
@@ -279,6 +270,12 @@ func close_save():
 	save_file = null
 
 
+func save():
+	main_file.save_encrypted_pass("user://main.apa2", "main")
+	if save_file != null:
+		save_file.save_encrypted_pass("user://saves/".plus_file(getv("save_id", "pass") + ".apa2save"), "apa2_save")
+
+
 func change_to_scene(path):
 	if has_node("/root/loading"):
 		if $"/root/loading".load_path == path:
@@ -286,37 +283,6 @@ func change_to_scene(path):
 	var node = loading_scene.instance()
 	node.load_path = path
 	get_tree().root.add_child(node)
-
-
-func percent_chance(in_chance):
-	in_chance *= 10000
-	in_chance = int(in_chance)
-	var max_add = 1000000 - in_chance
-	var chance_range_start = randi() % (max_add + 1)
-	var chance_range_end = chance_range_start + in_chance
-	var random_number = randi() % 1000001
-	return random_number >= chance_range_start and random_number <= chance_range_end
-
-
-func update_music(node):
-	if not is_instance_valid(node):
-		music.stop()
-		return
-	if node.name != current_scene:
-		var prev_scene = current_scene
-		current_scene = node.name
-		if current_scene == "menu" and prev_scene != "levels":
-			music.play(0)
-		elif current_scene == "levels" and prev_scene != "menu":
-			music.play(0)
-		elif current_scene != "menu" and current_scene != "levels":
-			music.stop()
-
-
-func update_timer():
-	if save_file == null:
-		return
-	G.addv("time", 1)
 
 
 func receive_ad_reward():
@@ -391,3 +357,40 @@ func receive_loot(looted):
 		get_tree().root.add_child(n)
 		n.show_loot(loot_to_show)
 		n.connect("end_loot", self, "emit_signal", ["loot_end"])
+
+
+func percent_chance(in_chance):
+	in_chance *= 10000
+	in_chance = int(in_chance)
+	var max_add = 1000000 - in_chance
+	var chance_range_start = randi() % (max_add + 1)
+	var chance_range_end = chance_range_start + in_chance
+	var random_number = randi() % 1000001
+	return random_number >= chance_range_start and random_number <= chance_range_end
+
+
+func play_menu_music():
+	if not music.playing:
+		music.play()
+
+
+func stop_menu_music():
+	if not ignore_next_music_stop:
+		music.stop()
+	ignore_next_music_stop = false
+
+
+func init_class_visuals():
+	if not class_visuals.is_inside_tree():
+		add_child(class_visuals)
+
+
+func end_class_visuals():
+	if class_visuals.is_inside_tree():
+		remove_child(class_visuals)
+
+
+func _update_timer():
+	if save_file == null:
+		return
+	G.addv("time", 1)

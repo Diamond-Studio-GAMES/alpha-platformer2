@@ -20,7 +20,6 @@ func _input(event):
 
 
 func _ready():
-	randomize()
 	gen.randomize()
 	yield(self, "next")
 	$box_screen/anim.play("open")

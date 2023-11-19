@@ -16,7 +16,6 @@ func _ready():
 		G.GrassType.CPU:
 			material = null
 			cpu = true
-			randomize()
 			time = randi() % 10000
 		G.GrassType.STATIC:
 			material = null

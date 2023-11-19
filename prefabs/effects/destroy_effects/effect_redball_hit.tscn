@@ -44,7 +44,7 @@ tracks/2/keys = {
 } ]
 }
 
-[node name="effect_rejected_bullet_hit" type="Node2D"]
+[node name="effect_redball_hit" type="Node2D"]
 
 [node name="sprite" type="Sprite" parent="."]
 modulate = Color( 1, 0, 0, 1 )

@@ -1,0 +1,4090 @@
+[gd_scene load_steps=52 format=2]
+
+[ext_resource path="res://scripts/menu/classes.gd" type="Script" id=1]
+[ext_resource path="res://prefabs/menu/education.tscn" type="PackedScene" id=2]
+[ext_resource path="res://textures/classes/archer_helmet.png" type="Texture" id=3]
+[ext_resource path="res://textures/items/amulet_health_frag.png" type="Texture" id=4]
+[ext_resource path="res://themes/font_headers.tres" type="DynamicFont" id=5]
+[ext_resource path="res://themes/font_headers2.tres" type="DynamicFont" id=6]
+[ext_resource path="res://textures/items/amulet_speed.png" type="Texture" id=7]
+[ext_resource path="res://textures/items/amulet_none.png" type="Texture" id=8]
+[ext_resource path="res://scripts/menu/viewport_texture.gd" type="Script" id=9]
+[ext_resource path="res://themes/theme.tres" type="Theme" id=10]
+[ext_resource path="res://textures/classes/butcher_helmet.png" type="Texture" id=11]
+[ext_resource path="res://textures/items/soul_power.png" type="Texture" id=12]
+[ext_resource path="res://textures/gui/level_up_bar.png" type="Texture" id=13]
+[ext_resource path="res://textures/items/gem.png" type="Texture" id=14]
+[ext_resource path="res://textures/items/amulet_defense.png" type="Texture" id=15]
+[ext_resource path="res://textures/items/amulet_power.png" type="Texture" id=16]
+[ext_resource path="res://textures/items/gadget.png" type="Texture" id=17]
+[ext_resource path="res://textures/items/amulet_reload_frag.png" type="Texture" id=18]
+[ext_resource path="res://textures/items/coin.png" type="Texture" id=19]
+[ext_resource path="res://textures/items/amulet_health.png" type="Texture" id=20]
+[ext_resource path="res://textures/items/token.png" type="Texture" id=21]
+[ext_resource path="res://textures/classes/wizard_helmet.png" type="Texture" id=22]
+[ext_resource path="res://textures/items/amulet_power_frag.png" type="Texture" id=23]
+[ext_resource path="res://textures/items/amulet_reload.png" type="Texture" id=24]
+[ext_resource path="res://textures/items/amulet_speed_frag.png" type="Texture" id=25]
+[ext_resource path="res://textures/items/amulet_ulti_frag.png" type="Texture" id=26]
+[ext_resource path="res://textures/classes/knight_helmet.png" type="Texture" id=27]
+[ext_resource path="res://textures/items/ulti_token.png" type="Texture" id=28]
+[ext_resource path="res://textures/gui/ulti_icon_0.tres" type="Texture" id=29]
+[ext_resource path="res://textures/items/amulet_defense_frag.png" type="Texture" id=30]
+[ext_resource path="res://textures/gui/level_up.png" type="Texture" id=31]
+[ext_resource path="res://textures/items/amulet_ulti.png" type="Texture" id=32]
+[ext_resource path="res://prefabs/menu/help_info.tscn" type="PackedScene" id=33]
+[ext_resource path="res://textures/classes/spearman_helmet.png" type="Texture" id=34]
+[ext_resource path="res://textures/gui/class_drop_bg.png" type="Texture" id=35]
+[ext_resource path="res://sounds/sfx/menu/upgrade_value.wav" type="AudioStream" id=36]
+[ext_resource path="res://textures/gui/bg_light.png" type="Texture" id=37]
+[ext_resource path="res://textures/effects/other/star.png" type="Texture" id=38]
+[ext_resource path="res://shaders/glow.gdshader" type="Shader" id=39]
+[ext_resource path="res://textures/effects/backgrounds/upgrade_background.png" type="Texture" id=40]
+[ext_resource path="res://sounds/sfx/menu/upgrade.wav" type="AudioStream" id=41]
+
+[sub_resource type="Animation" id=1]
+resource_name = "bg"
+length = 2.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:rect_position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0, 0, -48, 0, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.727273, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 0.25098 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0, 0, 0, 0.752941 )
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+anti_aliasing = false
+
+[sub_resource type="Animation" id=5]
+resource_name = "upgrade"
+length = 3.0
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath("classes/particles")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("classes/particle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("panel/next/particles")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("panels/panel0/next/particles")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("panels/panel1/next/particles")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("panels/panel2/next/particles")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.65 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("panels/panel3/next/particles")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("upgrade:rect_position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 100, -0.25, 0, 0.25, 0, 75, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.35, 1.15 )
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("upgrade:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.35, 0.45, 0.95, 1.05 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("panel/next:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("panels/panel0/next:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("panels/panel1/next:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 1.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("panels/panel2/next:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 2.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("panels/panel3/next:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 2.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("../tint/tint:color")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.05, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath(".:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/16/type = "audio"
+tracks/16/path = NodePath("sfx")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 41 )
+} ],
+"times": PoolRealArray( 0.25 )
+}
+tracks/17/type = "audio"
+tracks/17/path = NodePath("sfx_value")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 36 )
+} ],
+"times": PoolRealArray( 1.2 )
+}
+tracks/18/type = "audio"
+tracks/18/path = NodePath("panels/panel0/sfx_value")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 36 )
+} ],
+"times": PoolRealArray( 1.5 )
+}
+tracks/19/type = "audio"
+tracks/19/path = NodePath("panels/panel1/sfx_value")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 36 )
+} ],
+"times": PoolRealArray( 1.8 )
+}
+tracks/20/type = "audio"
+tracks/20/path = NodePath("panels/panel2/sfx_value")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 36 )
+} ],
+"times": PoolRealArray( 2.1 )
+}
+tracks/21/type = "audio"
+tracks/21/path = NodePath("panels/panel3/sfx_value")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 36 )
+} ],
+"times": PoolRealArray( 2.4 )
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "rotate"
+length = 12.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("rotated:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 39 )
+shader_param/glow_color = Color( 1, 1, 1, 1 )
+shader_param/power = 1.0
+
+[sub_resource type="Animation" id=8]
+resource_name = "rotate"
+length = 12.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("rotated:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 12 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0.0138308, 0.00325739 ), 0.0, 0.0, 0, 0, Vector2( 0.499217, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Animation" id=10]
+resource_name = "craft"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("icon/glow/glow:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("icon:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("icon:material:shader_param/power")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("title:margin_top")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -128.0, -128.0, 40.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("title:margin_bottom")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -58.0, -58.0, 110.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("type:margin_top")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2.2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -72.0, -72.0, 96.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("type:margin_bottom")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 2.2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -2.0, -2.0, 166.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("class:margin_top")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2.2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, 2.0, -142.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("class:margin_bottom")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 2.2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 72.0, 72.0, -72.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("icon/glow/glow:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("done:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 2.2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath(".:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("../tint:color")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/13/type = "audio"
+tracks/13/path = NodePath("sfx")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 41 )
+} ],
+"times": PoolRealArray( 0.1 )
+}
+
+[node name="classes" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -453, -335 )
+theme = ExtResource( 10 )
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.360784, 0.611765, 1, 1 )
+
+[node name="back" type="Button" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 96.0
+margin_bottom = 56.0
+text = "menu.back"
+clip_text = true
+
+[node name="title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -176.5
+margin_right = 176.5
+margin_bottom = 70.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 5 )
+text = "classes.name"
+align = 1
+
+[node name="gems" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -88.0
+margin_top = 16.0
+margin_right = -24.0
+margin_bottom = 56.0
+text = "9999"
+valign = 1
+
+[node name="icon" type="TextureRect" parent="gems"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -20.0
+margin_right = -4.0
+margin_bottom = 20.0
+texture = ExtResource( 14 )
+expand = true
+
+[node name="coins" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -192.0
+margin_top = 16.0
+margin_right = -128.0
+margin_bottom = 56.0
+text = "9999"
+valign = 1
+
+[node name="icon" type="TextureRect" parent="coins"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -20.0
+margin_right = -4.0
+margin_bottom = 20.0
+texture = ExtResource( 19 )
+expand = true
+
+[node name="classes_list" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -374.0
+margin_top = -190.0
+margin_right = -122.0
+margin_bottom = 150.0
+
+[node name="grid" type="GridContainer" parent="classes_list"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -2.0
+margin_bottom = -2.0
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 2
+
+[node name="player" type="ToolButton" parent="classes_list/grid"]
+margin_right = 120.0
+margin_bottom = 107.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="cont" type="VBoxContainer" parent="classes_list/grid/player"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="label" type="Label" parent="classes_list/grid/player/cont"]
+margin_top = 41.0
+margin_right = 120.0
+margin_bottom = 65.0
+size_flags_vertical = 6
+text = "class.none"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="knight" type="ToolButton" parent="classes_list/grid"]
+margin_left = 128.0
+margin_right = 248.0
+margin_bottom = 107.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="cont" type="VBoxContainer" parent="classes_list/grid/knight"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="icon" type="TextureRect" parent="classes_list/grid/knight/cont"]
+margin_right = 120.0
+margin_bottom = 79.0
+size_flags_vertical = 3
+texture = ExtResource( 27 )
+stretch_mode = 6
+
+[node name="label" type="Label" parent="classes_list/grid/knight/cont"]
+margin_top = 83.0
+margin_right = 120.0
+margin_bottom = 107.0
+text = "class.knight"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="butcher" type="ToolButton" parent="classes_list/grid"]
+margin_top = 115.0
+margin_right = 120.0
+margin_bottom = 222.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="cont" type="VBoxContainer" parent="classes_list/grid/butcher"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="icon" type="TextureRect" parent="classes_list/grid/butcher/cont"]
+margin_right = 120.0
+margin_bottom = 79.0
+size_flags_vertical = 3
+texture = ExtResource( 11 )
+stretch_mode = 6
+
+[node name="label" type="Label" parent="classes_list/grid/butcher/cont"]
+margin_top = 83.0
+margin_right = 120.0
+margin_bottom = 107.0
+text = "class.butcher"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="spearman" type="ToolButton" parent="classes_list/grid"]
+margin_left = 128.0
+margin_top = 115.0
+margin_right = 248.0
+margin_bottom = 222.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="cont" type="VBoxContainer" parent="classes_list/grid/spearman"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="icon" type="TextureRect" parent="classes_list/grid/spearman/cont"]
+margin_right = 120.0
+margin_bottom = 79.0
+size_flags_vertical = 3
+texture = ExtResource( 34 )
+stretch_mode = 6
+
+[node name="label" type="Label" parent="classes_list/grid/spearman/cont"]
+margin_top = 83.0
+margin_right = 120.0
+margin_bottom = 107.0
+text = "class.spearman"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="wizard" type="ToolButton" parent="classes_list/grid"]
+margin_top = 230.0
+margin_right = 120.0
+margin_bottom = 336.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="cont" type="VBoxContainer" parent="classes_list/grid/wizard"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="icon" type="TextureRect" parent="classes_list/grid/wizard/cont"]
+margin_right = 120.0
+margin_bottom = 78.0
+size_flags_vertical = 3
+texture = ExtResource( 22 )
+stretch_mode = 6
+
+[node name="label" type="Label" parent="classes_list/grid/wizard/cont"]
+margin_top = 82.0
+margin_right = 120.0
+margin_bottom = 106.0
+text = "class.wizard"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="archer" type="ToolButton" parent="classes_list/grid"]
+margin_left = 128.0
+margin_top = 230.0
+margin_right = 248.0
+margin_bottom = 336.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="cont" type="VBoxContainer" parent="classes_list/grid/archer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="icon" type="TextureRect" parent="classes_list/grid/archer/cont"]
+margin_right = 120.0
+margin_bottom = 78.0
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+stretch_mode = 6
+
+[node name="label" type="Label" parent="classes_list/grid/archer/cont"]
+margin_top = 82.0
+margin_right = 120.0
+margin_bottom = 106.0
+text = "class.archer"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="class_panel" type="Panel" parent="."]
+anchor_left = 0.675
+anchor_top = 0.5
+anchor_right = 0.675
+anchor_bottom = 0.5
+margin_left = -183.0
+margin_top = -202.0
+margin_right = 195.0
+margin_bottom = 260.0
+mouse_filter = 2
+size_flags_vertical = 4
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="select" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -368.0
+margin_top = 165.0
+margin_right = -128.0
+margin_bottom = 211.0
+text = "menu.select"
+
+[node name="try" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -368.0
+margin_top = 221.0
+margin_right = -128.0
+margin_bottom = 251.0
+text = "classes.try"
+
+[node name="classes" type="Control" parent="."]
+anchor_left = 0.675
+anchor_top = 0.5
+anchor_right = 0.675
+anchor_bottom = 0.5
+margin_left = -15.0001
+margin_top = 29.0
+margin_right = 24.9999
+margin_bottom = 69.0
+rect_scale = Vector2( 0.75, 0.75 )
+rect_pivot_offset = Vector2( 20, 20 )
+
+[node name="knight" type="TextureRect" parent="classes"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -220.0
+margin_right = 200.0
+margin_bottom = 180.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 9 )
+
+[node name="butcher" type="TextureRect" parent="classes"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -220.0
+margin_right = 200.0
+margin_bottom = 180.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 9 )
+
+[node name="spearman" type="TextureRect" parent="classes"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -220.0
+margin_right = 200.0
+margin_bottom = 180.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 9 )
+
+[node name="wizard" type="TextureRect" parent="classes"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -220.0
+margin_right = 200.0
+margin_bottom = 180.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 9 )
+
+[node name="archer" type="TextureRect" parent="classes"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -220.0
+margin_right = 200.0
+margin_bottom = 180.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 9 )
+
+[node name="player" type="TextureRect" parent="classes"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -220.0
+margin_right = 200.0
+margin_bottom = 180.0
+expand = true
+stretch_mode = 6
+script = ExtResource( 9 )
+
+[node name="class" type="Label" parent="."]
+anchor_left = 0.675
+anchor_top = 0.5
+anchor_right = 0.675
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -204.0
+margin_right = 80.0
+margin_bottom = -140.0
+custom_fonts/font = ExtResource( 6 )
+text = "Рыцарь"
+valign = 1
+
+[node name="about" type="Button" parent="class"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 60.0
+margin_top = -15.0
+margin_right = 90.0
+margin_bottom = 15.0
+text = "i"
+
+[node name="stats" type="Label" parent="."]
+anchor_left = 0.675
+anchor_top = 0.5
+anchor_right = 0.675
+anchor_bottom = 0.5
+margin_left = -160.2
+margin_top = -148.0
+margin_right = 79.8
+margin_bottom = -116.0
+text = "Сила: 20 Навык:5"
+valign = 1
+
+[node name="amulet" type="TextureButton" parent="."]
+anchor_left = 0.675
+anchor_top = 0.5
+anchor_right = 0.675
+anchor_bottom = 0.5
+margin_left = 3.99994
+margin_top = -156.0
+margin_right = 51.9999
+margin_bottom = -108.0
+texture_normal = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+
+[node name="help_info" parent="amulet" instance=ExtResource( 33 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -15.0
+margin_top = 2.0
+margin_right = 15.0
+margin_bottom = 32.0
+info = "classes.tip.amulet"
+id = "amulet"
+
+[node name="gadget" type="TextureButton" parent="."]
+anchor_left = 0.675
+anchor_top = 0.5
+anchor_right = 0.675
+anchor_bottom = 0.5
+margin_left = 63.9998
+margin_top = -156.0
+margin_right = 112.0
+margin_bottom = -108.0
+texture_normal = ExtResource( 17 )
+expand = true
+stretch_mode = 5
+
+[node name="help_info" parent="gadget" instance=ExtResource( 33 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -15.0
+margin_top = 2.0
+margin_right = 15.0
+margin_bottom = 32.0
+info = "classes.tip.gadget"
+id = "gadget"
+
+[node name="sp" type="TextureButton" parent="."]
+anchor_left = 0.675
+anchor_top = 0.5
+anchor_right = 0.675
+anchor_bottom = 0.5
+margin_left = 124.0
+margin_top = -156.0
+margin_right = 172.0
+margin_bottom = -108.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 12 )
+texture_hover = ExtResource( 12 )
+texture_disabled = ExtResource( 12 )
+texture_focused = ExtResource( 12 )
+expand = true
+stretch_mode = 5
+
+[node name="help_info" parent="sp" instance=ExtResource( 33 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -15.0
+margin_top = 2.0
+margin_right = 15.0
+margin_bottom = 32.0
+info = "classes.tip.sp"
+id = "sp"
+
+[node name="upgrade" type="Control" parent="."]
+anchor_left = 0.675
+anchor_top = 0.5
+anchor_right = 0.675
+anchor_bottom = 0.5
+margin_left = -144.0
+margin_top = 156.0
+margin_right = 176.0
+margin_bottom = 256.0
+
+[node name="bar" type="TextureProgress" parent="upgrade"]
+anchor_right = 0.75
+margin_top = 10.0
+margin_bottom = 40.0
+value = 42.0
+allow_greater = true
+texture_under = ExtResource( 13 )
+texture_progress = ExtResource( 13 )
+tint_under = Color( 0.517647, 0, 0.329412, 1 )
+tint_progress = Color( 1, 0, 1, 1 )
+nine_patch_stretch = true
+
+[node name="label" type="Label" parent="upgrade/bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "30/50"
+align = 1
+valign = 1
+
+[node name="token" type="TextureRect" parent="upgrade/bar"]
+self_modulate = Color( 1, 0, 0, 1 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -28.0
+margin_top = -20.0
+margin_right = 12.0
+margin_bottom = 20.0
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 6
+
+[node name="icon" type="TextureRect" parent="upgrade/bar/token"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 27 )
+expand = true
+stretch_mode = 6
+
+[node name="bar_ulti" type="TextureProgress" parent="upgrade"]
+anchor_top = 1.0
+anchor_right = 0.75
+anchor_bottom = 1.0
+margin_top = -38.0
+margin_bottom = -8.0
+value = 42.0
+allow_greater = true
+texture_under = ExtResource( 13 )
+texture_progress = ExtResource( 13 )
+tint_under = Color( 0.517647, 0, 0.329412, 1 )
+tint_progress = Color( 1, 0, 0, 1 )
+nine_patch_stretch = true
+
+[node name="label" type="Label" parent="upgrade/bar_ulti"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "30/50"
+align = 1
+valign = 1
+
+[node name="token" type="TextureRect" parent="upgrade/bar_ulti"]
+self_modulate = Color( 1, 0, 0, 1 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -28.0
+margin_top = -20.0
+margin_right = 12.0
+margin_bottom = 20.0
+texture = ExtResource( 28 )
+expand = true
+stretch_mode = 6
+
+[node name="icon" type="TextureRect" parent="upgrade/bar_ulti/token"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -12.0
+margin_top = -12.0
+margin_right = 12.0
+margin_bottom = 12.0
+texture = ExtResource( 29 )
+expand = true
+stretch_mode = 6
+
+[node name="upgrade" type="Button" parent="upgrade"]
+anchor_left = 0.75
+anchor_right = 1.0
+margin_top = 5.0
+margin_right = 6.0
+margin_bottom = 45.0
+text = "500"
+icon = ExtResource( 19 )
+clip_text = true
+
+[node name="upgrade_ulti" type="Button" parent="upgrade"]
+anchor_left = 0.75
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -45.0
+margin_right = 6.0
+margin_bottom = -5.0
+text = "1500"
+icon = ExtResource( 19 )
+clip_text = true
+
+[node name="info_player" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+
+[node name="bg" type="ColorRect" parent="info_player"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -240.0
+margin_top = -28.0
+margin_right = 240.0
+margin_bottom = 28.0
+color = Color( 0, 0, 0, 0.752941 )
+
+[node name="close" type="Button" parent="info_player"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 95.0
+margin_bottom = 38.0
+text = "menu.close"
+clip_text = true
+
+[node name="title" type="Label" parent="info_player"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -270.0
+margin_top = 16.0
+margin_right = 270.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 6 )
+text = "ПОКАЗАТЕЛИ"
+align = 1
+
+[node name="health" type="Label" parent="info_player"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -180.0
+margin_top = 64.0
+margin_right = -60.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "class.stat.health"
+valign = 1
+
+[node name="value" type="Label" parent="info_player/health"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "75"
+
+[node name="defense" type="Label" parent="info_player"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -60.0
+margin_top = 64.0
+margin_right = 60.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 0, 0.501961, 1, 1 )
+text = "class.stat.defense"
+valign = 1
+
+[node name="value" type="Label" parent="info_player/defense"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "0"
+
+[node name="speed" type="Label" parent="info_player"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 60.0
+margin_top = 64.0
+margin_right = 180.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 1, 0, 1, 1 )
+text = "class.stat.speed"
+valign = 1
+
+[node name="value" type="Label" parent="info_player/speed"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "speed.veryhigh"
+
+[node name="attack_label" type="Label" parent="info_player"]
+modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = -124.0
+margin_right = 180.0
+margin_bottom = -84.0
+text = "none.attack.name"
+align = 1
+valign = 2
+
+[node name="attack_text" type="Label" parent="info_player"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = -84.0
+margin_right = 180.0
+margin_bottom = 56.0
+text = "none.attack.desc"
+autowrap = true
+
+[node name="attack" type="Label" parent="info_player"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = 60.0
+margin_right = -60.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.damage"
+valign = 1
+
+[node name="value" type="Label" parent="info_player/attack"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "15/30"
+
+[node name="attack_cd" type="Label" parent="info_player"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -52.0
+margin_top = 60.0
+margin_right = 73.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.reload"
+valign = 1
+
+[node name="value" type="Label" parent="info_player/attack_cd"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "reload.veryfast"
+
+[node name="info_knight" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+
+[node name="bg" type="ColorRect" parent="info_knight"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -240.0
+margin_top = -28.0
+margin_right = 240.0
+margin_bottom = 28.0
+color = Color( 0, 0, 0, 0.752941 )
+
+[node name="close" type="Button" parent="info_knight"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 95.0
+margin_bottom = 38.0
+text = "menu.close"
+clip_text = true
+
+[node name="title" type="Label" parent="info_knight"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -270.0
+margin_top = 16.0
+margin_right = 270.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 6 )
+text = "ПОКАЗАТЕЛИ"
+align = 1
+
+[node name="health" type="Label" parent="info_knight"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -180.0
+margin_top = 64.0
+margin_right = -60.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "class.stat.health"
+valign = 1
+
+[node name="value" type="Label" parent="info_knight/health"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "100"
+
+[node name="defense" type="Label" parent="info_knight"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -60.0
+margin_top = 64.0
+margin_right = 60.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 0, 0.501961, 1, 1 )
+text = "class.stat.defense"
+valign = 1
+
+[node name="value" type="Label" parent="info_knight/defense"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "5"
+
+[node name="speed" type="Label" parent="info_knight"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 60.0
+margin_top = 64.0
+margin_right = 180.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 1, 0, 1, 1 )
+text = "class.stat.speed"
+valign = 1
+
+[node name="value" type="Label" parent="info_knight/speed"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "speed.low"
+
+[node name="upgrade" type="Button" parent="info_knight"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.5
+margin_top = -24.0
+margin_right = 64.5
+margin_bottom = 16.0
+grow_horizontal = 2
+text = "classes.upgrade"
+icon = ExtResource( 31 )
+
+[node name="attack_label" type="Label" parent="info_knight"]
+modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = -124.0
+margin_right = -4.0
+margin_bottom = -84.0
+text = "knight.attack.name"
+align = 1
+valign = 2
+
+[node name="attack_text" type="Label" parent="info_knight"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = -84.0
+margin_right = -4.0
+margin_bottom = 56.0
+text = "knight.attack.desc"
+autowrap = true
+
+[node name="ulti_label" type="Label" parent="info_knight"]
+modulate = Color( 1, 1, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = -124.0
+margin_right = 372.0
+margin_bottom = -84.0
+text = "knight.ulti.name"
+align = 1
+valign = 2
+
+[node name="ulti_text" type="Label" parent="info_knight"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = -84.0
+margin_right = 372.0
+margin_bottom = 56.0
+text = "knight.ulti.desc"
+autowrap = true
+
+[node name="attack" type="Label" parent="info_knight"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = 60.0
+margin_right = -244.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.damage"
+valign = 1
+
+[node name="value" type="Label" parent="info_knight/attack"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "25"
+
+[node name="attack_cd" type="Label" parent="info_knight"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = 60.0
+margin_right = -111.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.reload"
+valign = 1
+
+[node name="value" type="Label" parent="info_knight/attack_cd"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "reload.fast"
+
+[node name="ulti" type="Label" parent="info_knight"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = 60.0
+margin_right = 132.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "class.stat.dmgperhit"
+valign = 1
+
+[node name="value" type="Label" parent="info_knight/ulti"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "x1"
+
+[node name="ulti_c" type="Label" parent="info_knight"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 140.0
+margin_top = 60.0
+margin_right = 265.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "class.stat.hits"
+valign = 1
+
+[node name="value" type="Label" parent="info_knight/ulti_c"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "5"
+
+[node name="info_butcher" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+
+[node name="bg" type="ColorRect" parent="info_butcher"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -240.0
+margin_top = -28.0
+margin_right = 240.0
+margin_bottom = 28.0
+color = Color( 0, 0, 0, 0.752941 )
+
+[node name="close" type="Button" parent="info_butcher"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 95.0
+margin_bottom = 38.0
+text = "menu.close"
+clip_text = true
+
+[node name="title" type="Label" parent="info_butcher"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -270.0
+margin_top = 16.0
+margin_right = 270.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 6 )
+text = "ПОКАЗАТЕЛИ"
+align = 1
+
+[node name="health" type="Label" parent="info_butcher"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -180.0
+margin_top = 64.0
+margin_right = -60.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "class.stat.health"
+valign = 1
+
+[node name="value" type="Label" parent="info_butcher/health"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "120"
+
+[node name="defense" type="Label" parent="info_butcher"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -60.0
+margin_top = 64.0
+margin_right = 60.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 0, 0.501961, 1, 1 )
+text = "class.stat.defense"
+valign = 1
+
+[node name="value" type="Label" parent="info_butcher/defense"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "0"
+
+[node name="speed" type="Label" parent="info_butcher"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 60.0
+margin_top = 64.0
+margin_right = 180.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 1, 0, 1, 1 )
+text = "class.stat.speed"
+valign = 1
+
+[node name="value" type="Label" parent="info_butcher/speed"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "speed.high"
+
+[node name="upgrade" type="Button" parent="info_butcher"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.5
+margin_top = -24.0
+margin_right = 64.5
+margin_bottom = 16.0
+grow_horizontal = 2
+text = "classes.upgrade"
+icon = ExtResource( 31 )
+
+[node name="attack_label" type="Label" parent="info_butcher"]
+modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = -124.0
+margin_right = -4.0
+margin_bottom = -84.0
+text = "butcher.attack.name"
+align = 1
+valign = 2
+
+[node name="attack_text" type="Label" parent="info_butcher"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = -84.0
+margin_right = -4.0
+margin_bottom = 56.0
+text = "bucther.attack.desc"
+autowrap = true
+
+[node name="ulti_label" type="Label" parent="info_butcher"]
+modulate = Color( 1, 1, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = -124.0
+margin_right = 372.0
+margin_bottom = -84.0
+text = "butcher.ulti.name"
+align = 1
+valign = 2
+
+[node name="ulti_text" type="Label" parent="info_butcher"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = -84.0
+margin_right = 372.0
+margin_bottom = 56.0
+text = "butcher.ulti.desc"
+autowrap = true
+
+[node name="attack" type="Label" parent="info_butcher"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = 60.0
+margin_right = -244.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.damage"
+valign = 1
+
+[node name="value" type="Label" parent="info_butcher/attack"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "30"
+
+[node name="attack_cd" type="Label" parent="info_butcher"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = 60.0
+margin_right = -111.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.reload"
+valign = 1
+
+[node name="value" type="Label" parent="info_butcher/attack_cd"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "reload.normal"
+
+[node name="ulti" type="Label" parent="info_butcher"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = 60.0
+margin_right = 132.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "class.stat.damage"
+valign = 1
+
+[node name="value" type="Label" parent="info_butcher/ulti"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "x5"
+
+[node name="info_spearman" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+
+[node name="bg" type="ColorRect" parent="info_spearman"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -240.0
+margin_top = -28.0
+margin_right = 240.0
+margin_bottom = 28.0
+color = Color( 0, 0, 0, 0.752941 )
+
+[node name="title" type="Label" parent="info_spearman"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -270.0
+margin_top = 16.0
+margin_right = 270.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 6 )
+text = "ПОКАЗАТЕЛИ"
+align = 1
+
+[node name="health" type="Label" parent="info_spearman"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -180.0
+margin_top = 64.0
+margin_right = -60.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "class.stat.health"
+valign = 1
+
+[node name="value" type="Label" parent="info_spearman/health"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "100"
+
+[node name="defense" type="Label" parent="info_spearman"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -60.0
+margin_top = 64.0
+margin_right = 60.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 0, 0.501961, 1, 1 )
+text = "class.stat.defense"
+valign = 1
+
+[node name="value" type="Label" parent="info_spearman/defense"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "5"
+
+[node name="speed" type="Label" parent="info_spearman"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 60.0
+margin_top = 64.0
+margin_right = 180.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 1, 0, 1, 1 )
+text = "class.stat.speed"
+valign = 1
+
+[node name="value" type="Label" parent="info_spearman/speed"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "speed.high"
+
+[node name="close" type="Button" parent="info_spearman"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 95.0
+margin_bottom = 38.0
+text = "menu.close"
+clip_text = true
+
+[node name="upgrade" type="Button" parent="info_spearman"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.5
+margin_top = -24.0
+margin_right = 64.5
+margin_bottom = 16.0
+grow_horizontal = 2
+text = "classes.upgrade"
+icon = ExtResource( 31 )
+
+[node name="attack_label" type="Label" parent="info_spearman"]
+modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = -124.0
+margin_right = -4.0
+margin_bottom = -84.0
+text = "spearman.attack.name"
+align = 1
+valign = 2
+
+[node name="attack_text" type="Label" parent="info_spearman"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = -84.0
+margin_right = -4.0
+margin_bottom = 56.0
+text = "spearman.attack.desc"
+autowrap = true
+
+[node name="ulti_label" type="Label" parent="info_spearman"]
+modulate = Color( 1, 1, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = -124.0
+margin_right = 372.0
+margin_bottom = -84.0
+text = "spearman.ulti.name"
+align = 1
+valign = 2
+
+[node name="ulti_text" type="Label" parent="info_spearman"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = -84.0
+margin_right = 372.0
+margin_bottom = 56.0
+text = "spearman.ulti.desc"
+autowrap = true
+
+[node name="attack" type="Label" parent="info_spearman"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = 60.0
+margin_right = -244.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.damage"
+valign = 1
+
+[node name="value" type="Label" parent="info_spearman/attack"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "20"
+
+[node name="attack_cd" type="Label" parent="info_spearman"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = 60.0
+margin_right = -111.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.reload"
+valign = 1
+
+[node name="value" type="Label" parent="info_spearman/attack_cd"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "reload.veryslow"
+
+[node name="attack_cd2" type="Label" parent="info_spearman"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = 108.0
+margin_right = -64.0
+margin_bottom = 132.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.mreload"
+valign = 1
+
+[node name="value" type="Label" parent="info_spearman/attack_cd2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "reload.fast"
+
+[node name="ulti" type="Label" parent="info_spearman"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = 60.0
+margin_right = 132.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "class.stat.damage"
+valign = 1
+
+[node name="value" type="Label" parent="info_spearman/ulti"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "x1"
+
+[node name="ulti_c" type="Label" parent="info_spearman"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 140.0
+margin_top = 60.0
+margin_right = 265.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "class.stat.duration"
+valign = 1
+
+[node name="value" type="Label" parent="info_spearman/ulti_c"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "2,5 сек."
+
+[node name="info_wizard" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+
+[node name="bg" type="ColorRect" parent="info_wizard"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -240.0
+margin_top = -28.0
+margin_right = 240.0
+margin_bottom = 28.0
+color = Color( 0, 0, 0, 0.752941 )
+
+[node name="title" type="Label" parent="info_wizard"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -270.0
+margin_top = 16.0
+margin_right = 270.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 6 )
+text = "ПОКАЗАТЕЛИ"
+align = 1
+
+[node name="health" type="Label" parent="info_wizard"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -180.0
+margin_top = 64.0
+margin_right = -60.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "class.stat.health"
+valign = 1
+
+[node name="value" type="Label" parent="info_wizard/health"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "80"
+
+[node name="defense" type="Label" parent="info_wizard"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -60.0
+margin_top = 64.0
+margin_right = 60.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 0, 0.501961, 1, 1 )
+text = "class.stat.defense"
+valign = 1
+
+[node name="value" type="Label" parent="info_wizard/defense"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "5"
+
+[node name="speed" type="Label" parent="info_wizard"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 60.0
+margin_top = 64.0
+margin_right = 180.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 1, 0, 1, 1 )
+text = "class.stat.speed"
+valign = 1
+
+[node name="value" type="Label" parent="info_wizard/speed"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "speed.normal"
+
+[node name="close" type="Button" parent="info_wizard"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 95.0
+margin_bottom = 38.0
+text = "menu.close"
+clip_text = true
+
+[node name="upgrade" type="Button" parent="info_wizard"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.5
+margin_top = -24.0
+margin_right = 64.5
+margin_bottom = 16.0
+grow_horizontal = 2
+text = "classes.upgrade"
+icon = ExtResource( 31 )
+
+[node name="attack_label" type="Label" parent="info_wizard"]
+modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = -124.0
+margin_right = -4.0
+margin_bottom = -84.0
+text = "wizard.attack.name"
+align = 1
+valign = 2
+
+[node name="attack_text" type="Label" parent="info_wizard"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = -84.0
+margin_right = -4.0
+margin_bottom = 56.0
+text = "wizard.attack.desc"
+autowrap = true
+
+[node name="ulti_label" type="Label" parent="info_wizard"]
+modulate = Color( 1, 1, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = -124.0
+margin_right = 372.0
+margin_bottom = -84.0
+text = "wizard.ulti.name"
+align = 1
+valign = 2
+
+[node name="ulti_text" type="Label" parent="info_wizard"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = -84.0
+margin_right = 372.0
+margin_bottom = 56.0
+text = "wizard.ulti.desc"
+autowrap = true
+
+[node name="attack" type="Label" parent="info_wizard"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = 60.0
+margin_right = -244.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.damage"
+valign = 1
+
+[node name="value" type="Label" parent="info_wizard/attack"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "30"
+
+[node name="attack2" type="Label" parent="info_wizard"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = 108.0
+margin_right = -244.0
+margin_bottom = 132.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.mdamage"
+valign = 1
+
+[node name="value" type="Label" parent="info_wizard/attack2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "10"
+
+[node name="attack_cd" type="Label" parent="info_wizard"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = 60.0
+margin_right = -111.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.reload"
+valign = 1
+
+[node name="value" type="Label" parent="info_wizard/attack_cd"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "reload.slow"
+
+[node name="attack_cd2" type="Label" parent="info_wizard"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = 108.0
+margin_right = -79.0
+margin_bottom = 132.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.mreload"
+valign = 1
+
+[node name="value" type="Label" parent="info_wizard/attack_cd2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "reload.veryslow"
+
+[node name="ulti" type="Label" parent="info_wizard"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = 60.0
+margin_right = 132.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "class.stat.damage"
+valign = 1
+
+[node name="value" type="Label" parent="info_wizard/ulti"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "x0,5"
+
+[node name="ulti_c" type="Label" parent="info_wizard"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 140.0
+margin_top = 60.0
+margin_right = 265.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "class.stat.heals"
+valign = 1
+
+[node name="value" type="Label" parent="info_wizard/ulti_c"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "15%"
+
+[node name="info_archer" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+
+[node name="bg" type="ColorRect" parent="info_archer"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -240.0
+margin_top = -28.0
+margin_right = 240.0
+margin_bottom = 28.0
+color = Color( 0, 0, 0, 0.752941 )
+
+[node name="title" type="Label" parent="info_archer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -270.0
+margin_top = 16.0
+margin_right = 270.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 6 )
+text = "ПОКАЗАТЕЛИ"
+align = 1
+
+[node name="health" type="Label" parent="info_archer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -180.0
+margin_top = 64.0
+margin_right = -60.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "class.stat.health"
+valign = 1
+
+[node name="value" type="Label" parent="info_archer/health"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "100"
+
+[node name="defense" type="Label" parent="info_archer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -60.0
+margin_top = 64.0
+margin_right = 60.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 0, 0.501961, 1, 1 )
+text = "class.stat.defense"
+valign = 1
+
+[node name="value" type="Label" parent="info_archer/defense"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "5"
+
+[node name="speed" type="Label" parent="info_archer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 60.0
+margin_top = 64.0
+margin_right = 180.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 1, 0, 1, 1 )
+text = "class.stat.speed"
+valign = 1
+
+[node name="value" type="Label" parent="info_archer/speed"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "speed.low"
+
+[node name="close" type="Button" parent="info_archer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 95.0
+margin_bottom = 38.0
+text = "menu.close"
+clip_text = true
+
+[node name="upgrade" type="Button" parent="info_archer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.5
+margin_top = -24.0
+margin_right = 64.5
+margin_bottom = 16.0
+grow_horizontal = 2
+text = "classes.upgrade"
+icon = ExtResource( 31 )
+
+[node name="attack_label" type="Label" parent="info_archer"]
+modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = -124.0
+margin_right = -4.0
+margin_bottom = -84.0
+text = "archer.attack.name"
+align = 1
+valign = 2
+
+[node name="attack_text" type="Label" parent="info_archer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = -84.0
+margin_right = -4.0
+margin_bottom = 56.0
+text = "archer.attack.desc"
+autowrap = true
+
+[node name="ulti_label" type="Label" parent="info_archer"]
+modulate = Color( 1, 1, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = -124.0
+margin_right = 372.0
+margin_bottom = -84.0
+text = "archer.ulti.name"
+align = 1
+valign = 2
+
+[node name="ulti_text" type="Label" parent="info_archer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = -84.0
+margin_right = 372.0
+margin_bottom = 56.0
+text = "archer.ulti.desc"
+autowrap = true
+
+[node name="attack" type="Label" parent="info_archer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = 60.0
+margin_right = -244.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.damage"
+valign = 1
+
+[node name="value" type="Label" parent="info_archer/attack"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "35"
+
+[node name="attack2" type="Label" parent="info_archer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = 108.0
+margin_right = -244.0
+margin_bottom = 132.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.mdamage"
+valign = 1
+
+[node name="value" type="Label" parent="info_archer/attack2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "10"
+
+[node name="attack_cd" type="Label" parent="info_archer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = 60.0
+margin_right = -111.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.reload"
+valign = 1
+
+[node name="value" type="Label" parent="info_archer/attack_cd"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "reload.normal"
+
+[node name="attack_cd2" type="Label" parent="info_archer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -236.0
+margin_top = 108.0
+margin_right = -79.0
+margin_bottom = 132.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "class.stat.mreload"
+valign = 1
+
+[node name="value" type="Label" parent="info_archer/attack_cd2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "reload.slow"
+
+[node name="ulti" type="Label" parent="info_archer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = 60.0
+margin_right = 132.0
+margin_bottom = 84.0
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "class.stat.damage"
+valign = 1
+
+[node name="value" type="Label" parent="info_archer/ulti"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 24.0
+text = "x1"
+
+[node name="infos" type="CanvasLayer" parent="."]
+
+[node name="gadget_info" type="AcceptDialog" parent="infos"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -100.0
+margin_right = 100.0
+margin_bottom = 100.0
+theme = ExtResource( 10 )
+window_title = "item.gadget.l"
+dialog_text = "что-толдолдлодолдлодолд"
+dialog_autowrap = true
+
+[node name="sp_info" type="AcceptDialog" parent="infos"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -100.0
+margin_right = 100.0
+margin_bottom = 100.0
+theme = ExtResource( 10 )
+window_title = "item.sp.l"
+dialog_text = "что-толдолдлодолдлодолд"
+dialog_autowrap = true
+
+[node name="amulet" type="WindowDialog" parent="infos"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -395.0
+margin_top = -160.0
+margin_right = 395.0
+margin_bottom = 160.0
+theme = ExtResource( 10 )
+
+[node name="panels" type="Control" parent="infos/amulet"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="0" type="Panel" parent="infos/amulet/panels"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -384.0
+margin_top = 10.0
+margin_right = -264.0
+margin_bottom = -10.0
+
+[node name="icon" type="TextureRect" parent="infos/amulet/panels/0"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 85.0
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="infos/amulet/panels/0"]
+anchor_right = 1.0
+margin_top = 88.0
+margin_bottom = 112.0
+text = "amulet.power"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="desc" type="Label" parent="infos/amulet/panels/0"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -12.0
+margin_bottom = 12.0
+grow_vertical = 2
+text = "amulet.power.desc"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="craft" type="Button" parent="infos/amulet/panels/0"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -34.0
+margin_right = -4.0
+margin_bottom = -4.0
+text = "amulet.craft"
+clip_text = true
+
+[node name="bar" type="TextureProgress" parent="infos/amulet/panels/0"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -52.0
+margin_right = -4.0
+margin_bottom = -36.0
+max_value = 5.0
+value = 3.0
+texture_under = ExtResource( 13 )
+texture_progress = ExtResource( 13 )
+tint_under = Color( 0, 0.501961, 0, 1 )
+tint_progress = Color( 0.501961, 1, 0.501961, 1 )
+nine_patch_stretch = true
+
+[node name="count" type="Label" parent="infos/amulet/panels/0/bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -4.0
+margin_bottom = 5.0
+text = "3/5"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="icon" type="TextureRect" parent="infos/amulet/panels/0/bar"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -14.0
+margin_right = 20.0
+margin_bottom = 14.0
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+
+[node name="1" type="Panel" parent="infos/amulet/panels"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -254.0
+margin_top = 10.0
+margin_right = -134.0
+margin_bottom = -10.0
+
+[node name="icon" type="TextureRect" parent="infos/amulet/panels/1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 85.0
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="infos/amulet/panels/1"]
+anchor_right = 1.0
+margin_top = 88.0
+margin_bottom = 112.0
+text = "amulet.defense"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="desc" type="Label" parent="infos/amulet/panels/1"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -12.0
+margin_bottom = 12.0
+grow_vertical = 2
+text = "amulet.defense.desc"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="craft" type="Button" parent="infos/amulet/panels/1"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -34.0
+margin_right = -4.0
+margin_bottom = -4.0
+text = "amulet.craft"
+clip_text = true
+
+[node name="bar" type="TextureProgress" parent="infos/amulet/panels/1"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -52.0
+margin_right = -4.0
+margin_bottom = -36.0
+max_value = 5.0
+value = 3.0
+texture_under = ExtResource( 13 )
+texture_progress = ExtResource( 13 )
+tint_under = Color( 0, 0.501961, 0, 1 )
+tint_progress = Color( 0.501961, 1, 0.501961, 1 )
+nine_patch_stretch = true
+
+[node name="count" type="Label" parent="infos/amulet/panels/1/bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -4.0
+margin_bottom = 5.0
+text = "3/5"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="icon" type="TextureRect" parent="infos/amulet/panels/1/bar"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -14.0
+margin_right = 20.0
+margin_bottom = 14.0
+texture = ExtResource( 30 )
+expand = true
+stretch_mode = 6
+
+[node name="2" type="Panel" parent="infos/amulet/panels"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -124.0
+margin_top = 10.0
+margin_right = -4.0
+margin_bottom = -10.0
+
+[node name="icon" type="TextureRect" parent="infos/amulet/panels/2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 85.0
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="infos/amulet/panels/2"]
+anchor_right = 1.0
+margin_top = 88.0
+margin_bottom = 112.0
+text = "amulet.health"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="desc" type="Label" parent="infos/amulet/panels/2"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -12.0
+margin_bottom = 12.0
+grow_vertical = 2
+text = "amulet.health.desc"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="craft" type="Button" parent="infos/amulet/panels/2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -34.0
+margin_right = -4.0
+margin_bottom = -4.0
+text = "amulet.craft"
+clip_text = true
+
+[node name="bar" type="TextureProgress" parent="infos/amulet/panels/2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -52.0
+margin_right = -4.0
+margin_bottom = -36.0
+max_value = 5.0
+value = 3.0
+texture_under = ExtResource( 13 )
+texture_progress = ExtResource( 13 )
+tint_under = Color( 0, 0.501961, 0, 1 )
+tint_progress = Color( 0.501961, 1, 0.501961, 1 )
+nine_patch_stretch = true
+
+[node name="count" type="Label" parent="infos/amulet/panels/2/bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -4.0
+margin_bottom = 5.0
+text = "3/5"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="icon" type="TextureRect" parent="infos/amulet/panels/2/bar"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -14.0
+margin_right = 20.0
+margin_bottom = 14.0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="3" type="Panel" parent="infos/amulet/panels"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 10.0
+margin_right = 126.0
+margin_bottom = -10.0
+
+[node name="icon" type="TextureRect" parent="infos/amulet/panels/3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 85.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="infos/amulet/panels/3"]
+anchor_right = 1.0
+margin_top = 88.0
+margin_bottom = 112.0
+text = "amulet.speed"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="desc" type="Label" parent="infos/amulet/panels/3"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -12.0
+margin_bottom = 12.0
+grow_vertical = 2
+text = "amulet.speed.desc"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="craft" type="Button" parent="infos/amulet/panels/3"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -34.0
+margin_right = -4.0
+margin_bottom = -4.0
+text = "amulet.craft"
+clip_text = true
+
+[node name="bar" type="TextureProgress" parent="infos/amulet/panels/3"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -52.0
+margin_right = -4.0
+margin_bottom = -36.0
+max_value = 5.0
+value = 3.0
+texture_under = ExtResource( 13 )
+texture_progress = ExtResource( 13 )
+tint_under = Color( 0, 0.501961, 0, 1 )
+tint_progress = Color( 0.501961, 1, 0.501961, 1 )
+nine_patch_stretch = true
+
+[node name="count" type="Label" parent="infos/amulet/panels/3/bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -4.0
+margin_bottom = 5.0
+text = "3/5"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="icon" type="TextureRect" parent="infos/amulet/panels/3/bar"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -14.0
+margin_right = 20.0
+margin_bottom = 14.0
+texture = ExtResource( 25 )
+expand = true
+stretch_mode = 6
+
+[node name="4" type="Panel" parent="infos/amulet/panels"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 136.0
+margin_top = 10.0
+margin_right = 256.0
+margin_bottom = -10.0
+
+[node name="icon" type="TextureRect" parent="infos/amulet/panels/4"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 85.0
+texture = ExtResource( 24 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="infos/amulet/panels/4"]
+anchor_right = 1.0
+margin_top = 88.0
+margin_bottom = 112.0
+text = "amulet.reload"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="desc" type="Label" parent="infos/amulet/panels/4"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -1.0
+margin_top = -51.0
+margin_right = 1.0
+margin_bottom = 51.0
+grow_vertical = 2
+text = "amulet.reload.desc"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="craft" type="Button" parent="infos/amulet/panels/4"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -34.0
+margin_right = -4.0
+margin_bottom = -4.0
+text = "amulet.craft"
+clip_text = true
+
+[node name="bar" type="TextureProgress" parent="infos/amulet/panels/4"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -52.0
+margin_right = -4.0
+margin_bottom = -36.0
+max_value = 5.0
+value = 3.0
+texture_under = ExtResource( 13 )
+texture_progress = ExtResource( 13 )
+tint_under = Color( 0, 0.501961, 0, 1 )
+tint_progress = Color( 0.501961, 1, 0.501961, 1 )
+nine_patch_stretch = true
+
+[node name="count" type="Label" parent="infos/amulet/panels/4/bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -4.0
+margin_bottom = 5.0
+text = "3/5"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="icon" type="TextureRect" parent="infos/amulet/panels/4/bar"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -14.0
+margin_right = 20.0
+margin_bottom = 14.0
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 6
+
+[node name="5" type="Panel" parent="infos/amulet/panels"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 264.0
+margin_top = 10.0
+margin_right = 384.0
+margin_bottom = -10.0
+
+[node name="icon" type="TextureRect" parent="infos/amulet/panels/5"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.0
+margin_top = 5.0
+margin_right = 40.0
+margin_bottom = 85.0
+texture = ExtResource( 32 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="infos/amulet/panels/5"]
+anchor_right = 1.0
+margin_top = 88.0
+margin_bottom = 112.0
+text = "amulet.ulti"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="desc" type="Label" parent="infos/amulet/panels/5"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -1.0
+margin_top = -43.0
+margin_right = 1.0
+margin_bottom = 59.0
+grow_vertical = 2
+text = "amulet.ulti.desc"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="craft" type="Button" parent="infos/amulet/panels/5"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -34.0
+margin_right = -4.0
+margin_bottom = -4.0
+text = "amulet.craft"
+clip_text = true
+
+[node name="bar" type="TextureProgress" parent="infos/amulet/panels/5"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = -52.0
+margin_right = -4.0
+margin_bottom = -36.0
+max_value = 5.0
+value = 3.0
+texture_under = ExtResource( 13 )
+texture_progress = ExtResource( 13 )
+tint_under = Color( 0, 0.501961, 0, 1 )
+tint_progress = Color( 0.501961, 1, 0.501961, 1 )
+nine_patch_stretch = true
+
+[node name="count" type="Label" parent="infos/amulet/panels/5/bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -4.0
+margin_bottom = 5.0
+text = "3/5"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="icon" type="TextureRect" parent="infos/amulet/panels/5/bar"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -14.0
+margin_right = 20.0
+margin_bottom = 14.0
+texture = ExtResource( 26 )
+expand = true
+stretch_mode = 6
+
+[node name="upgrade_screen" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="tint" type="CanvasLayer" parent="upgrade_screen"]
+layer = 15
+
+[node name="tint" type="ColorRect" parent="upgrade_screen/tint"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0 )
+
+[node name="upgrade" type="Control" parent="upgrade_screen"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 10 )
+
+[node name="bg" type="TextureRect" parent="upgrade_screen/upgrade"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 74.0
+texture = ExtResource( 40 )
+expand = true
+stretch_mode = 2
+
+[node name="anim" type="AnimationPlayer" parent="upgrade_screen/upgrade/bg"]
+autoplay = "bg"
+anims/bg = SubResource( 1 )
+
+[node name="glow" type="TextureRect" parent="upgrade_screen/upgrade"]
+self_modulate = Color( 1, 0.70664, 0, 0.501961 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -372.0
+margin_right = 300.0
+margin_bottom = 228.0
+rect_pivot_offset = Vector2( 300, 300 )
+texture = ExtResource( 37 )
+expand = true
+stretch_mode = 6
+
+[node name="classes" type="Control" parent="upgrade_screen/upgrade"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -76.0
+margin_right = 20.0
+margin_bottom = -36.0
+rect_scale = Vector2( 0.75, 0.75 )
+rect_pivot_offset = Vector2( 20, 20 )
+
+[node name="knight" type="TextureRect" parent="upgrade_screen/upgrade/classes"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -221.333
+margin_right = 200.0
+margin_bottom = 178.667
+expand = true
+stretch_mode = 6
+script = ExtResource( 9 )
+
+[node name="butcher" type="TextureRect" parent="upgrade_screen/upgrade/classes"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -221.333
+margin_right = 200.0
+margin_bottom = 178.667
+expand = true
+stretch_mode = 6
+script = ExtResource( 9 )
+
+[node name="spearman" type="TextureRect" parent="upgrade_screen/upgrade/classes"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -221.333
+margin_right = 200.0
+margin_bottom = 178.667
+expand = true
+stretch_mode = 6
+script = ExtResource( 9 )
+
+[node name="wizard" type="TextureRect" parent="upgrade_screen/upgrade/classes"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -221.333
+margin_right = 200.0
+margin_bottom = 178.667
+expand = true
+stretch_mode = 6
+script = ExtResource( 9 )
+
+[node name="archer" type="TextureRect" parent="upgrade_screen/upgrade/classes"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -221.333
+margin_right = 200.0
+margin_bottom = 178.667
+expand = true
+stretch_mode = 6
+script = ExtResource( 9 )
+
+[node name="particles" type="CPUParticles2D" parent="upgrade_screen/upgrade/classes"]
+position = Vector2( 20, 20 )
+scale = Vector2( 1.33333, 1.33333 )
+z_index = 20
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 0.95
+texture = ExtResource( 38 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 10 )
+initial_velocity = 240.0
+initial_velocity_random = 0.4
+angular_velocity = 240.0
+angular_velocity_random = 1.0
+scale_amount = 2.5
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+
+[node name="particle" type="CPUParticles2D" parent="upgrade_screen/upgrade/classes"]
+position = Vector2( 20, 20 )
+scale = Vector2( 1.33333, 1.33333 )
+z_index = 20
+emitting = false
+amount = 1
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.95
+texture = ExtResource( 38 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+angular_velocity = 360.0
+scale_amount = 30.0
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+
+[node name="title" type="Label" parent="upgrade_screen/upgrade"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -162.5
+margin_top = 16.0
+margin_right = 162.5
+margin_bottom = 86.0
+custom_fonts/font = ExtResource( 5 )
+text = "РЫЦАРЬ"
+align = 1
+valign = 1
+
+[node name="panel" type="Panel" parent="upgrade_screen/upgrade"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -162.0
+margin_top = 55.0
+margin_right = 162.0
+margin_bottom = 105.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="title" type="Label" parent="upgrade_screen/upgrade/panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_top = -16.0
+margin_right = 100.0
+margin_bottom = 8.0
+text = "Уровень"
+align = 1
+valign = 1
+
+[node name="arrow" type="Label" parent="upgrade_screen/upgrade/panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -26.0
+margin_right = 20.0
+margin_bottom = 26.0
+custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = ">"
+align = 1
+valign = 1
+
+[node name="previous" type="Label" parent="upgrade_screen/upgrade/panel"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = -26.0
+margin_right = 128.0
+margin_bottom = 26.0
+custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "6"
+align = 1
+valign = 1
+
+[node name="next" type="Label" parent="upgrade_screen/upgrade/panel"]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -26.0
+margin_right = -8.0
+margin_bottom = 26.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "7"
+align = 1
+valign = 1
+
+[node name="particles" type="CPUParticles2D" parent="upgrade_screen/upgrade/panel/next"]
+position = Vector2( 60, 28 )
+scale = Vector2( 1.33333, 1.33333 )
+z_index = 20
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 0.95
+texture = ExtResource( 38 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 10 )
+initial_velocity = 120.0
+initial_velocity_random = 0.4
+angular_velocity = 240.0
+angular_velocity_random = 1.0
+scale_amount = 1.25
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+
+[node name="panels" type="HBoxContainer" parent="upgrade_screen/upgrade"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -162.0
+margin_top = 116.0
+margin_right = 162.0
+margin_bottom = 254.0
+custom_constants/separation = 12
+alignment = 1
+
+[node name="panel0" type="Panel" parent="upgrade_screen/upgrade/panels"]
+margin_left = 42.0
+margin_right = 114.0
+margin_bottom = 138.0
+rect_min_size = Vector2( 72, 0 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="title" type="Label" parent="upgrade_screen/upgrade/panels/panel0"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_top = -16.0
+margin_right = 100.0
+margin_bottom = 8.0
+text = "Здоровье"
+align = 1
+valign = 1
+
+[node name="arrow" type="Label" parent="upgrade_screen/upgrade/panels/panel0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -26.0
+margin_right = 20.0
+margin_bottom = 26.0
+rect_scale = Vector2( 1, -1 )
+rect_pivot_offset = Vector2( 20, 26 )
+custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "^"
+align = 1
+valign = 1
+
+[node name="previous" type="Label" parent="upgrade_screen/upgrade/panels/panel0"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -60.0
+margin_right = 60.0
+margin_bottom = 52.0
+custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "220"
+align = 1
+valign = 1
+
+[node name="next" type="Label" parent="upgrade_screen/upgrade/panels/panel0"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -60.0
+margin_top = -52.0
+margin_right = 60.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "240"
+align = 1
+valign = 1
+
+[node name="particles" type="CPUParticles2D" parent="upgrade_screen/upgrade/panels/panel0/next"]
+position = Vector2( 60, 28 )
+scale = Vector2( 1.33333, 1.33333 )
+z_index = 20
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 0.95
+texture = ExtResource( 38 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 10 )
+initial_velocity = 120.0
+initial_velocity_random = 0.4
+angular_velocity = 240.0
+angular_velocity_random = 1.0
+scale_amount = 1.25
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+
+[node name="sfx_value" type="AudioStreamPlayer" parent="upgrade_screen/upgrade/panels/panel0"]
+stream = ExtResource( 36 )
+bus = "sfx"
+
+[node name="panel1" type="Panel" parent="upgrade_screen/upgrade/panels"]
+margin_left = 126.0
+margin_right = 198.0
+margin_bottom = 138.0
+rect_min_size = Vector2( 72, 0 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="title" type="Label" parent="upgrade_screen/upgrade/panels/panel1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_top = -16.0
+margin_right = 100.0
+margin_bottom = 8.0
+text = "Защита"
+align = 1
+valign = 1
+
+[node name="arrow" type="Label" parent="upgrade_screen/upgrade/panels/panel1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -26.0
+margin_right = 20.0
+margin_bottom = 26.0
+rect_scale = Vector2( 1, -1 )
+rect_pivot_offset = Vector2( 20, 26 )
+custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "^"
+align = 1
+valign = 1
+
+[node name="previous" type="Label" parent="upgrade_screen/upgrade/panels/panel1"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -60.0
+margin_right = 60.0
+margin_bottom = 52.0
+custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "11"
+align = 1
+valign = 1
+
+[node name="next" type="Label" parent="upgrade_screen/upgrade/panels/panel1"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -60.0
+margin_top = -52.0
+margin_right = 60.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "12"
+align = 1
+valign = 1
+
+[node name="particles" type="CPUParticles2D" parent="upgrade_screen/upgrade/panels/panel1/next"]
+position = Vector2( 60, 28 )
+scale = Vector2( 1.33333, 1.33333 )
+z_index = 20
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 0.95
+texture = ExtResource( 38 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 10 )
+initial_velocity = 120.0
+initial_velocity_random = 0.4
+angular_velocity = 240.0
+angular_velocity_random = 1.0
+scale_amount = 1.25
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+
+[node name="sfx_value" type="AudioStreamPlayer" parent="upgrade_screen/upgrade/panels/panel1"]
+stream = ExtResource( 36 )
+bus = "sfx"
+
+[node name="panel2" type="Panel" parent="upgrade_screen/upgrade/panels"]
+margin_left = 210.0
+margin_right = 282.0
+margin_bottom = 138.0
+rect_min_size = Vector2( 72, 0 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="title" type="Label" parent="upgrade_screen/upgrade/panels/panel2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_top = -16.0
+margin_right = 100.0
+margin_bottom = 8.0
+text = "Урон"
+align = 1
+valign = 1
+
+[node name="arrow" type="Label" parent="upgrade_screen/upgrade/panels/panel2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -26.0
+margin_right = 20.0
+margin_bottom = 26.0
+rect_scale = Vector2( 1, -1 )
+rect_pivot_offset = Vector2( 20, 26 )
+custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "^"
+align = 1
+valign = 1
+
+[node name="previous" type="Label" parent="upgrade_screen/upgrade/panels/panel2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -60.0
+margin_right = 60.0
+margin_bottom = 52.0
+custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "55"
+align = 1
+valign = 1
+
+[node name="next" type="Label" parent="upgrade_screen/upgrade/panels/panel2"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -60.0
+margin_top = -52.0
+margin_right = 60.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "60"
+align = 1
+valign = 1
+
+[node name="particles" type="CPUParticles2D" parent="upgrade_screen/upgrade/panels/panel2/next"]
+position = Vector2( 60, 28 )
+scale = Vector2( 1.33333, 1.33333 )
+z_index = 20
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 0.95
+texture = ExtResource( 38 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 10 )
+initial_velocity = 120.0
+initial_velocity_random = 0.4
+angular_velocity = 240.0
+angular_velocity_random = 1.0
+scale_amount = 1.25
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+
+[node name="sfx_value" type="AudioStreamPlayer" parent="upgrade_screen/upgrade/panels/panel2"]
+stream = ExtResource( 36 )
+bus = "sfx"
+
+[node name="panel3" type="Panel" parent="upgrade_screen/upgrade/panels"]
+visible = false
+margin_left = 252.0
+margin_right = 324.0
+margin_bottom = 138.0
+rect_min_size = Vector2( 72, 0 )
+custom_styles/panel = SubResource( 4 )
+
+[node name="title" type="Label" parent="upgrade_screen/upgrade/panels/panel3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_top = -16.0
+margin_right = 100.0
+margin_bottom = 8.0
+text = "Урон"
+align = 1
+valign = 1
+
+[node name="arrow" type="Label" parent="upgrade_screen/upgrade/panels/panel3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -26.0
+margin_right = 20.0
+margin_bottom = 26.0
+rect_scale = Vector2( 1, -1 )
+rect_pivot_offset = Vector2( 20, 26 )
+custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "^"
+align = 1
+valign = 1
+
+[node name="previous" type="Label" parent="upgrade_screen/upgrade/panels/panel3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -60.0
+margin_right = 60.0
+margin_bottom = 52.0
+custom_colors/font_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "150"
+align = 1
+valign = 1
+
+[node name="next" type="Label" parent="upgrade_screen/upgrade/panels/panel3"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -60.0
+margin_top = -52.0
+margin_right = 60.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "165"
+align = 1
+valign = 1
+
+[node name="particles" type="CPUParticles2D" parent="upgrade_screen/upgrade/panels/panel3/next"]
+position = Vector2( 60, 28 )
+scale = Vector2( 1.33333, 1.33333 )
+z_index = 20
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 0.95
+texture = ExtResource( 38 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, 10 )
+initial_velocity = 120.0
+initial_velocity_random = 0.4
+angular_velocity = 240.0
+angular_velocity_random = 1.0
+scale_amount = 1.25
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+
+[node name="sfx_value" type="AudioStreamPlayer" parent="upgrade_screen/upgrade/panels/panel3"]
+stream = ExtResource( 36 )
+bus = "sfx"
+
+[node name="upgrade" type="TextureRect" parent="upgrade_screen/upgrade"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 104.0
+margin_top = -170.0
+margin_right = 184.0
+margin_bottom = -90.0
+texture = ExtResource( 31 )
+expand = true
+stretch_mode = 6
+
+[node name="text" type="Label" parent="upgrade_screen/upgrade/upgrade"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -45.5
+margin_top = -8.0
+margin_right = 45.5
+margin_bottom = 16.0
+custom_colors/font_color = Color( 0, 0.501961, 0, 1 )
+text = "menu.level_up"
+align = 1
+
+[node name="close" type="ToolButton" parent="upgrade_screen/upgrade"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="anim" type="AnimationPlayer" parent="upgrade_screen/upgrade"]
+anims/upgrade = SubResource( 5 )
+
+[node name="sfx" type="AudioStreamPlayer" parent="upgrade_screen/upgrade"]
+stream = ExtResource( 41 )
+bus = "sfx"
+
+[node name="sfx_value" type="AudioStreamPlayer" parent="upgrade_screen/upgrade"]
+stream = ExtResource( 36 )
+bus = "sfx"
+
+[node name="amulet_craft" type="CanvasLayer" parent="."]
+layer = 11
+
+[node name="screen" type="Control" parent="amulet_craft"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 10 )
+
+[node name="bg" type="ColorRect" parent="amulet_craft/screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.501961, 0, 1 )
+
+[node name="glow" type="Control" parent="amulet_craft/screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="glow" type="Node2D" parent="amulet_craft/screen/glow"]
+modulate = Color( 0, 1, 0, 1 )
+position = Vector2( 20, 20 )
+
+[node name="rotated" type="Sprite" parent="amulet_craft/screen/glow/glow"]
+modulate = Color( 1, 1, 1, 0.12549 )
+texture = ExtResource( 35 )
+
+[node name="glow" type="Sprite" parent="amulet_craft/screen/glow/glow"]
+texture = ExtResource( 37 )
+
+[node name="anim" type="AnimationPlayer" parent="amulet_craft/screen/glow/glow"]
+autoplay = "rotate"
+anims/rotate = SubResource( 6 )
+
+[node name="icon" type="TextureRect" parent="amulet_craft/screen"]
+material = SubResource( 7 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 100.0
+margin_bottom = 100.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 100, 100 )
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+
+[node name="glow" type="Control" parent="amulet_craft/screen/icon"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+rect_rotation = 90.0
+rect_pivot_offset = Vector2( 20, 20 )
+
+[node name="glow" type="Node2D" parent="amulet_craft/screen/icon/glow"]
+position = Vector2( 20, 20 )
+
+[node name="rotated" type="Sprite" parent="amulet_craft/screen/icon/glow/glow"]
+texture = ExtResource( 35 )
+
+[node name="glow" type="Sprite" parent="amulet_craft/screen/icon/glow/glow"]
+texture = ExtResource( 37 )
+
+[node name="anim" type="AnimationPlayer" parent="amulet_craft/screen/icon/glow/glow"]
+autoplay = "rotate"
+anims/rotate = SubResource( 8 )
+
+[node name="parts" type="Control" parent="amulet_craft/screen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="particles" type="CPUParticles2D" parent="amulet_craft/screen/parts"]
+position = Vector2( 20, 20 )
+texture = ExtResource( 38 )
+emission_shape = 2
+emission_rect_extents = Vector2( 100, 100 )
+gravity = Vector2( 0, 0 )
+angular_velocity = 90.0
+scale_amount = 2.0
+scale_amount_curve = SubResource( 9 )
+
+[node name="title" type="Label" parent="amulet_craft/screen"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_top = -128.0
+margin_right = 100.0
+margin_bottom = -58.0
+grow_horizontal = 2
+rect_pivot_offset = Vector2( 100, 35 )
+theme_type_variation = "LabelTitleLarge"
+text = "amulet.amulet"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="type" type="Label" parent="amulet_craft/screen"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_top = -72.0
+margin_right = 100.0
+margin_bottom = -2.0
+grow_horizontal = 2
+rect_pivot_offset = Vector2( 100, 35 )
+theme_type_variation = "LabelTitle"
+text = "СИЛА"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="class" type="Label" parent="amulet_craft/screen"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -200.0
+margin_top = 2.0
+margin_right = 200.0
+margin_bottom = 72.0
+rect_pivot_offset = Vector2( 200, 35 )
+theme_type_variation = "LabelTitle"
+text = "МЯСНИК"
+align = 1
+valign = 1
+
+[node name="done" type="ToolButton" parent="amulet_craft/screen"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+
+[node name="anim" type="AnimationPlayer" parent="amulet_craft/screen"]
+anims/craft = SubResource( 10 )
+
+[node name="sfx" type="AudioStreamPlayer" parent="amulet_craft/screen"]
+stream = ExtResource( 41 )
+bus = "sfx"
+
+[node name="tint" type="ColorRect" parent="amulet_craft"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0 )
+
+[node name="education1" parent="." instance=ExtResource( 2 )]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -23.0
+margin_top = -38.0
+margin_right = 137.0
+margin_bottom = 122.0
+first = true
+
+[node name="text" parent="education1" index="5"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = -16.0
+margin_right = 368.0
+margin_bottom = 226.0
+text = "menu.edu.0"
+align = 0
+
+[connection signal="pressed" from="back" to="." method="quit"]
+[connection signal="pressed" from="classes_list/grid/player" to="." method="select_class" binds= [ "player" ]]
+[connection signal="pressed" from="classes_list/grid/knight" to="." method="select_class" binds= [ "knight" ]]
+[connection signal="pressed" from="classes_list/grid/butcher" to="." method="select_class" binds= [ "butcher" ]]
+[connection signal="pressed" from="classes_list/grid/spearman" to="." method="select_class" binds= [ "spearman" ]]
+[connection signal="pressed" from="classes_list/grid/wizard" to="." method="select_class" binds= [ "wizard" ]]
+[connection signal="pressed" from="classes_list/grid/archer" to="." method="select_class" binds= [ "archer" ]]
+[connection signal="pressed" from="select" to="." method="pick_class"]
+[connection signal="pressed" from="try" to="." method="try"]
+[connection signal="pressed" from="class/about" to="." method="info" binds= [ true ]]
+[connection signal="pressed" from="amulet" to="." method="amulet"]
+[connection signal="pressed" from="gadget" to="." method="gadget"]
+[connection signal="pressed" from="sp" to="." method="soul_power"]
+[connection signal="pressed" from="upgrade/upgrade" to="." method="upgrade"]
+[connection signal="pressed" from="upgrade/upgrade_ulti" to="." method="upgrade_ulti"]
+[connection signal="pressed" from="info_player/close" to="." method="info" binds= [ false ]]
+[connection signal="pressed" from="info_knight/close" to="." method="info" binds= [ false ]]
+[connection signal="pressed" from="info_knight/upgrade" to="." method="confirm_upgrade"]
+[connection signal="pressed" from="info_butcher/close" to="." method="info" binds= [ false ]]
+[connection signal="pressed" from="info_butcher/upgrade" to="." method="confirm_upgrade"]
+[connection signal="pressed" from="info_spearman/close" to="." method="info" binds= [ false ]]
+[connection signal="pressed" from="info_spearman/upgrade" to="." method="confirm_upgrade"]
+[connection signal="pressed" from="info_wizard/close" to="." method="info" binds= [ false ]]
+[connection signal="pressed" from="info_wizard/upgrade" to="." method="confirm_upgrade"]
+[connection signal="pressed" from="info_archer/close" to="." method="info" binds= [ false ]]
+[connection signal="pressed" from="info_archer/upgrade" to="." method="confirm_upgrade"]
+[connection signal="pressed" from="infos/amulet/panels/0/craft" to="." method="craft_amulet" binds= [ 0 ]]
+[connection signal="pressed" from="infos/amulet/panels/1/craft" to="." method="craft_amulet" binds= [ 1 ]]
+[connection signal="pressed" from="infos/amulet/panels/2/craft" to="." method="craft_amulet" binds= [ 2 ]]
+[connection signal="pressed" from="infos/amulet/panels/3/craft" to="." method="craft_amulet" binds= [ 3 ]]
+[connection signal="pressed" from="infos/amulet/panels/4/craft" to="." method="craft_amulet" binds= [ 4 ]]
+[connection signal="pressed" from="infos/amulet/panels/5/craft" to="." method="craft_amulet" binds= [ 5 ]]
+[connection signal="pressed" from="upgrade_screen/upgrade/close" to="." method="close_upgrade"]
+[connection signal="pressed" from="amulet_craft/screen/done" to="." method="done_amulet"]
+
+[editable path="education1"]

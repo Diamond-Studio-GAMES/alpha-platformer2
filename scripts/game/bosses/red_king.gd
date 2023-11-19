@@ -40,6 +40,8 @@ func get_phase():
 	if not is_instance_valid(mob):
 		return -1
 	var health_left = mob.current_health / mob.max_health
+	if health_left <= 0:
+		return -1
 	if health_left < 0.33:
 		return 3
 	elif health_left < 0.67:

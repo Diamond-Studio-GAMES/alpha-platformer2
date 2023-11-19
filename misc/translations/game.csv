@@ -22,7 +22,7 @@ boss.fire,Огненный страж,Fire Guardian
 boss.fire.defeat,"Огненный страж: Я... Выгорел?..
 (убить или пощадить?)","Fire Guardian: Am I... burned out?..
 (kill or spare?)"
-boss.fire.mercy,"Огненный страж: Иди, ты достоин.","Fire Guardian: Go, you are worthy."
+boss.fire.mercy,"Огненный страж: Иди, ты достоин%.","Fire Guardian: Go, you are worthy."
 boss.wizard,Чёрный маг,Black Wizard
 boss.wizard.mercy,"Чёрный маг: Слава тебе, %s!","Black Wizard: Thank you, %s!"
 boss.wizard.defeat,"Чёрный маг: Я был неправ…
@@ -31,9 +31,9 @@ boss.wizard.defeat,"Чёрный маг: Я был неправ…
 boss.king,Красный король,Red King
 boss.king.defeat,"Красный король: Ты ещё сильнее, чем я думал…",Red King: You're even stronger than I thought…
 boss.king.mercy,Красный король: Используй свою силу с умом!..,Red King: Use your power wisely!..
-boss.follower1,,
-boss.follower1.mercy,,
-boss.follower1.defeat,,
+boss.follower1,Егор,Egor
+boss.follower1.mercy,Егор: Ты… Зачем?..,Egor: You… Why?
+boss.follower1.defeat,Егор: Ну вот и всё…,"Egor: Now, that’s all…"
 boss.follower2,,
 boss.follower2.mercy,,
 boss.follower2.defeat,,
@@ -163,6 +163,7 @@ player.revived,Возрождение!,Revived!
 player.defeated,Поражение!,Defeated!
 player.revive.multiplayer,ВОСКРЕСИ МЕНЯ!,REVIVE ME!
 door.go,Перейти,Enter
+npc.talk,Говорить,Talk
 1_1.dude,Чувак…,Dude…
 1_1.goright,Ты куда идёшь? Иди вправо!,Where are you going? Go right!
 1_1.hello,Привет! Двигайся с помощью стрелок в левом нижнем углу!,Hello! Move with the arrows in the lower left corner!
@@ -179,8 +180,8 @@ door.go,Перейти,Enter
 1_1.heal,"Мало здоровья? Ничего не делай, оно само восстановится до 75%!","Not enough health? Don’t do anything, it will recover to 75% by itself!"
 1_3.stones,Впереди немного камней,There are some rocks ahead
 1_6.vera,ПРЫЖОК ВЕРЫ XD,Jump of Hope!
-1_6.notfool,Я был не самым глупым в школе…,I wasn’t the stupidest in school…
-1_6.geo,Я в этом году попал на городской этап олимпиады по географии…,This year I got to the city stage of the Geography Olympiad…
+1_6.notfool,Я был% не глуп% в школе…,I wasn’t the stupidest in school…
+1_6.geo,Я в этом году попал% на городской этап олимпиады по географии…,This year I got to the city stage of the Geography Olympiad…
 1_7.projectiles,Ты можешь уничтожать снаряды врагов ближней атакой! (не все),You can destroy enemy projectiles with a melee attack! (not all)
 1_8.yourend,"Дальше тебе капец!
  - Пастух >:-)","You will die!
@@ -190,10 +191,10 @@ door.go,Перейти,Enter
 1_10.locs,"Лес ->
 <- Поле","Forest ->
 <- Field"
-1_10.boss.0,"Пастух: Как я вижу, ты смог дойти. Я удивлён.","Shepherd: As I see, you are here. I’m surprised."
+1_10.boss.0,"Пастух: Как я вижу, ты сумел% дойти. Я удивлён.","Shepherd: As I see, you are here. I’m surprised."
 1_10.boss.1,"Пастух: Я не думал, что ты выживешь.",Shepherd: I didn’t think you’d survive.
 1_10.boss.2,"Пастух: Ну и ладно, я разберусь с тобой сам.","Shepherd: Well, okay, I'll deal with you myself."
-1_10.boss.start,"Пастух: Покажи, на что ты способен!",Shepherd: Show what you are capable of!
+1_10.boss.start,"Пастух: Покажи, на что ты способен%!",Shepherd: Show what you are capable of!
 2_1.pants,"Обтягивающие штаны — фигня, ненавижу!",Tight pants are strange!
 2_2.or,Не люблю же я визг женщин!..,I don't like the screeching of women!..
 2_3.flame,Костёр? Горящий?..,A bonfire? Burning?..
@@ -207,9 +208,9 @@ door.go,Перейти,Enter
 2_5.you,"?/т.-=,.||.,=ы-+%","?/y.-=,.||.,o=-+u%"
 2_6.portal,"Это что, портал? Откуда?",Is this a portal? From where?
 2_6.how,Как они работают?,How do they work?
-2_9.shlyuhi,"Я слышал, что в местных школах восьмиклассницы - пр*ст*тутки…",I've heard that eighth graders are h*rlots in local schools…
+2_9.shlyuhi,"Я слышал%, что в местных школах восьмиклассницы - пр*ст*тутки…",I've heard that eighth graders are h*rlots in local schools…
 2_10.boss.start,"Лесоруб: Ну что, сразимся???","Lumberjack: Well, shall we fight???"
-2_10.boss.0,Лесоруб: Пришёл значит…,Lumberjack: You are here…
+2_10.boss.0,Лесоруб: Здесь ты значит…,Lumberjack: You are here…
 3_2.client,И их главный клиент - физрук…,And their main client is PE teacher…
 3_3.trimaga,Эти три мага сильны... Они используют её…,These three followers are strong... They use it…
 3_5.monsters,Тёмная энергия... Похоже из неё состоят монстры.,Dark energy... It looks like monsters are made of it.
@@ -218,7 +219,7 @@ door.go,Перейти,Enter
 3_9.feeling,"Чем дальше я от дома, тем сильнее чувствуется что-то плохое…","The further away I am from home, the more something bad feels…"
 3_10.boss.1,"Чёрный маг: Очень хорошо, что он передал свои святые знания его последователям…",Black Wizard: It's very good that he passed on his holy knowledge to his followers…
 3_10.boss.0,Чёрный маг: Дракон был отличной личностью…,Black Wizard: Dragon was a great personality…
-3_10.boss.start,Чёрный маг: Не согласен???,Black Wizard: Don't you agree???
+3_10.boss.start,Чёрный маг: Не согласен%???,Black Wizard: Don't you agree???
 4_1.smaller,Осторожно! Пещера сужается!,Caution! The cave is narrowing!
 4_3.remains,"До портала в красный мир осталось 3,5 км",The portal to the red world is 3.5 km away.
 4_4.hot,А здесь жарко…,And it's hot here…
@@ -233,9 +234,9 @@ door.go,Перейти,Enter
 | КР. МИР |","^ PORTAL ^
 |R. WORLD|"
 4_10.boss.0,"Великий рыцарь: Слышал, к порталу идёт недавний ""герой"".","Great Knight: I heard a recent ""hero"" is coming to the portal."
-4_10.boss.1,"Великий рыцарь: Хотя, он неплох, но портал ему не светит!","Great Knight: Although he's not bad, but he won't get the portal!"
-4_10.boss.2,Великий рыцарь: Так то он просто хочет более короткий путь.,Great Knight: So he just wants a shorter way.
-4_10.boss.3,Великий рыцарь: Но через меня его путь…,Great Knight: But through me his way…
+4_10.boss.1,"Великий рыцарь: Хотя, он% неплох%, но к порталу никого не пропущу!","Great Knight: Although he's not bad, but he won't get the portal!"
+4_10.boss.2,Великий рыцарь: Так то он% просто хочет более короткий путь.,Great Knight: So he just wants a shorter way.
+4_10.boss.3,Великий рыцарь: Но через меня этот путь…,Great Knight: But through me his way…
 4_10.boss.start,Великий рыцарь: ПРИВЕДЁТ К СМЕРТИ!!!,Great Knight: WILL LEAD TO DEATH!!!
 5_3.love,Мне нравится эта скорость…,I like this speed…
 5_5.beach,Пляж 100 м,Beach 100 m
@@ -251,8 +252,8 @@ training,Тренировка,Training
 6_4.giant,На этой горе по легендам обитает ГИГАНТСКИЙ ГРИБ!!!,"According to legends, a GIANT MUSHROOM lives on this mountain!!!"
 6_4.joke,Пасутся как-то два барана…,Two sheep graze somehow…
 6_5.joke,"Один говорит: БЕЕЕЕЕЕ
-Другой:6-7дмдтмкнцэтганкдт"":;:%№№:%№","One says: BEEEEEEE
-Another: 6-7dmdtmkncetgankdt"":;:%№№:%№"
+Другой: 6-7дмдтмкнцэтганкдт"":;:$?*№:&№","One says: BEEEEEEE
+Another: 6-7dmdtmkncetgankdt"":;:&№№:?№"
 6_7.joke,"Первый: Блин, тоже самое хотел сказать.","First one: Damn, I wanted to say the same thing."
 6_8.remains,До замка 1 км,The castle is 1 km away
 6_8.tree,"Интересно, что это за дерево такое?",I wonder what kind of tree it is?
@@ -267,14 +268,89 @@ Another: 6-7dmdtmkncetgankdt"":;:%№№:%№"
 7_2.garden,Дендрарий,Garden
 7_3.lore,Эти классы… Что это? Почему я становлюсь сильнее?..,These classes… What are they? Why I am becoming stronger?..
 7_5.storage,Склад,Storage
-7_6.ores,Месторождения водной и золотой руд,Deposits of water and gold ores
+7_6.ores,Месторождения водных и золотых руд,Deposits of water and gold ores
 7_6.whatisit,Так вот что это за руды…,So that's what these ores are…
 7_9.sisyphus,Сизиф,Sisyphus
 7_9.orange,"Оранжевые атаки наносят урон, если ты стоишь на месте.",Orange attacks hurt you if you’re standing still.
 7_9.blue,"Голубые же атаки наносят урон, когда ты двигаешься.",Blue attacks hurt you if you’re moving.
 7_9.leave,Ещё немного и я вернусь в обычный мир!,A little more and I will return to the ordinary world!
 7_10.boss.0,Красный король: Ты.,Red King: You.
-7_10.boss.1,"Красный король: Ты нарушил порядок, установленный после падения второго метеорита.",Red King: You violated the order established after the fall of the second meteorite.
-7_10.boss.2,Красный король: Но ты силён: ты преодолел все препятствия на своём длинном пути.,Red King: But you are strong: you have overcome all the obstacles on your long journey.
+7_10.boss.1,"Красный король: Ты нарушил% порядок, установленный после падения второго метеорита.",Red King: You violated the order established after the fall of the second meteorite.
+7_10.boss.2,Красный король: Но ты не слаб%: ты преодолел% все препятствия на своём длинном пути.,Red King: But you are strong: you have overcome all the obstacles on your long journey.
 7_10.boss.3,Красный король: Это действительно достойно награды…,Red King: It's really worthy of an award…
 7_10.boss.start,Красный король: ...быть убитым МНОЙ! Ах-ха-ха-ха-ха!,Red King: ...to be killed by ME! Ah-ha-ha-ha-ha!
+8_1.welcome,Добро пожаловать в деревню!,Welcome to the Village!
+8_1.gosha,Дом Гоши,Gosha’s house
+8_1.npc.utro,Доброе... утро?,Good… morning?
+8_1.npc.school,Я школу не проспал?,I didn't oversleep school?
+8_1.npc.look,Я хорошо выгляжу?,Am I looking good?
+8_1.npc.face,Что у тебя за гримаса на лице?..,What's that grimace on your face?..
+8_2.npc.kill,О нет! В моём доме произошло убийство!,Oh no! There's been a murder in my house!
+8_2.npc.killrad,"Хотя я даже рад, что его убили!..",Although I'm even glad that it was killed!..
+8_2.npc.o00,Опять домашка по обществу... Как её вообще писать!?,More homework on society... How to write it at all!?
+8_2.npc.o01,Хорошо оно хоть раз в неделю…,It's good to have it at least once a week…
+8_2.npc.o10,"Всё в порядке, сладкий!..","It’s all right, honey!.."
+8_2.npc.o11,"Стой, а ты кто?","Wait, who are you?"
+8_2.npc.o12,Поможешь нам?.. UwU,Will you help us? UwU
+8_2.npc.shroom,У меня дома гадкий гриб…,I have a nasty mushroom at home…
+8_2.npc.care,Будь осторожен%!,Be careful!
+8_3.storage,Хранилище грибов,Mushrooms storage
+8_3.npc.dont,Не трогай алмазы!,Don’t touch the diamonds!
+8_3.npc.bed,"Зачем нужна кровать, когда есть алмазы?",Why do you need a bed when there are diamonds?
+8_3.npc.rich,Только дороговато вышло.,It just got a little expensive.
+8_4.fuuuuuuck,Да ты что... БЛ*************************!!!,"Wait, NOOOOOOOOOOOO!!!"
+8_4.npc.film,Я очень хочу на этот фильм.,I really want to see this movie.
+8_4.npc.ads,"Но, говорят, там много рекламы…","But, they say, there is a lot of ads…"
+8_4.npc.filmask,Ты пойдёшь на этот фильм?..,Will you go to this movie?..
+8_4.npc.nerd,"Сэр, вообще-то, в деревне нельзя ходить с оружием.","Uhm, actually, you can't carry a weapon in the village."
+8_4.npc.nerdleave,Прошу немедленно покинуть мой дом.,Please leave my house immediately.
+8_4.npc.nerdoh,"Сэр, вообще-то, ... Ой.","Uhm, actually, … Oh."
+8_4.npc.nerdstop,"Сэр, немедленно прекратите бессмысленное кровопролитие!","Uhm, immediately stop the senseless bloodshed!"
+8_4.npc.nerdbosses,Боссы вам не враги!,Bosses aren’t your enemies!
+8_4.npc.chests,"Хорошо, что это, сундуки остались наверху…","Well, what is it, the chests were left upstairs…"
+8_4.npc.cool,Класс вообще.,Very good.
+8_5.npc.fizikready,Готов% к уроку по физике?,Are you ready for physics lesson?
+8_5.npc.fiziklimonad,Не забудь взять лимонад!,Don't forget to take lemonade!
+8_5.npc.fizikuchi,"Что-то ты мрачен%, поучи физику!..","You're gloomy, learn physics!.."
+8_5.npc.you,Что ТЫ тут делаешь?,What are YOU doing here?
+8_5.npc.robot,Какой милый робот!..,What a cute robot!..
+8_5.npc.whatrobot,Только что он у меня делает?..,"You're gloomy, go learn some physics!.."
+8_5.npc.housefree,Хоть дом мне освободишь…,At least you'll free the house for me…
+8_5.npc.housemonsters,Какие-то монстры сидят у меня дома!..,Some monsters are sitting at my house!..
+8_5.npc.advise,Не советую туда идти…,I don’t advise you to go there…
+8_6.storage2,Хранилище грибов 2,Mushroom storage 2
+8_6.npc.kira,"Ты думал, что я Кира Йошикаге…",You thought I was Kira Yoshikage…
+8_6.npc.dio,"Но это был я, Дио!","But it was me, Dio!"
+8_6.npc.shlyuha0,Ты сделал% домашнее задание на отдельном листочке по обществознанию?,Have you done your social studies homework on a separate piece of paper?
+8_6.npc.shlyuha1,Объём не менее 2 страниц!!!,Size is not less than 2 pages!!!
+8_6.npc.shlyuha2,Что ты вообще дома у меня делаешь???,What are you doing at my house anyway???
+8_6.npc.hi,Привет.,Hi.
+8_6.npc.like,Любишь скалолазание?,Do you like climbing?
+8_6.npc.getout,Иди отсюда!,Get out!
+8_7.npc.good,Я всё ещё держусь…,I'm still involved…
+8_7.npc.letsgooo,"Вперёд, джедаи, мы победим!","Come on, Jedi, we will win!"
+8_7.npc.ng,С наступающим Новым Годом!,Happy New Year!
+8_7.npc.days,"Кстати, сколько до него дней осталось?","By the way, how many days are left before it?"
+8_7.npc.leave,"АААААА, УЙДИ ОТСЮДА!!!","AAAAAAH, GET OUT!!!"
+8_7.npc.dura,Пишу домашнее задание по обществу.,I'm writing my homework on society.
+8_7.npc.superdura,Обожаю этот предмет!,I love this subject!
+8_8.nonlived,Покинутые дома,Abandoned houses
+8_9.npc.dont,Не... Иди... Туда!,Don't... Go... There!
+8_9.npc.past,Я прошлый рабочий Завода...,I'm a former factory worker…
+8_9.npc.bad,Это полный ужас…,It's a complete horror…
+8_9.npc.relation,После этого всего там просто перестали относится к рабочим как к людям...,"After everything happened, there just stopped treating workers as people..."
+8_9.npc.left,И все просто сбежали.,And everyone just ran away.
+8_9.npc.dontgo,"Пожалуйста, не иди туда…","Please, don’t go there…"
+8_10.boss.start,Егор: Но у меня нет выбора…,Egor: But I have no choice…
+8_10.boss.0,"???: Смотри, как умею!",???: Look what I can do!
+8_10.boss.1,???: Кхм-кхм.,???: Ahem-ahem.
+8_10.boss.2,???: Я тебя поздравляю: ты преодолел% множество препятствий.,???: I congratulate you: you have overcome a lot of difficulties.
+8_10.boss.3,???: Но тебя ещё многое ждёт…,???: But there is still a lot waiting for you…
+8_10.boss.4,???: Последователи Дракона. Вот кто ещё будут стоять у тебя на пути.,???: Followers of the Dragon. That's who else will stand in your way.
+8_10.boss.5,???: Я горжусь тобой. Ты очень хорош%.,???: I'm proud of you. You're very good.
+8_10.boss.6,???: Но Дракон… Я поклялся ему в верности…,???: But the Dragon… I swore allegiance to him…
+8_10.boss.7,Последователь: ...так что мне придётся это сделать.,Follower: ...So I'll have to do it.
+8_10.boss.8,"Последователь: Пойми, мне не хочется этого!",Follower: I don't want to do this!
+8_10.boss.death.0,Егор: Прости.,Egor: Sorry.
+8_10.boss.death.1,Егор: Мне жаль.,Egor: I’m sorry.
+8_10.boss.death.2,Егор: Вот и кончилось твоё приключение…,Egor: Your adventure has ended…
