@@ -2,25 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/uv.png-26465fc1d0f8978cc7503e1c187a6253.stex"
+path="res://.import/avatar.png-4cbcf5e20d0aa31407277700e238d89b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/bosses/egor/uv.png"
-dest_files=[ "res://.import/uv.png-26465fc1d0f8978cc7503e1c187a6253.stex" ]
+source_file="res://textures/bosses/egor/avatar.png"
+dest_files=[ "res://.import/avatar.png-4cbcf5e20d0aa31407277700e238d89b.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=2]
 
+[ext_resource path="res://textures/bosses/egor/uv.png" type="Texture" id=1]
 [ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=2]
 [ext_resource path="res://shaders/materials/chromokey.tres" type="Material" id=3]
-[ext_resource path="res://textures/bosses/egor/uv.png" type="Texture" id=4]
 [ext_resource path="res://textures/bosses/egor/time_erase_effect.ogv" type="VideoStream" id=5]
 [ext_resource path="res://shaders/uv_mapper.gdshader" type="Shader" id=6]
 [ext_resource path="res://sounds/sfx/time_erase.wav" type="AudioStream" id=7]
@@ -19,7 +19,7 @@ func _ready():
 	var img = get_viewport().get_texture().get_data()
 	img.flip_y()
 	tex.create_from_image(img)
-	
+	$screen.rect_scale.x *= OS.window_size.x / 960
 	$screen/part0.material.set_shader_param(\"mapped_texture\", tex)
 "
 
@@ -379,49 +379,49 @@ rect_scale = Vector2( 2, 2 )
 
 [node name="part0" type="Sprite" parent="screen"]
 material = SubResource( 121 )
-texture = ExtResource( 4 )
+texture = ExtResource( 1 )
 offset = Vector2( -180, -85 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 120, 100 )
 
 [node name="part1" type="Sprite" parent="screen"]
 material = SubResource( 121 )
-texture = ExtResource( 4 )
+texture = ExtResource( 1 )
 offset = Vector2( -155, 50 )
 region_enabled = true
 region_rect = Rect2( 0, 100, 170, 170 )
 
 [node name="part2" type="Sprite" parent="screen"]
 material = SubResource( 121 )
-texture = ExtResource( 4 )
+texture = ExtResource( 1 )
 offset = Vector2( 0, -85 )
 region_enabled = true
 region_rect = Rect2( 120, 0, 240, 100 )
 
 [node name="part3" type="Sprite" parent="screen"]
 material = SubResource( 121 )
-texture = ExtResource( 4 )
+texture = ExtResource( 1 )
 offset = Vector2( 25, 15 )
 region_enabled = true
 region_rect = Rect2( 170, 100, 190, 100 )
 
 [node name="part4" type="Sprite" parent="screen"]
 material = SubResource( 121 )
-texture = ExtResource( 4 )
+texture = ExtResource( 1 )
 offset = Vector2( 10, 100 )
 region_enabled = true
 region_rect = Rect2( 170, 200, 160, 70 )
 
 [node name="part5" type="Sprite" parent="screen"]
 material = SubResource( 121 )
-texture = ExtResource( 4 )
+texture = ExtResource( 1 )
 offset = Vector2( 165, 100 )
 region_enabled = true
 region_rect = Rect2( 330, 200, 150, 70 )
 
 [node name="part6" type="Sprite" parent="screen"]
 material = SubResource( 121 )
-texture = ExtResource( 4 )
+texture = ExtResource( 1 )
 offset = Vector2( 180, -35 )
 region_enabled = true
 region_rect = Rect2( 360, 0, 120, 200 )

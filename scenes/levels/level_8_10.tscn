@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=2]
+[gd_scene load_steps=96 format=2]
 
 [ext_resource path="res://sounds/sfx/mob_death.wav" type="AudioStream" id=1]
 [ext_resource path="res://themes/font.tres" type="DynamicFontData" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://sounds/sfx/heal.wav" type="AudioStream" id=18]
 [ext_resource path="res://textures/bosses/egor/head.tres" type="Texture" id=19]
 [ext_resource path="res://textures/bosses/egor/hand1.tres" type="Texture" id=20]
+[ext_resource path="res://textures/bosses/egor/avatar.png" type="Texture" id=21]
 [ext_resource path="res://textures/bosses/egor/body.tres" type="Texture" id=22]
 [ext_resource path="res://textures/bosses/egor/hand2.tres" type="Texture" id=23]
 [ext_resource path="res://textures/bosses/egor/leg2.tres" type="Texture" id=24]
@@ -32,7 +33,6 @@
 [ext_resource path="res://textures/bosses/egor/downwear_front.tres" type="Texture" id=31]
 [ext_resource path="res://textures/bosses/egor/downwear_back.tres" type="Texture" id=32]
 [ext_resource path="res://textures/bosses/egor/head_cover.png" type="Texture" id=33]
-[ext_resource path="res://textures/bosses/fire_wizard/avatar.png" type="Texture" id=34]
 [ext_resource path="res://shaders/materials/plasch.tres" type="Material" id=35]
 [ext_resource path="res://prefabs/blocks/tileset.tres" type="TileSet" id=36]
 [ext_resource path="res://textures/bosses/egor/pin.png" type="Texture" id=37]
@@ -351,7 +351,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3, 0.8, 1.1 ),
+"times": PoolRealArray( 0, 0.3, 0.8, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 16.6037, 1.27596, -8.03125 ]
@@ -387,7 +387,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.3, 0.8, 1.1 ),
+"times": PoolRealArray( 0, 0.3, 0.8, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ -20.0, -112.627, -95.039, 0.0 ]
@@ -411,7 +411,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.3, 0.8, 1.1 ),
+"times": PoolRealArray( 0, 0.3, 0.8, 1.2 ),
 "transitions": PoolRealArray( 1, 2, 1, 1 ),
 "update": 0,
 "values": [ 20.0, -30.1091, 13.8373, -84.1032 ]
@@ -423,7 +423,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.3, 0.8, 1.1 ),
+"times": PoolRealArray( 0, 0.3, 0.8, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 20.0, 130.312, 100.233, 0.0 ]
@@ -447,7 +447,7 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.3, 0.8, 1.1 ),
+"times": PoolRealArray( 0, 0.3, 0.8, 1.2 ),
 "transitions": PoolRealArray( 1, 2, 1, 1 ),
 "update": 0,
 "values": [ -20.0, -176.56, -185.183, -100.434 ]
@@ -2355,6 +2355,214 @@ tracks/20/keys = {
 "values": [ Vector2( 0.7, 0.4 ) ]
 }
 
+[sub_resource type="Animation" id=118]
+resource_name = "time_erase"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/head/helmet:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -11.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body/head:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 12.5797, 12.5797, -12.9521 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/body:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visual/body/arm_left/hand:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.7 ),
+"transitions": PoolRealArray( 0.5, 1, 1.5, 1 ),
+"update": 0,
+"values": [ -20.0, 160.0, 160.0, -1.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visual/body/arm_left:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.841847, -10.3828 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("visual/body/arm_left:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 20.0, 8.97945, 8.97945, 90.2514 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("visual/body/arm_right/hand:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.7 ),
+"transitions": PoolRealArray( 0.5, 1, 1.5, 1 ),
+"update": 0,
+"values": [ 20.0, -160.0, -160.0, 1.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("visual/body/arm_right:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.84, -10.38 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("visual/body/arm_right:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -20.0, -9.57136, -9.57136, -91.0369 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("visual/body/leg_left:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("visual/body/leg_left/foot:rotation_degrees")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("visual/body/leg_right:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("visual/body/leg_right/foot:rotation_degrees")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("visual:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -3, 3 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("visual:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
 [sub_resource type="GDScript" id=117]
 script/source = "extends Mob
 
@@ -2971,14 +3179,6 @@ tracks/4/keys = {
 [sub_resource type="CircleShape2D" id=25]
 radius = 12.0
 
-[sub_resource type="Gradient" id=104]
-offsets = PoolRealArray( 0, 0.0769231, 0.93007, 1 )
-colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
-
-[sub_resource type="Gradient" id=103]
-offsets = PoolRealArray( 0.237762, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.368627 )
-
 [node name="level_8_10" type="Node2D"]
 script = ExtResource( 15 )
 location = "location.village"
@@ -3210,12 +3410,14 @@ anims/final_death = SubResource( 97 )
 anims/floor = SubResource( 111 )
 anims/idle = SubResource( 13 )
 anims/mercy = SubResource( 29 )
+anims/time_erase = SubResource( 118 )
 next/ball = "idle"
 next/balls = "idle"
 next/circle_balls = "idle"
 next/falling_balls = "idle"
 next/floor = "idle"
-blend_times = [ "ball", "idle", 0.3, "balls", "idle", 0.3, "circle_balls", "idle", 0.3, "falling_balls", "idle", 0.3, "floor", "idle", 0.3, "idle", "death", 0.3, "idle", "idle", 0.3 ]
+next/time_erase = "idle"
+blend_times = [ "ball", "idle", 0.3, "balls", "idle", 0.3, "circle_balls", "idle", 0.3, "falling_balls", "idle", 0.3, "floor", "idle", 0.3, "idle", "death", 0.3, "idle", "idle", 0.3, "time_erase", "idle", 0.3 ]
 
 [node name="mob_eg" type="KinematicBody2D" parent="mobs/egor"]
 collision_layer = 5
@@ -3238,7 +3440,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/egor/mob_eg/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/egor/mob_eg/visual/body"]
-scale = Vector2( 1.25, 1.21398 )
+scale = Vector2( 1.25, 1.21328 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/egor/mob_eg"]
@@ -3754,7 +3956,7 @@ margin_top = -167.0
 margin_right = 179.0
 margin_bottom = 258.0
 mouse_filter = 2
-texture = ExtResource( 34 )
+texture = ExtResource( 21 )
 stretch_mode = 6
 
 [node name="part1" type="ColorRect" parent="tint"]
@@ -3872,28 +4074,6 @@ self_modulate = Color( 0, 0.00784314, 0.243137, 1 )
 scale = Vector2( 6, 6 )
 texture = ExtResource( 11 )
 centered = false
-
-[node name="stars" type="CPUParticles2D" parent="background/sky/sky"]
-position = Vector2( 160, 90 )
-amount = 400
-lifetime = 60.0
-preprocess = 60.0
-randomness = 1.0
-texture = ExtResource( 48 )
-emission_shape = 2
-emission_rect_extents = Vector2( 160, 90 )
-direction = Vector2( -1, 0 )
-spread = 0.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 0.1
-angular_velocity = 10.0
-angular_velocity_random = 1.0
-angle = 360.0
-angle_random = 1.0
-scale_amount = 0.5
-scale_amount_random = 0.5
-color_ramp = SubResource( 104 )
-color_initial_ramp = SubResource( 103 )
 
 [node name="sun" type="ParallaxLayer" parent="background"]
 motion_scale = Vector2( 0, 0.1 )

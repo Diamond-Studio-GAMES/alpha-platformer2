@@ -184,9 +184,10 @@ func up_balls():
 
 
 func time_erase():
-	next_attack_time += 1
+	next_attack_time += 1.5
 	ms.sync_call(self, "time_erase")
-	anim.play("idle") #ADD ANIM AND VOICE
+	anim.play("time_erase")
+	yield(get_tree().create_timer(0.7, false), "timeout")
 	var te = time_erase.instance()
 	get_tree().current_scene.add_child(te)
 	is_time_erased = true

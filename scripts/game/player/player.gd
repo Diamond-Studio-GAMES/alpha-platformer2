@@ -593,6 +593,7 @@ func revive(hp_count = -1):
 	is_hurt = false
 	is_reviving = true
 	_is_drinking = false
+	can_control = false
 	_health_timer = 0
 	_head.texture = _head_sprite
 	_player_head.texture = _head_sprite
@@ -614,6 +615,7 @@ func revive(hp_count = -1):
 	_anim_tree["parameters/potion_shot/active"] = false
 	_buttons.show()
 	yield(get_tree().create_timer(0.4, false), "timeout")
+	can_control = true
 	$shield/anim.seek(0, true)
 	$shield.show()
 	_move.y = -JUMP_POWER * 1.7 * GRAVITY_SCALE

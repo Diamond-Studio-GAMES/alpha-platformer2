@@ -93,7 +93,7 @@ var achievements = {
 		"desc" : "achv.boss7.desc"
 	},
 	BOSS8 : {
-		"icon" : load("res://textures/achievements/boss7.png"),
+		"icon" : load("res://textures/achievements/boss8.png"),
 		"name" : "achv.boss8",
 		"desc" : "achv.boss8.desc"
 	},
