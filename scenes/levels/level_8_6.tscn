@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://textures/blocks/door.png" type="Texture" id=1]
 [ext_resource path="res://textures/effects/other/star.png" type="Texture" id=2]
@@ -28,6 +28,51 @@
 [ext_resource path="res://prefabs/blocks/grass2.tscn" type="PackedScene" id=26]
 [ext_resource path="res://prefabs/mobs/sportsman.tscn" type="PackedScene" id=27]
 [ext_resource path="res://prefabs/mobs/knight_mob.tscn" type="PackedScene" id=28]
+[ext_resource path="res://sounds/sfx/randomed/sword_hit.tres" type="AudioStream" id=29]
+
+[sub_resource type="GDScript" id=14]
+script/source = "extends Node2D
+
+
+func _on_npc2_area_entered(area):
+	if area is Attack:
+		$kill_anim.play(\"kill\")
+		$npc2/shape.set_deferred(\"disabled\", true)
+		$npc2/button.hide()
+		$sfx.play()
+		yield($kill_anim, \"animation_finished\")
+		var n = load(\"res://prefabs/effects/mob_death.tscn\").instance()
+		n.global_position = global_position + Vector2.LEFT * 32 + Vector2.UP * 16
+		get_parent().add_child(n)
+		$npc2.hide()
+"
+
+[sub_resource type="Animation" id=15]
+resource_name = "kill"
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "talk"
@@ -669,22 +714,36 @@ position = Vector2( 0, -16 )
 z_index = 1
 texture = ExtResource( 13 )
 
-[node name="npc2" parent="mobs" instance=ExtResource( 8 )]
-position = Vector2( 752, -1280 )
+[node name="offset" type="Node2D" parent="mobs"]
+position = Vector2( 752, -1252 )
+script = SubResource( 14 )
+
+[node name="kill_anim" type="AnimationPlayer" parent="mobs/offset"]
+root_node = NodePath("../npc2")
+anims/kill = SubResource( 15 )
+
+[node name="npc2" parent="mobs/offset" instance=ExtResource( 8 )]
+position = Vector2( 0, -28 )
 scale = Vector2( 1, 1 )
+collision_mask = 18
 dialog_data = [ "r|3|8_6.npc.shlyuha0", "r|3|8_6.npc.shlyuha1", "r|3|8_6.npc.shlyuha2" ]
 hate_tier_2_dialog_data = [ "r|3|8_6.npc.shlyuha2" ]
 
-[node name="head" parent="mobs/npc2/visual/body" index="0"]
+[node name="head" parent="mobs/offset/npc2/visual/body" index="0"]
 texture = ExtResource( 21 )
 
-[node name="eyes" parent="mobs/npc2/visual/body/head" index="1"]
+[node name="eyes" parent="mobs/offset/npc2/visual/body/head" index="1"]
 modulate = Color( 1, 0, 0, 1 )
 texture = ExtResource( 19 )
 
-[node name="hair" parent="mobs/npc2/visual/body/head" index="2"]
+[node name="hair" parent="mobs/offset/npc2/visual/body/head" index="2"]
 self_modulate = Color( 0.556863, 0.313726, 0, 1 )
 texture = ExtResource( 18 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="mobs/offset"]
+stream = ExtResource( 29 )
+max_distance = 800.0
+bus = "sfx"
 
 [node name="npc3" parent="mobs" instance=ExtResource( 8 )]
 position = Vector2( 1520, -1280 )
@@ -952,10 +1011,11 @@ bus = "music"
 [connection signal="ended_talk" from="mobs/npc" to="mobs/npc/visual/body/head/eyes" method="hide"]
 [connection signal="ended_talk" from="mobs/npc" to="mobs/npc/visual/body/head/hair" method="hide"]
 [connection signal="ended_talk" from="mobs/npc" to="mobs/npc/visual/body/head/dio" method="show"]
+[connection signal="area_entered" from="mobs/offset/npc2" to="mobs/offset" method="_on_npc2_area_entered"]
 [connection signal="body_entered" from="end_star" to="end_star" method="end_level"]
 
 [editable path="mobs/npc"]
-[editable path="mobs/npc2"]
+[editable path="mobs/offset/npc2"]
 [editable path="mobs/npc3"]
 [editable path="blocks/doors"]
 [editable path="blocks/doors2"]

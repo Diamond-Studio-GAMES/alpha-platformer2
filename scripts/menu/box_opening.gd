@@ -91,7 +91,7 @@ func _input(event):
 		if event.pressed and event.button_index == BUTTON_LEFT:
 			click()
 	elif event is InputEventKey:
-		if event.pressed and event.scancode == KEY_SPACE:
+		if event.pressed and event.scancode == KEY_SPACE and not event.echo:
 			click()
 
 
@@ -120,6 +120,8 @@ func _process(delta):
 func click():
 	if not is_showing_loot:
 		if not started_opening:
+			started_opening = true
+			yield(get_tree(), "idle_frame")
 			match box_type:
 				BoxType.STANDARD:
 					box_anim.play("open")
@@ -127,7 +129,6 @@ func click():
 					box_anim2.play("open")
 				BoxType.MEGA:
 					box_anim3.play("open")
-		started_opening = true
 	emit_signal("next")
 
 

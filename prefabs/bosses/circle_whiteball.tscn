@@ -32,6 +32,7 @@ destroyable_by_attacks = false
 effect_wall = "res://prefabs/effects/destroy_effects/effect_whiteball_hit.tscn"
 effect_hit = "res://prefabs/effects/destroy_effects/effect_whiteball_hit.tscn"
 effect_reject = "res://prefabs/effects/destroy_effects/effect_whiteball_hit.tscn"
+simple_effect_scale = Vector2( 0.5, 0.5 )
 delay = 0.5
 fade_time = 0.5
 
@@ -39,7 +40,7 @@ fade_time = 0.5
 collision_layer = 16
 collision_mask = 19
 script = ExtResource( 3 )
-damage = 60
+damage = 55
 is_enemy_attack = true
 lifetime = 0.0
 

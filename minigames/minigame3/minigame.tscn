@@ -118,7 +118,6 @@ current = true
 
 [node name="light" type="DirectionalLight" parent="base"]
 transform = Transform( 0.924706, 0.0743849, -0.373345, 0, 0.980724, 0.195398, 0.380683, -0.180686, 0.906881, 0, 6.85841, 6.5418 )
-shadow_enabled = true
 directional_shadow_mode = 1
 directional_shadow_split_1 = 0.12
 

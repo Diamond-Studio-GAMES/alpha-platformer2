@@ -377,6 +377,10 @@ shop.offer.title,АКЦИЯ,OFFER
 shop.offer.free,БЕСПЛАТНО,FREE
 shop.offer.gift,ПОДАРОК!,GIFT!
 shop.offer.kit,НАБОР КЛАССА,CLASS KIT
+shop.offer.tokens,ЖЕТОНЫ,TOKENS
+shop.offer.item,ПРЕДМЕТ,ITEM
+shop.offer.sale,СКИДКА В %d%%,%d%% SALE
+shop.offer.more,БОЛЬШЕ НА %d%%,%d%% MORE
 item.coins,МОНЕТЫ,COINS
 item.gems,КРИСТАЛЛЫ,GEMS
 item.frags,ФРАГМЕНТЫ АМУЛЕТА,AMULET FRAGMENTS

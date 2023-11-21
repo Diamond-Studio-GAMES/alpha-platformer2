@@ -139,6 +139,7 @@ func ulti():
 	ulti_percentage = 0
 	_health_timer = 0
 	_is_ultiing = true
+	immune_counter += 1
 	_camera_tween.interpolate_property(camera, "zoom", default_camera_zoom, Vector2(0.6, 0.6), 0.3)
 	_camera_tween.start()
 	_ulti_tween.interpolate_property(_ulti_bar, "value", 100, 0, 0.5)
@@ -153,6 +154,7 @@ func ulti():
 	$camera/gui/base/ulti_use/anim.play("ulti_use")
 	yield(get_tree().create_timer(0.8, false), "timeout")
 	_is_ultiing = false
+	immune_counter -= 1
 	yield(get_tree().create_timer(2, false), "timeout")
 	_camera_tween.interpolate_property(camera, "zoom", Vector2(0.6, 0.6), default_camera_zoom, 0.3)
 	_camera_tween.start()
@@ -195,6 +197,8 @@ func revive(hp = -1):
 
 
 func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
+	if immune_counter > 0:
+		return false
 	var past_health = current_health
 	var past_armor = current_armor
 	var real_defense = defense * int(defense_allowed)

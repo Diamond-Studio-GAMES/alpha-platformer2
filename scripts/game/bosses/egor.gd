@@ -119,7 +119,7 @@ func _create_ball_at(pos):
 
 func big_ball():
 	next_attack_time += 0.8
-	ms.sync_call(self, "ball")
+	ms.sync_call(self, "big_ball")
 	anim.play("ball")
 	if not MP.auth(self):
 		return
@@ -191,7 +191,8 @@ func time_erase():
 	var te = time_erase.instance()
 	get_tree().current_scene.add_child(te)
 	is_time_erased = true
-	player._is_ultiing = true
+	player.immune_counter += 1
+	mob.immune_counter -= 1
 	set_cutscene(true)
 	yield(get_tree().create_timer(2, false), "timeout")
 	Engine.time_scale = 3
@@ -207,6 +208,7 @@ func time_erase():
 	yield(get_tree().create_timer(1, false), "timeout")
 	next_attack_time_min = 0.65
 	next_attack_time_max = 1.5
-	player._is_ultiing = false
+	player.immune_counter -= 1
+	mob.immune_counter -= 1
 	is_time_erased = false
 	set_cutscene(false)

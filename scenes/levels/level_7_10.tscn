@@ -4400,7 +4400,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/red_king/mob_rk/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/red_king/mob_rk/visual/body"]
-scale = Vector2( 1.25, 1.12392 )
+scale = Vector2( 1.25, 1.18685 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/red_king/mob_rk"]
@@ -4495,7 +4495,7 @@ spread = 180.0
 gravity = Vector2( 0, 0 )
 initial_velocity = 100.0
 scale_amount_curve = SubResource( 15 )
-color = Color( 0.25098, 0, 0.25098, 1 )
+color = Color( 0.558594, 0.558594, 0.558594, 1 )
 
 [node name="heal" type="CPUParticles2D" parent="mobs/red_king/mob_rk"]
 emitting = false
@@ -4526,13 +4526,12 @@ shape = SubResource( 18 )
 
 [node name="stun_stars" type="CPUParticles2D" parent="mobs/red_king/mob_rk"]
 visible = false
-z_index = 1
 amount = 10
 lifetime = 3.0
 preprocess = 3.0
 texture = ExtResource( 7 )
 emission_shape = 2
-emission_rect_extents = Vector2( 24, 24 )
+emission_rect_extents = Vector2( 24, 92 )
 direction = Vector2( 0, 0 )
 spread = 0.0
 gravity = Vector2( 0, 0 )

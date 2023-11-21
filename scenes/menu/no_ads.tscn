@@ -286,7 +286,8 @@ func _ready():
 
 
 func close():
-	get_tree().change_scene(\"res://scenes/menu/levels.tscn\")"
+	get_tree().change_scene(\"res://scenes/menu/shop.tscn\")
+"
 
 [node name="no_ads" type="ColorRect"]
 anchor_right = 1.0

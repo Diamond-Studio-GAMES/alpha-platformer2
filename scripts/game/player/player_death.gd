@@ -50,12 +50,6 @@ func apply_eye_color(clr):
 	eye.self_modulate = clr
 
 
-func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
-	if is_active_gadget:
-		return false
-	return .hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
-
-
 func attack():
 	if MP.auth(self):
 		G.ach.complete(Achievements.DARK_CREATION)
@@ -117,6 +111,7 @@ func ulti():
 	ulti_percentage = 0
 	_health_timer = 0
 	_is_ultiing = true
+	immune_counter += 1
 	_ulti_tween.interpolate_property(_ulti_bar, "value", 100, 0, 0.5)
 	_ulti_tween.start()
 	_anim_tree["parameters/ulti_shot/active"] = true
@@ -146,6 +141,7 @@ func ulti():
 	$gadget_active.emitting = false
 	$ulti.shape_owner_set_disabled(shape_owner, true)
 	_is_ultiing = false
+	immune_counter -= 1
 
 
 func _process(delta):
@@ -188,6 +184,7 @@ func use_gadget():
 	_knockback = 0
 	is_hurt = false
 	stun_time = 0
+	immune_counter += 1
 	yield(get_tree().create_timer(0.5), "timeout")
 	var time_to_stop = 4 + floor(curr_lvl_loc / 2.0)
 	yield(get_tree().create_timer(time_to_stop / time_scale), "timeout")
@@ -196,6 +193,7 @@ func use_gadget():
 	pause_mode = PAUSE_MODE_INHERIT
 	get_tree().paused = false
 	is_active_gadget = false
+	immune_counter -= 1
 	VisualServer.set_shader_time_scale(1)
 	Engine.time_scale = time_scale
 	_camera_tween.interpolate_property($visual/body/arm_right/hand/weapon, "self_modulate", Color(1,1,1,0), Color(1,1,1,1), 0.5)

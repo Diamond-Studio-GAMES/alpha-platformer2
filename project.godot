@@ -289,7 +289,7 @@ _global_script_class_icons={
 "NPC": "res://textures/mobs/npcs/hairs/kare.png",
 "Night": "",
 "Optimizer": "",
-"PlantResource": "res://minigames/minigame6/resources/seed_packet_legendary.png",
+"PlantResource": "",
 "Player": "",
 "PlayerPlayer": "",
 "Promocode": "res://textures/gui/promocodes.png",

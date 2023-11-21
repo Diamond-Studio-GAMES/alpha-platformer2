@@ -253,7 +253,8 @@ func _process(delta):
 	$coins.text = str(G.getv("coins", 0))
 	$gems.text = str(G.getv("gems", 0))
 	if current_day != Time.get_date_dict_from_system()["day"]:
-		_ready()
+		G.ignore_next_music_stop = true
+		get_tree().reload_current_scene()
 	if G.getv("potions1", 0) < 1:
 		p0.text = ""
 		b0.disabled = false
@@ -440,18 +441,24 @@ func show_offers():
 		generate_offers()
 		return
 	for i in G.getv("offers", []):
-		show_offer(i["costs"], i["receives"], i["id"], i["name"])
+		show_offer(i["costs"], i["receives"], i["id"], i["name"], i.get("sale", 0))
 	if not G.getv("collected_ad_bonus", false) and G.ad.ads_available():
 		var node = load("res://prefabs/menu/offer_ad.tscn").instance()
 		$scroll/offers.add_child(node)
 		$scroll/offers.move_child(node, 0)
 
 
-func show_offer(costs, receives, id = 0, name = tr("shop.offer.title")):
+func show_offer(costs, receives, id = 0, name = tr("shop.offer.title"), sale = 0):
 	var off = offer_obj.instance()
 	off.name = "offer" + str(id)
 	off.offer_rec = receives
 	off.get_node("title").text = name
+	if sale != 0:
+		off.get_node("sale").show()
+		if sale < 0:
+			off.get_node("sale/amount").text = tr("shop.offer.sale") % -sale
+		else:
+			off.get_node("sale/amount").text = tr("shop.offer.more") % sale
 	if not costs.empty():
 		off.get_node("buy").icon = gem if costs.has("gems") else coin
 		off.get_node("buy").text = str(costs[costs.keys()[0]])
@@ -620,7 +627,7 @@ func generate_offers():
 			discount.shuffle()
 			var cc = 2250 * mul[1] * discount[3]
 			var cost = 15 if mul[1] == 1 else 25 if mul[1] == 2 else 45
-			offer = {"costs": {"gems" : cost}, "receives" : {"coins" : cc}, "id" : i, "name" : tr("shop.offer.title")}
+			offer = {"costs": {"gems" : cost}, "receives" : {"coins" : cc}, "id" : i, "name" : tr("shop.offer.title"), "sale" : (discount[3] - 1) * 100}
 		if type == 1:
 			#POTIONS
 			var t = ["1", "1", "2", "2", "3"]
@@ -632,28 +639,28 @@ func generate_offers():
 			var cost = cost_1 * c * discount[1]
 			if G.getv("potions" + t[2], 0) + c > 5:
 				continue
-			offer = {"costs": {"coins" : cost}, "receives" : {"potions" + t[2] : c}, "id" : i, "name" : tr("shop.offer.title")}
+			offer = {"costs": {"coins" : cost}, "receives" : {"potions" + t[2] : c}, "id" : i, "name" : tr("shop.offer.title"), "sale" : (1 - discount[1]) * -100}
 		if type == 2:
 			#BOX
 			var cost = gen.randi_range(2, 3)
 			var count = gen.randi_range(2, 10)
-			offer = {"costs": {"gems" : cost * count}, "receives" : {"box" : count}, "id" : i, "name" : tr("shop.offer.title")}
+			offer = {"costs": {"gems" : cost * count}, "receives" : {"box" : count}, "id" : i, "name" : tr("shop.offer.title"), "sale" : (4 - cost) * -25}
 		if type == 3:
 			#BOX GOLD
 			var cost = 10 - gen.randi_range(2, 4)
 			var count = gen.randi_range(1, 5)
-			offer = {"costs": {"gems" : cost * count}, "receives" : {"gold_box" : count}, "id" : i, "name" : tr("shop.offer.title")}
+			offer = {"costs": {"gems" : cost * count}, "receives" : {"gold_box" : count}, "id" : i, "name" : tr("shop.offer.title"), "sale" : (10 - cost) * -10}
 		if type == 4:
 			#DIAMOND BOX
 			var cost = 30 - gen.randi_range(1, 3) * 5
 			var count = gen.randi_range(1, 3)
-			offer = {"costs": {"gems" : cost * count}, "receives" : {"diamond_box" : count}, "id" : i, "name" : tr("shop.offer.title")}
+			offer = {"costs": {"gems" : cost * count}, "receives" : {"diamond_box" : count}, "id" : i, "name" : tr("shop.offer.title"), "sale" : round((30 - cost) * -3.33)}
 		if type == 5:
 			#GADGET
 			if not gadget_classes.empty():
 				gadget_classes.shuffle()
 				var to = gadget_classes[0]
-				offer = {"costs": {"coins" : 750}, "receives" : {"gadget" : [to]}, "id" : i, "name" : tr("shop.offer.title")}
+				offer = {"costs": {"coins" : 750}, "receives" : {"gadget" : [to]}, "id" : i, "name" : tr("shop.offer.item"), "sale" : 0}
 			else:
 				continue
 		if type == 6:
@@ -661,7 +668,7 @@ func generate_offers():
 			if not soul_power_classes.empty():
 				soul_power_classes.shuffle()
 				var to = soul_power_classes[0]
-				offer = {"costs": {"coins" : 1500}, "receives" : {"soul_power" : [to]}, "id" : i, "name" : tr("shop.offer.title")}
+				offer = {"costs": {"coins" : 1500}, "receives" : {"soul_power" : [to]}, "id" : i, "name" : tr("shop.offer.item"), "sale" : 0}
 			else:
 				continue
 		if type == 7:
@@ -673,7 +680,7 @@ func generate_offers():
 				power_classes.shuffle()
 				var to = power_classes[0]
 				var count = 20 + gen.randi_range(0, 10) * 10
-				offer = {"costs": {"coins" : count * 5}, "receives" : {"tokens" : {to: count }}, "id" : i, "name" : tr("shop.offer.title")}
+				offer = {"costs": {"coins" : count * 5}, "receives" : {"tokens" : {to: count }}, "id" : i, "name" : tr("shop.offer.tokens"), "sale" : 0}
 			else:
 				#ULTI
 				if ulti_classes.empty():
@@ -681,7 +688,7 @@ func generate_offers():
 				ulti_classes.shuffle()
 				var to = ulti_classes[0]
 				var count = 10 + gen.randi_range(0, 10) * 2
-				offer = {"costs": {"coins" : count * 20}, "receives" : {"ulti_tokens" : {to: count }}, "id" : i, "name" : tr("shop.offer.title")}
+				offer = {"costs": {"coins" : count * 20}, "receives" : {"ulti_tokens" : {to: count }}, "id" : i, "name" : tr("shop.offer.tokens"), "sale" : 0}
 		if type == 8:
 			#CLASS
 			if classes_to_unlock.empty():
@@ -691,39 +698,44 @@ func generate_offers():
 			var count_of_pt = 0
 			var count_of_ut = 0
 			var cost = 30
+			var real_cost = 30
 			if randi() % 3 == 1:
-				count_of_pt = 100 + gen.randi_range(0, 1) * 50
-				if count_of_pt == 80:
+				count_of_pt = 120 + gen.randi_range(0, 1) * 120
+				if count_of_pt == 100:
+					real_cost += 4
 					cost += 3
 				else:
+					real_cost += 8
 					cost += 5
 			if randi() % 3 == 2:
 				count_of_ut = 30 + gen.randi_range(0, 1) * 30
-				if count_of_ut == 20:
+				if count_of_ut == 30:
+					real_cost += 4
 					cost += 3
 				else:
+					real_cost += 8
 					cost += 5
 			if count_of_pt == 0 and count_of_ut == 0:
-				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what]}, "id" : i, "name" : tr("item.class")}
+				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what]}, "id" : i, "name" : tr("item.class"), "sale" : 0}
 			elif count_of_pt == 0 and count_of_ut != 0:
-				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "ulti_tokens" : {what: count_of_ut }}, "id" : i, "name" : tr("shop.offer.kit")}
+				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "ulti_tokens" : {what: count_of_ut }}, "id" : i, "name" : tr("shop.offer.kit"), "sale" : real_cost / cost * 100 - 100}
 			elif count_of_pt != 0 and count_of_ut == 0:
-				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "tokens" : {what: count_of_pt}}, "id" : i, "name" : tr("shop.offer.kit")}
+				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "tokens" : {what: count_of_pt}}, "id" : i, "name" : tr("shop.offer.kit"), "sale" : real_cost / cost * 100 - 100}
 			else:
-				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "tokens" : {what: count_of_pt}, "ulti_tokens" : {what: count_of_ut}}, "id" : i, "name" : tr("shop.offer.kit")}
+				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "tokens" : {what: count_of_pt}, "ulti_tokens" : {what: count_of_ut}}, "id" : i, "name" : tr("shop.offer.kit"), "sale" : real_cost / cost * 100 - 100}
 		if type == 9: #WILD TOKENS
 			if randi() % 2 == 1:
 				#POWER
 				if power_classes.empty():
 					continue
 				var count = 20 + gen.randi_range(0, 10) * 10
-				offer = {"costs": {"coins" : count * 6}, "receives" : {"wild_tokens" : count}, "id" : i, "name" : tr("shop.offer.title")}
+				offer = {"costs": {"coins" : count * 6}, "receives" : {"wild_tokens" : count}, "id" : i, "name" : tr("shop.offer.tokens"), "sale" : 0}
 			else:
 				#ULTI
 				if ulti_classes.empty():
 					continue
 				var count = 10 + gen.randi_range(0, 15)
-				offer = {"costs": {"coins" : count * 25}, "receives" : {"wild_ulti_tokens" : count}, "id" : i, "name" : tr("shop.offer.title")}
+				offer = {"costs": {"coins" : count * 25}, "receives" : {"wild_ulti_tokens" : count}, "id" : i, "name" : tr("shop.offer.tokens"), "sale" : 0}
 		if type == 10:
 			# AMULET FRAGS
 			if amulet_types.empty():
@@ -731,7 +743,7 @@ func generate_offers():
 			var count = randi() % 2 + 1
 			amulet_types.shuffle()
 			var am_type = amulet_types[0]
-			offer = {"costs": {"coins" : count * 150}, "receives" : {"amulet_frags": {am_type:count}}, "id" : i, "name" : tr("shop.offer.title")}
+			offer = {"costs": {"coins" : count * 150}, "receives" : {"amulet_frags": {am_type:count}}, "id" : i, "name" : tr("shop.offer.item"), "sale" : 0}
 		var exists = false
 		for y in G.getv("offers", []):
 			if offer["receives"].hash() == y["receives"].hash():
@@ -744,10 +756,10 @@ func generate_offers():
 	var free_receives = [{"gold_box":1}, {"gems":gen.randi_range(1, 2)}, {"coins":10*gen.randi_range(15, 30)}]
 	if not power_classes.empty():
 		power_classes.shuffle()
-		free_receives.append({"tokens":{power_classes[0]: gen.randi_range(10, 20)*2}})
+		free_receives.append({"tokens":{power_classes[0]: gen.randi_range(15, 30)*2}})
 	if not ulti_classes.empty():
 		ulti_classes.shuffle()
-		free_receives.append({"ulti_tokens":{ulti_classes[0]: gen.randi_range(5, 10)}})
+		free_receives.append({"ulti_tokens":{ulti_classes[0]: gen.randi_range(7, 15)}})
 	if not amulet_types.empty():
 		amulet_types.shuffle()
 		free_receives.append({"amulet_frags":{amulet_types[0]:1}})
@@ -802,7 +814,7 @@ func request_online_response(result, code, header, body):
 		if j.has("ids"):
 			if not G.getv("save_id", "none") in j["ids"]:
 				continue
-		show_offer(j["costs"], j["receives"], int(i), j["name"])
+		show_offer(j["costs"], j["receives"], int(i), j["name"], j["sale"])
 
 
 func _enter_tree():

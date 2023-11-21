@@ -599,8 +599,6 @@ texture = ExtResource( 21 )
 
 [node name="npc2" parent="mobs" instance=ExtResource( 19 )]
 position = Vector2( 1200, -64 )
-rotation = 3.14159
-scale = Vector2( 1, -1 )
 dialog_data = [ "w|2|8_1.npc.look" ]
 hate_tier_2_dialog_data = [ "r|3|8_1.npc.face" ]
 

@@ -33,6 +33,7 @@
 [ext_resource path="res://textures/bosses/egor/downwear_front.tres" type="Texture" id=31]
 [ext_resource path="res://textures/bosses/egor/downwear_back.tres" type="Texture" id=32]
 [ext_resource path="res://textures/bosses/egor/head_cover.png" type="Texture" id=33]
+[ext_resource path="res://scripts/game/mobs/mob.gd" type="Script" id=34]
 [ext_resource path="res://shaders/materials/plasch.tres" type="Material" id=35]
 [ext_resource path="res://prefabs/blocks/tileset.tres" type="TileSet" id=36]
 [ext_resource path="res://textures/bosses/egor/pin.png" type="Texture" id=37]
@@ -2563,19 +2564,6 @@ tracks/16/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="GDScript" id=117]
-script/source = "extends Mob
-
-
-onready var parent = get_parent()
-
-
-func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = \"env\"):
-	if parent.is_time_erased:
-		return false
-	return .hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
-"
-
 [sub_resource type="CapsuleShape2D" id=20]
 height = 156.6
 
@@ -2812,7 +2800,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
+node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -3422,7 +3410,10 @@ blend_times = [ "ball", "idle", 0.3, "balls", "idle", 0.3, "circle_balls", "idle
 [node name="mob_eg" type="KinematicBody2D" parent="mobs/egor"]
 collision_layer = 5
 collision_mask = 19
-script = SubResource( 117 )
+script = ExtResource( 34 )
+__meta__ = {
+"_editor_description_": ""
+}
 KNOCKBACK_POWER = 0
 max_health = 18000
 defense = 999999
@@ -3440,7 +3431,8 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/egor/mob_eg/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/egor/mob_eg/visual/body"]
-scale = Vector2( 1.25, 1.1983 )
+position = Vector2( 0, 1.85652 )
+scale = Vector2( 1.25, 1.13397 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/egor/mob_eg"]
@@ -3535,7 +3527,7 @@ spread = 180.0
 gravity = Vector2( 0, 0 )
 initial_velocity = 100.0
 scale_amount_curve = SubResource( 15 )
-color = Color( 0.25098, 0, 0.25098, 1 )
+color = Color( 0, 0, 0.376471, 1 )
 
 [node name="heal" type="CPUParticles2D" parent="mobs/egor/mob_eg"]
 emitting = false
@@ -3566,13 +3558,12 @@ shape = SubResource( 18 )
 
 [node name="stun_stars" type="CPUParticles2D" parent="mobs/egor/mob_eg"]
 visible = false
-z_index = 1
 amount = 10
 lifetime = 3.0
 preprocess = 3.0
 texture = ExtResource( 7 )
 emission_shape = 2
-emission_rect_extents = Vector2( 24, 24 )
+emission_rect_extents = Vector2( 24, 92 )
 direction = Vector2( 0, 0 )
 spread = 0.0
 gravity = Vector2( 0, 0 )
@@ -3691,7 +3682,7 @@ position = Vector2( -257, 91 )
 collision_layer = 16
 collision_mask = 2
 script = ExtResource( 44 )
-damage = 65
+damage = 60
 knockback = 0.0
 custom_invincibility_time = 0.6
 custom_immobility_time = 0.5

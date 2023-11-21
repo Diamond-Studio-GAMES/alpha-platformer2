@@ -42,7 +42,7 @@ colors = PoolColorArray( 1, 1, 1, 0.666667, 1, 1, 1, 0 )
 
 [node name="big_whiteball" type="Node2D" groups=["spawnable"]]
 script = SubResource( 109 )
-SPEED = 110.0
+SPEED = 100.0
 destroy_time = 6.0
 is_player_projectile = false
 is_enemy_projectile = true
@@ -60,7 +60,7 @@ fade_time = 0.5
 collision_layer = 16
 collision_mask = 19
 script = ExtResource( 3 )
-damage = 70
+damage = 65
 is_enemy_attack = true
 lifetime = 0.0
 

@@ -282,12 +282,6 @@ func force_jump(power = 0):
 	return false
 
 #HEALTH
-func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
-	if is_reviving or _is_ultiing:
-		return false
-	return .hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
-
-
 func _hurt_intermediate(damage_source, died):
 	_health_timer = 0
 	_player_head.texture = _head_hurt_sprite
@@ -366,15 +360,15 @@ func use_potion(level):
 			yield(get_tree().create_timer(0.8, false), "timeout")
 			if current_health <= 0:
 				return
+			immune_counter += 1
 			$shield.show()
-			_is_ultiing = true
 			for i in range(4):
 				if MP.auth(self):
 					heal(round(max_health * 0.05))
 				if i < 3:
 					yield(get_tree().create_timer(0.2, false), "timeout")
 			$shield.hide()
-			_is_ultiing = false
+			immune_counter -= 1
 			_is_drinking = false
 		2:
 			if potions_2 <= 0:
@@ -395,14 +389,14 @@ func use_potion(level):
 			if current_health <= 0:
 				return
 			$shield.show()
-			_is_ultiing = true
+			immune_counter += 1
 			for i in range(4):
 				if MP.auth(self):
 					heal(round(max_health * 0.1))
 				if i < 3:
 					yield(get_tree().create_timer(0.2, false), "timeout")
 			$shield.hide()
-			_is_ultiing = false
+			immune_counter -= 1
 			_is_drinking = false
 		3:
 			if potions_3 <= 0:
@@ -423,14 +417,14 @@ func use_potion(level):
 			if current_health <= 0:
 				return
 			$shield.show()
-			_is_ultiing = true
+			immune_counter += 1
 			for i in range(4):
 				if MP.auth(self):
 					heal(round(max_health * 0.15))
 				if i < 3:
 					yield(get_tree().create_timer(0.2, false), "timeout")
 			$shield.hide()
-			_is_ultiing = false
+			immune_counter -= 1
 			_is_drinking = false
 
 
@@ -442,6 +436,7 @@ func ulti():
 	ulti_percentage = 0
 	_health_timer = 0
 	_is_ultiing = true
+	immune_counter += 1
 	_camera_tween.interpolate_property(camera, "zoom", default_camera_zoom, Vector2(0.6, 0.6), 0.3)
 	_camera_tween.start()
 	_ulti_tween.interpolate_property(_ulti_bar, "value", 100, 0, 0.5)
@@ -459,6 +454,7 @@ func ulti():
 	$camera/gui/base/ulti_use/anim.play("ulti_use")
 	yield(get_tree().create_timer(0.8, false), "timeout")
 	_is_ultiing = false
+	immune_counter -= 1
 	yield(get_tree().create_timer(2, false), "timeout")
 	_camera_tween.interpolate_property(camera, "zoom", Vector2(0.6, 0.6), default_camera_zoom, 0.3)
 	_camera_tween.start()
@@ -593,6 +589,7 @@ func revive(hp_count = -1):
 	is_hurt = false
 	is_reviving = true
 	_is_drinking = false
+	immune_counter += 1
 	can_control = false
 	_health_timer = 0
 	_head.texture = _head_sprite
@@ -622,8 +619,9 @@ func revive(hp_count = -1):
 	is_hurt = false
 	yield(get_tree().create_timer(4.6, false), "timeout")
 	is_reviving = false
-	$shield.hide()
+	immune_counter -= 1
 	can_see = true
+	$shield.hide()
 
 
 remote func revived_player():

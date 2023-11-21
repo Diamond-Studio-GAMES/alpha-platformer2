@@ -25,6 +25,7 @@ var _body
 var _move = Vector2()
 var _knockback = 0
 var hurt_counter = 0
+var immune_counter = 0
 var is_hurt = false
 var can_turn = true
 var is_stunned = false
@@ -99,6 +100,8 @@ func calculate_fall_damage():
 
 #HEALTH
 func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
+	if immune_counter > 0:
+		return false
 	ms.sync_call(self, "hurt", [damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source])
 	var past_health = current_health
 	var real_defense = defense * int(defense_allowed)

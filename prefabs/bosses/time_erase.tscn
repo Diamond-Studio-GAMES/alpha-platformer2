@@ -19,7 +19,7 @@ func _ready():
 	var img = get_viewport().get_texture().get_data()
 	img.flip_y()
 	tex.create_from_image(img)
-	$screen.rect_scale.x *= OS.window_size.x / 960
+	$screen.rect_scale.x *= OS.window_size.x / OS.window_size.y / 1.778
 	$screen/part0.material.set_shader_param(\"mapped_texture\", tex)
 "
 
