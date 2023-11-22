@@ -431,16 +431,18 @@ func open_gui(what = null):
 		hide_screens()
 		show_screen("class_screen")
 		G.ach.complete(Achievements.WHAT_IS_IT)
-		if classes_to_unlock.size() == 0:
-			G.ach.complete(Achievements.MASTER_OF_WEAPONS)
-		for i in loot["class"]:
+		for j in loot["class"].size():
+			var i = loot["class"][j]
 			$class_screen/archer.hide()
 			$class_screen/wizard.hide()
 			$class_screen/butcher.hide()
 			$class_screen/knight.hide()
 			$class_screen/spearman.hide()
 			get_node("class_screen/" + i).show()
-			get_node("class_screen/" + i + "/class/ui/text/class_name/count").text = str(5 - classes_to_unlock.size()) + tr("box.class_num")
+			var class_num = 5 - classes_to_unlock.size() - loot["class"].size() + j + 1
+			if class_num == 5:
+				G.ach.complete(Achievements.MASTER_OF_WEAPONS)
+			get_node("class_screen/" + i + "/class/ui/text/class_name/count").text = str(class_num) + tr("box.class_num")
 			get_node("class_screen/" + i + "/anim").play("main")
 			$class_screen/roll_out.play()
 			glow_items -= 1

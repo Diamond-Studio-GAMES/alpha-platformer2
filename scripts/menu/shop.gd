@@ -627,7 +627,7 @@ func generate_offers():
 			discount.shuffle()
 			var cc = 2250 * mul[1] * discount[3]
 			var cost = 15 if mul[1] == 1 else 25 if mul[1] == 2 else 45
-			offer = {"costs": {"gems" : cost}, "receives" : {"coins" : cc}, "id" : i, "name" : tr("shop.offer.title"), "sale" : (discount[3] - 1) * 100}
+			offer = {"costs": {"gems" : cost}, "receives" : {"coins" : cc}, "id" : i, "name" : tr("shop.offer.title"), "sale" : round((discount[3] - 1) * 100)}
 		if type == 1:
 			#POTIONS
 			var t = ["1", "1", "2", "2", "3"]
@@ -639,17 +639,17 @@ func generate_offers():
 			var cost = cost_1 * c * discount[1]
 			if G.getv("potions" + t[2], 0) + c > 5:
 				continue
-			offer = {"costs": {"coins" : cost}, "receives" : {"potions" + t[2] : c}, "id" : i, "name" : tr("shop.offer.title"), "sale" : (1 - discount[1]) * -100}
+			offer = {"costs": {"coins" : cost}, "receives" : {"potions" + t[2] : c}, "id" : i, "name" : tr("shop.offer.title"), "sale" : round((1 - discount[1]) * -100)}
 		if type == 2:
 			#BOX
 			var cost = gen.randi_range(2, 3)
 			var count = gen.randi_range(2, 10)
-			offer = {"costs": {"gems" : cost * count}, "receives" : {"box" : count}, "id" : i, "name" : tr("shop.offer.title"), "sale" : (4 - cost) * -25}
+			offer = {"costs": {"gems" : cost * count}, "receives" : {"box" : count}, "id" : i, "name" : tr("shop.offer.title"), "sale" : round((4 - cost) * -25)}
 		if type == 3:
 			#BOX GOLD
 			var cost = 10 - gen.randi_range(2, 4)
 			var count = gen.randi_range(1, 5)
-			offer = {"costs": {"gems" : cost * count}, "receives" : {"gold_box" : count}, "id" : i, "name" : tr("shop.offer.title"), "sale" : (10 - cost) * -10}
+			offer = {"costs": {"gems" : cost * count}, "receives" : {"gold_box" : count}, "id" : i, "name" : tr("shop.offer.title"), "sale" : round((10 - cost) * -10)}
 		if type == 4:
 			#DIAMOND BOX
 			var cost = 30 - gen.randi_range(1, 3) * 5
@@ -715,14 +715,15 @@ func generate_offers():
 				else:
 					real_cost += 8
 					cost += 5
+			var sale = real_cost / float(cost) * 100 - 100
 			if count_of_pt == 0 and count_of_ut == 0:
 				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what]}, "id" : i, "name" : tr("item.class"), "sale" : 0}
 			elif count_of_pt == 0 and count_of_ut != 0:
-				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "ulti_tokens" : {what: count_of_ut }}, "id" : i, "name" : tr("shop.offer.kit"), "sale" : real_cost / cost * 100 - 100}
+				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "ulti_tokens" : {what: count_of_ut }}, "id" : i, "name" : tr("shop.offer.kit"), "sale" : sale}
 			elif count_of_pt != 0 and count_of_ut == 0:
-				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "tokens" : {what: count_of_pt}}, "id" : i, "name" : tr("shop.offer.kit"), "sale" : real_cost / cost * 100 - 100}
+				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "tokens" : {what: count_of_pt}}, "id" : i, "name" : tr("shop.offer.kit"), "sale" : sale}
 			else:
-				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "tokens" : {what: count_of_pt}, "ulti_tokens" : {what: count_of_ut}}, "id" : i, "name" : tr("shop.offer.kit"), "sale" : real_cost / cost * 100 - 100}
+				offer = {"costs": {"gems" : cost}, "receives" : {"class" : [what], "tokens" : {what: count_of_pt}, "ulti_tokens" : {what: count_of_ut}}, "id" : i, "name" : tr("shop.offer.kit"), "sale" : sale}
 		if type == 9: #WILD TOKENS
 			if randi() % 2 == 1:
 				#POWER

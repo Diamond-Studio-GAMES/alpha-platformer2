@@ -177,7 +177,7 @@ npc.talk,Говорить,Talk
 1_1.mantip3,И в перерыве между его атаками ты можешь безопасно его бить!,"And in between his attacks, you can safely beat him!"
 1_1.dummies,Впереди манекены! Уничтожь их!,There are dummies ahead! Destroy them!
 1_1.end,Ты молодчина! Коснись звезды для завершения уровня! Приятной игры!,Good job! Touch the star to complete the level! Have a nice game!
-1_1.heal,"Мало здоровья? Ничего не делай, оно само восстановится до 75%!","Not enough health? Don’t do anything, it will recover to 75% by itself!"
+1_1.heal,"Мало здоровья? Ничего не делай, оно само восстановится до 75 процентов!","Not enough health? Don’t do anything, it will recover to 75 percents by itself!"
 1_3.stones,Впереди немного камней,There are some rocks ahead
 1_6.vera,ПРЫЖОК ВЕРЫ XD,Jump of Hope!
 1_6.notfool,Я был% не глуп% в школе…,I wasn’t the stupidest in school…
@@ -205,7 +205,7 @@ npc.talk,Говорить,Talk
 2_5.kmom,"МАМА К******
 :))))))))","K*****’S MOM
 :)))))"
-2_5.you,"?/т.-=,.||.,=ы-+%","?/y.-=,.||.,o=-+u%"
+2_5.you,"?/т.-=,.||.,=ы-+#","?/y.-=,.||.,o=-+u#"
 2_6.portal,"Это что, портал? Откуда?",Is this a portal? From where?
 2_6.how,Как они работают?,How do they work?
 2_9.shlyuhi,"Я слышал%, что в местных школах восьмиклассницы - пр*ст*тутки…",I've heard that eighth graders are h*rlots in local schools…

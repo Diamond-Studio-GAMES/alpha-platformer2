@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Box",
 "language": "GDScript",
-"path": "res://scripts/menu/box_opening.gd"
+"path": "res://scripts/menu/box.gd"
 }, {
 "base": "Player",
 "class": "Butcher",

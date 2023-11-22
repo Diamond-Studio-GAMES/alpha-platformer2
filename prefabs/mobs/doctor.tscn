@@ -1173,7 +1173,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_seek", 0, "attack", "death_trans", 0, "attack_shot", "death_trans", 1, "death", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
+node_connections = [ "output", 0, "death_trans", "attack_seek", 0, "attack", "death_trans", 0, "attack_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek" ]
 
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 8.0
@@ -1465,7 +1465,7 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 100.0
 initial_velocity_random = 0.5
 scale_amount_curve = SubResource( 15 )
-color = Color( 0, 0, 0, 1 )
+color = Color( 0.666667, 0.666667, 0.666667, 1 )
 
 [node name="heal" type="CPUParticles2D" parent="."]
 emitting = false
