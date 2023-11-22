@@ -45,6 +45,7 @@ ss.pp.accept,Я ознакомился и принимаю П. К.,I’ve read a
 ss.pp.accept.butt,Далее,Next
 ss.a.title,Введи свой возраст,Enter your age
 ss.a.accept,Подтвердить,Confirm
+ss.a.ignore,Не указывать,Don’t specify
 ss.a.comment,Это не повлияет на игровой процесс.,This won’t affect gameplay.
 ss.a.comment2,Да тебе на пенсию пора!,You’re too old! Are you sure about your age?
 ss.update.title,Обновление,Update

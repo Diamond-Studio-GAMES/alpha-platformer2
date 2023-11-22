@@ -145,7 +145,7 @@ anchor_bottom = 0.5
 margin_left = -240.0
 margin_top = -120.0
 margin_right = 240.0
-margin_bottom = 120.0
+margin_bottom = 160.0
 popup_exclusive = true
 window_title = "ss.a.title"
 
@@ -155,9 +155,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -25.0
-margin_top = -89.0
+margin_top = -109.0
 margin_right = 25.0
-margin_bottom = -39.0
+margin_bottom = -59.0
 
 [node name="text" type="Label" parent="age/age_panel"]
 anchor_right = 1.0
@@ -174,9 +174,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = 16.0
-margin_top = -16.0
+margin_top = -36.0
 margin_right = -16.0
-margin_bottom = 16.0
+margin_bottom = -4.0
 max_value = 99.0
 
 [node name="accept" type="Button" parent="age"]
@@ -185,20 +185,32 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -80.0
-margin_top = -56.0
+margin_top = -96.0
 margin_right = 80.0
-margin_bottom = -16.0
+margin_bottom = -56.0
+disabled = true
 text = "ss.a.accept"
+
+[node name="no" type="Button" parent="age"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -80.0
+margin_top = -48.0
+margin_right = 80.0
+margin_bottom = -8.0
+text = "ss.a.ignore"
 
 [node name="comment" type="Label" parent="age"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -20.0
-margin_top = -96.0
-margin_right = 20.0
-margin_bottom = -72.0
+margin_left = -63.0
+margin_top = -136.0
+margin_right = 63.0
+margin_bottom = -112.0
 grow_horizontal = 2
 text = "ss.a.comment"
 align = 1
@@ -237,4 +249,5 @@ timeout = 15.0
 [connection signal="pressed" from="privacy_policy/next" to="." method="accept_policy"]
 [connection signal="value_changed" from="age/slider" to="." method="_on_slider_value_changed"]
 [connection signal="pressed" from="age/accept" to="." method="accept_consent"]
+[connection signal="pressed" from="age/no" to="." method="decline_consent"]
 [connection signal="confirmed" from="update" to="." method="open_update_link"]

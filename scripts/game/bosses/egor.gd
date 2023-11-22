@@ -206,6 +206,7 @@ func time_erase():
 	Engine.time_scale = 1
 	AudioServer.set_bus_mute(sfx_bus_idx, false)
 	yield(get_tree().create_timer(1, false), "timeout")
+	player._health_timer = 0
 	next_attack_time_min = 0.65
 	next_attack_time_max = 1.5
 	player.immune_counter -= 1

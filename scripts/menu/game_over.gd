@@ -26,6 +26,15 @@ func _ready():
 		if d.file_exists("user://custom_levels/" + id + ".scn"):
 			d.remove("user://custom_levels/" + id + ".scn")
 	else:
+		var loc = int(G.getv("level", "1_1").split("_")[0])
+		if G.getv("game_completed", false):
+			$game_over/followers.texture = null
+		elif loc > 9:
+			$game_over/followers.texture = load("res://textures/effects/backgrounds/game_over_two_defeated.png")
+		elif loc > 8:
+			$game_over/followers.texture = load("res://textures/effects/backgrounds/game_over_one_defeated.png")
+		else:
+			$game_over/followers.texture = load("res://textures/effects/backgrounds/game_over.png")
 		$soul/anim.play("defeat")
 
 

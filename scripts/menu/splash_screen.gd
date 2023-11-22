@@ -157,12 +157,23 @@ func accept_consent():
 	restart()
 
 
+func decline_consent():
+	G.main_setv("age", 3)
+	G.save()
+	restart()
+
+
 func _on_slider_value_changed(value):
 	$age/age_panel/text.text = str(value)
 	if value >= 99:
 		$age/comment.text = tr("ss.a.comment2")
+		$age/accept.disabled = true
 	else:
 		$age/comment.text = tr("ss.a.comment")
+		if value == 0:
+			$age/accept.disabled = true
+		else:
+			$age/accept.disabled = false
 
 
 func restart():
