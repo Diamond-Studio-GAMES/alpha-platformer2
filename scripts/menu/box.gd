@@ -121,7 +121,6 @@ func click():
 	if not is_showing_loot:
 		if not started_opening:
 			started_opening = true
-			yield(get_tree(), "idle_frame")
 			match box_type:
 				BoxType.STANDARD:
 					box_anim.play("open")

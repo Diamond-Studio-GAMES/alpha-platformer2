@@ -119,7 +119,7 @@ func throw(direction):
 	node.rotation_degrees = weapon_rotate
 	if is_using_gadget:
 		is_using_gadget = false
-		node.modulate = Color.red
+		node.get_node("sprite").modulate = Color.red
 		node.collides = false
 		node.get_node("attack").damage = _attack_node.damage * 4
 	else:
@@ -176,10 +176,12 @@ func _process(delta):
 		aim_line.visible = false
 	if _armor_indicator.visible:
 		_armor_indicator.value = 20 - _armor_timer.time_left
+	if is_using_gadget:
+		gadget_cooldown = 10
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or is_hurt or is_stunned or _is_attacking or _is_ultiing or not can_control:
+	if gadget_cooldown > 0 or gadget_count <= 0 or is_hurt or is_using_gadget or is_stunned or _is_attacking or _is_ultiing or not can_control:
 		return
 	.use_gadget()
 	attack_cooldown = 0

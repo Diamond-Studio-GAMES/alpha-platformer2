@@ -103,10 +103,6 @@ func _process(delta):
 
 func hurt(dmg, by):
 	ms.sync_call(self, "hurt", [dmg, by])
-	if hp <= 0:
-		$shape.set_deferred("disabled", true)
-		hide()
-		return
 	hp = clamp(hp - dmg, 0, max_hp)
 	if hp <= 0:
 		var node = effect.instance()
