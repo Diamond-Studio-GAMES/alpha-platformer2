@@ -1,6 +1,5 @@
-[gd_scene load_steps=135 format=2]
+[gd_scene load_steps=134 format=2]
 
-[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=1]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=2]
 [ext_resource path="res://textures/items/normal_potion.png" type="Texture" id=3]
 [ext_resource path="res://textures/effects/other/heal_plus.png" type="Texture" id=4]
@@ -2011,7 +2010,7 @@ nodes/ulti_shot/node = SubResource( 94 )
 nodes/ulti_shot/position = Vector2( 1035.29, 70.5882 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "potion_shot", 0, "throw_shot", "potion_shot", 1, "potion_seek", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_seek", 0, "attack", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "potion_seek", 0, "potion", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "throw_shot", 0, "attack_shot", "throw_shot", 1, "throw" ]
+node_connections = [ "output", 0, "death_trans", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_seek", 0, "attack", "potion_seek", 0, "potion", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "throw_shot", 0, "attack_shot", "throw_shot", 1, "throw", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "potion_shot", 0, "throw_shot", "potion_shot", 1, "potion_seek", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti" ]
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.24788
@@ -2028,7 +2027,7 @@ height = 42.0
 [sub_resource type="DynamicFont" id=30]
 size = 28
 outline_size = 4
-font_data = ExtResource( 1 )
+font_data = ExtResource( 65 )
 
 [sub_resource type="Animation" id=31]
 resource_name = "ulti_use"
@@ -2117,7 +2116,7 @@ extents = Vector2( 20, 20 )
 [sub_resource type="DynamicFont" id=68]
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 1 )
+font_data = ExtResource( 65 )
 
 [sub_resource type="InputEventAction" id=48]
 action = "pause"
@@ -2128,7 +2127,7 @@ shortcut = SubResource( 48 )
 [sub_resource type="DynamicFont" id=61]
 size = 34
 outline_size = 6
-font_data = ExtResource( 1 )
+font_data = ExtResource( 65 )
 
 [sub_resource type="Animation" id=62]
 resource_name = "dying"
@@ -2524,8 +2523,7 @@ __meta__ = {
 }
 
 [node name="head" type="Sprite" parent="visual/body"]
-position = Vector2( 0, -11.0908 )
-rotation = 0.0714129
+position = Vector2( 0, -11.5 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 20 )
 offset = Vector2( 0, -16 )
@@ -2558,7 +2556,7 @@ __meta__ = {
 }
 
 [node name="arm_left" type="Sprite" parent="visual/body"]
-position = Vector2( -0.840336, -9.97134 )
+position = Vector2( -0.841847, -10.3828 )
 rotation = 0.349066
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 59 )
@@ -2596,7 +2594,7 @@ __meta__ = {
 
 [node name="arm_right" type="Sprite" parent="visual/body"]
 show_behind_parent = true
-position = Vector2( 0.84, -9.97083 )
+position = Vector2( 0.84, -10.38 )
 rotation = -0.349066
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 59 )

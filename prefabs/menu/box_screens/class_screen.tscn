@@ -1,9 +1,8 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
-[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=1]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=2]
 [ext_resource path="res://textures/gui/bg_light.png" type="Texture" id=3]
-[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=4]
 [ext_resource path="res://textures/gui/class_drop_bg.png" type="Texture" id=5]
 [ext_resource path="res://textures/gui/class_name.png" type="Texture" id=6]
 [ext_resource path="res://prefabs/menu/class_visuals.tscn" type="PackedScene" id=7]
@@ -40,7 +39,7 @@ font_data = ExtResource( 4 )
 [sub_resource type="DynamicFont" id=176]
 size = 18
 outline_size = 1
-font_data = ExtResource( 1 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 64
@@ -51,7 +50,7 @@ font_data = ExtResource( 4 )
 size = 22
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 1 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="Animation" id=39]
 length = 0.001

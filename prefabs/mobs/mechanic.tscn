@@ -24,7 +24,7 @@
 [ext_resource path="res://textures/gui/health_bar_empty.tres" type="Texture" id=22]
 [ext_resource path="res://textures/effects/attacks/knife0.tres" type="Texture" id=23]
 [ext_resource path="res://textures/effects/other/use_item_0.tres" type="Texture" id=24]
-[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=25]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=25]
 [ext_resource path="res://sounds/sfx/randomed/swing.tres" type="AudioStream" id=26]
 [ext_resource path="res://textures/mobs/mechanic/hair_man.tres" type="Texture" id=27]
 [ext_resource path="res://textures/mobs/mechanic/leg2.tres" type="Texture" id=28]
@@ -1434,7 +1434,7 @@ nodes/trans_shot/node = SubResource( 93 )
 nodes/trans_shot/position = Vector2( 494.118, 117.647 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_seek", 0, "attack", "death_trans", 0, "trans_shot", "death_trans", 1, "death", "trans_shot", 0, "attack_shot", "trans_shot", 1, "trans", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
+node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "attack_seek", 0, "attack", "trans_shot", 0, "attack_shot", "trans_shot", 1, "trans", "death_trans", 0, "trans_shot", "death_trans", 1, "death", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
 
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 8.0

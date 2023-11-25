@@ -1,7 +1,6 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://themes/font_headers.tres" type="DynamicFont" id=1]
-[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=2]
 [ext_resource path="res://textures/effects/other/glow.png" type="Texture" id=3]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=4]
 [ext_resource path="res://textures/items/ulti_token.png" type="Texture" id=7]
@@ -15,7 +14,7 @@
 [ext_resource path="res://sounds/sfx/menu/open_box.wav" type="AudioStream" id=17]
 [ext_resource path="res://textures/items/token.png" type="Texture" id=19]
 [ext_resource path="res://textures/gui/level_up_bar.png" type="Texture" id=20]
-[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=21]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=21]
 
 [sub_resource type="Animation" id=91]
 resource_name = "open"
@@ -790,7 +789,7 @@ tracks/0/keys = {
 
 [sub_resource type="DynamicFont" id=123]
 size = 28
-font_data = ExtResource( 2 )
+font_data = ExtResource( 21 )
 
 [sub_resource type="Animation" id=124]
 resource_name = "anim"
@@ -812,11 +811,11 @@ tracks/0/keys = {
 size = 24
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
+font_data = ExtResource( 21 )
 
 [sub_resource type="DynamicFont" id=122]
 outline_size = 1
-font_data = ExtResource( 2 )
+font_data = ExtResource( 21 )
 
 [sub_resource type="Animation" id=171]
 resource_name = "glow"

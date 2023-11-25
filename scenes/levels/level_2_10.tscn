@@ -1,7 +1,6 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://textures/classes/knight_helmet.png" type="Texture" id=1]
-[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=2]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=3]
 [ext_resource path="res://textures/bosses/forest_killer/top.tres" type="Texture" id=4]
 [ext_resource path="res://textures/bosses/forest_killer/hair_man.tres" type="Texture" id=5]
@@ -30,7 +29,7 @@
 [ext_resource path="res://textures/gui/strike_bar.tres" type="Texture" id=28]
 [ext_resource path="res://textures/effects/other/heal_plus.png" type="Texture" id=29]
 [ext_resource path="res://textures/effects/other/star.png" type="Texture" id=30]
-[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=31]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=31]
 [ext_resource path="res://sounds/sfx/heal.wav" type="AudioStream" id=32]
 [ext_resource path="res://textures/effects/attacks/warn.png" type="Texture" id=33]
 [ext_resource path="res://sounds/sfx/randomed/sword_hit_wall.tres" type="AudioStream" id=34]
@@ -5345,7 +5344,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
+node_connections = [ "output", 0, "death_trans", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -5414,7 +5413,7 @@ normal = Vector2( -1, 0 )
 size = 64
 outline_size = 2
 use_filter = true
-font_data = ExtResource( 2 )
+font_data = ExtResource( 31 )
 
 [sub_resource type="Animation" id=27]
 resource_name = "boss_name_appear"
@@ -6002,7 +6001,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/forest_killer/mob_fk/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/forest_killer/mob_fk/visual/body"]
-scale = Vector2( 1.25, 1.13169 )
+scale = Vector2( 1.25, 1.18658 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/forest_killer/mob_fk"]

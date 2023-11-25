@@ -1,6 +1,5 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=86 format=2]
 
-[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=1]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=2]
 [ext_resource path="res://textures/gui/health_bar_empty.tres" type="Texture" id=3]
 [ext_resource path="res://textures/blocks/star_end.png" type="Texture" id=4]
@@ -39,7 +38,7 @@
 [ext_resource path="res://textures/bosses/sheeper/hair_woman.tres" type="Texture" id=37]
 [ext_resource path="res://textures/bosses/main_doctor/hand1.tres" type="Texture" id=38]
 [ext_resource path="res://textures/bosses/main_doctor/leg2.tres" type="Texture" id=39]
-[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=40]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=40]
 [ext_resource path="res://textures/gui/strike_bar.tres" type="Texture" id=41]
 [ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=42]
 
@@ -3895,7 +3894,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
+node_connections = [ "output", 0, "death_trans", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -3992,7 +3991,7 @@ normal = Vector2( -1, 0 )
 size = 64
 outline_size = 2
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 40 )
 
 [sub_resource type="Animation" id=27]
 resource_name = "boss_name_appear"
@@ -4553,7 +4552,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/main_doctor/mob_md/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/main_doctor/mob_md/visual/body"]
-scale = Vector2( 1.25, 1.17644 )
+scale = Vector2( 1.25, 1.20572 )
 texture = ExtResource( 33 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/main_doctor/mob_md"]

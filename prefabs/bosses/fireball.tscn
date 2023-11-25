@@ -73,7 +73,7 @@ is_enemy_attack = true
 damage_source = "enemy"
 lifetime = 0.0
 on_entity_damage_ticks = 3
-on_entity_damage = 15
+on_entity_damage = 10
 
 [node name="shape" type="CollisionShape2D" parent="attack"]
 shape = SubResource( 1 )

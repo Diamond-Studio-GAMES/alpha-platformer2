@@ -1,7 +1,6 @@
-[gd_scene load_steps=127 format=2]
+[gd_scene load_steps=126 format=2]
 
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
-[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=2]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=3]
 [ext_resource path="res://textures/mobs/player/hair_woman.tres" type="Texture" id=4]
 [ext_resource path="res://textures/mobs/player/hand2.tres" type="Texture" id=5]
@@ -54,7 +53,7 @@
 [ext_resource path="res://textures/gui/ulti_icon_1.tres" type="Texture" id=52]
 [ext_resource path="res://textures/items/gem.png" type="Texture" id=53]
 [ext_resource path="res://textures/effects/other/heal_plus.png" type="Texture" id=54]
-[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=55]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=55]
 [ext_resource path="res://scripts/game/player/revive.gd" type="Script" id=56]
 [ext_resource path="res://sounds/sfx/gadget_use.wav" type="AudioStream" id=57]
 [ext_resource path="res://textures/mobs/player/head.tres" type="Texture" id=58]
@@ -1802,7 +1801,7 @@ nodes/ulti_shot/node = SubResource( 94 )
 nodes/ulti_shot/position = Vector2( 752.941, 70.5882 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "attack_seek", 0, "attack", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "potion_shot", 0, "attack_shot", "potion_shot", 1, "potion_seek", "potion_seek", 0, "potion", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
+node_connections = [ "output", 0, "death_trans", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "potion_seek", 0, "potion", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "potion_shot", 0, "attack_shot", "potion_shot", 1, "potion_seek", "attack_seek", 0, "attack", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti" ]
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.24788
@@ -1820,7 +1819,7 @@ height = 42.0
 [sub_resource type="DynamicFont" id=30]
 size = 28
 outline_size = 4
-font_data = ExtResource( 2 )
+font_data = ExtResource( 55 )
 
 [sub_resource type="Animation" id=31]
 resource_name = "ulti_use"
@@ -1912,7 +1911,7 @@ extents = Vector2( 20, 20 )
 [sub_resource type="DynamicFont" id=68]
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
+font_data = ExtResource( 55 )
 
 [sub_resource type="InputEventAction" id=48]
 action = "pause"
@@ -1923,7 +1922,7 @@ shortcut = SubResource( 48 )
 [sub_resource type="DynamicFont" id=61]
 size = 34
 outline_size = 6
-font_data = ExtResource( 2 )
+font_data = ExtResource( 55 )
 
 [sub_resource type="Animation" id=58]
 resource_name = "dying"

@@ -124,6 +124,7 @@ func ulti():
 	$visual.modulate = Color(1, 1, 1, 0.25)
 	collision_layer = 0b0
 	collision_mask = 0b1
+	trail.points.clear()
 	trail.show()
 	$gadget_active.emitting = true
 	var shape_owner = $ulti.shape_find_owner(0)

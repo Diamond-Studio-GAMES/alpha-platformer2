@@ -17,7 +17,7 @@
 [ext_resource path="res://scripts/game/mobs/doctor.gd" type="Script" id=15]
 [ext_resource path="res://textures/mobs/doctor/hand1.tres" type="Texture" id=16]
 [ext_resource path="res://textures/effects/other/heal_plus.png" type="Texture" id=17]
-[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=18]
 [ext_resource path="res://textures/mobs/doctor/weapon_normal.tres" type="Texture" id=19]
 [ext_resource path="res://textures/mobs/sportsman/hair_man.tres" type="Texture" id=20]
 [ext_resource path="res://textures/gui/health_bar_empty.tres" type="Texture" id=21]
@@ -1173,7 +1173,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "attack_seek", 0, "attack", "death_trans", 0, "attack_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek" ]
+node_connections = [ "output", 0, "death_trans", "death_trans", 0, "attack_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_seek", 0, "attack", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
 
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 8.0
