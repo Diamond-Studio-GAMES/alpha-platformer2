@@ -2,10 +2,10 @@ extends Node
 class_name Globals, "res://textures/gui/alpha_text.png"
 
 
-const VERSION = "0.9.1"
-const VERSION_STATUS = ""
-const VERSION_STATUS_NUMBER = ""
-const VERSION_CODE = 74
+const VERSION = "1.0"
+const VERSION_STATUS = "build"
+const VERSION_STATUS_NUMBER = "1"
+const VERSION_CODE = 75
 
 var main_file: ConfigFile
 var save_file: ConfigFile
@@ -296,7 +296,7 @@ func receive_loot(looted):
 	for i in rec:
 		if i.ends_with("box"):
 			continue
-		if i == "coins" or i == "gems" or i.begins_with("potions") or i.begins_with("garden"):
+		if i == "coins" or i == "gems" or i == "tickets" or i.begins_with("potions") or i.begins_with("garden"):
 			addv(i, rec[i])
 		if getv("potions1", 0) > 5:
 			if another_rec.has("potions1"):

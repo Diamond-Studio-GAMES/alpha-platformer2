@@ -125,7 +125,7 @@ func spawn_mob(pos_id = -1):
 			mob.stats_multiplier *= 1.5
 			mob.modulate = Color.red
 	else:
-		mob.stats_multiplier = 10
+		mob.stats_multiplier = 20
 		mob.modulate = Color.red
 		var spawn_id = str(pos_id)
 		mob.global_position = get_node("spawn_points/pos" + spawn_id).global_position

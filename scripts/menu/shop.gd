@@ -31,6 +31,7 @@ var token = load("res://textures/items/token.png")
 var ulti_token = load("res://textures/items/ulti_token.png")
 var sp = load("res://textures/items/soul_power.png")
 var gadget = load("res://textures/items/gadget.png")
+var ticket = load("res://textures/items/ticket.png")
 var wild_token = load("res://textures/items/wild_token.png")
 var wild_ulti_token = load("res://textures/items/wild_ulti_token.png")
 var CLASS_ICONS = {
@@ -252,6 +253,7 @@ func _ready():
 func _process(delta):
 	$coins.text = str(G.getv("coins", 0))
 	$gems.text = str(G.getv("gems", 0))
+	$tickets.text = str(G.getv("tickets", 0))
 	if current_day != Time.get_date_dict_from_system()["day"]:
 		G.ignore_next_music_stop = true
 		get_tree().reload_current_scene()
@@ -324,6 +326,8 @@ func buy(costs = "", receives = "", id = -1):
 				add += tr("item.coins").to_lower() + " (" + str(receive[i])
 			"gems":
 				add += tr("item.gems").to_lower() + " (" + str(receive[i])
+			"tickets":
+				add += tr("item.tickets").to_lower() + " (" + str(receive[i])
 			"amulet_frags":
 				for j in receive[i]:
 					add += tr("item.frags").to_lower() + " (" + tr(G.AMULET_NAME[G.AMULET_ID[j]]) + \
@@ -478,6 +482,11 @@ func show_offer(costs, receives, id = 0, name = tr("shop.offer.title"), sale = 0
 			off.get_node("items/item" + str(l) + "/icon").texture = gem
 			off.get_node("items/item" + str(l) + "/count").text = "x" + str(receives[i])
 			l += 1
+		if i == "tickets":
+			off.get_node("items/item" + str(l) + "/name").text = tr("item.tickets")
+			off.get_node("items/item" + str(l) + "/icon").texture = ticket
+			off.get_node("items/item" + str(l) + "/count").text = "x" + str(receives[i])
+			l += 1
 		if i == "gadget":
 			for j in receives[i]:
 				off.get_node("items/item" + str(l)).show()
@@ -616,7 +625,7 @@ func generate_offers():
 		if i >= limit:
 			break
 		var offer = {}
-		var list_of_types = [0, 1, 1, 2, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 10, 10, 10]
+		var list_of_types = [0, 1, 1, 2, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 10, 10, 10, 11]
 		list_of_types.shuffle()
 		var type = list_of_types[4]
 		if type == 0:
@@ -745,6 +754,15 @@ func generate_offers():
 			amulet_types.shuffle()
 			var am_type = amulet_types[0]
 			offer = {"costs": {"coins" : count * 150}, "receives" : {"amulet_frags": {am_type:count}}, "id" : i, "name" : tr("shop.offer.item"), "sale" : 0}
+		if type == 11:
+			#TICKETS
+			var mul = [1, 2.5, 4, 1, 1, 2.5]
+			mul.shuffle()
+			var discount = [1.1, 1.1, 1.1, 1.2, 1.2, 1.3]
+			discount.shuffle()
+			var tc = round(10 * mul[1] * discount[3])
+			var cost = 5 if mul[1] == 1 else 10 if mul[1] == 2.5 else 15
+			offer = {"costs": {"gems" : cost}, "receives" : {"tickets" : tc}, "id" : i, "name" : tr("shop.offer.title"), "sale" : round((discount[3] - 1) * 100)}
 		var exists = false
 		for y in G.getv("offers", []):
 			if offer["receives"].hash() == y["receives"].hash():
@@ -754,7 +772,7 @@ func generate_offers():
 		G.setv("offers", G.getv("offers", []) + [offer])
 		G.save()
 		i += 1
-	var free_receives = [{"gold_box":1}, {"gems":gen.randi_range(1, 2)}, {"coins":10*gen.randi_range(15, 30)}]
+	var free_receives = [{"gold_box":1}, {"tickets":gen.randi_range(2, 3)}, {"gems":gen.randi_range(1, 2)}, {"coins":10*gen.randi_range(15, 30)}]
 	if not power_classes.empty():
 		power_classes.shuffle()
 		free_receives.append({"tokens":{power_classes[0]: gen.randi_range(15, 30)*2}})

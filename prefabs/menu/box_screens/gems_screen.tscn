@@ -7,7 +7,7 @@
 [ext_resource path="res://sounds/sfx/menu/gems.wav" type="AudioStream" id=5]
 [ext_resource path="res://textures/items/gem.png" type="Texture" id=6]
 [ext_resource path="res://textures/gui/bg_light.png" type="Texture" id=7]
-[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=8]
 
 [sub_resource type="Animation" id=135]
 resource_name = "rotate"

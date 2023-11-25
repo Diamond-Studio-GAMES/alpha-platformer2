@@ -64,7 +64,7 @@
 [ext_resource path="res://textures/gui/strike_bar.tres" type="Texture" id=62]
 [ext_resource path="res://textures/effects/other/use_item_0.tres" type="Texture" id=63]
 [ext_resource path="res://sounds/sfx/heal.wav" type="AudioStream" id=64]
-[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=65]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=65]
 [ext_resource path="res://textures/mobs/player/body.tres" type="Texture" id=66]
 [ext_resource path="res://textures/gui/pause_icon.png" type="Texture" id=67]
 

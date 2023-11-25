@@ -66,13 +66,13 @@ var ulti_token = load("res://textures/items/ulti_token.png")
 var token = load("res://textures/items/token.png")
 var coin = load("res://textures/items/coin.png")
 var gem = load("res://textures/items/gem.png")
+var ticket = load("res://textures/items/ticket.png")
 var you_get = load("res://prefabs/menu/you_get.tscn")
 var gadget = load("res://textures/items/gadget.png")
 var soul_power = load("res://textures/items/soul_power.png")
 var items = 0
 var glow_items = 0
-var have_bonus = false
-var is_showing_rewards = false
+var bonus_items = 0
 var is_showing_loot = false
 var started = false
 var started_opening = false
@@ -82,17 +82,6 @@ signal next
 signal tokens_class_selected
 signal end
 signal end_loot
-
-
-func _input(event):
-	if not started:
-		return
-	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == BUTTON_LEFT:
-			click()
-	elif event is InputEventKey:
-		if event.pressed and event.scancode == KEY_SPACE and not event.echo:
-			click()
 
 
 func _ready():
@@ -108,13 +97,25 @@ func _ready():
 
 
 func _process(delta):
-	if items <= 1 and have_bonus:
-		have_bonus = false
-		items += 1
+	if items == 0 and bonus_items > 0:
+		item_counter_count.text = str(bonus_items)
 		item_counter.self_modulate = Color.yellow
 		item_counter_label.text = tr("box.remains.bonus")
-	item_counter_glow.visible = glow_items > 0 and glow_items == items - 1
-	item_counter_count.text = str(items - 1)
+	else:
+		item_counter_glow.visible = glow_items > 0 and glow_items == items
+		item_counter_count.text = str(items)
+
+
+
+func _input(event):
+	if not started:
+		return
+	if event is InputEventMouseButton:
+		if event.pressed and event.button_index == BUTTON_LEFT:
+			click()
+	elif event is InputEventKey:
+		if event.pressed and event.scancode == KEY_SPACE and not event.echo:
+			click()
 
 
 func click():
@@ -169,10 +170,9 @@ func show_loot(what):
 func reset_values():
 	started_opening = false
 	is_showing_loot = false
-	is_showing_rewards = false
 	items = 0
 	glow_items = 0
-	have_bonus = false
+	bonus_items = 0
 	init_values()
 	for i in $you_get_screen/items0.get_children():
 		i.queue_free()
@@ -234,14 +234,17 @@ func open_gui(what = null):
 	else:
 		loot = what
 	print(loot)
-	items = loot.size()
-	if loot.has("tokens"):
-		items += loot["tokens"].size() - 1
-	if loot.has("ulti_tokens"):
-		items += loot["ulti_tokens"].size() - 1
+	if loot.has("coins"):
+		items += 1
 	if loot.has("amulet_frags"):
-		items += loot["amulet_frags"].size() - 1
+		items += loot["amulet_frags"].size()
+	if loot.has("tokens"):
+		items += loot["tokens"].size()
+	if loot.has("ulti_tokens"):
+		items += loot["ulti_tokens"].size()
+	
 	if loot.has("wild_tokens"):
+		items += 1
 		open_select_class_for_tokens(loot["wild_tokens"])
 		yield(self, "tokens_class_selected")
 		if selected_class_for_tokens == "coins":
@@ -256,6 +259,7 @@ func open_gui(what = null):
 			G.addv(selected_class_for_tokens + "_tokens", loot["wild_tokens"])
 		loot.erase("wild_tokens")
 	if loot.has("wild_ulti_tokens"):
+		items += 1
 		open_select_class_for_ulti_tokens(loot["wild_ulti_tokens"])
 		yield(self, "tokens_class_selected")
 		if selected_class_for_tokens == "coins":
@@ -269,24 +273,34 @@ func open_gui(what = null):
 			loot["ulti_tokens"][selected_class_for_tokens] = loot["wild_ulti_tokens"]
 			G.addv(selected_class_for_tokens + "_ulti_tokens", loot["wild_ulti_tokens"])
 		loot.erase("wild_ulti_tokens")
+	
+	if loot.has("potions1"):
+		items += 1
+	if loot.has("potions2"):
+		items += 1
+	if loot.has("potions3"):
+		items += 1
 	if loot.has("gadget"):
-		items += loot["gadget"].size() - 1
+		items += loot["gadget"].size()
 		glow_items += loot["gadget"].size()
 	if loot.has("soul_power"):
-		items += loot["soul_power"].size() - 1
+		items += loot["soul_power"].size()
 		glow_items += loot["soul_power"].size()
 	if loot.has("class"):
-		items += loot["class"].size() - 1
+		items += loot["class"].size()
 		glow_items += loot["class"].size()
 	if loot.has("gems"):
-		have_bonus = true
-		items -= 1
-	if items > 1 or have_bonus:
+		bonus_items += 1
+	if loot.has("tickets"):
+		bonus_items += 1
+	if items > 1 or bonus_items > 0:
 		item_counter.show()
 		item_counter_count.text = str(items)
-	if what != null:
+	if is_showing_loot:
 		item_counter.hide()
+	
 	if loot.has("coins"):
+		items -= 1
 		hide_screens()
 		show_screen("coins_screen")
 		$coins_screen/anim.stop()
@@ -299,25 +313,25 @@ func open_gui(what = null):
 		else:
 			$coins_screen/visual/coins.texture = coins_textures[2]
 		yield(self, "next")
-		items -= 1
 		item_counter_count.text = str(items)
 	if loot.has("amulet_frags"):
 		hide_screens()
 		show_screen("amulet_frags_screen")
 		var keys = loot["amulet_frags"].keys()
 		for i in range(loot["amulet_frags"].size()):
+			items -= 1
 			$amulet_frags_screen/token.texture = AMULET_ICONS[keys[i]]
 			$amulet_frags_screen/type.text = tr(G.AMULET_NAME[G.AMULET_ID[keys[i]]])
 			$amulet_frags_screen/count.text = "x " + str(loot["amulet_frags"][keys[i]])
 			$amulet_frags_screen/anim.play("anim")
 			$amulet_frags_screen/anim.seek(0, true)
 			yield(self, "next")
-			items -= 1
 	if loot.has("tokens"):
 		hide_screens()
 		show_screen("tokens_screen")
 		var keys = loot["tokens"].keys()
 		for i in range(loot["tokens"].size()):
+			items -= 1
 			$tokens_screen/token.self_modulate = G.CLASS_COLORS[keys[i]]
 			$tokens_screen/token/class.texture = CLASS_ICONS[keys[i]]
 			$tokens_screen/token/label.text = tr(G.CLASSES[keys[i]])
@@ -338,12 +352,12 @@ func open_gui(what = null):
 			tokens_tween = create_tween()
 			tokens_tween.tween_method(self, "open_gui_set_tokens_count", tokens_bar.value, float(real_tokens), 0.8).set_delay(0.4)
 			yield(self, "next")
-			items -= 1
 	if loot.has("ulti_tokens"):
 		hide_screens()
 		show_screen("ulti_tokens_screen")
 		var keys = loot["ulti_tokens"].keys()
 		for i in range(loot["ulti_tokens"].size()):
+			items -= 1
 			$ulti_tokens_screen/token.self_modulate = G.CLASS_COLORS[keys[i]]
 			$ulti_tokens_screen/token/class.texture = ULTI_ICONS[keys[i]]
 			$ulti_tokens_screen/token/label.text = tr(G.ULTIS[keys[i]])
@@ -364,8 +378,8 @@ func open_gui(what = null):
 			tokens_tween = create_tween()
 			tokens_tween.tween_method(self, "open_gui_set_ulti_tokens_count", ulti_tokens_bar.value, float(real_tokens), 0.8).set_delay(0.4)
 			yield(self, "next")
-			items -= 1
 	if loot.has("potions1"):
+		items -= 1
 		hide_screens()
 		show_screen("potions_screen")
 		$potions_screen/anim.play("anim")
@@ -374,9 +388,8 @@ func open_gui(what = null):
 		$potions_screen/visual/count.text = "x " + str(loot["potions1"])
 		$potions_screen/visual/potion.texture = POTIONS_ICONS["small"]
 		yield(self, "next")
-		items -= 1
-		item_counter_count.text = str(items)
 	if loot.has("potions2"):
+		items -= 1
 		hide_screens()
 		show_screen("potions_screen")
 		$potions_screen/anim.play("anim")
@@ -385,9 +398,8 @@ func open_gui(what = null):
 		$potions_screen/visual/count.text = "x " + str(loot["potions2"])
 		$potions_screen/visual/potion.texture = POTIONS_ICONS["normal"]
 		yield(self, "next")
-		items -= 1
-		item_counter_count.text = str(items)
 	if loot.has("potions3"):
+		items -= 1
 		hide_screens()
 		show_screen("potions_screen")
 		$potions_screen/anim.play("anim")
@@ -396,13 +408,12 @@ func open_gui(what = null):
 		$potions_screen/visual/count.text = "x " + str(loot["potions3"])
 		$potions_screen/visual/potion.texture = POTIONS_ICONS["big"]
 		yield(self, "next")
-		items -= 1
-		item_counter_count.text = str(items)
 	if loot.has("gadget"):
 		hide_screens()
 		show_screen("gadget_screen")
 		G.ach.complete(Achievements.HELP_FROM_INSIDE)
 		for i in loot["gadget"]:
+			items -= 1
 			$gadget_screen/label/class.text = tr(G.CLASSES[i])
 			$gadget_screen/desc/label.text = tr(G.GADGETS[i])
 			$gadget_screen/anim.play("anim")
@@ -410,27 +421,26 @@ func open_gui(what = null):
 			glow_items -= 1
 			yield(get_tree().create_timer(2), "timeout")
 			yield(self, "next")
-			items -= 1
-			item_counter_count.text = str(items)
 	if loot.has("soul_power"):
 		hide_screens()
 		show_screen("soul_power_screen")
 		G.ach.complete(Achievements.SOUL_MASTER)
 		for i in loot["soul_power"]:
+			items -= 1
+			glow_items -= 1
 			$soul_power_screen/label/class.text = tr(G.CLASSES[i])
 			$soul_power_screen/desc/label.text = tr(G.SOUL_POWERS[i])
 			$soul_power_screen/anim.play("anim")
 			$soul_power_screen/anim.seek(0, true)
-			glow_items -= 1
 			yield(get_tree().create_timer(2), "timeout")
 			yield(self, "next")
-			items -= 1
-			item_counter_count.text = str(items)
 	if loot.has("class"):
 		hide_screens()
 		show_screen("class_screen")
 		G.ach.complete(Achievements.WHAT_IS_IT)
 		for j in loot["class"].size():
+			items -= 1
+			glow_items -= 1
 			var i = loot["class"][j]
 			$class_screen/archer.hide()
 			$class_screen/wizard.hide()
@@ -444,21 +454,37 @@ func open_gui(what = null):
 			get_node("class_screen/" + i + "/class/ui/text/class_name/count").text = str(class_num) + tr("box.class_num")
 			get_node("class_screen/" + i + "/anim").play("main")
 			$class_screen/roll_out.play()
-			glow_items -= 1
 			yield(get_tree().create_timer(4), "timeout")
 			yield(self, "next")
-			items -= 1
-			item_counter_count.text = str(items)
+	if loot.has("tickets"):
+		bonus_items -= 1
+		hide_screens()
+		show_screen("tickets_screen")
+		$tickets_screen/visual/count.text = "x " + str(loot["tickets"])
+		$tickets_screen/visual/t1.hide()
+		$tickets_screen/visual/t2.hide()
+		$tickets_screen/visual/t3.hide()
+		$tickets_screen/visual/t4.hide()
+		if loot["tickets"] <= 1:
+			$tickets_screen/visual/t1.show()
+		elif loot["tickets"] == 2:
+			$tickets_screen/visual/t2.show()
+		elif loot["tickets"] == 3:
+			$tickets_screen/visual/t3.show()
+		else:
+			$tickets_screen/visual/t4.show()
+		$tickets_screen/anim.play("anim")
+		$tickets_screen/anim.seek(0, true)
+		yield(self, "next")
 	if loot.has("gems"):
+		bonus_items -= 1
 		hide_screens()
 		show_screen("gems_screen")
 		$gems_screen/anim.play("anim")
 		$gems_screen/anim.seek(0, true)
 		$gems_screen/visual/count.text = "x " + str(loot["gems"])
 		yield(self, "next")
-		items -= 1
-	if loot.size() == 1 or what != null:
-		is_showing_rewards = false
+	if loot.size() == 1 or is_showing_loot:
 		emit_signal("end")
 		return
 	hide_screens()
@@ -472,7 +498,6 @@ func open_gui(what = null):
 		node.self_modulate = Color.gold
 		node.get_node("icon").texture = coin
 		node.get_node("label").text = str(loot["coins"])
-		is_showing_rewards = true
 		if items_showed < 8:
 			ygsi0.add_child(node)
 		else:
@@ -547,7 +572,7 @@ func open_gui(what = null):
 	if loot.has("potions3"):
 		var node = you_get.instance()
 		node.get_node("timer").wait_time = 0.1 + 0.05 * items_showed
-		node.self_modulate = Color.darkred
+		node.self_modulate = Color.firebrick
 		node.get_node("icon").texture = POTIONS_ICONS["big"]
 		node.get_node("label").text = str(loot["potions3"])
 		if items_showed < 8:
@@ -591,13 +616,23 @@ func open_gui(what = null):
 			else:
 				ygsi1.add_child(node)
 			items_showed += 1
+	if loot.has("tickets"):
+		var node = you_get.instance()
+		node.get_node("timer").wait_time = 0.1 + 0.05 * items_showed
+		node.self_modulate = Color(0.4, 0, 0)
+		node.get_node("icon").texture = ticket
+		node.get_node("label").text = str(loot["tickets"])
+		if items_showed < 8:
+			ygsi0.add_child(node)
+		else:
+			ygsi1.add_child(node)
+		items_showed += 1
 	if loot.has("gems"):
 		var node = you_get.instance()
 		node.get_node("timer").wait_time = 0.1 + 0.05 * items_showed
 		node.self_modulate = Color.webpurple
 		node.get_node("icon").texture = gem
 		node.get_node("label").text = str(loot["gems"])
-		is_showing_rewards = true
 		if items_showed < 8:
 			ygsi0.add_child(node)
 		else:
@@ -605,7 +640,6 @@ func open_gui(what = null):
 		items_showed += 1
 	yield(get_tree().create_timer(0.05), "timeout")
 	yield(self, "next")
-	is_showing_rewards = false
 	emit_signal("end")
 
 
@@ -717,6 +751,7 @@ func open_boxes(count, power_count, ulti_count):
 	loot["gadget"] = []
 	loot["soul_power"] = []
 	loot["class"] = []
+	loot["tickets"] = 0
 	loot["gems"] = 0
 	loot["amulet_frags"] = {}
 	loot["tokens"] = {}
@@ -739,6 +774,7 @@ func open_boxes(count, power_count, ulti_count):
 	for i in boxes:
 		loot["coins"] += i.get("coins", 0)
 		loot["gems"] += i.get("gems", 0)
+		loot["tickets"] += i.get("tickets", 0)
 		if i.has("amulet_frags"):
 			for j in i["amulet_frags"]:
 				loot["amulet_frags"][j] = i["amulet_frags"][j] + loot["amulet_frags"].get(j, 0)
@@ -800,6 +836,8 @@ func open_boxes(count, power_count, ulti_count):
 		loot.erase("ulti_tokens")
 	if loot["gems"] <= 0:
 		loot.erase("gems")
+	if loot["tickets"] <= 0:
+		loot.erase("tickets")
 	if loot["coins"] <= 0:
 		loot.erase("coins")
 	if loot["gadget"].empty():
@@ -817,16 +855,30 @@ func get_box_rewards():
 	var gadget = G.percent_chance(4) and not gadget_classes.empty()
 	var amulet_frag = G.percent_chance(16) and not amulet_types.empty()
 	var gem_chance = G.percent_chance(10)
+	var tickets_chance = G.percent_chance(25)
 	var loot = {}
-	var gems = 0
 	if gem_chance:
+		var gems = 0
 		var c = gen.randi_range(0, 100)
-		if c < 90:
-			gems = gen.randi_range(1, 2)
+		if c <= 65:
+			gems = 1
+		elif c > 65 and c <= 90:
+			gems = 2
 		else:
-			gems = 4
+			gems = 3
 		loot["gems"] = gems
 		G.addv("gems", gems)
+	if tickets_chance:
+		var tickets = 0
+		var c = gen.randi_range(0, 100)
+		if c <= 60:
+			tickets = 1
+		elif c > 60 and c <= 90:
+			tickets = 2
+		else:
+			tickets = 3
+		loot["tickets"] = tickets
+		G.addv("tickets", tickets)
 	if hero:
 		hero_chance = 1.5
 		G.setv("hero_chance", hero_chance)
