@@ -540,7 +540,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 20.0, -91.3081 ]
+"values": [ 20.0, -90.0 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("visual/body/arm_right/hand:rotation_degrees")
@@ -564,7 +564,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -20.0, -92.9624 ]
+"values": [ -20.0, -90.0 ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("visual/body/arm_right/hand/weapon:rotation_degrees")
@@ -2010,7 +2010,7 @@ nodes/ulti_shot/node = SubResource( 94 )
 nodes/ulti_shot/position = Vector2( 1035.29, 70.5882 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_seek", 0, "attack", "potion_seek", 0, "potion", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "throw_shot", 0, "attack_shot", "throw_shot", 1, "throw", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "potion_shot", 0, "throw_shot", "potion_shot", 1, "potion_seek", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti" ]
+node_connections = [ "output", 0, "death_trans", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "potion_shot", 0, "throw_shot", "potion_shot", 1, "potion_seek", "throw_shot", 0, "attack_shot", "throw_shot", 1, "throw", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "potion_seek", 0, "potion", "attack_seek", 0, "attack", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.24788
@@ -3930,11 +3930,12 @@ __meta__ = {
 
 [node name="aim_line" type="Node2D" parent="."]
 visible = false
-position = Vector2( 0, -12 )
+position = Vector2( 0, -10 )
 
 [node name="line" type="Line2D" parent="aim_line"]
-position = Vector2( 8, 0 )
-points = PoolVector2Array( 0, 0, 370, 0 )
+position = Vector2( 18, -4 )
+points = PoolVector2Array( 0, 0, 902, 0 )
+width = 2.0
 default_color = Color( 1, 1, 1, 0.501961 )
 
 [node name="game_over_sfx" type="AudioStreamPlayer" parent="."]

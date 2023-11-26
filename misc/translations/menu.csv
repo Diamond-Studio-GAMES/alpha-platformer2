@@ -79,6 +79,7 @@ stat.level,Уровень: ,Level:
 stat.levels,Уровней завершено: ,Levels completed:
 stat.coins,Монет: ,Coins:
 stat.gems,Кристаллов: ,Gems:
+stat.tickets,Билеты:,Tickets:
 stat.classes,Классов открыто:,Classes opened:
 stat.kills,Убийств:,Kills:
 stat.boss_kills,Боссов побеждено:,Bosses defeated:
@@ -87,6 +88,7 @@ stat.falls,Падений с высоты:,Fall damaged:
 stat.beartraped,Попаданий в капкан:,Catched in beartrap:
 stat.jumps,Прыжков: ,Jumps:
 stat.skills,Навык использован: ,Skill used:
+stat.soulskills,Душевный навык исп.:,Soul skill used:
 stat.deaths,Смертей: ,Deaths:
 stat.revives,Возрождений: ,Revives:
 stat.potions1,Маленьких зелий: ,Small potions:

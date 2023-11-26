@@ -701,7 +701,7 @@ anchor_bottom = 0.5
 margin_left = -320.0
 margin_top = -200.0
 margin_right = 320.0
-margin_bottom = 200.0
+margin_bottom = 224.0
 window_title = "menu.stats"
 
 [node name="base" type="Control" parent="achievements/stats_window"]
@@ -790,17 +790,17 @@ text = "1000"
 align = 2
 valign = 1
 
-[node name="classes_opened" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+[node name="tickets" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
 margin_top = 100.0
 margin_right = 264.0
 margin_bottom = 124.0
 
-[node name="name" type="Label" parent="achievements/stats_window/base/column0/classes_opened"]
+[node name="name" type="Label" parent="achievements/stats_window/base/column0/tickets"]
 margin_right = 118.0
 margin_bottom = 24.0
-text = "stat.classes"
+text = "stat.tickets"
 
-[node name="count" type="Label" parent="achievements/stats_window/base/column0/classes_opened"]
+[node name="count" type="Label" parent="achievements/stats_window/base/column0/tickets"]
 margin_left = 122.0
 margin_right = 264.0
 margin_bottom = 24.0
@@ -942,10 +942,29 @@ text = "1000"
 align = 2
 valign = 1
 
-[node name="deaths" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+[node name="gadget_used" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
 margin_top = 300.0
 margin_right = 264.0
 margin_bottom = 324.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column0/gadget_used"]
+margin_right = 130.0
+margin_bottom = 24.0
+text = "stat.soulskills"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column0/gadget_used"]
+margin_left = 134.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="deaths" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
+margin_top = 325.0
+margin_right = 264.0
+margin_bottom = 349.0
 
 [node name="name" type="Label" parent="achievements/stats_window/base/column0/deaths"]
 margin_right = 114.0
@@ -962,9 +981,9 @@ align = 2
 valign = 1
 
 [node name="revives" type="HBoxContainer" parent="achievements/stats_window/base/column0"]
-margin_top = 325.0
+margin_top = 350.0
 margin_right = 264.0
-margin_bottom = 349.0
+margin_bottom = 374.0
 
 [node name="name" type="Label" parent="achievements/stats_window/base/column0/revives"]
 margin_right = 116.0
@@ -1069,10 +1088,29 @@ text = "1000"
 align = 2
 valign = 1
 
-[node name="boxes_opened" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
+[node name="classes_opened" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
 margin_top = 100.0
 margin_right = 264.0
 margin_bottom = 124.0
+
+[node name="name" type="Label" parent="achievements/stats_window/base/column1/classes_opened"]
+margin_right = 118.0
+margin_bottom = 24.0
+text = "stat.classes"
+
+[node name="count" type="Label" parent="achievements/stats_window/base/column1/classes_opened"]
+margin_left = 122.0
+margin_right = 264.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1000"
+align = 2
+valign = 1
+
+[node name="boxes_opened" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
+margin_top = 125.0
+margin_right = 264.0
+margin_bottom = 149.0
 grow_horizontal = 0
 
 [node name="name" type="Label" parent="achievements/stats_window/base/column1/boxes_opened"]
@@ -1090,9 +1128,9 @@ align = 2
 valign = 1
 
 [node name="mp_levels" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
-margin_top = 125.0
+margin_top = 150.0
 margin_right = 264.0
-margin_bottom = 149.0
+margin_bottom = 174.0
 grow_horizontal = 0
 
 [node name="name" type="Label" parent="achievements/stats_window/base/column1/mp_levels"]
@@ -1110,9 +1148,9 @@ align = 2
 valign = 1
 
 [node name="mp_revives" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
-margin_top = 150.0
+margin_top = 175.0
 margin_right = 264.0
-margin_bottom = 174.0
+margin_bottom = 199.0
 grow_horizontal = 0
 
 [node name="name" type="Label" parent="achievements/stats_window/base/column1/mp_revives"]
@@ -1130,9 +1168,9 @@ align = 2
 valign = 1
 
 [node name="reznya_completed" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
-margin_top = 175.0
+margin_top = 200.0
 margin_right = 264.0
-margin_bottom = 199.0
+margin_bottom = 224.0
 grow_horizontal = 0
 
 [node name="name" type="Label" parent="achievements/stats_window/base/column1/reznya_completed"]
@@ -1150,9 +1188,9 @@ align = 2
 valign = 1
 
 [node name="dyh_completed" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
-margin_top = 200.0
+margin_top = 225.0
 margin_right = 264.0
-margin_bottom = 224.0
+margin_bottom = 249.0
 grow_horizontal = 0
 
 [node name="name" type="Label" parent="achievements/stats_window/base/column1/dyh_completed"]
@@ -1170,9 +1208,9 @@ align = 2
 valign = 1
 
 [node name="ls_completed" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
-margin_top = 225.0
+margin_top = 250.0
 margin_right = 264.0
-margin_bottom = 249.0
+margin_bottom = 274.0
 grow_horizontal = 0
 
 [node name="name" type="Label" parent="achievements/stats_window/base/column1/ls_completed"]
@@ -1190,9 +1228,9 @@ align = 2
 valign = 1
 
 [node name="pd_levels" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
-margin_top = 250.0
+margin_top = 275.0
 margin_right = 264.0
-margin_bottom = 274.0
+margin_bottom = 299.0
 grow_horizontal = 0
 
 [node name="name" type="Label" parent="achievements/stats_window/base/column1/pd_levels"]
@@ -1210,9 +1248,9 @@ align = 2
 valign = 1
 
 [node name="garden_looted" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
-margin_top = 275.0
+margin_top = 300.0
 margin_right = 264.0
-margin_bottom = 299.0
+margin_bottom = 324.0
 grow_horizontal = 0
 
 [node name="name" type="Label" parent="achievements/stats_window/base/column1/garden_looted"]
@@ -1230,9 +1268,9 @@ align = 2
 valign = 1
 
 [node name="royale_victories" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
-margin_top = 300.0
+margin_top = 325.0
 margin_right = 264.0
-margin_bottom = 324.0
+margin_bottom = 349.0
 grow_horizontal = 0
 
 [node name="name" type="Label" parent="achievements/stats_window/base/column1/royale_victories"]
@@ -1250,9 +1288,9 @@ align = 2
 valign = 1
 
 [node name="night" type="HBoxContainer" parent="achievements/stats_window/base/column1"]
-margin_top = 325.0
+margin_top = 350.0
 margin_right = 264.0
-margin_bottom = 349.0
+margin_bottom = 374.0
 grow_horizontal = 0
 
 [node name="name" type="Label" parent="achievements/stats_window/base/column1/night"]
@@ -1275,9 +1313,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -120.0
-margin_top = -56.0
+margin_top = -52.0
 margin_right = 120.0
-margin_bottom = -32.0
+margin_bottom = -28.0
 
 [node name="name" type="Label" parent="achievements/stats_window/base/achievements_completed"]
 margin_right = 103.0
@@ -1299,9 +1337,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -120.0
-margin_top = -32.0
+margin_top = -28.0
 margin_right = 120.0
-margin_bottom = -8.0
+margin_bottom = -4.0
 grow_horizontal = 2
 
 [node name="name" type="Label" parent="achievements/stats_window/base/time"]

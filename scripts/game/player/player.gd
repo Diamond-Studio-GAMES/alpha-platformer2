@@ -569,6 +569,8 @@ func use_gadget():
 	if gadget_cooldown > 0 or gadget_count <= 0 or current_health <= 0 or not can_control:
 		return
 	ms.sync_call(self, "use_gadget")
+	if MP.auth(self):
+		G.addv("gadget_used", 1)
 	$gadget_sfx.play()
 	gadget_cooldown = 10
 	gadget_count -= 1

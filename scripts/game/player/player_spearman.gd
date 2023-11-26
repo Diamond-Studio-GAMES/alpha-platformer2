@@ -119,17 +119,16 @@ func throw(direction):
 	if MP.auth(self):
 		RECHARGE_SPEED = 1.7 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
 	attack_cooldown = RECHARGE_SPEED + 0.9
-	var phi = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
-	var hand_rotate = rad2deg(phi)
-	var weapon_rotate = rad2deg(direction.angle())
-	hand_rotate -= 90
-	if hand_rotate < -180:
-		hand_rotate = 360 + hand_rotate
-	if hand_rotate < 0 and hand_rotate > -180:
+	var hand_rotate = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
+	hand_rotate -= PI / 2
+	if hand_rotate < -PI:
+		hand_rotate = TAU + hand_rotate
+	if hand_rotate < 0 and hand_rotate > -PI:
 		_body.scale.x = 1
-	if hand_rotate > 0 and hand_rotate < 180:
+	if hand_rotate > 0 and hand_rotate < PI:
 		_body.scale.x = -1
 		hand_rotate = -hand_rotate
+	hand_rotate = rad2deg(hand_rotate)
 	anima.track_set_key_value(trck_idx, key_idx0, hand_rotate)
 	anima.track_set_key_value(trck_idx, key_idx1, hand_rotate)
 	_anim_tree["parameters/throw_shot/active"] = true
@@ -138,7 +137,7 @@ func throw(direction):
 	if MP.auth(self):
 		var node = spear.instance()
 		node.global_position = Vector2(global_position.x, global_position.y - 12 * GRAVITY_SCALE)
-		node.rotation_degrees = weapon_rotate
+		node.rotation = direction.angle()
 		node.get_node("attack").damage = G.getv("spearman_level", 0) * 5 + 25 + (15 if  is_amulet(G.Amulet.POWER) else 0)
 		_level.add_child(node, true)
 	_is_attacking = false
@@ -157,8 +156,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("gadget") and have_gadget:
 		use_gadget()
 	if joystick._output.length_squared() * current_health > 0:
-		var phi = Vector2(joystick._output.x, joystick._output.y * GRAVITY_SCALE).angle()
-		aim_line.rotation = phi
+		aim_line.rotation = Vector2(joystick._output.x, joystick._output.y * GRAVITY_SCALE).angle()
 		aim_line.visible = true
 		aim_line.modulate = Color.red if attack_cooldown > 0 else Color.white
 	else:

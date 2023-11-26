@@ -113,17 +113,16 @@ func throw(direction):
 		RECHARGE_SPEED = 1.6 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
 	can_turn = false
 	attack_cooldown = RECHARGE_SPEED + 0.5
-	var phi = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
-	var hand_rotate = rad2deg(phi)
-	var weapon_rotate = rad2deg(direction.angle())
-	hand_rotate -= 90
-	if hand_rotate < -180:
-		hand_rotate = 360 + hand_rotate
-	if hand_rotate < 0 and hand_rotate > -180:
+	var hand_rotate = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
+	hand_rotate -= PI / 2
+	if hand_rotate < -PI:
+		hand_rotate = TAU + hand_rotate
+	if hand_rotate < 0 and hand_rotate > -PI:
 		_body.scale.x = 1
-	if hand_rotate > 0 and hand_rotate < 180:
+	if hand_rotate > 0 and hand_rotate < PI:
 		_body.scale.x = -1
 		hand_rotate = -hand_rotate
+	hand_rotate = rad2deg(hand_rotate)
 	anima.track_set_key_value(trck_idx, key_idx0, hand_rotate)
 	anima.track_set_key_value(trck_idx, key_idx1, hand_rotate)
 	_anim_tree["parameters/throw_shot/active"] = true
@@ -133,7 +132,7 @@ func throw(direction):
 	if MP.auth(self):
 		var node = wizard_attack.instance()
 		node.global_position = Vector2(global_position.x, global_position.y - 12 * GRAVITY_SCALE)
-		node.rotation_degrees = weapon_rotate
+		node.rotation = direction.angle()
 		var heals = gen.randi_range(0, 100) > 85 and have_soul_power
 		node.get_node("attack").damage = G.getv("wizard_level", 0) * 6 + 30  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 		if heals:
