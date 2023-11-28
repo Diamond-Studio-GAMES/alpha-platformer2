@@ -40,6 +40,38 @@ func _ready():
 			$education2.show()
 		else:
 			$education4.show()
+	# COMPENSATION
+	if G.getv("compensated_tickets", false):
+		return
+	G.setv("compensated_tickets", true)
+	var costs = {
+		1 : 0,
+		2 : 2,
+		3 : 13,
+		4 : 5,
+		5 : 0,
+		6 : 10,
+		7 : 0,
+		8 : 17
+	}
+	var comp_amount = 0
+	for i in range(1, 9):
+		if G.getv("minigame" + str(i) + "_bought", false):
+			G.save_file.erase_section_key("save", "minigame" + str(i) + "_bought")
+			comp_amount += costs[i]
+	if comp_amount == 0:
+		return
+	var dialog = AcceptDialog.new()
+	dialog.name = "compensation"
+	dialog.popup_exclusive = true
+	dialog.window_title = tr("compensation.title")
+	dialog.rect_size = Vector2(360, 160)
+	dialog.dialog_text = tr("compensation.desc") % comp_amount
+	dialog.dialog_autowrap = true
+	dialog.get_ok().text = tr("win.claim")
+	dialog.connect("popup_hide", G, "receive_loot", [{"tickets" : comp_amount}])
+	add_child(dialog)
+	dialog.popup_centered()
 
 
 func _process(delta):
@@ -63,6 +95,10 @@ func classes():
 func shop():
 	G.ignore_next_music_stop = true
 	get_tree().change_scene("res://scenes/menu/shop.tscn")
+
+
+func open_minigame(id):
+	get_tree().change_scene("res://minigames/minigame" + id + "/minigame.tscn")
 
 
 func help():

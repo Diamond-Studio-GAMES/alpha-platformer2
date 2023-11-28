@@ -13,6 +13,7 @@ var save_timer = 0
 var ignore_next_music_stop = false
 var current_level = "1_1"
 var current_scene = ""
+var current_tickets = 0
 var cached_ip = ""
 var cached_suff = 0
 var custom_respawn_scene = ""

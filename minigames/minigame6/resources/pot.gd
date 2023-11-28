@@ -4,8 +4,8 @@ extends TextureButton
 export (String) var id = "0"
 onready var garden: Garden = $".."
 var current_plant = ""
-onready var current_day = Time.get_date_dict_from_system()["day"]
-onready var current_unix_time = Time.get_unix_time_from_system()
+var current_day = Time.get_date_dict_from_system()["day"]
+var current_unix_time = Time.get_unix_time_from_system()
 var current_plant_data: PlantResource
 var plant_mini_tex = load("res://minigames/minigame6/resources/plant_start.png")
 

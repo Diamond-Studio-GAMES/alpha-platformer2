@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/menu/ticket_selector.gd" type="Script" id=2]
+[ext_resource path="res://textures/gui/dropup_arrow.png" type="Texture" id=3]
+[ext_resource path="res://textures/items/ticket.png" type="Texture" id=4]
+[ext_resource path="res://textures/gui/dropdown_arrow.png" type="Texture" id=5]
+
+[node name="ticket_selector" type="HBoxContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -120.0
+margin_top = -20.0
+margin_right = 120.0
+margin_bottom = 20.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+min_tickets = 1
+
+[node name="down" type="Button" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+icon = ExtResource( 5 )
+expand_icon = true
+
+[node name="play" type="Button" parent="."]
+margin_left = 44.0
+margin_right = 196.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+text = "1 Играть"
+icon = ExtResource( 4 )
+expand_icon = true
+
+[node name="up" type="Button" parent="."]
+margin_left = 200.0
+margin_right = 240.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+icon = ExtResource( 3 )
+expand_icon = true
+
+[connection signal="pressed" from="down" to="." method="_on_down_pressed"]
+[connection signal="pressed" from="play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="up" to="." method="_on_up_pressed"]

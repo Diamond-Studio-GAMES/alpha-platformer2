@@ -258,6 +258,7 @@ margin_right = 34.0
 icon = ExtResource( 3 )
 flat = false
 icon_align = 1
+expand_icon = true
 items = [ "level_dialog.multiplayer.create", null, 0, false, false, 0, 0, null, "", false, "level_dialog.multiplayer.join", null, 0, false, false, 1, 0, null, "", false ]
 
 [node name="class2" type="OptionButton" parent="select_level_dialog"]

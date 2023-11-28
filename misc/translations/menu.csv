@@ -484,8 +484,6 @@ gameover.retry,Попробовать снова,Try again
 gameover.menu,Выйти в меню,Back to menu
 minigame.s,Мини-игры,Mini-games
 minigame.select,Выбери мини-игру,Select mini-game
-minigame.no,Недостаточно ресурсов!,Not enough resources!
-minigame.no.text,Недостаточно ресурсов для покупки данной мини-игры!,Not enough resources to buy this mini-game!
 menu.edu.again,Ты действительно хочешь посмотреть историю и пройти обучение заново?,Are you really want to see story and complete tutorial again?
 menu.edu,Обучение,Tutorial
 menu.multiplayer.guide,"Игра поддерживает совместный мультиплеер. Для начала игроки должны подключиться к одной сети, выбрать уровень, на котором будут играть, и игрока, который будет выступать в роли сервера. Он заходит на выбранный уровень, и рядом с кнопкой ""Играть"" нажимает стрелочку, затем ""Создать комнату..."". Другие игроки тем временем выбирают тот же уровень, нажимают ту же стрелочку, но уже ""Присоединиться..."". Есть два способа подключения:
@@ -569,3 +567,5 @@ shop.9000coins,9000 МОНЕТ,9000 COINS
 shop.10tickets,10 БИЛЕТОВ,10 TICKETS
 shop.25tickets,25 БИЛЕТОВ,25 TICKETS
 shop.40tickets,40 БИЛЕТОВ,40 TICKETS
+compensation.title,Компенсация,Compensation
+compensation.desc,"На этом сохранении были куплены мини-игры за монеты. Поскольку их больше не надо покупать из-за добавления билетов, забери компенсацию: билеты (%d).","On this save, mini-games were bought for coins. Since they no longer need to be bought due to the addition of tickets, take the compensation: tickets (%d)."

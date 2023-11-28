@@ -1,11 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://prefabs/menu/ticket_selector.tscn" type="PackedScene" id=2]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends ColorRect
 
 
-
-func _ready():
+func _on_ticket_selector_started():
+	G.setv(\"prev_selected_class\", G.getv(\"selected_class\"))
 	G.setv(\"selected_class\", \"player\")
 	G.change_to_scene(\"res://minigames/minigame2/destroy_your_hate.tscn\")
 "
@@ -13,5 +16,26 @@ func _ready():
 [node name="minigame" type="ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 1 )
 color = Color( 0, 0, 0, 1 )
 script = SubResource( 1 )
+
+[node name="ticket_selector" parent="." instance=ExtResource( 2 )]
+margin_top = 12.0
+margin_bottom = 52.0
+
+[node name="title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -91.0
+margin_top = -67.0
+margin_right = 91.0
+margin_bottom = 3.0
+grow_horizontal = 2
+theme_type_variation = "LabelTitleLarge"
+text = "2.name"
+align = 1
+
+[connection signal="started" from="ticket_selector" to="." method="_on_ticket_selector_started"]

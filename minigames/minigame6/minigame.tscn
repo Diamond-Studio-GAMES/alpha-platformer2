@@ -11,7 +11,7 @@
 [ext_resource path="res://textures/gui/class_drop_bg.png" type="Texture" id=9]
 [ext_resource path="res://prefabs/menu/help_info.tscn" type="PackedScene" id=10]
 [ext_resource path="res://minigames/minigame6/resources/watering.wav" type="AudioStream" id=11]
-[ext_resource path="res://minigames/minigame6/resources/box.png" type="Texture" id=12]
+[ext_resource path="res://textures/items/ticket.png" type="Texture" id=12]
 [ext_resource path="res://minigames/minigame6/resources/garden.gd" type="Script" id=13]
 [ext_resource path="res://minigames/minigame6/resources/pot.gd" type="Script" id=14]
 
@@ -733,7 +733,7 @@ bus = "sfx"
 [node name="box" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -512.0
+margin_left = -468.0
 margin_top = 16.0
 margin_right = -272.0
 margin_bottom = 56.0
@@ -854,22 +854,6 @@ custom_constants/vseparation = 5
 custom_constants/hseparation = 5
 columns = 3
 
-[node name="base_gift" type="CanvasLayer" parent="."]
-
-[node name="gift" type="AcceptDialog" parent="base_gift"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -156.5
-margin_top = -39.0
-margin_right = 156.5
-margin_bottom = 39.0
-theme = ExtResource( 3 )
-popup_exclusive = true
-window_title = "6.gift.title"
-dialog_text = "6.gift.text"
-
 [node name="base_buy" type="CanvasLayer" parent="."]
 
 [node name="buy" type="ConfirmationDialog" parent="base_buy"]
@@ -893,5 +877,4 @@ dialog_autowrap = true
 [connection signal="pressed" from="dig_up" to="." method="dig_up_pressed"]
 [connection signal="pressed" from="fert_up" to="." method="fert_up_pressed"]
 [connection signal="pressed" from="box" to="." method="open_box"]
-[connection signal="confirmed" from="base_gift/gift" to="." method="get_box"]
 [connection signal="confirmed" from="base_buy/buy" to="." method="buy_box"]

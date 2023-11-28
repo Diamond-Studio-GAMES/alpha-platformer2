@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://textures/gui/multiplayer.png" type="Texture" id=1]
 [ext_resource path="res://textures/items/ticket.png" type="Texture" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://prefabs/menu/education.tscn" type="PackedScene" id=27]
 [ext_resource path="res://prefabs/menu/level_dialog.tscn" type="PackedScene" id=30]
 [ext_resource path="res://textures/gui/exit.png" type="Texture" id=35]
-[ext_resource path="res://scripts/menu/minigame.gd" type="Script" id=41]
 [ext_resource path="res://textures/gui/shop_icon.png" type="Texture" id=48]
 [ext_resource path="res://scripts/menu/levels.gd" type="Script" id=56]
 
@@ -989,8 +988,6 @@ margin_right = -40.0
 margin_bottom = -72.0
 text = "1.name"
 expand_icon = true
-script = ExtResource( 41 )
-minigame_name = "1.name"
 
 [node name="minigame2" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -1003,11 +1000,6 @@ margin_right = -40.0
 margin_bottom = -8.0
 text = "2.name"
 expand_icon = true
-script = ExtResource( 41 )
-minigame_name = "2.name"
-id = 2
-cost = 300
-free = false
 
 [node name="minigame3" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -1020,11 +1012,6 @@ margin_right = -40.0
 margin_bottom = 56.0
 text = "3.name"
 expand_icon = true
-script = ExtResource( 41 )
-minigame_name = "3.name"
-id = 3
-cost = 2000
-free = false
 
 [node name="minigame4" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -1037,11 +1024,6 @@ margin_right = -40.0
 margin_bottom = 120.0
 text = "4.name"
 expand_icon = true
-script = ExtResource( 41 )
-minigame_name = "4.name"
-id = 4
-cost = 750
-free = false
 
 [node name="minigame5" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -1054,10 +1036,6 @@ margin_right = 280.0
 margin_bottom = -72.0
 text = "Platformer Dash"
 expand_icon = true
-script = ExtResource( 41 )
-minigame_name = "Platformer Dash"
-id = 5
-cost = 0
 
 [node name="minigame6" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -1070,11 +1048,6 @@ margin_right = 280.0
 margin_bottom = -8.0
 text = "6.name"
 expand_icon = true
-script = ExtResource( 41 )
-minigame_name = "6.name"
-id = 6
-cost = 1500
-free = false
 
 [node name="minigame7" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -1087,9 +1060,6 @@ margin_right = 280.0
 margin_bottom = 56.0
 text = "7.name"
 expand_icon = true
-script = ExtResource( 41 )
-minigame_name = "7.name"
-id = 7
 
 [node name="minigame8" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -1102,36 +1072,6 @@ margin_right = 280.0
 margin_bottom = 120.0
 text = "FNaS"
 expand_icon = true
-script = ExtResource( 41 )
-minigame_name = "FNaS"
-id = 8
-cost = 2500
-free = false
-
-[node name="buy" type="ConfirmationDialog" parent="select_minigame"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -160.0
-margin_top = -120.0
-margin_right = 160.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 170, 59.5 )
-window_title = "shop.confirm"
-dialog_autowrap = true
-
-[node name="no_resources" type="AcceptDialog" parent="select_minigame"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -269.5
-margin_top = -39.0
-margin_right = 269.5
-margin_bottom = 39.0
-window_title = "minigame.no"
-dialog_text = "minigame.no.text"
 
 [node name="help_dialog" type="ConfirmationDialog" parent="."]
 anchor_left = 0.5
@@ -1268,6 +1208,14 @@ dialog_autowrap = true
 [connection signal="pressed" from="minigames_button" to="select_minigame" method="popup_centered"]
 [connection signal="pressed" from="multiplayer_button" to="multiplayer" method="popup_centered"]
 [connection signal="pressed" from="education4/main/end" to="education4" method="end"]
+[connection signal="pressed" from="select_minigame/minigame1" to="." method="open_minigame" binds= [ "1" ]]
+[connection signal="pressed" from="select_minigame/minigame2" to="." method="open_minigame" binds= [ "2" ]]
+[connection signal="pressed" from="select_minigame/minigame3" to="." method="open_minigame" binds= [ "3" ]]
+[connection signal="pressed" from="select_minigame/minigame4" to="." method="open_minigame" binds= [ "4" ]]
+[connection signal="pressed" from="select_minigame/minigame5" to="." method="open_minigame" binds= [ "5" ]]
+[connection signal="pressed" from="select_minigame/minigame6" to="." method="open_minigame" binds= [ "6" ]]
+[connection signal="pressed" from="select_minigame/minigame7" to="." method="open_minigame" binds= [ "7" ]]
+[connection signal="pressed" from="select_minigame/minigame8" to="." method="open_minigame" binds= [ "8" ]]
 [connection signal="confirmed" from="help_dialog" to="." method="help"]
 [connection signal="value_changed" from="multiplayer/location" to="." method="_on_level_location_value_changed"]
 [connection signal="changed" from="multiplayer/level" to="." method="_on_location_level_changed"]
