@@ -8,14 +8,15 @@ var selected_tickets = 1
 
 
 func _ready():
+	selected_tickets = min_tickets
 	if selected_tickets == min_tickets:
 		$down.disabled = true
 	if selected_tickets == max_tickets:
 		$up.disabled = true
-	if max_tickets == 1 and min_tickets == 1:
+	if max_tickets == min_tickets:
 		$up.hide()
 		$down.hide()
-	if G.getv("tickets") < 1:
+	if G.getv("tickets") < min_tickets:
 		$play.disabled = true
 	$play.text = str(selected_tickets) + " " + tr("menu.play")
 

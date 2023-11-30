@@ -30,28 +30,17 @@ func _enter_tree():
 
 
 func get_rewards():
-	var loot = {"gems":0, "coins":0, "box":0}
-	for i in range(wave_number-1):
-		var type = gen.randi_range(0, 6)
-		match type:
-			0:
-				loot["gems"] += 1 + round(i * 0.015)
-			1, 2, 3, 6:
-				loot["coins"] += 120 + round(i * 1.25)
-			4, 5:
-				loot["box"] += 1 + round(i * 0.015)
-		if i == 48:
-			loot["gems"] += 10
-			loot["coins"] += 1200
-			loot["box"] += 10
-	if loot["gems"] == 0:
-		loot.erase("gems")
-	if loot["coins"] == 0:
-		loot.erase("coins")
-	if loot["box"] == 0:
-		loot.erase("box")
-	if not loot.empty():
-		G.receive_loot(loot)
+	var wave = floor((wave_number - 1) / 5)
+	if wave >= 4:
+		wave += 0.5
+	if wave <= 0:
+		return
+	var loot = {
+		"gems" : floor(G.current_tickets * wave / 2), 
+		"coins" : G.current_tickets * wave * 80, 
+		"box" : round(G.current_tickets * wave / 1.5),
+	}
+	G.receive_loot(loot)
 
 
 func _ready():
@@ -61,7 +50,7 @@ func _ready():
 	player.get_node("camera/gui/base/intro/text/location").text = location
 	player.position = pos.position
 	player.name = "player"
-	player.custom_respawn_scene = filename
+	player.custom_respawn_scene = "res://minigames/minigame4/minigame.tscn"
 	if not G.getv("hardcore", false):
 		player.get_node("camera").connect("gived_up", self, "get_rewards")
 	hp_butt.connect("pressed", self, "buy_health")
@@ -94,6 +83,7 @@ func start_wave():
 	player.make_dialog(tr("4.wave.end"))
 	yield(self, "wave_ended")
 	if wave_number == 20:
+		wave_number += 1
 		G.addv("ls_completed", 1)
 		$tint/tint/anim.play("win")
 		yield($tint/tint/anim, "animation_finished")
@@ -145,6 +135,7 @@ func mob_died(node):
 	player.add_coins(amount)
 	var hh = hh_text.instance()
 	hh.global_position = node.global_position
+	hh.z_index = 30
 	hh.get_node("text").modulate = Color.yellow
 	hh.get_node("text").text = "+" + str(amount)
 	add_child(hh)

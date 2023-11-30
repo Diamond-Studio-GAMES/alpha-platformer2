@@ -508,6 +508,7 @@ classes.name,Классы,Classes
 classes.tip.gadget,"Душевный навык — особая способность класса, которую можно использовать три раза за уровень. Можно найти в ящике.",Soul Skill is a special class ability that can be used 3 times per level. Can be found in a box.
 classes.tip.sp,"Душевная сила — пассивная способность класса, которая действует всегда. Можно найти в ящике.",Soul Power is a passive ability of the class that always works. Can be found in a box.
 classes.tip.amulet,"Амулеты — пассивная способность, которая повышает некоторые характеристики класса. Можно создать из фрагментов амулета.",Amulets are a passive ability that increases some class characteristics. You can create an amulet from fragments.
+classes.found,Класс можно найти в ящике,Class can be found in box
 classes.try,Испытать,Try
 classes.upgrade,Улучшить,Upgrade
 menu.close,Закрыть,Close

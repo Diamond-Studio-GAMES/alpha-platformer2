@@ -36,6 +36,11 @@ const AMULETS_COUNTS = {
 
 
 func _ready():
+	for i in $classes_list/grid.get_children():
+		if i.name == "player":
+			continue
+		if not i.name in G.getv("classes", []):
+			i.modulate = Color.gray
 	select_class(G.getv("selected_class", "player"))
 	if not G.getv("learned", false):
 		G.setv("classes_visited", true)
@@ -66,6 +71,7 @@ func select_class(class_n = "player"):
 		else:
 			i.show()
 	$class.text = tr(G.CLASSES[selected_class])
+	$class_panel/found.hide()
 	if G.getv("selected_class", "player") == class_n:
 		$select.text = tr("menu.selected").to_upper()
 		$select.disabled = true
@@ -75,6 +81,7 @@ func select_class(class_n = "player"):
 	if selected_class == "player" or not selected_class in G.getv("classes", []):
 		if selected_class != "player":
 			$select.disabled = true
+			$class_panel/found.show()
 		$stats.hide()
 		$upgrade.hide()
 		$gadget.hide()
