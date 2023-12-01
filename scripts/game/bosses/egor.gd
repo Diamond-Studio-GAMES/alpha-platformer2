@@ -192,7 +192,7 @@ func time_erase():
 	get_tree().current_scene.add_child(te)
 	is_time_erased = true
 	player.immune_counter += 1
-	mob.immune_counter -= 1
+	mob.immune_counter += 1
 	set_cutscene(true)
 	yield(get_tree().create_timer(2, false), "timeout")
 	Engine.time_scale = 3

@@ -11,6 +11,8 @@ keys,ru,en
 2.hateee,НЕНАВИСТИ!!!,HATE!!!
 2.death,Смерть ждёт тебя…,Death is waiting for you…
 3.total,Всего заработано:,Earned total:
+3.cost,1 билет = 15 минут игры,1 ticket = 15 minutes
+3.remains,Оставшееся время: %02d:%02d:%02d,Time remained: %02d:%02d:%02d
 3.name,Симулятор камня,Stone Simulator
 4.name,Последние волны,Last Waves
 4.wave.start,Волна %d началась!,Wave %d started!

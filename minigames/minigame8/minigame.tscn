@@ -214,10 +214,13 @@ align = 1
 valign = 1
 
 [node name="ticket_selector" parent="buy" instance=ExtResource( 16 )]
+margin_left = -90.0
 margin_top = 20.0
+margin_right = 90.0
 margin_bottom = 60.0
 theme = null
 min_tickets = 5
+buy_text = "shop.buy"
 
 [node name="tickets_count" parent="buy" instance=ExtResource( 17 )]
 margin_top = 48.0

@@ -4,6 +4,7 @@ extends HBoxContainer
 signal started
 export (int, 1, 10, 1) var max_tickets = 5
 export (int, 0, 5, 1) var min_tickets = 5
+export (String) var buy_text = "menu.play"
 var selected_tickets = 1
 
 
@@ -18,7 +19,7 @@ func _ready():
 		$down.hide()
 	if G.getv("tickets") < min_tickets:
 		$play.disabled = true
-	$play.text = str(selected_tickets) + " " + tr("menu.play")
+	$play.text = str(selected_tickets) + " " + tr(buy_text)
 
 
 func _on_down_pressed():
@@ -30,7 +31,7 @@ func _on_down_pressed():
 	else:
 		$play.disabled = false
 	$up.disabled = false
-	$play.text = str(selected_tickets) + " " + tr("menu.play")
+	$play.text = str(selected_tickets) + " " + tr(buy_text)
 
 
 func _on_up_pressed():
@@ -42,7 +43,7 @@ func _on_up_pressed():
 	else:
 		$play.disabled = false
 	$down.disabled = false
-	$play.text = str(selected_tickets) + " " + tr("menu.play")
+	$play.text = str(selected_tickets) + " " + tr(buy_text)
 
 
 func _on_play_pressed():
