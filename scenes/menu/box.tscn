@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://themes/font_headers.tres" type="DynamicFont" id=1]
 [ext_resource path="res://textures/effects/other/glow.png" type="Texture" id=3]
@@ -8,9 +8,7 @@
 [ext_resource path="res://sounds/sfx/menu/tokens.wav" type="AudioStream" id=9]
 [ext_resource path="res://textures/effects/other/star.png" type="Texture" id=10]
 [ext_resource path="res://textures/gui/bg_light.png" type="Texture" id=11]
-[ext_resource path="res://textures/gui/ulti_icon_4.tres" type="Texture" id=12]
 [ext_resource path="res://textures/gui/class_drop_bg.png" type="Texture" id=14]
-[ext_resource path="res://textures/classes/archer_helmet.png" type="Texture" id=15]
 [ext_resource path="res://sounds/sfx/menu/open_box.wav" type="AudioStream" id=17]
 [ext_resource path="res://textures/items/token.png" type="Texture" id=19]
 [ext_resource path="res://textures/gui/level_up_bar.png" type="Texture" id=20]
@@ -1129,7 +1127,6 @@ margin_left = -48.0
 margin_top = -48.0
 margin_right = 48.0
 margin_bottom = 48.0
-texture = ExtResource( 15 )
 stretch_mode = 6
 
 [node name="label" type="Label" parent="tokens_screen/token"]
@@ -1216,9 +1213,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
 theme = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="bg" type="ColorRect" parent="ulti_tokens_screen"]
 anchor_right = 1.0
@@ -1311,7 +1305,6 @@ margin_left = -40.0
 margin_top = -40.0
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 12 )
 stretch_mode = 6
 
 [node name="label" type="Label" parent="ulti_tokens_screen/token"]
