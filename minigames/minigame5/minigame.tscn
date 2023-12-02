@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://themes/theme.tres" type="Theme" id=1]
 [ext_resource path="res://minigames/minigame5/resources/minigame.gd" type="Script" id=2]
+[ext_resource path="res://prefabs/menu/ticket_selector.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefabs/menu/tickets_count.tscn" type="PackedScene" id=4]
 
 [node name="minigame" type="Control"]
 anchor_right = 1.0
@@ -40,38 +42,68 @@ text = "5.select"
 align = 1
 valign = 1
 
-[node name="easy" type="Button" parent="."]
+[node name="easy" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -388.0
-margin_top = -24.0
+margin_top = -26.0
 margin_right = -188.0
-margin_bottom = 56.0
+margin_bottom = 14.0
 text = "5.easy"
+align = 1
+valign = 1
 
-[node name="normal" type="Button" parent="."]
+[node name="easy_ticket_selector" parent="." instance=ExtResource( 3 )]
+margin_left = -388.0
+margin_top = 18.0
+margin_right = -188.0
+margin_bottom = 58.0
+max_tickets = 1
+min_tickets = 0
+
+[node name="normal" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -100.0
-margin_top = -24.0
+margin_top = -26.0
 margin_right = 100.0
-margin_bottom = 56.0
+margin_bottom = 14.0
 text = "5.normal"
+align = 1
+valign = 1
 
-[node name="hard" type="Button" parent="."]
+[node name="normal_ticket_selector" parent="." instance=ExtResource( 3 )]
+margin_left = -100.0
+margin_top = 18.0
+margin_right = 100.0
+margin_bottom = 58.0
+max_tickets = 1
+min_tickets = 0
+
+[node name="hard" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 188.0
-margin_top = -24.0
+margin_top = -26.0
 margin_right = 388.0
-margin_bottom = 56.0
+margin_bottom = 14.0
 text = "5.hard"
+align = 1
+valign = 1
+
+[node name="hard_ticket_selector" parent="." instance=ExtResource( 3 )]
+margin_left = 188.0
+margin_top = 18.0
+margin_right = 388.0
+margin_bottom = 58.0
+max_tickets = 1
+min_tickets = 0
 
 [node name="custom" type="Button" parent="."]
 anchor_left = 0.5
@@ -101,9 +133,11 @@ margin_bottom = 46.0
 text = "menu.exit"
 clip_text = true
 
-[connection signal="pressed" from="easy" to="." method="open_level" binds= [ "1" ]]
-[connection signal="pressed" from="normal" to="." method="open_level" binds= [ "2" ]]
-[connection signal="pressed" from="hard" to="." method="open_level" binds= [ "3" ]]
+[node name="tickets_count" parent="." instance=ExtResource( 4 )]
+
+[connection signal="started" from="easy_ticket_selector" to="." method="open_level" binds= [ "1" ]]
+[connection signal="started" from="normal_ticket_selector" to="." method="open_level" binds= [ "2" ]]
+[connection signal="started" from="hard_ticket_selector" to="." method="open_level" binds= [ "3" ]]
 [connection signal="pressed" from="custom" to="." method="open_level" binds= [ "_custom" ]]
 [connection signal="pressed" from="custom/edit" to="." method="open_level" binds= [ "_custom_edit" ]]
 [connection signal="pressed" from="exit" to="." method="back"]

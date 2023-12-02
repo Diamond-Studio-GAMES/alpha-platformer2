@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://themes/theme.tres" type="Theme" id=1]
 [ext_resource path="res://textures/classes/butcher_helmet.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://textures/classes/wizard_helmet.png" type="Texture" id=4]
 [ext_resource path="res://textures/classes/archer_helmet.png" type="Texture" id=5]
 [ext_resource path="res://textures/classes/knight_helmet.png" type="Texture" id=6]
+[ext_resource path="res://textures/effects/backgrounds/field_bg.png" type="Texture" id=7]
+[ext_resource path="res://prefabs/menu/tickets_count.tscn" type="PackedScene" id=8]
+[ext_resource path="res://prefabs/menu/ticket_selector.tscn" type="PackedScene" id=9]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
@@ -23,7 +26,7 @@ func select_class(id):
 	G.setv(\"selected_class\", selected_class)
 
 
-func start():
+func _on_ticket_selector_started():
 	G.change_to_scene(\"res://minigames/minigame1/reznya.tscn\")
 "
 
@@ -33,21 +36,42 @@ anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = SubResource( 1 )
 
-[node name="bg" type="ColorRect" parent="."]
+[node name="bg" type="TextureRect" parent="."]
+self_modulate = Color( 1, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
+margin_left = -172.0
+margin_right = 173.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="select" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -144.0
+margin_top = -60.0
+margin_right = 144.0
+margin_bottom = -36.0
+text = "1.select"
+align = 1
 
 [node name="title" type="Label" parent="."]
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 margin_left = -144.0
-margin_top = 32.0
+margin_top = -112.0
 margin_right = 144.0
-margin_bottom = 84.0
+margin_bottom = -60.0
 theme_type_variation = "LabelTitle"
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "1.select"
+text = "1.name"
 align = 1
 
 [node name="class2" type="OptionButton" parent="."]
@@ -66,17 +90,11 @@ expand_icon = true
 items = [ "class.knight.l", ExtResource( 6 ), false, 0, null, "class.butcher.l", ExtResource( 2 ), false, 1, null, "class.spearman.l", ExtResource( 3 ), false, 2, null, "class.wizard.l", ExtResource( 4 ), false, 3, null, "class.archer.l", ExtResource( 5 ), false, 4, null, "class.none.l", null, false, 5, null ]
 selected = 0
 
-[node name="start" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -60.0
-margin_top = -110.0
-margin_right = 60.0
-margin_bottom = -80.0
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "1.begin"
+[node name="ticket_selector" parent="." instance=ExtResource( 9 )]
+margin_top = 44.0
+margin_bottom = 84.0
+
+[node name="tickets_count" parent="." instance=ExtResource( 8 )]
 
 [connection signal="item_selected" from="class2" to="." method="select_class"]
-[connection signal="pressed" from="start" to="." method="start"]
+[connection signal="started" from="ticket_selector" to="." method="_on_ticket_selector_started"]

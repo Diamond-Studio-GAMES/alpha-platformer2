@@ -1,11 +1,9 @@
 keys,ru,en
 1.name,Резня,Bloodbath
-1.reward,Награда за выживание: 2 золотых ящика,Reward for surviving: 2 gold boxes
 1.music,Музыка: KSLV - Override (https://youtu.be/NS8DPG62Fto),Music: KSLV - Override (https://youtu.be/NS8DPG62Fto)
 1.win,ТЫ ПОБЕДИЛ!,YOU WIN!
 1.level,ВЫЖИВИ 2 МИНУТЫ!!!,SURVIVE 2 MINUTES!!!
 1.select,Выбери класс:,Select class:
-1.begin,НАЧАТЬ,START
 2.name,Избавление от ненависти,Destroy Your Hate
 2.free_from,Освободись от,Destroy your
 2.hateee,НЕНАВИСТИ!!!,HATE!!!

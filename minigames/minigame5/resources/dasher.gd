@@ -43,7 +43,7 @@ func destroy():
 		$destroy/ship.show()
 		$destroy/ship/anim.play("destroy")
 	yield(get_tree().create_timer(1), "timeout")
-	get_tree().reload_current_scene()
+	get_tree().change_scene("res://minigames/minigame5/minigame.tscn")
 
 
 func jump(power = 0):
