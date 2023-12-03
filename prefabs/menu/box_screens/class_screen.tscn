@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://themes/theme.tres" type="Theme" id=2]
 [ext_resource path="res://textures/gui/bg_light.png" type="Texture" id=3]
@@ -51,33 +51,6 @@ size = 22
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
-
-[sub_resource type="Animation" id=39]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("rolling/rolling_item/roll_item:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 716, 314 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("class/ui/particles/stars:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -240, 0 ) ]
-}
 
 [sub_resource type="Animation" id=40]
 resource_name = "main"
@@ -230,9 +203,6 @@ tracks/11/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=177]
-length = 0.001
-
 [sub_resource type="Animation" id=178]
 resource_name = "main"
 length = 6.0
@@ -383,9 +353,6 @@ tracks/11/keys = {
 "method": "play"
 } ]
 }
-
-[sub_resource type="Animation" id=179]
-length = 0.001
 
 [sub_resource type="Animation" id=180]
 resource_name = "main"
@@ -538,9 +505,6 @@ tracks/11/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=181]
-length = 0.001
-
 [sub_resource type="Animation" id=182]
 resource_name = "main"
 length = 6.0
@@ -691,9 +655,6 @@ tracks/11/keys = {
 "method": "play"
 } ]
 }
-
-[sub_resource type="Animation" id=183]
-length = 0.001
 
 [sub_resource type="Animation" id=184]
 resource_name = "main"
@@ -905,7 +866,6 @@ __meta__ = {
 
 [node name="roll_item" type="Sprite" parent="knight/rolling/rolling_item"]
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 716, 314 )
 scale = Vector2( 1e-05, 1e-05 )
 script = ExtResource( 10 )
 use_custom_path = true
@@ -976,7 +936,6 @@ __meta__ = {
 }
 
 [node name="stars" type="CPUParticles2D" parent="knight/class/ui/particles"]
-position = Vector2( -240, 0 )
 z_index = 20
 lifetime = 2.0
 preprocess = 1.0
@@ -1059,10 +1018,6 @@ margin_bottom = 198.0
 custom_fonts/font = SubResource( 34 )
 text = "class.knight.boxdesc"
 autowrap = true
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="class" type="Control" parent="knight/class/ui"]
 anchor_left = 0.5
@@ -1085,7 +1040,6 @@ use_custom_path = true
 custom_path = NodePath("../../../../../class_visuals/knight")
 
 [node name="anim" type="AnimationPlayer" parent="knight"]
-anims/RESET = SubResource( 39 )
 anims/main = SubResource( 40 )
 
 [node name="butcher" type="Control" parent="."]
@@ -1303,7 +1257,6 @@ margin_bottom = 198.0
 custom_fonts/font = SubResource( 34 )
 text = "class.butcher.boxdesc"
 autowrap = true
-clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1329,7 +1282,6 @@ use_custom_path = true
 custom_path = NodePath("../../../../../class_visuals/butcher")
 
 [node name="anim" type="AnimationPlayer" parent="butcher"]
-anims/RESET = SubResource( 177 )
 anims/main = SubResource( 178 )
 
 [node name="spearman" type="Control" parent="."]
@@ -1542,7 +1494,6 @@ margin_bottom = 198.0
 custom_fonts/font = SubResource( 34 )
 text = "class.spearman.boxdesc"
 autowrap = true
-clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1568,7 +1519,6 @@ use_custom_path = true
 custom_path = NodePath("../../../../../class_visuals/spearman")
 
 [node name="anim" type="AnimationPlayer" parent="spearman"]
-anims/RESET = SubResource( 179 )
 anims/main = SubResource( 180 )
 
 [node name="wizard" type="Control" parent="."]
@@ -1784,7 +1734,6 @@ margin_bottom = 198.0
 custom_fonts/font = SubResource( 34 )
 text = "class.wizard.boxdesc"
 autowrap = true
-clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1806,7 +1755,6 @@ use_custom_path = true
 custom_path = NodePath("../../../../../class_visuals/wizard")
 
 [node name="anim" type="AnimationPlayer" parent="wizard"]
-anims/RESET = SubResource( 181 )
 anims/main = SubResource( 182 )
 
 [node name="archer" type="Control" parent="."]
@@ -2023,7 +1971,6 @@ margin_bottom = 198.0
 custom_fonts/font = SubResource( 34 )
 text = "class.archer.boxdesc"
 autowrap = true
-clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2049,7 +1996,6 @@ use_custom_path = true
 custom_path = NodePath("../../../../../class_visuals/archer")
 
 [node name="anim" type="AnimationPlayer" parent="archer"]
-anims/RESET = SubResource( 183 )
 anims/main = SubResource( 184 )
 
 [node name="roll_out" type="AudioStreamPlayer" parent="."]

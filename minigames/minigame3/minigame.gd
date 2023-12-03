@@ -11,9 +11,9 @@ var effect_coins = load("res://minigames/minigame3/coins_add_effect.tscn")
 var effect_gems = load("res://minigames/minigame3/gems_add_effect.tscn")
 var coin = load("res://minigames/minigame3/coin.tscn")
 var gem = load("res://minigames/minigame3/gem.tscn")
-onready var coins_count = $gui/base/coins
-onready var gems_count = $gui/base/gems
-onready var remains = $gui/base/remains
+onready var coins_count = $"../gui/base/coins"
+onready var gems_count = $"../gui/base/gems"
+onready var remains = $"../gui/base/remains"
 onready var spawn_pos = $spawn_pos.global_translation
 
 

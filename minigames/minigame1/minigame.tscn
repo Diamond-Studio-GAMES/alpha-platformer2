@@ -28,6 +28,10 @@ func select_class(id):
 
 func _on_ticket_selector_started():
 	G.change_to_scene(\"res://minigames/minigame1/reznya.tscn\")
+
+
+func _on_exit_pressed():
+	get_tree().change_scene(\"res://scenes/menu/levels.tscn\")
 "
 
 [node name="reznya" type="Control"]
@@ -96,5 +100,13 @@ margin_bottom = 84.0
 
 [node name="tickets_count" parent="." instance=ExtResource( 8 )]
 
+[node name="exit" type="Button" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 118.0
+margin_bottom = 46.0
+text = "menu.back"
+
 [connection signal="item_selected" from="class2" to="." method="select_class"]
 [connection signal="started" from="ticket_selector" to="." method="_on_ticket_selector_started"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

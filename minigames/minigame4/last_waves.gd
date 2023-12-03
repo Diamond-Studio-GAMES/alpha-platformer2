@@ -66,11 +66,14 @@ func _ready():
 				else:
 					i.color = Color(0.35, 0.35, 0.35, 1)
 	tint.color = Color(1, 1, 1, 0)
+	yield(get_tree().create_timer(2, false), "timeout")
 	start_wave()
 
 
 func start_wave():
 	$shop.hide()
+	if player.immune_counter > 0:
+		player.immune_counter -= 1
 	player.can_control = true
 	player.make_dialog(tr("4.wave.start") % wave_number, 5, Color.red)
 	mob_count = round(wave_number * 0.65) + gen.randi_range(0, 3)
@@ -95,6 +98,7 @@ func start_wave():
 		return
 	player.make_dialog(tr("4.wave.clear"), 2, Color.green)
 	wave_number += 1
+	player.immune_counter += 1
 	yield(get_tree().create_timer(2, false), "timeout")
 	player.stop()
 	player.can_control = false
