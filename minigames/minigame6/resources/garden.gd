@@ -23,10 +23,10 @@ func open_box():
 
 
 func buy_box():
-	if G.getv("tickets", 0) < 3:
+	if G.getv("tickets", 0) < 5:
 		show_warning(tr("6.no.tickets"))
 		return
-	G.addv("tickets", -3, 0)
+	G.addv("tickets", -5, 0)
 	get_box()
 
 

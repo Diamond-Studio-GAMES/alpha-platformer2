@@ -49,8 +49,8 @@ keys,ru,en
 5.hard,Горное безумие,Mountain madness
 6.name,Сад,Garden
 6.gift.collect,Забрать,Claim
-6.buy.text,"Действительно хочешь купить садовый ящик за 3 билета?
-У тебя: ","Are you really want to buy garden box with 2 tickets?
+6.buy.text,"Действительно хочешь купить садовый ящик за 5 билетов?
+У тебя: ","Are you really want to buy garden box with 5 tickets?
 You have: "
 6.no.tickets,Недостаточно билетов!,Not enough tickets!
 6.tip.plant,"Выбери горшок для посадки (нажми кнопку ещё раз, чтобы отменить)",Select pot to plant (press button again to cancel)
@@ -70,7 +70,7 @@ You have: "
 6.help,"Эта мини-игра позволяет выращивать растения из семян и получать за это награды. У растений есть 4 редкости: обычное, редкое, эпическое и легендарное. Чем выше редкость, тем выше награда и требования для роста. Для того, чтобы растение росло, его нужно ежедневно поливать определённым количеством воды. По желанию можно ускорить рост за счёт удобрения - оно убирает 1 день ожидания. Все ресурсы получаются из ящиков. Раз в день можно открыть один бесплатно. Хорошего урожая!","This mini-game allows you to grow plants from seeds and get rewards for it. Plants have 4 rarities: common, rare, epic and legendary. The higher the rarity, the higher the reward and the requirements for growth. In order for the plant to grow, it needs to be watered daily with a certain amount of water. If desired, you can accelerate growth due to fertilizer - it removes 1 day of waiting. All resources are obtained from the boxes. Once a day, you can open one for free. Have a good harvest!"
 6.buying,Покупка ящика…,Purchasing a box…
 6.plant.select,Выбери растение…,Select the plant…
-6.buy.cost,3 Садовый ящик,3        Garden box
+6.buy.cost,5 Садовый ящик,5        Garden box
 6.claim,Собрать,Collect
 6.box.water,ВОДА,WATER
 6.box.fert,УДОБРЕНИЕ,FERTILIZER

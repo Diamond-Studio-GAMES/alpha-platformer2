@@ -32,9 +32,11 @@ onready var ulti_tokens_bar_label = $ulti_tokens_screen/bar/label
 onready var ygsi0 = $you_get_screen/items0
 onready var ygsi1 = $you_get_screen/items1
 var screens = {}
-var coins_textures = [load("res://textures/items/small_coins.png"),
-		load("res://textures/items/normal_coins.png"), 
-		load("res://textures/items/big_coins.png")]
+var coins_textures = [
+	load("res://textures/items/small_coins.png"),
+	load("res://textures/items/normal_coins.png"), 
+	load("res://textures/items/big_coins.png")
+]
 var CLASS_ICONS = {
 	"knight" : load("res://textures/classes/knight_helmet.png"),
 	"butcher" : load("res://textures/classes/butcher_helmet.png"),
@@ -102,9 +104,8 @@ func _process(delta):
 		item_counter.self_modulate = Color.yellow
 		item_counter_label.text = tr("box.remains.bonus")
 	else:
-		item_counter_glow.visible = glow_items > 0 and glow_items == items
 		item_counter_count.text = str(items)
-
+	item_counter_glow.visible = glow_items > 0 and glow_items == items
 
 
 func _input(event):

@@ -53,7 +53,10 @@ func _ready():
 			G.main_setv("patch_code", 0)
 	
 	G.ad.initialize(G.main_getv("age", 0))
-	$anim.play("splash")
+	if G.percent_chance(0.1):
+		$anim.play("easter_egg")
+	else:
+		$anim.play("splash")
 	check_updates()
 
 

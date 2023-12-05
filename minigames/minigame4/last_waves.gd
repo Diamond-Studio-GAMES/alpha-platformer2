@@ -48,6 +48,7 @@ func _ready():
 	player = load("res://minigames/minigame4/hero.tscn").instance()
 	player.get_node("camera/gui/base/intro/text/main").text = level_name
 	player.get_node("camera/gui/base/intro/text/location").text = location
+	player.get_node("camera/gui/base/pause_menu/panel/restart").disabled = true
 	player.position = pos.position
 	player.name = "player"
 	player.custom_respawn_scene = "res://minigames/minigame4/minigame.tscn"

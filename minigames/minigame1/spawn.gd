@@ -23,6 +23,7 @@ var spawn_timer = 0
 func _ready():
 	yield(get_tree(), "idle_frame")
 	player = $"../player"
+	player.get_node("camera/gui/base/pause_menu/panel/restart").disabled = true
 	player_camera = player.get_node("camera")
 	player.custom_respawn_scene = "res://minigames/minigame1/minigame.tscn"
 	var n = load("res://minigames/minigame1/timer.tscn").instance()
