@@ -11,5 +11,5 @@ dest_files=[ "res://.import/splash_screen_easter_egg.ogg-2d1883272aad2b6795f47fb
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -501,6 +501,7 @@ pointing/emulate_touch_from_mouse=true
 locale_filter=[ 1, [ "en", "ru" ] ]
 translations=PoolStringArray( "res://misc/translations/begin.en.translation", "res://misc/translations/begin.ru.translation", "res://misc/translations/menu.en.translation", "res://misc/translations/menu.ru.translation", "res://misc/translations/game.en.translation", "res://misc/translations/game.ru.translation", "res://misc/translations/minigames.en.translation", "res://misc/translations/minigames.ru.translation" )
 translation_remaps={
+"res://minigames/minigame8/textures/enemies/director_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/director.png:en" ),
 "res://minigames/minigame8/textures/enemies/fezek_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/fezek.png:en" ),
 "res://minigames/minigame8/textures/enemies/fizruk_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/fizruk.png:en" ),
 "res://minigames/minigame8/textures/enemies/gaynomama_fake.png": PoolStringArray( "res://minigames/minigame8/textures/enemies/gaynomama.png:en" ),

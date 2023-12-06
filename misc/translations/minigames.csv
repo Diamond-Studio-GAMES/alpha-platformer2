@@ -129,8 +129,8 @@ You have: "
 8.new,НОВАЯ ИГРА,NEW GAME
 8.continue,ПРОДОЛЖИТЬ,CONTINUE
 8.loading,ЗАГРУЗКА…,LOADING…
-8.warning," ВНИМАНИЕ: В этой мини-игре есть много 
-скримеров. Не советую играть эпилептикам!"," WARNING: this game contains many
+8.warning,"ВНИМАНИЕ: В этой мини-игре есть много 
+скримеров. Не советую играть эпилептикам!","WARNING: this game contains many
 jumpscares. I don’t advise epileptics to play!"
 8.guide.0,РУСИЧКА,ENGLISH
 8.guide.1,МАТЕМАТ.,MATH
@@ -143,10 +143,10 @@ jumpscares. I don’t advise epileptics to play!"
 8.guide.8,ИЗИЧКА,ART
 8.guide.9,ГЕОГРАФ.,GEOGR.
 8.guide.10,ХИМИЧКА,CHEMISTRY
-8.guide.11,РУСИЧКА(5),ENGLISH(5)
+8.guide.11,ДИРЕКТОР,DIRECTOR
 8.night,НОЧЬ ,NIGHT
 8.game_over,ИГРА ОКОНЧЕНА,GAME OVER
-8.music_box,"МУЗАКАЛЬНАЯ
+8.music_box,"МУЗЫКАЛЬНАЯ
 ШКАТУЛКА","MUSIC
 BOX"
 8.door,ДВЕРЬ,DOOR

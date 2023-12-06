@@ -9,12 +9,12 @@ script = ExtResource( 3 )
 name = "6.plant.potion1"
 texture = ExtResource( 2 )
 custom_scale = Vector2( 1, 1 )
-rarity = 2
+rarity = 1
 days_to_grow = 1
-water_needs = 100
-fertilizer_needs = 2
+water_needs = 70
+fertilizer_needs = 1
 custom_reward = true
 reward = {
 }
 custom_reward_script = ExtResource( 1 )
-custom_reward_script_data = "1"
+custom_reward_script_data = "0"
