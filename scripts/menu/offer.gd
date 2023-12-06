@@ -72,15 +72,15 @@ func update_offer():
 				buy_button.disabled = true
 				buy_button.text = tr("menu.have")
 	if offer_rec.has("potions1"):
-		if offer_rec["potions1"] + G.getv("potions1", 0) > 5:
+		if offer_rec["potions1"] + G.getv("potions1", 0) > 3:
 			buy_button.disabled = true
 			buy_button.text = tr("menu.have")
 	if offer_rec.has("potions2"):
-		if offer_rec["potions2"] + G.getv("potions2", 0) > 5:
+		if offer_rec["potions2"] + G.getv("potions2", 0) > 2:
 			buy_button.disabled = true
 			buy_button.text = tr("menu.have")
 	if offer_rec.has("potions3"):
-		if offer_rec["potions3"] + G.getv("potions3", 0) > 5:
+		if offer_rec["potions3"] + G.getv("potions3", 0) > 1:
 			buy_button.disabled = true
 			buy_button.text = tr("menu.have")
 	if offer_rec.has("tokens"):

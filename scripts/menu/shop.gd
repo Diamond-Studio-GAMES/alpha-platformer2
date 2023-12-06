@@ -261,26 +261,20 @@ func _process(delta):
 		p0.text = ""
 		b0.disabled = false
 	else:
-		b0.disabled = false
 		p0.text = tr("shop.you_have") + str(G.getv("potions1", 0))
-		if int(p0.text) >= 5:
-			b0.disabled = true
+		b0.disabled = int(p0.text) >= 3
 	if G.getv("potions2", 0) < 1:
 		p1.text = ""
 		b1.disabled = false
 	else:
-		b1.disabled = false
 		p1.text = tr("shop.you_have") + str(G.getv("potions2", 0))
-		if int(p1.text) >= 5:
-			b1.disabled = true
+		b1.disabled = int(p1.text) >= 2
 	if G.getv("potions3", 0) < 1:
 		p2.text = ""
 		b2.disabled = false
 	else:
-		b2.disabled = false
 		p2.text = tr("shop.you_have") + str(G.getv("potions3", 0))
-		if int(p2.text) >= 5:
-			b2.disabled = true
+		b2.disabled = int(p2.text) >= 1
 	if G.main_getv("no_ads", false):
 		na.disabled = true
 		na.text = tr("shop.bought")
@@ -643,10 +637,10 @@ func generate_offers():
 			t.shuffle()
 			var discount = [0.9, 0.9, 0.8, 0.7]
 			discount.shuffle()
-			var c = gen.randi_range(1, clamp(5 - G.getv("potions" + t[2], 0), 1, 3))
+			var c = gen.randi_range(1, 4 - int(t[2]) - G.getv("potions" + t[2], 0))
 			var cost_1 = 300 if t[2] == "1" else 650 if t[2] == "2" else 1000
 			var cost = cost_1 * c * discount[1]
-			if G.getv("potions" + t[2], 0) + c > 5:
+			if G.getv("potions" + t[2], 0) + c > 4 - int(t[2]):
 				continue
 			offer = {"costs": {"coins" : cost}, "receives" : {"potions" + t[2] : c}, "id" : i, "name" : tr("shop.offer.title"), "sale" : round((1 - discount[1]) * -100)}
 		if type == 2:

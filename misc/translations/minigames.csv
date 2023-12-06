@@ -163,7 +163,7 @@ BOX"
 8.test.0.a2,3. КОТОРОЕ РАВНО САМОМУ СЕБЕ ПРИ ПЕРЕВОРОТЕ,3. WHICH IS EQUAL TO ITSELF IN A COUP
 8.test.answer,ОТВЕТИТЬ,ANSWER
 8.test.fail,ТЫ ПРОВАЛИЛ ТЕСТ!!!,YOU FAILED TEST!!!
-8.test.lock,Монитор заблокирован до конца ночи!,MONITOR IS LOCKED UNTIL THE END OF NIGHT!
+8.test.lock,Телефон заблокирован до конца ночи!,PHONE IS LOCKED UNTIL THE END OF NIGHT!
 8.test.1.question,Вопрос: ГДЕ НАПИСАНЫ ТОЛЬКО УСТРОЙСТВА ВВОДА?,Question: WHERE ARE ONLY INPUT DEVICES WRITTEN?
 8.test.1.a0,"1. Клавиатура, Мышь, граф. планшет","1. KEYBOARD, MOUSE, GRAPHICAL TABLET"
 8.test.1.a1,"2. МЫШЬ, МОНИТОР, клавиаТУРА, МИКРОФОН","2. MOUSE, MONITOR, KEYBOARD, MICROPHONE"

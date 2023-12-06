@@ -287,7 +287,7 @@ func change_to_scene(path):
 
 
 func receive_ad_reward():
-	receive_loot({"gold_box":1})
+	receive_loot({"gold_box" : 1})
 
 
 func receive_loot(looted):
@@ -299,36 +299,36 @@ func receive_loot(looted):
 			continue
 		if i == "coins" or i == "gems" or i == "tickets" or i.begins_with("potions") or i.begins_with("garden"):
 			addv(i, rec[i])
-		if getv("potions1", 0) > 5:
+		if getv("potions1", 0) > 3:
 			if another_rec.has("potions1"):
-				another_rec["potions1"] = another_rec["potions1"] - getv("potions1", 0) + 5
+				another_rec["potions1"] = another_rec["potions1"] - getv("potions1", 0) + 3
 				if another_rec["potions1"] <= 0:
 					another_rec.erase("potions1")
 			if not another_rec.has("coins"):
 				another_rec["coins"] = 0
-			another_rec["coins"] += (getv("potions1", 0) - 5) * 275
-			addv("coins", (getv("potions1", 0) - 5) * 275)
-			setv("potions1", 5)
-		if getv("potions2", 0) > 5:
+			another_rec["coins"] += (getv("potions1", 0) - 3) * 275
+			addv("coins", (getv("potions1", 0) - 3) * 275)
+			setv("potions1", 3)
+		if getv("potions2", 0) > 2:
 			if another_rec.has("potions2"):
-				another_rec["potions2"] = another_rec["potions2"] - getv("potions2", 0) + 5
+				another_rec["potions2"] = another_rec["potions2"] - getv("potions2", 0) + 2
 				if another_rec["potions2"] <= 0:
 					another_rec.erase("potions2")
 			if not another_rec.has("coins"):
 				another_rec["coins"] = 0
-			another_rec["coins"] += (getv("potions2", 0) - 5) * 600
-			addv("coins", (getv("potions2", 0) - 5) * 600)
-			setv("potions2", 5)
-		if getv("potions3", 0) > 5:
+			another_rec["coins"] += (getv("potions2", 0) - 2) * 600
+			addv("coins", (getv("potions2", 0) - 2) * 600)
+			setv("potions2", 2)
+		if getv("potions3", 0) > 1:
 			if another_rec.has("potions3"):
-				another_rec["potions3"] = another_rec["potions3"] - getv("potions3", 0) + 5
+				another_rec["potions3"] = another_rec["potions3"] - getv("potions3", 0) + 1
 				if another_rec["potions3"] <= 0:
 					another_rec.erase("potions3")
 			if not another_rec.has("coins"):
 				another_rec["coins"] = 0
-			another_rec["coins"] += (getv("potions3", 0) - 5) * 925
-			addv("coins", (getv("potions3", 0) - 5) * 925)
-			setv("potions3", 5)
+			another_rec["coins"] += (getv("potions3", 0) - 1) * 925
+			addv("coins", (getv("potions3", 0) - 1) * 925)
+			setv("potions3", 1)
 		if i == "class":
 			for j in rec[i]:
 				addv("classes", [j], [])

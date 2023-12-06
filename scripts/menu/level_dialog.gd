@@ -274,7 +274,7 @@ func set_win_rewards(level = ""):
 	elif give_box:
 		end_rewards["box"] = 1
 	if give_potion:
-		if G.getv("potions1", 0) < 5:
+		if G.getv("potions1", 0) < 3:
 			end_rewards["potions1"] = 1
 		else:
 			if end_rewards.has("coins"):

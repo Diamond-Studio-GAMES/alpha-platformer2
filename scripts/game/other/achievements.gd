@@ -303,7 +303,7 @@ func complete(id):
 		return
 	G.setv("achv_" + id + "_done", true)
 	blocked_counter += 1
-	for i in range(blocked_counter-1):
+	for i in range(blocked_counter - 1):
 		yield(self, "effect_completed")
 	var effect = achievement_get.instance()
 	effect.get_node("panel/name").text = tr(achievements[id]["name"]) + "!"
@@ -327,7 +327,7 @@ func check(id):
 			if G.getv("potions_used") >= 10:
 				complete(id)
 		PROZAPASS:
-			if G.getv("potions1") + G.getv("potions2") + G.getv("potions3") == 15:
+			if G.getv("potions1") + G.getv("potions2") + G.getv("potions3") == 6:
 				complete(id)
 		LOOT:
 			if G.getv("garden_looted") >= 3:
