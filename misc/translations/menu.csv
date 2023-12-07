@@ -127,20 +127,22 @@ menu.last_confirm,Удалить сохранение?,Delete save?
 menu.last_confirm.text,Ты уверен?,Are you sure?
 menu.current_name,Текущее имя: ,Current name: 
 menu.changing_name,Смена имени,Changing name
-menu.controls.pc.text,"Стрелка влево/A - Движение влево
-Стрелка вправо/D - Движение вправо
-Стрелка вверх/Пробел/W - Прыжок
-Стрелка вниз/C/Нажатие правой кнопки мыши - Атака
-Enter/X - Использовать навык
-Shift/Z - Использовать душ. навык
-1/2/3 - Использовать зелье уровня 1/2/3
+menu.controls.pc.text,"Стрелка влево/A — Движение влево
+Стрелка вправо/D — Движение вправо
+Стрелка вверх/Пробел/W — Прыжок
+C/Нажатие правой кнопки мыши — Атака
+X — Использовать навык
+Z — Использовать душ. навык
+1/2/3 — Использовать зелье уровня 1/2/3
+Q — Открыть выбор эмоций
 Прицеливание осуществляется мышью.","Left arrow/A — Movement to the left
 Right arrow/D — Movement to the right
 Up arrow/Space/W — Jump
-Down arrow/C/Right Mouse Button — Attack
-Enter/X — Use skill
-Shift/Z — Use soul skill
+C/Right Mouse Button — Attack
+X — Use skill
+Z — Use soul skill
 1/2/3 — Use level 1/2/3 potion
+Q — Open emotion selection
 Aiming is done with mouse."
 menu.warning,Предупреждение!,Warning!
 menu.blw.text,"Опция ""Красивый свет"" может привести к потере производительности, рекомендуем её включать только на ПК или мощном смартфоне.","The ""Beautiful light"" option can lead to a loss of performance, we recommend turning it on only on a PC or a powerful smartphone."
@@ -477,7 +479,7 @@ promocodes.title,Ввести промокод:,Enter promocode:
 promocodes.placeholder,Код…,Code…
 promocodes.confirm,Подтвердить,Confirm
 controls.reset,Сбросить,Reset
-controls.title,Настройка управления,Editing controls…
+controls.title,Настройка управления,Controls editing
 controls.guide,"Настрой управление под себя, перетаскивая кнопки!",Customize the controls for yourself by dragging buttons!
 gameover.title,ИГРА ОКОНЧЕНА,GAME OVER
 gameover.retry,Попробовать снова,Try again

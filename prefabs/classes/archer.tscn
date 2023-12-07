@@ -1,6 +1,7 @@
-[gd_scene load_steps=146 format=2]
+[gd_scene load_steps=151 format=2]
 
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://prefabs/classes/emotion.tscn" type="PackedScene" id=2]
 [ext_resource path="res://textures/effects/other/glow.png" type="Texture" id=3]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=4]
 [ext_resource path="res://themes/font.tres" type="DynamicFontData" id=5]
@@ -71,6 +72,9 @@
 [ext_resource path="res://textures/effects/other/use_item_0.tres" type="Texture" id=70]
 [ext_resource path="res://textures/gui/ulti_button_pressed.png" type="Texture" id=71]
 [ext_resource path="res://textures/gui/button_attack2.tres" type="Texture" id=72]
+[ext_resource path="res://prefabs/classes/emotions_panel.tscn" type="PackedScene" id=73]
+[ext_resource path="res://textures/gui/emotions_button_pressed.png" type="Texture" id=74]
+[ext_resource path="res://textures/gui/emotions_button.png" type="Texture" id=75]
 
 [sub_resource type="Curve" id=17]
 min_value = 1.0
@@ -2279,7 +2283,7 @@ nodes/ulti_shot/node = SubResource( 96 )
 nodes/ulti_shot/position = Vector2( 1058.82, 141.176 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "aim_blend", 0, "attack_shot", "aim_blend", 1, "aim_ts", "aim_seek", 0, "aim", "aim_ts", 0, "aim_seek", "attack_seek", 0, "attack", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "potion_seek", 0, "potion", "potion_shot", 0, "aim_blend", "potion_shot", 1, "potion_seek", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti" ]
+node_connections = [ "output", 0, "death_trans", "aim_blend", 0, "attack_shot", "aim_blend", 1, "aim_ts", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_seek", 0, "attack", "potion_shot", 0, "aim_blend", "potion_shot", 1, "potion_seek", "potion_seek", 0, "potion", "aim_seek", 0, "aim", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "aim_ts", 0, "aim_seek" ]
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.24788
@@ -2332,6 +2336,9 @@ extents = Vector2( 16, 10 )
 
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 16, 10 )
+
+[sub_resource type="RectangleShape2D" id=107]
+extents = Vector2( 8, 8 )
 
 [sub_resource type="DynamicFont" id=73]
 size = 28
@@ -3064,6 +3071,8 @@ stream = ExtResource( 68 )
 [node name="hit_wall" parent="visual/body/knight_attack" index="4"]
 stream = ExtResource( 68 )
 
+[node name="emotion" parent="." instance=ExtResource( 2 )]
+
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_default_blend_time = 0.01
 anims/RESET = SubResource( 100 )
@@ -3293,6 +3302,13 @@ scale = Vector2( -5, 5 )
 normal = ExtResource( 32 )
 pressed = ExtResource( 52 )
 shape = SubResource( 24 )
+
+[node name="emotions" type="TouchScreenButton" parent="camera/gui/base/buttons/buttons_0"]
+position = Vector2( 23, -133 )
+scale = Vector2( 3, 3 )
+normal = ExtResource( 75 )
+pressed = ExtResource( 74 )
+shape = SubResource( 107 )
 
 [node name="gadget" type="TextureRect" parent="camera/gui/base/buttons/buttons_0"]
 margin_left = 24.0
@@ -3833,7 +3849,7 @@ mouse_filter = 2
 theme = ExtResource( 4 )
 
 [node name="fg" type="ColorRect" parent="camera/gui/base/tint"]
-self_modulate = Color( 0, 1, 0, 0 )
+self_modulate = Color( 1, 0, 0, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -3878,6 +3894,8 @@ valign = 1
 anims/dying = SubResource( 65 )
 anims/hurting = SubResource( 66 )
 anims/reviving = SubResource( 67 )
+
+[node name="emotions_panel" parent="camera/gui/base" instance=ExtResource( 73 )]
 
 [node name="intro" type="ColorRect" parent="camera/gui/base"]
 anchor_right = 1.0
@@ -4335,6 +4353,7 @@ physics_frame_delay_unreliable = 1
 [connection signal="pressed" from="camera/gui/base/hero_panel/potion2/button" to="." method="use_potion" binds= [ 2 ]]
 [connection signal="pressed" from="camera/gui/base/hero_panel/potion3/button" to="." method="use_potion" binds= [ 3 ]]
 [connection signal="pressed" from="camera/gui/base/pause" to="camera/gui/base/pause_menu" method="pause"]
+[connection signal="emotion_selected" from="camera/gui/base/emotions_panel" to="emotion" method="show_emote"]
 [connection signal="pressed" from="camera/gui/base/pause_menu/panel/continue" to="camera/gui/base/pause_menu" method="unpause"]
 [connection signal="pressed" from="camera/gui/base/pause_menu/panel/restart" to="camera/gui/base/pause_menu" method="restart"]
 [connection signal="pressed" from="camera/gui/base/pause_menu/panel/exit" to="camera/gui/base/pause_menu" method="menu"]

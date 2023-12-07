@@ -1,6 +1,7 @@
-[gd_scene load_steps=126 format=2]
+[gd_scene load_steps=131 format=2]
 
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://prefabs/classes/emotion.tscn" type="PackedScene" id=2]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=3]
 [ext_resource path="res://textures/mobs/player/hair_woman.tres" type="Texture" id=4]
 [ext_resource path="res://textures/mobs/player/hand2.tres" type="Texture" id=5]
@@ -60,6 +61,9 @@
 [ext_resource path="res://textures/gui/health_bar.tres" type="Texture" id=59]
 [ext_resource path="res://textures/gui/attack.png" type="Texture" id=60]
 [ext_resource path="res://textures/classes/butcher_weapon.png" type="Texture" id=61]
+[ext_resource path="res://textures/gui/emotions_button_pressed.png" type="Texture" id=62]
+[ext_resource path="res://textures/gui/emotions_button.png" type="Texture" id=63]
+[ext_resource path="res://prefabs/classes/emotions_panel.tscn" type="PackedScene" id=66]
 
 [sub_resource type="Curve" id=17]
 min_value = 1.0
@@ -1801,7 +1805,7 @@ nodes/ulti_shot/node = SubResource( 94 )
 nodes/ulti_shot/position = Vector2( 752.941, 70.5882 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "potion_seek", 0, "potion", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "potion_shot", 0, "attack_shot", "potion_shot", 1, "potion_seek", "attack_seek", 0, "attack", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti" ]
+node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_seek", 0, "attack", "potion_shot", 0, "attack_shot", "potion_shot", 1, "potion_seek", "potion_seek", 0, "potion", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.24788
@@ -1854,6 +1858,9 @@ extents = Vector2( 16, 10 )
 
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 16, 10 )
+
+[sub_resource type="RectangleShape2D" id=101]
+extents = Vector2( 8, 8 )
 
 [sub_resource type="DynamicFont" id=69]
 size = 28
@@ -2478,6 +2485,8 @@ __meta__ = {
 
 [node name="knight_attack" parent="visual/body" instance=ExtResource( 22 )]
 
+[node name="emotion" parent="." instance=ExtResource( 2 )]
+
 [node name="anim" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 96 )
 anims/attack = SubResource( 1 )
@@ -2677,9 +2686,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 354.78
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="buttons_0" type="Control" parent="camera/gui/base/buttons"]
 anchor_top = 1.0
@@ -2701,6 +2707,13 @@ scale = Vector2( -5, 5 )
 normal = ExtResource( 26 )
 pressed = ExtResource( 18 )
 shape = SubResource( 24 )
+
+[node name="emotions" type="TouchScreenButton" parent="camera/gui/base/buttons/buttons_0"]
+position = Vector2( 23, -133 )
+scale = Vector2( 3, 3 )
+normal = ExtResource( 63 )
+pressed = ExtResource( 62 )
+shape = SubResource( 101 )
 
 [node name="gadget" type="TextureRect" parent="camera/gui/base/buttons/buttons_0"]
 margin_left = 24.0
@@ -3238,6 +3251,8 @@ anims/dying = SubResource( 58 )
 anims/hurting = SubResource( 59 )
 anims/reviving = SubResource( 60 )
 
+[node name="emotions_panel" parent="camera/gui/base" instance=ExtResource( 66 )]
+
 [node name="intro" type="ColorRect" parent="camera/gui/base"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -3659,6 +3674,7 @@ physics_frame_delay_unreliable = 1
 [connection signal="pressed" from="camera/gui/base/hero_panel/potion2/button" to="." method="use_potion" binds= [ 2 ]]
 [connection signal="pressed" from="camera/gui/base/hero_panel/potion3/button" to="." method="use_potion" binds= [ 3 ]]
 [connection signal="pressed" from="camera/gui/base/pause" to="camera/gui/base/pause_menu" method="pause"]
+[connection signal="emotion_selected" from="camera/gui/base/emotions_panel" to="emotion" method="show_emote"]
 [connection signal="pressed" from="camera/gui/base/pause_menu/panel/continue" to="camera/gui/base/pause_menu" method="unpause"]
 [connection signal="pressed" from="camera/gui/base/pause_menu/panel/restart" to="camera/gui/base/pause_menu" method="restart"]
 [connection signal="pressed" from="camera/gui/base/pause_menu/panel/exit" to="camera/gui/base/pause_menu" method="menu"]
