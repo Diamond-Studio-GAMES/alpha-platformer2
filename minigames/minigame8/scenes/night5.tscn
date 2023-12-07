@@ -192,6 +192,7 @@ script = ExtResource( 6 )
 paths = [ [ "base", "f2w1", "f2w1e", "f2", "f12", "f01", "main" ], [ "base", "f1w1", "f1w1e", "f1", "f01", "main" ], [ "base", "f0w0", "another_way" ] ]
 AI = 20
 AI_time_custom = 3
+time_to_awake = 60
 defense_time = 6.0
 
 [node name="izichka" type="Sprite" parent="base/poses/pos0" index="1"]

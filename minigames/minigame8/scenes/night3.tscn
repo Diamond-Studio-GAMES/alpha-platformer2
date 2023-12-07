@@ -130,7 +130,6 @@ kill_on_monitor = false
 self_modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
 texture = ExtResource( 11 )
 script = ExtResource( 2 )
-scream_type = 1
 paths = [ [ "base", "f0w0", "f01", "main" ] ]
 AI = 3
 time_to_awake = 120
