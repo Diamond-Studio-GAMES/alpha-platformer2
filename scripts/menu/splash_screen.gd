@@ -1,32 +1,13 @@
 extends Control
 
 
-var done_checking = false
-var can_update = false
-onready var http = $http
-onready var label = $label
-
 signal check_done
 
-
-func end_splash():
-	if done_checking:
-		finish()
-	else:
-		yield(self, "check_done")
-		finish()
-
-
-func finish():
-	if can_update:
-		$update.popup_centered()
-		yield($update, "popup_hide")
-	var file = File.new()
-	var path = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir()
-	if file.file_exists(path.plus_file("apa2_patch.pck")):
-		if G.main_getv("patch_code", 0) == G.VERSION_CODE:
-			ProjectSettings.load_resource_pack(path.plus_file("apa2_patch.pck"))
-	get_tree().change_scene("res://scenes/menu/save_loader.tscn")
+var done_checking = false
+var can_update = false
+var is_downloading = false
+onready var http = $http
+onready var label = $label
 
 
 func _ready():
@@ -58,6 +39,13 @@ func _ready():
 	else:
 		$anim.play("splash")
 	check_updates()
+
+
+func _process(delta):
+	if is_downloading:
+		var downloaded_size = "".humanize_size(http.get_downloaded_bytes())
+		var total_size = "".humanize_size(http.get_body_size())
+		label.text = tr("ss.status.download") + " (%s / %s)" % [downloaded_size, total_size] 
 
 
 func check_updates():
@@ -112,8 +100,9 @@ func patch_request(result, code, header, body):
 			http.download_file = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir().plus_file("apa2_patch.pck")
 			http.connect("request_completed", self, "download_patch", [cf.get_value("patches", str(G.VERSION_CODE))], CONNECT_ONESHOT)
 			var err = http.request("http://f0695447.xsph.ru/apa2/patches/" + str(G.VERSION_CODE) + ".pck")
-			label.text = tr("ss.status.download")
+			is_downloading = true
 			if err:
+				is_downloading = false
 				end_check()
 		else:
 			end_check()
@@ -123,10 +112,12 @@ func patch_request(result, code, header, body):
 
 func download_patch(result, code, header, body, version):
 	if result != HTTPRequest.RESULT_SUCCESS:
+		is_downloading = false
 		end_check()
 		return
 	G.main_setv("patch_version", version)
 	G.main_setv("patch_code", G.VERSION_CODE)
+	is_downloading = false
 	end_check()
 
 
@@ -134,6 +125,30 @@ func end_check():
 	done_checking = true
 	emit_signal("check_done")
 	label.text = ""
+
+
+func end_splash():
+	if done_checking:
+		finish()
+	else:
+		yield(self, "check_done")
+		finish()
+
+
+func finish():
+	if can_update:
+		$update.popup_centered()
+		yield($update, "popup_hide")
+	var file = File.new()
+	var path = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir()
+	if file.file_exists(path.plus_file("apa2_patch.pck")):
+		if G.main_getv("patch_code", 0) == G.VERSION_CODE:
+			ProjectSettings.load_resource_pack(path.plus_file("apa2_patch.pck"))
+	get_tree().change_scene("res://scenes/menu/save_loader.tscn")
+
+
+func restart():
+	get_tree().reload_current_scene()
 
 
 func open_link():
@@ -177,7 +192,3 @@ func _on_slider_value_changed(value):
 			$age/accept.disabled = true
 		else:
 			$age/accept.disabled = false
-
-
-func restart():
-	get_tree().reload_current_scene()

@@ -638,6 +638,8 @@ func generate_offers():
 			var discount = [0.9, 0.9, 0.8, 0.7]
 			discount.shuffle()
 			var c = gen.randi_range(1, 4 - int(t[2]) - G.getv("potions" + t[2], 0))
+			if c <= 0:
+				continue
 			var cost_1 = 300 if t[2] == "1" else 650 if t[2] == "2" else 1000
 			var cost = cost_1 * c * discount[1]
 			if G.getv("potions" + t[2], 0) + c > 4 - int(t[2]):
