@@ -10,12 +10,19 @@ func _ready():
 	if not MP.is_active:
 		button.hide()
 	button.connect("released", self, "_on_emotions_released")
-	button.set_as_toplevel(true)
+	call_deferred("_pose_button", button)
+	
 
 
 func _process(delta):
 	if Input.is_action_just_pressed("emotions") and MP.is_active:
 		_on_emotions_released()
+
+
+func _pose_button(button):
+	var pos = button.global_position
+	button.set_as_toplevel(true)
+	button.global_position = pos
 
 
 func _on_emotions_released():
