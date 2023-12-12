@@ -77,6 +77,18 @@ func list_saves():
 		var date_str = "%02d/%02d/%d" % [date["day"], date["month"], date["year"]]
 		node.get_node("date").text = date_str
 		node.get_node("soul").self_modulate = G.SOUL_COLORS[G.get_save_meta(i, "soul_type", 6)]
+		var color = Color.white
+		match G.get_save_meta(i, "hate_level", -1):
+			1:
+				node.get_node("soul").modulate = color.darkened(0.1)
+			2:
+				node.get_node("soul").modulate = color.darkened(0.3)
+			3:
+				node.get_node("soul").modulate = color.darkened(0.5)
+			4:
+				node.get_node("soul").modulate = color.darkened(0.7)
+			_:
+				node.get_node("soul").modulate = color
 		node.get_node("play").connect("pressed", self, "play", [i])
 		node.get_node("copy").connect("pressed", self, "duplicate_save", [i])
 		node.get_node("delete").connect("pressed", self, "delete_save", [i])
@@ -304,6 +316,7 @@ func reload_meta_from_saves():
 			G.set_save_meta(id, "last_opened", cf.get_value("save", "last_opened", Time.get_date_dict_from_system()))
 			G.set_save_meta(id, "name", cf.get_value("save", "name", "Michail"))
 			G.set_save_meta(id, "soul_type", cf.get_value("save", "soul_type", 1))
+			G.set_save_meta(id, "hate_level", cf.get_value("save", "hate_level", -1))
 		filename = dir.get_next()
 
 

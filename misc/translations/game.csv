@@ -164,6 +164,12 @@ player.defeated,Поражение!,Defeated!
 player.revive.multiplayer,ВОСКРЕСИ МЕНЯ!,REVIVE ME!
 door.go,Перейти,Enter
 npc.talk,Говорить,Talk
+hate.up,Твой уровень ненависти повысился!,Your hate level has increased!
+hate.refuse.0,Нет!,No!
+hate.refuse.1,"Я сам знаю, что делать!",I know what to do!
+hate.refuse.2,Неа.,Nope.
+hate.revive.0,Не сегодня!,Not today!
+hate.revive.1,НЕ СЕГОДНЯ!!!,NOT TODAY!!!
 1_1.dude,Чувак…,Dude…
 1_1.goright,Ты куда идёшь? Иди вправо!,Where are you going? Go right!
 1_1.hello,Привет! Двигайся с помощью стрелок в левом нижнем углу!,Hello! Move with the arrows in the lower left corner!

@@ -2,12 +2,20 @@ class_name Level
 extends Node2D
 
 
+const DEATH_CHANCES = {
+	-1 : [2, 7],
+	0 : [3, 8],
+	1 : [5, 10],
+	2 : [6, 12],
+	3 : [8, 15],
+	4 : [10, 20],
+}
 export (String) var location = "Где-то"
 export (String) var level_name = "УРОВЕНЬ: ТЕСТ"
-onready var pos = $spawn_pos
 var tint
 var player
 var gen = RandomNumberGenerator.new()
+onready var pos = $spawn_pos
 
 
 func _enter_tree():
@@ -19,7 +27,8 @@ func _ready():
 	if MP.is_active:
 		yield($"/root/mg", "game_started")
 	gen.randomize()
-	var chance = 7 if G.getv("go_chance", false) else 2
+	var chance = DEATH_CHANCES[G.getv("hate_level", -1)][1] if G.getv("go_chance", false) \
+			else DEATH_CHANCES[G.getv("hate_level", -1)][0]
 	chance = 100 if G.getv("hated_death", false) else chance
 	G.setv("hated_death", false)
 	G.setv("go_chance", false)

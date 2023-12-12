@@ -2026,7 +2026,7 @@ nodes/ulti_shot/node = SubResource( 94 )
 nodes/ulti_shot/position = Vector2( 1035.29, 70.5882 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_seek", 0, "attack", "potion_shot", 0, "throw_shot", "potion_shot", 1, "potion_seek", "potion_seek", 0, "potion", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "throw_shot", 0, "attack_shot", "throw_shot", 1, "throw" ]
+node_connections = [ "output", 0, "death_trans", "potion_shot", 0, "throw_shot", "potion_shot", 1, "potion_seek", "attack_seek", 0, "attack", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "potion_seek", 0, "potion", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "throw_shot", 0, "attack_shot", "throw_shot", 1, "throw" ]
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.24788
@@ -3938,8 +3938,8 @@ spawn_sync_data_properties = [ "global_position" ]
 
 [node name="MultiplayerSynchronizer" type="Node" parent="."]
 script = ExtResource( 42 )
-reliable_sync_node_paths = [ NodePath("../visual/body/spear_attack"), NodePath("../visual/body/spear_attack"), NodePath("..") ]
-reliable_sync_properties_names = [ "stuns", "modulate", "GRAVITY_SCALE" ]
+reliable_sync_node_paths = [ NodePath("..") ]
+reliable_sync_properties_names = [ "GRAVITY_SCALE" ]
 unreliable_sync_node_paths = [ NodePath(".."), NodePath(".."), NodePath("..") ]
 unreliable_sync_properties_names = [ "global_position", "current_health", "ulti_percentage" ]
 physics_frame_delay = 3

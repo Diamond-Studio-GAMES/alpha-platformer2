@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://textures/bosses/egor/uv.png" type="Texture" id=1]
 [ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=2]
 [ext_resource path="res://shaders/materials/chromokey.tres" type="Material" id=3]
+[ext_resource path="res://textures/effects/other/glitch_texture.png" type="Texture" id=4]
 [ext_resource path="res://textures/bosses/egor/time_erase_effect.ogv" type="VideoStream" id=5]
 [ext_resource path="res://shaders/uv_mapper.gdshader" type="Shader" id=6]
 [ext_resource path="res://sounds/sfx/time_erase.wav" type="AudioStream" id=7]
@@ -47,6 +48,8 @@ shader = ExtResource( 6 )
 [sub_resource type="ShaderMaterial" id=122]
 shader = ExtResource( 8 )
 shader_param/glitch = 0.0
+shader_param/shift_glitch = 0.0
+shader_param/shift_glitch_texture = ExtResource( 4 )
 
 [sub_resource type="Animation" id=119]
 resource_name = "erase"
@@ -328,6 +331,18 @@ tracks/21/keys = {
 "stream": ExtResource( 10 )
 } ],
 "times": PoolRealArray( 0.1, 8 )
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("glitch_screen:material:shader_param/shift_glitch")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.1, 0.0, 0.0, -0.2, 0.0 ]
 }
 
 [node name="time_erase" type="CanvasLayer"]

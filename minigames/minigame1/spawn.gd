@@ -71,5 +71,5 @@ func _spawn_mob():
 		pos = $spawn_pos1.global_position
 	var node = mobs[randi() % len(mobs)].instance() as Mob
 	node.global_position = pos
-	node.stats_multiplier = 0.4 + player.power * 0.09
+	node.stats_multiplier = 0.5 + player.power * 0.08
 	add_child(node, true)

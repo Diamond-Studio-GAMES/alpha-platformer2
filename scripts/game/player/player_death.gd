@@ -27,6 +27,9 @@ func _ready():
 	if MP.auth(self):
 		$control_indicator/sp.show()
 	eye.modulate = eye.self_modulate
+	eye.self_modulate = Color.white
+	class_nam = "death"
+	hate_level = 0
 
 
 func send_my_data():
@@ -47,7 +50,7 @@ func apply_data(data):
 
 func apply_eye_color(clr):
 	eye.modulate = clr
-	eye.self_modulate = clr
+	eye.self_modulate = Color.white
 
 
 func attack():

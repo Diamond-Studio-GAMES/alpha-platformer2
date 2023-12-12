@@ -17,6 +17,7 @@ var gadget_attack = load("res://prefabs/classes/arrows.tscn")
 var arrow = load("res://prefabs/classes/arrow.tscn")
 onready var joystick = $camera/gui/base/buttons/buttons_1/joystick
 onready var aim_line = $aim_line
+onready var _attack_node = $visual/body/knight_attack
 onready var _attack_visual = $visual/body/knight_attack/visual
 onready var _attack_shape = $visual/body/knight_attack/shape
 onready var _aim_tween = $aim_tween
@@ -85,6 +86,8 @@ func joystick_released(output):
 	if not can_attack:
 		_attack_empty_anim.play("empty")
 		return
+	if hate_refuse():
+		return
 	ms.sync_call(self, "joystick_released", [output])
 	var aimed = aim_time
 	reset_aim()
@@ -118,13 +121,15 @@ func sp_effect(remote_call = false):
 		ms.sync_call(self, "sp_effect", [true])
 
 
-func attack():
+func attack(fatal = false):
 	if is_hurt or is_stunned or _is_ultiing or _is_drinking or is_aiming or not can_control:
 		return
 	if not can_attack:
 		_attack_empty_anim.play("empty")
 		return
-	ms.sync_call(self, "attack")
+	if MP.auth(self):
+		fatal = hate_fatal()
+	ms.sync_call(self, "attack", [fatal])
 	can_attack = false
 	_is_attacking = true
 	if MP.auth(self):
@@ -133,6 +138,7 @@ func attack():
 	_anim_tree["parameters/attack_seek/seek_position"] = 0
 	_anim_tree["parameters/attack_shot/active"] = true
 	yield(get_tree().create_timer(0.267, false), "timeout")
+	_attack_node.fatal = fatal
 	$visual/body/knight_attack/swing.play()
 	_attack_visual.show()
 	_attack_visual.playing = true
@@ -183,6 +189,7 @@ func throw(direction, aimed_time):
 			node.get_node("attack").damage = G.getv("archer_level", 0) * 7 + 35  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 		node.global_position = Vector2(global_position.x, global_position.y - 10.5 * GRAVITY_SCALE)
 		node.rotation = rotates[1]
+		node.get_node("attack").fatal = hate_fatal()
 		_level.add_child(node, true)
 
 

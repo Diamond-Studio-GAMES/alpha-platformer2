@@ -77,6 +77,7 @@ func attack():
 	_attack_visual.show()
 	_attack_visual.playing = true
 	yield(get_tree().create_timer(0.05, false), "timeout")
+	_attack_node.fatal = hate_fatal()
 	_attack_shape.disabled = false
 	yield(get_tree().create_timer(0.15, false), "timeout")
 	_attack_visual.hide()
@@ -123,6 +124,7 @@ func throw(direction):
 		node.get_node("attack").damage = _attack_node.damage * 4
 	else:
 		node.get_node("attack").damage = _attack_node.damage * 2
+	node.get_node("attack").fatal = hate_fatal()
 	_level.add_child(node, true)
 	yield(get_tree().create_timer(0.2, false), "timeout")
 	_is_attacking = false

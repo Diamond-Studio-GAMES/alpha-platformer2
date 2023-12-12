@@ -50,6 +50,8 @@ func _ready():
 		G.dialog_in_menu = ""
 		dialog.popup_centered()
 	
+	if G.getv("hate_level", -2) == -2:
+		G.calculate_hate_level()
 	if not G.getv("rated", false):
 		var curr_lvl = G.getv("level", "1_1")
 		var lvls = curr_lvl.split("_")

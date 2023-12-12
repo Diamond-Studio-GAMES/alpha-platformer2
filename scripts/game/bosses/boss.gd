@@ -39,7 +39,7 @@ func _ready():
 	if MP.is_active:
 		yield($"/root/mg", "game_started")
 	yield(get_tree(), "idle_frame")
-	player = get_tree().current_scene.get_node("player"+(str(get_tree().get_network_unique_id()) if MP.is_active else ""))
+	player = get_tree().current_scene.get_node("player" + (str(get_tree().get_network_unique_id()) if MP.is_active else ""))
 	boss_bar = player.get_boss_bar()
 	boss_hp = boss_bar.get_node("hp_count")
 	boss_hp.text = str(mob.current_health) + "/" + str(mob.max_health)
@@ -83,7 +83,10 @@ func get_hit(area):
 		waiting_for_death = false
 		anim.play("final_death")
 		G.setv("boss_" + G.current_level + "_killed", true)
+		G.connect("hate_increased", player, "make_dialog", [tr("hate.up"), 5, Color.black])
 		G.addv("kills", 1)
+		yield(get_tree().create_timer(2, false), "timeout")
+		G.calculate_hate_level()
 
 
 func mercy():
@@ -100,7 +103,7 @@ func _process(delta):
 		process_attack(delta)
 	if waiting_for_death:
 		death_timer += delta
-		if death_timer >= 5:
+		if death_timer >= 10:
 			mercy()
 	if boss_bar == null:
 		return

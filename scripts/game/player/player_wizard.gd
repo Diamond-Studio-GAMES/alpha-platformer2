@@ -7,6 +7,7 @@ var trck_idx
 var key_idx0
 var key_idx1
 var wizard_attack = load("res://prefabs/classes/wizard_attack.tscn")
+onready var _attack_node = $visual/body/knight_attack
 onready var _attack_visual = $visual/body/knight_attack/visual
 onready var _attack_shape = $visual/body/knight_attack/shape
 onready var joystick = $camera/gui/base/buttons/buttons_1/joystick
@@ -71,13 +72,17 @@ func joystick_released(output):
 		throw(output)
 
 
-func attack():
+func attack(fatal = false):
 	if is_hurt or is_stunned or _is_ultiing or _is_drinking or not can_control:
 		return
 	if not can_attack:
 		_attack_empty_anim.play("empty")
 		return
-	ms.sync_call(self, "attack")
+	if hate_refuse():
+		return
+	if MP.auth(self):
+		fatal = hate_fatal()
+	ms.sync_call(self, "attack", [fatal])
 	can_attack = false
 	if MP.auth(self):
 		RECHARGE_SPEED = 1.8 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
@@ -87,6 +92,7 @@ func attack():
 	_anim_tree["parameters/attack_shot/active"] = true
 	yield(get_tree().create_timer(0.275, false), "timeout")
 	$visual/body/knight_attack/swing.play()
+	_attack_node.fatal = fatal
 	_attack_visual.show()
 	_attack_visual.playing = true
 	_attack_shape.disabled = false
@@ -137,6 +143,7 @@ func throw(direction):
 		node.get_node("attack").damage = G.getv("wizard_level", 0) * 6 + 30  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 		if heals:
 			node.get_node("attack").connect("hit_enemy", self, "heal", [round(max_health * 0.1)])
+		node.get_node("attack").fatal = hate_fatal()
 		_level.add_child(node, true)
 	yield(get_tree().create_timer(0.167, false), "timeout")
 	_is_attacking = false

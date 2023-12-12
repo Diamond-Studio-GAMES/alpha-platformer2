@@ -2,8 +2,10 @@ extends Player
 class_name PlayerPlayer
 
 
+onready var attack0 = $visual/body/attack0
 onready var attack_sprite0 = $visual/body/attack0/sprite
 onready var attack_shape0 = $visual/body/attack0/shape
+onready var attack1 = $visual/body/attack1
 onready var attack_sprite1 = $visual/body/attack1/sprite
 onready var attack_shape1 = $visual/body/attack1/shape
 
@@ -36,25 +38,31 @@ func apply_data(data):
 	_update_bars()
 
 
-func attack():
+func attack(fatal = false):
 	if is_hurt or is_stunned or _is_drinking or _is_ultiing or not can_control:
 		return
 	if not can_attack:
 		_attack_empty_anim.play("empty")
 		return
-	ms.sync_call(self, "attack")
+	if hate_refuse():
+		return
+	if MP.auth(self):
+		fatal = hate_fatal()
+	ms.sync_call(self, "attack", [fatal])
 	can_attack = false
 	_is_attacking = true
 	attack_cooldown = RECHARGE_SPEED + 0.6
 	_anim_tree["parameters/attack_seek/seek_position"] = 0
 	_anim_tree["parameters/attack_shot/active"] = true
 	yield(get_tree().create_timer(0.3, false), "timeout")
+	attack0.fatal = fatal
 	attack_sprite0.show()
 	attack_shape0.disabled = false
 	yield(get_tree().create_timer(0.1, false), "timeout")
 	attack_sprite0.hide()
 	attack_shape0.disabled = true
 	yield(get_tree().create_timer(0.1, false), "timeout")
+	attack1.fatal = fatal
 	attack_sprite1.show()
 	attack_shape1.disabled = false
 	yield(get_tree().create_timer(0.1, false), "timeout")

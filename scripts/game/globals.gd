@@ -173,7 +173,9 @@ enum Amulet {
 	ULTI = 5,
 	NONE = -1,
 }
+
 signal loot_end
+signal hate_increased
 signal loaded_to_scene(path)
 
 
@@ -368,6 +370,31 @@ func percent_chance(in_chance):
 	var chance_range_end = chance_range_start + in_chance
 	var random_number = randi() % 1000001
 	return random_number >= chance_range_start and random_number <= chance_range_end
+
+
+func calculate_hate_level():
+	var prev_hate_level = getv("hate_level", -1)
+	var bosses_died = 0
+	for i in range(1, 10):
+		if getv("boss_%d_10_killed" % i, false):
+			bosses_died += 1
+	var new_hate_level = 0
+	if bosses_died == 0:
+		new_hate_level = -1
+	elif bosses_died <= 2:
+		new_hate_level = 0
+	elif bosses_died <= 4:
+		new_hate_level = 1
+	elif bosses_died <= 6:
+		new_hate_level = 2
+	elif bosses_died <= 8:
+		new_hate_level = 3
+	else:
+		new_hate_level = 4
+	setv("hate_level", new_hate_level)
+	set_save_meta(getv("save_id", "nn"), "hate_level", new_hate_level)
+	if new_hate_level != prev_hate_level:
+		emit_signal("hate_increased")
 
 
 func play_menu_music():

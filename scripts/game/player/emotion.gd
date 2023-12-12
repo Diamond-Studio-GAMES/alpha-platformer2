@@ -20,7 +20,7 @@ func _process(delta):
 			hide()
 			think_far.hide()
 			return
-		var transform = get_viewport_transform()
+		var transform = get_viewport().canvas_transform
 		var rect = Rect2(-transform.get_origin() / transform.get_scale(), get_viewport_rect().size / transform.get_scale())
 		if not rect.has_point(emote.global_position):
 			think_far.show()

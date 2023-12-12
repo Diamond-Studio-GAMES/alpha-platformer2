@@ -210,6 +210,7 @@ func time_erase():
 	next_attack_time_min = 0.65
 	next_attack_time_max = 1.5
 	player.immune_counter -= 1
-	mob.immune_counter -= 1
+	if is_mob_alive():
+		mob.immune_counter -= 1
 	is_time_erased = false
 	set_cutscene(false)

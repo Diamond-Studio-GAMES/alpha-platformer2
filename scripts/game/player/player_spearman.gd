@@ -72,13 +72,18 @@ func joystick_released(output):
 		throw(output)
 
 
-func attack():
+func attack(fatal = false, stuns = false):
 	if is_hurt or is_stunned or _is_ultiing or _is_drinking or not can_control:
 		return
 	if not can_attack:
 		_attack_empty_anim.play("empty")
 		return
-	ms.sync_call(self, "attack")
+	if hate_refuse():
+		return
+	if MP.auth(self):
+		fatal = hate_fatal()
+		stuns = have_soul_power and gen.randi_range(0, 100) > 80
+	ms.sync_call(self, "attack", [fatal, stuns])
 	can_attack = false
 	_is_attacking = true
 	if MP.auth(self):
@@ -87,18 +92,21 @@ func attack():
 	_anim_tree["parameters/attack_seek/seek_position"] = 0
 	_anim_tree["parameters/attack_shot/active"] = true
 	yield(get_tree().create_timer(0.2, false), "timeout")
-	if have_soul_power and gen.randi_range(0, 100) > 80 and MP.auth(self):
+	if stuns:
 		_attack_node.stuns = true
 		_attack_node.modulate = Color.palegreen
+	if fatal:
+		_attack_node.fatal = fatal
 	$visual/body/spear_attack/swing.play()
 	_attack_visual.show()
 	_attack_visual.playing = true
 	yield(get_tree().create_timer(0.05, false), "timeout")
 	_attack_shape.disabled = false
 	yield(get_tree().create_timer(0.15, false), "timeout")
-	_attack_node.stuns = false
 	_attack_visual.hide()
-	_attack_node.modulate = Color.white
+	if stuns:
+		_attack_node.stuns = false
+		_attack_node.modulate = Color.white
 	_attack_visual.playing = false
 	_attack_visual.frame = 0
 	_attack_shape.disabled = true
@@ -139,6 +147,7 @@ func throw(direction):
 		node.global_position = Vector2(global_position.x, global_position.y - 12 * GRAVITY_SCALE)
 		node.rotation = direction.angle()
 		node.get_node("attack").damage = G.getv("spearman_level", 0) * 5 + 25 + (15 if  is_amulet(G.Amulet.POWER) else 0)
+		node.get_node("attack").fatal = hate_fatal()
 		_level.add_child(node, true)
 	_is_attacking = false
 	speed_cooficent /= 0.5
