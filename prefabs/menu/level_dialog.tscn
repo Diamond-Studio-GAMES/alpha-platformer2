@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://themes/theme.tres" type="Theme" id=1]
 [ext_resource path="res://textures/items/amulet_none.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_lobby.gd" type="Script" id=11]
 [ext_resource path="res://textures/classes/archer_helmet.png" type="Texture" id=12]
 [ext_resource path="res://textures/classes/spearman_helmet.png" type="Texture" id=13]
+[ext_resource path="res://textures/gui/help.png" type="Texture" id=14]
 
 [node name="select_level" type="CanvasLayer"]
 
@@ -390,7 +391,8 @@ margin_left = 8.0
 margin_top = -48.0
 margin_right = 48.0
 margin_bottom = -8.0
-text = "?"
+icon = ExtResource( 14 )
+expand_icon = true
 
 [node name="connect" type="Control" parent="lobby_dialog"]
 visible = false
@@ -499,7 +501,8 @@ margin_left = 8.0
 margin_top = -48.0
 margin_right = 48.0
 margin_bottom = -8.0
-text = "?"
+icon = ExtResource( 14 )
+expand_icon = true
 
 [node name="guide_dialog" type="AcceptDialog" parent="lobby_dialog"]
 anchor_left = 0.5

@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://textures/gui/multiplayer.png" type="Texture" id=1]
 [ext_resource path="res://textures/items/ticket.png" type="Texture" id=2]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=3]
+[ext_resource path="res://textures/gui/help.png" type="Texture" id=4]
+[ext_resource path="res://themes/font_headers2.tres" type="DynamicFont" id=5]
 [ext_resource path="res://textures/effects/backgrounds/levels_bg.png" type="Texture" id=7]
+[ext_resource path="res://textures/mobs/knife_man/head.tres" type="Texture" id=23]
 [ext_resource path="res://prefabs/menu/education.tscn" type="PackedScene" id=27]
 [ext_resource path="res://prefabs/menu/level_dialog.tscn" type="PackedScene" id=30]
 [ext_resource path="res://textures/gui/exit.png" type="Texture" id=35]
@@ -876,7 +879,7 @@ text = "classes.name"
 clip_text = true
 expand_icon = true
 
-[node name="exit" type="Button" parent="."]
+[node name="exit_button" type="Button" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -893,31 +896,42 @@ expand_icon = true
 [node name="help_button" type="Button" parent="."]
 margin_left = 16.0
 margin_top = 16.0
-margin_right = 56.0
-margin_bottom = 56.0
-text = "?"
+margin_right = 64.0
+margin_bottom = 64.0
+icon = ExtResource( 4 )
+expand_icon = true
+
+[node name="mobs_button" type="Button" parent="."]
+margin_left = 72.0
+margin_top = 16.0
+margin_right = 120.0
+margin_bottom = 64.0
+icon = ExtResource( 23 )
+expand_icon = true
 
 [node name="minigames_button" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -160.0
+margin_left = -64.0
 margin_top = 16.0
 margin_right = -16.0
-margin_bottom = 56.0
+margin_bottom = 64.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "minigame.s"
 icon = ExtResource( 2 )
+icon_align = 1
+expand_icon = true
 
 [node name="multiplayer_button" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -328.0
+margin_left = -120.0
 margin_top = 16.0
-margin_right = -168.0
-margin_bottom = 56.0
+margin_right = -72.0
+margin_bottom = 64.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "lobby.title"
 icon = ExtResource( 1 )
+icon_align = 1
+expand_icon = true
 
 [node name="select_level" parent="." instance=ExtResource( 30 )]
 
@@ -975,7 +989,7 @@ margin_left = -320.0
 margin_top = -160.0
 margin_right = 320.0
 margin_bottom = 160.0
-window_title = "minigame.select"
+window_title = "minigame.s"
 
 [node name="minigame1" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -1201,10 +1215,76 @@ window_title = "lobby.title"
 dialog_text = "menu.multiplayer.warn"
 dialog_autowrap = true
 
+[node name="mobs_dialog" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -200.0
+margin_right = 320.0
+margin_bottom = 200.0
+window_title = "mobs.title"
+
+[node name="base" type="VBoxContainer" parent="mobs_dialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="mobs_selection" type="HBoxContainer" parent="mobs_dialog/base"]
+margin_right = 640.0
+margin_bottom = 30.0
+alignment = 1
+
+[node name="label" type="Label" parent="mobs_dialog/base/mobs_selection"]
+margin_top = 3.0
+margin_right = 318.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+text = "mobs.select"
+align = 2
+
+[node name="select" type="OptionButton" parent="mobs_dialog/base/mobs_selection"]
+margin_left = 322.0
+margin_right = 346.0
+margin_bottom = 30.0
+size_flags_horizontal = 2
+
+[node name="mob_info" type="HBoxContainer" parent="mobs_dialog/base"]
+margin_top = 34.0
+margin_right = 640.0
+margin_bottom = 400.0
+size_flags_vertical = 3
+
+[node name="mob_visual" type="ViewportContainer" parent="mobs_dialog/base/mob_info"]
+margin_right = 212.0
+margin_bottom = 366.0
+size_flags_horizontal = 3
+stretch = true
+
+[node name="viewport" type="Viewport" parent="mobs_dialog/base/mob_info/mob_visual"]
+size = Vector2( 212, 366 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="root" type="Node2D" parent="mobs_dialog/base/mob_info/mob_visual/viewport"]
+position = Vector2( 106, 183 )
+scale = Vector2( 5, 5 )
+
+[node name="description" type="RichTextLabel" parent="mobs_dialog/base/mob_info"]
+margin_left = 216.0
+margin_right = 640.0
+margin_bottom = 366.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/bold_font = ExtResource( 5 )
+bbcode_enabled = true
+
 [connection signal="pressed" from="shop_button" to="." method="shop"]
 [connection signal="pressed" from="classes_button" to="." method="classes"]
-[connection signal="pressed" from="exit" to="." method="exit"]
+[connection signal="pressed" from="exit_button" to="." method="exit"]
 [connection signal="pressed" from="help_button" to="help_dialog" method="popup_centered"]
+[connection signal="pressed" from="mobs_button" to="." method="mobs"]
 [connection signal="pressed" from="minigames_button" to="select_minigame" method="popup_centered"]
 [connection signal="pressed" from="multiplayer_button" to="multiplayer" method="popup_centered"]
 [connection signal="pressed" from="education4/main/end" to="education4" method="end"]
@@ -1224,6 +1304,7 @@ dialog_autowrap = true
 [connection signal="pressed" from="multiplayer/join" to="." method="join_room"]
 [connection signal="pressed" from="multiplayer/guide" to="multiplayer/guide_dialog" method="popup_centered"]
 [connection signal="item_selected" from="multiplayer/select_level" to="." method="_on_select_level_item_selected"]
+[connection signal="item_selected" from="mobs_dialog/base/mobs_selection/select" to="." method="_on_mob_select_item_selected"]
 
 [editable path="education0"]
 [editable path="education2"]

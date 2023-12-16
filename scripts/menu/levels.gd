@@ -9,6 +9,23 @@ var CLASS_ICONS = {
 	"archer" : load("res://textures/classes/archer_helmet.png"),
 	"player" : null
 }
+var mobs_parsed = false
+var mobs_data = {
+	"shroom" : [0, 0, "res://prefabs/mobs/mushroom.tscn"],
+	"knife" : [1, 1, "res://prefabs/mobs/knife_man.tscn"],
+	"shooter" : [1, 5, "res://prefabs/mobs/shooter.tscn"],
+	"sport" : [3, 1, "res://prefabs/mobs/sportsman.tscn"],
+	"knight" : [4, 1, "res://prefabs/mobs/knight_mob.tscn"],
+	"doctor" : [5, 1, "res://prefabs/mobs/doctor.tscn"],
+	"spartan" : [6, 1, "res://prefabs/mobs/spartan.tscn"],
+	"magic" : [7, 1, "res://prefabs/mobs/magician.tscn"],
+	"mech" : [9, 1, "res://prefabs/mobs/mechanic.tscn"],
+	"robot" : [9, 1, "res://prefabs/mobs/mechanic.tscn"],
+	"werewolf.human" : [10, 1, "res://prefabs/mobs/mechanic.tscn"],
+	"werewolf" : [10, 1, "res://prefabs/mobs/mechanic.tscn"],
+}
+var mobs_id_mappings = {}
+var mobs_scenes = {}
 
 
 func _ready():
@@ -109,6 +126,27 @@ func help():
 	get_tree().change_scene("res://scenes/menu/story.tscn")
 
 
+func mobs():
+	if not mobs_parsed:
+		mobs_parsed = true
+		var current_level = G.getv("level", "1_1").split('_')
+		var location = int(current_level[0])
+		var level = int(current_level[1])
+		var idx = 0
+		for i in mobs_data:
+			if mobs_data[i][0] > location:
+				break
+			if mobs_data[i][0] == location:
+				if mobs_data[i][1] >= level:
+					break
+			mobs_scenes[i] = load(mobs_data[i][2])
+			mobs_id_mappings[idx] = i
+			$mobs_dialog/base/mobs_selection/select.add_item(tr("mob." + i))
+			idx += 1
+		_on_mob_select_item_selected(0)
+	$mobs_dialog.popup_centered()
+
+
 func create_room():
 	$multiplayer.hide()
 	play_lvl(str($multiplayer/location.value) + "_" + str($multiplayer/level.value))
@@ -141,6 +179,26 @@ func _on_level_location_value_changed(value):
 	$multiplayer/join.disabled = false
 	var nums = new_lvl.split("_")
 	$multiplayer/select_level.selected = (int(nums[0]) - 1) * 10 + int(nums[1]) - 1
+
+
+func _on_mob_select_item_selected(index):
+	var mob_name = mobs_id_mappings[index]
+	$mobs_dialog/base/mob_info/description.bbcode_text = "[b]" + tr("mob." + mob_name) + \
+			"[/b]\n" + tr("mob." + mob_name + ".desc")
+	if $mobs_dialog/base/mob_info/mob_visual/viewport/root.has_node("visual"):
+		$mobs_dialog/base/mob_info/mob_visual/viewport/root/visual.free()
+		$mobs_dialog/base/mob_info/mob_visual/viewport/root/anim.free()
+	var scene = mobs_scenes[mob_name].instance()
+	var visual = scene.get_node("visual")
+	var anim = scene.get_node("anim")
+	scene.remove_child(visual)
+	scene.remove_child(anim)
+	$mobs_dialog/base/mob_info/mob_visual/viewport/root.add_child(visual)
+	$mobs_dialog/base/mob_info/mob_visual/viewport/root.add_child(anim)
+	visual.owner = self
+	anim.owner = self
+	anim.play("idle")
+	scene.free()
 
 
 func _enter_tree():

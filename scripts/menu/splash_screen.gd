@@ -11,11 +11,11 @@ onready var label = $label
 
 
 func _ready():
-	$update.get_ok().text = tr("ss.update.do")
-	$update.get_cancel().text = tr("ss.update.cancel")
 	$privacy_policy.get_close_button().hide()
 	$age.get_close_button().hide()
 	TranslationServer.set_locale(G.main_getv("lang", "ru"))
+	$update.get_ok().text = tr("ss.update.do")
+	$update.get_cancel().text = tr("ss.update.cancel")
 	if not G.main_getv("privacy_policy", false):
 		G.main_setv("lang", "ru" if OS.get_locale_language() == "ru" else "en")
 		TranslationServer.set_locale(G.main_getv("lang", "en"))
@@ -34,7 +34,7 @@ func _ready():
 			G.main_setv("patch_code", 0)
 	
 	G.ad.initialize(G.main_getv("age", 0))
-	if G.percent_chance(0.1):
+	if G.percent_chance(1):
 		$anim.play("easter_egg")
 	else:
 		$anim.play("splash")

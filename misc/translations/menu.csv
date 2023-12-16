@@ -485,7 +485,6 @@ gameover.title,ИГРА ОКОНЧЕНА,GAME OVER
 gameover.retry,Попробовать снова,Try again
 gameover.menu,Выйти в меню,Back to menu
 minigame.s,Мини-игры,Mini-games
-minigame.select,Выбери мини-игру,Select mini-game
 menu.edu.again,Ты действительно хочешь посмотреть историю и пройти обучение заново?,Are you really want to see story and complete tutorial again?
 menu.edu,Обучение,Tutorial
 menu.multiplayer.guide,"Игра поддерживает совместный мультиплеер. Для начала игроки должны подключиться к одной сети, выбрать уровень, на котором будут играть, и игрока, который будет выступать в роли сервера. Он заходит на выбранный уровень, и рядом с кнопкой ""Играть"" нажимает стрелочку, затем ""Создать комнату..."". Другие игроки тем временем выбирают тот же уровень, нажимают ту же стрелочку, но уже ""Присоединиться..."". Есть два способа подключения:
@@ -572,3 +571,207 @@ shop.25tickets,25 БИЛЕТОВ,25 TICKETS
 shop.40tickets,40 БИЛЕТОВ,40 TICKETS
 compensation.title,Компенсация,Compensation
 compensation.desc,"На этом сохранении были куплены мини-игры за монеты. Поскольку их больше не надо покупать из-за добавления билетов, забери компенсацию: билеты (%d).","On this save, mini-games were bought for coins. Since they no longer need to be bought due to the addition of tickets, take the compensation: tickets (%d)."
+mobs.title,Справочник по монстрам,Mobs guide
+mobs.select,Выбери монстра: ,Select monster: 
+mob.shroom,Гриб,Mushroom
+mob.shroom.desc,"Здоровье: [color=lime]низкое[/color]
+Защита: [color=aqua]отсутствует[/color]
+Атака: [color=blue]средняя[/color]
+Скорость: [color=aqua]неподвижен[/color]
+
+Старый добрый гриб, оставшийся ещё с прошлого метеорита. Побитый жизнью, он всё ещё хочет остановить тебя.
+
+Слабость: [color=fuchsia]неподвижен[/color]","Health: [color=lime]low[/color]
+Defense: [color=aqua]no[/color]
+Attack: [color=blue]medium[/color]
+Speed: [color=aqua]can’t move[/color]
+
+A good old mushroom left over from the last meteorite. Beaten by life, he still wants to stop you.
+
+Weakness: [color=fuchsia]can’t move[/color]"
+mob.knife,Человек с ножом,Knife Man
+mob.knife.desc,"Здоровье: [color=blue]нормальное[/color]
+Защита: [color=blue]средняя[/color]
+Атака: [color=blue]средняя[/color]
+Скорость: [color=blue]средняя[/color]
+
+Обычный человек, решивший сделать себе бутерброд. Но темная энергия внутри него манит сделать его не из хлеба и сыра, а из тебя!
+
+Слабость: [color=fuchsia]дальний бой[/color]","Health: [color=blue]normal[/color]
+Defense: [color=blue]average[/color]
+Attack: [color=blue]medium[/color]
+Speed: [color=blue]normal[/color]
+
+An ordinary person who decided to make himself a sandwich. But the dark energy inside him beckons to make it not with bread and cheese, but with you!
+
+Weakness: [color=fuchsia]range combat[/color]"
+mob.shooter,Стрелок,Shooter
+mob.shooter.desc,"Здоровье: [color=aqua]очень низкое[/color]
+Защита: [color=blue]средняя[/color]
+Атака: [color=lime]слабая[/color], два выстрела
+Скорость: [color=red]высокая[/color]
+
+Эта маленькая девочка любит свой пистолет, но больше всего она любит стрелять из него в глаза других!
+
+Слабость: [color=fuchsia]ближний бой[/color]","Health: [color=aqua]very low[/color]
+Defense: [color=blue]average[/color]
+Attack: [color=lime]low[/color], two shots
+Speed: [color=red]high[/color]
+
+This little girl loves her gun, but most of all she loves to shoot it in the eyes of others!
+
+Weakness: [color=fuchsia]close comabt[/color]"
+mob.sport,Спортсмен,Sportsman
+mob.sport.desc,"Здоровье: [color=maroon]очень высокое[/color]
+Защита: [color=aqua]отсутствует[/color]
+Атака: [color=blue]средняя[/color], два удара
+Скорость: [color=maroon]очень высокая[/color]
+
+Несмотря на свой возраст, спортсмен находится в отличной форме. Не пытайся убежать, он обязательно догонит тебя! Но всё же старость не позволяет ему нагнуться...
+
+Слабость: [color=fuchsia]выступ в 1 блок[/color]","Health: [color=maroon]very high[/color]
+Defense: [color=aqua]no[/color]
+Attack: [color=blue]medium[/color], two punches
+Speed: [color=maroon]very high[/color]
+
+Despite his age, sportsman is in great shape. Don't try to run away, he will definitely catch up with you! But still, old age does not allow him to bend down...
+
+Weakness: [color=fuchsia]ledge in 1 block[/color]"
+mob.knight,Рыцарь,Knight
+mob.knight.desc,"Здоровье: [color=red]высокое[/color]
+Защита: [color=red]высокая[/color]
+Атака: [color=red]сильная[/color]
+Скорость: [color=lime]низкая[/color]
+
+Сила атаки в сочетании со здоровьем и защитой делают его очень опасным в ближнем бою. Но доспехи дают о себе знать: со своей скоростью рыцарь ничего не сможет противопоставить в дальнем бою.
+
+Слабость: [color=fuchsia]дальний бой[/color]","Health: [color=red]high[/color]
+Defense: [color=red]high[/color]
+Attack: [color=red]high[/color]
+Speed: [color=lime]low[/color]
+
+His attack power combined with his health and defense make him very dangerous in close combat. But the armor makes itself felt: with his speed, the knight won't be able to match anything in ranged combat.
+
+Weakness: [color=fuchsia]range combat[/color]"
+mob.doctor,Доктор,Doctor
+mob.doctor.desc,"Здоровье: [color=blue]нормальное[/color]
+Защита: [color=blue]средняя[/color]
+Атака: [color=lime]слабая[/color] + яд
+Скорость: [color=red]высокая[/color]
+
+Раньше она была отличным доктором, помогающим людям. Но тьма свела её с ума, из-за чего она перестала выдавать другие рецепты, кроме серии уколов.
+
+Слабость: [color=fuchsia]ближний бой[/color]","Health: [color=blue]normal[/color]
+Defense: [color=blue]average[/color]
+Attack: [color=lime]low[/color] + poison
+Speed: [color=red]high[/color]
+
+She used to be a great doctor helping people. But the darkness drove her crazy, which is why she stopped giving out other prescriptions except for a series of injections.
+
+Weakness: [color=fuchsia]close combat[/color]"
+mob.spartan,Спартанец,Spartan
+mob.spartan.desc,"Здоровье: [color=blue]нормальное[/color]
+Защита: [color=aqua]отсутствует[/color]
+Атака: [color=blue]средняя[/color], сильно отбрасывает
+Скорость: [color=red]высокая[/color]
+
+Типичный житель Красного мира. Шрамы на его лице отражают сложность его бытия. Нет, они не от огня или чего-то подобного. Он много дрался. Ногами.
+
+Слабость: [color=fuchsia]остановка атаки[/color]","Health: [color=blue]normal[/color]
+Defense: [color=aqua]no[/color]
+Attack: [color=blue]medium[/color], knockbacks strongly
+Speed: [color=red]high[/color]
+
+A typical inhabitant of the Red World. The scars on his face reflect the complexity of his being. No, they're not from fire or anything like that. He fought a lot. With legs.
+
+Weakness: [color=fuchsia]attack stop[/color]"
+mob.magic,Маг,Magician
+mob.magic.desc,"Здоровье: [color=lime]низкое[/color]
+Защита: [color=blue]средняя[/color]
+Атака: [color=blue]средняя[/color], по полу
+Скорость: [color=blue]средняя[/color]
+Особенность: [color=fuchsia]лечение себя и монстров поблизости[/color]
+
+Он очень похож на шамана из первой части. Но это другой монстр. Потому что он теперь заботится не только о себе, но и о своих товарищах!
+
+Слабость: [color=fuchsia]слаб в одиночку[/color]","Health: [color=lime]low[/color]
+Defense: [color=blue]average[/color]
+Attack: [color=blue]medium[/color], on floor
+Speed: [color=blue]normal[/color]
+Special: [color=fuchsia]can heal himself and monsters nearby[/color]
+
+He looks very much like the shaman from the first part. But this is a different monster. Because now he cares not only about himself, but also about his comrades!
+
+Weakness: [color=fuchsia]weak alone[/color]"
+mob.mech,Механик,Mechanic
+mob.mech.desc,"Здоровье: [color=lime]низкое[/color]
+Защита: [color=blue]средняя[/color]
+Атака: [color=red]сильная[/color]
+Скорость: [color=red]высокая[/color]
+Особенность: [color=fuchsia]может сесть в робота[/color]
+
+Будучи победителем олимпиады по робототехнике, механик очень хорошо разбирается в ней. Он даже собрал собственного робота, но далеко не для благих целей…
+
+Слабость: [color=fuchsia]дальний бой[/color]","Health: [color=lime]low[/color]
+Defense: [color=blue]average[/color]
+Attack: [color=red]high[/color]
+Speed: [color=red]high[/color]
+Special: [color=fuchsia]can hop in robot[/color]
+
+Being the winner of the Robotics Olympiad, the mechanic is very well versed in it. He even built his own robot, but not for good purposes.…
+
+Weakness: [color=fuchsia]range combat[/color]"
+mob.robot,Робот механика,Mechanic’s Bot
+mob.robot.desc,"Здоровье: [color=red]высокое[/color]
+Защита: [color=aqua]отсутствует[/color]
+Атака: [color=maroon]очень сильная[/color] (большой шар), [color=blue]средняя[/color] (маленькие шары)
+Скорость: [color=lime]низкая[/color]
+Особенность: [color=fuchsia]при разрушении робота из него выпрыгивает механик[/color]
+
+Это первый робот-убийца у механика. А точнее третий. Две прошлые модели были потеряны в драках, очень эффектно.
+
+Слабость: [color=fuchsia]ближний бой[/color]","Health: [color=red]high[/color]
+Defense: [color=aqua]no[/color]
+Attack: [color=maroon]very high[/color] (big ball), [color=blue]medium[/color] (small balls)
+Speed: [color=lime]low[/color]
+Special: [color=fuchsia]after destroying mechanic hops out[/color]
+
+This is the mechanic's first killer robot. Or rather the third one. Two previous models were lost in fights, very spectacularly.
+
+Weakness: [color=fuchsia]close combat[/color]"
+mob.werewolf.human,Оборотень (человек),Werewolf (human)
+mob.werewolf.human.desc,"Здоровье: [color=lime]низкое[/color]
+Защита: [color=blue]средняя[/color]
+Атака: [color=red]сильная[/color] (выстрел)
+Скорость: [color=lime]низкая[/color]
+Особенность: [color=fuchsia]при сближении с игроком превращается в животное[/color]
+
+Он не хочет никому навредить, он лишь хочет свободное личное пространство. А пистолет так, для самообороны.
+
+Слабость: [color=fuchsia]дальний бой[/color]","Health: [color=lime]low[/color]
+Defense: [color=blue]average[/color]
+Attack: [color=red]high[/color] (shot)
+Speed: [color=lime]low[/color]
+Special: [color=fuchsia]turns into animal when close to player[/color]
+
+He doesn't want to hurt anyone, he just wants free personal space. And the gun is just for self-defense.
+
+Weakness: [color=fuchsia]range combat[/color]"
+mob.werewolf,Оборотень,Werewolf
+mob.werewolf.desc,"Здоровье: [color=red]высокое[/color]
+Защита: [color=aqua]отсутствует[/color]
+Атака: [color=red]сильная[/color] (удар когтями)
+Скорость: [color=maroon]очень высокая[/color]
+Особенность: [color=fuchsia]превращается в человека вдали от игрока[/color]
+
+Тёмная энергия даровала ему такую сильную форму. Огромные когти, густая шерсть... Разве не мечта? Да только погладить его вряд ли получится...
+
+Слабость: [color=fuchsia]аккуратная игра[/color]","Health: [color=red]high[/color]
+Defense: [color=aqua]no[/color]
+Attack: [color=red]high[/color] (claws)
+Speed: [color=maroon]very high[/color]
+Special: [color=fuchsia]turns into human when far from player[/color]
+
+The dark energy gave him such a strong form. Huge claws, thick fur... Isn't that a dream? Yes, but it is unlikely that you will be able to stroke him...
+
+Weakness: [color=fuchsia]accurate fight[/color]"
