@@ -11,6 +11,7 @@ func _ready():
 	$settings/name_change.get_ok().text = tr("menu.change")
 	$settings/name_change.get_cancel().text = tr("menu.cancel")
 	$settings/name_change.get_label().align = Label.ALIGN_CENTER
+	$settings/name_change.register_text_enter($settings/name_change/line_edit)
 	$settings/conf.get_label().align = Label.ALIGN_CENTER
 	$settings/conf.get_cancel().text = tr("menu.cancel")
 	$settings/conf.get_ok().text = tr("menu.yes")
@@ -44,13 +45,15 @@ func _ready():
 	if OS.has_feature("pc"):
 		$settings/contr.hide()
 		$settings/contr_pc.show()
+		var controls = load("res://prefabs/menu/controls_pc.tscn").instance()
+		$settings.add_child(controls)
+		$settings/contr_pc.connect("pressed", controls, "popup_centered")
 	if not G.dialog_in_menu.empty():
-		var dialog = $dialog
-		dialog.dialog_text = G.dialog_in_menu
+		$dialog.dialog_text = G.dialog_in_menu
 		G.dialog_in_menu = ""
-		dialog.popup_centered()
+		$dialog.popup_centered()
 	
-	if G.getv("hate_level", -2) == -2:
+	if not G.hasv("hate_level"):
 		G.calculate_hate_level()
 	if not G.getv("rated", false):
 		var curr_lvl = G.getv("level", "1_1")

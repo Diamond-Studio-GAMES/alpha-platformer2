@@ -173,9 +173,12 @@ hate.revive.1,НЕ СЕГОДНЯ!!!,NOT TODAY!!!
 1_1.dude,Чувак…,Dude…
 1_1.goright,Ты куда идёшь? Иди вправо!,Where are you going? Go right!
 1_1.hello,Привет! Двигайся с помощью стрелок в левом нижнем углу!,Hello! Move with the arrows in the lower left corner!
+1_1.hello.pc,Привет! Используй %s и %s для движения.,Hello! Use %s and %s to move.
 1_1.jump,Теперь прыгни с помощью стрелки в правом нижнем углу!,Now jump with the arrow in the lower right corner!
+1_1.jump.pc,%s — для прыжка.,Use %s to jump.
 1_1.fight,Молодец! Пришла пора драться!,Well done! It’s time to fight!
 1_1.butt,Используй кнопку в виде ножа для атаки! Будь осторожен!,Use the knife-shaped button to attack! Be careful!
+1_1.butt.pc,"%s — для атаки. Открой настройки, если хочешь поменять управление.",Use %s for attack. Open settings if you want to change controls.
 1_1.shroomtip,"Этот гриб ударит тебя, если его коснуться. Бей его на расстоянии.",This mushroom will hurt you if you touch it. Hit him from a distance.
 1_1.anotherone,Так держать! Дальше ещё один враг!,Keep it up! There is another enemy!
 1_1.mantip,Этот враг бьёт тебя ножом в зоне его атаки раз в несколько секунд.,This enemy stabs you in his attack zone every few seconds.

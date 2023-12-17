@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://prefabs/effects/background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/game/other/end_star.gd" type="Script" id=2]
@@ -16,6 +16,39 @@
 [ext_resource path="res://prefabs/blocks/tab.tscn" type="PackedScene" id=14]
 [ext_resource path="res://prefabs/mobs/knife_man.tscn" type="PackedScene" id=15]
 [ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=16]
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends Node2D
+
+# PC changer
+
+func _ready():
+	if not OS.has_feature(\"pc\"):
+		return
+	$think2.text = tr(\"1_1.hello.pc\") % [
+		_get_event_as_text(InputMap.get_action_list(\"left\")[0]),
+		_get_event_as_text(InputMap.get_action_list(\"right\")[0])
+	]
+	$think3.text = tr(\"1_1.jump.pc\") % [_get_event_as_text(InputMap.get_action_list(\"jump\")[0])]
+	$think5.text = tr(\"1_1.butt.pc\") % [_get_event_as_text(InputMap.get_action_list(\"attack1\")[0])]
+
+
+func _get_event_as_text(event: InputEvent):
+	if event is InputEventMouseButton:
+		match event.button_index:
+			BUTTON_RIGHT:
+				return tr(\"mouse.right\")
+			BUTTON_MIDDLE:
+				return tr(\"mouse.middle\")
+			BUTTON_XBUTTON1:
+				return tr(\"mouse.x1\")
+			BUTTON_XBUTTON2:
+				return tr(\"mouse.x2\")
+	if event is InputEventKey:
+		if event.physical_scancode != 0:
+			return event.as_text().split(' ')[0]
+	return event.as_text()
+"
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.58042, 1 )
@@ -251,6 +284,7 @@ position = Vector2( 1552, 0 )
 text = "1_1.mantip3"
 
 [node name="thinks" type="Node2D" parent="."]
+script = SubResource( 6 )
 
 [node name="think" parent="thinks" instance=ExtResource( 11 )]
 text = "1_1.goright"
@@ -260,7 +294,7 @@ color = Color( 1, 0, 0, 1 )
 [node name="think2" parent="thinks" instance=ExtResource( 11 )]
 position = Vector2( 360, 0 )
 text = "1_1.hello"
-time = 6.0
+time = 7.0
 
 [node name="think3" parent="thinks" instance=ExtResource( 11 )]
 position = Vector2( 576, 0 )

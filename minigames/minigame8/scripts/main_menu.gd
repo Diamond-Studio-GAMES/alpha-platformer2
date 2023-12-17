@@ -9,7 +9,7 @@ func _ready():
 	if not G.getv("fnas_bought", false):
 		$game_buttons.hide()
 		$buy.show()
-	if G.getv("night") == 0:
+	if not G.hasv("night"):
 		G.setv("night", 1)
 	$game_buttons/continue/label.text = tr("8.night") + str(G.getv("night", 1))
 

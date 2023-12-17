@@ -243,6 +243,10 @@ func addv(name, value, default_value = 0):
 	save_file.set_value("save", name, save_file.get_value("save", name, default_value) + value)
 
 
+func hasv(name):
+	return save_file.has_section_key("save", name)
+
+
 func main_setv(name, value):
 	main_file.set_value("config", name, value)
 
@@ -253,6 +257,10 @@ func main_getv(name, default_value = 0):
 
 func main_addv(name, value, default_value = 0):
 	main_file.set_value("config", name, main_file.get_value("config", name, default_value) + value)
+
+
+func main_hasv(name):
+	return main_file.has_section_key("config", name)
 
 
 func set_save_meta(id, meta, data):

@@ -127,23 +127,6 @@ menu.last_confirm,Удалить сохранение?,Delete save?
 menu.last_confirm.text,Ты уверен?,Are you sure?
 menu.current_name,Текущее имя: ,Current name: 
 menu.changing_name,Смена имени,Changing name
-menu.controls.pc.text,"Стрелка влево/A — Движение влево
-Стрелка вправо/D — Движение вправо
-Стрелка вверх/Пробел/W — Прыжок
-C/Нажатие правой кнопки мыши — Атака
-X — Использовать навык
-Z — Использовать душ. навык
-1/2/3 — Использовать зелье уровня 1/2/3
-Q — Открыть выбор эмоций
-Прицеливание осуществляется мышью.","Left arrow/A — Movement to the left
-Right arrow/D — Movement to the right
-Up arrow/Space/W — Jump
-C/Right Mouse Button — Attack
-X — Use skill
-Z — Use soul skill
-1/2/3 — Use level 1/2/3 potion
-Q — Open emotion selection
-Aiming is done with mouse."
 menu.warning,Предупреждение!,Warning!
 menu.blw.text,"Опция ""Красивый свет"" может привести к потере производительности, рекомендуем её включать только на ПК или мощном смартфоне.","The ""Beautiful light"" option can lead to a loss of performance, we recommend turning it on only on a PC or a powerful smartphone."
 menu.gr.proj_effects,Эффекты снарядов,Projectile effects
@@ -164,6 +147,27 @@ menu.skip,Пропустить обучение,Skip tutorial
 menu.rate.title,Оцени нас!,Rate us!
 menu.rate.text,"Дорогой игрок! Мы очень старались над этой игрой и будем очень рады, если ты оценишь её на 5 звёзд!","Dear player! We worked hard on this game, and we will be very happy if you rate it 5 stars!"
 menu.rate,Оценить,Rate
+event.info,Левая кнопка мыши используется для прицела.,Left Mouse Button is used for aiming.
+event.left,Влево:,Left:
+event.right,Вправо:,Right:
+event.jump,Прыжок:,Jump:
+event.attack1,Атака:,Attack:
+event.ulti,Навык:,Skill:
+event.gadget,Душевный навык:,Soul skill:
+event.potion1,Зелье 1-го уровня:,1st level potion:
+event.potion2,Зелье 2-го уровня:,2nd level potion:
+event.potion3,Зелье 3-го уровня:,3rd level potion:
+event.emotions,Выбор эмоции:,Emotions menu:
+event.pause,Пауза:,Pause:
+event.change,Изменить…,Edit…
+event.change.ok,Изменить,OK
+event.change.title,Изменение события для действия «%s»...,Editing event for action «%s»…
+event.change.wait,Жду нажатия…,Waiting for input…
+event.reset,Вернуть значения по умолчанию,Reset to defaults
+mouse.right,Правая кнопка,Right button
+mouse.middle,Средняя кнопка,Middle button
+mouse.x1,Боковая кнопка 1,Side button 1
+mouse.x2,Боковая кнопка 2,Side button 2
 achv.boss1,Это мои овцы,These sheeps are mine
 achv.boss1.desc,Победи Пастуха.,Defeat the Shepherd.
 achv.boss2,Экологический борец,Ecologic fighter
@@ -571,7 +575,7 @@ shop.25tickets,25 БИЛЕТОВ,25 TICKETS
 shop.40tickets,40 БИЛЕТОВ,40 TICKETS
 compensation.title,Компенсация,Compensation
 compensation.desc,"На этом сохранении были куплены мини-игры за монеты. Поскольку их больше не надо покупать из-за добавления билетов, забери компенсацию: билеты (%d).","On this save, mini-games were bought for coins. Since they no longer need to be bought due to the addition of tickets, take the compensation: tickets (%d)."
-mobs.title,Справочник по монстрам,Mobs guide
+mobs.title,Справочник по монстрам,Monsters guide
 mobs.select,Выбери монстра: ,Select monster: 
 mob.shroom,Гриб,Mushroom
 mob.shroom.desc,"Здоровье: [color=lime]низкое[/color]
