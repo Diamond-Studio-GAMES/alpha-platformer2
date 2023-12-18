@@ -17,12 +17,12 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "AdMobAPI",
 "language": "GDScript",
-"path": "res://scripts/menu/admob.gd"
+"path": "res://scripts/menu/other/admob_api.gd"
 }, {
 "base": "Node",
 "class": "AdsManager",
 "language": "GDScript",
-"path": "res://scripts/menu/ads_manager.gd"
+"path": "res://scripts/menu/other/ads_manager.gd"
 }, {
 "base": "Player",
 "class": "Archer",
@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Box",
 "language": "GDScript",
-"path": "res://scripts/menu/box.gd"
+"path": "res://scripts/menu/main/box.gd"
 }, {
 "base": "Player",
 "class": "Butcher",
@@ -87,7 +87,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Globals",
 "language": "GDScript",
-"path": "res://scripts/game/globals.gd"
+"path": "res://scripts/globals.gd"
 }, {
 "base": "Area2D",
 "class": "Heal",
@@ -197,12 +197,12 @@ _global_script_classes=[ {
 "base": "CryptoKey",
 "class": "Promocode",
 "language": "GDScript",
-"path": "res://scripts/menu/promocode.gd"
+"path": "res://scripts/menu/other/promocode.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Pushable",
 "language": "GDScript",
-"path": "res://scripts/game/other/block.gd"
+"path": "res://scripts/game/blocks/block.gd"
 }, {
 "base": "Mob",
 "class": "Shooter",
@@ -255,7 +255,7 @@ _global_script_classes=[ {
 "path": "res://scripts/game/player/player_wizard.gd"
 } ]
 _global_script_class_icons={
-"Achievements": "",
+"Achievements": "res://textures/achievements/complete.png",
 "AdMobAPI": "",
 "AdsManager": "",
 "Archer": "",
@@ -324,7 +324,7 @@ default_bus_layout="res://misc/bus_layout.tres"
 
 [autoload]
 
-G="*res://scripts/game/globals.gd"
+G="*res://scripts/globals.gd"
 MP="*res://scripts/game/multiplayer/multiplayer.gd"
 
 [compression]

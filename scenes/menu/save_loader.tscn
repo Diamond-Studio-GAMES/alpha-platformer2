@@ -5,12 +5,12 @@
 [ext_resource path="res://textures/effects/other/glow.png" type="Texture" id=3]
 [ext_resource path="res://themes/save_load_theme.tres" type="Theme" id=4]
 [ext_resource path="res://textures/gui/soul.png" type="Texture" id=5]
-[ext_resource path="res://scripts/menu/export.gd" type="Script" id=6]
+[ext_resource path="res://scripts/menu/other/export.gd" type="Script" id=6]
 [ext_resource path="res://textures/gui/save_bg_effect.tres" type="Texture" id=7]
 [ext_resource path="res://textures/blocks/meteorit.png" type="Texture" id=8]
 [ext_resource path="res://sounds/music/menu/save_load.ogg" type="AudioStream" id=9]
 [ext_resource path="res://textures/gui/save_bg_player.tres" type="Texture" id=10]
-[ext_resource path="res://scripts/menu/save_loader.gd" type="Script" id=11]
+[ext_resource path="res://scripts/menu/main/save_loader.gd" type="Script" id=11]
 
 [sub_resource type="Animation" id=2]
 length = 0.001

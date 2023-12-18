@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scripts/game/other/think.gd" type="Script" id=1]
+[ext_resource path="res://scripts/game/blocks/think.gd" type="Script" id=1]
 [ext_resource path="res://textures/classes/player_control.tres" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]

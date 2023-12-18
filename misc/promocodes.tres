@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=53 format=2]
 
-[ext_resource path="res://scripts/menu/promocode.gd" type="Script" id=1]
+[ext_resource path="res://scripts/menu/other/promocode.gd" type="Script" id=1]
 
 [sub_resource type="CryptoKey" id=2]
 script = ExtResource( 1 )

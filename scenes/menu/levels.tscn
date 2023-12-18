@@ -11,7 +11,7 @@
 [ext_resource path="res://prefabs/menu/level_dialog.tscn" type="PackedScene" id=30]
 [ext_resource path="res://textures/gui/exit.png" type="Texture" id=35]
 [ext_resource path="res://textures/gui/shop_icon.png" type="Texture" id=48]
-[ext_resource path="res://scripts/menu/levels.gd" type="Script" id=56]
+[ext_resource path="res://scripts/menu/main/levels.gd" type="Script" id=56]
 
 [sub_resource type="CanvasItemMaterial" id=279]
 blend_mode = 4
