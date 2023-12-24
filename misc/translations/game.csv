@@ -38,8 +38,6 @@ boss.follower2,,
 boss.follower2.mercy,,
 boss.follower2.defeat,,
 boss.main,,
-boss.main.defeat,,
-boss.main.mercy,,
 miss.miss,МИМО,MISS
 location.field,Поле,Field
 location.forest,Лес,Forest
@@ -217,7 +215,7 @@ hate.revive.1,НЕ СЕГОДНЯ!!!,NOT TODAY!!!
 2_5.you,"?/т.-=,.||.,=ы-+#","?/y.-=,.||.,o=-+u#"
 2_6.portal,"Это что, портал? Откуда?",Is this a portal? From where?
 2_6.how,Как они работают?,How do they work?
-2_9.shlyuhi,"Я слышал%, что в местных школах восьмиклассницы - пр*ст*тутки…",I've heard that eighth graders are h*rlots in local schools…
+2_9.shlyuhi,"Есть слухи, что в местных школах восьмиклассницы - пр*ст*тутки…",I've heard that eighth graders are h*rlots in local schools…
 2_10.boss.start,"Лесоруб: Ну что, сразимся???","Lumberjack: Well, shall we fight???"
 2_10.boss.0,Лесоруб: Здесь ты значит…,Lumberjack: You are here…
 3_2.client,И их главный клиент - физрук…,And their main client is PE teacher…

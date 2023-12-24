@@ -13,7 +13,7 @@ func request():
 	OS.request_permissions()
 
 
-func export_file():
+func export_data():
 	var dir = Directory.new()
 	dir.make_dir_recursive(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS).plus_file("apa2_backups"))
 	var saves_path = "user://saves/"
@@ -29,14 +29,20 @@ func export_file():
 				cf.set_value(filename, i, cfc.get_value("save", i))
 		filename = dir.get_next()
 	cf.save("user://export_cache.apa2saves.uncompressed")
-	var of = File.new()
-	var nf = File.new()
-	of.open("user://export_cache.apa2saves.uncompressed", File.READ)
-	nf.open_compressed(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS).plus_file("apa2_backups").plus_file(str(int(Time.get_unix_time_from_system())) + ".apa2saves.png"), File.WRITE, File.COMPRESSION_FASTLZ)
-	nf.store_string(of.get_as_text())
-	of.close()
-	nf.close()
+	var file = File.new()
+	file.open("user://export_cache.apa2saves.uncompressed", File.READ)
+	var data = file.get_as_text()
+	file.close()
 	dir.remove("user://export_cache.apa2saves.uncompressed")
+	return data
+
+
+func export_file():
+	var data = export_data()
+	var nf = File.new()
+	nf.open_compressed(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS).plus_file("apa2_backups").plus_file(str(int(Time.get_unix_time_from_system())) + ".apa2saves.png"), File.WRITE, File.COMPRESSION_FASTLZ)
+	nf.store_string(data)
+	nf.close()
 
 
 func import_file():
@@ -56,9 +62,22 @@ func import_file():
 		list_item = dir.get_next()
 	var f = File.new()
 	f.open_compressed(dir.get_current_dir().plus_file(str(list.max()) + "." + ext), File.READ, File.COMPRESSION_FASTLZ)
-	var cf = ConfigFile.new()
-	cf.parse(f.get_as_text())
+	var data = f.get_as_text()
 	f.close()
+	import_data(data, true)
+
+
+func import_data(data, clear_current):
+	if clear_current:
+		var dir = Directory.new()
+		dir.open("user://saves/")
+		dir.list_dir_begin(true)
+		var file = dir.get_next()
+		while file != "":
+			dir.remove(file)
+			file = dir.get_next()
+	var cf = ConfigFile.new()
+	cf.parse(data)
 	for i in cf.get_sections():
 		var c = ConfigFile.new()
 		for j in cf.get_section_keys(i):
