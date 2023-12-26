@@ -64,3 +64,6 @@ sl.misc.remove.note,"Внимание: в патчах содержатся ис
 Изменения будут применены после перезапуска игры.","Warning: patches contain bug fixes, and if you delete them, you can encounter those bugs. Delete only if you encounter some new bugs after downloading patch.
 Changes will be applied after restarting the game."
 sl.misc.check.upd.beta,Оповещать о новых бета-версиях,Check new beta-versions
+sl.cloud,ОБЛАЧНЫЕ СОХРАНЕНИЯ,CLOUD SAVES
+sl.cloud.more, и ещё %d, and %d more
+sl.cloud.no,Нет сохранений,No saves

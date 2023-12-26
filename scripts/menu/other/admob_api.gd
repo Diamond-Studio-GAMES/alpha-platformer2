@@ -49,7 +49,7 @@ func _ready() -> void:
 	if Engine.has_singleton("AdMob"):
 		_plugin = Engine.get_singleton("AdMob")
 	else:
-		print("AdMob not found. Current platform: " + OS.get_name())
+		print("AdMob is unavailable! Current platform: " + OS.get_name())
 
 func get_is_initialized() -> bool:
 	if _plugin:

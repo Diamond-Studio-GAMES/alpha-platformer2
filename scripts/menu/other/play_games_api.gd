@@ -21,11 +21,11 @@ func open_saved_games():
 	if not play_games.isSignedIn():
 		play_games.signIn()
 	else:
-		play_games.showSavedGames(tr("sl.title"), true, true, 16)
+		play_games.showSavedGames(tr("sl.cloud"), true, true, 16)
 
 
 func _on_sign_in_success(account_id):
-	play_games.showSavedGames(tr("sl.title"), true, true, 16)
+	play_games.showSavedGames(tr("sl.cloud"), true, true, 16)
 
 
 func _on_game_load_success(data):
@@ -33,5 +33,17 @@ func _on_game_load_success(data):
 
 
 func _on_create_new_snapshot(snapshot_name):
-	var datetime = Time.get_datetime_string_from_system(false, true)
-	play_games.saveSnapshot(snapshot_name, $"../../export".export_data(), "datetime")
+	var save_name = _create_save_name()
+	play_games.saveSnapshot(snapshot_name, $"../../export".export_data(), save_name)
+
+
+func _create_save_name():
+	var amount = $"../../saves/scroll/saves".get_child_count()
+	var text = ""
+	if amount == 0:
+		return tr("sl.cloud.no")
+	text += $"../../saves/scroll/saves".get_child(0).get_node("name").text
+	if amount > 1:
+		text += tr("sl.cloud.more")
+		text = text % amount
+	return text

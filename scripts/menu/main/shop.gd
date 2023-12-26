@@ -84,9 +84,7 @@ func init_iap():
 		payment.connect("purchase_error", self, "_on_purchase_error")
 		payment.connect("product_details_query_completed", self, "_on_sku_details_query_completed")
 		payment.connect("product_details_query_error", self, "_on_sku_details_query_error")
-		payment.connect("purchase_acknowledged", self, "_on_purchase_acknowledged")
 		payment.connect("purchase_acknowledgement_error", self, "_on_purchase_acknowledgement_error")
-		payment.connect("purchase_consumed", self, "_on_purchase_consumed")
 		payment.connect("purchase_consumption_error", self, "_on_purchase_consumption_error")
 		payment.connect("query_purchases_response", self, "_on_query_purchases_response")
 		payment.startConnection()
@@ -95,7 +93,6 @@ func init_iap():
 
 
 func _on_connected():
-	print("PurchaseManager connected")
 	payment.querySkuDetails([GEMS_500_SKU, GEMS_1250_SKU, GEMS_2500_SKU, NO_ADS_SKU], "inapp")
 	payment.queryPurchases("inapp")
 
@@ -139,7 +136,6 @@ func _on_sku_details_query_completed(sku_details):
 func _on_purchases_updated(purchases):
 	for purchase in purchases:
 		if not purchase.is_acknowledged and purchase.purchase_state == 1:
-			print("Purchase " + str(purchase.products[0]) + " has not been acknowledged. Acknowledging...")
 			match purchase.products[0]:
 				GEMS_500_SKU:
 					get_gems(500)
@@ -153,14 +149,6 @@ func _on_purchases_updated(purchases):
 				payment.consumePurchase(purchase.purchase_token)
 			else:
 				payment.acknowledgePurchase(purchase.purchase_token)
-
-
-func _on_purchase_acknowledged(purchase_token):
-	print("Purchase acknowledged: %s" % purchase_token)
-
-
-func _on_purchase_consumed(purchase_token):
-	print("Purchase consumed successfully: %s" % purchase_token)
 
 
 func _on_purchase_error(code, message):

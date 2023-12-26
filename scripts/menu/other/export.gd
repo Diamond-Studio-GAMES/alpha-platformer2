@@ -64,7 +64,7 @@ func import_file():
 	f.open_compressed(dir.get_current_dir().plus_file(str(list.max()) + "." + ext), File.READ, File.COMPRESSION_FASTLZ)
 	var data = f.get_as_text()
 	f.close()
-	import_data(data, true)
+	import_data(data, false)
 
 
 func import_data(data, clear_current):
