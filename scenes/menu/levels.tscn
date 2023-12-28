@@ -856,6 +856,16 @@ margin_top = 152.0
 margin_right = 1435.0
 margin_bottom = 192.0
 
+[node name="9_1" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1445.0
+margin_top = 140.0
+margin_right = 1485.0
+margin_bottom = 180.0
+
 [node name="shop_button" type="Button" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0

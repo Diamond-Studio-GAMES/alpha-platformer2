@@ -234,6 +234,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/game/mobs/sportsman.gd"
 }, {
+"base": "StaticBody2D",
+"class": "TNT",
+"language": "GDScript",
+"path": "res://scripts/game/blocks/tnt.gd"
+}, {
 "base": "Node2D",
 "class": "Throwable",
 "language": "GDScript",
@@ -300,6 +305,7 @@ _global_script_class_icons={
 "Spearman": "",
 "SpeedChange": "",
 "Sportsman": "",
+"TNT": "",
 "Throwable": "",
 "Trail2D": "",
 "VirtualJoystick": "",
