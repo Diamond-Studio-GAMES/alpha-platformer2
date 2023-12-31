@@ -17,33 +17,27 @@ centered = false
 
 [node name="layer2" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0.2, 0 )
+motion_offset = Vector2( -900, -270 )
 motion_mirroring = Vector2( 1800, 0 )
 
 [node name="sprite" type="Sprite" parent="layer2"]
 texture = ExtResource( 4 )
-
-[node name="sprite2" type="Sprite" parent="layer2"]
-position = Vector2( 1800, 0 )
-texture = ExtResource( 4 )
+centered = false
 
 [node name="layer1" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0.4, 0 )
+motion_offset = Vector2( -900, -270 )
 motion_mirroring = Vector2( 1800, 0 )
 
 [node name="sprite" type="Sprite" parent="layer1"]
 texture = ExtResource( 3 )
-
-[node name="sprite2" type="Sprite" parent="layer1"]
-position = Vector2( 1800, 0 )
-texture = ExtResource( 3 )
+centered = false
 
 [node name="layer0" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0.6, 0 )
+motion_offset = Vector2( -900, -270 )
 motion_mirroring = Vector2( 1800, 0 )
 
 [node name="sprite" type="Sprite" parent="layer0"]
 texture = ExtResource( 2 )
-
-[node name="sprite2" type="Sprite" parent="layer0"]
-position = Vector2( 1800, 0 )
-texture = ExtResource( 2 )
+centered = false

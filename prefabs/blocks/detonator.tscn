@@ -4,7 +4,7 @@
 [ext_resource path="res://textures/blocks/detonator.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 15, 2.5 )
+extents = Vector2( 15, 3 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 12, 0.5 )
@@ -21,7 +21,7 @@ vframes = 2
 frame = 1
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -2.5 )
+position = Vector2( 0, -3 )
 shape = SubResource( 6 )
 
 [node name="plate" type="Area2D" parent="."]
