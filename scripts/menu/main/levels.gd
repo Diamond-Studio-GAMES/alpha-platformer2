@@ -20,7 +20,7 @@ var mobs_data = {
 	"spartan" : [6, 1, "res://prefabs/mobs/spartan.tscn"],
 	"magic" : [7, 1, "res://prefabs/mobs/magician.tscn"],
 	"mech" : [9, 1, "res://prefabs/mobs/mechanic.tscn"],
-	"robot" : [9, 1, "res://prefabs/mobs/mechanic.tscn"],
+	"robot" : [9, 1, "res://prefabs/mobs/mechanic_robot.tscn"],
 	"werewolf.human" : [10, 1, "res://prefabs/mobs/mechanic.tscn"],
 	"werewolf" : [10, 1, "res://prefabs/mobs/mechanic.tscn"],
 }

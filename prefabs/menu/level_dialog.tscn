@@ -247,8 +247,8 @@ margin_left = -40.0
 margin_top = -48.0
 margin_right = 40.0
 margin_bottom = -16.0
+grow_horizontal = 2
 text = "menu.play"
-clip_text = true
 
 [node name="menu" type="MenuButton" parent="select_level_dialog/play"]
 anchor_left = 1.0
@@ -520,7 +520,7 @@ dialog_autowrap = true
 [node name="alert_layer" type="CanvasLayer" parent="."]
 layer = 2
 
-[connection signal="pressed" from="select_level_dialog/play" to="select_level_dialog" method="play"]
+[connection signal="pressed" from="select_level_dialog/play" to="select_level_dialog" method="menu_pressed" binds= [ 2 ]]
 [connection signal="item_selected" from="select_level_dialog/class2" to="select_level_dialog" method="select_class"]
 [connection signal="pressed" from="lobby_dialog/lobby/start_game" to="lobby_dialog" method="start_game"]
 [connection signal="pressed" from="lobby_dialog/lobby/disconnect" to="lobby_dialog" method="do_disconnect"]

@@ -5,9 +5,15 @@ enum Type {
 	SELECT_LEVEL = 0,
 	END_LEVEL = 1
 }
+enum PlayButtonMode {
+	DEFAULT = 0,
+	CREATE_ROOM = 1,
+	JOIN = 2,
+}
 var curr_lvl = "1_1"
 var curr_day = 0
 var curr_ut = 0
+var play_button_mode = PlayButtonMode.DEFAULT
 var prev_classes = []
 var end_rewards = {}
 var gen := RandomNumberGenerator.new()
@@ -41,6 +47,18 @@ func _ready():
 	for i in range(5):
 		$class2.set_item_disabled(i, not G.CLASSES_ID[i] in G.getv("classes", []))
 	prev_classes = G.getv("classes", [])
+	match G.cached_multiplayer_role:
+		G.MultiplayerRole.CLIENT:
+			play_button_mode = PlayButtonMode.JOIN
+			$play.text = tr("level_dialog.multiplayer.join")
+			$play/menu.get_popup().set_item_text(1, "menu.play")
+		G.MultiplayerRole.SERVER:
+			play_button_mode = PlayButtonMode.CREATE_ROOM
+			$play.text = tr("level_dialog.multiplayer.create")
+			$play/menu.get_popup().set_item_text(0, "menu.play")
+		G.MultiplayerRole.NONE:
+			play_button_mode = PlayButtonMode.DEFAULT
+	G.cached_multiplayer_role = G.MultiplayerRole.NONE
 
 
 func _process(delta):
@@ -145,6 +163,16 @@ func play():
 	if get_tree().current_scene.name == "game_over":
 		G.setv("go_chance", true)
 	G.change_to_scene("res://scenes/levels/level_" + curr_lvl + ".tscn")
+
+
+func create():
+	hide()
+	$"../lobby_dialog".create()
+
+
+func join():
+	hide()
+	$"../lobby_dialog".join()
 
 
 func claim_reward():
@@ -308,9 +336,22 @@ func menu():
 
 
 func menu_pressed(id):
-	hide()
 	match id:
 		0:
-			$"../lobby_dialog".create()
+			if play_button_mode == PlayButtonMode.CREATE_ROOM:
+				play()
+			else:
+				create()
 		1:
-			$"../lobby_dialog".join()
+			if play_button_mode == PlayButtonMode.JOIN:
+				play()
+			else:
+				join()
+		2:
+			match play_button_mode:
+				PlayButtonMode.CREATE_ROOM:
+					create()
+				PlayButtonMode.JOIN:
+					join()
+				PlayButtonMode.DEFAULT:
+					play()

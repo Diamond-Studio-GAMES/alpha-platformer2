@@ -190,9 +190,11 @@ func _process(delta):
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or is_hurt or is_using_gadget or is_stunned or _is_attacking or _is_ultiing or not can_control:
+	if is_hurt or is_using_gadget or _is_attacking:
 		return
-	.use_gadget()
+	var success = .use_gadget()
+	if not success:
+		return
 	attack_cooldown = 0
 	can_attack = true
 	is_using_gadget = true

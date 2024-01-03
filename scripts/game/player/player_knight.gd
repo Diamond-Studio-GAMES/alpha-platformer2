@@ -130,9 +130,11 @@ func _process(delta):
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or is_hurt or is_stunned or not can_control:
+	if is_hurt:
 		return
-	.use_gadget()
+	var success = .use_gadget()
+	if not success:
+		return
 	is_active_gadget = true
 	$gadget_active.emitting = true
 	yield(get_tree().create_timer(2, false), "timeout")

@@ -20,7 +20,7 @@
 [ext_resource path="res://textures/mobs/mechanic/leg1.tres" type="Texture" id=18]
 [ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=19]
 [ext_resource path="res://textures/classes/knight_helmet.png" type="Texture" id=20]
-[ext_resource path="res://prefabs/mobs/shooter.tscn" type="PackedScene" id=21]
+[ext_resource path="res://prefabs/mobs/mechanic_robot.tscn" type="PackedScene" id=21]
 [ext_resource path="res://textures/gui/health_bar_empty.tres" type="Texture" id=22]
 [ext_resource path="res://textures/effects/attacks/knife0.tres" type="Texture" id=23]
 [ext_resource path="res://textures/effects/other/use_item_0.tres" type="Texture" id=24]
@@ -1408,7 +1408,7 @@ animation = "transform"
 animation = "walk"
 
 [sub_resource type="AnimationNodeBlendTree" id=90]
-graph_offset = Vector2( 29.6958, -8.48188 )
+graph_offset = Vector2( -289.139, 32.6389 )
 nodes/attack/node = SubResource( 75 )
 nodes/attack/position = Vector2( -94.1176, 329.412 )
 nodes/attack_seek/node = SubResource( 89 )
@@ -1434,7 +1434,7 @@ nodes/trans_shot/node = SubResource( 93 )
 nodes/trans_shot/position = Vector2( 494.118, 117.647 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "attack_seek", 0, "attack", "trans_shot", 0, "attack_shot", "trans_shot", 1, "trans", "death_trans", 0, "trans_shot", "death_trans", 1, "death", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
+node_connections = [ "output", 0, "death_trans", "attack_seek", 0, "attack", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "trans_shot", "death_trans", 1, "death", "trans_shot", 0, "attack_shot", "trans_shot", 1, "trans", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek" ]
 
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 8.0
@@ -1467,7 +1467,7 @@ script = ExtResource( 16 )
 max_health = 60
 attack_damage = 30
 reaction_speed = 0.5
-vision_distance = 300.0
+vision_distance = 360.0
 head_path = NodePath("visual/body/head")
 head_sprite_path = "res://textures/mobs/mechanic/head.tres"
 head_hurt_sprite_path = "res://textures/mobs/mechanic/head_hurt.tres"
@@ -1488,8 +1488,8 @@ __meta__ = {
 }
 
 [node name="head" type="Sprite" parent="visual/body"]
-position = Vector2( 0, -11.0522 )
-rotation = 0.0390819
+position = Vector2( 0, -10.6972 )
+rotation = 0.0700603
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 offset = Vector2( 0, -16 )
@@ -1521,7 +1521,7 @@ position = Vector2( 7.5, -18.5 )
 texture = ExtResource( 7 )
 
 [node name="arm_left" type="Sprite" parent="visual/body"]
-position = Vector2( -0.841847, -9.93495 )
+position = Vector2( -0.841847, -9.57997 )
 rotation = 0.349066
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 17 )
@@ -1552,7 +1552,7 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 29 )
 
 [node name="arm_right" type="Sprite" parent="visual/body"]
-position = Vector2( 0.84, -9.93215 )
+position = Vector2( 0.84, -9.57717 )
 rotation = -0.349066
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 17 )

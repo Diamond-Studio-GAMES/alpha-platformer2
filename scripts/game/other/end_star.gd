@@ -44,6 +44,8 @@ func end_level(l):
 		yield(get_tree().create_timer(0.5, false), "timeout")
 	G.addv("levels_completed", 1)
 	if MP.is_active:
+		G.cached_multiplayer_role = G.MultiplayerRole.SERVER if get_tree().is_network_server() \
+				else G.MultiplayerRole.CLIENT
 		G.addv("mp_levels", 1)
 		G.ach.complete(Achievements.BETTER_TOGETHER)
 		MP.close_network()

@@ -175,9 +175,9 @@ func revive(hpc = -1):
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or not can_control:
-		return
 	if ulti_percentage >= 100:
 		return
-	.use_gadget()
+	var success = .use_gadget()
+	if not success:
+		return
 	ulti_percentage = clamp(ulti_percentage + 40, 0, 100)

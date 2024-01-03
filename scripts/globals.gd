@@ -15,7 +15,7 @@ var current_level = "1_1"
 var current_scene = ""
 var current_tickets = 0
 var cached_ip = ""
-var cached_suff = 0
+var cached_multiplayer_role = MultiplayerRole.NONE
 var custom_respawn_scene = ""
 var dialog_in_menu = ""
 var fps_text
@@ -172,6 +172,11 @@ enum Amulet {
 	RELOAD = 4,
 	ULTI = 5,
 	NONE = -1,
+}
+enum MultiplayerRole {
+	NONE = 0,
+	SERVER = 1,
+	CLIENT = 2,
 }
 
 signal loot_end

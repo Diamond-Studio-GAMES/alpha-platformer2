@@ -14,7 +14,7 @@ func _ready():
 		play_games.connect("_on_create_new_snapshot", self, "_on_create_new_snapshot")
 	else:
 		hide()
-		prints("Google Play Games is not available! Platform:", OS.get_name())
+		prints("Google Play Games is unavailable! Platform:", OS.get_name())
 
 
 func open_saved_games():

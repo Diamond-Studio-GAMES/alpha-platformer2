@@ -247,9 +247,9 @@ func _process(delta):
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or not can_control:
+	var success = .use_gadget()
+	if not success:
 		return
-	.use_gadget()
 	var node = gadget_attack.instance()
 	node.global_position = global_position + Vector2.UP * 150
 	_level.add_child(node)

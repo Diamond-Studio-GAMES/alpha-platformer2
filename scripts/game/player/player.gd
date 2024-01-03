@@ -281,7 +281,7 @@ func hate_head_spawn(force = false, time = -1):
 func hate_head_clear():
 	if not is_instance_valid(hate_head_node):
 		return
-	if _move_direction.x < 0:
+	if _move_direction.x < 0 and can_turn:
 		return
 	if _body.scale.x < 0:
 		return
@@ -713,10 +713,10 @@ func idle_heal():
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or current_health <= 0 or not can_control:
-		return
+	if gadget_cooldown > 0 or gadget_count <= 0 or current_health <= 0 or not can_control or is_stunned or _is_drinking or _is_ultiing:
+		return false
 	if hate_refuse():
-		return
+		return false
 	ms.sync_call(self, "use_gadget")
 	if MP.auth(self):
 		G.addv("gadget_used", 1)
@@ -726,6 +726,7 @@ func use_gadget():
 	gadget_counter.text = str(gadget_count)
 	$gadget_use.restart()
 	_health_timer = 0
+	return true
 
 
 func revive(hp_count = -1):

@@ -169,9 +169,11 @@ func revive(hpc = -1):
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or _is_drinking or _is_ultiing or not can_control:
+	if _is_ultiing:
+		return false
+	var success = .use_gadget()
+	if not success:
 		return
-	.use_gadget()
 	var effect = THEWORLD.instance()
 	add_child(effect)
 	_camera_tween.interpolate_property($visual/body/arm_right/hand/weapon, "self_modulate", Color.white, Color(1,1,1,0), 0.5)

@@ -1251,7 +1251,7 @@ tracks/18/enabled = true
 tracks/18/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ false ]
 }
 tracks/19/type = "value"
@@ -2026,7 +2026,7 @@ nodes/ulti_shot/node = SubResource( 94 )
 nodes/ulti_shot/position = Vector2( 1035.29, 70.5882 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "potion_shot", 0, "throw_shot", "potion_shot", 1, "potion_seek", "attack_seek", 0, "attack", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "potion_seek", 0, "potion", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "throw_shot", 0, "attack_shot", "throw_shot", 1, "throw" ]
+node_connections = [ "output", 0, "death_trans", "potion_seek", 0, "potion", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "throw_shot", 0, "attack_shot", "throw_shot", 1, "throw", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "potion_shot", 0, "throw_shot", "potion_shot", 1, "potion_seek", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_seek", 0, "attack", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti" ]
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.24788
