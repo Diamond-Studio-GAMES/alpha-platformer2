@@ -12,7 +12,7 @@ onready var path_ray_left = $path_ray_cast_left
 onready var path_ray_right = $path_ray_cast_right
 var _min_distance = 0
 var transform_effect = load("res://prefabs/effects/transform_mechanic.tscn")
-var transform_timer = 2
+var transform_timer = 0
 var _is_transforming = false
 
 
@@ -22,6 +22,7 @@ func _ready():
 	attack_damage = round(stats_multiplier * attack_damage)
 	_min_distance = min_distance * min_distance
 	$visual/body/knife_attack.damage = attack_damage
+	transform_timer = rand_range(1, 3)
 
 
 func attack():
