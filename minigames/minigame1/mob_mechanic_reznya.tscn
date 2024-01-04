@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://prefabs/mobs/mechanic.tscn" type="PackedScene" id=1]
+[ext_resource path="res://minigames/minigame1/mob_mechanic_robot_reznya.tscn" type="PackedScene" id=2]
+
+[node name="mob_mechanic" instance=ExtResource( 1 )]
+max_health = 45
+stats_multiplier = 2.0
+attack_damage = 75
+vision_distance = 6000.0
+to_spawn = ExtResource( 2 )
+
+[node name="head" parent="visual/body" index="0"]
+position = Vector2( 0, -10.8211 )
+rotation = 0.0592418
+
+[node name="arm_left" parent="visual/body" index="1"]
+position = Vector2( -0.841847, -9.70394 )
+
+[node name="arm_right" parent="visual/body" index="3"]
+position = Vector2( 0.84, -9.70114 )
+
+[node name="anim" parent="." index="2"]
+blend_times = [ "attack", "attack", 0.3, "attack", "idle", 0.3, "attack", "walk", 0.5, "death", "attack", 0.3, "death", "walk", 0.5, "hurt", "attack", 0.3, "hurt", "idle", 0.3, "hurt", "walk", 0.5, "idle", "attack", 0.3, "idle", "idle", 0.3, "idle", "walk", 0.5, "walk", "attack", 0.3, "walk", "idle", 0.3, "walk", "walk", 0.5 ]
