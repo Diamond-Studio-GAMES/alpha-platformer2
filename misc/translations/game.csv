@@ -162,7 +162,8 @@ player.defeated,Поражение!,Defeated!
 player.revive.multiplayer,ВОСКРЕСИ МЕНЯ!,REVIVE ME!
 door.go,Перейти,Enter
 npc.talk,Говорить,Talk
-hate.up,Твой уровень ненависти повысился!,Your hate level has increased!
+hate.up,Твоя ненависть увеличилась!,Your hate has increased!
+hate.down,Ненависть очищена!,Hate cleared!
 hate.refuse.0,Нет!,No!
 hate.refuse.1,"Я сам знаю, что делать!",I know what to do!
 hate.refuse.2,Неа.,Nope.
@@ -365,3 +366,4 @@ Another: 6-7dmdtmkncetgankdt"":;:&№№:?№"
 9_4.remont,Лавопровод на ремонте,The lava pipeline is under repair
 9_5.rest,"Похоже на место, где отдыхали работники…",It looks like a place where the workers rested…
 9_5.pool,Даже бассейн есть!..,There is even a swimming pool!..
+9_8.lore,"Возможно, это место, где работал ALPHA 51…",Perhaps this is the place where ALPHA 51 worked.…

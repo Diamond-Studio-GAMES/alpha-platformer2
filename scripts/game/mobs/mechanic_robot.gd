@@ -123,6 +123,7 @@ func _spawn_owner():
 	var n = _owner.instance()
 	n.global_position = global_position
 	n.stats_multiplier = stats_multiplier
+	n.GRAVITY_SCALE = GRAVITY_SCALE
 	n.get_node("MultiplayerSynchronizer").syncing = true
 	get_parent().add_child(n, true)
 	n.current_health = owner_current_health

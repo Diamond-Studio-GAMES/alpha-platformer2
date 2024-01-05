@@ -181,7 +181,7 @@ func _ready():
 			face_chance = 6
 			face_duration = 1.5
 			auto_chance = 66
-			revive_chance = 33
+			revive_chance = 25
 			revive_amount = 10
 		4:
 			refuse_chance = 20
