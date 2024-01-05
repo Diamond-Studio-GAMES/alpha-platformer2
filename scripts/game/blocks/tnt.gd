@@ -28,7 +28,11 @@ func explode():
 				continue
 			decorate.set_cellv(center + Vector2(x, y), -1)
 			var curr_cell = tilemap.get_cellv(center + Vector2(x, y))
-			if curr_cell >= 0:
+			if curr_cell >= 0 and not (
+				tilemap.is_cell_transposed(center.x + x, center.y + y)
+				or tilemap.is_cell_x_flipped(center.x + x, center.y + y)
+				or tilemap.is_cell_y_flipped(center.x + x, center.y + y)
+			):
 				bg.set_cellv(center + Vector2(x, y), curr_cell)
 			tilemap.set_cellv(center + Vector2(x, y), -1)
 	yield(get_tree().create_timer(0.05, false), "timeout")
