@@ -690,7 +690,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 980, 180 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "big_shot", 0, "attack_shot", "big_shot", 1, "big_seek", "big_seek", 0, "big", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "big_shot", "death_trans", 1, "death", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_seek", 0, "attack", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
+node_connections = [ "output", 0, "death_trans", "big_shot", 0, "attack_shot", "big_shot", 1, "big_seek", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "death_trans", 0, "big_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "big_seek", 0, "big", "attack_seek", 0, "attack" ]
 
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 12.0
@@ -768,17 +768,17 @@ color = Color( 0.501961, 0, 1, 1 )
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="visual/body/arm_small/arm_small/shoot"]
 stream = SubResource( 99 )
-volume_db = -25.105
+volume_db = -3.0
 bus = "sfx"
 
 [node name="sfx2" type="AudioStreamPlayer2D" parent="visual/body/arm_small/arm_small/shoot"]
 stream = SubResource( 99 )
-volume_db = -25.105
+volume_db = -3.0
 bus = "sfx"
 
 [node name="sfx3" type="AudioStreamPlayer2D" parent="visual/body/arm_small/arm_small/shoot"]
 stream = SubResource( 99 )
-volume_db = -25.105
+volume_db = -3.0
 bus = "sfx"
 
 [node name="arm_big" type="Node2D" parent="visual/body"]
@@ -796,7 +796,7 @@ texture = ExtResource( 20 )
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="visual/body/arm_big/arm_big/ball"]
 stream = ExtResource( 12 )
-volume_db = -25.1046
+volume_db = 3.0
 pitch_scale = 0.75
 bus = "sfx"
 
