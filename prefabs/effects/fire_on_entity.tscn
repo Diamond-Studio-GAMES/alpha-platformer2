@@ -25,6 +25,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 2 )
 
 [node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 8 )
 shape = SubResource( 2 )
 
 [node name="smoke" type="CPUParticles2D" parent="."]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/factory_bg_base.png-f8db2b085c3d222df4ce27452fe5f9ca.stex"
+path="res://.import/background_base.png-e361b53d4fd521e061ac75f892af6e52.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/effects/backgrounds/factory_bg_base.png"
-dest_files=[ "res://.import/factory_bg_base.png-f8db2b085c3d222df4ce27452fe5f9ca.stex" ]
+source_file="res://textures/effects/backgrounds/background_base.png"
+dest_files=[ "res://.import/background_base.png-e361b53d4fd521e061ac75f892af6e52.stex" ]
 
 [params]
 

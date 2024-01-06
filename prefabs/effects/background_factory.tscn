@@ -2,7 +2,7 @@
 
 [ext_resource path="res://textures/effects/backgrounds/factory_bg_2.png" type="Texture" id=1]
 [ext_resource path="res://textures/effects/backgrounds/factory_bg_0.png" type="Texture" id=2]
-[ext_resource path="res://textures/effects/backgrounds/factory_bg_base.png" type="Texture" id=3]
+[ext_resource path="res://textures/effects/backgrounds/background_base.png" type="Texture" id=3]
 [ext_resource path="res://textures/effects/backgrounds/factory_bg_1.png" type="Texture" id=4]
 
 [node name="background" type="ParallaxBackground"]

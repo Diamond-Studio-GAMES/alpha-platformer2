@@ -23,6 +23,7 @@ custom_immobility_time = 0.0
 defense_allowed = false
 lifetime = 0.0
 is_on_entity = true
+immune_to_water = true
 on_entity_damage_ticks = 3
 
 [node name="shape" type="CollisionShape2D" parent="."]

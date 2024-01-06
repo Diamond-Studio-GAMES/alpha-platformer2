@@ -1,6 +1,7 @@
 [gd_scene load_steps=95 format=2]
 
 [ext_resource path="res://sounds/sfx/mob_death.wav" type="AudioStream" id=1]
+[ext_resource path="res://textures/effects/backgrounds/background_base.png" type="Texture" id=2]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=3]
 [ext_resource path="res://sounds/sfx/end_level.wav" type="AudioStream" id=4]
 [ext_resource path="res://textures/gui/health_bar.tres" type="Texture" id=5]
@@ -9,7 +10,6 @@
 [ext_resource path="res://textures/effects/backgrounds/cloud.png" type="Texture" id=8]
 [ext_resource path="res://scripts/game/other/end_star.gd" type="Script" id=9]
 [ext_resource path="res://scripts/game/bosses/egor.gd" type="Script" id=10]
-[ext_resource path="res://textures/effects/backgrounds/background.png" type="Texture" id=11]
 [ext_resource path="res://textures/bosses/egor/hair.tres" type="Texture" id=12]
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=13]
 [ext_resource path="res://themes/font.tres" type="DynamicFontData" id=14]
@@ -2799,7 +2799,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
+node_connections = [ "output", 0, "death_trans", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -3430,7 +3430,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/egor/mob_eg/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/egor/mob_eg/visual/body"]
-scale = Vector2( 1.25, 1.19538 )
+scale = Vector2( 1.25, 1.17535 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/egor/mob_eg"]
@@ -4050,18 +4050,16 @@ bus = "music"
 [node name="background_first" parent="." instance=ExtResource( 28 )]
 
 [node name="background" type="ParallaxBackground" parent="."]
-visible = false
 scroll_base_scale = Vector2( 1, 0.1 )
 scroll_ignore_camera_zoom = true
 
 [node name="sky" type="ParallaxLayer" parent="background"]
 motion_scale = Vector2( 0.05, 0.05 )
-motion_mirroring = Vector2( 1920, 1080 )
+motion_mirroring = Vector2( 1800, 540 )
 
 [node name="sky" type="Sprite" parent="background/sky"]
 self_modulate = Color( 0, 0.00784314, 0.243137, 1 )
-scale = Vector2( 6, 6 )
-texture = ExtResource( 11 )
+texture = ExtResource( 2 )
 centered = false
 
 [node name="sun" type="ParallaxLayer" parent="background"]
