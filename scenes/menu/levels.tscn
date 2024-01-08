@@ -23,7 +23,7 @@ theme = ExtResource( 3 )
 script = ExtResource( 56 )
 __meta__ = {
 "_edit_group_": true,
-"_edit_vertical_guides_": [ 4320.0, 4800.0 ]
+"_edit_vertical_guides_": [ 4800.0 ]
 }
 
 [node name="bg" type="ColorRect" parent="."]
@@ -861,100 +861,99 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1445.0
-margin_top = 140.0
-margin_right = 1485.0
-margin_bottom = 180.0
+margin_left = 1455.0
+margin_top = 141.0
+margin_right = 1495.0
+margin_bottom = 181.0
 
 [node name="9_2" type="Button" parent="levels/levels/buttons"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1491.0
-margin_top = 129.0
-margin_right = 1531.0
-margin_bottom = 169.0
+margin_left = 1529.0
+margin_top = 77.0
+margin_right = 1569.0
+margin_bottom = 117.0
 
 [node name="9_3" type="Button" parent="levels/levels/buttons"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1536.0
-margin_top = 118.0
-margin_right = 1576.0
-margin_bottom = 158.0
+margin_left = 1484.0
+margin_top = 35.0
+margin_right = 1524.0
+margin_bottom = 75.0
 
 [node name="9_4" type="Button" parent="levels/levels/buttons"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1581.0
-margin_top = 123.0
-margin_right = 1621.0
-margin_bottom = 163.0
+margin_left = 1567.0
+margin_right = 1607.0
+margin_bottom = 40.0
 
 [node name="9_5" type="Button" parent="levels/levels/buttons"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1626.0
-margin_top = 110.0
-margin_right = 1666.0
-margin_bottom = 150.0
+margin_left = 1604.0
+margin_top = 48.0
+margin_right = 1644.0
+margin_bottom = 88.0
 
 [node name="9_6" type="Button" parent="levels/levels/buttons"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1672.0
-margin_top = 122.0
-margin_right = 1712.0
-margin_bottom = 162.0
+margin_left = 1651.0
+margin_top = 48.0
+margin_right = 1691.0
+margin_bottom = 88.0
 
 [node name="9_7" type="Button" parent="levels/levels/buttons"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1719.0
-margin_top = 113.0
-margin_right = 1759.0
-margin_bottom = 153.0
+margin_left = 1721.0
+margin_top = 43.0
+margin_right = 1761.0
+margin_bottom = 83.0
 
 [node name="9_8" type="Button" parent="levels/levels/buttons"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1765.0
-margin_top = 106.0
-margin_right = 1805.0
-margin_bottom = 146.0
+margin_left = 1751.0
+margin_top = -16.0
+margin_right = 1791.0
+margin_bottom = 24.0
 
 [node name="9_9" type="Button" parent="levels/levels/buttons"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1812.0
-margin_top = 98.0
-margin_right = 1852.0
-margin_bottom = 138.0
+margin_left = 1818.0
+margin_top = -36.0
+margin_right = 1858.0
+margin_bottom = 4.0
 
 [node name="9_10" type="Button" parent="levels/levels/buttons"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1861.0
-margin_top = 106.0
-margin_right = 1901.0
-margin_bottom = 146.0
+margin_left = 1867.0
+margin_top = -39.0
+margin_right = 1907.0
+margin_bottom = 1.0
 
 [node name="shop_button" type="Button" parent="."]
 anchor_top = 1.0

@@ -184,8 +184,8 @@ achv.boss7,Государственный переворот,State coup
 achv.boss7.desc,Победи Красного Короля.,Defeat the Red King.
 achv.boss8,"Реквием, да!","Requiem, da!"
 achv.boss8.desc,Победите Егора.,Defeat the Egor.
-achv.boss9,,
-achv.boss9.desc,,
+achv.boss9,Месть рабочих,Revenge of the workers
+achv.boss9.desc,Победите Максима.,Defeat the Max.
 achv.boss10,,
 achv.boss10.desc,,
 achv.what_is_it,Это что?,What is it?
@@ -262,8 +262,8 @@ achv.return_to_sender,Вернуть отправителю,Return to sender
 achv.return_to_sender.desc,"Получи урон от собственного снаряда, отражённого Чёрным магом.","Take damage from your own projectile, reflected by the Black Wizard."
 achv.hacker,Взломщик,Burglar
 achv.hacker.desc,Открой 50 ящиков.,Open 50 boxes.
-,,
-,,
+achv.bomber,Подрывник,Bomber
+achv.bomber.desc,Взорви врага динамитом.,Explode enemy with TNT.
 achv.hero,ГЕРОЙ!,THE HERO!
 achv.hero.desc,Пройди игру!,Complete the game!
 amulet.none,Нет,None

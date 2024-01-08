@@ -23,6 +23,7 @@ const POTION_MAN = "10_potions"
 const PROZAPASS = "max_potions"
 const BURN_HER_FASTER = "burn_enemy"
 const THIS_IS_SPARTA = "fall_enemy_death"
+const BOMBER = "tnt_enemy_death"
 const FUUUUCK = "death_with_potion"
 const SOME_PEOPLES = "about"
 const REZNYA = "reznya"
@@ -57,6 +58,11 @@ signal effect_completed
 var blocked_counter = 0
 var achievement_get = load("res://prefabs/menu/achievement_complete.tscn")
 var achievements = {
+	HERO : {
+		"icon" : load("res://textures/achievements/complete.png"),
+		"name" : "achv.hero",
+		"desc" : "achv.hero.desc"
+	},
 	# Boss achievemnts
 	BOSS1 : {
 		"icon" : load("res://textures/achievements/boss1.png"),
@@ -98,13 +104,12 @@ var achievements = {
 		"name" : "achv.boss8",
 		"desc" : "achv.boss8.desc"
 	},
-	# BOSS 9
-	# BOSS 10
-	HERO : {
-		"icon" : load("res://textures/achievements/complete.png"),
-		"name" : "achv.hero",
-		"desc" : "achv.hero.desc"
+	BOSS9 : {
+		"icon" : load("res://textures/achievements/boss9.png"),
+		"name" : "achv.boss9",
+		"desc" : "achv.boss9.desc"
 	},
+	# BOSS 10
 	# Upgrade achievements
 	WHAT_IS_IT : {
 		"icon" : load("res://textures/achievements/first_class.png"),
@@ -166,6 +171,11 @@ var achievements = {
 		"icon" : load("res://textures/achievements/fall_enemy_death.png"),
 		"name" : "achv.this_is_sparta",
 		"desc" : "achv.this_is_sparta.desc"
+	},
+	BOMBER : {
+		"icon" : load("res://textures/achievements/tnt_enemy_death.png"),
+		"name" : "achv.bomber",
+		"desc" : "achv.bomber.desc"
 	},
 	KILLER : {
 		"icon" : load("res://textures/achievements/killer.png"),
@@ -300,7 +310,6 @@ var achievements = {
 		"name" : "achv.escape",
 		"desc" : "achv.escape.desc"
 	},
-	# Missing
 }
 
 

@@ -81,7 +81,7 @@ func calculate_fall_damage():
 		return
 	elif GRAVITY_SCALE < 0 and _start_falling_y < global_position.y:
 		return
-	if distance_falling > 480:
+	if distance_falling > 512:
 		hurt(1, 0, false, true, false, 1, 0.5, 0.4, "fall")
 	elif distance_falling > 416:
 		hurt(round(max_health * 0.7), 0, false, false, false, 1, 1.5, 1.2, "fall")

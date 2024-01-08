@@ -91,6 +91,8 @@ func _hurt_intermediate(damage_source, died):
 			G.ach.complete(Achievements.BURN_HER_FASTER)
 		elif damage_source == "fall":
 			G.ach.complete(Achievements.THIS_IS_SPARTA)
+		elif damage_source == "tnt":
+			G.ach.complete(Achievements.BOMBER)
 		collision_layer = 0b0
 		collision_mask = 0b1
 

@@ -49,6 +49,7 @@ damage = 250
 knockback = 8.0
 custom_invincibility_time = 2.0
 custom_immobility_time = 2.0
+damage_source = "tnt"
 lifetime = 0.0
 
 [node name="shape" type="CollisionShape2D" parent="explosion"]

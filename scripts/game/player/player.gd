@@ -688,7 +688,7 @@ func _physics_process(delta):
 	if MP.auth(self):
 		if _health_timer >= 300 and current_health < round(max_health * 0.75) and current_health > 0:
 			idle_heal()
-	if _health_timer < 240:
+	if _health_timer < 237:
 		_healed_times = 0
 	
 	if smooth_camera and MP.auth(self):
@@ -705,7 +705,7 @@ func _physics_process(delta):
 func idle_heal():
 	ms.sync_call(self, "idle_heal")
 	_heal_particles.restart()
-	_health_timer = 240
+	_health_timer = 237
 	_healed_times += 1
 	var percent = 0.03 + _healed_times * 0.0075
 	current_health = clamp(round(current_health + max_health * percent), 0, round(max_health * 0.75))

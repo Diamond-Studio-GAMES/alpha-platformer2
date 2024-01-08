@@ -80,7 +80,7 @@ func attack():
 		if randi() % 10 == 2:
 			node.damage *= 3
 			node.modulate = Color.black
-		_level.add_child(node)
+		_level.add_child(node, true)
 	_is_attacking = false
 
 
@@ -102,7 +102,7 @@ func oraoraora():
 			node.rotation_degrees = 180
 		node.global_position = global_position + offset
 		node.get_node("attack").damage = 30 + curr_lvl_loc * 3
-		_level.add_child(node)
+		_level.add_child(node, true)
 	_is_attacking = false
 
 

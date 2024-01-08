@@ -34,9 +34,9 @@ boss.king.mercy,Красный король: Используй свою сил�
 boss.follower1,Егор,Egor
 boss.follower1.mercy,Егор: Ты… Зачем?..,Egor: You… Why?
 boss.follower1.defeat,Егор: Ну вот и всё…,"Egor: Now, that’s all…"
-boss.follower2,,
-boss.follower2.mercy,,
-boss.follower2.defeat,,
+boss.follower2,Максим,Max
+boss.follower2.mercy,"Максим: Но его… Нет, ты сможешь!","Max: But him… No, you can!"
+boss.follower2.defeat,"Максим: Возможно, сейчас ты и победил…","Max: Maybe, you won this time…"
 boss.main,,
 miss.miss,МИМО,MISS
 location.field,Поле,Field
@@ -373,3 +373,16 @@ Another: 6-7dmdtmkncetgankdt"":;:&№№:?№"
 способной превращать всё в пиксели...»","A page from the diary. It says: ""A pixel is an artifact with the power
 to turn everything into pixels..."""
 9_9.sisyphus,Сизиф 2,Sisyphus 2
+9_10.boss.death.0,Максим: Жалкое зрелище.,Max: Pitiful sight.
+9_10.boss.death.1,Максим: А я уж думал…,Max: I was already thinking…
+9_10.boss.death.2,Максим: Какая жалость!,Max: What a pity!
+9_10.boss.death.3,Максим: Плохо. Очень плохо.,Max: Bad. Very bad.
+9_10.boss.start,Максим: ...поработать и УМЕРЕТЬ!,Max: ...to work and DIE!
+9_10.boss.0,"Максим: Ну-ка, кто там идёт… Да это же наш бунтарь!",Max: Who’s going there… It’s our outlaw!
+9_10.boss.1,Максим: Каким-то образом ты сумел% победить Егора…,Max: Somehow you were able to defeat Egor…
+9_10.boss.2,Максим: Но не радуйся: сильным особо он и не был.,Max: But don’t be happy: he wasn’t strong.
+9_10.boss.3,"Максим: Да и не любил я его, странно он одевался…","Max: And I didn’t love him, he dressed strangely…"
+9_10.boss.4,Максим: И вежливый был весь такой!..,Max: And he was so polite!..
+9_10.boss.5,Максим: Вернёмся к тебе. Каким-то чудом ты преодолел% завод.,Max: You. Somehow you passed the factory.
+9_10.boss.6,"Максим: И, наверное, уже знаешь, что здесь произошло с рабочими.","Max: And probably you already know, what happened here with workers."
+9_10.boss.7,Максим: Пора и тебе…,Max: It’s time for you…
