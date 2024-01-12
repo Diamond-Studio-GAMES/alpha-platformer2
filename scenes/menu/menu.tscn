@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/menu/main/menu.gd" type="Script" id=1]
 [ext_resource path="res://themes/font_headers.tres" type="DynamicFont" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://textures/effects/backgrounds/red_world_castle_bg.png" type="Texture" id=14]
 [ext_resource path="res://textures/gui/exit.png" type="Texture" id=15]
 [ext_resource path="res://textures/effects/backgrounds/village_bg.png" type="Texture" id=16]
+[ext_resource path="res://textures/effects/backgrounds/factory_bg.png" type="Texture" id=17]
 
 [sub_resource type="Animation" id=1]
 resource_name = "main"
@@ -352,14 +353,14 @@ centered = false
 self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -98.8315, 0 )
 scale = Vector2( 1.25, 1.25 )
-texture = ExtResource( 8 )
+texture = ExtResource( 17 )
 centered = false
 
 [node name="bg9" type="Sprite" parent="bg"]
 self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -84, 0 )
 scale = Vector2( 1.25, 1.25 )
-texture = ExtResource( 4 )
+texture = ExtResource( 8 )
 centered = false
 
 [node name="anim" type="AnimationPlayer" parent="bg"]
