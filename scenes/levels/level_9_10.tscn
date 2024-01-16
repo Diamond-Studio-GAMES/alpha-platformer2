@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://sounds/sfx/mob_death.wav" type="AudioStream" id=1]
 [ext_resource path="res://scripts/game/bosses/maxim.gd" type="Script" id=2]
@@ -11,23 +11,28 @@
 [ext_resource path="res://scripts/game/other/end_star.gd" type="Script" id=9]
 [ext_resource path="res://textures/bosses/maxim/avatar.png" type="Texture" id=10]
 [ext_resource path="res://textures/blocks/tiles5.png" type="Texture" id=11]
-[ext_resource path="res://textures/bosses/egor/hair.tres" type="Texture" id=12]
+[ext_resource path="res://textures/bosses/maxim/hair.tres" type="Texture" id=12]
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=13]
 [ext_resource path="res://themes/font.tres" type="DynamicFontData" id=14]
 [ext_resource path="res://scripts/game/other/level.gd" type="Script" id=15]
 [ext_resource path="res://textures/effects/other/heal_plus.png" type="Texture" id=16]
-[ext_resource path="res://textures/bosses/egor/leg1.tres" type="Texture" id=17]
+[ext_resource path="res://textures/bosses/maxim/hand1.tres" type="Texture" id=17]
 [ext_resource path="res://sounds/sfx/heal.wav" type="AudioStream" id=18]
-[ext_resource path="res://textures/bosses/egor/head.tres" type="Texture" id=19]
-[ext_resource path="res://textures/bosses/egor/hand1.tres" type="Texture" id=20]
+[ext_resource path="res://textures/bosses/maxim/leg2.tres" type="Texture" id=19]
+[ext_resource path="res://textures/bosses/maxim/hand2.tres" type="Texture" id=20]
 [ext_resource path="res://sounds/music/factory_boss.ogg" type="AudioStream" id=21]
-[ext_resource path="res://textures/bosses/egor/body.tres" type="Texture" id=22]
-[ext_resource path="res://textures/bosses/egor/hand2.tres" type="Texture" id=23]
-[ext_resource path="res://textures/bosses/egor/leg2.tres" type="Texture" id=24]
+[ext_resource path="res://textures/bosses/maxim/head.tres" type="Texture" id=22]
+[ext_resource path="res://textures/bosses/maxim/leg1.tres" type="Texture" id=23]
+[ext_resource path="res://textures/bosses/maxim/body.tres" type="Texture" id=24]
+[ext_resource path="res://textures/bosses/maxim/controller.tres" type="Texture" id=25]
 [ext_resource path="res://textures/mobs/mushroom/mushroom.tres" type="Texture" id=26]
 [ext_resource path="res://textures/gui/health_bar_empty.tres" type="Texture" id=27]
+[ext_resource path="res://textures/bosses/maxim/weapon_leg.tres" type="Texture" id=28]
 [ext_resource path="res://sounds/sfx/stun.wav" type="AudioStream" id=29]
 [ext_resource path="res://textures/effects/other/star.png" type="Texture" id=30]
+[ext_resource path="res://textures/bosses/maxim/weapon_arm.tres" type="Texture" id=31]
+[ext_resource path="res://textures/bosses/maxim/cloth_down.tres" type="Texture" id=32]
+[ext_resource path="res://textures/bosses/maxim/cloth_up.tres" type="Texture" id=33]
 [ext_resource path="res://scripts/game/mobs/mob.gd" type="Script" id=34]
 [ext_resource path="res://prefabs/blocks/tileset.tres" type="TileSet" id=36]
 [ext_resource path="res://textures/blocks/star_end.png" type="Texture" id=38]
@@ -1418,7 +1423,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
+node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -1796,15 +1801,21 @@ scale = Vector2( -3, 3 )
 z_index = -4
 
 [node name="body" type="Sprite" parent="mobs/maxim/visual"]
-texture = ExtResource( 22 )
+texture = ExtResource( 24 )
 __meta__ = {
 "_edit_bone_": true
 }
 
+[node name="cloth_down" type="Sprite" parent="mobs/maxim/visual/body"]
+show_behind_parent = true
+position = Vector2( 0, 1 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 32 )
+
 [node name="head" type="Sprite" parent="mobs/maxim/visual/body"]
 position = Vector2( 0, -11.5 )
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 19 )
+texture = ExtResource( 22 )
 offset = Vector2( 0, -16 )
 __meta__ = {
 "_edit_bone_": true
@@ -1814,10 +1825,11 @@ __meta__ = {
 position = Vector2( 0, -28 )
 
 [node name="hair_man" type="Sprite" parent="mobs/maxim/visual/body/head/hair"]
-position = Vector2( -4, -4 )
+position = Vector2( 4, -4 )
 texture = ExtResource( 12 )
 
 [node name="helmet" type="Sprite" parent="mobs/maxim/visual/body/head"]
+visible = false
 
 [node name="end" type="Position2D" parent="mobs/maxim/visual/body/head"]
 position = Vector2( 0, -10 )
@@ -1830,7 +1842,7 @@ position = Vector2( 0.84, -10.38 )
 rotation = -0.349066
 scale = Vector2( 0.7, 0.7 )
 z_index = -1
-texture = ExtResource( 20 )
+texture = ExtResource( 17 )
 offset = Vector2( 0, 7 )
 __meta__ = {
 "_edit_bone_": true,
@@ -1838,10 +1850,11 @@ __meta__ = {
 }
 
 [node name="hand" type="Sprite" parent="mobs/maxim/visual/body/arm_right"]
-position = Vector2( 0.224804, 13.1596 )
-rotation = 0.349066
-texture = ExtResource( 23 )
-offset = Vector2( 0.5, 7.5 )
+position = Vector2( 0, 14 )
+rotation = 0.351188
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 31 )
+offset = Vector2( 0, 12 )
 __meta__ = {
 "_edit_bone_": true
 }
@@ -1852,11 +1865,16 @@ __meta__ = {
 "_edit_bone_": true
 }
 
+[node name="cloth_up" type="Sprite" parent="mobs/maxim/visual/body"]
+position = Vector2( 0, 1 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 33 )
+
 [node name="arm_left" type="Sprite" parent="mobs/maxim/visual/body"]
 position = Vector2( -0.841847, -10.3828 )
 rotation = 0.349066
 scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 20 )
+texture = ExtResource( 17 )
 offset = Vector2( 0, 7 )
 __meta__ = {
 "_edit_bone_": true,
@@ -1866,7 +1884,7 @@ __meta__ = {
 [node name="hand" type="Sprite" parent="mobs/maxim/visual/body/arm_left"]
 position = Vector2( -0.280607, 13.0937 )
 rotation = -0.349066
-texture = ExtResource( 23 )
+texture = ExtResource( 20 )
 offset = Vector2( 0.5, 7.5 )
 __meta__ = {
 "_edit_bone_": true
@@ -1878,12 +1896,17 @@ __meta__ = {
 "_edit_bone_": true
 }
 
+[node name="controller" type="Sprite" parent="mobs/maxim/visual/body"]
+position = Vector2( 0, -10.6667 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 25 )
+
 [node name="leg_right" type="Sprite" parent="mobs/maxim/visual/body"]
 show_behind_parent = true
 position = Vector2( 0.625524, 10.3214 )
 rotation = -0.261799
 scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 17 )
+texture = ExtResource( 23 )
 offset = Vector2( -0.75, 8 )
 __meta__ = {
 "_edit_bone_": true,
@@ -1894,7 +1917,7 @@ __meta__ = {
 show_behind_parent = true
 position = Vector2( 0.22895, 13.6094 )
 rotation = 0.261799
-texture = ExtResource( 24 )
+texture = ExtResource( 19 )
 offset = Vector2( 0.75, 8 )
 __meta__ = {
 "_edit_bone_": true
@@ -1911,7 +1934,7 @@ show_behind_parent = true
 position = Vector2( 0, 10.5 )
 rotation = 0.261799
 scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 17 )
+texture = ExtResource( 23 )
 offset = Vector2( 0, 8 )
 __meta__ = {
 "_edit_bone_": true,
@@ -1919,11 +1942,11 @@ __meta__ = {
 }
 
 [node name="foot" type="Sprite" parent="mobs/maxim/visual/body/leg_left"]
-show_behind_parent = true
-position = Vector2( -0.368991, 13.4578 )
+position = Vector2( 0, 16 )
 rotation = -0.261799
-texture = ExtResource( 24 )
-offset = Vector2( 1.64733, 7.80969 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 28 )
+offset = Vector2( 0, 6 )
 __meta__ = {
 "_edit_bone_": true
 }
@@ -1957,8 +1980,8 @@ defense = 999999
 reaction_speed = 0.5
 vision_distance = 1000.0
 head_path = NodePath("../visual/body/head")
-head_sprite_path = "res://textures/bosses/egor/head.tres"
-head_hurt_sprite_path = "res://textures/bosses/egor/head_hurt.tres"
+head_sprite_path = "res://textures/bosses/maxim/head.tres"
+head_hurt_sprite_path = "res://textures/bosses/maxim/head_hurt.tres"
 custom_mob_death_effect_path = "res://prefabs/effects/boss_death.tscn"
 
 [node name="visual" type="Node2D" parent="mobs/maxim/mob_mx"]

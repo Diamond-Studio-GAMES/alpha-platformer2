@@ -14,6 +14,9 @@ var defeat_phrases = [
 ]
 var face_defeated = load("res://textures/bosses/maxim/head_defeat.tres")
 var face_mercy = load("res://textures/bosses/maxim/head_mercy.tres")
+onready var break_on_death = {
+	$visual/body/controller : load("res://textures/bosses/maxim/controller_broken.tres"),
+}
 var is_time_faster = false
 onready var timer = $timer
 
@@ -42,6 +45,8 @@ func death_dialog():
 func death():
 	G.ach.complete(Achievements.BOSS9)
 	$visual/body/head.texture = face_defeated
+	for i in break_on_death:
+		i.texture = break_on_death[i]
 	.death()
 
 
