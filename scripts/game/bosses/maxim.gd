@@ -16,6 +16,8 @@ var face_defeated = load("res://textures/bosses/maxim/head_defeat.tres")
 var face_mercy = load("res://textures/bosses/maxim/head_mercy.tres")
 onready var break_on_death = {
 	$visual/body/controller : load("res://textures/bosses/maxim/controller_broken.tres"),
+	$visual/body/arm_right/hand : load("res://textures/bosses/maxim/weapon_arm_broken.tres"),
+	$visual/body/leg_left/foot : load("res://textures/bosses/maxim/weapon_leg_broken.tres"),
 }
 var is_time_faster = false
 onready var timer = $timer
