@@ -1,0 +1,126 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://sounds/sfx/TIMESTOP.ogg" type="AudioStream" id=1]
+[ext_resource path="res://textures/effects/other/glitch_texture.png" type="Texture" id=4]
+[ext_resource path="res://shaders/glitch.gdshader" type="Shader" id=8]
+[ext_resource path="res://textures/effects/other/pixel.png" type="Texture" id=9]
+
+[sub_resource type="ShaderMaterial" id=122]
+shader = ExtResource( 8 )
+shader_param/glitch = 0.0
+shader_param/shift_glitch = 0.0
+shader_param/shift_glitch_texture = ExtResource( 4 )
+
+[sub_resource type="Animation" id=119]
+resource_name = "erase"
+length = 10.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("glitch_screen:material:shader_param/shift_glitch")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.3, 1.55, 1.7, 2.4, 2.5, 2.6, 2.9, 3.1, 3.15, 4.2, 4.3, 4.55, 5.05, 5.6, 5.9, 6.1, 6.25, 6.95, 7.05, 7.15, 7.65, 7.9, 7.95, 8.2, 8.35, 8.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -0.1, 0.0, 0.0, 0.05, 0.0, 0.0, 0.2, 0.0, 0.0, -0.15, 0.0, 0.0, -0.1, 0.0, 0.2, 0.0, 0.0, -0.05, 0.0, 0.0, -0.15, 0.0, 0.0, 0.4, 0.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 10 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("sfx_time_stop")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 1 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 1 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+} ],
+"times": PoolRealArray( 0, 1.3, 8.8, 9.95 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("sfx_time_stop:pitch_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 8.8, 9.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 2.0, 2.0, 1.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("sfx_time_stop:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.55, 0.9, 1.15, 8.65, 8.95, 9.65, 9.95 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -12.5, 5.0, 5.0, -60.0, -60.0, 5.0, 5.0, -20.0 ]
+}
+
+[node name="time_fast" type="CanvasLayer"]
+layer = 50
+
+[node name="glitch_screen" type="TextureRect" parent="."]
+material = SubResource( 122 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 1
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "erase"
+anims/erase = SubResource( 119 )
+
+[node name="sfx_time_stop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -12.5
+bus = "sfx"
