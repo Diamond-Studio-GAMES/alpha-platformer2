@@ -12,6 +12,7 @@ const DEATH_CHANCES = {
 }
 export (String) var location = "Где-то"
 export (String) var level_name = "УРОВЕНЬ: ТЕСТ"
+export (NodePath) var game_over_spawn_pos = @"spawn_pos"
 var tint
 var player
 var gen = RandomNumberGenerator.new()
@@ -30,8 +31,6 @@ func _ready():
 	var chance = DEATH_CHANCES[G.getv("hate_level", -1)][1] if G.getv("go_chance", false) \
 			else DEATH_CHANCES[G.getv("hate_level", -1)][0]
 	chance = 100 if G.getv("hated_death", false) else chance
-	G.setv("hated_death", false)
-	G.setv("go_chance", false)
 	if G.percent_chance(chance) and name.begins_with("level"):
 		print("death")
 		player = load("res://prefabs/classes/death.tscn").instance()
@@ -41,9 +40,14 @@ func _ready():
 	player.get_node("camera/gui/base/intro/text/location").text = tr(location)
 	player.get_node("camera").limit_top = $borders/up.global_position.y + 64
 	player.get_node("camera").limit_bottom = $borders/down.global_position.y - 64
-	player.position = pos.position
+	if G.getv("go_chance", false) and not MP.is_active:
+		player.position = get_node(game_over_spawn_pos).position
+	else:
+		player.position = pos.position
 	player.name = "player" + (str(get_tree().get_network_unique_id()) if MP.is_active else "")
 	add_child(player)
+	G.setv("hated_death", false)
+	G.setv("go_chance", false)
 	if has_node("lights"):
 		if G.getv("graphics", G.Graphics.BEAUTY_DEFAULT) & G.Graphics.BEAUTY_LIGHT == 0:
 			for i in $lights.get_children():

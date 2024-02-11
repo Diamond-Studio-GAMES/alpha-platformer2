@@ -272,13 +272,13 @@ func info(val = true):
 				1:
 					attack_power = 5
 				2:
-					attack_power = 8
+					attack_power = 7
 				3:
 					attack_power = 10
 				4:
-					attack_power = 12
+					attack_power = 14
 				5:
-					attack_power = 16
+					attack_power = 18
 			$info_butcher/ulti/value.text = "x" + str(attack_power)
 		"spearman":
 			$info_spearman/attack/value.text = str(G.getv(selected_class + "_level", 0) * 5 + 25)
@@ -441,10 +441,10 @@ func upgrade_ulti():
 		"butcher":
 			match lvl:
 				2:
-					ulti_mod = "x3"
-				3, 4:
 					ulti_mod = "x2"
-				5:
+				3:
+					ulti_mod = "x3"
+				4, 5:
 					ulti_mod = "x4"
 		"spearman":
 			ulti_mod = "x1"

@@ -17,13 +17,13 @@ func _ready():
 		1:
 			damage = 5 * attack_power
 		2:
-			damage = 8 * attack_power
+			damage = 7 * attack_power
 		3:
 			damage = 10 * attack_power
 		4:
-			damage = 12 * attack_power
+			damage = 14 * attack_power
 		5:
-			damage = 16 * attack_power
+			damage = 18 * attack_power
 	yield(get_tree().create_timer(1.1, false), "timeout")
 	var enemies = get_overlapping_bodies()
 	var enemies_copy = enemies.duplicate()

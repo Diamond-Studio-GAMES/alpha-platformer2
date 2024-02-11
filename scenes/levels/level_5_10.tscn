@@ -3894,7 +3894,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
+node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -4229,6 +4229,7 @@ radius = 12.0
 script = ExtResource( 32 )
 location = "location.red_world.cave"
 level_name = "level.5_10"
+game_over_spawn_pos = NodePath("game_over_spawn_pos")
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 21 )
@@ -4552,7 +4553,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/main_doctor/mob_md/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/main_doctor/mob_md/visual/body"]
-scale = Vector2( 1.25, 1.20572 )
+scale = Vector2( 1.25, 1.16857 )
 texture = ExtResource( 33 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/main_doctor/mob_md"]
@@ -4853,6 +4854,9 @@ time = 3.0
 
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 768, -64 )
+
+[node name="game_over_spawn_pos" type="Position2D" parent="."]
+position = Vector2( 1712, -64 )
 
 [node name="tint" type="CanvasLayer" parent="."]
 pause_mode = 2
