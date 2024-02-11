@@ -259,7 +259,7 @@ func hate_refuse():
 	return false
 
 
-func hate_head_spawn(force = false, time = -1):
+func hate_head_spawn(force = false, time = -1, custom_color = Color.white):
 	if not MP.auth(self) and not force:
 		return
 	if hate_level < 2 and not force:
@@ -267,8 +267,12 @@ func hate_head_spawn(force = false, time = -1):
 	if _body.scale.x < 0 and not force:
 		return
 	if randi() % face_chance == 2 or force:
-		ms.sync_call(self, "hate_head_spawn", [true, face_duration])
+		ms.sync_call(self, "hate_head_spawn", [true, face_duration, G.SOUL_COLORS[G.getv("soul_type", 6)]])
 		var n = hate_head.instance()
+		if custom_color != Color.white:
+			n.self_modulate = custom_color
+		else:
+			n.self_modulate = G.SOUL_COLORS[G.getv("soul_type", 6)]
 		if time < 0:
 			n.get_node("timer").wait_time = face_duration
 		else:

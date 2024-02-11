@@ -412,7 +412,7 @@ position = Vector2( 3600, -256 )
 [node name="borders" parent="." instance=ExtResource( 22 )]
 
 [node name="up" parent="borders" index="0"]
-position = Vector2( 0, -736 )
+position = Vector2( 0, -960 )
 collision_mask = 2
 
 [node name="shape" parent="borders/up" index="0"]

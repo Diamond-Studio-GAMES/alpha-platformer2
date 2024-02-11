@@ -61,7 +61,7 @@ func mercy():
 
 
 func get_phase():
-	if is_mob_alive():
+	if not is_mob_alive():
 		return -1
 	var health_left = mob.current_health / mob.max_health
 	if health_left <= 0:
