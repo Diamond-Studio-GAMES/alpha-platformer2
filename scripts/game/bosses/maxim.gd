@@ -169,7 +169,7 @@ func tnt():
 	shoot.restart()
 	var tnt = blue_tnt.instance()
 	tnt.global_position = shoot.global_position
-	tnt.velocity = Vector2(rand_range(-160, -32), rand_range(-250, -125))
+	tnt.velocity = Vector2(rand_range(-160, -32), rand_range(-250, 0))
 	get_tree().current_scene.add_child(tnt)
 
 

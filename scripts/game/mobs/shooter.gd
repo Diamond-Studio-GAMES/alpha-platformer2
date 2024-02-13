@@ -70,11 +70,11 @@ func _physics_process(delta):
 		stop()
 		return
 	player_timer += delta
-	attack_timer += delta
 	if player_timer > reaction_speed:
 		player_timer = 0
 		player_distance = global_position.distance_squared_to(player.global_position)
-		if player_distance > _vision_distance:
+		player_visible = player_distance < _vision_distance
+		if not player_visible:
 			stop()
 			return
 		if player_distance > _min_distance:
@@ -93,9 +93,13 @@ func _physics_process(delta):
 				stop()
 		if under_water and breath_time < 2 and not immune_to_water:
 			jump()
-		if attack_timer > attack_speed and player_distance < 25600:
-			attack()
-			attack_timer = 0
+	
+	if not player_visible:
+		return
+	attack_timer += delta
+	if attack_timer > attack_speed and player_distance < _attack_distance:
+		attack()
+		attack_timer = 0
 	lookup_timer += delta
 	if lookup_timer > lookup_speed:
 		if ray_colliding(jump_ray0) == Colliding.OK and _move_direction.x > 0 or \

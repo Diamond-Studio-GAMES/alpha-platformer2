@@ -1434,7 +1434,7 @@ nodes/trans_shot/node = SubResource( 93 )
 nodes/trans_shot/position = Vector2( 494.118, 117.647 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "attack_seek", 0, "attack", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "trans_shot", "death_trans", 1, "death", "trans_shot", 0, "attack_shot", "trans_shot", 1, "trans", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek" ]
+node_connections = [ "attack_seek", 0, "attack", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "death_trans", 0, "trans_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "output", 0, "death_trans", "trans_shot", 0, "attack_shot", "trans_shot", 1, "trans" ]
 
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 8.0
@@ -1465,7 +1465,6 @@ collision_layer = 4
 collision_mask = 23
 script = ExtResource( 16 )
 max_health = 60
-attack_damage = 30
 reaction_speed = 0.5
 vision_distance = 360.0
 head_path = NodePath("visual/body/head")
@@ -1488,8 +1487,8 @@ __meta__ = {
 }
 
 [node name="head" type="Sprite" parent="visual/body"]
-position = Vector2( 0, -10.6972 )
-rotation = 0.0700603
+position = Vector2( 0, -10.5512 )
+rotation = 0.0827973
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 offset = Vector2( 0, -16 )
@@ -1521,7 +1520,7 @@ position = Vector2( 7.5, -18.5 )
 texture = ExtResource( 7 )
 
 [node name="arm_left" type="Sprite" parent="visual/body"]
-position = Vector2( -0.841847, -9.57997 )
+position = Vector2( -0.841847, -9.43401 )
 rotation = 0.349066
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 17 )
@@ -1552,7 +1551,7 @@ scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 29 )
 
 [node name="arm_right" type="Sprite" parent="visual/body"]
-position = Vector2( 0.84, -9.57717 )
+position = Vector2( 0.84, -9.43121 )
 rotation = -0.349066
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 17 )

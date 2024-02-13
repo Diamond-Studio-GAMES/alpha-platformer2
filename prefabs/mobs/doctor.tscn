@@ -1207,6 +1207,7 @@ max_health = 80
 attack_damage = 10
 reaction_speed = 0.4
 vision_distance = 500.0
+attack_distance = 180.0
 attack_speed = 5.0
 head_path = NodePath("visual/body/head")
 head_sprite_path = "res://textures/mobs/doctor/head.tres"

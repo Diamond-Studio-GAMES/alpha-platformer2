@@ -690,7 +690,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 980, 180 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "big_shot", 0, "attack_shot", "big_shot", 1, "big_seek", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "death_trans", 0, "big_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "big_seek", 0, "big", "attack_seek", 0, "attack" ]
+node_connections = [ "attack_seek", 0, "attack", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "big_seek", 0, "big", "big_shot", 0, "attack_shot", "big_shot", 1, "big_seek", "death_trans", 0, "big_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "output", 0, "death_trans" ]
 
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 12.0
@@ -728,12 +728,14 @@ defense = 0
 attack_damage = 15
 reaction_speed = 0.5
 vision_distance = 400.0
+attack_distance = 180.0
 attack_speed = 6.0
 head_path = NodePath("visual/body/mechanic/head")
 head_sprite_path = "res://textures/mobs/mechanic/head.tres"
 head_hurt_sprite_path = "res://textures/mobs/mechanic/head_hurt.tres"
 custom_mob_death_effect_path = "res://prefabs/effects/robot_death.tscn"
 min_distance = 120.0
+big_attack_damage = 45
 
 [node name="visual" type="Node2D" parent="."]
 position = Vector2( 0, -10 )

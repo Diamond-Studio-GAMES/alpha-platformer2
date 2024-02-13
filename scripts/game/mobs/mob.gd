@@ -8,16 +8,19 @@ export (int) var attack_damage = 20
 export (float) var reaction_speed = 2.0
 export (float) var lookup_speed = 0.1
 export (float) var vision_distance = 200.0
+export (float) var attack_distance = 80.0
 export (float) var attack_speed = 2.5
 export (NodePath) var head_path
 export (String, FILE) var head_sprite_path = ""
 export (String, FILE) var head_hurt_sprite_path = ""
 export (String, FILE) var custom_mob_death_effect_path = ""
 var _vision_distance = 0
+var _attack_distance = 0
 var player
 var players = []
 var player_distance = 0
 var find_target_timer = 0
+var player_visible = false
 var panic_timer = 0
 var player_timer = 0
 var attack_timer = 0
@@ -42,6 +45,7 @@ func _ready():
 		max_health = round(max_health * mul)
 	defense = round(stats_multiplier * defense)
 	_vision_distance = vision_distance * vision_distance
+	_attack_distance = attack_distance * attack_distance
 	if not custom_mob_death_effect_path.empty():
 		mob_death_effect = load(custom_mob_death_effect_path)
 	_body = $visual/body

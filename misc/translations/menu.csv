@@ -710,7 +710,7 @@ Weakness: [color=fuchsia]weak alone[/color]"
 mob.mech,Механик,Mechanic
 mob.mech.desc,"Здоровье: [color=lime]низкое[/color]
 Защита: [color=blue]средняя[/color]
-Атака: [color=red]сильная[/color]
+Атака: [color=red]средняя[/color]
 Скорость: [color=red]высокая[/color]
 Особенность: [color=fuchsia]может сесть в робота[/color]
 
@@ -718,7 +718,7 @@ mob.mech.desc,"Здоровье: [color=lime]низкое[/color]
 
 Слабость: [color=fuchsia]дальний бой[/color]","Health: [color=lime]low[/color]
 Defense: [color=blue]average[/color]
-Attack: [color=red]high[/color]
+Attack: [color=red]medium[/color]
 Speed: [color=red]high[/color]
 Special: [color=fuchsia]can hop in robot[/color]
 

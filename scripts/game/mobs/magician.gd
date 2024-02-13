@@ -119,7 +119,8 @@ func _physics_process(delta):
 	if player_timer > reaction_speed:
 		player_timer = 0
 		player_distance = global_position.distance_squared_to(player.global_position)
-		if player_distance > _vision_distance:
+		player_visible = player_distance < _vision_distance
+		if not player_visible:
 			stop()
 			return
 		if not should_move:
@@ -138,13 +139,14 @@ func _physics_process(delta):
 				move_right()
 			else:
 				stop()
-		if under_water and player_distance < _vision_distance/4 and player.global_position.y+20 < global_position.y:
-			jump()
 		if under_water and breath_time < 2 and not immune_to_water:
 			jump()
+	
+	if not player_visible:
+		return
 	attack_timer += delta
 	if attack_timer > attack_speed:
-		if player_distance < 16384:
+		if player_distance < _attack_distance:
 			if should_heal and not next_attack:
 				do_heal()
 				next_attack = true

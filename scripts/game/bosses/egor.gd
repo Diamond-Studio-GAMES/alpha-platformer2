@@ -95,7 +95,7 @@ func do_attack():
 
 
 func balls():
-	next_attack_time += 1
+	next_attack_time += 2
 	ms.sync_call(self, "balls")
 	anim.play("balls")
 	if not MP.auth(self):
@@ -118,7 +118,7 @@ func _create_ball_at(pos):
 
 
 func big_ball():
-	next_attack_time += 0.8
+	next_attack_time += 1.5
 	ms.sync_call(self, "big_ball")
 	anim.play("ball")
 	if not MP.auth(self):
@@ -133,7 +133,7 @@ func big_ball():
 
 
 func circle_balls():
-	next_attack_time += 3.5
+	next_attack_time += 4
 	ms.sync_call(self, "circle_balls")
 	anim.play("circle_balls")
 	if not MP.auth(self):
@@ -159,7 +159,7 @@ func circle_balls():
 
 
 func floor_attack():
-	next_attack_time += 0.7
+	next_attack_time += 0.8
 	ms.sync_call(self, "floor_attack")
 	anim.play("floor")
 	yield(get_tree().create_timer(0.7, false), "timeout")
@@ -168,7 +168,7 @@ func floor_attack():
 
 
 func up_balls():
-	next_attack_time += 2
+	next_attack_time += 2.5
 	ms.sync_call(self, "up_balls")
 	anim.play("falling_balls")
 	if not MP.auth(self):
