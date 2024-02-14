@@ -714,7 +714,7 @@ mob.mech.desc,"Здоровье: [color=lime]низкое[/color]
 Скорость: [color=red]высокая[/color]
 Особенность: [color=fuchsia]может сесть в робота[/color]
 
-Будучи победителем олимпиады по робототехнике, механик очень хорошо разбирается в ней. Он даже собрал собственного робота, но далеко не для благих целей…
+Будучи победителем олимпиады по робототехнике, механик очень хорошо разбирается в ней. Он даже собрал собственный робо-костюм, но далеко не для благих целей…
 
 Слабость: [color=fuchsia]дальний бой[/color]","Health: [color=lime]low[/color]
 Defense: [color=blue]average[/color]
@@ -725,14 +725,14 @@ Special: [color=fuchsia]can hop in robot[/color]
 Being the winner of the Robotics Olympiad, the mechanic is very well versed in it. He even built his own robot, but not for good purposes.…
 
 Weakness: [color=fuchsia]range combat[/color]"
-mob.robot,Робот механика,Mechanic’s Bot
+mob.robot,Робокостюм механика,Mechanic’s Robosuit
 mob.robot.desc,"Здоровье: [color=red]высокое[/color]
 Защита: [color=aqua]отсутствует[/color]
 Атака: [color=maroon]очень сильная[/color] (большой шар), [color=blue]средняя[/color] (маленькие шары)
 Скорость: [color=lime]низкая[/color]
 Особенность: [color=fuchsia]при разрушении робота из него выпрыгивает механик[/color]
 
-Это первый робот-убийца у механика. А точнее третий. Две прошлые модели были потеряны в драках, очень эффектно.
+Это первый робокостюм-убийца у механика. А точнее третий. Две прошлые модели были потеряны в драках, очень эффектно.
 
 Слабость: [color=fuchsia]ближний бой[/color]","Health: [color=red]high[/color]
 Defense: [color=aqua]no[/color]
@@ -740,7 +740,7 @@ Attack: [color=maroon]very high[/color] (big ball), [color=blue]medium[/color] (
 Speed: [color=lime]low[/color]
 Special: [color=fuchsia]after destroying mechanic hops out[/color]
 
-This is the mechanic's first killer robot. Or rather the third one. Two previous models were lost in fights, very spectacularly.
+This is the mechanic's first killer robosuit. Or rather the third one. Two previous models were lost in fights, very spectacularly.
 
 Weakness: [color=fuchsia]close combat[/color]"
 mob.werewolf.human,Оборотень (человек),Werewolf (human)

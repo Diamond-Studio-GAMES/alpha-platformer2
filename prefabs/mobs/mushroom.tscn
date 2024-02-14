@@ -276,7 +276,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "attack_seek", 0, "attack", "death_trans", 0, "attack_shot", "death_trans", 1, "death", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
+node_connections = [ "attack_seek", 0, "attack", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "death_trans", 0, "attack_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "output", 0, "death_trans" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -321,7 +321,6 @@ scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 4 )
 
 [node name="shape" type="CollisionPolygon2D" parent="."]
-visible = false
 position = Vector2( 0, -4 )
 polygon = PoolVector2Array( 0, -20, -20, -9, -20, -4, -10, -4, -10, 20, 10, 20, 10, -4, 20, -4, 20, -9 )
 

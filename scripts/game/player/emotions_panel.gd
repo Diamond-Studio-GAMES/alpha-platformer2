@@ -11,7 +11,6 @@ func _ready():
 		button.hide()
 	button.connect("released", self, "_on_emotions_released")
 	call_deferred("_pose_button", button)
-	
 
 
 func _process(delta):

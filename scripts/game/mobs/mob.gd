@@ -41,7 +41,7 @@ func _ready():
 	add_to_group("mob")
 	max_health = round(stats_multiplier * max_health)
 	if MP.is_active:
-		var mul = 1 + 0.5 * get_tree().get_network_connected_peers().size()
+		var mul = 0.9 + 0.9 * get_tree().get_network_connected_peers().size()
 		max_health = round(max_health * mul)
 	defense = round(stats_multiplier * defense)
 	_vision_distance = vision_distance * vision_distance

@@ -91,7 +91,14 @@ var hate_head = load("res://prefabs/effects/glitch_head.tscn")
 var hate_head_node
 const REFUSE_PHRASES = ["hate.refuse.0", "hate.refuse.1", "hate.refuse.2"]
 const REVIVE_PHRASES = ["hate.revive.0", "hate.revive.1"]
-const AUTO_ACTIONS = ["move_left", "move_right", "jump", "attack"]
+const AUTO_ACTIONS = [
+	"move_left",
+	"move_right",
+	"jump",
+	"attack",
+	"ulti",
+	"use_gadget",
+]
 
 
 func _ready():
@@ -171,24 +178,24 @@ func _ready():
 		hate_level = 0
 	match hate_level:
 		1:
-			refuse_chance = 66
+			refuse_chance = 80
 		2:
-			refuse_chance = 50
+			refuse_chance = 66
 			face_chance = 10
 			face_duration = 1
 		3:
-			refuse_chance = 33
+			refuse_chance = 50
 			face_chance = 6
 			face_duration = 1.5
-			auto_chance = 66
-			revive_chance = 25
+			auto_chance = 80
+			revive_chance = 20
 			revive_amount = 10
 		4:
-			refuse_chance = 20
+			refuse_chance = 33
 			face_chance = 4
 			face_duration = 2.5
-			auto_chance = 20
-			revive_chance = 6
+			auto_chance = 33
+			revive_chance = 5
 			revive_amount = 25
 			fatal_chance = 6
 			var lvl_name = _level.name.split("_")
@@ -685,7 +692,7 @@ func _physics_process(delta):
 			use_potion(2)
 		if Input.is_action_just_pressed("potion3"):
 			use_potion(3)
-	if _move.length_squared() < 25 and _move_direction.is_equal_approx(Vector2.ZERO) and attack_cooldown == 0:
+	if _move.length_squared() < 25 and _move_direction == Vector2.ZERO and attack_cooldown == 0:
 		_health_timer += delta * 60
 	else:
 		_health_timer = 0

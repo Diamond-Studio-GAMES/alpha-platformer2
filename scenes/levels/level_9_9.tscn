@@ -364,13 +364,13 @@ __meta__ = {
 }
 
 [node name="note" type="Sprite" parent="decor"]
-position = Vector2( 1584, 224 )
+position = Vector2( 1776, 224 )
 rotation = 0.785397
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 18 )
 
 [node name="think" parent="decor" instance=ExtResource( 14 )]
-position = Vector2( 1584, 224 )
+position = Vector2( 1776, 224 )
 text = "9_9.note"
 time = 4.0
 color = Color( 1, 1, 1, 1 )
