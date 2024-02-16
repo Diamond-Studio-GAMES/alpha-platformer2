@@ -24,9 +24,6 @@ onready var fall_balls_y = $fall_balls_poses.global_position.y
 
 func _ready():
 	mob = $mob_eg
-	fill_x = 53
-	fill_height = 16
-	tp_pos = Vector2(54, -2)
 	mercy_dialog = tr("boss.follower1.mercy")
 	death_dialog = tr("boss.follower1.defeat")
 	next_attack_time_min = 0.8

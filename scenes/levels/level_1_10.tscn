@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=2]
+[gd_scene load_steps=89 format=2]
 
 [ext_resource path="res://textures/bosses/sheeper/top.tres" type="Texture" id=1]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=3]
@@ -4188,7 +4188,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
+node_connections = [ "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "output", 0, "death_trans" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -4249,6 +4249,9 @@ tracks/1/keys = {
 
 [sub_resource type="RectangleShape2D" id=33]
 extents = Vector2( 10, 23.5 )
+
+[sub_resource type="RectangleShape2D" id=89]
+extents = Vector2( 10, 90 )
 
 [sub_resource type="LineShape2D" id=37]
 normal = Vector2( -1, 0 )
@@ -4533,6 +4536,9 @@ script = ExtResource( 39 )
 __meta__ = {
 "_edit_group_": true
 }
+barrier_left_start = Vector2( 57, -1 )
+barrier_left_height = 16
+teleport_position = Vector2( 58, -2 )
 
 [node name="visual" type="Node2D" parent="mobs/sheeper"]
 scale = Vector2( -3, 3 )
@@ -4772,7 +4778,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/sheeper/mob_sh/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/sheeper/mob_sh/visual/body"]
-scale = Vector2( 1.25, 1.20752 )
+scale = Vector2( 1.25, 1.22172 )
 texture = ExtResource( 30 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/sheeper/mob_sh"]
@@ -5002,6 +5008,14 @@ script = ExtResource( 26 )
 unreliable_sync_node_paths = [ NodePath("..") ]
 unreliable_sync_properties_names = [ "global_position" ]
 syncing = false
+
+[node name="player_border" type="StaticBody2D" parent="mobs/sheeper"]
+collision_layer = 0
+collision_mask = 66
+
+[node name="shape" type="CollisionShape2D" parent="mobs/sheeper/player_border"]
+visible = false
+shape = SubResource( 89 )
 
 [node name="blocks" type="Node2D" parent="."]
 

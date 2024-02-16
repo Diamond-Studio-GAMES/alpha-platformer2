@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=2]
+[gd_scene load_steps=109 format=2]
 
 [ext_resource path="res://sounds/sfx/mob_death.wav" type="AudioStream" id=1]
 [ext_resource path="res://scripts/game/bosses/maxim.gd" type="Script" id=2]
@@ -3203,6 +3203,9 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=33]
 extents = Vector2( 10, 39.5 )
 
+[sub_resource type="RectangleShape2D" id=120]
+extents = Vector2( 10, 90 )
+
 [sub_resource type="Gradient" id=118]
 offsets = PoolRealArray( 0, 0.5 )
 colors = PoolColorArray( 0, 1, 0, 1, 0, 1, 1, 1 )
@@ -3948,6 +3951,9 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+barrier_left_start = Vector2( 53, -1 )
+barrier_left_height = 32
+teleport_position = Vector2( 54, -2 )
 
 [node name="visual" type="Node2D" parent="mobs/maxim"]
 scale = Vector2( -3, 3 )
@@ -4267,7 +4273,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/maxim/mob_mx/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/maxim/mob_mx/visual/body"]
-scale = Vector2( 1.25, 1.12538 )
+scale = Vector2( 1.25, 1.24921 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/maxim/mob_mx"]
@@ -4494,6 +4500,14 @@ stream = ExtResource( 42 )
 max_distance = 800.0
 bus = "sfx"
 
+[node name="player_border" type="StaticBody2D" parent="mobs/maxim"]
+collision_layer = 0
+collision_mask = 66
+
+[node name="shape" type="CollisionShape2D" parent="mobs/maxim/player_border"]
+visible = false
+shape = SubResource( 120 )
+
 [node name="floor_attack" type="Node2D" parent="mobs"]
 position = Vector2( 2240, 0 )
 
@@ -4577,7 +4591,7 @@ position = Vector2( -256, 0 )
 collision_layer = 16
 collision_mask = 23
 script = ExtResource( 37 )
-damage = 70
+damage = 80
 knockback = 0.0
 custom_invincibility_time = 0.8
 custom_immobility_time = 0.1

@@ -45,9 +45,6 @@ func _ready():
 	key_idx0 = animation.track_find_key(track_idx, 0.4)
 	key_idx1 = animation.track_find_key(track_idx, 1)
 	mob = $mob_mx
-	fill_x = 53
-	fill_height = 32
-	tp_pos = Vector2(54, -2)
 	mercy_dialog = tr("boss.follower2.mercy")
 	death_dialog = tr("boss.follower2.defeat")
 	next_attack_time_min = 1
@@ -185,8 +182,10 @@ func melee():
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property($visual, "position", to_pos, 0.25).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(mob, "position", to_pos, 0.25).set_ease(Tween.EASE_OUT)
 	tween.tween_interval(0.75)
 	tween.tween_property($visual, "position", Vector2.ZERO, 0.25).set_ease(Tween.EASE_IN_OUT)
+	tween.parallel().tween_property(mob, "position", Vector2.ZERO, 0.25).set_ease(Tween.EASE_OUT)
 
 
 func time_fast():
@@ -202,6 +201,6 @@ func time_fast():
 	yield(get_tree().create_timer(1.3, false), "timeout")
 	Engine.time_scale = 1.5
 	is_time_faster = true
-	yield(get_tree().create_timer(7.5, false), "timeout")
+	yield(get_tree().create_timer(12, false), "timeout")
 	Engine.time_scale = 1
 	is_time_faster = false

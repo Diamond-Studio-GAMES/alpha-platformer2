@@ -32,7 +32,7 @@ simple_effect_destroy_sound_wall = "res://sounds/sfx/randomed/magicball_hit.tres
 collision_layer = 16
 collision_mask = 19
 script = ExtResource( 2 )
-damage = 50
+damage = 55
 is_enemy_attack = true
 lifetime = 0.0
 

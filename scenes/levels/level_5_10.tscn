@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://themes/theme.tres" type="Theme" id=2]
 [ext_resource path="res://textures/gui/health_bar_empty.tres" type="Texture" id=3]
@@ -3894,7 +3894,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
+node_connections = [ "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "output", 0, "death_trans" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -3983,6 +3983,9 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+
+[sub_resource type="RectangleShape2D" id=98]
+extents = Vector2( 10, 90 )
 
 [sub_resource type="LineShape2D" id=37]
 normal = Vector2( -1, 0 )
@@ -4268,6 +4271,9 @@ script = ExtResource( 26 )
 __meta__ = {
 "_edit_group_": true
 }
+barrier_left_start = Vector2( 53, -1 )
+barrier_left_height = 5
+teleport_position = Vector2( 54, -2 )
 
 [node name="visual" type="Node2D" parent="mobs/main_doctor"]
 scale = Vector2( -3, 3 )
@@ -4553,7 +4559,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/main_doctor/mob_md/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/main_doctor/mob_md/visual/body"]
-scale = Vector2( 1.25, 1.16857 )
+scale = Vector2( 1.25, 1.22749 )
 texture = ExtResource( 33 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/main_doctor/mob_md"]
@@ -4803,6 +4809,14 @@ __meta__ = {
 }
 
 [node name="swipe_timer" type="Timer" parent="mobs/main_doctor"]
+
+[node name="player_border" type="StaticBody2D" parent="mobs/main_doctor"]
+collision_layer = 0
+collision_mask = 66
+
+[node name="shape" type="CollisionShape2D" parent="mobs/main_doctor/player_border"]
+visible = false
+shape = SubResource( 98 )
 
 [node name="blocks" type="Node2D" parent="."]
 

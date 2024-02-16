@@ -125,7 +125,7 @@ func ulti():
 	yield(get_tree().create_timer(0.8, false), "timeout")
 	can_see = false
 	$visual.modulate = Color(1, 1, 1, 0.25)
-	collision_layer = 0b0
+	collision_layer = 0b1000000
 	collision_mask = 0b1
 	trail.points.clear()
 	trail.show()

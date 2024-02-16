@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=96 format=2]
 
 [ext_resource path="res://sounds/sfx/mob_death.wav" type="AudioStream" id=1]
 [ext_resource path="res://textures/effects/backgrounds/background_base.png" type="Texture" id=2]
@@ -2799,7 +2799,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
+node_connections = [ "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "output", 0, "death_trans" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -2924,6 +2924,9 @@ tracks/3/keys = {
 "method": "restart"
 } ]
 }
+
+[sub_resource type="RectangleShape2D" id=119]
+extents = Vector2( 10, 90 )
 
 [sub_resource type="LineShape2D" id=37]
 normal = Vector2( -1, 0 )
@@ -3209,6 +3212,9 @@ script = ExtResource( 10 )
 __meta__ = {
 "_edit_group_": true
 }
+barrier_left_start = Vector2( 53, -1 )
+barrier_left_height = 16
+teleport_position = Vector2( 54, -2 )
 
 [node name="visual" type="Node2D" parent="mobs/egor"]
 scale = Vector2( -3, 3 )
@@ -3431,7 +3437,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/egor/mob_eg/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/egor/mob_eg/visual/body"]
-scale = Vector2( 1.25, 1.13407 )
+scale = Vector2( 1.25, 1.21588 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/egor/mob_eg"]
@@ -3798,6 +3804,14 @@ position = Vector2( 192, 0 )
 __meta__ = {
 "_gizmo_extents_": 8.0
 }
+
+[node name="player_border" type="StaticBody2D" parent="mobs/egor"]
+collision_layer = 0
+collision_mask = 66
+
+[node name="shape" type="CollisionShape2D" parent="mobs/egor/player_border"]
+visible = false
+shape = SubResource( 119 )
 
 [node name="blocks" type="Node2D" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=2]
+[gd_scene load_steps=111 format=2]
 
 [ext_resource path="res://themes/theme.tres" type="Theme" id=2]
 [ext_resource path="res://textures/classes/knight_helmet.png" type="Texture" id=3]
@@ -4024,7 +4024,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
+node_connections = [ "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "output", 0, "death_trans" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -4729,6 +4729,9 @@ tracks/2/keys = {
 "values": [ true, false, true ]
 }
 
+[sub_resource type="RectangleShape2D" id=89]
+extents = Vector2( 10, 90 )
+
 [sub_resource type="Animation" id=63]
 resource_name = "summon"
 length = 0.5
@@ -5069,6 +5072,9 @@ script = ExtResource( 26 )
 __meta__ = {
 "_edit_group_": true
 }
+barrier_left_start = Vector2( 53, -1 )
+barrier_left_height = 16
+teleport_position = Vector2( 54, -2 )
 
 [node name="visual" type="Node2D" parent="mobs/black_wizard"]
 scale = Vector2( -3, 3 )
@@ -5345,7 +5351,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/black_wizard/mob_bw/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/black_wizard/mob_bw/visual/body"]
-scale = Vector2( 1.25, 1.15298 )
+scale = Vector2( 1.25, 1.11298 )
 texture = ExtResource( 17 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/black_wizard/mob_bw"]
@@ -5862,6 +5868,14 @@ script = ExtResource( 39 )
 unreliable_sync_node_paths = [ NodePath("..") ]
 unreliable_sync_properties_names = [ "global_position" ]
 syncing = false
+
+[node name="player_border" type="StaticBody2D" parent="mobs/black_wizard"]
+collision_layer = 0
+collision_mask = 66
+
+[node name="shape" type="CollisionShape2D" parent="mobs/black_wizard/player_border"]
+visible = false
+shape = SubResource( 89 )
 
 [node name="pos0" type="Position2D" parent="mobs"]
 position = Vector2( 1744, -64 )

@@ -2,37 +2,30 @@ extends Node2D
 class_name Boss
 
 
+export (bool) var create_left_barrier = true
+export (Vector2) var barrier_left_start = Vector2()
+export (int) var barrier_left_height = 0
+export (Vector2) var teleport_position = Vector2()
 var mob: Mob
 var boss_bar: TextureProgress
 var boss_hp: Label
 var player: Player
 var is_attacking = false
 var waiting_for_death = false
-var death_timer = 0
 var is_cutscene = false
+var death_timer = 0
 var attack_timer = 0
 var next_attack_time = 1
-var attacks = []
-var player_target = null
-var death_dialog = ""
-var mercy_dialog = ""
-var fill_x = 0
-var fill_height = 30
-var tp_pos = Vector2()
 var next_attack_time_min = 1
 var next_attack_time_max = 2
+var attacks = []
+var death_dialog = ""
+var mercy_dialog = ""
+var player_target = null
 var hurt_part = load("res://prefabs/effects/hurt_part.tscn")
 onready var anim = $anim
+onready var player_border = $player_border
 onready var ms := $MultiplayerSynchronizer as MultiplayerSynchronizer
-
-
-func set_cutscene(val):
-	if not is_instance_valid(player):
-		return
-	if val:
-		player.stop()
-	player.can_control = not val
-	is_cutscene = val
 
 
 func _ready():
@@ -50,14 +43,43 @@ func _ready():
 	mob.connect("healed", self, "_on_mob_healed")
 
 
+func _process(delta):
+	if is_attacking and player != null:
+		process_attack(delta)
+	if waiting_for_death:
+		death_timer += delta
+		if death_timer >= 10:
+			mercy()
+	if boss_bar == null:
+		return
+	if mob == null:
+		return
+	if not is_instance_valid(mob):
+		boss_bar.hide()
+		return
+	if mob.is_queued_for_deletion():
+		boss_bar.hide()
+		return
+
+
+func set_cutscene(value):
+	if not is_instance_valid(player):
+		return
+	if value:
+		player.force_stop()
+	player.can_control = not value
+	is_cutscene = value
+
+
 func start_fight():
 	player.get_node("camera_tween").interpolate_property(player.get_node("camera"), "zoom", player.default_camera_zoom, Vector2(0.6, 0.6), 1)
 	player.get_node("camera_tween").start()
 	player.default_camera_zoom = Vector2(0.6, 0.6)
 	boss_bar.show()
 	var tilemap = $"../../tilemap"
-	for i in range(-fill_height, 0):
-		tilemap.set_cell(fill_x, i, 5)
+	if create_left_barrier:
+		for i in range(-barrier_left_height + barrier_left_start.y + 1, barrier_left_start.y + 1):
+			tilemap.set_cell(barrier_left_start.x, i, 5)
 	move_player_to_start()
 	if MP.is_active:
 		rpc("move_player_to_start")
@@ -69,7 +91,7 @@ func start_fight():
 
 
 remote func move_player_to_start():
-	player.global_position = $"../../tilemap".map_to_world(tp_pos) + Vector2.ONE * 16
+	player.global_position = $"../../tilemap".map_to_world(teleport_position) + Vector2.ONE * 16
 
 
 func get_hit(area):
@@ -96,25 +118,6 @@ func mercy():
 	set_cutscene(true)
 	yield(anim, "animation_finished")
 	set_cutscene(false)
-
-
-func _process(delta):
-	if is_attacking and player != null:
-		process_attack(delta)
-	if waiting_for_death:
-		death_timer += delta
-		if death_timer >= 10:
-			mercy()
-	if boss_bar == null:
-		return
-	if mob == null:
-		return
-	if not is_instance_valid(mob):
-		boss_bar.hide()
-		return
-	if mob.is_queued_for_deletion():
-		boss_bar.hide()
-		return
 
 
 func process_attack(delta):
@@ -144,6 +147,11 @@ func do_attack():
 
 func death():
 	$"../../music".stop()
+	var tilemap = $"../../tilemap"
+	if create_left_barrier:
+		for i in range(-barrier_left_height + barrier_left_start.y, barrier_left_start.y + 1):
+			tilemap.set_cell(barrier_left_start.x, i, -1)
+	player_border.queue_free()
 	player.get_node("camera_tween").stop_all()
 	player.get_node("camera_tween").remove_all()
 	player.get_node("camera_tween").interpolate_property(player.get_node("camera"), "zoom", player.get_node("camera").zoom, Vector2(0.3, 0.3), 1)

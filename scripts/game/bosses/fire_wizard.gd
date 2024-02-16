@@ -9,9 +9,6 @@ onready var timer = $timer
 
 func _ready():
 	mob = $mob_fw
-	fill_x = 53
-	fill_height = 16
-	tp_pos = Vector2(54, -2)
 	attacks = ["fireball", "fireballs", "oil", "fire_rain"]
 	mercy_dialog = tr("boss.fire.mercy")
 	death_dialog = tr("boss.fire.defeat")

@@ -499,7 +499,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_4="other"
 2d_physics/layer_5="attack"
 2d_physics/layer_6="water"
-2d_physics/layer_10="plasch"
+2d_physics/layer_7="death"
 
 [locale]
 

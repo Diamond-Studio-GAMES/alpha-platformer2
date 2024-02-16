@@ -17,9 +17,6 @@ onready var timer = $timer
 
 func _ready():
 	mob = $mob_rk
-	fill_x = 54
-	fill_height = 0
-	tp_pos = Vector2(55, 2)
 	mercy_dialog = tr("boss.king.mercy")
 	death_dialog = tr("boss.king.defeat")
 	next_attack_time_min = 1
