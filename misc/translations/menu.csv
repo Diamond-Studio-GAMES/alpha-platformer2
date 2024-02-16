@@ -13,7 +13,6 @@ menu.noo,НЕТ!,NO!
 menu.yess,да,yes
 menu.version,Версия: ,Version: 
 menu.save_id,ID сохранения: ,Save ID: 
-menu.creation_date,Дата создания: ,Creation date: 
 menu.back,Назад,Back
 menu.about.text,"Разработчик, графический и звуковой дизайнер:
 Михаил (Summersay415)
@@ -104,9 +103,10 @@ stat.ls,Посл. волны пройдены: ,Last waves completed:
 stat.pd,Уровней в P. Dash: ,Levels in P. Dash:
 stat.garden,Урожай в саду собран: ,Garden harvest collected:
 stat.2d_wins,Побед в 2Д-шутере: ,Victories in 2D Shooter:
-stat.fnas,Ночь во FNaS: ,FnaS night:
+stat.fnas,Ночь во FNaS: ,FNaS night:
 stat.achvs,Достижений получено: ,Achievements got:
 stat.time,Времени проведено: ,Time elapsed:
+stat.creation_date,Дата создания: ,Creation date: 
 menu.message,Сообщение!,Message!
 menu.setting.music,Громкость музыки:,Music volume:
 menu.setting.sfx,Громкость звуков:,SFX volume:
@@ -227,7 +227,7 @@ achv.loot,Урожай,Harvest
 achv.loot.desc,"Собери награду с 3 растений в ""Саду"".",Collect reward from 3 plants in «Garden».
 achv.victory_royale.desc,"Выиграй 1 игру в ""2Д-шутере"".",Win 1 game in «2D-shooter».
 achv.escape,Побег,Escape
-achv.escape.desc,"Пройди мини-игру ""FNaS""…",Complete the «Fnas» mini-game…
+achv.escape.desc,"Пройди мини-игру ""FNaS""…",Complete the «FNaS» mini-game…
 achv.untouched,Неприкасаемый,Untouched
 achv.untouched.desc,"Пройди уровень, не получив урон.",Complete a level without taking any damage.
 achv.better_together,Вместе сильнее,Stronger together

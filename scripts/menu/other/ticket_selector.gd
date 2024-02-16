@@ -49,4 +49,8 @@ func _on_up_pressed():
 func _on_play_pressed():
 	G.current_tickets = selected_tickets
 	G.addv("tickets", -selected_tickets)
+	if selected_tickets > G.getv("tickets"):
+		$play.disabled = true
+	else:
+		$play.disabled = false
 	emit_signal("started")

@@ -39,9 +39,6 @@ func _ready():
 	$settings/name_change/line_edit.set_message_translation(false)
 	$settings/name_change/line_edit.notification(NOTIFICATION_TRANSLATION_CHANGED)
 	$settings/name_change/line_edit.placeholder_text = tr("menu.change_name.placeholder")
-	var date = G.getv("create_date", Time.get_date_dict_from_system())
-	var date_str = "%02d/%02d/%d" % [date["day"], date["month"], date["year"]]
-	$settings/creation_date.text = tr("menu.creation_date") + date_str
 	if OS.has_feature("pc"):
 		$settings/contr.hide()
 		$settings/contr_pc.show()
@@ -105,36 +102,44 @@ func achievements(val = true):
 
 func statistics():
 	$achievements/stats_window.popup_centered()
+	$achievements/stats_window/base/title/name.text = G.getv("name", "")
 	if stats_inited:
 		return
-	for i in $achievements/stats_window/base/column0.get_children():
-		if i.name == "classes_opened":
-			i.get_node("count").text = str(G.getv("classes", []).size())
-			continue
-		i.get_node("count").text = str(G.getv(i.name, 0)).replace("_", "-")
-	for i in $achievements/stats_window/base/column1.get_children():
-		if i.name == "classes_opened":
-			i.get_node("count").text = str(G.getv("classes", []).size())
-			continue
-		i.get_node("count").text = str(G.getv(i.name, 0))
 	var ach_get = 0
 	for i in G.ach.achievements:
 		if G.ach.is_completed(i):
 			ach_get += 1
-	$achievements/stats_window/base/achievements_completed/count.text = str(ach_get)
-	var secs = G.getv("time")
-	var mins = 0
-	var hours = 0
-	if secs < 60:
-		$achievements/stats_window/base/time/count.text = "%02d:%02d" % [mins, secs]
-	else:
-		mins = floor(secs / 60)
-		secs -= mins * 60
-		$achievements/stats_window/base/time/count.text = "%02d:%02d" % [mins, secs]
-	if mins >= 60:
-		hours = floor(mins / 60)
-		mins -= hours * 60
-		$achievements/stats_window/base/time/count.text = "%d:%02d:%02d" % [hours, mins, secs]
+	for i in $achievements/stats_window/base/columns/column0.get_children():
+		if i.name == "achievements_completed":
+			i.get_node("count").text = str(ach_get)
+			continue
+		i.get_node("count").text = str(G.getv(i.name, 0)).replace("_", "-")
+	
+	for i in $achievements/stats_window/base/columns/column1.get_children():
+		if i.name == "classes_opened":
+			i.get_node("count").text = str(G.getv("classes", []).size())
+			continue
+		elif i.name == "time":
+			var secs = G.getv("time")
+			var mins = 0
+			var hours = 0
+			if secs < 60:
+				i.get_node("count").text = "%02d:%02d" % [mins, secs]
+			else:
+				mins = floor(secs / 60)
+				secs -= mins * 60
+				i.get_node("count").text = "%02d:%02d" % [mins, secs]
+			if mins >= 60:
+				hours = floor(mins / 60)
+				mins -= hours * 60
+				i.get_node("count").text = "%d:%02d:%02d" % [hours, mins, secs]
+			continue
+		i.get_node("count").text = str(G.getv(i.name, 0))
+	
+	var date = G.getv("create_date", Time.get_date_dict_from_system())
+	var date_str = "%02d/%02d/%d" % [date["day"], date["month"], date["year"]]
+	$achievements/stats_window/base/creation_date/count.text = date_str
+	
 	stats_inited = true
 
 
