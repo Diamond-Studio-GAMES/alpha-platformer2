@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=2]
+[gd_scene load_steps=110 format=2]
 
 [ext_resource path="res://sounds/sfx/mob_death.wav" type="AudioStream" id=1]
 [ext_resource path="res://scripts/game/bosses/maxim.gd" type="Script" id=2]
@@ -50,6 +50,7 @@
 [ext_resource path="res://scripts/game/bosses/laser.gd" type="Script" id=48]
 [ext_resource path="res://textures/bosses/maxim/laser.png" type="Texture" id=49]
 [ext_resource path="res://sounds/sfx/punch_hit.wav" type="AudioStream" id=50]
+[ext_resource path="res://prefabs/blocks/tab.tscn" type="PackedScene" id=51]
 
 [sub_resource type="Curve" id=102]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
@@ -93,7 +94,7 @@ shader_param/glow_color = Color( 0, 1, 0, 1 )
 shader_param/power = 0.0
 
 [sub_resource type="RectangleShape2D" id=111]
-extents = Vector2( 18, 12 )
+extents = Vector2( 9, 12 )
 
 [sub_resource type="Animation" id=34]
 length = 0.001
@@ -3208,15 +3209,16 @@ extents = Vector2( 10, 90 )
 
 [sub_resource type="Gradient" id=118]
 offsets = PoolRealArray( 0, 0.5 )
-colors = PoolColorArray( 0, 1, 0, 1, 0, 1, 1, 1 )
+colors = PoolColorArray( 0, 1, 0, 1, 1, 0.501961, 0, 1 )
 
 [sub_resource type="Gradient" id=119]
 offsets = PoolRealArray( 0, 0.5 )
-colors = PoolColorArray( 0, 1, 0, 1, 0, 1, 1, 1 )
+colors = PoolColorArray( 0, 1, 0, 1, 1, 0.501961, 0, 1 )
 
 [sub_resource type="Animation" id=104]
 resource_name = "attack_blue"
 length = 2.5
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("wave0:position")
 tracks/0/interp = 2
@@ -3381,7 +3383,7 @@ tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
 "times": PoolRealArray( 0, 0.4, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"transitions": PoolRealArray( 1.25, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 32, 4 ), Vector2( 256, 4 ), Vector2( 16, 4 ) ]
 }
@@ -3393,7 +3395,7 @@ tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
 "times": PoolRealArray( 0, 0.4, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"transitions": PoolRealArray( 1.25, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 224, -4 ), Vector2( 0, -4 ), Vector2( -240, -4 ) ]
 }
@@ -3589,7 +3591,7 @@ tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
 "times": PoolRealArray( 0, 0.4, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"transitions": PoolRealArray( 1.25, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 32, 4 ), Vector2( 256, 4 ), Vector2( 16, 4 ) ]
 }
@@ -3601,7 +3603,7 @@ tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
 "times": PoolRealArray( 0, 0.4, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"transitions": PoolRealArray( 1.25, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 224, -4 ), Vector2( 0, -4 ), Vector2( -240, -4 ) ]
 }
@@ -4216,7 +4218,7 @@ hframes = 2
 vframes = 2
 
 [node name="shape" type="CollisionShape2D" parent="mobs/maxim/visual/kick"]
-visible = false
+position = Vector2( 9, 0 )
 shape = SubResource( 111 )
 disabled = true
 
@@ -4273,7 +4275,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/maxim/mob_mx/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/maxim/mob_mx/visual/body"]
-scale = Vector2( 1.25, 1.24921 )
+scale = Vector2( 1.25, 1.12115 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/maxim/mob_mx"]
@@ -4557,7 +4559,7 @@ scale_amount = 4.0
 color_ramp = SubResource( 119 )
 
 [node name="floor_attack" type="Sprite" parent="mobs/floor_attack"]
-modulate = Color( 0, 1, 1, 0 )
+modulate = Color( 1, 0.501961, 0, 0 )
 scale = Vector2( 32, 1e-05 )
 z_index = -6
 texture = ExtResource( 41 )
@@ -4568,7 +4570,6 @@ anims/attack_blue = SubResource( 104 )
 anims/attack_orange = SubResource( 105 )
 
 [node name="attack" type="Area2D" parent="mobs/floor_attack"]
-visible = false
 position = Vector2( -256, 0 )
 collision_layer = 16
 collision_mask = 23
@@ -4597,6 +4598,7 @@ custom_invincibility_time = 0.8
 custom_immobility_time = 0.1
 is_enemy_attack = true
 lifetime = 0.0
+damage_mode = 1
 
 [node name="shape" type="CollisionShape2D" parent="mobs/floor_attack/color_attack"]
 position = Vector2( 0, -4 )
@@ -4638,6 +4640,10 @@ script = SubResource( 100 )
 [node name="shape" type="CollisionShape2D" parent="blocks/platform/area_start"]
 position = Vector2( 4, 0 )
 shape = SubResource( 101 )
+
+[node name="tab" parent="blocks" instance=ExtResource( 51 )]
+position = Vector2( 3056, 0 )
+text = "9_10.elevator"
 
 [node name="decor" type="Node2D" parent="."]
 __meta__ = {

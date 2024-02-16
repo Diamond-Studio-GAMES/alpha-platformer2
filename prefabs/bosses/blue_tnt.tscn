@@ -27,7 +27,7 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.041791, 1.55455 ), 0.0, 0.
 offsets = PoolRealArray( 0, 0.0160256, 0.0352564, 0.0641026, 0.099359, 0.182692, 0.698718 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 0, 1, 1, 0.501961, 0, 1, 0.503906, 0.503906, 0.503906, 1, 0.500751, 0.500751, 0.500751, 1, 0.501961, 0.501961, 0.501961, 0.313726, 0.501961, 0.501961, 0.501961, 0 )
 
-[node name="tnt" type="KinematicBody2D"]
+[node name="tnt" type="KinematicBody2D" groups=["spawnable"]]
 collision_mask = 7
 script = ExtResource( 4 )
 __meta__ = {

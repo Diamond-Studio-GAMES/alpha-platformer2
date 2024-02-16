@@ -69,7 +69,7 @@ func death():
 	if is_time_faster:
 		is_time_faster = false
 		Engine.time_scale = 1
-		time_fasting.get_node("anim").seek(8.8, true)
+		time_fasting.get_node("anim").seek(13.2, true)
 	.death()
 
 
@@ -85,15 +85,15 @@ func get_phase():
 	if health_left <= 0:
 		return -1
 	elif health_left < 0.3:
-		next_attack_time_min = 0.7
-		next_attack_time_max = 1.4
+		next_attack_time_min = 0.6
+		next_attack_time_max = 1.2
 		return 3
 	elif health_left < 0.6:
-		next_attack_time_min = 0.85
-		next_attack_time_max = 1.7
+		next_attack_time_min = 0.8
+		next_attack_time_max = 1.6
 		return 2
-	next_attack_time_min = 1
-	next_attack_time_max = 2
+	next_attack_time_min = 0.9
+	next_attack_time_max = 1.8
 	return 1
 
 
@@ -104,6 +104,7 @@ func do_attack():
 	if phase > 2:
 		var new_variants = phases_attacks[phase].duplicate()
 		if not is_time_faster:
+			new_variants.append("time_fast")
 			new_variants.append("time_fast")
 		new_variants.shuffle()
 		call(new_variants[0])
@@ -157,7 +158,7 @@ func super_floor(orange = false):
 
 
 func tnt():
-	next_attack_time += 2.5
+	next_attack_time += 2
 	ms.sync_call(self, "tnt")
 	anim.play("tnt")
 	yield(get_tree().create_timer(0.7, false), "timeout")

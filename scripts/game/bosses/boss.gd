@@ -127,10 +127,9 @@ func process_attack(delta):
 		return
 	attack_timer += delta
 	if attack_timer >= next_attack_time:
-		mob.find_target()
-		if mob.player == null:
-			return
 		set_target()
+		if player_target == null:
+			return
 		attack_timer = 0
 		next_attack_time = rand_range(next_attack_time_min, next_attack_time_max)
 		do_attack()
@@ -138,6 +137,7 @@ func process_attack(delta):
 
 func set_target():
 	ms.sync_call(self, "set_target")
+	mob.find_target()
 	player_target = mob.player
 
 

@@ -33,6 +33,10 @@ func add_coins(coins):
 	coins_count.add_child(n)
 
 
+func _ready():
+	remaining_time = G.getv("ss_remained", 0)
+
+
 func _process(delta):
 	coins_count.text = str(collected_coins)
 	gems_count.text = str(collected_gems)
@@ -58,6 +62,7 @@ func quit():
 
 
 func _on_spawn_timer_timeout():
+	G.setv("ss_remained", remaining_time)
 	if remaining_time <= 0:
 		return
 	if coin_counter >= 150:
@@ -79,3 +84,4 @@ func spawn_item(item, count):
 
 func _on_ticket_selector_started():
 	remaining_time += 15 * 60
+	G.setv("ss_remained", remaining_time)
