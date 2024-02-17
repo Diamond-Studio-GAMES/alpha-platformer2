@@ -1,6 +1,7 @@
 extends Node
 
 
+var remaining_time = 0
 var collected_gems = 0
 var collected_coins = 0
 var timer = 0
@@ -10,8 +11,9 @@ var effect_coins = load("res://minigames/minigame3/coins_add_effect.tscn")
 var effect_gems = load("res://minigames/minigame3/gems_add_effect.tscn")
 var coin = load("res://minigames/minigame3/coin.tscn")
 var gem = load("res://minigames/minigame3/gem.tscn")
-onready var coins_count = $gui/base/coins
-onready var gems_count = $gui/base/gems
+onready var coins_count = $"../gui/base/coins"
+onready var gems_count = $"../gui/base/gems"
+onready var remains = $"../gui/base/remains"
 onready var spawn_pos = $spawn_pos.global_translation
 
 
@@ -31,9 +33,18 @@ func add_coins(coins):
 	coins_count.add_child(n)
 
 
+func _ready():
+	remaining_time = G.getv("ss_remained", 0)
+
+
 func _process(delta):
 	coins_count.text = str(collected_coins)
 	gems_count.text = str(collected_gems)
+	var seconds = int(ceil(remaining_time))
+	remains.text = tr("3.remains") % [seconds / 3600, seconds / 60 % 60, seconds % 60]
+	if remaining_time <= 0:
+		return
+	remaining_time -= delta
 	timer += delta
 	if timer >= 60:
 		timer = 0
@@ -51,6 +62,9 @@ func quit():
 
 
 func _on_spawn_timer_timeout():
+	G.setv("ss_remained", remaining_time)
+	if remaining_time <= 0:
+		return
 	if coin_counter >= 150:
 		spawn_item(gem, 1)
 		coin_counter = 0
@@ -66,3 +80,8 @@ func spawn_item(item, count):
 		tra.origin = Vector3(spawn_pos.x + rand_range(-2, 2), spawn_pos.y + rand_range(-1, 1), spawn_pos.z + rand_range(-2, 2))
 		n.global_transform = tra
 		add_child(n, true)
+
+
+func _on_ticket_selector_started():
+	remaining_time += 15 * 60
+	G.setv("ss_remained", remaining_time)

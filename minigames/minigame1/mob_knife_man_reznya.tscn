@@ -7,3 +7,6 @@ max_health = 50
 stats_multiplier = 2.0
 attack_damage = 50
 vision_distance = 6000.0
+
+[node name="anim" parent="." index="2"]
+blend_times = [ "attack", "attack", 0.3, "attack", "idle", 0.3, "attack", "walk", 0.5, "death", "attack", 0.3, "death", "walk", 0.5, "hurt", "attack", 0.3, "hurt", "idle", 0.3, "hurt", "walk", 0.5, "idle", "attack", 0.3, "idle", "idle", 0.3, "idle", "walk", 0.5, "walk", "attack", 0.3, "walk", "idle", 0.3, "walk", "walk", 0.5 ]

@@ -61,6 +61,10 @@ func connect_ip():
 
 # Здесь начинается спизженный код.
 func connect_auto():
+	if not G.cached_ip.empty():
+		connect_ip()
+		G.cached_ip = ""
+		return
 	if timer.time_left > 0:
 		return
 	var ips = IP.get_local_addresses()
@@ -71,7 +75,7 @@ func connect_auto():
 			break
 	ip_preffix = ip_preffix.get_basename() + "."
 	timer.start()
-	curr_suff = G.cached_suff-1 if G.cached_suff >= 0 else -1
+	curr_suff = -1
 
 
 func do_disconnect():
@@ -82,8 +86,7 @@ func do_disconnect():
 
 
 func connected_ok():
-	if curr_suff > 0:
-		G.cached_suff = curr_suff
+	
 	init_multiplayer()
 
 
@@ -268,10 +271,6 @@ func _on_timer_timeout():
 		try.text = ""
 		curr_suff = 0
 	else:
-		if curr_suff == G.cached_suff:
-			G.cached_suff = -1
-			curr_suff = 0
-		else:
-			curr_suff += 1
+		curr_suff += 1
 		MP.create_client(ip_preffix + str(curr_suff), PORT)
 		try.text = tr("lobby.trying") + ip_preffix + str(curr_suff)

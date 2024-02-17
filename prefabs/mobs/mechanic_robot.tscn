@@ -1,0 +1,1080 @@
+[gd_scene load_steps=53 format=2]
+
+[ext_resource path="res://themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://textures/mobs/mechanic_robot/leg.tres" type="Texture" id=2]
+[ext_resource path="res://sounds/sfx/heal.wav" type="AudioStream" id=3]
+[ext_resource path="res://textures/gui/strike_bar.tres" type="Texture" id=4]
+[ext_resource path="res://textures/mobs/mechanic/head.tres" type="Texture" id=5]
+[ext_resource path="res://sounds/sfx/stun.wav" type="AudioStream" id=6]
+[ext_resource path="res://textures/mobs/mechanic/hand1.tres" type="Texture" id=7]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=8]
+[ext_resource path="res://textures/mobs/mechanic/body.tres" type="Texture" id=9]
+[ext_resource path="res://textures/gui/health_bar.tres" type="Texture" id=10]
+[ext_resource path="res://textures/mobs/mechanic/hair_man.tres" type="Texture" id=11]
+[ext_resource path="res://sounds/sfx/cast.wav" type="AudioStream" id=12]
+[ext_resource path="res://textures/mobs/mechanic_robot/arm_big.tres" type="Texture" id=13]
+[ext_resource path="res://textures/effects/other/use_item_0.tres" type="Texture" id=14]
+[ext_resource path="res://scripts/game/mobs/mechanic_robot.gd" type="Script" id=15]
+[ext_resource path="res://textures/mobs/mechanic_robot/arm_small.tres" type="Texture" id=16]
+[ext_resource path="res://textures/effects/other/heal_plus.png" type="Texture" id=17]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=18]
+[ext_resource path="res://textures/mobs/mechanic_robot/body.tres" type="Texture" id=19]
+[ext_resource path="res://textures/effects/attacks/ball_attack.png" type="Texture" id=20]
+[ext_resource path="res://textures/gui/health_bar_empty.tres" type="Texture" id=21]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=23]
+
+[sub_resource type="Curve" id=97]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="AudioStreamRandomPitch" id=99]
+audio_stream = ExtResource( 12 )
+
+[sub_resource type="Animation" id=91]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/arm_small:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/arm_small:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body/mechanic/head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -11.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body/arm_big:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -8 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/body/arm_big:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visual/body/arm_big/arm_big:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visual/body/arm_big/arm_big/ball:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("visual/body/leg_left:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("visual/body/leg_right:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("visual/body/arm_small/arm_small:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("visual/body:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("visual/body/mechanic/head:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "attack"
+length = 1.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/mechanic/head:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 15.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/arm_small:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body/arm_small/arm_small:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -4 ), Vector2( 0, 0 ), Vector2( 0, -4 ), Vector2( 0, 0 ), Vector2( 0, -4 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body/mechanic/head:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -11.5 ), Vector2( 0, -10 ) ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("visual/body/arm_small/arm_small/shoot")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5, 0.9, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+}, {
+"args": [  ],
+"method": "restart"
+}, {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("visual/body/arm_small/arm_small/shoot/sfx")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource( 99 )
+} ],
+"times": PoolRealArray( 0.5 )
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("visual/body/arm_small/arm_small/shoot/sfx2")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource( 99 )
+} ],
+"times": PoolRealArray( 0.9 )
+}
+tracks/7/type = "audio"
+tracks/7/path = NodePath("visual/body/arm_small/arm_small/shoot/sfx3")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource( 99 )
+} ],
+"times": PoolRealArray( 1.3 )
+}
+
+[sub_resource type="Animation" id=92]
+resource_name = "attack_big"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/mechanic/head:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 15.0, -10.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/arm_big:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -90.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body/arm_big/arm_big:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.8, 2, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -4 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body/arm_big/arm_big/ball:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.8, 1.8, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1.93187e-05, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/body/mechanic/head:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.8, 1.8, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -11.5 ), Vector2( 0, -10 ), Vector2( 0, -10 ), Vector2( 0, -11 ) ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("visual/body/arm_big/arm_big/ball/sfx")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 12 )
+} ],
+"times": PoolRealArray( 1.8 )
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "death"
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath("hurt")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("death")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, -2 ), Vector2( -1, 1 ), Vector2( -1, -1 ), Vector2( -1, 1 ), Vector2( -1, -2 ), Vector2( -1, 1 ), Vector2( 1, 1 ), Vector2( 2, -1 ), Vector2( -1, 1 ), Vector2( 1, 1 ), Vector2( 2, -1 ), Vector2( 1, 1 ), Vector2( -3, -1 ), Vector2( -1, 1 ), Vector2( 1, -1 ), Vector2( 0, 2 ), Vector2( -1, 1 ), Vector2( 2, 2 ), Vector2( 1, -1 ), Vector2( 1, -1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "hurt"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/path = NodePath("hurt")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+
+[sub_resource type="Animation" id=23]
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/arm_small:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/arm_big:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body/arm_big:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -8 ), Vector2( 0, -7.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body/arm_small:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -8 ), Vector2( 0, -7.5 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/body/leg_left:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("visual/body/leg_right:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("visual/body/mechanic/head:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -11.5 ), Vector2( 0, -10.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("visual/body/mechanic/head:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("visual/body:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=98]
+resource_name = "walk"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual/body/arm_small:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 45.0, 0.0, -45.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("visual/body/arm_big:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -45.0, 0.0, 45.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("visual/body/leg_left:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -30.0, 0.0, 30.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body/leg_right:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 30.0, 0.0, -30.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("visual/body/mechanic/head:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5.0 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=75]
+animation = "attack"
+
+[sub_resource type="AnimationNodeTimeSeek" id=89]
+
+[sub_resource type="AnimationNodeOneShot" id=76]
+filter_enabled = true
+filters = [ "visual/body/arm_right/hand/end:rotation_degrees", "visual/body/arm_right/hand/weapon:rotation_degrees", "visual/body/arm_right/hand/weapon:visible", "visual/body/arm_right/hand:rotation_degrees", "visual/body/arm_right:rotation_degrees", "visual/body/arm_small/arm_small/shoot", "visual/body/arm_small/arm_small/shoot/sfx", "visual/body/arm_small/arm_small/shoot/sfx2", "visual/body/arm_small/arm_small/shoot/sfx3", "visual/body/arm_small/arm_small:position", "visual/body/arm_small:rotation_degrees", "visual/body/attack0/swing", "visual/body/attack1/swing", "visual/body/head:rotation_degrees", "visual/body/mechanic/head:position", "visual/body/mechanic/head:rotation_degrees" ]
+fadein_time = 0.2
+fadeout_time = 0.3
+
+[sub_resource type="AnimationNodeAnimation" id=93]
+animation = "attack_big"
+
+[sub_resource type="AnimationNodeTimeSeek" id=94]
+
+[sub_resource type="AnimationNodeOneShot" id=95]
+filter_enabled = true
+filters = [ "visual/body/arm_big/arm_big/ball/sfx", "visual/body/arm_big/arm_big/ball:scale", "visual/body/arm_big/arm_big:position", "visual/body/arm_big:rotation_degrees", "visual/body/mechanic/head:position", "visual/body/mechanic/head:rotation_degrees" ]
+fadein_time = 0.2
+fadeout_time = 0.3
+
+[sub_resource type="AnimationNodeAnimation" id=82]
+animation = "death"
+
+[sub_resource type="AnimationNodeTransition" id=85]
+input_count = 2
+xfade_time = 0.1
+input_0/name = "in"
+input_0/auto_advance = false
+input_1/name = "death"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeAnimation" id=83]
+animation = "hurt"
+
+[sub_resource type="AnimationNodeOneShot" id=84]
+
+[sub_resource type="AnimationNodeAnimation" id=78]
+animation = "idle"
+
+[sub_resource type="AnimationNodeTransition" id=86]
+input_count = 2
+xfade_time = 0.15
+input_0/name = "idle"
+input_0/auto_advance = false
+input_1/name = "walk"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeAnimation" id=79]
+animation = "walk"
+
+[sub_resource type="AnimationNodeBlendTree" id=90]
+graph_offset = Vector2( 33, -31 )
+nodes/attack/node = SubResource( 75 )
+nodes/attack/position = Vector2( -100, 320 )
+nodes/attack_seek/node = SubResource( 89 )
+nodes/attack_seek/position = Vector2( 60, 280 )
+nodes/attack_shot/node = SubResource( 76 )
+nodes/attack_shot/position = Vector2( 200, 80 )
+nodes/big/node = SubResource( 93 )
+nodes/big/position = Vector2( 220, 320 )
+nodes/big_seek/node = SubResource( 94 )
+nodes/big_seek/position = Vector2( 380, 280 )
+nodes/big_shot/node = SubResource( 95 )
+nodes/big_shot/position = Vector2( 500, 100 )
+nodes/death/node = SubResource( 82 )
+nodes/death/position = Vector2( 640, 280 )
+nodes/death_trans/node = SubResource( 85 )
+nodes/death_trans/position = Vector2( 800, 160 )
+nodes/hurt/node = SubResource( 83 )
+nodes/hurt/position = Vector2( -282.353, 305.882 )
+nodes/hurt_shot/node = SubResource( 84 )
+nodes/hurt_shot/position = Vector2( -100, 80 )
+nodes/idle/node = SubResource( 78 )
+nodes/idle/position = Vector2( -564.706, 94.1176 )
+nodes/iw_trans/node = SubResource( 86 )
+nodes/iw_trans/position = Vector2( -305.882, 117.647 )
+nodes/output/position = Vector2( 980, 180 )
+nodes/walk/node = SubResource( 79 )
+nodes/walk/position = Vector2( -564.706, 211.765 )
+node_connections = [ "attack_seek", 0, "attack", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "big_seek", 0, "big", "big_shot", 0, "attack_shot", "big_shot", 1, "big_seek", "death_trans", 0, "big_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "output", 0, "death_trans" ]
+
+[sub_resource type="CapsuleShape2D" id=26]
+radius = 12.0
+height = 36.0
+
+[sub_resource type="DynamicFont" id=1]
+size = 27
+outline_size = 1
+font_data = ExtResource( 18 )
+
+[sub_resource type="Curve" id=15]
+max_value = 5.0
+_data = [ Vector2( 0, 5 ), 0.0, -0.518896, 0, 0, Vector2( 1, 0 ), -18.6169, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=96]
+_data = [ Vector2( 0.504478, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=17]
+_data = [ Vector2( 0, 0.490247 ), 0.0, 0.0, 0, 0, Vector2( 0.497789, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.233573 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CircleShape2D" id=18]
+radius = 5.0
+
+[sub_resource type="Gradient" id=19]
+offsets = PoolRealArray( 0, 0.320574, 0.665072, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="mob_mechanic_robot" type="KinematicBody2D" groups=["spawnable"]]
+z_index = -2
+collision_layer = 4
+collision_mask = 23
+script = ExtResource( 15 )
+SPEED = 50
+defense = 0
+attack_damage = 15
+reaction_speed = 0.5
+vision_distance = 400.0
+attack_distance = 180.0
+attack_speed = 6.0
+head_path = NodePath("visual/body/mechanic/head")
+head_sprite_path = "res://textures/mobs/mechanic/head.tres"
+head_hurt_sprite_path = "res://textures/mobs/mechanic/head_hurt.tres"
+custom_mob_death_effect_path = "res://prefabs/effects/robot_death.tscn"
+min_distance = 120.0
+big_attack_damage = 45
+
+[node name="visual" type="Node2D" parent="."]
+position = Vector2( 0, -10 )
+z_index = -3
+
+[node name="body" type="Sprite" parent="visual"]
+texture = ExtResource( 19 )
+
+[node name="arm_small" type="Node2D" parent="visual/body"]
+show_behind_parent = true
+position = Vector2( 0, -8 )
+
+[node name="arm_small" type="Sprite" parent="visual/body/arm_small"]
+texture = ExtResource( 16 )
+offset = Vector2( 0, 12 )
+
+[node name="shoot" type="CPUParticles2D" parent="visual/body/arm_small/arm_small"]
+show_behind_parent = true
+position = Vector2( 0, 23 )
+emitting = false
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+direction = Vector2( 0, 1 )
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+initial_velocity_random = 0.5
+scale_amount = 2.0
+scale_amount_curve = SubResource( 97 )
+color = Color( 0.501961, 0, 1, 1 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="visual/body/arm_small/arm_small/shoot"]
+stream = SubResource( 99 )
+volume_db = -3.0
+bus = "sfx"
+
+[node name="sfx2" type="AudioStreamPlayer2D" parent="visual/body/arm_small/arm_small/shoot"]
+stream = SubResource( 99 )
+volume_db = -3.0
+bus = "sfx"
+
+[node name="sfx3" type="AudioStreamPlayer2D" parent="visual/body/arm_small/arm_small/shoot"]
+stream = SubResource( 99 )
+volume_db = -3.0
+bus = "sfx"
+
+[node name="arm_big" type="Node2D" parent="visual/body"]
+position = Vector2( 0, -8 )
+
+[node name="arm_big" type="Sprite" parent="visual/body/arm_big"]
+texture = ExtResource( 13 )
+offset = Vector2( 2.38419e-07, 12 )
+
+[node name="ball" type="Sprite" parent="visual/body/arm_big/arm_big"]
+self_modulate = Color( 0.501961, 0, 1, 1 )
+position = Vector2( 0, 34 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 20 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="visual/body/arm_big/arm_big/ball"]
+stream = ExtResource( 12 )
+volume_db = 3.0
+pitch_scale = 0.75
+bus = "sfx"
+
+[node name="mechanic" type="Sprite" parent="visual/body"]
+show_behind_parent = true
+position = Vector2( 0, -10 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="head" type="Sprite" parent="visual/body/mechanic"]
+position = Vector2( 0, -11.5 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+offset = Vector2( 0, -16 )
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="hair" type="Node2D" parent="visual/body/mechanic/head"]
+position = Vector2( 0, -28 )
+
+[node name="hair_man" type="Sprite" parent="visual/body/mechanic/head/hair"]
+texture = ExtResource( 11 )
+
+[node name="arm_left" type="Sprite" parent="visual/body/mechanic"]
+position = Vector2( -0.841847, -9.68929 )
+rotation = -0.654498
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 7 )
+offset = Vector2( 0, 7 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="arm_right" type="Sprite" parent="visual/body/mechanic"]
+position = Vector2( 0.84, -9.68649 )
+rotation = -0.785397
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 7 )
+offset = Vector2( 0, 7 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="leg_left" type="Sprite" parent="visual/body"]
+self_modulate = Color( 0.752941, 0.752941, 0.752941, 1 )
+show_behind_parent = true
+position = Vector2( 4, 8 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, 12 )
+
+[node name="leg_right" type="Sprite" parent="visual/body"]
+show_behind_parent = true
+position = Vector2( -4, 8 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, 12 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/RESET = SubResource( 91 )
+anims/attack = SubResource( 20 )
+anims/attack_big = SubResource( 92 )
+anims/death = SubResource( 21 )
+anims/hurt = SubResource( 22 )
+anims/idle = SubResource( 23 )
+anims/walk = SubResource( 98 )
+next/attack = "idle"
+next/attack_big = "idle"
+next/hurt = "idle"
+blend_times = [ "attack", "attack", 0.3, "attack", "idle", 0.15, "attack", "walk", 0.5, "death", "attack", 0.3, "death", "walk", 0.5, "hurt", "attack", 0.3, "hurt", "idle", 0.3, "hurt", "walk", 0.5, "idle", "attack", 0.3, "idle", "idle", 0.3, "idle", "walk", 0.5, "walk", "attack", 0.3, "walk", "idle", 0.3, "walk", "walk", 0.5 ]
+
+[node name="anim_tree" type="AnimationTree" parent="."]
+tree_root = SubResource( 90 )
+anim_player = NodePath("../anim")
+active = true
+parameters/attack_seek/seek_position = -1.0
+parameters/attack_shot/active = false
+parameters/big_seek/seek_position = -1.0
+parameters/big_shot/active = false
+parameters/death_trans/current = 0
+parameters/hurt_shot/active = false
+parameters/iw_trans/current = 0
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -4 )
+shape = SubResource( 26 )
+
+[node name="bars" type="Control" parent="."]
+margin_left = -26.0
+margin_top = -56.0
+margin_right = 26.0
+margin_bottom = -50.0
+mouse_filter = 2
+theme = ExtResource( 1 )
+
+[node name="progress" type="TextureProgress" parent="bars"]
+self_modulate = Color( 0, 1, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+value = 100.0
+texture_progress = ExtResource( 4 )
+nine_patch_stretch = true
+
+[node name="under" type="TextureProgress" parent="bars/progress"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+value = 100.0
+texture_progress = ExtResource( 10 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="TextureRect" parent="bars/progress/under"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 21 )
+expand = true
+
+[node name="hp" type="Label" parent="bars"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -39.0
+margin_top = -15.0
+margin_right = 221.0
+margin_bottom = 36.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 1 )
+text = "50/50"
+align = 1
+valign = 1
+
+[node name="tween" type="Tween" parent="."]
+
+[node name="hurt" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+emission_shape = 2
+emission_rect_extents = Vector2( 12, 22 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 0.5
+scale_amount_curve = SubResource( 15 )
+color = Color( 0.235294, 0, 0.235294, 1 )
+
+[node name="death" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.5
+local_coords = false
+emission_shape = 2
+emission_rect_extents = Vector2( 12, 22 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 0.5
+scale_amount = 4.0
+scale_amount_curve = SubResource( 96 )
+color = Color( 1, 1, 0, 1 )
+
+[node name="heal" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 4
+one_shot = true
+preprocess = 0.1
+explosiveness = 0.95
+local_coords = false
+texture = ExtResource( 17 )
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 20 )
+direction = Vector2( 0, -1 )
+spread = 22.5
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+radial_accel = 5.59
+tangential_accel = 5.59
+scale_amount_curve = SubResource( 17 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="check_water" type="Area2D" parent="."]
+position = Vector2( 0, -40 )
+collision_layer = 8
+collision_mask = 32
+
+[node name="shape" type="CollisionShape2D" parent="check_water"]
+shape = SubResource( 18 )
+
+[node name="stun_stars" type="CPUParticles2D" parent="."]
+visible = false
+amount = 10
+lifetime = 3.0
+preprocess = 3.0
+texture = ExtResource( 14 )
+emission_shape = 2
+emission_rect_extents = Vector2( 16, 40 )
+direction = Vector2( 0, 0 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+scale_amount = 0.5
+color = Color( 0.964706, 0.670588, 1, 1 )
+color_ramp = SubResource( 19 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="jump_ray_cast" type="RayCast2D" parent="."]
+position = Vector2( 0, 18 )
+enabled = true
+cast_to = Vector2( 24, 0 )
+collision_mask = 9
+
+[node name="jump_ray_cast2" type="RayCast2D" parent="."]
+position = Vector2( 0, 18 )
+enabled = true
+cast_to = Vector2( -24, 0 )
+collision_mask = 9
+
+[node name="path_ray_cast_left" type="RayCast2D" parent="."]
+position = Vector2( -8, -22 )
+enabled = true
+cast_to = Vector2( -12, 106 )
+collision_mask = 25
+collide_with_areas = true
+
+[node name="path_ray_cast_right" type="RayCast2D" parent="."]
+position = Vector2( 8, -22 )
+enabled = true
+cast_to = Vector2( 12, 106 )
+collision_mask = 25
+collide_with_areas = true
+
+[node name="hurt_sfx" type="AudioStreamPlayer2D" parent="."]
+max_distance = 800.0
+bus = "sfx"
+
+[node name="stun_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+max_distance = 800.0
+bus = "sfx"
+
+[node name="heal_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+max_distance = 800.0
+bus = "sfx"
+
+[node name="MultiplayerSynchronizer" type="Node" parent="."]
+script = ExtResource( 8 )
+__meta__ = {
+"_editor_description_": ""
+}
+reliable_sync_node_paths = [ NodePath("..") ]
+reliable_sync_properties_names = [ "GRAVITY_SCALE" ]
+unreliable_sync_node_paths = [ NodePath(".."), NodePath("..") ]
+unreliable_sync_properties_names = [ "global_position", "current_health" ]
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 23 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath("..") ]
+spawn_sync_data_properties = [ "stats_multiplier", "owner_current_health", "global_position" ]
+
+[connection signal="area_entered" from="check_water" to="." method="water_checked"]
+[connection signal="area_exited" from="check_water" to="." method="water_unchecked"]

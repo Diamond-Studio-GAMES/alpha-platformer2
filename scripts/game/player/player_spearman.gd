@@ -72,13 +72,18 @@ func joystick_released(output):
 		throw(output)
 
 
-func attack():
+func attack(fatal = false, stuns = false):
 	if is_hurt or is_stunned or _is_ultiing or _is_drinking or not can_control:
 		return
 	if not can_attack:
 		_attack_empty_anim.play("empty")
 		return
-	ms.sync_call(self, "attack")
+	if hate_refuse():
+		return
+	if MP.auth(self):
+		fatal = hate_fatal()
+		stuns = have_soul_power and gen.randi_range(0, 100) > 80
+	ms.sync_call(self, "attack", [fatal, stuns])
 	can_attack = false
 	_is_attacking = true
 	if MP.auth(self):
@@ -87,18 +92,21 @@ func attack():
 	_anim_tree["parameters/attack_seek/seek_position"] = 0
 	_anim_tree["parameters/attack_shot/active"] = true
 	yield(get_tree().create_timer(0.2, false), "timeout")
-	if have_soul_power and gen.randi_range(0, 100) > 80 and MP.auth(self):
+	if stuns:
 		_attack_node.stuns = true
 		_attack_node.modulate = Color.palegreen
+	if fatal:
+		_attack_node.fatal = fatal
 	$visual/body/spear_attack/swing.play()
 	_attack_visual.show()
 	_attack_visual.playing = true
 	yield(get_tree().create_timer(0.05, false), "timeout")
 	_attack_shape.disabled = false
 	yield(get_tree().create_timer(0.15, false), "timeout")
-	_attack_node.stuns = false
 	_attack_visual.hide()
-	_attack_node.modulate = Color.white
+	if stuns:
+		_attack_node.stuns = false
+		_attack_node.modulate = Color.white
 	_attack_visual.playing = false
 	_attack_visual.frame = 0
 	_attack_shape.disabled = true
@@ -119,17 +127,16 @@ func throw(direction):
 	if MP.auth(self):
 		RECHARGE_SPEED = 1.7 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
 	attack_cooldown = RECHARGE_SPEED + 0.9
-	var phi = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
-	var hand_rotate = rad2deg(phi)
-	var weapon_rotate = rad2deg(direction.angle())
-	hand_rotate -= 90
-	if hand_rotate < -180:
-		hand_rotate = 360 + hand_rotate
-	if hand_rotate < 0 and hand_rotate > -180:
+	var hand_rotate = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
+	hand_rotate -= PI / 2
+	if hand_rotate < -PI:
+		hand_rotate = TAU + hand_rotate
+	if hand_rotate < 0 and hand_rotate > -PI:
 		_body.scale.x = 1
-	if hand_rotate > 0 and hand_rotate < 180:
+	if hand_rotate > 0 and hand_rotate < PI:
 		_body.scale.x = -1
 		hand_rotate = -hand_rotate
+	hand_rotate = rad2deg(hand_rotate)
 	anima.track_set_key_value(trck_idx, key_idx0, hand_rotate)
 	anima.track_set_key_value(trck_idx, key_idx1, hand_rotate)
 	_anim_tree["parameters/throw_shot/active"] = true
@@ -138,8 +145,9 @@ func throw(direction):
 	if MP.auth(self):
 		var node = spear.instance()
 		node.global_position = Vector2(global_position.x, global_position.y - 12 * GRAVITY_SCALE)
-		node.rotation_degrees = weapon_rotate
+		node.rotation = direction.angle()
 		node.get_node("attack").damage = G.getv("spearman_level", 0) * 5 + 25 + (15 if  is_amulet(G.Amulet.POWER) else 0)
+		node.get_node("attack").fatal = hate_fatal()
 		_level.add_child(node, true)
 	_is_attacking = false
 	speed_cooficent /= 0.5
@@ -157,8 +165,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("gadget") and have_gadget:
 		use_gadget()
 	if joystick._output.length_squared() * current_health > 0:
-		var phi = Vector2(joystick._output.x, joystick._output.y * GRAVITY_SCALE).angle()
-		aim_line.rotation = phi
+		aim_line.rotation = Vector2(joystick._output.x, joystick._output.y * GRAVITY_SCALE).angle()
 		aim_line.visible = true
 		aim_line.modulate = Color.red if attack_cooldown > 0 else Color.white
 	else:
@@ -171,9 +178,11 @@ func revive(hpc = -1):
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or is_hurt or is_stunned or _is_attacking or _is_ultiing or not can_control:
+	if is_hurt or _is_attacking:
 		return
-	.use_gadget()
+	var success = .use_gadget()
+	if not success:
+		return
 	_anim_tree["parameters/attack_seek/seek_position"] = 0
 	_anim_tree["parameters/attack_shot/active"] = true
 	yield(get_tree().create_timer(0.267, false), "timeout")

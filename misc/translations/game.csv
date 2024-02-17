@@ -34,12 +34,10 @@ boss.king.mercy,Красный король: Используй свою сил�
 boss.follower1,Егор,Egor
 boss.follower1.mercy,Егор: Ты… Зачем?..,Egor: You… Why?
 boss.follower1.defeat,Егор: Ну вот и всё…,"Egor: Now, that’s all…"
-boss.follower2,,
-boss.follower2.mercy,,
-boss.follower2.defeat,,
+boss.follower2,Максим,Max
+boss.follower2.mercy,"Максим: Но его… Нет, ты сможешь!","Max: But him… No, you can!"
+boss.follower2.defeat,"Максим: Возможно, сейчас ты и победил…","Max: Maybe, you won this time…"
 boss.main,,
-boss.main.defeat,,
-boss.main.mercy,,
 miss.miss,МИМО,MISS
 location.field,Поле,Field
 location.forest,Лес,Forest
@@ -164,12 +162,22 @@ player.defeated,Поражение!,Defeated!
 player.revive.multiplayer,ВОСКРЕСИ МЕНЯ!,REVIVE ME!
 door.go,Перейти,Enter
 npc.talk,Говорить,Talk
+hate.up,Твоя ненависть увеличилась!,Your hate has increased!
+hate.down,Ненависть очищена!,Hate cleared!
+hate.refuse.0,Нет!,No!
+hate.refuse.1,"Я сам знаю, что делать!",I know what to do!
+hate.refuse.2,Неа.,Nope.
+hate.revive.0,Не сегодня!,Not today!
+hate.revive.1,НЕ СЕГОДНЯ!!!,NOT TODAY!!!
 1_1.dude,Чувак…,Dude…
 1_1.goright,Ты куда идёшь? Иди вправо!,Where are you going? Go right!
 1_1.hello,Привет! Двигайся с помощью стрелок в левом нижнем углу!,Hello! Move with the arrows in the lower left corner!
+1_1.hello.pc,Привет! Используй %s и %s для движения.,Hello! Use %s and %s to move.
 1_1.jump,Теперь прыгни с помощью стрелки в правом нижнем углу!,Now jump with the arrow in the lower right corner!
+1_1.jump.pc,%s — для прыжка.,Use %s to jump.
 1_1.fight,Молодец! Пришла пора драться!,Well done! It’s time to fight!
 1_1.butt,Используй кнопку в виде ножа для атаки! Будь осторожен!,Use the knife-shaped button to attack! Be careful!
+1_1.butt.pc,"%s — для атаки. Открой настройки, если хочешь поменять управление.",Use %s for attack. Open settings if you want to change controls.
 1_1.shroomtip,"Этот гриб ударит тебя, если его коснуться. Бей его на расстоянии.",This mushroom will hurt you if you touch it. Hit him from a distance.
 1_1.anotherone,Так держать! Дальше ещё один враг!,Keep it up! There is another enemy!
 1_1.mantip,Этот враг бьёт тебя ножом в зоне его атаки раз в несколько секунд.,This enemy stabs you in his attack zone every few seconds.
@@ -208,7 +216,7 @@ npc.talk,Говорить,Talk
 2_5.you,"?/т.-=,.||.,=ы-+#","?/y.-=,.||.,o=-+u#"
 2_6.portal,"Это что, портал? Откуда?",Is this a portal? From where?
 2_6.how,Как они работают?,How do they work?
-2_9.shlyuhi,"Я слышал%, что в местных школах восьмиклассницы - пр*ст*тутки…",I've heard that eighth graders are h*rlots in local schools…
+2_9.shlyuhi,"Есть слухи, что в местных школах восьмиклассницы - пр*ст*тутки…",I've heard that eighth graders are h*rlots in local schools…
 2_10.boss.start,"Лесоруб: Ну что, сразимся???","Lumberjack: Well, shall we fight???"
 2_10.boss.0,Лесоруб: Здесь ты значит…,Lumberjack: You are here…
 3_2.client,И их главный клиент - физрук…,And their main client is PE teacher…
@@ -247,6 +255,7 @@ npc.talk,Говорить,Talk
 5_10.boss.1,Хирург: Секунду... Там кто-то идёт... Неужто это…,Surgeon: Wait a second... There's someone coming... Is it really…
 5_10.boss.start,"Хирург: Та самая убийца!? Ну ничего, операция тебе поможет!","Surgeon: That killer!? Well, the operation will help you!"
 training,Тренировка,Training
+6_1.tip,"Эта кнопка активируется, если на ней лежит блок.",This button activates when there is block on it.
 6_1.views,Какие классные виды…,What cool views…
 6_2.tip,"Мне кажется, или меня попытаются столкнуть в лаву?","Is it just me, or will they try to push me into the lava?"
 6_4.giant,На этой горе по легендам обитает ГИГАНТСКИЙ ГРИБ!!!,"According to legends, a GIANT MUSHROOM lives on this mountain!!!"
@@ -354,3 +363,28 @@ Another: 6-7dmdtmkncetgankdt"":;:&№№:?№"
 8_10.boss.death.0,Егор: Прости.,Egor: Sorry.
 8_10.boss.death.1,Егор: Мне жаль.,Egor: I’m sorry.
 8_10.boss.death.2,Егор: Вот и кончилось твоё приключение…,Egor: Your adventure has ended…
+9_3.gold,С золотом у них тяжко…,They have problems with gold...
+9_4.remont,Лавопровод на ремонте,The lava pipeline is under repair
+9_5.rest,"Похоже на место, где отдыхали работники…",It looks like a place where the workers rested…
+9_5.pool,Даже бассейн есть!..,There is even a swimming pool!..
+9_8.lore,"Возможно, это место, где работал ALPHA 51…",Perhaps this is the place where ALPHA 51 worked.…
+9_9.stone,Похоже на генератор булыжника.,Looks like stone generator.
+9_9.fail,"Наверное, это его первая неудавшаяся версия.",This is probably its first failed version.
+9_9.note,"Лист из дневника. На нём написано: «Пиксель — артефакт с силой,
+способной превращать всё в пиксели...»","A page from the diary. It says: ""A pixel is an artifact with the power
+to turn everything into pixels..."""
+9_9.sisyphus,Сизиф 2,Sisyphus 2
+9_10.boss.death.0,Максим: Жалкое зрелище.,Max: Pitiful sight.
+9_10.boss.death.1,Максим: А я уж думал…,Max: I was already thinking…
+9_10.boss.death.2,Максим: Какая жалость!,Max: What a pity!
+9_10.boss.death.3,Максим: Плохо. Очень плохо.,Max: Bad. Very bad.
+9_10.boss.start,Максим: ...поработать и УМЕРЕТЬ!,Max: ...to work and DIE!
+9_10.boss.0,"Максим: Ну-ка, кто там идёт… Да это же наш бунтарь!",Max: Who’s going there… It’s our outlaw!
+9_10.boss.1,Максим: Каким-то образом ты сумел% победить Егора…,Max: Somehow you were able to defeat Egor…
+9_10.boss.2,Максим: Но не радуйся: сильным особо он и не был.,Max: But don’t be happy: he wasn’t strong.
+9_10.boss.3,"Максим: Да и не любил я его, странно он одевался…","Max: And I didn’t love him, he dressed strangely…"
+9_10.boss.4,Максим: И вежливый был весь такой!..,Max: And he was so polite!..
+9_10.boss.5,Максим: Вернёмся к тебе. Каким-то чудом ты преодолел% завод.,Max: You. Somehow you passed the factory.
+9_10.boss.6,"Максим: И, наверное, уже знаешь, что здесь произошло с рабочими.","Max: And probably you already know, what happened here with workers."
+9_10.boss.7,Максим: Пора и тебе…,Max: It’s time for you…
+9_10.elevator,Лифт к Небесным островам,Elevator to heavenly islands

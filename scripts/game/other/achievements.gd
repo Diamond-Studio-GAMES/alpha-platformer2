@@ -1,4 +1,4 @@
-class_name Achievements
+class_name Achievements, "res://textures/achievements/complete.png"
 extends CanvasLayer
 
 
@@ -23,6 +23,7 @@ const POTION_MAN = "10_potions"
 const PROZAPASS = "max_potions"
 const BURN_HER_FASTER = "burn_enemy"
 const THIS_IS_SPARTA = "fall_enemy_death"
+const BOMBER = "tnt_enemy_death"
 const FUUUUCK = "death_with_potion"
 const SOME_PEOPLES = "about"
 const REZNYA = "reznya"
@@ -57,6 +58,12 @@ signal effect_completed
 var blocked_counter = 0
 var achievement_get = load("res://prefabs/menu/achievement_complete.tscn")
 var achievements = {
+	HERO : {
+		"icon" : load("res://textures/achievements/complete.png"),
+		"name" : "achv.hero",
+		"desc" : "achv.hero.desc"
+	},
+	# Boss achievemnts
 	BOSS1 : {
 		"icon" : load("res://textures/achievements/boss1.png"),
 		"name" : "achv.boss1",
@@ -97,8 +104,13 @@ var achievements = {
 		"name" : "achv.boss8",
 		"desc" : "achv.boss8.desc"
 	},
-	# BOSS 9
+	BOSS9 : {
+		"icon" : load("res://textures/achievements/boss9.png"),
+		"name" : "achv.boss9",
+		"desc" : "achv.boss9.desc"
+	},
 	# BOSS 10
+	# Upgrade achievements
 	WHAT_IS_IT : {
 		"icon" : load("res://textures/achievements/first_class.png"),
 		"name" : "achv.what_is_it",
@@ -108,11 +120,6 @@ var achievements = {
 		"icon" : load("res://textures/achievements/all_classes.png"),
 		"name" : "achv.master",
 		"desc" : "achv.master.desc"
-	},
-	IM_POWER : {
-		"icon" : load("res://textures/achievements/class_maxed.png"),
-		"name" : "achv.im_power",
-		"desc" : "achv.im_power.desc"
 	},
 	LUCKY_AMULET : {
 		"icon" : load("res://textures/achievements/first_amulet.png"),
@@ -129,10 +136,15 @@ var achievements = {
 		"name" : "achv.soul_master",
 		"desc" : "achv.soul_master.desc"
 	},
-	DARK_CREATION : {
-		"icon" : load("res://textures/achievements/death.png"),
-		"name" : "achv.dark_creation",
-		"desc" : "achv.dark_creation.desc"
+	IM_POWER : {
+		"icon" : load("res://textures/achievements/class_maxed.png"),
+		"name" : "achv.im_power",
+		"desc" : "achv.im_power.desc"
+	},
+	HACKER : {
+		"icon" : load("res://textures/achievements/boxes_opened.png"),
+		"name" : "achv.hacker",
+		"desc" : "achv.hacker.desc"
 	},
 	POTION_MAN : {
 		"icon" : load("res://textures/achievements/10_potions.png"),
@@ -144,6 +156,12 @@ var achievements = {
 		"name" : "achv.prozapass",
 		"desc" : "achv.prozapass.desc"
 	},
+	FUUUUCK : {
+		"icon" : load("res://textures/achievements/death_with_potion.png"),
+		"name" : "achv.fuck",
+		"desc" : "achv.fuck.desc"
+	},
+	# Game achievemnts
 	BURN_HER_FASTER : {
 		"icon" : load("res://textures/achievements/burn_enemy.png"),
 		"name" : "achv.burn_her_faster",
@@ -154,16 +172,104 @@ var achievements = {
 		"name" : "achv.this_is_sparta",
 		"desc" : "achv.this_is_sparta.desc"
 	},
-	FUUUUCK : {
-		"icon" : load("res://textures/achievements/death_with_potion.png"),
-		"name" : "achv.fuck",
-		"desc" : "achv.fuck.desc"
+	BOMBER : {
+		"icon" : load("res://textures/achievements/tnt_enemy_death.png"),
+		"name" : "achv.bomber",
+		"desc" : "achv.bomber.desc"
 	},
+	KILLER : {
+		"icon" : load("res://textures/achievements/killer.png"),
+		"name" : "achv.killer",
+		"desc" : "achv.killer.desc"
+	},
+	AIR : {
+		"icon" : load("res://textures/achievements/almost_drown.png"),
+		"name" : "achv.air",
+		"desc" : "achv.air.desc"
+	},
+	FALL : {
+		"icon" : load("res://textures/achievements/fall_damaged.png"),
+		"name" : "achv.fall",
+		"desc" : "achv.fall.desc"
+	},
+	SKILL : {
+		"icon" : load("res://textures/achievements/skill_used.png"),
+		"name" : "achv.skill",
+		"desc" : "achv.skill.desc"
+	},
+	BEAR : {
+		"icon" : load("res://textures/achievements/beartraped.png"),
+		"name" : "achv.bear",
+		"desc" : "achv.bear.desc"
+	},
+	REJECTED : {
+		"icon" : load("res://textures/achievements/reject.png"),
+		"name" : "achv.rejected",
+		"desc" : "achv.rejected.desc"
+	},
+	RETURN_TO_SENDER : {
+		"icon" : load("res://textures/achievements/self_damage.png"),
+		"name" : "achv.return_to_sender",
+		"desc" : "achv.return_to_sender.desc"
+	},
+	YOU_MISSED : {
+		"icon" : load("res://textures/achievements/dodge_shot.png"),
+		"name" : "achv.you_missed",
+		"desc" : "achv.you_missed.desc"
+	},
+	GOOD_PARTNER : {
+		"icon" : load("res://textures/achievements/mp_revive_5.png"),
+		"name" : "achv.good_partner",
+		"desc" : "achv.good_partner.desc"
+	},
+	# End level achievements
+	BETTER_TOGETHER : {
+		"icon" : load("res://textures/achievements/mp_level.png"),
+		"name" : "achv.better_together",
+		"desc" : "achv.better_together.desc"
+	},
+	SCREW_IT : {
+		"icon" : load("res://textures/achievements/mp_level_died.png"),
+		"name" : "achv.screw_it",
+		"desc" : "achv.screw_it.desc"
+	},
+	WHAT_A_WASTE : {
+		"icon" : load("res://textures/achievements/level_died.png"),
+		"name" : "achv.what_a_waste",
+		"desc" : "achv.what_a_waste.desc"
+	},
+	ON_THE_EDGE : {
+		"icon" : load("res://textures/achievements/almost_died.png"),
+		"name" : "achv.on_the_edge",
+		"desc" : "achv.on_the_edge.desc"
+	},
+	UNTOUCHED : {
+		"icon" : load("res://textures/achievements/no_damage.png"),
+		"name" : "achv.untouched",
+		"desc" : "achv.untouched.desc"
+	},
+	PACIFIST : {
+		"icon" : load("res://textures/achievements/no_kills.png"),
+		"name" : "achv.pacifist",
+		"desc" : "achv.pacifist.desc"
+	},
+	# Misc achievemnts
 	SOME_PEOPLES : {
 		"icon" : load("res://textures/achievements/about.png"),
 		"name" : "achv.some_peoples",
 		"desc" : "achv.some_peoples.desc"
 	},
+	DARK_CREATION : {
+		"icon" : load("res://textures/achievements/death.png"),
+		"name" : "achv.dark_creation",
+		"desc" : "achv.dark_creation.desc"
+	},
+	ORIGIN : {
+		"icon" : load("res://textures/achievements/lore_seen.png"),
+		"name" : "achv.origin",
+		"desc" : "achv.origin.desc"
+	},
+	# Minigame achievements
 	REZNYA : {
 		"icon" : load("res://textures/achievements/reznya.png"),
 		"name" : "achv.reznya",
@@ -204,97 +310,6 @@ var achievements = {
 		"name" : "achv.escape",
 		"desc" : "achv.escape.desc"
 	},
-	UNTOUCHED : {
-		"icon" : load("res://textures/achievements/no_damage.png"),
-		"name" : "achv.untouched",
-		"desc" : "achv.untouched.desc"
-	},
-	BETTER_TOGETHER : {
-		"icon" : load("res://textures/achievements/mp_level.png"),
-		"name" : "achv.better_together",
-		"desc" : "achv.better_together.desc"
-	},
-	GOOD_PARTNER : {
-		"icon" : load("res://textures/achievements/mp_revive_5.png"),
-		"name" : "achv.good_partner",
-		"desc" : "achv.good_partner.desc"
-	},
-	SCREW_IT : {
-		"icon" : load("res://textures/achievements/mp_level_died.png"),
-		"name" : "achv.screw_it",
-		"desc" : "achv.screw_it.desc"
-	},
-	WHAT_A_WASTE : {
-		"icon" : load("res://textures/achievements/level_died.png"),
-		"name" : "achv.what_a_waste",
-		"desc" : "achv.what_a_waste.desc"
-	},
-	ON_THE_EDGE : {
-		"icon" : load("res://textures/achievements/almost_died.png"),
-		"name" : "achv.on_the_edge",
-		"desc" : "achv.on_the_edge.desc"
-	},
-	ORIGIN : {
-		"icon" : load("res://textures/achievements/lore_seen.png"),
-		"name" : "achv.origin",
-		"desc" : "achv.origin.desc"
-	},
-	KILLER : {
-		"icon" : load("res://textures/achievements/killer.png"),
-		"name" : "achv.killer",
-		"desc" : "achv.killer.desc"
-	},
-	YOU_MISSED : {
-		"icon" : load("res://textures/achievements/dodge_shot.png"),
-		"name" : "achv.you_missed",
-		"desc" : "achv.you_missed.desc"
-	},
-	AIR : {
-		"icon" : load("res://textures/achievements/almost_drown.png"),
-		"name" : "achv.air",
-		"desc" : "achv.air.desc"
-	},
-	FALL : {
-		"icon" : load("res://textures/achievements/fall_damaged.png"),
-		"name" : "achv.fall",
-		"desc" : "achv.fall.desc"
-	},
-	SKILL : {
-		"icon" : load("res://textures/achievements/skill_used.png"),
-		"name" : "achv.skill",
-		"desc" : "achv.skill.desc"
-	},
-	BEAR : {
-		"icon" : load("res://textures/achievements/beartraped.png"),
-		"name" : "achv.bear",
-		"desc" : "achv.bear.desc"
-	},
-	PACIFIST : {
-		"icon" : load("res://textures/achievements/no_kills.png"),
-		"name" : "achv.pacifist",
-		"desc" : "achv.pacifist.desc"
-	},
-	REJECTED : {
-		"icon" : load("res://textures/achievements/reject.png"),
-		"name" : "achv.rejected",
-		"desc" : "achv.rejected.desc"
-	},
-	RETURN_TO_SENDER : {
-		"icon" : load("res://textures/achievements/self_damage.png"),
-		"name" : "achv.return_to_sender",
-		"desc" : "achv.return_to_sender.desc"
-	},
-	HACKER : {
-		"icon" : load("res://textures/achievements/boxes_opened.png"),
-		"name" : "achv.hacker",
-		"desc" : "achv.hacker.desc"
-	},
-	# Missing
-	HERO : {
-		"icon" : load("res://textures/achievements/complete.png"),
-		"name" : "achv.hero",
-		"desc" : "achv.hero.desc"
-	},
 }
 
 
@@ -303,7 +318,7 @@ func complete(id):
 		return
 	G.setv("achv_" + id + "_done", true)
 	blocked_counter += 1
-	for i in range(blocked_counter-1):
+	for i in range(blocked_counter - 1):
 		yield(self, "effect_completed")
 	var effect = achievement_get.instance()
 	effect.get_node("panel/name").text = tr(achievements[id]["name"]) + "!"
@@ -327,7 +342,7 @@ func check(id):
 			if G.getv("potions_used") >= 10:
 				complete(id)
 		PROZAPASS:
-			if G.getv("potions1") + G.getv("potions2") + G.getv("potions3") == 15:
+			if G.getv("potions1") + G.getv("potions2") + G.getv("potions3") == 6:
 				complete(id)
 		LOOT:
 			if G.getv("garden_looted") >= 3:

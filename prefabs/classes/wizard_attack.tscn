@@ -64,8 +64,8 @@ color_ramp = SubResource( 3 )
 
 [node name="MultiplayerSpawnable" type="Node" parent="."]
 script = ExtResource( 1 )
-spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath("../attack") ]
-spawn_sync_data_properties = [ "global_position", "rotation_degrees", "damage" ]
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath("../attack"), NodePath("../attack") ]
+spawn_sync_data_properties = [ "global_position", "rotation_degrees", "damage", "fatal" ]
 auto_despawn = false
 
 [node name="MultiplayerSynchronizer" type="Node" parent="."]

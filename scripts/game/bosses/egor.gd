@@ -24,9 +24,6 @@ onready var fall_balls_y = $fall_balls_poses.global_position.y
 
 func _ready():
 	mob = $mob_eg
-	fill_x = 53
-	fill_height = 16
-	tp_pos = Vector2(54, -2)
 	mercy_dialog = tr("boss.follower1.mercy")
 	death_dialog = tr("boss.follower1.defeat")
 	next_attack_time_min = 0.8
@@ -61,7 +58,7 @@ func mercy():
 
 
 func get_phase():
-	if not is_instance_valid(mob):
+	if not is_mob_alive():
 		return -1
 	var health_left = mob.current_health / mob.max_health
 	if health_left <= 0:
@@ -95,7 +92,7 @@ func do_attack():
 
 
 func balls():
-	next_attack_time += 1
+	next_attack_time += 2
 	ms.sync_call(self, "balls")
 	anim.play("balls")
 	if not MP.auth(self):
@@ -118,7 +115,7 @@ func _create_ball_at(pos):
 
 
 func big_ball():
-	next_attack_time += 0.8
+	next_attack_time += 1.5
 	ms.sync_call(self, "big_ball")
 	anim.play("ball")
 	if not MP.auth(self):
@@ -133,7 +130,7 @@ func big_ball():
 
 
 func circle_balls():
-	next_attack_time += 3.5
+	next_attack_time += 4
 	ms.sync_call(self, "circle_balls")
 	anim.play("circle_balls")
 	if not MP.auth(self):
@@ -159,7 +156,7 @@ func circle_balls():
 
 
 func floor_attack():
-	next_attack_time += 0.7
+	next_attack_time += 0.8
 	ms.sync_call(self, "floor_attack")
 	anim.play("floor")
 	yield(get_tree().create_timer(0.7, false), "timeout")
@@ -168,7 +165,7 @@ func floor_attack():
 
 
 func up_balls():
-	next_attack_time += 2
+	next_attack_time += 2.5
 	ms.sync_call(self, "up_balls")
 	anim.play("falling_balls")
 	if not MP.auth(self):
@@ -192,7 +189,7 @@ func time_erase():
 	get_tree().current_scene.add_child(te)
 	is_time_erased = true
 	player.immune_counter += 1
-	mob.immune_counter -= 1
+	mob.immune_counter += 1
 	set_cutscene(true)
 	yield(get_tree().create_timer(2, false), "timeout")
 	Engine.time_scale = 3
@@ -210,6 +207,7 @@ func time_erase():
 	next_attack_time_min = 0.65
 	next_attack_time_max = 1.5
 	player.immune_counter -= 1
-	mob.immune_counter -= 1
+	if is_mob_alive():
+		mob.immune_counter -= 1
 	is_time_erased = false
 	set_cutscene(false)

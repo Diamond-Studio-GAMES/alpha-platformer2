@@ -12,9 +12,6 @@ onready var spawn_poses = [$swipe_pos0.global_position, $swipe_pos1.global_posit
 
 func _ready():
 	mob = $mob_md
-	fill_x = 53
-	fill_height = 5
-	tp_pos = Vector2(54, -2)
 	attacks = ["throw", "summon", "heal", "swipes", "throw", "swipes"]
 	mercy_dialog = tr("boss.doctor.mercy")
 	death_dialog = tr("boss.doctor.defeat")

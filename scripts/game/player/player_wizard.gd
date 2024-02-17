@@ -7,6 +7,7 @@ var trck_idx
 var key_idx0
 var key_idx1
 var wizard_attack = load("res://prefabs/classes/wizard_attack.tscn")
+onready var _attack_node = $visual/body/knight_attack
 onready var _attack_visual = $visual/body/knight_attack/visual
 onready var _attack_shape = $visual/body/knight_attack/shape
 onready var joystick = $camera/gui/base/buttons/buttons_1/joystick
@@ -71,13 +72,17 @@ func joystick_released(output):
 		throw(output)
 
 
-func attack():
+func attack(fatal = false):
 	if is_hurt or is_stunned or _is_ultiing or _is_drinking or not can_control:
 		return
 	if not can_attack:
 		_attack_empty_anim.play("empty")
 		return
-	ms.sync_call(self, "attack")
+	if hate_refuse():
+		return
+	if MP.auth(self):
+		fatal = hate_fatal()
+	ms.sync_call(self, "attack", [fatal])
 	can_attack = false
 	if MP.auth(self):
 		RECHARGE_SPEED = 1.8 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
@@ -87,6 +92,7 @@ func attack():
 	_anim_tree["parameters/attack_shot/active"] = true
 	yield(get_tree().create_timer(0.275, false), "timeout")
 	$visual/body/knight_attack/swing.play()
+	_attack_node.fatal = fatal
 	_attack_visual.show()
 	_attack_visual.playing = true
 	_attack_shape.disabled = false
@@ -113,17 +119,16 @@ func throw(direction):
 		RECHARGE_SPEED = 1.6 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
 	can_turn = false
 	attack_cooldown = RECHARGE_SPEED + 0.5
-	var phi = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
-	var hand_rotate = rad2deg(phi)
-	var weapon_rotate = rad2deg(direction.angle())
-	hand_rotate -= 90
-	if hand_rotate < -180:
-		hand_rotate = 360 + hand_rotate
-	if hand_rotate < 0 and hand_rotate > -180:
+	var hand_rotate = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
+	hand_rotate -= PI / 2
+	if hand_rotate < -PI:
+		hand_rotate = TAU + hand_rotate
+	if hand_rotate < 0 and hand_rotate > -PI:
 		_body.scale.x = 1
-	if hand_rotate > 0 and hand_rotate < 180:
+	if hand_rotate > 0 and hand_rotate < PI:
 		_body.scale.x = -1
 		hand_rotate = -hand_rotate
+	hand_rotate = rad2deg(hand_rotate)
 	anima.track_set_key_value(trck_idx, key_idx0, hand_rotate)
 	anima.track_set_key_value(trck_idx, key_idx1, hand_rotate)
 	_anim_tree["parameters/throw_shot/active"] = true
@@ -133,11 +138,12 @@ func throw(direction):
 	if MP.auth(self):
 		var node = wizard_attack.instance()
 		node.global_position = Vector2(global_position.x, global_position.y - 12 * GRAVITY_SCALE)
-		node.rotation_degrees = weapon_rotate
+		node.rotation = direction.angle()
 		var heals = gen.randi_range(0, 100) > 85 and have_soul_power
 		node.get_node("attack").damage = G.getv("wizard_level", 0) * 6 + 30  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 		if heals:
 			node.get_node("attack").connect("hit_enemy", self, "heal", [round(max_health * 0.1)])
+		node.get_node("attack").fatal = hate_fatal()
 		_level.add_child(node, true)
 	yield(get_tree().create_timer(0.167, false), "timeout")
 	_is_attacking = false
@@ -169,9 +175,9 @@ func revive(hpc = -1):
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or not can_control:
-		return
 	if ulti_percentage >= 100:
 		return
-	.use_gadget()
+	var success = .use_gadget()
+	if not success:
+		return
 	ulti_percentage = clamp(ulti_percentage + 40, 0, 100)

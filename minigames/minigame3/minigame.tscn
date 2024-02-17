@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://minigames/minigame3/resources/stone.tres" type="Material" id=1]
 [ext_resource path="res://minigames/minigame3/resources/grass.tres" type="Material" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://minigames/minigame3/resources/stone.obj" type="ArrayMesh" id=10]
 [ext_resource path="res://minigames/minigame3/minigame.gd" type="Script" id=11]
 [ext_resource path="res://themes/font.tres" type="DynamicFontData" id=12]
+[ext_resource path="res://prefabs/menu/ticket_selector.tscn" type="PackedScene" id=13]
+[ext_resource path="res://prefabs/menu/tickets_count.tscn" type="PackedScene" id=14]
 
 [sub_resource type="ArrayMesh" id=8]
 surfaces/0 = {
@@ -132,15 +134,22 @@ shape = SubResource( 6 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.467551, -0.00357795 )
 shape = SubResource( 7 )
 
-[node name="gui" type="CanvasLayer" parent="base"]
+[node name="spawn_pos" type="Position3D" parent="base"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52469, 0 )
 
-[node name="base" type="Control" parent="base/gui"]
+[node name="spawn_timer" type="Timer" parent="base"]
+wait_time = 2.0
+autostart = true
+
+[node name="gui" type="CanvasLayer" parent="."]
+
+[node name="base" type="Control" parent="gui"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 theme = ExtResource( 4 )
 
-[node name="count" type="Label" parent="base/gui/base"]
+[node name="count" type="Label" parent="gui/base"]
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 192.0
@@ -149,7 +158,31 @@ custom_fonts/font = SubResource( 9 )
 text = "3.total"
 valign = 1
 
-[node name="coins" type="Label" parent="base/gui/base"]
+[node name="cost" type="Label" parent="gui/base"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -88.0
+margin_top = 16.0
+margin_right = 88.0
+margin_bottom = 40.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 9 )
+text = "3.cost"
+align = 1
+
+[node name="remains" type="Label" parent="gui/base"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -88.0
+margin_top = 80.0
+margin_right = 88.0
+margin_bottom = 104.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 9 )
+text = "3.remains"
+align = 1
+
+[node name="coins" type="Label" parent="gui/base"]
 margin_left = 64.0
 margin_top = 56.0
 margin_right = 184.0
@@ -158,7 +191,7 @@ custom_fonts/font = SubResource( 9 )
 text = "0"
 valign = 1
 
-[node name="icon" type="TextureRect" parent="base/gui/base/coins"]
+[node name="icon" type="TextureRect" parent="gui/base/coins"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = -48.0
@@ -169,7 +202,7 @@ texture = ExtResource( 9 )
 expand = true
 stretch_mode = 6
 
-[node name="gems" type="Label" parent="base/gui/base"]
+[node name="gems" type="Label" parent="gui/base"]
 margin_left = 64.0
 margin_top = 104.0
 margin_right = 184.0
@@ -178,7 +211,7 @@ custom_fonts/font = SubResource( 9 )
 text = "0"
 valign = 1
 
-[node name="icon" type="TextureRect" parent="base/gui/base/gems"]
+[node name="icon" type="TextureRect" parent="gui/base/gems"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = -48.0
@@ -189,7 +222,7 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
-[node name="exit" type="Button" parent="base/gui/base"]
+[node name="exit" type="Button" parent="gui/base"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -112.0
@@ -198,12 +231,19 @@ margin_right = -16.0
 margin_bottom = 46.0
 text = "menu.exit"
 
-[node name="spawn_pos" type="Position3D" parent="base"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52469, 0 )
+[node name="tickets_count" parent="gui/base" instance=ExtResource( 14 )]
+margin_top = 64.0
+margin_bottom = 92.0
 
-[node name="spawn_timer" type="Timer" parent="base"]
-wait_time = 2.0
-autostart = true
+[node name="ticket_selector" parent="gui/base" instance=ExtResource( 13 )]
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_left = -85.0
+margin_top = 40.0
+margin_right = 85.0
+margin_bottom = 80.0
+max_tickets = 1
 
-[connection signal="pressed" from="base/gui/base/exit" to="base" method="quit"]
 [connection signal="timeout" from="base/spawn_timer" to="base" method="_on_spawn_timer_timeout"]
+[connection signal="pressed" from="gui/base/exit" to="base" method="quit"]
+[connection signal="started" from="gui/base/ticket_selector" to="base" method="_on_ticket_selector_started"]

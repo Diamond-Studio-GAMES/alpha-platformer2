@@ -1,7 +1,7 @@
 [gd_scene load_steps=96 format=2]
 
 [ext_resource path="res://sounds/sfx/mob_death.wav" type="AudioStream" id=1]
-[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=2]
+[ext_resource path="res://textures/effects/backgrounds/background_base.png" type="Texture" id=2]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=3]
 [ext_resource path="res://sounds/sfx/end_level.wav" type="AudioStream" id=4]
 [ext_resource path="res://textures/gui/health_bar.tres" type="Texture" id=5]
@@ -10,10 +10,9 @@
 [ext_resource path="res://textures/effects/backgrounds/cloud.png" type="Texture" id=8]
 [ext_resource path="res://scripts/game/other/end_star.gd" type="Script" id=9]
 [ext_resource path="res://scripts/game/bosses/egor.gd" type="Script" id=10]
-[ext_resource path="res://textures/effects/backgrounds/background.png" type="Texture" id=11]
 [ext_resource path="res://textures/bosses/egor/hair.tres" type="Texture" id=12]
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=13]
-[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=14]
 [ext_resource path="res://scripts/game/other/level.gd" type="Script" id=15]
 [ext_resource path="res://textures/effects/other/heal_plus.png" type="Texture" id=16]
 [ext_resource path="res://textures/bosses/egor/leg1.tres" type="Texture" id=17]
@@ -48,7 +47,7 @@
 [ext_resource path="res://textures/effects/backgrounds/sun.png" type="Texture" id=46]
 [ext_resource path="res://textures/effects/backgrounds/mini_cloud.png" type="Texture" id=47]
 [ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=48]
-[ext_resource path="res://textures/bosses/egor/floor_attack.png" type="Texture" id=49]
+[ext_resource path="res://textures/effects/attacks/floor_attack.png" type="Texture" id=49]
 [ext_resource path="res://textures/effects/attacks/warn.png" type="Texture" id=50]
 
 [sub_resource type="Animation" id=34]
@@ -2800,7 +2799,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
+node_connections = [ "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "output", 0, "death_trans" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -2926,6 +2925,9 @@ tracks/3/keys = {
 } ]
 }
 
+[sub_resource type="RectangleShape2D" id=119]
+extents = Vector2( 10, 90 )
+
 [sub_resource type="LineShape2D" id=37]
 normal = Vector2( -1, 0 )
 
@@ -2933,7 +2935,7 @@ normal = Vector2( -1, 0 )
 size = 64
 outline_size = 2
 use_filter = true
-font_data = ExtResource( 2 )
+font_data = ExtResource( 14 )
 
 [sub_resource type="Animation" id=27]
 resource_name = "boss_name_appear"
@@ -3171,6 +3173,7 @@ radius = 12.0
 script = ExtResource( 15 )
 location = "location.village"
 level_name = "level.8_10"
+game_over_spawn_pos = NodePath("game_over_spawn_pos")
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 36 )
@@ -3209,6 +3212,9 @@ script = ExtResource( 10 )
 __meta__ = {
 "_edit_group_": true
 }
+barrier_left_start = Vector2( 53, -1 )
+barrier_left_height = 16
+teleport_position = Vector2( 54, -2 )
 
 [node name="visual" type="Node2D" parent="mobs/egor"]
 scale = Vector2( -3, 3 )
@@ -3431,8 +3437,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/egor/mob_eg/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/egor/mob_eg/visual/body"]
-position = Vector2( 0, 1.85652 )
-scale = Vector2( 1.25, 1.13397 )
+scale = Vector2( 1.25, 1.21588 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/egor/mob_eg"]
@@ -3800,6 +3805,14 @@ __meta__ = {
 "_gizmo_extents_": 8.0
 }
 
+[node name="player_border" type="StaticBody2D" parent="mobs/egor"]
+collision_layer = 0
+collision_mask = 66
+
+[node name="shape" type="CollisionShape2D" parent="mobs/egor/player_border"]
+visible = false
+shape = SubResource( 119 )
+
 [node name="blocks" type="Node2D" parent="."]
 
 [node name="decor" type="Node2D" parent="."]
@@ -3896,6 +3909,9 @@ position = Vector2( 2768, 0 )
 
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 312, -64 )
+
+[node name="game_over_spawn_pos" type="Position2D" parent="."]
+position = Vector2( 1680, -64 )
 
 [node name="tint" type="CanvasLayer" parent="."]
 pause_mode = 2
@@ -4058,12 +4074,11 @@ scroll_ignore_camera_zoom = true
 
 [node name="sky" type="ParallaxLayer" parent="background"]
 motion_scale = Vector2( 0.05, 0.05 )
-motion_mirroring = Vector2( 1920, 1080 )
+motion_mirroring = Vector2( 1800, 540 )
 
 [node name="sky" type="Sprite" parent="background/sky"]
 self_modulate = Color( 0, 0.00784314, 0.243137, 1 )
-scale = Vector2( 6, 6 )
-texture = ExtResource( 11 )
+texture = ExtResource( 2 )
 centered = false
 
 [node name="sun" type="ParallaxLayer" parent="background"]

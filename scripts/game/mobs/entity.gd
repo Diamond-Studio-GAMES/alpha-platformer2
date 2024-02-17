@@ -81,7 +81,7 @@ func calculate_fall_damage():
 		return
 	elif GRAVITY_SCALE < 0 and _start_falling_y < global_position.y:
 		return
-	if distance_falling > 480:
+	if distance_falling > 512:
 		hurt(1, 0, false, true, false, 1, 0.5, 0.4, "fall")
 	elif distance_falling > 416:
 		hurt(round(max_health * 0.7), 0, false, false, false, 1, 1.5, 1.2, "fall")
@@ -108,7 +108,7 @@ func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = fals
 	current_health = round(clamp(current_health - max(damage - real_defense, 0), 0, max_health))
 	if fatal:
 		current_health = 0
-		damage = max_health
+		damage = max_health + real_defense
 	if current_health >= past_health:
 		return false
 	is_hurt = true
@@ -262,13 +262,14 @@ func _process(delta):
 		_head.texture = _head_hurt_sprite
 	if under_water:
 		_start_falling_y = global_position.y
-		breath_time -= delta
-		if breath_time <= 0:
-			if not immune_to_water:
-				hurt(1, 0, false, true)
+		if current_health > 0:
+			breath_time -= delta
+			if breath_time <= 0:
+				if not immune_to_water:
+					hurt(1, 0, false, true)
 
 
-func water_checked(area: Area2D):
+func water_checked(area):
 	if area.get_collision_layer_bit(5):
 		waters.append(area)
 		_update_water_state()

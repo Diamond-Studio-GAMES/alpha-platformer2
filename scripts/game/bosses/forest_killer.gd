@@ -11,8 +11,6 @@ var axe = load("res://prefabs/bosses/axe_throw.tscn")
 func _ready():
 	mob = $mob_fk
 	attacks = ["spikes", "charge_axe", "axe_sides", "axe_throw", "axe_throw"]
-	fill_x = 57
-	tp_pos = Vector2(58, -2)
 	mercy_dialog = tr("boss.forester.mercy")
 	death_dialog = tr("boss.forester.defeat")
 	next_attack_time_min = 0.75

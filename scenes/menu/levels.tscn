@@ -1,13 +1,17 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
+[ext_resource path="res://textures/gui/multiplayer.png" type="Texture" id=1]
+[ext_resource path="res://textures/items/ticket.png" type="Texture" id=2]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=3]
+[ext_resource path="res://textures/gui/help.png" type="Texture" id=4]
+[ext_resource path="res://themes/font_headers2.tres" type="DynamicFont" id=5]
 [ext_resource path="res://textures/effects/backgrounds/levels_bg.png" type="Texture" id=7]
+[ext_resource path="res://textures/mobs/knife_man/head.tres" type="Texture" id=23]
 [ext_resource path="res://prefabs/menu/education.tscn" type="PackedScene" id=27]
 [ext_resource path="res://prefabs/menu/level_dialog.tscn" type="PackedScene" id=30]
 [ext_resource path="res://textures/gui/exit.png" type="Texture" id=35]
-[ext_resource path="res://scripts/menu/minigame.gd" type="Script" id=41]
 [ext_resource path="res://textures/gui/shop_icon.png" type="Texture" id=48]
-[ext_resource path="res://scripts/menu/levels.gd" type="Script" id=56]
+[ext_resource path="res://scripts/menu/main/levels.gd" type="Script" id=56]
 
 [sub_resource type="CanvasItemMaterial" id=279]
 blend_mode = 4
@@ -19,7 +23,7 @@ theme = ExtResource( 3 )
 script = ExtResource( 56 )
 __meta__ = {
 "_edit_group_": true,
-"_edit_vertical_guides_": [ 4320.0, 4800.0 ]
+"_edit_vertical_guides_": [ 4800.0 ]
 }
 
 [node name="bg" type="ColorRect" parent="."]
@@ -852,6 +856,105 @@ margin_top = 152.0
 margin_right = 1435.0
 margin_bottom = 192.0
 
+[node name="9_1" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1455.0
+margin_top = 141.0
+margin_right = 1495.0
+margin_bottom = 181.0
+
+[node name="9_2" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1529.0
+margin_top = 77.0
+margin_right = 1569.0
+margin_bottom = 117.0
+
+[node name="9_3" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1484.0
+margin_top = 35.0
+margin_right = 1524.0
+margin_bottom = 75.0
+
+[node name="9_4" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1567.0
+margin_right = 1607.0
+margin_bottom = 40.0
+
+[node name="9_5" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1604.0
+margin_top = 48.0
+margin_right = 1644.0
+margin_bottom = 88.0
+
+[node name="9_6" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1651.0
+margin_top = 48.0
+margin_right = 1691.0
+margin_bottom = 88.0
+
+[node name="9_7" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1721.0
+margin_top = 43.0
+margin_right = 1761.0
+margin_bottom = 83.0
+
+[node name="9_8" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1751.0
+margin_top = -16.0
+margin_right = 1791.0
+margin_bottom = 24.0
+
+[node name="9_9" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1818.0
+margin_top = -36.0
+margin_right = 1858.0
+margin_bottom = 4.0
+
+[node name="9_10" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1867.0
+margin_top = -39.0
+margin_right = 1907.0
+margin_bottom = 1.0
+
 [node name="shop_button" type="Button" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -867,15 +970,15 @@ expand_icon = true
 [node name="classes_button" type="Button" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 160.0
+margin_left = 152.0
 margin_top = -64.0
-margin_right = 288.0
+margin_right = 280.0
 margin_bottom = -16.0
 text = "classes.name"
 clip_text = true
 expand_icon = true
 
-[node name="exit" type="Button" parent="."]
+[node name="exit_button" type="Button" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -892,29 +995,42 @@ expand_icon = true
 [node name="help_button" type="Button" parent="."]
 margin_left = 16.0
 margin_top = 16.0
-margin_right = 56.0
-margin_bottom = 56.0
-text = "?"
+margin_right = 64.0
+margin_bottom = 64.0
+icon = ExtResource( 4 )
+expand_icon = true
+
+[node name="mobs_button" type="Button" parent="."]
+margin_left = 72.0
+margin_top = 16.0
+margin_right = 120.0
+margin_bottom = 64.0
+icon = ExtResource( 23 )
+expand_icon = true
 
 [node name="minigames_button" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -136.0
+margin_left = -64.0
 margin_top = 16.0
 margin_right = -16.0
-margin_bottom = 56.0
+margin_bottom = 64.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "minigame.s"
+icon = ExtResource( 2 )
+icon_align = 1
+expand_icon = true
 
 [node name="multiplayer_button" type="Button" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -272.0
+margin_left = -120.0
 margin_top = 16.0
-margin_right = -152.0
-margin_bottom = 56.0
+margin_right = -72.0
+margin_bottom = 64.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "lobby.title"
+icon = ExtResource( 1 )
+icon_align = 1
+expand_icon = true
 
 [node name="select_level" parent="." instance=ExtResource( 30 )]
 
@@ -939,10 +1055,10 @@ anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
-margin_left = -4.0
-margin_top = -124.0
-margin_right = 156.0
-margin_bottom = 36.0
+margin_left = -11.0
+margin_top = -120.0
+margin_right = 149.0
+margin_bottom = 40.0
 
 [node name="blocker" type="Control" parent="education2"]
 anchor_right = 1.0
@@ -972,7 +1088,7 @@ margin_left = -320.0
 margin_top = -160.0
 margin_right = 320.0
 margin_bottom = 160.0
-window_title = "minigame.select"
+window_title = "minigame.s"
 
 [node name="minigame1" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -985,8 +1101,6 @@ margin_right = -40.0
 margin_bottom = -72.0
 text = "1.name"
 expand_icon = true
-script = ExtResource( 41 )
-minigame_name = "1.name"
 
 [node name="minigame2" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -999,11 +1113,6 @@ margin_right = -40.0
 margin_bottom = -8.0
 text = "2.name"
 expand_icon = true
-script = ExtResource( 41 )
-minigame_name = "2.name"
-id = 2
-cost = 300
-free = false
 
 [node name="minigame3" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -1016,11 +1125,6 @@ margin_right = -40.0
 margin_bottom = 56.0
 text = "3.name"
 expand_icon = true
-script = ExtResource( 41 )
-minigame_name = "3.name"
-id = 3
-cost = 2000
-free = false
 
 [node name="minigame4" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -1033,11 +1137,6 @@ margin_right = -40.0
 margin_bottom = 120.0
 text = "4.name"
 expand_icon = true
-script = ExtResource( 41 )
-minigame_name = "4.name"
-id = 4
-cost = 750
-free = false
 
 [node name="minigame5" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -1050,10 +1149,6 @@ margin_right = 280.0
 margin_bottom = -72.0
 text = "Platformer Dash"
 expand_icon = true
-script = ExtResource( 41 )
-minigame_name = "Platformer Dash"
-id = 5
-cost = 0
 
 [node name="minigame6" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -1066,11 +1161,6 @@ margin_right = 280.0
 margin_bottom = -8.0
 text = "6.name"
 expand_icon = true
-script = ExtResource( 41 )
-minigame_name = "6.name"
-id = 6
-cost = 1500
-free = false
 
 [node name="minigame7" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -1083,9 +1173,6 @@ margin_right = 280.0
 margin_bottom = 56.0
 text = "7.name"
 expand_icon = true
-script = ExtResource( 41 )
-minigame_name = "7.name"
-id = 7
 
 [node name="minigame8" type="Button" parent="select_minigame"]
 anchor_left = 0.5
@@ -1098,36 +1185,6 @@ margin_right = 280.0
 margin_bottom = 120.0
 text = "FNaS"
 expand_icon = true
-script = ExtResource( 41 )
-minigame_name = "FNaS"
-id = 8
-cost = 2500
-free = false
-
-[node name="buy" type="ConfirmationDialog" parent="select_minigame"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -160.0
-margin_top = -120.0
-margin_right = 160.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 170, 59.5 )
-window_title = "shop.confirm"
-dialog_autowrap = true
-
-[node name="no_resources" type="AcceptDialog" parent="select_minigame"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -269.5
-margin_top = -39.0
-margin_right = 269.5
-margin_bottom = 39.0
-window_title = "minigame.no"
-dialog_text = "minigame.no.text"
 
 [node name="help_dialog" type="ConfirmationDialog" parent="."]
 anchor_left = 0.5
@@ -1257,13 +1314,87 @@ window_title = "lobby.title"
 dialog_text = "menu.multiplayer.warn"
 dialog_autowrap = true
 
+[node name="mobs_dialog" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -200.0
+margin_right = 320.0
+margin_bottom = 200.0
+window_title = "mobs.title"
+
+[node name="base" type="VBoxContainer" parent="mobs_dialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="mobs_selection" type="HBoxContainer" parent="mobs_dialog/base"]
+margin_right = 640.0
+margin_bottom = 30.0
+alignment = 1
+
+[node name="label" type="Label" parent="mobs_dialog/base/mobs_selection"]
+margin_top = 3.0
+margin_right = 318.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+text = "mobs.select"
+align = 2
+
+[node name="select" type="OptionButton" parent="mobs_dialog/base/mobs_selection"]
+margin_left = 322.0
+margin_right = 346.0
+margin_bottom = 30.0
+size_flags_horizontal = 2
+
+[node name="mob_info" type="HBoxContainer" parent="mobs_dialog/base"]
+margin_top = 34.0
+margin_right = 640.0
+margin_bottom = 400.0
+size_flags_vertical = 3
+
+[node name="mob_visual" type="ViewportContainer" parent="mobs_dialog/base/mob_info"]
+margin_right = 212.0
+margin_bottom = 366.0
+size_flags_horizontal = 3
+stretch = true
+
+[node name="viewport" type="Viewport" parent="mobs_dialog/base/mob_info/mob_visual"]
+size = Vector2( 212, 366 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="root" type="Node2D" parent="mobs_dialog/base/mob_info/mob_visual/viewport"]
+position = Vector2( 106, 183 )
+scale = Vector2( 5, 5 )
+
+[node name="description" type="RichTextLabel" parent="mobs_dialog/base/mob_info"]
+margin_left = 216.0
+margin_right = 640.0
+margin_bottom = 366.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/bold_font = ExtResource( 5 )
+bbcode_enabled = true
+
 [connection signal="pressed" from="shop_button" to="." method="shop"]
 [connection signal="pressed" from="classes_button" to="." method="classes"]
-[connection signal="pressed" from="exit" to="." method="exit"]
+[connection signal="pressed" from="exit_button" to="." method="exit"]
 [connection signal="pressed" from="help_button" to="help_dialog" method="popup_centered"]
+[connection signal="pressed" from="mobs_button" to="." method="mobs"]
 [connection signal="pressed" from="minigames_button" to="select_minigame" method="popup_centered"]
 [connection signal="pressed" from="multiplayer_button" to="multiplayer" method="popup_centered"]
 [connection signal="pressed" from="education4/main/end" to="education4" method="end"]
+[connection signal="pressed" from="select_minigame/minigame1" to="." method="open_minigame" binds= [ "1" ]]
+[connection signal="pressed" from="select_minigame/minigame2" to="." method="open_minigame" binds= [ "2" ]]
+[connection signal="pressed" from="select_minigame/minigame3" to="." method="open_minigame" binds= [ "3" ]]
+[connection signal="pressed" from="select_minigame/minigame4" to="." method="open_minigame" binds= [ "4" ]]
+[connection signal="pressed" from="select_minigame/minigame5" to="." method="open_minigame" binds= [ "5" ]]
+[connection signal="pressed" from="select_minigame/minigame6" to="." method="open_minigame" binds= [ "6" ]]
+[connection signal="pressed" from="select_minigame/minigame7" to="." method="open_minigame" binds= [ "7" ]]
+[connection signal="pressed" from="select_minigame/minigame8" to="." method="open_minigame" binds= [ "8" ]]
 [connection signal="confirmed" from="help_dialog" to="." method="help"]
 [connection signal="value_changed" from="multiplayer/location" to="." method="_on_level_location_value_changed"]
 [connection signal="changed" from="multiplayer/level" to="." method="_on_location_level_changed"]
@@ -1272,6 +1403,7 @@ dialog_autowrap = true
 [connection signal="pressed" from="multiplayer/join" to="." method="join_room"]
 [connection signal="pressed" from="multiplayer/guide" to="multiplayer/guide_dialog" method="popup_centered"]
 [connection signal="item_selected" from="multiplayer/select_level" to="." method="_on_select_level_item_selected"]
+[connection signal="item_selected" from="mobs_dialog/base/mobs_selection/select" to="." method="_on_mob_select_item_selected"]
 
 [editable path="education0"]
 [editable path="education2"]

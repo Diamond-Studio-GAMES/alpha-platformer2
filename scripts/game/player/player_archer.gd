@@ -17,6 +17,7 @@ var gadget_attack = load("res://prefabs/classes/arrows.tscn")
 var arrow = load("res://prefabs/classes/arrow.tscn")
 onready var joystick = $camera/gui/base/buttons/buttons_1/joystick
 onready var aim_line = $aim_line
+onready var _attack_node = $visual/body/knight_attack
 onready var _attack_visual = $visual/body/knight_attack/visual
 onready var _attack_shape = $visual/body/knight_attack/shape
 onready var _aim_tween = $aim_tween
@@ -85,6 +86,8 @@ func joystick_released(output):
 	if not can_attack:
 		_attack_empty_anim.play("empty")
 		return
+	if hate_refuse():
+		return
 	ms.sync_call(self, "joystick_released", [output])
 	var aimed = aim_time
 	reset_aim()
@@ -118,13 +121,15 @@ func sp_effect(remote_call = false):
 		ms.sync_call(self, "sp_effect", [true])
 
 
-func attack():
+func attack(fatal = false):
 	if is_hurt or is_stunned or _is_ultiing or _is_drinking or is_aiming or not can_control:
 		return
 	if not can_attack:
 		_attack_empty_anim.play("empty")
 		return
-	ms.sync_call(self, "attack")
+	if MP.auth(self):
+		fatal = hate_fatal()
+	ms.sync_call(self, "attack", [fatal])
 	can_attack = false
 	_is_attacking = true
 	if MP.auth(self):
@@ -133,6 +138,7 @@ func attack():
 	_anim_tree["parameters/attack_seek/seek_position"] = 0
 	_anim_tree["parameters/attack_shot/active"] = true
 	yield(get_tree().create_timer(0.267, false), "timeout")
+	_attack_node.fatal = fatal
 	$visual/body/knight_attack/swing.play()
 	_attack_visual.show()
 	_attack_visual.playing = true
@@ -147,15 +153,14 @@ func attack():
 
 
 func calc_hand_rotate(direction):
-	var phi = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
-	var hand_rotate = rad2deg(phi)
-	var weapon_rotate = rad2deg(direction.angle())
-	hand_rotate -= 90
-	if hand_rotate < -180:
-		hand_rotate = 360 + hand_rotate
-	if hand_rotate < 0 and hand_rotate > -180:
+	var hand_rotate = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
+	var weapon_rotate = direction.angle()
+	hand_rotate -= PI / 2
+	if hand_rotate < -PI:
+		hand_rotate = TAU + hand_rotate
+	if hand_rotate < 0 and hand_rotate > -PI:
 		_body.scale.x = 1
-	if hand_rotate > 0 and hand_rotate < 180:
+	if hand_rotate > 0 and hand_rotate < PI:
 		_body.scale.x = -1
 		hand_rotate = -hand_rotate
 	return [hand_rotate, weapon_rotate]
@@ -183,7 +188,8 @@ func throw(direction, aimed_time):
 			node.SPEED = 225.0
 			node.get_node("attack").damage = G.getv("archer_level", 0) * 7 + 35  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 		node.global_position = Vector2(global_position.x, global_position.y - 10.5 * GRAVITY_SCALE)
-		node.rotation_degrees = rotates[1]
+		node.rotation = rotates[1]
+		node.get_node("attack").fatal = hate_fatal()
 		_level.add_child(node, true)
 
 
@@ -202,8 +208,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("gadget") and have_gadget:
 			use_gadget()
 		if joystick._output.length_squared() * current_health > 0:
-			var phi = Vector2(joystick._output.x, joystick._output.y * GRAVITY_SCALE).angle()
-			aim_line.rotation = phi
+			aim_line.rotation = Vector2(joystick._output.x, joystick._output.y * GRAVITY_SCALE).angle()
 			aim_line.visible = true
 			aim_line.modulate = Color.red if attack_cooldown > 0 else Color.white
 		else:
@@ -227,8 +232,7 @@ func _process(delta):
 				_aim_tween.interpolate_property(_anim_tree, "parameters/aim_blend/blend_amount", _anim_tree["parameters/aim_blend/blend_amount"], 1, 0.3)
 				_aim_tween.start()
 			cjo = jout
-			var rotates = calc_hand_rotate(jout)
-			var hand_rotate = rotates[0]
+			var hand_rotate = rad2deg(calc_hand_rotate(jout)[0])
 			anima.track_set_key_value(trck_idx0, key_idx0_0, hand_rotate)
 			anima.track_set_key_value(trck_idx1, key_idx0_1, hand_rotate + 30)
 			anima.track_set_key_value(trck_idx1, key_idx1_1, hand_rotate + 60)
@@ -243,9 +247,9 @@ func _process(delta):
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or not can_control:
+	var success = .use_gadget()
+	if not success:
 		return
-	.use_gadget()
 	var node = gadget_attack.instance()
 	node.global_position = global_position + Vector2.UP * 150
 	_level.add_child(node)

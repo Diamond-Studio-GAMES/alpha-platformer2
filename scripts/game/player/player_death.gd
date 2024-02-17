@@ -27,6 +27,9 @@ func _ready():
 	if MP.auth(self):
 		$control_indicator/sp.show()
 	eye.modulate = eye.self_modulate
+	eye.self_modulate = Color.white
+	class_nam = "death"
+	hate_level = 0
 
 
 func send_my_data():
@@ -47,7 +50,7 @@ func apply_data(data):
 
 func apply_eye_color(clr):
 	eye.modulate = clr
-	eye.self_modulate = clr
+	eye.self_modulate = Color.white
 
 
 func attack():
@@ -77,7 +80,7 @@ func attack():
 		if randi() % 10 == 2:
 			node.damage *= 3
 			node.modulate = Color.black
-		_level.add_child(node)
+		_level.add_child(node, true)
 	_is_attacking = false
 
 
@@ -99,7 +102,7 @@ func oraoraora():
 			node.rotation_degrees = 180
 		node.global_position = global_position + offset
 		node.get_node("attack").damage = 30 + curr_lvl_loc * 3
-		_level.add_child(node)
+		_level.add_child(node, true)
 	_is_attacking = false
 
 
@@ -122,8 +125,9 @@ func ulti():
 	yield(get_tree().create_timer(0.8, false), "timeout")
 	can_see = false
 	$visual.modulate = Color(1, 1, 1, 0.25)
-	collision_layer = 0b0
+	collision_layer = 0b1000000
 	collision_mask = 0b1
+	trail.points.clear()
 	trail.show()
 	$gadget_active.emitting = true
 	var shape_owner = $ulti.shape_find_owner(0)
@@ -165,9 +169,11 @@ func revive(hpc = -1):
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or _is_drinking or _is_ultiing or not can_control:
+	if _is_ultiing:
+		return false
+	var success = .use_gadget()
+	if not success:
 		return
-	.use_gadget()
 	var effect = THEWORLD.instance()
 	add_child(effect)
 	_camera_tween.interpolate_property($visual/body/arm_right/hand/weapon, "self_modulate", Color.white, Color(1,1,1,0), 0.5)

@@ -11,8 +11,6 @@ onready var lightnings = $lightnings.get_children()
 
 func _ready():
 	mob = $mob_bw
-	fill_x = 53
-	tp_pos = Vector2(54, -2)
 	next_attack_time_min = 1.5
 	next_attack_time_max = 2
 	mercy_dialog = tr("boss.wizard.mercy") % G.getv("name", "")

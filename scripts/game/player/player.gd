@@ -31,7 +31,7 @@ var _potion_1_sprite = load("res://textures/items/small_potion.png")
 var _potion_2_sprite = load("res://textures/items/normal_potion.png")
 var _potion_3_sprite = load("res://textures/items/big_potion.png")
 onready var _soul = $camera/gui/base/hero_panel/head/soul
-onready var _player_head = $visual/body/head
+onready var _player_head = $camera/gui/base/hero_panel/head
 onready var _buttons = $camera/gui/base/buttons
 onready var _potion_1 = $camera/gui/base/hero_panel/potion1
 onready var _potion_2 = $camera/gui/base/hero_panel/potion2
@@ -77,6 +77,29 @@ onready var dialog_text = $camera/gui/base/dialog
 onready var camera = $camera
 onready var _camera_tween = $camera_tween
 
+#HATE
+var hate_level = -1
+var refuse_chance = 0
+var face_chance = 1
+var face_duration = 0
+var auto_chance = 0
+var auto_timer = 0
+var revive_chance = 0
+var revive_amount = 0
+var fatal_chance = 0
+var hate_head = load("res://prefabs/effects/glitch_head.tscn")
+var hate_head_node
+const REFUSE_PHRASES = ["hate.refuse.0", "hate.refuse.1", "hate.refuse.2"]
+const REVIVE_PHRASES = ["hate.revive.0", "hate.revive.1"]
+const AUTO_ACTIONS = [
+	"move_left",
+	"move_right",
+	"jump",
+	"attack",
+	"ulti",
+	"use_gadget",
+]
+
 
 func _ready():
 	add_to_group("player")
@@ -101,7 +124,7 @@ func _ready():
 	collision_mask = 0b11101
 	_health_bar = $camera/gui/base/hero_panel/health
 	_health_change_bar = $camera/gui/base/hero_panel/health/health_change
-	_head = $camera/gui/base/hero_panel/head
+	_head = $visual/body/head
 	_head_sprite = load("res://textures/mobs/player/head.tres")
 	_head_hurt_sprite = load("res://textures/mobs/player/head_hurt.tres")
 	
@@ -150,7 +173,36 @@ func _ready():
 			i.rect_position = G.getv(i.name + "_position", i.rect_position)
 			if i.name == "gadget" and OS.has_feature("pc"):
 				i.get_node("button").hide()
-	
+	hate_level = G.getv("hate_level", -1)
+	if class_nam == "death":
+		hate_level = 0
+	match hate_level:
+		1:
+			refuse_chance = 80
+		2:
+			refuse_chance = 66
+			face_chance = 10
+			face_duration = 1
+		3:
+			refuse_chance = 50
+			face_chance = 6
+			face_duration = 1.5
+			auto_chance = 80
+			revive_chance = 20
+			revive_amount = 10
+		4:
+			refuse_chance = 33
+			face_chance = 4
+			face_duration = 2.5
+			auto_chance = 33
+			revive_chance = 5
+			revive_amount = 25
+			fatal_chance = 6
+			var lvl_name = _level.name.split("_")
+			if len(lvl_name) > 2:
+				if lvl_name[2].is_valid_integer():
+					if int(lvl_name[2]) == 10:
+						fatal_chance = 1
 	if MP.auth(self):
 		if MP.is_active:
 			$camera/gui/base/pause_menu/panel/restart.disabled = true
@@ -202,16 +254,99 @@ func apply_data(data):
 	_health_change_bar = $bars/progress/under
 	_hp_count = $bars/hp
 
+
+func hate_refuse():
+	if not MP.auth(self):
+		return false
+	if hate_level < 1:
+		return false
+	if randi() % refuse_chance == 15:
+		make_dialog(tr(REFUSE_PHRASES.pick_random()))
+		return true
+	return false
+
+
+func hate_head_spawn(force = false, time = -1, custom_color = Color.white):
+	if not MP.auth(self) and not force:
+		return
+	if hate_level < 2 and not force:
+		return
+	if _body.scale.x < 0 and not force:
+		return
+	if randi() % face_chance == 2 or force:
+		ms.sync_call(self, "hate_head_spawn", [true, face_duration, G.SOUL_COLORS[G.getv("soul_type", 6)]])
+		var n = hate_head.instance()
+		if custom_color != Color.white:
+			n.self_modulate = custom_color
+		else:
+			n.self_modulate = G.SOUL_COLORS[G.getv("soul_type", 6)]
+		if time < 0:
+			n.get_node("timer").wait_time = face_duration
+		else:
+			n.get_node("timer").wait_time = time
+		_head.add_child(n)
+		_head.move_child(n, 0)
+		hate_head_node = n
+
+
+func hate_head_clear():
+	if not is_instance_valid(hate_head_node):
+		return
+	if _move_direction.x < 0 and can_turn:
+		return
+	if _body.scale.x < 0:
+		return
+	if is_instance_valid(hate_head_node):
+		hate_head_node.queue_free()
+
+
+func hate_auto(delta):
+	if not MP.auth(self):
+		return
+	if hate_level < 3:
+		return
+	auto_timer += delta
+	if auto_timer >= 1:
+		auto_timer = 0
+		if randi() % auto_chance == 19:
+			var prev_hate_level = hate_level # Don't refuse hate actions
+			hate_level = 0
+			call(AUTO_ACTIONS.pick_random())
+			hate_level = prev_hate_level
+
+
+func hate_revive():
+	if not MP.auth(self):
+		return false
+	if hate_level < 3:
+		return false
+	if randi() % revive_chance == 1:
+		make_dialog(tr(REVIVE_PHRASES.pick_random()))
+		heal(round(max_health * revive_amount / 100))
+		return true
+	return false
+
+
+func hate_fatal():
+	if hate_level < 4:
+		return false
+	return randi() % fatal_chance == 1
+
 #MOVE
 func move_left():
 	if not can_control:
 		return
+	if hate_refuse():
+		return
 	ms.sync_call(self, "move_left")
 	_prev_move_x = _move_direction.x
 	_move_direction.x = -1
+	hate_head_spawn()
 
 func move_right():
 	if not can_control:
+		return
+	if hate_refuse():
 		return
 	ms.sync_call(self, "move_right")
 	_prev_move_x = _move_direction.x
@@ -241,7 +376,9 @@ func stop():
 
 func jump(power = 0):
 	if not can_control:
-		return
+		return false
+	if hate_refuse():
+		return false
 	ms.sync_call(self, "jump", [power])
 	if is_hurt or is_stunned:
 		return false
@@ -259,6 +396,7 @@ func force_move_left():
 	ms.sync_call(self, "force_move_left")
 	_prev_move_x = _move_direction.x
 	_move_direction.x = -1
+	hate_head_spawn()
 
 func force_move_right():
 	ms.sync_call(self, "force_move_right")
@@ -282,6 +420,20 @@ func force_jump(power = 0):
 	return false
 
 #HEALTH
+func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
+	if immune_counter > 0:
+		return false
+	if fatal:
+		return .hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
+	var test_health = round(clamp(current_health - max(damage - defense * int(defense_allowed), 0), 0, max_health))
+	if test_health >= current_health:
+		return false
+	if test_health <= 0:
+		if hate_revive():
+			return false
+	return .hurt(damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source)
+
+
 func _hurt_intermediate(damage_source, died):
 	_health_timer = 0
 	_player_head.texture = _head_hurt_sprite
@@ -339,6 +491,8 @@ func use_potion(level):
 		return
 	if current_health >= max_health:
 		make_dialog(tr("player.fullhp"), 1, Color.white)
+		return
+	if hate_refuse():
 		return
 	ms.sync_call(self, "use_potion", [level])
 	match level:
@@ -431,6 +585,8 @@ func use_potion(level):
 func ulti():
 	if ulti_percentage < 100 or is_hurt or is_stunned or _is_attacking or _is_drinking or not can_control:
 		return
+	if hate_refuse():
+		return
 	ms.sync_call(self, "ulti")
 	$skill_use_sfx.play()
 	ulti_percentage = 0
@@ -507,6 +663,7 @@ func _process(delta):
 		if gadget_count > 0:
 			gadget_cooldown = clamp(gadget_cooldown - delta, 0, 10)
 		gadget_bar.value = gadget_cooldown
+	hate_auto(delta)
 
 
 func _physics_process(delta):
@@ -535,14 +692,14 @@ func _physics_process(delta):
 			use_potion(2)
 		if Input.is_action_just_pressed("potion3"):
 			use_potion(3)
-	if _move.length_squared() < 25 and _move_direction.is_equal_approx(Vector2.ZERO) and attack_cooldown == 0:
+	if _move.length_squared() < 25 and _move_direction == Vector2.ZERO and attack_cooldown == 0:
 		_health_timer += delta * 60
 	else:
 		_health_timer = 0
 	if MP.auth(self):
 		if _health_timer >= 300 and current_health < round(max_health * 0.75) and current_health > 0:
 			idle_heal()
-	if _health_timer < 240:
+	if _health_timer < 237:
 		_healed_times = 0
 	
 	if smooth_camera and MP.auth(self):
@@ -553,12 +710,13 @@ func _physics_process(delta):
 		else:
 			target = Vector2(global_position.x - offset.x, global_position.y - offset.y)
 		camera.global_position = camera.global_position.linear_interpolate(target, damping * delta)
+	hate_head_clear()
 
 
 func idle_heal():
 	ms.sync_call(self, "idle_heal")
 	_heal_particles.restart()
-	_health_timer = 240
+	_health_timer = 237
 	_healed_times += 1
 	var percent = 0.03 + _healed_times * 0.0075
 	current_health = clamp(round(current_health + max_health * percent), 0, round(max_health * 0.75))
@@ -566,15 +724,20 @@ func idle_heal():
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or current_health <= 0 or not can_control:
-		return
+	if gadget_cooldown > 0 or gadget_count <= 0 or current_health <= 0 or not can_control or is_stunned or _is_drinking or _is_ultiing:
+		return false
+	if hate_refuse():
+		return false
 	ms.sync_call(self, "use_gadget")
+	if MP.auth(self):
+		G.addv("gadget_used", 1)
 	$gadget_sfx.play()
 	gadget_cooldown = 10
 	gadget_count -= 1
 	gadget_counter.text = str(gadget_count)
 	$gadget_use.restart()
 	_health_timer = 0
+	return true
 
 
 func revive(hp_count = -1):
@@ -669,6 +832,6 @@ func _update_water_state():
 		under_water = true
 	else:
 		under_water = false
-		if breath_time < 2 and MP.auth(self):
+		if breath_time < 2 and MP.auth(self) and current_health > 0:
 			G.ach.complete(Achievements.AIR)
 		breath_time = 10

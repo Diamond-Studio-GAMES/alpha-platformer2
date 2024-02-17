@@ -8,8 +8,6 @@ var going_to_fertilize = false
 var going_to_dig_up = false
 var selected_plant = ""
 var plant_element = load("res://minigames/minigame6/element_of_plant_list.tscn")
-onready var current_day = Time.get_date_dict_from_system()["day"]
-onready var current_unix_time = Time.get_unix_time_from_system()
 signal plant_selected(canceled)
 
 
@@ -17,20 +15,18 @@ func _ready():
 	$base_list_of_plants/list_of_plants.get_close_button().connect("pressed", self, "select_plant", [""])
 	$base_buy/buy.get_cancel().text = tr("menu.cancel")
 	$base_buy/buy.get_ok().text = tr("shop.buy")
-	$base_gift/gift.get_ok().text = tr("6.gift.collect")
-	check_for_gift()
 
 
 func open_box():
-	$base_buy/buy.dialog_text = tr("6.buy.text") + str(G.getv("gems", 10))
+	$base_buy/buy.dialog_text = tr("6.buy.text") + str(G.getv("tickets", 0))
 	$base_buy/buy.popup_centered()
 
 
 func buy_box():
-	if G.getv("gems", 10) < 5:
-		show_warning(tr("6.no.gems"))
+	if G.getv("tickets", 0) < 5:
+		show_warning(tr("6.no.tickets"))
 		return
-	G.addv("gems", -5, 10)
+	G.addv("tickets", -5, 0)
 	get_box()
 
 
@@ -42,21 +38,9 @@ func exit():
 	get_tree().change_scene("res://scenes/menu/levels.tscn")
 
 
-func check_for_gift():
-	if G.getv("garden_get_gift", current_day-1) != current_day and \
-			G.getv("garden_get_gift_time", 0) <= current_unix_time:
-		G.setv("garden_get_gift", current_day)
-		G.setv("garden_get_gift_time", current_unix_time)
-		$base_gift/gift.popup_centered()
-
-
 func _process(delta):
 	$fert.text = str(G.getv("garden_fert", 0))
 	$water.text = str(G.getv("garden_water", 0))
-	if Time.get_date_dict_from_system()["day"] != current_day:
-		current_day = Time.get_date_dict_from_system()["day"]
-		current_unix_time = Time.get_unix_time_from_system()
-		check_for_gift()
 
 
 func plant_pressed():

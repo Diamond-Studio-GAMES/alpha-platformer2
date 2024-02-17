@@ -14,7 +14,7 @@ func _ready():
 
 
 func open_level(id):
-	get_tree().change_scene("res://minigames/minigame5/level"+id+".tscn")
+	get_tree().change_scene("res://minigames/minigame5/level" + id + ".tscn")
 
 
 func back():

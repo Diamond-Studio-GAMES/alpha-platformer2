@@ -12,8 +12,6 @@ var sword_down_attack = load("res://prefabs/bosses/sword_down_attack.tscn")
 
 func _ready():
 	mob = $mob_gk
-	fill_x = 53
-	tp_pos = Vector2(54, -2)
 	attacks = ["crack", "swipes", "throw", "swords_down"]
 	mercy_dialog = tr("boss.knight.mercy") % G.getv("name", "")
 	death_dialog = tr("boss.knight.defeat")

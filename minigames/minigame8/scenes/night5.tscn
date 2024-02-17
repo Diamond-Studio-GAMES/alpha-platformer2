@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://minigames/minigame8/sounds/phone_guy4.ogg" type="AudioStream" id=1]
 [ext_resource path="res://minigames/minigame8/misc/test.tscn" type="PackedScene" id=2]
+[ext_resource path="res://minigames/minigame8/textures/enemies/director_fake.png" type="Texture" id=3]
+[ext_resource path="res://minigames/minigame8/scripts/director.gd" type="Script" id=4]
 [ext_resource path="res://minigames/minigame8/textures/enemies/himichka_fake.png" type="Texture" id=5]
 [ext_resource path="res://minigames/minigame8/scripts/rusichka.gd" type="Script" id=6]
 [ext_resource path="res://minigames/minigame8/scenes/night.tscn" type="PackedScene" id=7]
@@ -11,6 +13,94 @@
 [ext_resource path="res://minigames/minigame8/scripts/izichka.gd" type="Script" id=11]
 
 [sub_resource type="ButtonGroup" id=1]
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_try_to_kill"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_try_to_kill"
+} ]
+}
 
 [node name="night5" instance=ExtResource( 7 )]
 energy_loss_per_sec = 0.07
@@ -70,6 +160,31 @@ group = SubResource( 1 )
 [node name="test" parent="screen/base/screen/gui" index="18" instance=ExtResource( 2 )]
 chance = 6
 
+[node name="director" type="Sprite" parent="another_way" index="4"]
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 0.627451, 0.627451, 0.627451, 1 )
+position = Vector2( -360, 120 )
+texture = ExtResource( 3 )
+script = ExtResource( 4 )
+AI = 4
+another = true
+
+[node name="anim" type="AnimationPlayer" parent="another_way/director" index="0"]
+anims/RESET = SubResource( 4 )
+anims/spawn = SubResource( 5 )
+
+[node name="director" type="Sprite" parent="main" index="6"]
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 0.627451, 0.627451, 0.627451, 1 )
+position = Vector2( 420, 120 )
+texture = ExtResource( 3 )
+script = ExtResource( 4 )
+AI = 4
+
+[node name="anim" type="AnimationPlayer" parent="main/director" index="0"]
+anims/RESET = SubResource( 2 )
+anims/spawn = SubResource( 3 )
+
 [node name="rusichka" type="Sprite" parent="base/poses/pos0" index="0"]
 self_modulate = Color( 0.501961, 0.501961, 0.501961, 1 )
 texture = ExtResource( 8 )
@@ -77,6 +192,7 @@ script = ExtResource( 6 )
 paths = [ [ "base", "f2w1", "f2w1e", "f2", "f12", "f01", "main" ], [ "base", "f1w1", "f1w1e", "f1", "f01", "main" ], [ "base", "f0w0", "another_way" ] ]
 AI = 20
 AI_time_custom = 3
+time_to_awake = 60
 defense_time = 6.0
 
 [node name="izichka" type="Sprite" parent="base/poses/pos0" index="1"]

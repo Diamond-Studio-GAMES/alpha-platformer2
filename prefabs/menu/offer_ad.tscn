@@ -2,7 +2,7 @@
 
 [ext_resource path="res://themes/theme.tres" type="Theme" id=1]
 [ext_resource path="res://textures/items/gold_box.png" type="Texture" id=2]
-[ext_resource path="res://scripts/menu/offer_ad.gd" type="Script" id=3]
+[ext_resource path="res://scripts/menu/other/offer_ad.gd" type="Script" id=3]
 
 [node name="offer" type="Panel"]
 margin_right = 200.0

@@ -40,7 +40,7 @@ var player: Player
 
 func _ready():
 	$button.rect_scale.x *= sign(scale.x)
-	match G.getv("hate_tier", 0):
+	match G.getv("hate_level", 0):
 		1:
 			if not hate_tier_1_dialog_data.empty():
 				dialog_data = hate_tier_1_dialog_data

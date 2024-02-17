@@ -1,22 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://minigames/minigame5/tileset_dash.tres" type="TileSet" id=1]
-
-[sub_resource type="GDScript" id=4]
-script/source = "extends Area2D
-
-
-func be(b):
-	if b is Dasher:
-		if get_tree().current_scene.name != \"level_custom\":
-			if not G.getv(\"pd_level_\" + get_tree().current_scene.name, false):
-				G.ach.complete(Achievements.DASHER)
-				G.addv(\"pd_levels\", 1)
-				G.getv(\"pd_level_\" + get_tree().current_scene.name, true)
-				var level = int(get_tree().current_scene.name[5])
-				G.receive_loot({\"coins\" : 150 * level, \"gems\" : level})
-		get_tree().change_scene(\"res://minigames/minigame5/minigame.tscn\")
-"
+[ext_resource path="res://minigames/minigame5/resources/end.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8, 320 )
@@ -33,7 +18,7 @@ tile_data = PoolIntArray( -1245181, 5, 0, -1245180, 3, 0, -1245179, 3, 0, -12451
 [node name="area" type="Area2D" parent="."]
 position = Vector2( 128, -240 )
 monitorable = false
-script = SubResource( 4 )
+script = ExtResource( 2 )
 
 [node name="shape" type="CollisionShape2D" parent="area"]
 position = Vector2( 0, -80 )

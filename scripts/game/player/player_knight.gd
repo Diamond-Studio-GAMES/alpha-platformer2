@@ -3,6 +3,7 @@ class_name Knight
 
 var gen = RandomNumberGenerator.new()
 var is_active_gadget = false
+onready var _attack_node = $visual/body/knight_attack
 onready var _attack_visual = $visual/body/knight_attack/visual
 onready var _attack_shape = $visual/body/knight_attack/shape
 
@@ -88,13 +89,17 @@ func miss(knockback_multiplier):
 	is_hurt = false
 
 
-func attack():
+func attack(fatal = false):
 	if is_hurt or is_stunned or _is_drinking or _is_ultiing or not can_control:
 		return
 	if not can_attack:
 		_attack_empty_anim.play("empty")
 		return
-	ms.sync_call(self, "attack")
+	if hate_refuse():
+		return
+	if MP.auth(self):
+		fatal = hate_fatal()
+	ms.sync_call(self, "attack", [fatal])
 	can_attack = false
 	_is_attacking = true
 	attack_cooldown = RECHARGE_SPEED + 0.6
@@ -102,6 +107,7 @@ func attack():
 	_anim_tree["parameters/attack_shot/active"] = true
 	yield(get_tree().create_timer(0.35, false), "timeout")
 	$visual/body/knight_attack/swing.play()
+	_attack_node.fatal = fatal
 	_attack_visual.show()
 	_attack_visual.playing = true
 	_attack_shape.disabled = false
@@ -124,9 +130,11 @@ func _process(delta):
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or is_hurt or is_stunned or not can_control:
+	if is_hurt:
 		return
-	.use_gadget()
+	var success = .use_gadget()
+	if not success:
+		return
 	is_active_gadget = true
 	$gadget_active.emitting = true
 	yield(get_tree().create_timer(2, false), "timeout")

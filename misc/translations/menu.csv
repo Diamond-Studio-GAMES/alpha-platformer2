@@ -13,7 +13,6 @@ menu.noo,НЕТ!,NO!
 menu.yess,да,yes
 menu.version,Версия: ,Version: 
 menu.save_id,ID сохранения: ,Save ID: 
-menu.creation_date,Дата создания: ,Creation date: 
 menu.back,Назад,Back
 menu.about.text,"Разработчик, графический и звуковой дизайнер:
 Михаил (Summersay415)
@@ -79,6 +78,7 @@ stat.level,Уровень: ,Level:
 stat.levels,Уровней завершено: ,Levels completed:
 stat.coins,Монет: ,Coins:
 stat.gems,Кристаллов: ,Gems:
+stat.tickets,Билеты:,Tickets:
 stat.classes,Классов открыто:,Classes opened:
 stat.kills,Убийств:,Kills:
 stat.boss_kills,Боссов побеждено:,Bosses defeated:
@@ -87,6 +87,7 @@ stat.falls,Падений с высоты:,Fall damaged:
 stat.beartraped,Попаданий в капкан:,Catched in beartrap:
 stat.jumps,Прыжков: ,Jumps:
 stat.skills,Навык использован: ,Skill used:
+stat.soulskills,Душевный навык исп.:,Soul skill used:
 stat.deaths,Смертей: ,Deaths:
 stat.revives,Возрождений: ,Revives:
 stat.potions1,Маленьких зелий: ,Small potions:
@@ -102,9 +103,10 @@ stat.ls,Посл. волны пройдены: ,Last waves completed:
 stat.pd,Уровней в P. Dash: ,Levels in P. Dash:
 stat.garden,Урожай в саду собран: ,Garden harvest collected:
 stat.2d_wins,Побед в 2Д-шутере: ,Victories in 2D Shooter:
-stat.fnas,Ночь во FNaS: ,FnaS night:
+stat.fnas,Ночь во FNaS: ,FNaS night:
 stat.achvs,Достижений получено: ,Achievements got:
 stat.time,Времени проведено: ,Time elapsed:
+stat.creation_date,Дата создания: ,Creation date: 
 menu.message,Сообщение!,Message!
 menu.setting.music,Громкость музыки:,Music volume:
 menu.setting.sfx,Громкость звуков:,SFX volume:
@@ -125,21 +127,6 @@ menu.last_confirm,Удалить сохранение?,Delete save?
 menu.last_confirm.text,Ты уверен?,Are you sure?
 menu.current_name,Текущее имя: ,Current name: 
 menu.changing_name,Смена имени,Changing name
-menu.controls.pc.text,"Стрелка влево/A - Движение влево
-Стрелка вправо/D - Движение вправо
-Стрелка вверх/Пробел/W - Прыжок
-Стрелка вниз/C/Нажатие правой кнопки мыши - Атака
-Enter/X - Использовать навык
-Shift/Z - Использовать душ. навык
-1/2/3 - Использовать зелье уровня 1/2/3
-Прицеливание осуществляется мышью.","Left arrow/A — Movement to the left
-Right arrow/D — Movement to the right
-Up arrow/Space/W — Jump
-Down arrow/C/Right Mouse Button — Attack
-Enter/X — Use skill
-Shift/Z — Use soul skill
-1/2/3 — Use level 1/2/3 potion
-Aiming is done with mouse."
 menu.warning,Предупреждение!,Warning!
 menu.blw.text,"Опция ""Красивый свет"" может привести к потере производительности, рекомендуем её включать только на ПК или мощном смартфоне.","The ""Beautiful light"" option can lead to a loss of performance, we recommend turning it on only on a PC or a powerful smartphone."
 menu.gr.proj_effects,Эффекты снарядов,Projectile effects
@@ -160,6 +147,27 @@ menu.skip,Пропустить обучение,Skip tutorial
 menu.rate.title,Оцени нас!,Rate us!
 menu.rate.text,"Дорогой игрок! Мы очень старались над этой игрой и будем очень рады, если ты оценишь её на 5 звёзд!","Dear player! We worked hard on this game, and we will be very happy if you rate it 5 stars!"
 menu.rate,Оценить,Rate
+event.info,Левая кнопка мыши используется для прицела.,Left Mouse Button is used for aiming.
+event.left,Влево:,Left:
+event.right,Вправо:,Right:
+event.jump,Прыжок:,Jump:
+event.attack1,Атака:,Attack:
+event.ulti,Навык:,Skill:
+event.gadget,Душевный навык:,Soul skill:
+event.potion1,Зелье 1-го уровня:,1st level potion:
+event.potion2,Зелье 2-го уровня:,2nd level potion:
+event.potion3,Зелье 3-го уровня:,3rd level potion:
+event.emotions,Выбор эмоции:,Emotions menu:
+event.pause,Пауза:,Pause:
+event.change,Изменить…,Edit…
+event.change.ok,Изменить,OK
+event.change.title,Изменение события для действия «%s»...,Editing event for action «%s»…
+event.change.wait,Жду нажатия…,Waiting for input…
+event.reset,Вернуть значения по умолчанию,Reset to defaults
+mouse.right,Правая кнопка,Right button
+mouse.middle,Средняя кнопка,Middle button
+mouse.x1,Боковая кнопка 1,Side button 1
+mouse.x2,Боковая кнопка 2,Side button 2
 achv.boss1,Это мои овцы,These sheeps are mine
 achv.boss1.desc,Победи Пастуха.,Defeat the Shepherd.
 achv.boss2,Экологический борец,Ecologic fighter
@@ -176,8 +184,8 @@ achv.boss7,Государственный переворот,State coup
 achv.boss7.desc,Победи Красного Короля.,Defeat the Red King.
 achv.boss8,"Реквием, да!","Requiem, da!"
 achv.boss8.desc,Победите Егора.,Defeat the Egor.
-achv.boss9,,
-achv.boss9.desc,,
+achv.boss9,Месть рабочих,Revenge of the workers
+achv.boss9.desc,Победите Максима.,Defeat the Max.
 achv.boss10,,
 achv.boss10.desc,,
 achv.what_is_it,Это что?,What is it?
@@ -197,7 +205,7 @@ achv.dark_creation.desc,Встреть саму Смерть.,Meet the Death.
 achv.potion_man,Зельеман,Potions lover
 achv.potion_man.desc,Используй зелья 10 раз.,Use potions 10 times.
 achv.prozapass,Прозапас,For everything
-achv.prozapass.desc,Получи по 5 зелий каждого вида.,Get 5 potions of each kind.
+achv.prozapass.desc,Получи максимум зелий каждого вида.,Get max potions of each kind.
 achv.burn_her_faster,Кремируйте её быстрее!,Cremate her faster!
 achv.burn_her_faster.desc,Сожги врага.,Burn an enemy.
 achv.this_is_sparta,Это... Спарта!,This… is… Sparta!
@@ -219,7 +227,7 @@ achv.loot,Урожай,Harvest
 achv.loot.desc,"Собери награду с 3 растений в ""Саду"".",Collect reward from 3 plants in «Garden».
 achv.victory_royale.desc,"Выиграй 1 игру в ""2Д-шутере"".",Win 1 game in «2D-shooter».
 achv.escape,Побег,Escape
-achv.escape.desc,"Пройди мини-игру ""FNaS""…",Complete the «Fnas» mini-game…
+achv.escape.desc,"Пройди мини-игру ""FNaS""…",Complete the «FNaS» mini-game…
 achv.untouched,Неприкасаемый,Untouched
 achv.untouched.desc,"Пройди уровень, не получив урон.",Complete a level without taking any damage.
 achv.better_together,Вместе сильнее,Stronger together
@@ -254,8 +262,8 @@ achv.return_to_sender,Вернуть отправителю,Return to sender
 achv.return_to_sender.desc,"Получи урон от собственного снаряда, отражённого Чёрным магом.","Take damage from your own projectile, reflected by the Black Wizard."
 achv.hacker,Взломщик,Burglar
 achv.hacker.desc,Открой 50 ящиков.,Open 50 boxes.
-,,
-,,
+achv.bomber,Подрывник,Bomber
+achv.bomber.desc,Взорви врага динамитом.,Explode enemy with TNT.
 achv.hero,ГЕРОЙ!,THE HERO!
 achv.hero.desc,Пройди игру!,Complete the game!
 amulet.none,Нет,None
@@ -350,15 +358,16 @@ shop.bought,Куплено,Bought
 shop.confirm.text,Действительно хочешь купить эти предметы:,Are you really want to buy these items:
 shop.confirm.with, за, with
 shop.box_info.tokens, и Жетоны, and Tokens
-shop.box_info,"В ящике могут содержатся классы, монеты, жетоны и многое другое.
+shop.box_info,"Ящик может содержать классы, монеты, жетоны и многое другое.
 Шансы при открытии одного обычного ящика:
 Монеты{cs}: {cc}%
 Класс: {hc}%
 Фрагмент амулета: {ac}%
 Душевный навык: {gc}%
 Душевная сила: {sc}%
+Билеты (как бонус): 25%
 Кристаллы (как бонус): 10%
-	
+
 Получить душевный навык можно только на класс, достигший 15-го уровня силы, а душевную силу на класс, достигший 20-го уровня силы. Получать фрагменты амулетов можно после того, как один из классов достигнет 10-го уровня силы. После каждого открытого обычного ящика, в котором не было класса, шанс на него повышается на 0.06%. А если в ящике оказался класс, шанс падает до 1.5%. Начальный шанс - 2%. Если жетоны какого-то типа все классы не могут получить, то они конвертируются в монеты. 3 монеты за каждый жетон силы, 10 монет за каждый жетон навыка.","Box can contain classes, coins, tokens and much more.
 Chances when opening one regular box:
 Coins{cs}: {cc}%
@@ -366,6 +375,7 @@ Class: {hc}%
 Amulet fragment: {ac}%
 Soul skill: {gc}%
 Soul power: {sc}%
+Tickets (as bonus): 25%
 Gems (as bonus): 10%
 
 You can only get soul skill for a class that has reached the 15th power level, and soul power for a class that has reached the 20th power level. You can receive fragments of amulets after one of the classes reaches the 10th power level. After each open regular box, in which there was no class, the chance of it increases by 0.06%. And if there is a class in the box, the chance drops to 1.5%. The initial chance is 2%. If all classes cannot receive tokens of some type, then they are converted into coins. 3 coins for each power token, 10 coins for each skill token."
@@ -383,6 +393,7 @@ shop.offer.sale,СКИДКА В %d%%,%d%% SALE
 shop.offer.more,БОЛЬШЕ НА %d%%,%d%% MORE
 item.coins,МОНЕТЫ,COINS
 item.gems,КРИСТАЛЛЫ,GEMS
+item.tickets,БИЛЕТЫ,TICKETS
 item.frags,ФРАГМЕНТЫ АМУЛЕТА,AMULET FRAGMENTS
 item.frag,ФРАГМЕНТ АМУЛЕТА,AMULET FRAGMENT
 item.gadget,ДУШЕВНЫЙ НАВЫК,SOUL SKILL
@@ -472,15 +483,12 @@ promocodes.title,Ввести промокод:,Enter promocode:
 promocodes.placeholder,Код…,Code…
 promocodes.confirm,Подтвердить,Confirm
 controls.reset,Сбросить,Reset
-controls.title,Настройка управления,Editing controls…
+controls.title,Настройка управления,Controls editing
 controls.guide,"Настрой управление под себя, перетаскивая кнопки!",Customize the controls for yourself by dragging buttons!
 gameover.title,ИГРА ОКОНЧЕНА,GAME OVER
 gameover.retry,Попробовать снова,Try again
 gameover.menu,Выйти в меню,Back to menu
 minigame.s,Мини-игры,Mini-games
-minigame.select,Выбери мини-игру,Select mini-game
-minigame.no,Недостаточно ресурсов!,Not enough resources!
-minigame.no.text,Недостаточно ресурсов для покупки данной мини-игры!,Not enough resources to buy this mini-game!
 menu.edu.again,Ты действительно хочешь посмотреть историю и пройти обучение заново?,Are you really want to see story and complete tutorial again?
 menu.edu,Обучение,Tutorial
 menu.multiplayer.guide,"Игра поддерживает совместный мультиплеер. Для начала игроки должны подключиться к одной сети, выбрать уровень, на котором будут играть, и игрока, который будет выступать в роли сервера. Он заходит на выбранный уровень, и рядом с кнопкой ""Играть"" нажимает стрелочку, затем ""Создать комнату..."". Другие игроки тем временем выбирают тот же уровень, нажимают ту же стрелочку, но уже ""Присоединиться..."". Есть два способа подключения:
@@ -505,6 +513,7 @@ classes.name,Классы,Classes
 classes.tip.gadget,"Душевный навык — особая способность класса, которую можно использовать три раза за уровень. Можно найти в ящике.",Soul Skill is a special class ability that can be used 3 times per level. Can be found in a box.
 classes.tip.sp,"Душевная сила — пассивная способность класса, которая действует всегда. Можно найти в ящике.",Soul Power is a passive ability of the class that always works. Can be found in a box.
 classes.tip.amulet,"Амулеты — пассивная способность, которая повышает некоторые характеристики класса. Можно создать из фрагментов амулета.",Amulets are a passive ability that increases some class characteristics. You can create an amulet from fragments.
+classes.found,Класс можно найти в ящике,Class can be found in box
 classes.try,Испытать,Try
 classes.upgrade,Улучшить,Upgrade
 menu.close,Закрыть,Close
@@ -545,6 +554,7 @@ shop.potinfo.1,Восстанавливает 20% от максимальног�
 shop.potinfo.2,Восстанавливает 40% от максимального здоровья.,Heals 40% of max health.
 shop.potinfo.3,Восстанавливает 60% от максимального здоровья.,Heals 60% of max health.
 shop.tip.pot1,"Зелья нужны для быстрого исцеления. Ты можешь иметь максимум пять зелий каждого вида. Нажми на иконку зелья во время игры, чтобы его использовать.",Potions are needed for quick healing. You can have a maximum of five potions of each kind. Click on the potion icon during the game to use it.
+shop.tip.tickets,"Билеты нужны для мини-игр. Использовав билет и сыграв, ты можешь хорошие получить награды!","Tickets are needed for mini-games. By using the ticket and playing, you can get good rewards!"
 shop.confirm,Подтверждение покупки…,Please confirm...
 shop.error,Ошибка!,Error!
 shop.error.text,Ошибка покупки!,Error while purchasing!
@@ -560,3 +570,212 @@ shop.2500gems,2500 КРИСТАЛЛОВ,2500 GEMS
 shop.2250coins,2250 МОНЕТ,2250 COINS
 shop.4500coins,4500 МОНЕТ,4500 COINS
 shop.9000coins,9000 МОНЕТ,9000 COINS
+shop.10tickets,10 БИЛЕТОВ,10 TICKETS
+shop.25tickets,25 БИЛЕТОВ,25 TICKETS
+shop.40tickets,40 БИЛЕТОВ,40 TICKETS
+compensation.title,Компенсация,Compensation
+compensation.desc,"На этом сохранении были куплены мини-игры за монеты. Поскольку их больше не надо покупать из-за добавления билетов, забери компенсацию: билеты (%d).","On this save, mini-games were bought for coins. Since they no longer need to be bought due to the addition of tickets, take the compensation: tickets (%d)."
+mobs.title,Справочник по монстрам,Monsters guide
+mobs.select,Выбери монстра: ,Select monster: 
+mob.shroom,Гриб,Mushroom
+mob.shroom.desc,"Здоровье: [color=lime]низкое[/color]
+Защита: [color=aqua]отсутствует[/color]
+Атака: [color=blue]средняя[/color]
+Скорость: [color=aqua]неподвижен[/color]
+
+Старый добрый гриб, оставшийся ещё с прошлого метеорита. Побитый жизнью, он всё ещё хочет остановить тебя.
+
+Слабость: [color=fuchsia]неподвижен[/color]","Health: [color=lime]low[/color]
+Defense: [color=aqua]no[/color]
+Attack: [color=blue]medium[/color]
+Speed: [color=aqua]can’t move[/color]
+
+A good old mushroom left over from the last meteorite. Beaten by life, he still wants to stop you.
+
+Weakness: [color=fuchsia]can’t move[/color]"
+mob.knife,Человек с ножом,Knife Man
+mob.knife.desc,"Здоровье: [color=blue]нормальное[/color]
+Защита: [color=blue]средняя[/color]
+Атака: [color=blue]средняя[/color]
+Скорость: [color=blue]средняя[/color]
+
+Обычный человек, решивший сделать себе бутерброд. Но темная энергия внутри него манит сделать его не из хлеба и сыра, а из тебя!
+
+Слабость: [color=fuchsia]дальний бой[/color]","Health: [color=blue]normal[/color]
+Defense: [color=blue]average[/color]
+Attack: [color=blue]medium[/color]
+Speed: [color=blue]normal[/color]
+
+An ordinary person who decided to make himself a sandwich. But the dark energy inside him beckons to make it not with bread and cheese, but with you!
+
+Weakness: [color=fuchsia]range combat[/color]"
+mob.shooter,Стрелок,Shooter
+mob.shooter.desc,"Здоровье: [color=aqua]очень низкое[/color]
+Защита: [color=blue]средняя[/color]
+Атака: [color=lime]слабая[/color], два выстрела
+Скорость: [color=red]высокая[/color]
+
+Эта маленькая девочка любит свой пистолет, но больше всего она любит стрелять из него в глаза других!
+
+Слабость: [color=fuchsia]ближний бой[/color]","Health: [color=aqua]very low[/color]
+Defense: [color=blue]average[/color]
+Attack: [color=lime]low[/color], two shots
+Speed: [color=red]high[/color]
+
+This little girl loves her gun, but most of all she loves to shoot it in the eyes of others!
+
+Weakness: [color=fuchsia]close comabt[/color]"
+mob.sport,Спортсмен,Sportsman
+mob.sport.desc,"Здоровье: [color=maroon]очень высокое[/color]
+Защита: [color=aqua]отсутствует[/color]
+Атака: [color=blue]средняя[/color], два удара
+Скорость: [color=maroon]очень высокая[/color]
+
+Несмотря на свой возраст, спортсмен находится в отличной форме. Не пытайся убежать, он обязательно догонит тебя! Но всё же старость не позволяет ему нагнуться...
+
+Слабость: [color=fuchsia]выступ в 1 блок[/color]","Health: [color=maroon]very high[/color]
+Defense: [color=aqua]no[/color]
+Attack: [color=blue]medium[/color], two punches
+Speed: [color=maroon]very high[/color]
+
+Despite his age, sportsman is in great shape. Don't try to run away, he will definitely catch up with you! But still, old age does not allow him to bend down...
+
+Weakness: [color=fuchsia]ledge in 1 block[/color]"
+mob.knight,Рыцарь,Knight
+mob.knight.desc,"Здоровье: [color=red]высокое[/color]
+Защита: [color=red]высокая[/color]
+Атака: [color=red]сильная[/color]
+Скорость: [color=lime]низкая[/color]
+
+Сила атаки в сочетании со здоровьем и защитой делают его очень опасным в ближнем бою. Но доспехи дают о себе знать: со своей скоростью рыцарь ничего не сможет противопоставить в дальнем бою.
+
+Слабость: [color=fuchsia]дальний бой[/color]","Health: [color=red]high[/color]
+Defense: [color=red]high[/color]
+Attack: [color=red]high[/color]
+Speed: [color=lime]low[/color]
+
+His attack power combined with his health and defense make him very dangerous in close combat. But the armor makes itself felt: with his speed, the knight won't be able to match anything in ranged combat.
+
+Weakness: [color=fuchsia]range combat[/color]"
+mob.doctor,Доктор,Doctor
+mob.doctor.desc,"Здоровье: [color=blue]нормальное[/color]
+Защита: [color=blue]средняя[/color]
+Атака: [color=lime]слабая[/color] + яд
+Скорость: [color=red]высокая[/color]
+
+Раньше она была отличным доктором, помогающим людям. Но тьма свела её с ума, из-за чего она перестала выдавать другие рецепты, кроме серии уколов.
+
+Слабость: [color=fuchsia]ближний бой[/color]","Health: [color=blue]normal[/color]
+Defense: [color=blue]average[/color]
+Attack: [color=lime]low[/color] + poison
+Speed: [color=red]high[/color]
+
+She used to be a great doctor helping people. But the darkness drove her crazy, which is why she stopped giving out other prescriptions except for a series of injections.
+
+Weakness: [color=fuchsia]close combat[/color]"
+mob.spartan,Спартанец,Spartan
+mob.spartan.desc,"Здоровье: [color=blue]нормальное[/color]
+Защита: [color=aqua]отсутствует[/color]
+Атака: [color=blue]средняя[/color], сильно отбрасывает
+Скорость: [color=red]высокая[/color]
+
+Типичный житель Красного мира. Шрамы на его лице отражают сложность его бытия. Нет, они не от огня или чего-то подобного. Он много дрался. Ногами.
+
+Слабость: [color=fuchsia]остановка атаки[/color]","Health: [color=blue]normal[/color]
+Defense: [color=aqua]no[/color]
+Attack: [color=blue]medium[/color], knockbacks strongly
+Speed: [color=red]high[/color]
+
+A typical inhabitant of the Red World. The scars on his face reflect the complexity of his being. No, they're not from fire or anything like that. He fought a lot. With legs.
+
+Weakness: [color=fuchsia]attack stop[/color]"
+mob.magic,Маг,Magician
+mob.magic.desc,"Здоровье: [color=lime]низкое[/color]
+Защита: [color=blue]средняя[/color]
+Атака: [color=blue]средняя[/color], по полу
+Скорость: [color=blue]средняя[/color]
+Особенность: [color=fuchsia]лечение себя и монстров поблизости[/color]
+
+Он очень похож на шамана из первой части. Но это другой монстр. Потому что он теперь заботится не только о себе, но и о своих товарищах!
+
+Слабость: [color=fuchsia]слаб в одиночку[/color]","Health: [color=lime]low[/color]
+Defense: [color=blue]average[/color]
+Attack: [color=blue]medium[/color], on floor
+Speed: [color=blue]normal[/color]
+Special: [color=fuchsia]can heal himself and monsters nearby[/color]
+
+He looks very much like the shaman from the first part. But this is a different monster. Because now he cares not only about himself, but also about his comrades!
+
+Weakness: [color=fuchsia]weak alone[/color]"
+mob.mech,Механик,Mechanic
+mob.mech.desc,"Здоровье: [color=lime]низкое[/color]
+Защита: [color=blue]средняя[/color]
+Атака: [color=red]средняя[/color]
+Скорость: [color=red]высокая[/color]
+Особенность: [color=fuchsia]может сесть в робота[/color]
+
+Будучи победителем олимпиады по робототехнике, механик очень хорошо разбирается в ней. Он даже собрал собственный робо-костюм, но далеко не для благих целей…
+
+Слабость: [color=fuchsia]дальний бой[/color]","Health: [color=lime]low[/color]
+Defense: [color=blue]average[/color]
+Attack: [color=red]medium[/color]
+Speed: [color=red]high[/color]
+Special: [color=fuchsia]can hop in robot[/color]
+
+Being the winner of the Robotics Olympiad, the mechanic is very well versed in it. He even built his own robot, but not for good purposes.…
+
+Weakness: [color=fuchsia]range combat[/color]"
+mob.robot,Робокостюм механика,Mechanic’s Robosuit
+mob.robot.desc,"Здоровье: [color=red]высокое[/color]
+Защита: [color=aqua]отсутствует[/color]
+Атака: [color=maroon]очень сильная[/color] (большой шар), [color=blue]средняя[/color] (маленькие шары)
+Скорость: [color=lime]низкая[/color]
+Особенность: [color=fuchsia]при разрушении робота из него выпрыгивает механик[/color]
+
+Это первый робокостюм-убийца у механика. А точнее третий. Две прошлые модели были потеряны в драках, очень эффектно.
+
+Слабость: [color=fuchsia]ближний бой[/color]","Health: [color=red]high[/color]
+Defense: [color=aqua]no[/color]
+Attack: [color=maroon]very high[/color] (big ball), [color=blue]medium[/color] (small balls)
+Speed: [color=lime]low[/color]
+Special: [color=fuchsia]after destroying mechanic hops out[/color]
+
+This is the mechanic's first killer robosuit. Or rather the third one. Two previous models were lost in fights, very spectacularly.
+
+Weakness: [color=fuchsia]close combat[/color]"
+mob.werewolf.human,Оборотень (человек),Werewolf (human)
+mob.werewolf.human.desc,"Здоровье: [color=lime]низкое[/color]
+Защита: [color=blue]средняя[/color]
+Атака: [color=red]сильная[/color] (выстрел)
+Скорость: [color=lime]низкая[/color]
+Особенность: [color=fuchsia]при сближении с игроком превращается в животное[/color]
+
+Он не хочет никому навредить, он лишь хочет свободное личное пространство. А пистолет так, для самообороны.
+
+Слабость: [color=fuchsia]дальний бой[/color]","Health: [color=lime]low[/color]
+Defense: [color=blue]average[/color]
+Attack: [color=red]high[/color] (shot)
+Speed: [color=lime]low[/color]
+Special: [color=fuchsia]turns into animal when close to player[/color]
+
+He doesn't want to hurt anyone, he just wants free personal space. And the gun is just for self-defense.
+
+Weakness: [color=fuchsia]range combat[/color]"
+mob.werewolf,Оборотень,Werewolf
+mob.werewolf.desc,"Здоровье: [color=red]высокое[/color]
+Защита: [color=aqua]отсутствует[/color]
+Атака: [color=red]сильная[/color] (удар когтями)
+Скорость: [color=maroon]очень высокая[/color]
+Особенность: [color=fuchsia]превращается в человека вдали от игрока[/color]
+
+Тёмная энергия даровала ему такую сильную форму. Огромные когти, густая шерсть... Разве не мечта? Да только погладить его вряд ли получится...
+
+Слабость: [color=fuchsia]аккуратная игра[/color]","Health: [color=red]high[/color]
+Defense: [color=aqua]no[/color]
+Attack: [color=red]high[/color] (claws)
+Speed: [color=maroon]very high[/color]
+Special: [color=fuchsia]turns into human when far from player[/color]
+
+The dark energy gave him such a strong form. Huge claws, thick fur... Isn't that a dream? Yes, but it is unlikely that you will be able to stroke him...
+
+Weakness: [color=fuchsia]accurate fight[/color]"

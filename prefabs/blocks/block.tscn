@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scripts/game/other/block.gd" type="Script" id=1]
+[ext_resource path="res://scripts/game/blocks/block.gd" type="Script" id=1]
 [ext_resource path="res://textures/blocks/tiles0.png" type="Texture" id=2]
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=3]
 

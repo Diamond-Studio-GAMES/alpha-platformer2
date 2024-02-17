@@ -1,6 +1,5 @@
 [gd_scene load_steps=97 format=2]
 
-[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=1]
 [ext_resource path="res://sounds/music/cave_boss.ogg" type="AudioStream" id=2]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=3]
 [ext_resource path="res://sounds/sfx/landing.wav" type="AudioStream" id=4]
@@ -21,7 +20,7 @@
 [ext_resource path="res://textures/bosses/black_wizard/hat.tres" type="Texture" id=19]
 [ext_resource path="res://prefabs/blocks/grass.tscn" type="PackedScene" id=20]
 [ext_resource path="res://scripts/game/other/level.gd" type="Script" id=21]
-[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=22]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=22]
 [ext_resource path="res://prefabs/effects/portal.tscn" type="PackedScene" id=23]
 [ext_resource path="res://sounds/sfx/stun.wav" type="AudioStream" id=24]
 [ext_resource path="res://shaders/fire.gdshader" type="Shader" id=25]
@@ -4159,7 +4158,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
+node_connections = [ "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "output", 0, "death_trans" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -4221,6 +4220,9 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=33]
 extents = Vector2( 10, 39.5 )
 
+[sub_resource type="RectangleShape2D" id=97]
+extents = Vector2( 10, 90 )
+
 [sub_resource type="ShaderMaterial" id=88]
 shader = ExtResource( 25 )
 shader_param/uv_dist = 0.35
@@ -4241,7 +4243,7 @@ normal = Vector2( -1, 0 )
 size = 64
 outline_size = 2
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 22 )
 
 [sub_resource type="Animation" id=27]
 resource_name = "boss_name_appear"
@@ -4479,6 +4481,7 @@ radius = 12.0
 script = ExtResource( 21 )
 location = "location.cave"
 level_name = "level.4_10"
+game_over_spawn_pos = NodePath("game_over_spawn_pos")
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 11 )
@@ -4517,6 +4520,9 @@ script = ExtResource( 28 )
 __meta__ = {
 "_edit_group_": true
 }
+barrier_left_start = Vector2( 53, -1 )
+barrier_left_height = 12
+teleport_position = Vector2( 54, -2 )
 
 [node name="visual" type="Node2D" parent="mobs/great_knight"]
 position = Vector2( 0, -2 )
@@ -4772,7 +4778,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/great_knight/mob_gk/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/great_knight/mob_gk/visual/body"]
-scale = Vector2( 1.25, 1.2199 )
+scale = Vector2( 1.25, 1.23763 )
 texture = ExtResource( 46 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/great_knight/mob_gk"]
@@ -5132,6 +5138,14 @@ position = Vector2( -49, 107 )
 [node name="pos15" type="Position2D" parent="mobs/great_knight/swords_spawn_points"]
 position = Vector2( -17, 107 )
 
+[node name="player_border" type="StaticBody2D" parent="mobs/great_knight"]
+collision_layer = 0
+collision_mask = 66
+
+[node name="shape" type="CollisionShape2D" parent="mobs/great_knight/player_border"]
+visible = false
+shape = SubResource( 97 )
+
 [node name="blocks" type="Node2D" parent="."]
 
 [node name="portal" parent="blocks" instance=ExtResource( 23 )]
@@ -5256,6 +5270,9 @@ position = Vector2( 0, -1600 )
 
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 384, 0 )
+
+[node name="game_over_spawn_pos" type="Position2D" parent="."]
+position = Vector2( 1680, -64 )
 
 [node name="tint" type="CanvasLayer" parent="."]
 pause_mode = 2

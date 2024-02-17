@@ -1,9 +1,79 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://themes/font.tres" type="DynamicFontData" id=1]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=2]
-[ext_resource path="res://scripts/menu/splash_screen.gd" type="Script" id=3]
+[ext_resource path="res://scripts/menu/main/splash_screen.gd" type="Script" id=3]
 [ext_resource path="res://textures/misc/splash_screen.png" type="Texture" id=4]
+[ext_resource path="res://sounds/sfx/menu/splash_screen_easter_egg.ogg" type="AudioStream" id=5]
+[ext_resource path="res://textures/misc/splash_screen_easter_egg.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=3]
+resource_name = "easter_egg"
+length = 4.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("logo:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1, 1.3, 1.4, 3.7, 3.8, 4.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1.25, 1.25 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.25, 1.25 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("logo:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 1.3, 3.8, 4.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 4.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "end_splash"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("logo:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("sfx")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 1 )
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "splash"
@@ -46,6 +116,18 @@ tracks/2/keys = {
 "method": "end_splash"
 } ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("logo:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
 
 [sub_resource type="DynamicFont" id=2]
 size = 24
@@ -80,6 +162,7 @@ expand = true
 stretch_mode = 6
 
 [node name="anim" type="AnimationPlayer" parent="."]
+anims/easter_egg = SubResource( 3 )
 anims/splash = SubResource( 1 )
 
 [node name="privacy_policy" type="WindowDialog" parent="."]
@@ -243,6 +326,10 @@ valign = 1
 
 [node name="http" type="HTTPRequest" parent="."]
 timeout = 15.0
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "sfx"
 
 [connection signal="pressed" from="privacy_policy/link" to="." method="open_link"]
 [connection signal="toggled" from="privacy_policy/check" to="." method="check_toggled"]

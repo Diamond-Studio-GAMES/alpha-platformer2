@@ -8,9 +8,7 @@ var sheep_bomb = load("res://prefabs/bosses/sheep_bomb.tscn")
 
 func _ready():
 	mob = $mob_sh
-	fill_x = 57
 	attacks = ["knives", "spikes", "throw"]
-	tp_pos = Vector2(58, -2)
 	mercy_dialog = tr("boss.sheeper.mercy")
 	death_dialog = tr("boss.sheeper.defeat")
 	next_attack_time_min = 3

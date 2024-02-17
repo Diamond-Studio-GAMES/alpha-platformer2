@@ -1,17 +1,16 @@
 keys,ru,en
 1.name,Резня,Bloodbath
-1.reward,Награда за выживание: 2 золотых ящика,Reward for surviving: 2 gold boxes
 1.music,Музыка: KSLV - Override (https://youtu.be/NS8DPG62Fto),Music: KSLV - Override (https://youtu.be/NS8DPG62Fto)
 1.win,ТЫ ПОБЕДИЛ!,YOU WIN!
 1.level,ВЫЖИВИ 2 МИНУТЫ!!!,SURVIVE 2 MINUTES!!!
 1.select,Выбери класс:,Select class:
-1.begin,НАЧАТЬ,START
-2.name,Изб. от ненависти,Destroy Your Hate
-2.reward,Награда: 1 золотой ящик,Reward: 1 gold box
+2.name,Избавление от ненависти,Destroy Your Hate
 2.free_from,Освободись от,Destroy your
 2.hateee,НЕНАВИСТИ!!!,HATE!!!
 2.death,Смерть ждёт тебя…,Death is waiting for you…
 3.total,Всего заработано:,Earned total:
+3.cost,1 билет = 15 минут игры,1 ticket = 15 minutes
+3.remains,Оставшееся время: %02d:%02d:%02d,Time remained: %02d:%02d:%02d
 3.name,Симулятор камня,Stone Simulator
 4.name,Последние волны,Last Waves
 4.wave.start,Волна %d началась!,Wave %d started!
@@ -50,10 +49,10 @@ keys,ru,en
 5.hard,Горное безумие,Mountain madness
 6.name,Сад,Garden
 6.gift.collect,Забрать,Claim
-6.buy.text,"Действительно хочешь купить садовый ящик за 5 кристаллов?
-У тебя: ","Are you really want to buy garden box with 5 gems?
+6.buy.text,"Действительно хочешь купить садовый ящик за 5 билетов?
+У тебя: ","Are you really want to buy garden box with 5 tickets?
 You have: "
-6.no.gems,Недостаточно кристаллов!,Not enough gems!
+6.no.tickets,Недостаточно билетов!,Not enough tickets!
 6.tip.plant,"Выбери горшок для посадки (нажми кнопку ещё раз, чтобы отменить)",Select pot to plant (press button again to cancel)
 6.tip.remove,"Выбери растение для выкапыванния (нажми кнопку ещё раз, чтобы отменить)",Select plant to dig out (press button again to cancel)
 6.tip.fert,"Выбери растение для удобрения (нажми кнопку ещё раз, чтобы отменить)",Select plant to fertilize (press button again to cancel)
@@ -68,12 +67,10 @@ You have: "
 6.act.plant,Посадить,Plant
 6.act.remove,Выкопать,Dig out
 6.act.fert,Удобрить,Fertilize
-6.help,"Эта мини-игра позволяет выращивать растения из семян и получать за это награды. У растений есть 4 редкости: обычное, редкое, эпическое и легендарное. Чем выше редкость, тем выше награда и требования для роста. Для того, чтобы растение росло, его нужно ежедневно поливать определённым количеством воды. По желанию можно ускорить рост за счёт удобрения - оно убирает 1 день ожидания. Все ресурсы получаются из ящиков. Раз в день можно открыть один бесплатно. Хорошего урожая!","This mini-game allows you to grow plants from seeds and get rewards for it. Plants have 4 rarities: common, rare, epic and legendary. The higher the rarity, the higher the reward and the requirements for growth. In order for the plant to grow, it needs to be watered daily with a certain amount of water. If desired, you can accelerate growth due to fertilizer - it removes 1 day of waiting. All resources are obtained from the boxes. Once a day, you can open one for free. Have a good harvest!"
+6.help,"Эта мини-игра позволяет выращивать растения из семян и получать за это награды. У растений есть 4 редкости: обычное, редкое, эпическое и легендарное. Чем выше редкость, тем выше награда и требования для роста. Для того, чтобы растение росло, его нужно ежедневно поливать определённым количеством воды. По желанию можно ускорить рост за счёт удобрения - оно убирает 1 день ожидания. Все ресурсы получаются из ящиков. Хорошего урожая!","This mini-game allows you to grow plants from seeds and get rewards for it. Plants have 4 rarities: common, rare, epic and legendary. The higher the rarity, the higher the reward and the requirements for growth. In order for the plant to grow, it needs to be watered daily with a certain amount of water. If desired, you can accelerate growth due to fertilizer - it removes 1 day of waiting. All resources are obtained from the boxes. Have a good harvest!"
 6.buying,Покупка ящика…,Purchasing a box…
-6.gift.title,Подарок!,Gift!
-6.gift.text,Подарок за вход: садовый ящик!,Gift for visit: garden box!
 6.plant.select,Выбери растение…,Select the plant…
-6.buy.cost,5 кристаллов (ящик),5 gems (box)
+6.buy.cost,5 Садовый ящик,5        Garden box
 6.claim,Собрать,Collect
 6.box.water,ВОДА,WATER
 6.box.fert,УДОБРЕНИЕ,FERTILIZER
@@ -132,8 +129,8 @@ You have: "
 8.new,НОВАЯ ИГРА,NEW GAME
 8.continue,ПРОДОЛЖИТЬ,CONTINUE
 8.loading,ЗАГРУЗКА…,LOADING…
-8.warning," ВНИМАНИЕ: В этой мини-игре есть много 
-скримеров. Не советую играть эпилептикам!"," WARNING: this game contains many
+8.warning,"ВНИМАНИЕ: В этой мини-игре есть много 
+скримеров. Не советую играть эпилептикам!","WARNING: this game contains many
 jumpscares. I don’t advise epileptics to play!"
 8.guide.0,РУСИЧКА,ENGLISH
 8.guide.1,МАТЕМАТ.,MATH
@@ -146,10 +143,10 @@ jumpscares. I don’t advise epileptics to play!"
 8.guide.8,ИЗИЧКА,ART
 8.guide.9,ГЕОГРАФ.,GEOGR.
 8.guide.10,ХИМИЧКА,CHEMISTRY
-8.guide.11,РУСИЧКА(5),ENGLISH(5)
+8.guide.11,ДИРЕКТОР,DIRECTOR
 8.night,НОЧЬ ,NIGHT
 8.game_over,ИГРА ОКОНЧЕНА,GAME OVER
-8.music_box,"МУЗАКАЛЬНАЯ
+8.music_box,"МУЗЫКАЛЬНАЯ
 ШКАТУЛКА","MUSIC
 BOX"
 8.door,ДВЕРЬ,DOOR
@@ -166,7 +163,7 @@ BOX"
 8.test.0.a2,3. КОТОРОЕ РАВНО САМОМУ СЕБЕ ПРИ ПЕРЕВОРОТЕ,3. WHICH IS EQUAL TO ITSELF IN A COUP
 8.test.answer,ОТВЕТИТЬ,ANSWER
 8.test.fail,ТЫ ПРОВАЛИЛ ТЕСТ!!!,YOU FAILED TEST!!!
-8.test.lock,Монитор заблокирован до конца ночи!,MONITOR IS LOCKED UNTIL THE END OF NIGHT!
+8.test.lock,Телефон заблокирован до конца ночи!,PHONE IS LOCKED UNTIL THE END OF NIGHT!
 8.test.1.question,Вопрос: ГДЕ НАПИСАНЫ ТОЛЬКО УСТРОЙСТВА ВВОДА?,Question: WHERE ARE ONLY INPUT DEVICES WRITTEN?
 8.test.1.a0,"1. Клавиатура, Мышь, граф. планшет","1. KEYBOARD, MOUSE, GRAPHICAL TABLET"
 8.test.1.a1,"2. МЫШЬ, МОНИТОР, клавиаТУРА, МИКРОФОН","2. MOUSE, MONITOR, KEYBOARD, MICROPHONE"
@@ -175,3 +172,6 @@ BOX"
 8.test.2.a0,1. 320,1. 320
 8.test.2.a1,2. 302,2. 302
 8.test.2.a2,3. 312,3. 312
+8.cost,Эта мини-игра стоит 5 билетов. Ты хочешь её купить?,This mini-game costs 5 tickets. Do you want to buy it?
+8.new.confirm,Начать новую игру?,Start a new game?
+8.new.confirm.text,Ты уверен?,Are you sure?

@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/tickets.wav-d2271da915f11c37657f2eab28f12faa.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/menu/tickets.wav"
+dest_files=[ "res://.import/tickets.wav-d2271da915f11c37657f2eab28f12faa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

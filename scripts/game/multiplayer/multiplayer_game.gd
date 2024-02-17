@@ -139,8 +139,10 @@ func check_for_end():
 		get_tree().call_group("player", "remove_from_group", "spawnable")
 		if get_tree().is_network_server():
 			yield(get_tree().create_timer(4), "timeout")
+			G.cached_multiplayer_role = G.MultiplayerRole.SERVER
 		else:
 			yield(get_tree().create_timer(3), "timeout")
+			G.cached_multiplayer_role = G.MultiplayerRole.CLIENT
 		get_tree().get_nodes_in_group("player")[0].end_game()
 
 

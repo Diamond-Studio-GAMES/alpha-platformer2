@@ -44,7 +44,7 @@ func _ready():
 	if destroyable_by_attacks:
 		_attack.connect("hit_attack_with_object", self, "destroy_it_attack")
 	if angle == Vector2.ZERO:
-		angle = Vector2.RIGHT.rotated(deg2rad(rotation_degrees))
+		angle = Vector2.RIGHT.rotated(deg2rad(global_rotation_degrees))
 
 
 func destroy_it_attack(attack):

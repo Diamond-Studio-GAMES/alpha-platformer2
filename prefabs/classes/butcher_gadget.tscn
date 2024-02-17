@@ -74,8 +74,10 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 [node name="crack_attack" type="Area2D" parent="."]
 script = ExtResource( 3 )
 damage = 110
-is_player_attack = true
 knockback = 2.0
+custom_invincibility_time = 1.0
+custom_immobility_time = 0.8
+is_player_attack = true
 lifetime = 0.5
 
 [node name="shape" type="CollisionShape2D" parent="crack_attack"]

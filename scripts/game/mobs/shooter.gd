@@ -32,17 +32,16 @@ func attack():
 	can_turn = false
 	speed_cooficent *= 0.3
 	var direction = global_position.direction_to(player.global_position)
-	var phi = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
-	var hand_rotate = rad2deg(phi)
-	var weapon_rotate = rad2deg(direction.angle())
-	hand_rotate -= 90
-	if hand_rotate < -180:
-		hand_rotate = 360 + hand_rotate
-	if hand_rotate < 0 and hand_rotate > -180:
+	var hand_rotate = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
+	hand_rotate -= PI / 2
+	if hand_rotate < -PI:
+		hand_rotate = TAU + hand_rotate
+	if hand_rotate < 0 and hand_rotate > -PI:
 		_body.scale.x = 1
-	if hand_rotate > 0 and hand_rotate < 180:
+	if hand_rotate > 0 and hand_rotate < PI:
 		_body.scale.x = -1
 		hand_rotate = -hand_rotate
+	hand_rotate = rad2deg(hand_rotate)
 	anima.track_set_key_value(trck_idx, key_idx0, hand_rotate)
 	anima.track_set_key_value(trck_idx, key_idx1, hand_rotate)
 	_anim_tree["parameters/attack_seek/seek_position"] = 0
@@ -52,7 +51,7 @@ func attack():
 		for i in range(2):
 			var node = bullet.instance()
 			node.global_position = Vector2(shoot.global_position.x, shoot.global_position.y)
-			node.rotation_degrees = weapon_rotate
+			node.rotation = direction.angle()
 			node.get_node("attack").damage = attack_damage
 			_level.add_child(node, true)
 			yield(get_tree().create_timer(0.05, false), "timeout")
@@ -71,11 +70,11 @@ func _physics_process(delta):
 		stop()
 		return
 	player_timer += delta
-	attack_timer += delta
 	if player_timer > reaction_speed:
 		player_timer = 0
 		player_distance = global_position.distance_squared_to(player.global_position)
-		if player_distance > _vision_distance:
+		player_visible = player_distance < _vision_distance
+		if not player_visible:
 			stop()
 			return
 		if player_distance > _min_distance:
@@ -94,9 +93,13 @@ func _physics_process(delta):
 				stop()
 		if under_water and breath_time < 2 and not immune_to_water:
 			jump()
-		if attack_timer > attack_speed and player_distance < 25600:
-			attack()
-			attack_timer = 0
+	
+	if not player_visible:
+		return
+	attack_timer += delta
+	if attack_timer > attack_speed and player_distance < _attack_distance:
+		attack()
+		attack_timer = 0
 	lookup_timer += delta
 	if lookup_timer > lookup_speed:
 		if ray_colliding(jump_ray0) == Colliding.OK and _move_direction.x > 0 or \

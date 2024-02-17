@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://themes/theme.tres" type="Theme" id=1]
-[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )

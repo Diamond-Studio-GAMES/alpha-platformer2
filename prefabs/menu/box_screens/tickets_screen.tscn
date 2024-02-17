@@ -1,0 +1,289 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://themes/font_headers.tres" type="DynamicFont" id=1]
+[ext_resource path="res://themes/theme.tres" type="Theme" id=2]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=3]
+[ext_resource path="res://textures/items/ticket.png" type="Texture" id=4]
+[ext_resource path="res://sounds/sfx/menu/tickets.wav" type="AudioStream" id=5]
+[ext_resource path="res://textures/gui/bg_light.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=92]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=101]
+resource_name = "anim"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( -0.01, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 1 ), Vector2( 0.5, 1.2 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("../sfx")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 0.05 )
+}
+
+[node name="tickets_screen" type="Control"]
+pause_mode = 1
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+theme = ExtResource( 2 )
+
+[node name="tint" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.376471, 0, 0, 1 )
+
+[node name="glow" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="glow2" type="Sprite" parent="glow"]
+self_modulate = Color( 0.752941, 0, 0, 1 )
+position = Vector2( 20, 20 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 7 )
+
+[node name="visual" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -480.0
+margin_top = -270.0
+margin_right = 480.0
+margin_bottom = 270.0
+rect_scale = Vector2( 0.03125, 1.0125 )
+rect_pivot_offset = Vector2( 480, 270 )
+
+[node name="t1" type="Control" parent="visual"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ticket" type="TextureRect" parent="visual/t1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -78.0
+margin_right = 79.9999
+margin_bottom = 82.0
+rect_rotation = -15.0
+rect_pivot_offset = Vector2( 80, 80 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="t2" type="Control" parent="visual"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ticket2" type="TextureRect" parent="visual/t2"]
+self_modulate = Color( 0.815686, 0.815686, 0.815686, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -74.718
+margin_top = -56.718
+margin_right = 85.282
+margin_bottom = 103.282
+rect_rotation = 15.0
+rect_pivot_offset = Vector2( 80, 80 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="ticket" type="TextureRect" parent="visual/t2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.718
+margin_top = -96.718
+margin_right = 69.282
+margin_bottom = 63.282
+rect_rotation = -30.0
+rect_pivot_offset = Vector2( 80, 80 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="t3" type="Control" parent="visual"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ticket3" type="TextureRect" parent="visual/t3"]
+self_modulate = Color( 0.627451, 0.627451, 0.627451, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -74.718
+margin_top = -48.718
+margin_right = 85.282
+margin_bottom = 111.282
+rect_rotation = 30.0
+rect_pivot_offset = Vector2( 80, 80 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="ticket2" type="TextureRect" parent="visual/t3"]
+self_modulate = Color( 0.815686, 0.815686, 0.815686, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -74.718
+margin_top = -72.7179
+margin_right = 85.282
+margin_bottom = 87.282
+rect_pivot_offset = Vector2( 80, 80 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="ticket" type="TextureRect" parent="visual/t3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.718
+margin_top = -104.718
+margin_right = 69.282
+margin_bottom = 55.282
+rect_rotation = -30.0
+rect_pivot_offset = Vector2( 80, 80 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="t4" type="Control" parent="visual"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ticket4" type="TextureRect" parent="visual/t4"]
+self_modulate = Color( 0.533333, 0.533333, 0.533333, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -74.718
+margin_top = -32.718
+margin_right = 85.282
+margin_bottom = 127.282
+rect_rotation = 30.0
+rect_pivot_offset = Vector2( 80, 80 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="ticket3" type="TextureRect" parent="visual/t4"]
+self_modulate = Color( 0.690196, 0.690196, 0.690196, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -81.5809
+margin_top = -63.5809
+margin_right = 78.4191
+margin_bottom = 96.4191
+rect_rotation = 15.0
+rect_pivot_offset = Vector2( 80, 80 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="ticket2" type="TextureRect" parent="visual/t4"]
+self_modulate = Color( 0.847059, 0.847059, 0.847059, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -81.5809
+margin_top = -87.5809
+margin_right = 78.4191
+margin_bottom = 72.4191
+rect_rotation = -15.0
+rect_pivot_offset = Vector2( 80, 80 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="ticket" type="TextureRect" parent="visual/t4"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.718
+margin_top = -112.718
+margin_right = 69.282
+margin_bottom = 47.282
+rect_rotation = -30.0
+rect_pivot_offset = Vector2( 80, 80 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="label" type="Label" parent="visual"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -180.0
+margin_top = 84.0
+margin_right = 180.0
+margin_bottom = 154.0
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "item.tickets"
+align = 1
+valign = 1
+
+[node name="count" type="Label" parent="visual"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -180.0
+margin_top = -112.0
+margin_right = 180.0
+margin_bottom = -48.0
+custom_fonts/font = SubResource( 92 )
+text = "x 3"
+align = 1
+valign = 1
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/anim = SubResource( 101 )

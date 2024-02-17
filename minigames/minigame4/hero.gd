@@ -77,6 +77,7 @@ func attack():
 	_attack_visual.show()
 	_attack_visual.playing = true
 	yield(get_tree().create_timer(0.05, false), "timeout")
+	_attack_node.fatal = hate_fatal()
 	_attack_shape.disabled = false
 	yield(get_tree().create_timer(0.15, false), "timeout")
 	_attack_visual.hide()
@@ -99,24 +100,23 @@ func throw(direction):
 	speed_cooficent *= 0.5
 	RECHARGE_SPEED = 1
 	attack_cooldown = RECHARGE_SPEED + 0.55
-	var phi = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
-	var hand_rotate = rad2deg(phi)
-	var weapon_rotate = rad2deg(direction.angle())
-	hand_rotate -= 90
-	if hand_rotate < -180:
-		hand_rotate = 360 + hand_rotate
-	if hand_rotate < 0 and hand_rotate > -180:
+	var hand_rotate = Vector2(direction.x, direction.y * GRAVITY_SCALE).angle()
+	hand_rotate -= PI / 2
+	if hand_rotate < -PI:
+		hand_rotate = TAU + hand_rotate
+	if hand_rotate < 0 and hand_rotate > -PI:
 		_body.scale.x = 1
-	if hand_rotate > 0 and hand_rotate < 180:
+	if hand_rotate > 0 and hand_rotate < PI:
 		_body.scale.x = -1
 		hand_rotate = -hand_rotate
+	hand_rotate = rad2deg(hand_rotate)
 	anima.track_set_key_value(trck_idx0, key_idx0, hand_rotate)
 	anima.track_set_key_value(trck_idx1, key_idx1, hand_rotate)
 	_anim_tree["parameters/throw_shot/active"] = true
 	yield(get_tree().create_timer(0.2, false), "timeout")
 	var node = bullet.instance()
 	node.global_position = $visual/body/arm_right/hand/weapon/gun/main/bayok.global_position
-	node.rotation_degrees = weapon_rotate
+	node.rotation = direction.angle()
 	if is_using_gadget:
 		is_using_gadget = false
 		node.get_node("sprite").modulate = Color.red
@@ -124,6 +124,7 @@ func throw(direction):
 		node.get_node("attack").damage = _attack_node.damage * 4
 	else:
 		node.get_node("attack").damage = _attack_node.damage * 2
+	node.get_node("attack").fatal = hate_fatal()
 	_level.add_child(node, true)
 	yield(get_tree().create_timer(0.2, false), "timeout")
 	_is_attacking = false
@@ -168,8 +169,16 @@ func _process(delta):
 	if Input.is_action_just_pressed("gadget") and have_gadget:
 		use_gadget()
 	if joystick._output.length_squared() * current_health > 0:
-		var phi = Vector2(joystick._output.x, joystick._output.y * GRAVITY_SCALE).angle()
-		aim_line.rotation = phi
+		var hand_rotate = Vector2(joystick._output.x, joystick._output.y * GRAVITY_SCALE).angle()
+		if hand_rotate < -PI / 2:
+			hand_rotate = hand_rotate + PI
+			aim_line.scale.x = -1
+		elif hand_rotate > PI / 2:
+			hand_rotate = hand_rotate - PI
+			aim_line.scale.x = -1
+		else:
+			aim_line.scale.x = 1
+		aim_line.rotation = hand_rotate
 		aim_line.visible = true
 		aim_line.modulate = Color.red if attack_cooldown > 0 else Color.white
 	else:
@@ -181,9 +190,11 @@ func _process(delta):
 
 
 func use_gadget():
-	if gadget_cooldown > 0 or gadget_count <= 0 or is_hurt or is_using_gadget or is_stunned or _is_attacking or _is_ultiing or not can_control:
+	if is_hurt or is_using_gadget or _is_attacking:
 		return
-	.use_gadget()
+	var success = .use_gadget()
+	if not success:
+		return
 	attack_cooldown = 0
 	can_attack = true
 	is_using_gadget = true

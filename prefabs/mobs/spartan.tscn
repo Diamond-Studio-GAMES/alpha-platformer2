@@ -8,7 +8,7 @@
 [ext_resource path="res://textures/effects/attacks/spartan_kick.png" type="Texture" id=6]
 [ext_resource path="res://textures/mobs/spartan/hand2.tres" type="Texture" id=7]
 [ext_resource path="res://textures/gui/health_bar.tres" type="Texture" id=8]
-[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=9]
 [ext_resource path="res://scripts/game/mobs/optimizer.gd" type="Script" id=10]
 [ext_resource path="res://textures/effects/other/heal_plus.png" type="Texture" id=11]
 [ext_resource path="res://scripts/game/mobs/spartan.gd" type="Script" id=12]
@@ -1468,7 +1468,7 @@ nodes/iw_trans/position = Vector2( -300, 120 )
 nodes/output/position = Vector2( 1160, 200 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_left_seek", 0, "attack_left", "attack_left_shot", 0, "attack_shot", "attack_left_shot", 1, "attack_left_seek", "death_trans", 0, "attack_left_shot", "death_trans", 1, "death", "attack_seek", 0, "attack", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
+node_connections = [ "attack_left_seek", 0, "attack_left", "attack_left_shot", 0, "attack_shot", "attack_left_shot", 1, "attack_left_seek", "attack_seek", 0, "attack", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "death_trans", 0, "attack_left_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "output", 0, "death_trans" ]
 
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 8.0
@@ -1504,6 +1504,7 @@ defense = 0
 attack_damage = 15
 reaction_speed = 0.3
 vision_distance = 300.0
+attack_distance = 60.0
 attack_speed = 1.5
 head_path = NodePath("visual/body/head")
 head_sprite_path = "res://textures/mobs/spartan/head.tres"

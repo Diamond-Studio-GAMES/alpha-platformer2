@@ -1,0 +1,149 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://shaders/glitch.gdshader" type="Shader" id=2]
+[ext_resource path="res://textures/mobs/player/hate_head.png" type="Texture" id=3]
+[ext_resource path="res://textures/effects/other/pixel.png" type="Texture" id=4]
+[ext_resource path="res://textures/effects/other/glitch_texture.png" type="Texture" id=5]
+[ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=6]
+
+[sub_resource type="ShaderMaterial" id=102]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/glitch = 0.0
+shader_param/shift_glitch = 0.0
+shader_param/shift_glitch_texture = ExtResource( 5 )
+
+[sub_resource type="Animation" id=103]
+resource_name = "anim"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("effect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("effect:material:shader_param/glitch")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.8, 0.9, 1.1, 1.6, 1.8, 1.9, 2.2, 2.3, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.4, 0.0, 0.0, -0.2, 0.0, 0.0, 0.5, 0.0, 0.0, -0.4, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("effect:material:shader_param/shift_glitch")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1.4, 1.5, 1.6, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.05, 0.0, 0.0, -0.05, 0.0, 0.0, 0.05, 0.0, 0.0, -0.05, 0.0 ]
+}
+
+[sub_resource type="Animation" id=104]
+resource_name = "end"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("effect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("despawn")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Curve" id=105]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.249284, 0.518182 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[node name="glitch_head" type="Sprite"]
+position = Vector2( 0, -16 )
+texture = ExtResource( 3 )
+
+[node name="effect" type="Sprite" parent="."]
+material = SubResource( 102 )
+scale = Vector2( 40, 32 )
+z_index = 1
+texture = ExtResource( 4 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "anim"
+anims/anim = SubResource( 103 )
+anims/end = SubResource( 104 )
+
+[node name="timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="despawn" type="CPUParticles2D" parent="."]
+z_index = 1
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource( 6 )
+emission_shape = 1
+emission_sphere_radius = 16.0
+direction = Vector2( 0, -1 )
+gravity = Vector2( 0, 0 )
+initial_velocity = 50.0
+scale_amount = 8.0
+scale_amount_curve = SubResource( 105 )
+color = Color( 0, 0, 0, 1 )
+
+[connection signal="timeout" from="timer" to="anim" method="play" binds= [ "end" ]]

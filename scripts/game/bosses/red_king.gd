@@ -17,9 +17,6 @@ onready var timer = $timer
 
 func _ready():
 	mob = $mob_rk
-	fill_x = 54
-	fill_height = 0
-	tp_pos = Vector2(55, 2)
 	mercy_dialog = tr("boss.king.mercy")
 	death_dialog = tr("boss.king.defeat")
 	next_attack_time_min = 1
@@ -77,6 +74,8 @@ func lgbt(count = 0):
 		anim.play("lgbt_throw", 0.2)
 		anim.seek(0, true)
 		yield(get_tree().create_timer(1.4, false), "timeout")
+		if not is_mob_alive():
+			return
 		if not can_mob_move():
 			anim.play("idle", 0.3)
 			return

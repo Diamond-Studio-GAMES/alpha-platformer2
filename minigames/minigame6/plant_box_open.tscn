@@ -14,7 +14,7 @@
 [ext_resource path="res://minigames/minigame6/plants/epic/gold_box2.tres" type="Resource" id=12]
 [ext_resource path="res://minigames/minigame6/plants/legendary/pt_flower3.tres" type="Resource" id=13]
 [ext_resource path="res://minigames/minigame6/resources/water.png" type="Texture" id=14]
-[ext_resource path="res://minigames/minigame6/plants/legendary/potion0_flower3.tres" type="Resource" id=15]
+[ext_resource path="res://minigames/minigame6/plants/epic/potion0_flower2.tres" type="Resource" id=15]
 [ext_resource path="res://minigames/minigame6/plants/epic/coin_tree2.tres" type="Resource" id=16]
 [ext_resource path="res://minigames/minigame6/plants/epic/gem_flower2.tres" type="Resource" id=17]
 [ext_resource path="res://minigames/minigame6/plants/epic/gem_bush2.tres" type="Resource" id=18]
@@ -29,7 +29,7 @@
 [ext_resource path="res://minigames/minigame6/resources/plant_gem_flower.png" type="Texture" id=27]
 [ext_resource path="res://minigames/minigame6/plants/rare/pt_bush1.tres" type="Resource" id=28]
 [ext_resource path="res://minigames/minigame6/plants/common/coin_flower0.tres" type="Resource" id=29]
-[ext_resource path="res://minigames/minigame6/plants/legendary/potion1_flower3.tres" type="Resource" id=30]
+[ext_resource path="res://minigames/minigame6/plants/epic/potion1_flower2.tres" type="Resource" id=30]
 [ext_resource path="res://minigames/minigame6/plants/legendary/coin_flower3.tres" type="Resource" id=31]
 [ext_resource path="res://minigames/minigame6/plants/epic/coin_flower2.tres" type="Resource" id=32]
 [ext_resource path="res://minigames/minigame6/plants/legendary/gem_tree3.tres" type="Resource" id=33]
@@ -52,7 +52,7 @@
 [ext_resource path="res://minigames/minigame6/resources/opened_box.png" type="Texture" id=50]
 [ext_resource path="res://minigames/minigame6/plants/common/coin_bush0.tres" type="Resource" id=51]
 [ext_resource path="res://minigames/minigame6/plants/epic/coin_bush2.tres" type="Resource" id=52]
-[ext_resource path="res://minigames/minigame6/plants/epic/potion0_flower2.tres" type="Resource" id=53]
+[ext_resource path="res://minigames/minigame6/plants/rare/potion0_flower1.tres" type="Resource" id=53]
 [ext_resource path="res://minigames/minigame6/plants/epic/st_flower2.tres" type="Resource" id=54]
 [ext_resource path="res://sounds/sfx/menu/tokens.wav" type="AudioStream" id=55]
 [ext_resource path="res://sounds/sfx/menu/potions.wav" type="AudioStream" id=56]
@@ -269,9 +269,9 @@ anchor_bottom = 1.0
 theme = ExtResource( 2 )
 script = ExtResource( 57 )
 plants_common = [ ExtResource( 51 ), ExtResource( 29 ), ExtResource( 8 ), ExtResource( 37 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 42 ) ]
-plants_epic = [ ExtResource( 52 ), ExtResource( 32 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 23 ), ExtResource( 12 ), ExtResource( 53 ), ExtResource( 49 ), ExtResource( 47 ), ExtResource( 34 ), ExtResource( 54 ) ]
-plants_legendary = [ ExtResource( 25 ), ExtResource( 31 ), ExtResource( 20 ), ExtResource( 7 ), ExtResource( 45 ), ExtResource( 35 ), ExtResource( 33 ), ExtResource( 15 ), ExtResource( 30 ), ExtResource( 36 ), ExtResource( 13 ), ExtResource( 48 ), ExtResource( 22 ) ]
-plants_rare = [ ExtResource( 41 ), ExtResource( 44 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 39 ), ExtResource( 28 ), ExtResource( 11 ), ExtResource( 40 ), ExtResource( 43 ) ]
+plants_epic = [ ExtResource( 52 ), ExtResource( 32 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 23 ), ExtResource( 12 ), ExtResource( 49 ), ExtResource( 47 ), ExtResource( 34 ), ExtResource( 54 ), ExtResource( 15 ), ExtResource( 30 ) ]
+plants_legendary = [ ExtResource( 25 ), ExtResource( 31 ), ExtResource( 20 ), ExtResource( 7 ), ExtResource( 45 ), ExtResource( 35 ), ExtResource( 33 ), ExtResource( 36 ), ExtResource( 13 ), ExtResource( 48 ), ExtResource( 22 ) ]
+plants_rare = [ ExtResource( 41 ), ExtResource( 44 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 39 ), ExtResource( 28 ), ExtResource( 11 ), ExtResource( 40 ), ExtResource( 43 ), ExtResource( 53 ) ]
 
 [node name="sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )

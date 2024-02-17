@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://minigames/minigame8/textures/enemies/geographichka_fake.png" type="Texture" id=1]
 [ext_resource path="res://minigames/minigame8/textures/enemies/muzichka_fake.png" type="Texture" id=2]
@@ -15,6 +15,10 @@
 [ext_resource path="res://minigames/minigame8/textures/enemies/fizruk_fake.png" type="Texture" id=13]
 [ext_resource path="res://minigames/minigame8/textures/enemies/rusichka.png" type="Texture" id=14]
 [ext_resource path="res://minigames/minigame8/scripts/main_menu.gd" type="Script" id=15]
+[ext_resource path="res://prefabs/menu/ticket_selector.tscn" type="PackedScene" id=16]
+[ext_resource path="res://prefabs/menu/tickets_count.tscn" type="PackedScene" id=17]
+[ext_resource path="res://minigames/minigame8/textures/enemies/director_fake.png" type="Texture" id=18]
+[ext_resource path="res://textures/effects/other/glitch_texture.png" type="Texture" id=19]
 
 [sub_resource type="Animation" id=3]
 resource_name = "menu"
@@ -68,10 +72,24 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 1.5, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.5, 0.0, 0.0, 1.5, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 1.0, 0.0 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("glitch:material:shader_param/shift_glitch")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.9, 2.1, 2.3, 3.7, 3.8, 4, 5.9, 6, 6.1, 7, 7.1, 7.3, 8.8, 8.9, 9.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.1, 0.0, 0.0, -0.2, 0.0, 0.0, 0.1, 0.0, 0.0, -0.15, 0.0, 0.0, 0.1, 0.0 ]
+}
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 10 )
 shader_param/glitch = 0.0
+shader_param/shift_glitch = 0.0
+shader_param/shift_glitch_texture = ExtResource( 19 )
 
 [sub_resource type="OpenSimplexNoise" id=5]
 seed = 34
@@ -144,17 +162,12 @@ margin_bottom = 40.0
 grow_horizontal = 0
 text = "menu.exit"
 
-[node name="guide_butt" type="Button" parent="."]
-anchor_left = 1.0
+[node name="game_buttons" type="Control" parent="."]
 anchor_right = 1.0
-margin_left = -85.0
-margin_top = 48.0
-margin_right = -16.0
-margin_bottom = 72.0
-grow_horizontal = 0
-text = "8.guide"
+anchor_bottom = 1.0
+mouse_filter = 2
 
-[node name="new_game" type="Button" parent="."]
+[node name="new_game" type="Button" parent="game_buttons"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 32.0
@@ -166,7 +179,7 @@ theme_type_variation = "LabelTitle"
 text = "8.new"
 align = 0
 
-[node name="continue" type="Button" parent="."]
+[node name="continue" type="Button" parent="game_buttons"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 32.0
@@ -178,13 +191,56 @@ theme_type_variation = "LabelTitle"
 text = "8.continue"
 align = 0
 
-[node name="label" type="Label" parent="continue"]
+[node name="label" type="Label" parent="game_buttons/continue"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -4.0
 margin_right = 4.0
 margin_bottom = 24.0
 text = "НОЧЬ 1"
+
+[node name="guide_butt" type="Button" parent="game_buttons"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -92.0
+margin_top = 48.0
+margin_right = -16.0
+margin_bottom = 72.0
+grow_horizontal = 0
+text = "8.guide"
+
+[node name="buy" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="label" type="Label" parent="buy"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2.0
+margin_top = -14.0
+margin_right = 2.0
+margin_bottom = 14.0
+grow_horizontal = 2
+text = "8.cost"
+align = 1
+valign = 1
+
+[node name="ticket_selector" parent="buy" instance=ExtResource( 16 )]
+margin_left = -90.0
+margin_top = 20.0
+margin_right = 90.0
+margin_bottom = 60.0
+theme = null
+min_tickets = 5
+buy_text = "shop.buy"
+
+[node name="tickets_count" parent="buy" instance=ExtResource( 17 )]
+margin_top = 48.0
+margin_bottom = 76.0
 
 [node name="loading" type="Label" parent="."]
 visible = false
@@ -452,13 +508,12 @@ valign = 1
 clip_text = true
 
 [node name="photo11" type="TextureRect" parent="guide/scroll/grid"]
-self_modulate = Color( 1, 0, 0, 1 )
 margin_left = 650.0
 margin_top = 205.0
 margin_right = 770.0
 margin_bottom = 385.0
 rect_min_size = Vector2( 120, 180 )
-texture = ExtResource( 14 )
+texture = ExtResource( 18 )
 expand = true
 stretch_mode = 6
 
@@ -472,7 +527,21 @@ align = 1
 valign = 1
 clip_text = true
 
+[node name="confirm" type="ConfirmationDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.0
+margin_top = -38.0
+margin_right = 118.0
+margin_bottom = 38.0
+window_title = "8.new.confirm"
+dialog_text = "8.new.confirm.text"
+
 [connection signal="pressed" from="exit" to="." method="quit"]
-[connection signal="pressed" from="guide_butt" to="guide" method="popup_centered"]
-[connection signal="pressed" from="new_game" to="." method="begin"]
-[connection signal="pressed" from="continue" to="." method="continue_"]
+[connection signal="pressed" from="game_buttons/new_game" to="confirm" method="popup_centered"]
+[connection signal="pressed" from="game_buttons/continue" to="." method="continue_"]
+[connection signal="pressed" from="game_buttons/guide_butt" to="guide" method="popup_centered"]
+[connection signal="started" from="buy/ticket_selector" to="." method="_on_ticket_selector_started"]
+[connection signal="confirmed" from="confirm" to="." method="begin"]

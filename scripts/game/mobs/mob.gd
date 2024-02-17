@@ -8,16 +8,19 @@ export (int) var attack_damage = 20
 export (float) var reaction_speed = 2.0
 export (float) var lookup_speed = 0.1
 export (float) var vision_distance = 200.0
+export (float) var attack_distance = 80.0
 export (float) var attack_speed = 2.5
 export (NodePath) var head_path
 export (String, FILE) var head_sprite_path = ""
 export (String, FILE) var head_hurt_sprite_path = ""
 export (String, FILE) var custom_mob_death_effect_path = ""
 var _vision_distance = 0
+var _attack_distance = 0
 var player
 var players = []
 var player_distance = 0
 var find_target_timer = 0
+var player_visible = false
 var panic_timer = 0
 var player_timer = 0
 var attack_timer = 0
@@ -38,10 +41,11 @@ func _ready():
 	add_to_group("mob")
 	max_health = round(stats_multiplier * max_health)
 	if MP.is_active:
-		var mul = 1 + 0.5 * get_tree().get_network_connected_peers().size()
+		var mul = 1 + 0.75 * get_tree().get_network_connected_peers().size()
 		max_health = round(max_health * mul)
 	defense = round(stats_multiplier * defense)
 	_vision_distance = vision_distance * vision_distance
+	_attack_distance = attack_distance * attack_distance
 	if not custom_mob_death_effect_path.empty():
 		mob_death_effect = load(custom_mob_death_effect_path)
 	_body = $visual/body
@@ -91,6 +95,8 @@ func _hurt_intermediate(damage_source, died):
 			G.ach.complete(Achievements.BURN_HER_FASTER)
 		elif damage_source == "fall":
 			G.ach.complete(Achievements.THIS_IS_SPARTA)
+		elif damage_source == "tnt":
+			G.ach.complete(Achievements.BOMBER)
 		collision_layer = 0b0
 		collision_mask = 0b1
 

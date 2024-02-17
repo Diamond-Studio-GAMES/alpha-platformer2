@@ -26,12 +26,13 @@ tracks/0/keys = {
 }
 
 [node name="blue_laser" type="Node2D"]
+z_index = -1
 
 [node name="laser" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 6
 script = ExtResource( 2 )
-damage = 50
+damage = 70
 knockback = 0.0
 custom_immobility_time = 0.1
 lifetime = 0.0

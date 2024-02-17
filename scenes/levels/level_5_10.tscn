@@ -1,6 +1,5 @@
 [gd_scene load_steps=87 format=2]
 
-[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=1]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=2]
 [ext_resource path="res://textures/gui/health_bar_empty.tres" type="Texture" id=3]
 [ext_resource path="res://textures/blocks/star_end.png" type="Texture" id=4]
@@ -39,7 +38,7 @@
 [ext_resource path="res://textures/bosses/sheeper/hair_woman.tres" type="Texture" id=37]
 [ext_resource path="res://textures/bosses/main_doctor/hand1.tres" type="Texture" id=38]
 [ext_resource path="res://textures/bosses/main_doctor/leg2.tres" type="Texture" id=39]
-[ext_resource path="res://themes/font_data.ttf" type="DynamicFontData" id=40]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=40]
 [ext_resource path="res://textures/gui/strike_bar.tres" type="Texture" id=41]
 [ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=42]
 
@@ -3895,7 +3894,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "death_trans", 0, "hurt_shot", "death_trans", 1, "death" ]
+node_connections = [ "death_trans", 0, "hurt_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "output", 0, "death_trans" ]
 
 [sub_resource type="Curve" id=15]
 max_value = 5.0
@@ -3985,6 +3984,9 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=98]
+extents = Vector2( 10, 90 )
+
 [sub_resource type="LineShape2D" id=37]
 normal = Vector2( -1, 0 )
 
@@ -3992,7 +3994,7 @@ normal = Vector2( -1, 0 )
 size = 64
 outline_size = 2
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 40 )
 
 [sub_resource type="Animation" id=27]
 resource_name = "boss_name_appear"
@@ -4230,6 +4232,7 @@ radius = 12.0
 script = ExtResource( 32 )
 location = "location.red_world.cave"
 level_name = "level.5_10"
+game_over_spawn_pos = NodePath("game_over_spawn_pos")
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 21 )
@@ -4268,6 +4271,9 @@ script = ExtResource( 26 )
 __meta__ = {
 "_edit_group_": true
 }
+barrier_left_start = Vector2( 53, -1 )
+barrier_left_height = 5
+teleport_position = Vector2( 54, -2 )
 
 [node name="visual" type="Node2D" parent="mobs/main_doctor"]
 scale = Vector2( -3, 3 )
@@ -4553,7 +4559,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/main_doctor/mob_md/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/main_doctor/mob_md/visual/body"]
-scale = Vector2( 1.25, 1.17644 )
+scale = Vector2( 1.25, 1.22749 )
 texture = ExtResource( 33 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/main_doctor/mob_md"]
@@ -4804,6 +4810,14 @@ __meta__ = {
 
 [node name="swipe_timer" type="Timer" parent="mobs/main_doctor"]
 
+[node name="player_border" type="StaticBody2D" parent="mobs/main_doctor"]
+collision_layer = 0
+collision_mask = 66
+
+[node name="shape" type="CollisionShape2D" parent="mobs/main_doctor/player_border"]
+visible = false
+shape = SubResource( 98 )
+
 [node name="blocks" type="Node2D" parent="."]
 
 [node name="decor" type="Node2D" parent="."]
@@ -4854,6 +4868,9 @@ time = 3.0
 
 [node name="spawn_pos" type="Position2D" parent="."]
 position = Vector2( 768, -64 )
+
+[node name="game_over_spawn_pos" type="Position2D" parent="."]
+position = Vector2( 1712, -64 )
 
 [node name="tint" type="CanvasLayer" parent="."]
 pause_mode = 2
