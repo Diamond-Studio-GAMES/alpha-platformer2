@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scripts/menu/main/menu.gd" type="Script" id=1]
 [ext_resource path="res://themes/font_headers.tres" type="DynamicFont" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://textures/effects/backgrounds/factory_bg.png" type="Texture" id=17]
 [ext_resource path="res://scripts/game/player/soul_color.gd" type="Script" id=18]
 [ext_resource path="res://textures/gui/soul.png" type="Texture" id=19]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=20]
 
 [sub_resource type="Animation" id=1]
 resource_name = "main"
@@ -271,6 +272,11 @@ content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
 content_margin_bottom = 4.0
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 20 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
@@ -724,8 +730,8 @@ custom_constants/separation = 8
 alignment = 1
 
 [node name="soul" type="TextureRect" parent="achievements/stats_window/base/title"]
-margin_left = 272.0
-margin_right = 304.0
+margin_left = 268.0
+margin_right = 300.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 size_flags_horizontal = 8
@@ -735,11 +741,12 @@ stretch_mode = 6
 script = ExtResource( 18 )
 
 [node name="name" type="Label" parent="achievements/stats_window/base/title"]
-margin_left = 312.0
-margin_top = 4.0
-margin_right = 360.0
-margin_bottom = 28.0
+margin_left = 308.0
+margin_top = 1.0
+margin_right = 364.0
+margin_bottom = 31.0
 size_flags_horizontal = 4
+custom_fonts/font = SubResource( 5 )
 text = "penis"
 valign = 1
 
