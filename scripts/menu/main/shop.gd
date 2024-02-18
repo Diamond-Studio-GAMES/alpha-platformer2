@@ -653,7 +653,7 @@ func generate_offers():
 			if not gadget_classes.empty():
 				gadget_classes.shuffle()
 				var to = gadget_classes[0]
-				offer = {"costs": {"coins" : 750}, "receives" : {"gadget" : [to]}, "id" : i, "name" : tr("shop.offer.item"), "sale" : 0}
+				offer = {"costs": {"coins" : 1000}, "receives" : {"gadget" : [to]}, "id" : i, "name" : tr("shop.offer.item"), "sale" : 0}
 			else:
 				continue
 		if type == 6:
@@ -661,7 +661,7 @@ func generate_offers():
 			if not soul_power_classes.empty():
 				soul_power_classes.shuffle()
 				var to = soul_power_classes[0]
-				offer = {"costs": {"coins" : 1500}, "receives" : {"soul_power" : [to]}, "id" : i, "name" : tr("shop.offer.item"), "sale" : 0}
+				offer = {"costs": {"coins" : 2000}, "receives" : {"soul_power" : [to]}, "id" : i, "name" : tr("shop.offer.item"), "sale" : 0}
 			else:
 				continue
 		if type == 7:

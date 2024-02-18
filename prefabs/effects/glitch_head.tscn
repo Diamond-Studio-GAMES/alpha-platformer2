@@ -118,7 +118,7 @@ texture = ExtResource( 3 )
 [node name="effect" type="Sprite" parent="."]
 material = SubResource( 102 )
 scale = Vector2( 40, 32 )
-z_index = 1
+z_index = 20
 texture = ExtResource( 4 )
 
 [node name="anim" type="AnimationPlayer" parent="."]

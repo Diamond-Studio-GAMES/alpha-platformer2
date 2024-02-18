@@ -101,21 +101,24 @@ func _process(delta):
 			shoot(false)
 
 
-func hurt(dmg, by):
-	ms.sync_call(self, "hurt", [dmg, by])
+func hurt(dmg, by, rmt = false):
+	ms.sync_call(self, "hurt", [dmg, by, true])
+	if hp <= 0:
+		return
 	hp = clamp(hp - dmg, 0, max_hp)
 	if hp <= 0:
-		var node = effect.instance()
-		node.global_position = global_position
-		node.scale.x = sprite.scale.x
-		get_parent().add_child(node, true)
-		hide()
-		SPEED *= 2
-		sprite.modulate = Color.black
-		is_shooting = false
-		$shape.set_deferred("disabled", true)
-		if MP.has_multiplayer_authority(self):
-			parent.rpc("player_died", get_tree().get_network_unique_id(), by)
+		if MP.has_multiplayer_authority(self) or rmt:
+			var node = effect.instance()
+			node.global_position = global_position
+			node.scale.x = sprite.scale.x
+			get_parent().add_child(node, true)
+			hide()
+			SPEED *= 2
+			sprite.modulate = Color.black
+			is_shooting = false
+			$shape.set_deferred("disabled", true)
+			if MP.has_multiplayer_authority(self):
+				parent.rpc("player_died", get_tree().get_network_unique_id(), by)
 
 
 func do_disconnect():

@@ -13,12 +13,13 @@ func _physics_process(delta):
 	if _is_exploded:
 		return
 	sprite.rotation += PI / 2 * delta
-	velocity.y += GRAVITY_SPEED * delta
+	if MP.auth(self):
+		velocity.y += GRAVITY_SPEED * delta
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.bounce(collision.normal)
 		bounced_times += 1
-		if bounced_times >= 2:
+		if bounced_times >= 2 and MP.auth(self):
 			explode()
 
 

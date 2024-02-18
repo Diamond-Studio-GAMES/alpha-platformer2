@@ -93,8 +93,8 @@ one_shot = true
 
 [node name="MultiplayerSynchronizer" type="Node" parent="."]
 script = ExtResource( 6 )
-unreliable_sync_node_paths = [ NodePath("..") ]
-unreliable_sync_properties_names = [ "global_position" ]
+unreliable_sync_node_paths = [ NodePath(".."), NodePath("..") ]
+unreliable_sync_properties_names = [ "global_position", "velocity" ]
 
 [node name="MultiplayerSpawnable" type="Node" parent="."]
 script = ExtResource( 3 )
