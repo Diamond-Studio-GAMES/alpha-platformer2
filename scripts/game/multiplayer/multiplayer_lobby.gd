@@ -10,6 +10,7 @@ enum Reason {
 const PORT = 7415
 var curr_suff = -1
 var ip_preffix = ""
+var current_ip = ""
 var players_info = {}
 var CLASS_ICONS = {
 	"knight" : load("res://textures/classes/knight_helmet.png"),
@@ -55,15 +56,14 @@ func connect_ip():
 	if not ip.is_valid_ip_address():
 		show_alert(tr("lobby.bad_ip"))
 		return
+	current_ip = ip
 	MP.create_client(ip, PORT)
-	G.cached_ip = ip
 
 
 # Здесь начинается спизженный код.
 func connect_auto():
-	if not G.cached_ip.empty():
+	if not $connect/ip/ip.text.empty():
 		connect_ip()
-		G.cached_ip = ""
 		return
 	if timer.time_left > 0:
 		return
@@ -86,7 +86,8 @@ func do_disconnect():
 
 
 func connected_ok():
-	
+	G.cached_ip = current_ip
+	$connect/ip/ip.text = G.cached_ip
 	init_multiplayer()
 
 
@@ -272,5 +273,6 @@ func _on_timer_timeout():
 		curr_suff = 0
 	else:
 		curr_suff += 1
-		MP.create_client(ip_preffix + str(curr_suff), PORT)
-		try.text = tr("lobby.trying") + ip_preffix + str(curr_suff)
+		current_ip = ip_preffix + str(curr_suff)
+		MP.create_client(current_ip, PORT)
+		try.text = tr("lobby.trying") + current_ip

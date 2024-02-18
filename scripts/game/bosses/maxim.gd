@@ -57,7 +57,23 @@ func _ready():
 	player.connect("died", self, "death_dialog")
 
 
+remote func stop_fast_time():
+	is_time_faster = false
+	Engine.time_scale = 1
+	time_fasting.get_node("anim").seek(13.2, true)
+
+
 func death_dialog():
+	if is_time_faster:
+		var has_alive = false
+		if MP.is_active:
+			for i in get_tree().get_nodes_in_group("player"):
+				if i.current_health > 0:
+					has_alive = true
+		if not has_alive:
+			stop_fast_time()
+			if MP.is_active:
+				rpc("stop_fast_time")
 	player.make_dialog(defeat_phrases.pick_random(), 3, Color.red)
 
 
@@ -67,9 +83,7 @@ func death():
 	for i in break_on_death:
 		i.texture = break_on_death[i]
 	if is_time_faster:
-		is_time_faster = false
-		Engine.time_scale = 1
-		time_fasting.get_node("anim").seek(13.2, true)
+		stop_fast_time()
 	.death()
 
 
@@ -131,7 +145,7 @@ func bullets():
 		var gb = greenball.instance()
 		gb.global_position = i.global_position
 		gb.rotation = direction.angle()
-		get_tree().current_scene.add_child(gb)
+		get_tree().current_scene.add_child(gb, true)
 
 
 func laser(id = 0):
@@ -168,7 +182,7 @@ func tnt():
 	var tnt = blue_tnt.instance()
 	tnt.global_position = shoot.global_position
 	tnt.velocity = Vector2(rand_range(-160, -32), rand_range(-250, 0))
-	get_tree().current_scene.add_child(tnt)
+	get_tree().current_scene.add_child(tnt, true)
 
 
 func melee():
