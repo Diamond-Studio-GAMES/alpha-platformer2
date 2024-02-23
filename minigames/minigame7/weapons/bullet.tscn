@@ -6,9 +6,8 @@
 [ext_resource path="res://minigames/minigame7/images/bullet.png" type="Texture" id=4]
 [ext_resource path="res://minigames/minigame7/sfx/shot.wav" type="AudioStream" id=5]
 
-[sub_resource type="CapsuleShape2D" id=3]
-radius = 5.0
-height = 12.0
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 5, 25 )
 
 [sub_resource type="AudioStreamRandomPitch" id=2]
 audio_stream = ExtResource( 5 )
@@ -25,7 +24,7 @@ z_index = -1
 texture = ExtResource( 4 )
 
 [node name="shape" type="CollisionShape2D" parent="."]
-position = Vector2( -1, -1 )
+position = Vector2( -16, -1.00006 )
 rotation = 1.5708
 shape = SubResource( 3 )
 

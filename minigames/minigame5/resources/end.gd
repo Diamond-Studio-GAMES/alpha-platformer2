@@ -11,9 +11,9 @@ func be(b):
 				level = 0
 			match level:
 				1:
-					G.receive_loot({"coins" : 150, "gems" : 1, "box" : 1})
+					G.receive_loot({"coins" : 75, "gems" : 1, "box" : 1})
 				2:
-					G.receive_loot({"coins" : 225, "gems" : 1, "box" : 2})
+					G.receive_loot({"coins" : 100, "gems" : 1, "box" : 2})
 				3:
-					G.receive_loot({"coins" : 300, "gems" : 2, "gold_box" : 1})
+					G.receive_loot({"coins" : 150, "gems" : 2, "gold_box" : 1})
 		get_tree().change_scene("res://minigames/minigame5/minigame.tscn")

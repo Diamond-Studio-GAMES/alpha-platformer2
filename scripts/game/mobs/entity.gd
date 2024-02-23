@@ -93,7 +93,10 @@ func calculate_fall_damage():
 		return
 	var node = fall_effect.instance()
 	var pos = Vector2(global_position.x, 0)
-	pos.y = (round(global_position.y / 32) + 1 * GRAVITY_SCALE) * 32
+	if get_slide_count() == 0:
+		pos.y = (round(global_position.y / 32) + 1 * GRAVITY_SCALE) * 32
+	else:
+		pos.y = get_last_slide_collision().position.y
 	node.global_position = pos
 	_level.add_child(node, true)
 

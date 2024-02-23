@@ -114,11 +114,14 @@ func _physics_process(delta):
 
 
 func use_gadget():
-	if is_hurt or not is_on_floor():
+	if is_hurt:
+		return false
+	if not (is_on_floor() or under_water or _coyote_timer > 0):
 		return false
 	var success = .use_gadget()
 	if not success:
-		return
+		return false
 	jump(370)
 	yield(get_tree().create_timer(0.25, false), "timeout")
 	is_active_gadget = true
+	return true
