@@ -56,7 +56,7 @@ func _process(delta):
 			G.ach.complete(Achievements.REZNYA)
 			get_tree().change_scene("res://scenes/menu/menu.tscn")
 			G.receive_loot({
-				"coins" : G.current_tickets * 150,
+				"coins" : G.current_tickets * 75,
 				"gems" : G.current_tickets,
 				"box" : G.current_tickets,
 			})

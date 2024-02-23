@@ -83,5 +83,5 @@ func spawn_item(item, count):
 
 
 func _on_ticket_selector_started():
-	remaining_time += 15 * 60
+	remaining_time += 10 * 60
 	G.setv("ss_remained", remaining_time)

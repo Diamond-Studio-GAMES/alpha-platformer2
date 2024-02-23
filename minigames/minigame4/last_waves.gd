@@ -36,8 +36,8 @@ func get_rewards():
 	if wave <= 0:
 		return
 	var loot = {
-		"gems" : floor(G.current_tickets * wave / 2), 
-		"coins" : G.current_tickets * wave * 80, 
+		"gems" : floor(G.current_tickets * wave / 2.5), 
+		"coins" : G.current_tickets * wave * 40, 
 		"box" : round(G.current_tickets * wave / 1.5),
 	}
 	G.receive_loot(loot)

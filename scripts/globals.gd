@@ -24,7 +24,6 @@ var time_timer
 var ad: AdsManager
 var ach: Achievements
 var class_visuals
-var class_visuals_scene = load("res://prefabs/menu/class_visuals.tscn")
 var loading_scene = load("res://scenes/menu/loading.tscn")
 var box = load("res://scenes/menu/box.tscn")
 const CLASSES_ID = {
@@ -215,7 +214,7 @@ func _ready():
 	add_child(time_timer)
 	time_timer.connect("timeout", self, "_update_timer")
 	time_timer.start()
-	class_visuals = class_visuals_scene.instance()
+	class_visuals = load("res://prefabs/menu/class_visuals.tscn").instance()
 	if OS.has_feature("editor") or OS.has_feature("cheats"):
 		var ch = load("res://prefabs/menu/cheats.tscn").instance()
 		add_child(ch)
