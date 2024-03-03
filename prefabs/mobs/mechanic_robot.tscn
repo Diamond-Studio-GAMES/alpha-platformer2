@@ -1075,6 +1075,7 @@ unreliable_sync_properties_names = [ "global_position", "current_health" ]
 script = ExtResource( 23 )
 spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath("..") ]
 spawn_sync_data_properties = [ "stats_multiplier", "owner_current_health", "global_position" ]
+auto_despawn = false
 
 [connection signal="area_entered" from="check_water" to="." method="water_checked"]
 [connection signal="area_exited" from="check_water" to="." method="water_unchecked"]

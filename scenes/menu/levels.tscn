@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://textures/gui/multiplayer.png" type="Texture" id=1]
 [ext_resource path="res://textures/items/ticket.png" type="Texture" id=2]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=3]
 [ext_resource path="res://textures/gui/help.png" type="Texture" id=4]
-[ext_resource path="res://themes/font_headers2.tres" type="DynamicFont" id=5]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=5]
 [ext_resource path="res://textures/effects/backgrounds/levels_bg.png" type="Texture" id=7]
 [ext_resource path="res://textures/mobs/knife_man/head.tres" type="Texture" id=23]
 [ext_resource path="res://prefabs/menu/education.tscn" type="PackedScene" id=27]
@@ -15,6 +15,11 @@
 
 [sub_resource type="CanvasItemMaterial" id=279]
 blend_mode = 4
+
+[sub_resource type="DynamicFont" id=280]
+size = 36
+extra_spacing_bottom = -12
+font_data = ExtResource( 5 )
 
 [node name="levels" type="Control"]
 anchor_right = 1.0
@@ -1376,7 +1381,7 @@ margin_right = 640.0
 margin_bottom = 366.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-custom_fonts/bold_font = ExtResource( 5 )
+custom_fonts/bold_font = SubResource( 280 )
 bbcode_enabled = true
 
 [connection signal="pressed" from="shop_button" to="." method="shop"]

@@ -2,6 +2,8 @@ extends Mob
 class_name Mechanic
 
 
+signal transformed(robot)
+
 export (float) var min_distance = 100
 export (PackedScene) var to_spawn
 onready var attack_visual = $visual/body/knife_attack/visual
@@ -61,6 +63,9 @@ func do_transform():
 		n.owner_current_health = current_health
 		n.stats_multiplier = stats_multiplier
 		get_parent().add_child(n)
+		emit_signal("transformed", n)
+	else:
+		emit_signal("transformed", null)
 	queue_free()
 
 

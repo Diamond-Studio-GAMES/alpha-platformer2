@@ -2,6 +2,8 @@ extends Mob
 class_name MechanicRobot
 
 
+signal returned_to_owner(mob_owner)
+
 export (float) var min_distance = 100
 export (int) var big_attack_damage = 50
 onready var jump_ray0 = $jump_ray_cast
@@ -115,7 +117,6 @@ func _post_hurt(ded):
 		emit_signal("destroyed")
 		if MP.auth(self):
 			_spawn_owner()
-		queue_free()
 
 
 func _spawn_owner():
@@ -129,6 +130,8 @@ func _spawn_owner():
 	get_parent().add_child(n, true)
 	n.current_health = owner_current_health
 	n._update_bars()
+	emit_signal("returned_to_owner", n)
+	queue_free()
 
 
 func _process(delta):
