@@ -994,8 +994,8 @@ tracks/9/keys = {
 }
 
 [sub_resource type="Animation" id=25]
-length = 1.5
 loop = true
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("visual/body/head/helmet:rotation_degrees")
 tracks/0/interp = 1
@@ -1039,10 +1039,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.375, 0.75, 1.125, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 1.18079, 1.17796, 1.27693, 1.24732, 1.1601 ]
+"values": [ -66.8329, -66.8329, -66.8329, -66.8329 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("visual/body/arm_left:rotation_degrees")
@@ -1051,10 +1051,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.375, 0.75, 1.125, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -2.0753, -25.6293, -4.2651, 17.2095, -3.04229 ]
+"values": [ 28.1232, -16.0079, 28.1232, 63.131 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("visual/body/arm_right/hand:rotation_degrees")
@@ -1063,10 +1063,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.375, 0.75, 1.125, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -0.154944, -0.107196, -0.156094, -0.0524219, -0.160146 ]
+"values": [ -70.5878, -70.5878, -70.5878, -70.5878 ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("visual/body/arm_right:rotation_degrees")
@@ -1075,10 +1075,10 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.375, 0.75, 1.125, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 1.86293, 30.1478, 3.08711, -16.5227, 1.38149 ]
+"values": [ 31.1561, 63.3242, 31.1561, -13.5164 ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("visual/body/leg_left:rotation_degrees")
@@ -1087,10 +1087,10 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.375, 0.75, 1.125, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.25, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.522197, -18.785, -2.51317, 15.5951, 0.772741 ]
+"values": [ 32.5922, -46.0933 ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("visual/body/leg_left/foot:rotation_degrees")
@@ -1099,10 +1099,10 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.375, 0.75, 1.125, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.25, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -0.815722, -0.399624, -0.424542, -0.448139, -0.386073 ]
+"values": [ 75.3196, 5.0 ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("visual/body/leg_right:rotation_degrees")
@@ -1111,10 +1111,10 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.375, 0.75, 1.125, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.25, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 2.10903, 19.1457, 4.96345, -18.204, 2.65866 ]
+"values": [ -26.1, 32.6 ]
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("visual/body/leg_right/foot:rotation_degrees")
@@ -1123,10 +1123,10 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.375, 0.75, 1.125, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.25, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -1.30989, -1.34326, -1.30945, -1.37409, -1.34401 ]
+"values": [ 5.0, 75.3 ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=75]
