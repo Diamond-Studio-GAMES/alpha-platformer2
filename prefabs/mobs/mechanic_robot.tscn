@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://themes/theme.tres" type="Theme" id=1]
 [ext_resource path="res://textures/mobs/mechanic_robot/leg.tres" type="Texture" id=2]
@@ -21,7 +21,6 @@
 [ext_resource path="res://textures/mobs/mechanic_robot/body.tres" type="Texture" id=19]
 [ext_resource path="res://textures/effects/attacks/ball_attack.png" type="Texture" id=20]
 [ext_resource path="res://textures/gui/health_bar_empty.tres" type="Texture" id=21]
-[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=23]
 
 [sub_resource type="Curve" id=97]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
@@ -413,6 +412,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 2, -2 ), Vector2( -1, 1 ), Vector2( -1, -1 ), Vector2( -1, 1 ), Vector2( -1, -2 ), Vector2( -1, 1 ), Vector2( 1, 1 ), Vector2( 2, -1 ), Vector2( -1, 1 ), Vector2( 1, 1 ), Vector2( 2, -1 ), Vector2( 1, 1 ), Vector2( -3, -1 ), Vector2( -1, 1 ), Vector2( 1, -1 ), Vector2( 0, 2 ), Vector2( -1, 1 ), Vector2( 2, 2 ), Vector2( 1, -1 ), Vector2( 1, -1 ), Vector2( 0, 0 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("visual/body/arm_big/arm_big/ball:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
 
 [sub_resource type="Animation" id=22]
 resource_name = "hurt"
@@ -662,7 +673,7 @@ input_1/auto_advance = false
 animation = "walk"
 
 [sub_resource type="AnimationNodeBlendTree" id=90]
-graph_offset = Vector2( 33, -31 )
+graph_offset = Vector2( -693, 37 )
 nodes/attack/node = SubResource( 75 )
 nodes/attack/position = Vector2( -100, 320 )
 nodes/attack_seek/node = SubResource( 89 )
@@ -718,7 +729,7 @@ radius = 5.0
 offsets = PoolRealArray( 0, 0.320574, 0.665072, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[node name="mob_mechanic_robot" type="KinematicBody2D" groups=["spawnable"]]
+[node name="mob_mechanic_robot" type="KinematicBody2D"]
 z_index = -2
 collision_layer = 4
 collision_mask = 23
@@ -1070,12 +1081,6 @@ reliable_sync_node_paths = [ NodePath("..") ]
 reliable_sync_properties_names = [ "GRAVITY_SCALE" ]
 unreliable_sync_node_paths = [ NodePath(".."), NodePath("..") ]
 unreliable_sync_properties_names = [ "global_position", "current_health" ]
-
-[node name="MultiplayerSpawnable" type="Node" parent="."]
-script = ExtResource( 23 )
-spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath("..") ]
-spawn_sync_data_properties = [ "stats_multiplier", "owner_current_health", "global_position" ]
-auto_despawn = false
 
 [connection signal="area_entered" from="check_water" to="." method="water_checked"]
 [connection signal="area_exited" from="check_water" to="." method="water_unchecked"]

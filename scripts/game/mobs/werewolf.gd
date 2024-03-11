@@ -1,38 +1,32 @@
 extends Mob
-class_name Mechanic
+class_name Werewolf
 
 
-signal transformed(robot)
-
-export (float) var min_distance = 100
-export (PackedScene) var to_spawn
+export (float) var transform_time = 2
 onready var attack_visual = $visual/body/knife_attack/visual
 onready var attack_shape = $visual/body/knife_attack/shape
 onready var jump_ray0 = $jump_ray_cast
 onready var jump_ray1 = $jump_ray_cast2
 onready var path_ray_left = $path_ray_cast_left
 onready var path_ray_right = $path_ray_cast_right
-var _min_distance = 0
-var transform_effect = load("res://prefabs/effects/transform_mechanic.tscn")
-var transform_timer = 1
 var _is_transforming = false
+var transform_timer = 0
+var transform_effect = load("res://prefabs/effects/transform_werewolf.tscn")
+var transform_to = load("res://prefabs/mobs/werewolf_human.tscn")
 
 
 func _ready():
 	reaction_speed += rand_range(-0.05, 0.1)
 	attack_speed += rand_range(-0.1, 0.2)
 	attack_damage = round(stats_multiplier * attack_damage)
-	_min_distance = min_distance * min_distance
 	$visual/body/knife_attack.damage = attack_damage
-	if transform_timer > 0:
-		transform_timer = rand_range(1, 3)
 
 
 func attack():
 	ms.sync_call(self, "attack")
 	_anim_tree["parameters/attack_seek/seek_position"] = 0
 	_anim_tree["parameters/attack_shot/active"] = true
-	yield(get_tree().create_timer(0.4, false), "timeout")
+	yield(get_tree().create_timer(0.3, false), "timeout")
 	$visual/body/knife_attack/swing.play()
 	attack_visual.show()
 	attack_visual.frame = 0
@@ -52,17 +46,20 @@ func do_transform():
 	_is_transforming = true
 	stop()
 	$bars.hide()
-	_anim_tree["parameters/trans_shot/active"] = true
+	_anim_tree["parameters/trans_trans/current"] = 1
 	var node = transform_effect.instance()
-	node.global_position = Vector2(global_position.x, global_position.y + 30)
+	node.global_position = global_position
 	_level.add_child(node)
-	yield(get_tree().create_timer(1.1, false), "timeout")
-	var n = to_spawn.instance()
+	yield(get_tree().create_timer(1, false), "timeout")
+	var n = transform_to.instance()
 	n.global_position = global_position
-	n.owner_current_health = current_health
 	n.stats_multiplier = stats_multiplier
 	n.GRAVITY_SCALE = GRAVITY_SCALE
-	get_parent().add_child(n, true)
+	n.get_node("MultiplayerSynchronizer").syncing = true
+	get_parent().add_child(n)
+	n.current_health = n.max_health * min(1, float(current_health) / max_health + 0.1)
+	n._update_bars()
+	n.ms.sync_call(n, "_update_bars")
 	emit_signal("transformed", n)
 	queue_free()
 
@@ -86,40 +83,28 @@ func _physics_process(delta):
 		if not player_visible:
 			stop()
 			return
-		if player_distance > _min_distance:
-			if player.global_position.x > global_position.x and _is_move_safe(path_ray_right):
-				move_right()
-			elif player.global_position.x < global_position.x and _is_move_safe(path_ray_left):
-				move_left()
-			else:
-				stop()
+		if player.global_position.x > global_position.x and _is_move_safe(path_ray_right):
+			move_right()
+		elif player.global_position.x < global_position.x and _is_move_safe(path_ray_left):
+			move_left()
 		else:
-			if player.global_position.x > global_position.x and _is_move_safe(path_ray_left):
-				move_left()
-			elif player.global_position.x < global_position.x and _is_move_safe(path_ray_right):
-				move_right()
-			else:
-				stop()
+			stop()
+		if under_water and player_distance < _vision_distance / 4 and \
+				player.global_position.y + 20 < global_position.y:
+			jump()
 		if under_water and breath_time < 2 and not immune_to_water:
 			jump()
 	
 	if not player_visible:
+		transform_timer += delta
+		if transform_timer >= transform_time:
+			do_transform()
 		return
+	transform_timer = 0
 	attack_timer += delta
 	if attack_timer > attack_speed and player_distance < _attack_distance:
-		if player.global_position.x > global_position.x:
-			move_right()
-			lookup_timer += 10
-		else:
-			move_left()
-			lookup_timer += 10
 		attack()
 		attack_timer = 0
-		player_timer = -0.4
-	transform_timer += delta
-	if transform_timer >= 10 and hurt_counter < 1 and not is_stunned and _move.y == 0:
-		do_transform()
-		transform_timer = 0
 	lookup_timer += delta
 	if lookup_timer > lookup_speed:
 		if ray_colliding(jump_ray0) == Colliding.OK and _move_direction.x > 0 or \

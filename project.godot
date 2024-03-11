@@ -259,6 +259,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/game/other/virtual_joystick.gd"
 }, {
+"base": "Mob",
+"class": "Werewolf",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/werewolf.gd"
+}, {
+"base": "Mob",
+"class": "WerewolfHuman",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/werewolf_human.gd"
+}, {
 "base": "Player",
 "class": "Wizard",
 "language": "GDScript",
@@ -315,6 +325,8 @@ _global_script_class_icons={
 "Throwable": "",
 "Trail2D": "",
 "VirtualJoystick": "",
+"Werewolf": "",
+"WerewolfHuman": "",
 "Wizard": ""
 }
 

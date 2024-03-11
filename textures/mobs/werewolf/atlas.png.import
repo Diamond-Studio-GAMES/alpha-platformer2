@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gun.png-12430c402627d40bde6d2408de49957b.stex"
+path="res://.import/atlas.png-1db6e9f5cb1c63c2101a8b7ceaa0e49a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/mobs/werewolf/gun/gun.png"
-dest_files=[ "res://.import/gun.png-12430c402627d40bde6d2408de49957b.stex" ]
+source_file="res://textures/mobs/werewolf/atlas.png"
+dest_files=[ "res://.import/atlas.png-1db6e9f5cb1c63c2101a8b7ceaa0e49a.stex" ]
 
 [params]
 
