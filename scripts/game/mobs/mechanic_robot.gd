@@ -6,6 +6,7 @@ signal returned_to_owner(mob_owner)
 
 export (float) var min_distance = 100
 export (int) var big_attack_damage = 50
+export (String) var owner_path = "res://prefabs/mobs/mechanic.tscn"
 onready var jump_ray0 = $jump_ray_cast
 onready var jump_ray1 = $jump_ray_cast2
 onready var path_ray_left = $path_ray_cast_left
@@ -16,7 +17,7 @@ onready var shoot = $visual/body/arm_small/arm_small/shoot
 onready var big_shoot = $visual/body/arm_big/arm_big/ball
 var bullet = load("res://prefabs/mobs/robot_bullet.tscn")
 var big_bullet = load("res://prefabs/mobs/big_robot_bullet.tscn") # I NEED MORE BULLETS
-var _owner = load("res://prefabs/mobs/mechanic.tscn")
+var _owner
 var owner_current_health = 0
 var _min_distance = 0
 var _animation_attack
@@ -40,6 +41,7 @@ func _ready():
 	_big_track_idx = _animation_big.find_track(@"visual/body/arm_big:rotation_degrees")
 	_big_key_idx = _animation_big.track_find_key(_big_track_idx, 0.8)
 	attack_timer = 5
+	_owner = load(owner_path)
 
 
 func attack():
@@ -75,6 +77,8 @@ func attack():
 	can_turn = true
 
 
+# NOW IS YOUR CHANCE TO BE BIG SHOT
+# BIG BIG BIG BIG BIG BIG SHOT
 func big_shot():
 	ms.sync_call(self, "big_shot")
 	can_turn = false

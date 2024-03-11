@@ -3,6 +3,7 @@ class_name Werewolf
 
 
 export (float) var transform_time = 2
+export (String) var transform_to_path = "res://prefabs/mobs/werewolf_human.tscn"
 onready var attack_visual = $visual/body/knife_attack/visual
 onready var attack_shape = $visual/body/knife_attack/shape
 onready var jump_ray0 = $jump_ray_cast
@@ -12,7 +13,7 @@ onready var path_ray_right = $path_ray_cast_right
 var _is_transforming = false
 var transform_timer = 0
 var transform_effect = load("res://prefabs/effects/transform_werewolf.tscn")
-var transform_to = load("res://prefabs/mobs/werewolf_human.tscn")
+var transform_to
 
 
 func _ready():
@@ -20,6 +21,7 @@ func _ready():
 	attack_speed += rand_range(-0.1, 0.2)
 	attack_damage = round(stats_multiplier * attack_damage)
 	$visual/body/knife_attack.damage = attack_damage
+	transform_to = load(transform_to_path)
 
 
 func attack():

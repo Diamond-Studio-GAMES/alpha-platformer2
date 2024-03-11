@@ -151,6 +151,7 @@ func mob_died(node):
 func mob_transformed(mob):
 	if not mob is Mob:
 		return
+	mob._vision_distance = 100000000
 	if mob.has_signal("transformed"):
 		mob.connect("died", self, "mob_died", [mob])
 		mob.connect("transformed", self, "mob_transformed")

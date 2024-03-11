@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://themes/theme.tres" type="Theme" id=1]
 [ext_resource path="res://minigames/minigame4/last_waves.gd" type="Script" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://prefabs/blocks/borders.tscn" type="PackedScene" id=23]
 [ext_resource path="res://prefabs/mobs/magician.tscn" type="PackedScene" id=24]
 [ext_resource path="res://prefabs/mobs/mechanic.tscn" type="PackedScene" id=25]
+[ext_resource path="res://prefabs/mobs/werewolf_human.tscn" type="PackedScene" id=26]
 
 [sub_resource type="Animation" id=2]
 resource_name = "enter"
@@ -319,7 +320,7 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 location = "4.name"
 level_name = "4.tip"
-mobs = [ ExtResource( 16 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 22 ), ExtResource( 6 ), ExtResource( 24 ), ExtResource( 25 ) ]
+mobs = [ ExtResource( 16 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 22 ), ExtResource( 6 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ]
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 20 )
