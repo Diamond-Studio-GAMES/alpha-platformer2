@@ -1,7 +1,6 @@
 extends Player
 class_name Archer
 
-var gen = RandomNumberGenerator.new()
 var anima
 var trck_idx0
 var trck_idx1
@@ -49,12 +48,9 @@ func _ready():
 	_ulti = load("res://prefabs/classes/archer_ulti.tscn")
 	RECHARGE_SPEED = 1.1 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
 	SPEED += (7 if is_amulet(G.Amulet.SPEED) else 0)
-	gen.randomize()
 	have_soul_power = G.getv("archer_soul_power", false)
 	have_gadget = G.getv("archer_gadget", false)
 	joystick.connect("released", self, "joystick_released")
-	if have_soul_power and MP.auth(self):
-		$visual/body/knight_attack.connect("hit_enemy", self, "sp_effect")
 	if not have_gadget:
 		$camera/gui/base/buttons/buttons_0/gadget.hide()
 	if MP.auth(self):
@@ -103,7 +99,7 @@ func joystick_released(output):
 func reset_aim():
 	jout = Vector2.ZERO
 	if is_aiming:
-		speed_cooficent /= 0.5
+		speed_cooficent /= 0.7
 		can_turn = true
 		is_aiming = false
 		_anim_tree["parameters/aim_ts/scale"] = -1 if aim_time < 0.55 else 1
@@ -113,12 +109,6 @@ func reset_aim():
 		_aim_tween.remove_all()
 		_aim_tween.interpolate_property(_anim_tree, "parameters/aim_blend/blend_amount", _anim_tree["parameters/aim_blend/blend_amount"], 0, 0.3)
 		_aim_tween.start()
-
-
-func sp_effect(remote_call = false):
-	if gen.randi_range(0, 100) > 55 or remote_call:
-		$knockback/anim.play("def")
-		ms.sync_call(self, "sp_effect", [true])
 
 
 func attack(fatal = false):
@@ -191,6 +181,19 @@ func throw(direction, aimed_time):
 		node.rotation = rotates[1]
 		node.get_node("attack").fatal = hate_fatal()
 		_level.add_child(node, true)
+		if have_soul_power and randi() % 10 > 5:
+			yield(get_tree().create_timer(0.1, false), "timeout")
+			node = arrow.instance()
+			if aimed_time >= 0.55 and aimed_time < 0.85:
+				node.SPEED = 150.0
+				node.get_node("attack").damage = power * 3 + 15  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
+			else:
+				node.SPEED = 225.0
+				node.get_node("attack").damage = G.getv("archer_level", 0) * 7 + 35  + (15 if  is_amulet(G.Amulet.POWER) else 0)
+			node.global_position = Vector2(global_position.x, global_position.y - 10.5 * GRAVITY_SCALE)
+			node.rotation = rotates[1]
+			node.get_node("attack").fatal = hate_fatal()
+			_level.add_child(node, true)
 
 
 func use_potion(level):
@@ -224,7 +227,7 @@ func _process(delta):
 			is_aiming = true
 			can_turn = false
 			if is_zero_approx(_anim_tree["parameters/aim_blend/blend_amount"]):
-				speed_cooficent *= 0.5
+				speed_cooficent *= 0.7
 				_anim_tree["parameters/aim_ts/scale"] = 1
 				_anim_tree["parameters/aim_seek/seek_position"] = 0
 				_aim_tween.stop_all()
