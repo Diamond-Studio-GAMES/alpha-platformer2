@@ -151,7 +151,7 @@ func create():
 	G.setv("volume", G.main_getv("volume", 0.75))
 	G.setv("volume_sfx", G.main_getv("volume_sfx", 1))
 	G.setv("lang", G.main_getv("lang", OS.get_locale_language()))
-	G.setv("hero_chance", 2)
+	G.setv("hero_chance", 4)
 	$enter.interpolate_property($enter_color, "color", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 2)
 	$enter.start()
 	$enter_color.mouse_filter = Control.MOUSE_FILTER_STOP

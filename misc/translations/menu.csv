@@ -368,7 +368,7 @@ shop.box_info,"Ящик может содержать классы, монеты
 Билеты (как бонус): 25%
 Кристаллы (как бонус): 10%
 
-Получить душевный навык можно только на класс, достигший 15-го уровня силы, а душевную силу на класс, достигший 20-го уровня силы. Получать фрагменты амулетов можно после того, как один из классов достигнет 10-го уровня силы. После каждого открытого обычного ящика, в котором не было класса, шанс на него повышается на 0.06%. А если в ящике оказался класс, шанс падает до 1.5%. Начальный шанс - 2%. Если жетоны какого-то типа все классы не могут получить, то они конвертируются в монеты. 3 монеты за каждый жетон силы, 10 монет за каждый жетон навыка.","Box can contain classes, coins, tokens and much more.
+Получить душевный навык можно только на класс, достигший 15-го уровня силы, а душевную силу на класс, достигший 20-го уровня силы. Получать фрагменты амулетов можно после того, как один из классов достигнет 10-го уровня силы. После каждого открытого обычного ящика, в котором не было класса, шанс на него повышается на 0.08%. А если в ящике оказался класс, шанс падает до 1.5%. Начальный шанс — 4%. Если жетоны какого-то типа все классы не могут получить, то они конвертируются в монеты. 3 монеты за каждый жетон силы, 10 монет за каждый жетон навыка.","Box can contain classes, coins, tokens and much more.
 Chances when opening one regular box:
 Coins{cs}: {cc}%
 Class: {hc}%
@@ -378,7 +378,7 @@ Soul power: {sc}%
 Tickets (as bonus): 25%
 Gems (as bonus): 10%
 
-You can only get soul skill for a class that has reached the 15th power level, and soul power for a class that has reached the 20th power level. You can receive fragments of amulets after one of the classes reaches the 10th power level. After each open regular box, in which there was no class, the chance of it increases by 0.06%. And if there is a class in the box, the chance drops to 1.5%. The initial chance is 2%. If all classes cannot receive tokens of some type, then they are converted into coins. 3 coins for each power token, 10 coins for each skill token."
+You can only get soul skill for a class that has reached the 15th power level, and soul power for a class that has reached the 20th power level. You can receive fragments of amulets after one of the classes reaches the 10th power level. After each open regular box, in which there was no class, the chance of it increases by 0.08%. And if there is a class in the box, the chance drops to 1.5%. The initial chance is 4%. If all classes cannot receive tokens of some type, then they are converted into coins. 3 coins for each power token, 10 coins for each skill token."
 shop.box_info.title,Информация о ящике,Box information
 shop.box_info.gold,"Открытие золотого ящика равно открытию 3 ящиков, однако жетоны распределяются между меньшим количеством классов.","Opening a gold box is equal to opening 3 boxes, but tokens are distributed among fewer classes."
 shop.box_info.diamond,"Открытие алмазного ящика равно открытию 10 ящиков, однако жетоны распределяются между меньшим количеством классов.","Opening a diamond box is equal to opening 10 boxes, but tokens are distributed among fewer classes."

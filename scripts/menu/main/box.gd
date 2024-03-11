@@ -704,7 +704,7 @@ func init_values():
 	soul_power_classes = []
 	ulti_classes = []
 	amulet_types = []
-	hero_chance = G.getv("hero_chance", 0.5)
+	hero_chance = G.getv("hero_chance", 4)
 	classes_to_unlock = CLASSES.duplicate()
 	var had_classes = G.getv("classes", [])
 	var has_amulet = false
@@ -908,7 +908,7 @@ func get_box_rewards():
 		init_values()
 		loot["amulet_frags"] = {type : 1}
 	else:
-		hero_chance += 0.06
+		hero_chance += 0.08
 		G.setv("hero_chance", hero_chance)
 		power_classes.shuffle()
 		var coins_count = 0
