@@ -128,7 +128,7 @@ menu.last_confirm.text,Ты уверен?,Are you sure?
 menu.current_name,Текущее имя: ,Current name: 
 menu.changing_name,Смена имени,Changing name
 menu.warning,Предупреждение!,Warning!
-menu.blw.text,"Опция ""Красивый свет"" может привести к потере производительности, рекомендуем её включать только на ПК или мощном смартфоне.","The ""Beautiful light"" option can lead to a loss of performance, we recommend turning it on only on a PC or a powerful smartphone."
+menu.blw.text,"Опция ""Красивые свет и звёзды"" может привести к потере производительности на уровнях, где присутствуют эти элементы. Рекомендуем включать эту опцию только на ПК или мощном смартфоне.","The ""Beautiful light and stars"" option can lead to a loss of performance on levels, which have them. We recommend turning it on only on a PC or a powerful smartphone."
 menu.gr.proj_effects,Эффекты снарядов,Projectile effects
 menu.gr.proj_effects.standard,Стандартные,Standard
 menu.gr.proj_effects.simple,Упрощённые,Simple
@@ -138,7 +138,7 @@ menu.gr.grass.gpu,Анимированная (GPU),GPU-animated
 menu.gr.grass.cpu,Анимированная (CPU),CPU-animated
 menu.gr.grass.static,Статичная,Static
 menu.gr.misc,Прочее,Miscellaneous
-menu.gr.misc.beauty_light,Красивый свет,Beautiful light
+menu.gr.misc.beauty_light,Красивые свет и звёзды,Beautiful light ans stars
 menu.gr.misc.beauty_water,Красивая вода,Beautiful water
 menu.gr.misc.beauty_lava,Красивая лава,Beautiful lava
 menu.gr.misc.beauty_fire,Красивый огонь,Beautiful fire

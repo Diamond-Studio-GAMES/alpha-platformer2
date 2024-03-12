@@ -351,12 +351,6 @@ default_bus_layout="res://misc/bus_layout.tres"
 G="*res://scripts/globals.gd"
 MP="*res://scripts/game/multiplayer/multiplayer.gd"
 
-[compression]
-
-formats/zstd/compression_level=1
-formats/zlib/compression_level=0
-formats/gzip/compression_level=0
-
 [debug]
 
 gdscript/warnings/enable=false

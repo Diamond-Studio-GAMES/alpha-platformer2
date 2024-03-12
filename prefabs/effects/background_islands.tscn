@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/game/other/graphics_setup.gd" type="Script" id=1]
+[ext_resource path="res://textures/effects/backgrounds/islands_bg_0.png" type="Texture" id=2]
+[ext_resource path="res://textures/effects/backgrounds/background_base.png" type="Texture" id=3]
+[ext_resource path="res://textures/effects/backgrounds/islands_bg_1.png" type="Texture" id=4]
+[ext_resource path="res://textures/effects/other/particle.png" type="Texture" id=5]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0.495455 ), 0.0, 0.0, 0, 0, Vector2( 0.158209, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.81791, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.504545 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.108974, 0.288462, 0.432692, 0.634615, 0.804487, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0.74902, 1, 1, 1, 1, 1, 1, 1, 0.580392, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="background" type="ParallaxBackground"]
+scroll_ignore_camera_zoom = true
+
+[node name="sky" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 1800, 540 )
+
+[node name="sky" type="Sprite" parent="sky"]
+self_modulate = Color( 0.207843, 0, 0.266667, 1 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="layer1" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.075, 0.025 )
+motion_offset = Vector2( -900, -270 )
+motion_mirroring = Vector2( 1800, 540 )
+script = ExtResource( 1 )
+to_manage = 3
+
+[node name="sprite" type="Sprite" parent="layer1"]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="stars" type="CPUParticles2D" parent="layer1"]
+visible = false
+position = Vector2( 900, 270 )
+amount = 256
+lifetime = 60.0
+preprocess = 30.0
+randomness = 1.0
+texture = ExtResource( 5 )
+emission_shape = 2
+emission_rect_extents = Vector2( 900, 270 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+angular_velocity = 20.0
+angular_velocity_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale_amount = 3.0
+scale_amount_random = 0.8
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 2 )
+
+[node name="layer0" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.15, 0.075 )
+motion_offset = Vector2( -900, -270 )
+motion_mirroring = Vector2( 1800, 540 )
+script = ExtResource( 1 )
+to_manage = 3
+
+[node name="sprite" type="Sprite" parent="layer0"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="stars" type="CPUParticles2D" parent="layer0"]
+visible = false
+position = Vector2( 900, 270 )
+amount = 256
+lifetime = 60.0
+preprocess = 30.0
+randomness = 1.0
+texture = ExtResource( 5 )
+emission_shape = 2
+emission_rect_extents = Vector2( 900, 270 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+angular_velocity = 20.0
+angular_velocity_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale_amount = 6.0
+scale_amount_random = 0.8
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 2 )
