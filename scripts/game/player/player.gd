@@ -464,6 +464,9 @@ func _hurt_intermediate(damage_source, died):
 
 func _post_hurt(ded):
 	if ded:
+		if G.getv("hardcore", false):
+			G.main_setv("remove_save", G.getv("save_id"))
+			G.save()
 		yield(get_tree().create_timer(4, false), "timeout")
 		if not MP.is_active:
 			if not camera.is_screen_on:

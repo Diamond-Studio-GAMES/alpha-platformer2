@@ -44,6 +44,12 @@ func _ready():
 	$create/name.placeholder_text = tr("sl.create.pname")
 	$create/name.set_message_translation(false)
 	$create/name.notification(NOTIFICATION_TRANSLATION_CHANGED)
+	
+	if not G.main_getv("remove_save", "").empty():
+		id_to_delete = G.main_getv("remove_save", "")
+		confirm_delete()
+		G.main_setv("remove_save", "")
+	
 	list_saves()
 
 
@@ -90,7 +96,10 @@ func list_saves():
 			_:
 				node.get_node("soul").modulate = color
 		node.get_node("play").connect("pressed", self, "play", [i])
-		node.get_node("copy").connect("pressed", self, "duplicate_save", [i])
+		if G.get_save_meta(i, "soul_type", 6) == 6:
+			node.get_node("copy").connect("pressed", self, "duplicate_save", [i])
+		else:
+			node.get_node("copy").self_modulate = Color.webgray
 		node.get_node("delete").connect("pressed", self, "delete_save", [i])
 		$saves/scroll/saves.add_child(node)
 		saves_objs_dict[G.get_save_meta(i, "name", "???")] = node

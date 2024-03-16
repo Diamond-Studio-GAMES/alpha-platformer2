@@ -25,8 +25,9 @@ func export_data():
 		if not dir.current_is_dir():
 			var cfc = ConfigFile.new()
 			cfc.load_encrypted_pass(saves_path.plus_file(filename), "apa2_save")
-			for i in cfc.get_section_keys("save"):
-				cf.set_value(filename, i, cfc.get_value("save", i))
+			if not cfc.get_value("save", "hardcore", false):
+				for i in cfc.get_section_keys("save"):
+					cf.set_value(filename, i, cfc.get_value("save", i))
 		filename = dir.get_next()
 	cf.save("user://export_cache.apa2saves.uncompressed")
 	var file = File.new()
