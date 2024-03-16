@@ -197,7 +197,7 @@ func _ready():
 			auto_chance = 33
 			revive_chance = 5
 			revive_amount = 25
-			fatal_chance = 6
+			fatal_chance = 8
 			var lvl_name = _level.name.split("_")
 			if len(lvl_name) > 2:
 				if lvl_name[2].is_valid_integer():

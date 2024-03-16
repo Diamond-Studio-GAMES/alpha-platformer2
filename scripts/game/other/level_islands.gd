@@ -1,7 +1,7 @@
 extends Level
 
 
-export (float) var gravity_multiplier = 0.65
+export (float) var gravity_multiplier = 0.6
 export (Vector2) var zoom = Vector2(0.4, 0.4)
 
 

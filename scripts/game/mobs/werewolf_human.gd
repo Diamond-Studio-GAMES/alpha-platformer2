@@ -88,7 +88,7 @@ func do_transform():
 	n.stats_multiplier = stats_multiplier
 	n.GRAVITY_SCALE = GRAVITY_SCALE
 	get_parent().add_child(n)
-	n.current_health = n.max_health * min(1, float(current_health) / max_health + 0.1)
+	n.current_health = n.max_health * min(1, float(current_health) / max_health + 0.3)
 	n._update_bars()
 	n.ms.sync_call(n, "_update_bars")
 	emit_signal("transformed", n)
