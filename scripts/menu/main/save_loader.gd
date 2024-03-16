@@ -115,7 +115,8 @@ func sort_saves():
 
 func _process(delta):
 	$create/soul_type.visible = $create/hardcore.pressed
-	$create/soul_type_text.visible = $create/hardcore.pressed
+	$create/determination_text.visible = not $create/hardcore.pressed
+	$create/save_notice.text = tr("sl.save.hardcore") if $create/hardcore.pressed else tr("sl.save.normal")
 	if $create/hardcore.pressed:
 		soul.self_modulate = G.SOUL_COLORS[$create/soul_type.selected]
 	else:

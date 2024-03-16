@@ -378,8 +378,9 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -235.0
+margin_top = -64.0
 margin_right = 235.0
-margin_bottom = 52.0
+margin_bottom = 6.0
 custom_fonts/font = ExtResource( 2 )
 text = "sl.settings"
 align = 1
@@ -391,9 +392,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -38.5
-margin_top = -40.0
+margin_top = 16.0
 margin_right = 38.5
-margin_bottom = -16.0
+margin_bottom = 40.0
 custom_fonts/font = ExtResource( 1 )
 text = "sl.quit"
 
@@ -405,9 +406,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -236.0
-margin_top = -60.0
+margin_top = -84.0
 margin_right = -16.0
-margin_bottom = -36.0
+margin_bottom = -60.0
 text = "sl.settings.volm"
 
 [node name="mv_s" type="HSlider" parent="settings"]
@@ -416,9 +417,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 20.0
-margin_top = -60.0
+margin_top = -84.0
 margin_right = 240.0
-margin_bottom = -28.0
+margin_bottom = -52.0
 max_value = 1.0
 step = 0.01
 ticks_on_borders = true
@@ -429,9 +430,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -236.0
-margin_top = -28.0
+margin_top = -44.0
 margin_right = -16.0
-margin_bottom = -4.0
+margin_bottom = -20.0
 text = "sl.settings.vols"
 
 [node name="sfxv_s" type="HSlider" parent="settings"]
@@ -440,9 +441,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 20.0
-margin_top = -28.0
+margin_top = -44.0
 margin_right = 240.0
-margin_bottom = 4.0
+margin_bottom = -12.0
 max_value = 1.0
 step = 0.01
 ticks_on_borders = true
@@ -464,9 +465,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -64.5
-margin_top = 28.0
+margin_top = 36.0
 margin_right = 76.5
-margin_bottom = 52.0
+margin_bottom = 60.0
 grow_horizontal = 2
 text = "sl.ei"
 
@@ -476,9 +477,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -64.5
-margin_top = 52.0
+margin_top = 68.0
 margin_right = 76.5
-margin_bottom = 76.0
+margin_bottom = 92.0
 text = "sl.misc.name"
 
 [node name="fullscr" type="CheckButton" parent="settings"]
@@ -487,9 +488,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -100.0
-margin_top = 76.0
+margin_top = 100.0
 margin_right = 101.0
-margin_bottom = 100.0
+margin_bottom = 124.0
 grow_horizontal = 2
 text = "sl.settings.fullscr"
 
@@ -505,7 +506,6 @@ margin_right = 256.0
 margin_bottom = 160.0
 mouse_filter = 1
 __meta__ = {
-"_edit_use_anchors_": false,
 "_editor_description_": ""
 }
 
@@ -520,39 +520,48 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -235.0
+margin_top = -64.0
 margin_right = 235.0
-margin_bottom = 70.0
+margin_bottom = 6.0
 custom_fonts/font = ExtResource( 2 )
 text = "sl.create"
 align = 1
+valign = 2
 
 [node name="gender_text" type="Label" parent="create"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -148.0
-margin_top = -43.0
-margin_right = -60.0
-margin_bottom = -19.0
+margin_left = -158.0
+margin_top = -35.0
+margin_right = -70.0
+margin_bottom = -11.0
 text = "gender"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="soul_type_text" type="Label" parent="create"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -148.0
-margin_top = 16.0
-margin_right = 10.0
-margin_bottom = 40.0
+margin_left = -158.0
+margin_top = 24.0
+margin_right = 12.0
+margin_bottom = 48.0
 text = "sl.create.soultrait"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="determination_text" type="Label" parent="create"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = 24.0
+margin_right = 160.0
+margin_bottom = 48.0
+grow_horizontal = 0
+text = "trait.det"
+align = 2
 
 [node name="create" type="Button" parent="create"]
 anchor_left = 0.5
@@ -560,9 +569,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = 105.5
-margin_top = -40.0
-margin_right = 182.5
-margin_bottom = -16.0
+margin_top = 16.0
+margin_right = 188.5
+margin_bottom = 40.0
 custom_fonts/font = ExtResource( 1 )
 text = "sl.create"
 
@@ -572,9 +581,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -215.0
-margin_top = -40.0
+margin_top = 16.0
 margin_right = -105.0
-margin_bottom = -16.0
+margin_bottom = 40.0
 custom_fonts/font = ExtResource( 1 )
 text = "sl.cancel"
 __meta__ = {
@@ -586,25 +595,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -150.0
-margin_top = -79.0
-margin_right = 150.0
-margin_bottom = -49.0
+margin_left = -160.0
+margin_top = -71.0
+margin_right = 160.0
+margin_bottom = -41.0
 max_length = 16
 placeholder_text = "Введите имя..."
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="hardcore" type="CheckBox" parent="create"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -150.0
-margin_top = -17.0
-margin_right = -49.0
-margin_bottom = 13.0
+margin_left = -158.0
+margin_top = -9.0
+margin_right = 33.0
+margin_bottom = 21.0
 text = "sl.create.hardcore"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -616,9 +622,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -50.0
-margin_top = -44.0
-margin_right = 48.0
-margin_bottom = -14.0
+margin_top = -36.0
+margin_right = 79.0
+margin_bottom = -6.0
 pressed = true
 group = SubResource( 3 )
 text = "gender.male"
@@ -631,10 +637,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 54.0
-margin_top = -44.0
-margin_right = 152.0
-margin_bottom = -14.0
+margin_left = 64.0
+margin_top = -36.0
+margin_right = 215.0
+margin_bottom = -6.0
 group = SubResource( 3 )
 text = "gender.female"
 __meta__ = {
@@ -647,9 +653,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 20.0
-margin_top = 12.0
-margin_right = 139.0
-margin_bottom = 42.0
+margin_top = 21.0
+margin_right = 160.0
+margin_bottom = 51.0
 text = "trait.bra"
 items = [ "trait.bra", null, false, 0, false, "trait.jus", null, false, 1, false, "trait.kin", null, false, 2, false, "trait.pat", null, false, 3, false, "trait.int", null, false, 4, false, "trait.per", null, false, 5, false ]
 selected = 0
@@ -663,15 +669,26 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -20.0
-margin_top = 60.0
+margin_top = -132.0
 margin_right = 20.0
-margin_bottom = 100.0
+margin_bottom = -92.0
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="save_notice" type="Label" parent="create"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_top = 56.0
+margin_right = 240.0
+margin_bottom = 136.0
+text = "sl.hardcore.notice"
+align = 1
+valign = 1
+autowrap = true
 
 [node name="enter" type="Tween" parent="create"]
 
