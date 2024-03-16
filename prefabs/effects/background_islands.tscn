@@ -25,7 +25,7 @@ texture = ExtResource( 3 )
 centered = false
 
 [node name="layer1" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 0.075, 0.025 )
+motion_scale = Vector2( 0.03, 0.01 )
 motion_offset = Vector2( -900, -270 )
 motion_mirroring = Vector2( 1800, 540 )
 script = ExtResource( 1 )
@@ -57,7 +57,7 @@ scale_amount_curve = SubResource( 1 )
 color_ramp = SubResource( 2 )
 
 [node name="layer0" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 0.15, 0.075 )
+motion_scale = Vector2( 0.06, 0.02 )
 motion_offset = Vector2( -900, -270 )
 motion_mirroring = Vector2( 1800, 540 )
 script = ExtResource( 1 )
