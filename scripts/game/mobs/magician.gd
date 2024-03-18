@@ -3,18 +3,14 @@ class_name Magician
 
 
 export (float) var min_distance = 50
+onready var detect_ray = $detect_ray_cast
 var should_move = true
 var should_heal = false
 var next_attack = false
-var attack_scene = load("res://prefabs/mobs/magician_attack.tscn")
-onready var jump_ray0 = $jump_ray_cast
-onready var jump_ray1 = $jump_ray_cast2
-onready var path_ray_left = $path_ray_cast_left
-onready var path_ray_right = $path_ray_cast_right
-onready var detect_ray = $detect_ray_cast
 var _min_distance = 0
 var _min_distance_true = 0
 var _mobs = []
+var attack_scene = load("res://prefabs/mobs/magician_attack.tscn")
 
 
 func _ready():
@@ -126,16 +122,16 @@ func _physics_process(delta):
 		if not should_move:
 			return
 		if player_distance > _min_distance:
-			if player.global_position.x > global_position.x and _is_move_safe(path_ray_right):
+			if player.global_position.x > global_position.x and move_right_safe:
 				move_right()
-			elif player.global_position.x < global_position.x and _is_move_safe(path_ray_left):
+			elif player.global_position.x < global_position.x and move_left_safe:
 				move_left()
 			else:
 				stop()
 		else:
-			if player.global_position.x > global_position.x and _is_move_safe(path_ray_left):
+			if player.global_position.x > global_position.x and move_left_safe:
 				move_left()
-			elif player.global_position.x < global_position.x and _is_move_safe(path_ray_right):
+			elif player.global_position.x < global_position.x and move_right_safe:
 				move_right()
 			else:
 				stop()
@@ -158,13 +154,10 @@ func _physics_process(delta):
 		attack_timer = 0
 	lookup_timer += delta
 	if lookup_timer > lookup_speed:
-		if ray_colliding(jump_ray0) == Colliding.OK and _move_direction.x > 0 or \
-				ray_colliding(jump_ray1) == Colliding.OK and _move_direction.x < 0:
+		lookup_timer = 0
+		if under_water and breath_time < 2 and not immune_to_water:
 			jump()
-		if _move_direction.x > 0 and not _is_move_safe(path_ray_right):
-			stop()
-		elif _move_direction.x < 0 and not _is_move_safe(path_ray_left):
-			stop()
+		do_lookup()
 
 
 func update_strategy():

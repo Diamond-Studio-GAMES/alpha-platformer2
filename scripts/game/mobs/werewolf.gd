@@ -6,10 +6,6 @@ export (float) var transform_time = 2
 export (String) var transform_to_path = "res://prefabs/mobs/werewolf_human.tscn"
 onready var attack_visual = $visual/body/knife_attack/visual
 onready var attack_shape = $visual/body/knife_attack/shape
-onready var jump_ray0 = $jump_ray_cast
-onready var jump_ray1 = $jump_ray_cast2
-onready var path_ray_left = $path_ray_cast_left
-onready var path_ray_right = $path_ray_cast_right
 var _is_transforming = false
 var transform_timer = 0
 var transform_effect = load("res://prefabs/effects/transform_werewolf.tscn")
@@ -85,16 +81,14 @@ func _physics_process(delta):
 		if not player_visible:
 			stop()
 			return
-		if player.global_position.x > global_position.x and _is_move_safe(path_ray_right):
+		if player.global_position.x > global_position.x and move_right_safe:
 			move_right()
-		elif player.global_position.x < global_position.x and _is_move_safe(path_ray_left):
+		elif player.global_position.x < global_position.x and move_left_safe:
 			move_left()
 		else:
 			stop()
 		if under_water and player_distance < _vision_distance / 4 and \
 				player.global_position.y + 20 < global_position.y:
-			jump()
-		if under_water and breath_time < 2 and not immune_to_water:
 			jump()
 	
 	if not player_visible:
@@ -109,10 +103,7 @@ func _physics_process(delta):
 		attack_timer = 0
 	lookup_timer += delta
 	if lookup_timer > lookup_speed:
-		if ray_colliding(jump_ray0) == Colliding.OK and _move_direction.x > 0 or \
-				ray_colliding(jump_ray1) == Colliding.OK and _move_direction.x < 0:
+		lookup_timer = 0
+		if under_water and breath_time < 2 and not immune_to_water:
 			jump()
-		if _move_direction.x > 0 and not _is_move_safe(path_ray_right):
-			stop()
-		elif _move_direction.x < 0 and not _is_move_safe(path_ray_left):
-			stop()
+		do_lookup()
