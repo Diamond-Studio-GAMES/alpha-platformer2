@@ -4,10 +4,10 @@ class_name Mob
 # HEALTH
 signal destroyed
 
-const X_DIFF = 64
+const X_DIFF = 32
 const Y_DIFF = 16
 const RAY_LENGTH = 320
-const DANGER_LENGTH = 128
+const DANGER_LENGTH = 112
 export (bool) var immune_to_fall_damage = false
 export (float) var stats_multiplier = 1.0
 export (int) var attack_damage = 20
@@ -71,7 +71,6 @@ func _ready():
 	move_ray = RayCast2D.new()
 	move_ray.collide_with_areas = true
 	move_ray.collision_mask = 0b11001
-	move_ray.cast_to = Vector2.DOWN * RAY_LENGTH
 	move_ray.name = "move_ray"
 	move_ray.set_as_toplevel(true)
 	add_child(move_ray)
@@ -166,9 +165,10 @@ func _process(delta):
 func do_lookup():
 	var left_x = stepify(global_position.x - 16, 32) - 16
 	var right_x = stepify(global_position.x - 16, 32) + 48
-	var y = global_position.y - 48
+	var y = global_position.y - 32 * GRAVITY_SCALE
 	move_ray.enabled = true
 	move_ray.global_position = Vector2(left_x, y)
+	move_ray.cast_to = Vector2.DOWN * RAY_LENGTH * GRAVITY_SCALE
 	move_ray.force_raycast_update()
 	var left_ray_state = _get_ray_state()
 	var left_ray_y = move_ray.get_collision_point().y

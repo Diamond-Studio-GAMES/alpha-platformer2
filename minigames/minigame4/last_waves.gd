@@ -4,6 +4,7 @@ extends Node2D
 export (String) var location = "Где-то"
 export (String) var level_name = "УРОВЕНЬ: ТЕСТ"
 export (Array, PackedScene) var mobs = []
+export (Array, int) var mobs_locations = []
 onready var pos = $spawn_pos
 onready var st = $spawn_timer
 onready var hp_butt = $shop/shop/panel/base/options/hp/buy
@@ -44,6 +45,11 @@ func get_rewards():
 
 
 func _ready():
+	var current_location = int(G.getv("level", "1_1").split('_')[0])
+	for i in range(mobs.size() - 1, -1, -1):
+		if mobs_locations[i] > current_location:
+			mobs.remove(i)
+	
 	gen.randomize()
 	player = load("res://minigames/minigame4/hero.tscn").instance()
 	player.get_node("camera/gui/base/intro/text/main").text = level_name

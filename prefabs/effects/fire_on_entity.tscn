@@ -46,5 +46,5 @@ color = Color( 0.501961, 0.501961, 0.501961, 0.752941 )
 
 [node name="MultiplayerSpawnable" type="Node" parent="."]
 script = ExtResource( 1 )
-spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath("..") ]
-spawn_sync_data_properties = [ "position", "damage", "damage_ticks" ]
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath(".."), NodePath("..") ]
+spawn_sync_data_properties = [ "position", "damage", "damage_ticks", "immune_to_water" ]

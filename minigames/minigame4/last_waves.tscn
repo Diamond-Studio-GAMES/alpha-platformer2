@@ -320,7 +320,8 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 location = "4.name"
 level_name = "4.tip"
-mobs = [ ExtResource( 16 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 22 ), ExtResource( 6 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ]
+mobs = [ ExtResource( 16 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 22 ), ExtResource( 6 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ]
+mobs_locations = [ 0, 0, 3, 4, 5, 6, 7, 9, 10 ]
 
 [node name="tilemap" type="TileMap" parent="."]
 tile_set = ExtResource( 20 )

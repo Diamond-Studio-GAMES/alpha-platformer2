@@ -205,7 +205,7 @@ stats_multiplier = 7.0
 [node name="mob_shooter" parent="mobs" instance=ExtResource( 10 )]
 position = Vector2( 2224, -136 )
 GRAVITY_SCALE = -1.0
-stats_multiplier = 7.5
+stats_multiplier = 7.0
 
 [node name="blocks" type="Node2D" parent="."]
 
