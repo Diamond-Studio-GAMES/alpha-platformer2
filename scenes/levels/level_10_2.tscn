@@ -195,7 +195,7 @@ position = Vector2( 560, 320 )
 stats_multiplier = 7.0
 
 [node name="mob_knight" parent="mobs" instance=ExtResource( 19 )]
-position = Vector2( 880, -384 )
+position = Vector2( 912, -384 )
 stats_multiplier = 6.5
 
 [node name="mob_spartan" parent="mobs" instance=ExtResource( 18 )]

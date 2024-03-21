@@ -6,7 +6,7 @@ export (Vector2) var zoom = Vector2(0.4, 0.4)
 
 
 func _enter_tree():
-	connect("child_entered_tree", self, "_on_child_entered_tree")
+	get_tree().connect("node_added", self, "_on_node_added")
 
 
 func _ready():
@@ -20,6 +20,6 @@ func _ready():
 	player.get_node("camera").zoom = zoom
 
 
-func _on_child_entered_tree(child):
+func _on_node_added(child):
 	if child is Entity:
 		child.GRAVITY_SPEED *= gravity_multiplier
