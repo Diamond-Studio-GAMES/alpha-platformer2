@@ -10,9 +10,6 @@ func _enter_tree():
 
 
 func _ready():
-	for i in $mobs.get_children():
-		if i is Entity:
-			i.GRAVITY_SPEED *= gravity_multiplier
 	if MP.is_active:
 		yield($"/root/mg", "game_started")
 	yield(get_tree(), "idle_frame")

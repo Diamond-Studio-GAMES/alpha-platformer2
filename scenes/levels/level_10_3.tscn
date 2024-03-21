@@ -267,6 +267,8 @@ position = Vector2( 2928, 0 )
 
 [node name="think" parent="decor" instance=ExtResource( 8 )]
 position = Vector2( 1392, -256 )
+text = "10_3.views"
+color = Color( 1, 0, 1, 1 )
 
 [node name="borders" parent="." instance=ExtResource( 16 )]
 
