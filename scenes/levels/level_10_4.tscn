@@ -236,12 +236,15 @@ position = Vector2( 2192, 176 )
 
 [node name="jump_pad" parent="blocks" instance=ExtResource( 12 )]
 position = Vector2( 2576, 272 )
+jump_power = 450.0
 
 [node name="jump_pad2" parent="blocks" instance=ExtResource( 12 )]
 position = Vector2( 2672, 144 )
+jump_power = 450.0
 
 [node name="jump_pad3" parent="blocks" instance=ExtResource( 12 )]
 position = Vector2( 2768, 16 )
+jump_power = 450.0
 
 [node name="beartrap6" parent="blocks" instance=ExtResource( 13 )]
 position = Vector2( 3056, -80 )
