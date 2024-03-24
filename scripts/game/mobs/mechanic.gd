@@ -50,7 +50,8 @@ func do_transform():
 	$bars.hide()
 	_anim_tree["parameters/trans_shot/active"] = true
 	var node = transform_effect.instance()
-	node.global_position = Vector2(global_position.x, global_position.y + 30)
+	node.global_position = Vector2(global_position.x, global_position.y + 30 * GRAVITY_SCALE)
+	node.scale.y = GRAVITY_SCALE
 	_level.add_child(node)
 	yield(get_tree().create_timer(1.1, false), "timeout")
 	var n = to_spawn.instance()
