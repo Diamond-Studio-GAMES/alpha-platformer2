@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scripts/menu/main/menu.gd" type="Script" id=1]
 [ext_resource path="res://themes/font_headers.tres" type="DynamicFont" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://scripts/game/player/soul_color.gd" type="Script" id=18]
 [ext_resource path="res://textures/gui/soul.png" type="Texture" id=19]
 [ext_resource path="res://themes/font.tres" type="DynamicFontData" id=20]
+[ext_resource path="res://textures/effects/backgrounds/islands_bg.png" type="Texture" id=21]
 
 [sub_resource type="Animation" id=1]
 resource_name = "main"
@@ -368,7 +369,7 @@ centered = false
 self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -84, 0 )
 scale = Vector2( 1.25, 1.25 )
-texture = ExtResource( 8 )
+texture = ExtResource( 21 )
 centered = false
 
 [node name="anim" type="AnimationPlayer" parent="bg"]
