@@ -84,4 +84,5 @@ func import_data(data, clear_current):
 		for j in cf.get_section_keys(i):
 			c.set_value("save", j, cf.get_value(i, j))
 		c.save_encrypted_pass("user://saves/".plus_file(i), "apa2_save")
+	G.main_setv("reload_meta", true)
 	get_tree().reload_current_scene()

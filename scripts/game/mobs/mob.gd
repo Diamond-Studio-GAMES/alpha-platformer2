@@ -6,6 +6,7 @@ signal destroyed
 
 const X_DIFF = 32
 const Y_DIFF = 16
+const FLOOR_DIFF = 4
 const RAY_LENGTH = 320
 const DANGER_LENGTH = 112
 export (bool) var immune_to_fall_damage = false
@@ -165,6 +166,7 @@ func _process(delta):
 func do_lookup():
 	var left_x = stepify(global_position.x - 16, 32) - 16
 	var right_x = stepify(global_position.x - 16, 32) + 48
+	var center_x = stepify(global_position.x - 16, 32) + 16
 	var y = global_position.y - 32 * GRAVITY_SCALE
 	move_ray.enabled = true
 	move_ray.global_position = Vector2(left_x, y)
@@ -176,12 +178,15 @@ func do_lookup():
 	move_ray.force_raycast_update()
 	var right_ray_state = _get_ray_state()
 	var right_ray_y = move_ray.get_collision_point().y
+	move_ray.global_position = Vector2(center_x, y)
+	move_ray.force_raycast_update()
+	var floor_y = move_ray.get_collision_point().y
 	move_ray.enabled = false
 	
 	match left_ray_state:
 		RayState.OK:
 			move_left_safe = true
-			if (global_position.y - left_ray_y) * GRAVITY_SCALE >= 0 and \
+			if (floor_y - left_ray_y) * GRAVITY_SCALE >= FLOOR_DIFF and \
 					_move_direction.x < 0:
 				jump()
 		RayState.HIGH:
@@ -193,7 +198,7 @@ func do_lookup():
 	match right_ray_state:
 		RayState.OK:
 			move_right_safe = true
-			if (global_position.y - right_ray_y) * GRAVITY_SCALE >= 0 and \
+			if (floor_y - right_ray_y) * GRAVITY_SCALE >= FLOOR_DIFF and \
 					_move_direction.x > 0:
 				jump()
 		RayState.HIGH:

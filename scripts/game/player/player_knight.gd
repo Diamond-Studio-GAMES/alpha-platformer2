@@ -125,7 +125,7 @@ func _process(delta):
 			attack()
 		if Input.is_action_just_pressed("ulti"):
 			ulti()
-		if Input.is_action_just_pressed("gadget") and have_gadget:
+		if Input.is_action_just_pressed("gadget"):
 			use_gadget()
 
 

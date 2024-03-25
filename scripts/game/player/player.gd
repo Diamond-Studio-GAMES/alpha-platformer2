@@ -727,6 +727,8 @@ func idle_heal():
 
 
 func use_gadget():
+	if not have_gadget:
+		return false
 	if gadget_cooldown > 0 or gadget_count <= 0 or current_health <= 0 or not can_control or is_stunned or _is_drinking or _is_ultiing:
 		return false
 	if hate_refuse():

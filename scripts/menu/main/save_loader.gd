@@ -49,6 +49,9 @@ func _ready():
 		id_to_delete = G.main_getv("remove_save", "")
 		confirm_delete()
 		G.main_setv("remove_save", "")
+	if G.main_getv("reload_meta", false):
+		G.main_setv("reload_meta", false)
+		reload_meta_from_saves()
 	
 	list_saves()
 
