@@ -726,7 +726,6 @@ func init_values():
 		for i in range(6):
 			if G.getv("total_amulet_frags_"+G.AMULET[i], 0) < G.AMULET_MAX[i]:
 				amulet_types.append(G.AMULET[i])
-	G.save()
 
 
 func open_box():
@@ -847,6 +846,7 @@ func open_boxes(count, power_count, ulti_count):
 		loot.erase("soul_power")
 	if loot["class"].empty():
 		loot.erase("class")
+	G.save()
 	return loot
 
 

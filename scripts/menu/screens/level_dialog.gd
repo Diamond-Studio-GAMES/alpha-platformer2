@@ -148,6 +148,7 @@ func show_d_win():
 		set_new = false
 	if set_new:
 		G.setv("level", next_lvl)
+		G.save()
 	for i in $classes2.get_children():
 		if i.name != G.getv("selected_class", "player"):
 			i.hide()

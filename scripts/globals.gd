@@ -367,6 +367,7 @@ func receive_loot(looted):
 	for i in rec:
 		loot_to_show[i] = rec[i]
 	ach.check(Achievements.PROZAPASS)
+	save()
 	if not loot_to_show.empty():
 		var n = box.instance()
 		get_tree().root.add_child(n)

@@ -3661,6 +3661,9 @@ script/source = "extends Area2D
 
 func _on_area_start_body_entered(body):
 	$\"../anim\".play(\"up\")
+	$\"../../../tilemap\".set_cell(97, -3, 52)
+	$\"../../../tilemap\".set_cell(97, -2, 52)
+	$\"../../../tilemap\".set_cell(97, -1, 52)
 "
 
 [sub_resource type="RectangleShape2D" id=101]

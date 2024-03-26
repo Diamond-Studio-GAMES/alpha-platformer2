@@ -754,7 +754,6 @@ func generate_offers():
 		if exists:
 			continue
 		G.setv("offers", G.getv("offers", []) + [offer])
-		G.save()
 		i += 1
 	var free_receives = [{"gold_box":1}, {"tickets":gen.randi_range(2, 3)}, {"gems":gen.randi_range(1, 2)}, {"coins":10*gen.randi_range(15, 30)}]
 	if not power_classes.empty():
@@ -770,10 +769,10 @@ func generate_offers():
 		free_receives.append({"potions1": 1})
 	free_receives.shuffle()
 	G.setv("offers", G.getv("offers", []) + [{"costs":{}, "receives":free_receives[0], "id" : 993, "name" : tr("shop.offer.gift")}])
-	G.save()
 	G.setv("offers_upd", Time.get_date_dict_from_system())
 	G.setv("offers_upd_time", Time.get_unix_time_from_system())
 	G.setv("collected_ad_bonus", false)
+	G.save()
 	show_offers()
 
 

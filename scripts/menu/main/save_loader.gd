@@ -220,7 +220,6 @@ func enter_create():
 
 
 func cancel_settings():
-	G.save()
 	if $settings/enter.is_active() or $saves/enter.is_active():
 		return
 	$settings/enter.interpolate_property($settings, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.5)
@@ -255,11 +254,9 @@ func enter_settings():
 func lang():
 	if G.main_getv("lang", "ru") == "ru":
 		G.main_setv("lang", "en")
-		G.save()
 		TranslationServer.set_locale(G.main_getv("lang", "en"))
 	else:
 		G.main_setv("lang", "ru")
-		G.save()
 		TranslationServer.set_locale(G.main_getv("lang", "ru"))
 
 

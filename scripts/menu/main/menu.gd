@@ -162,11 +162,9 @@ func license():
 func language():
 	if G.getv("lang", "ru") == "ru":
 		G.setv("lang", "en")
-		G.save()
 		TranslationServer.set_locale(G.getv("lang", "en"))
 	else:
 		G.setv("lang", "ru")
-		G.save()
 		TranslationServer.set_locale(G.getv("lang", "ru"))
 
 

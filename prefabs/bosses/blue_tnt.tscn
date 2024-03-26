@@ -66,8 +66,7 @@ max_distance = 800.0
 bus = "sfx"
 
 [node name="particles" type="CPUParticles2D" parent="explosion"]
-emitting = false
-amount = 60
+amount = 30
 lifetime = 10.0
 one_shot = true
 explosiveness = 1.0
