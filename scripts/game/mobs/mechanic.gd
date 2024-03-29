@@ -40,8 +40,6 @@ func attack():
 
 func do_transform():
 	ms.sync_call(self, "do_transform")
-	collision_layer = 0
-	collision_mask = 0b1
 	z_index = 20
 	immune_counter += 1
 	can_turn = false

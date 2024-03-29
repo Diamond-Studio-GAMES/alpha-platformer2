@@ -353,6 +353,7 @@ MP="*res://scripts/game/multiplayer/multiplayer.gd"
 
 [debug]
 
+settings/fps/force_fps=60
 gdscript/warnings/enable=false
 gdscript/warnings/unused_class_variable=true
 gdscript/warnings/unused_argument=false
