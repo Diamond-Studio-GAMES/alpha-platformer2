@@ -37,7 +37,7 @@ boss.follower1.defeat,Егор: Ну вот и всё…,"Egor: Now, that’s al
 boss.follower2,Максим,Max
 boss.follower2.mercy,"Максим: Но его… Нет, ты сможешь!","Max: But him… No, you can!"
 boss.follower2.defeat,"Максим: Возможно, сейчас ты и победил…","Max: Maybe, you won this time…"
-boss.main,,
+boss.main,Глеб,Gleb
 miss.miss,МИМО,MISS
 location.field,Поле,Field
 location.forest,Лес,Forest
@@ -416,3 +416,15 @@ Red eyes are the only thing left of it."""
 10_9.meteor.5,"«Нет… Не всё черное есть тёмная энергия… Есть ещё так называемая НЕНАВИСТЬ,
 которая хоть и даёт силу, но отбирает контроль над собой…»","""No... Not all black is dark energy... There is also the so-called HATE,
 which, although it gives strength, takes away control over yourself..."""
+10_10.boss.death.0,Глеб: Тебе не победить последователя Дракона!,Gleb: You can't defeat a follower of the Dragon!
+10_10.boss.death.1,Глеб: Хорошая попытка!,Gleb: Good try!
+10_10.boss.death.2,Глеб: %s — вот чего тебе не хватило.,Gleb: %s — that’s not enough in you.
+10_10.boss.death.det,Глеб: Ты ещё вернёшься.,Gleb: You will return.
+10_10.boss.death.hdc,"Глеб: Наконец-то, я вернул контроль над временем…","Gleb: Finally, I have regained control over timeline…"
+10_10.boss.reload,Глеб: Зачем ты загрузил% сохранение?.. Ладно.,Gleb: Why did you load your save?.. Okay.
+10_10.boss.start.again,"Глеб: Хотя… Ты же здесь не первый раз, ведь так?","Gleb: Although… It's not your first time here, is it?"
+10_10.boss.0,Глеб: Ты наконец-то здесь.,"Gleb: Finally, you’re here."
+10_10.boss.1,Глеб: Ты каким-то образом победил% всех моих приспешников…,Gleb: You somehow defeated all my minions…
+10_10.boss.start,Глеб: Но правда за мной: ты не уничтожишь метеорит!,Gleb: But the truth is behind me: You will not destroy the meteorite!
+10_10.meteorit,Метеорит ->,Meteorite ->
+10_10.forward,Вперёд.,Forward.

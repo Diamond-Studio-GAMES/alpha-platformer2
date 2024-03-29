@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/uv.png-46695764a4585fbe9787626ca57871bd.stex"
+path="res://.import/soul_attack.png-36f8e9ef4c763a5f3b8f1e33951ffcbc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/bosses/gleb/uv.png"
-dest_files=[ "res://.import/uv.png-46695764a4585fbe9787626ca57871bd.stex" ]
+source_file="res://textures/bosses/gleb/soul_attack.png"
+dest_files=[ "res://.import/soul_attack.png-36f8e9ef4c763a5f3b8f1e33951ffcbc.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

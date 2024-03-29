@@ -50,8 +50,7 @@ func _ready():
 		G.dialog_in_menu = ""
 		$dialog.popup_centered()
 	
-	if not G.hasv("hate_level"):
-		G.calculate_hate_level()
+	G.calculate_hate_level()
 	if not G.getv("rated", false):
 		var curr_lvl = G.getv("level", "1_1")
 		var lvls = curr_lvl.split("_")

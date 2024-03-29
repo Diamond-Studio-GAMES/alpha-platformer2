@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pin.png-3a1f233eb77a4141cd5985cbe6b65c0e.stex"
+path="res://.import/sword.png-f9aa417e83466c9952cc655e5f1bc7a6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/bosses/gleb/pin.png"
-dest_files=[ "res://.import/pin.png-3a1f233eb77a4141cd5985cbe6b65c0e.stex" ]
+source_file="res://textures/bosses/gleb/sword.png"
+dest_files=[ "res://.import/sword.png-f9aa417e83466c9952cc655e5f1bc7a6.stex" ]
 
 [params]
 

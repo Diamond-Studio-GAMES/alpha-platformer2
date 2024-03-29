@@ -91,7 +91,8 @@ func start_fight():
 
 
 remote func move_player_to_start():
-	player.global_position = $"../../tilemap".map_to_world(teleport_position) + Vector2.ONE * 16
+	if player.current_health > 0:
+		player.global_position = $"../../tilemap".map_to_world(teleport_position) + Vector2.ONE * 16
 
 
 func get_hit(area):

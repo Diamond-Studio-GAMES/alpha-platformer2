@@ -109,7 +109,11 @@ var achievements = {
 		"name" : "achv.boss9",
 		"desc" : "achv.boss9.desc"
 	},
-	# BOSS 10
+	BOSS10 : {
+		"icon" : load("res://textures/achievements/boss10.png"),
+		"name" : "achv.boss10",
+		"desc" : "achv.boss10.desc"
+	},
 	# Upgrade achievements
 	WHAT_IS_IT : {
 		"icon" : load("res://textures/achievements/first_class.png"),
