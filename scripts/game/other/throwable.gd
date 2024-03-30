@@ -14,6 +14,8 @@ enum EntityType {
 }
 
 
+signal destroyed(position)
+
 export (float) var SPEED = 150
 export (float) var destroy_time = 3
 export (Vector2) var angle = Vector2.ZERO
@@ -111,6 +113,7 @@ func destroy_it(destroy_reason, entity_hit = EntityType.ENEMY):
 			get_parent().add_child(n)
 			n.play()
 			get_tree().create_tween().set_pause_mode(SceneTreeTween.TWEEN_PAUSE_STOP).tween_callback(n, "queue_free").set_delay(1.5)
+	emit_signal("destroyed", global_position)
 	queue_free()
 
 

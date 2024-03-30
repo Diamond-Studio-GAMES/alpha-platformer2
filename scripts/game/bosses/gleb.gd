@@ -29,6 +29,7 @@ var soul_mode = load("res://prefabs/bosses/soul_mode.tscn")
 var soul_attack_eight = load("res://prefabs/bosses/soul_attack_eight.tscn")
 var soul_attack_bullet = load("res://prefabs/bosses/soul_attack_bullet.tscn")
 var soul_attack_area = load("res://prefabs/bosses/soul_attack_area.tscn")
+var knife = load("res://prefabs/bosses/knife_final.tscn")
 onready var timer = $timer
 
 
@@ -136,7 +137,7 @@ func do_attack():
 		current_phase = phase
 		return
 	var attacks = phases_attacks[phase].duplicate()
-	if not is_time_stopped and randi() % 2 == 0 and alive_mobs.empty():
+	if not is_time_stopped and randi() % 5 > 1 and alive_mobs.empty():
 		attacks.append("enter_soul_mode")
 	if phase == 3 and not is_time_stopped:
 		attacks.append("stop_time")
@@ -181,7 +182,17 @@ func shield():
 
 
 func knife():
-	pass
+	ms.sync_call(self, "knife")
+	next_attack_time += 1.5
+	anim.play("knife_throw")
+	if not MP.auth(self):
+		return
+	yield(get_tree().create_timer(0.7, false), "timeout")
+	var kf = knife.instance()
+	kf.global_position = $visual/body/arm_right/hand/knife.global_position
+	var direction = (global_position + Vector2.UP * 64).direction_to(player_target.global_position)
+	kf.get_node("projectile").rotation = direction.angle()
+	get_tree().current_scene.add_child(kf, true)
 
 
 func big_ball():
@@ -215,7 +226,7 @@ func do_soul_attack():
 		2:
 			var list = range(4)
 			list.shuffle()
-			for i in 2:
+			for i in 3:
 				var saa = soul_attack_area.instance()
 				$soul_mode.add_child(saa)
 				saa.global_position = $soul_mode/soul_point.global_position - Vector2.RIGHT * \
