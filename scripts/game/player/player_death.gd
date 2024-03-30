@@ -193,6 +193,8 @@ func use_gadget():
 	immune_counter += 1
 	yield(get_tree().create_timer(0.5), "timeout")
 	var time_to_stop = 4 + floor(curr_lvl_loc / 2.0)
+	if G.current_level == "10_10":
+		time_to_stop = 5
 	yield(get_tree().create_timer(time_to_stop / time_scale), "timeout")
 	effect.get_node("anim").play("ZERO")
 	yield(get_tree().create_timer(0.5), "timeout")

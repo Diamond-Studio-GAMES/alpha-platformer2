@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://sounds/sfx/mob_death.wav" type="AudioStream" id=1]
 [ext_resource path="res://prefabs/effects/background_islands.tscn" type="PackedScene" id=2]
@@ -32,14 +32,13 @@
 [ext_resource path="res://textures/effects/other/star.png" type="Texture" id=30]
 [ext_resource path="res://sounds/sfx/TIMESTOP.ogg" type="AudioStream" id=31]
 [ext_resource path="res://prefabs/mobs/doctor.tscn" type="PackedScene" id=32]
-[ext_resource path="res://prefabs/mobs/werewolf_human.tscn" type="PackedScene" id=33]
+[ext_resource path="res://prefabs/mobs/magician.tscn" type="PackedScene" id=33]
 [ext_resource path="res://scripts/game/mobs/mob.gd" type="Script" id=34]
 [ext_resource path="res://prefabs/mobs/shooter.tscn" type="PackedScene" id=35]
 [ext_resource path="res://prefabs/blocks/tileset.tres" type="TileSet" id=36]
 [ext_resource path="res://prefabs/mobs/spartan.tscn" type="PackedScene" id=37]
 [ext_resource path="res://textures/blocks/star_end.png" type="Texture" id=38]
 [ext_resource path="res://prefabs/blocks/think.tscn" type="PackedScene" id=39]
-[ext_resource path="res://prefabs/mobs/mechanic.tscn" type="PackedScene" id=40]
 [ext_resource path="res://prefabs/mobs/sportsman.tscn" type="PackedScene" id=41]
 [ext_resource path="res://prefabs/mobs/knife_man.tscn" type="PackedScene" id=42]
 [ext_resource path="res://prefabs/mobs/knight_mob.tscn" type="PackedScene" id=43]
@@ -734,7 +733,7 @@ tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 0, 1.2 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -746,7 +745,7 @@ tracks/17/loop_wrap = true
 tracks/17/imported = false
 tracks/17/enabled = true
 tracks/17/keys = {
-"times": PoolRealArray( 0, 1, 1.2, 1.5 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
@@ -767,7 +766,7 @@ tracks/18/keys = {
 "start_offset": 0.0,
 "stream": null
 } ],
-"times": PoolRealArray( 1, 1.8 )
+"times": PoolRealArray( 0.2, 1 )
 }
 tracks/19/type = "value"
 tracks/19/path = NodePath("sfx:pitch_scale")
@@ -776,7 +775,7 @@ tracks/19/loop_wrap = true
 tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = {
-"times": PoolRealArray( 1, 1.3, 1.8 ),
+"times": PoolRealArray( 0.2, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.8, 0.7, 2.0 ]
@@ -788,7 +787,7 @@ tracks/20/loop_wrap = true
 tracks/20/imported = false
 tracks/20/enabled = true
 tracks/20/keys = {
-"times": PoolRealArray( 1, 1.3, 1.7, 2 ),
+"times": PoolRealArray( 0.2, 0.5, 0.9, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ -10.0, 0.0, 0.0, -60.0 ]
@@ -1000,18 +999,6 @@ tracks/16/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
-}
-tracks/17/type = "value"
-tracks/17/path = NodePath("visual/body/head/helmet:visible")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
 }
 
 [sub_resource type="Animation" id=120]
@@ -2289,7 +2276,7 @@ barrier_left_start = Vector2( 53, -1 )
 barrier_left_height = 32
 teleport_position = Vector2( 54, -2 )
 phases_points = [ Vector2( 101, 3 ), Vector2( 129, -5 ) ]
-mobs_to_spawn = [ ExtResource( 32 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 40 ), ExtResource( 37 ), ExtResource( 41 ), ExtResource( 33 ), ExtResource( 35 ) ]
+mobs_to_spawn = [ ExtResource( 32 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 37 ), ExtResource( 41 ), ExtResource( 35 ), ExtResource( 33 ) ]
 
 [node name="visual" type="Node2D" parent="mobs/gleb"]
 scale = Vector2( -3, 3 )
@@ -2448,7 +2435,7 @@ anims/time_stop = SubResource( 118 )
 next/phase2 = "idle"
 next/phase3 = "idle"
 next/time_stop = "idle"
-blend_times = [ "ball", "idle", 0.3, "balls", "idle", 0.3, "circle_balls", "idle", 0.3, "falling_balls", "idle", 0.3, "floor", "idle", 0.3, "idle", "death", 0.3, "idle", "idle", 0.3, "time_stop", "idle", 0.3 ]
+blend_times = [ "idle", "death", 0.3, "idle", "idle", 0.3, "time_stop", "idle", 0.3 ]
 
 [node name="mob_gl" type="KinematicBody2D" parent="mobs/gleb"]
 collision_layer = 5
@@ -2474,8 +2461,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/gleb/mob_gl/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/gleb/mob_gl/visual/body"]
-position = Vector2( 0, 2.15967 )
-scale = Vector2( 1.25, 1.11502 )
+scale = Vector2( 1.25, 1.22194 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/gleb/mob_gl"]
@@ -2699,8 +2685,8 @@ one_shot = true
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="mobs/gleb"]
 stream = ExtResource( 31 )
-volume_db = -60.0
-pitch_scale = 2.0
+volume_db = -10.0
+pitch_scale = 0.8
 max_distance = 800.0
 bus = "sfx"
 

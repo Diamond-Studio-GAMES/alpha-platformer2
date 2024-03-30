@@ -1,0 +1,119 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/game/player/soul_color.gd" type="Script" id=1]
+[ext_resource path="res://textures/gui/soul.png" type="Texture" id=2]
+[ext_resource path="res://themes/font_standard.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scripts/game/bosses/soul_mode.gd" type="Script" id=4]
+
+[sub_resource type="SegmentShape2D" id=122]
+a = Vector2( -160, 0 )
+b = Vector2( 160, 0 )
+
+[sub_resource type="SegmentShape2D" id=123]
+a = Vector2( 0, -96 )
+b = Vector2( 0, 96 )
+
+[sub_resource type="CircleShape2D" id=124]
+radius = 8.0
+
+[sub_resource type="Animation" id=125]
+resource_name = "hurt"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=126]
+resource_name = "tip"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="soul_mode" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="border_line" type="Line2D" parent="."]
+self_modulate = Color( 1, 1, 1, 0.25098 )
+position = Vector2( -193, -21 )
+points = PoolVector2Array( -160, -96, -160, 96, 160, 96, 160, -96, -162, -96 )
+width = 4.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="border" type="StaticBody2D" parent="."]
+position = Vector2( -193, -21 )
+collision_layer = 256
+collision_mask = 128
+
+[node name="up" type="CollisionShape2D" parent="border"]
+position = Vector2( 0, -96 )
+shape = SubResource( 122 )
+
+[node name="down" type="CollisionShape2D" parent="border"]
+position = Vector2( 0, 96 )
+shape = SubResource( 122 )
+
+[node name="left" type="CollisionShape2D" parent="border"]
+position = Vector2( -160, 0 )
+shape = SubResource( 123 )
+
+[node name="right" type="CollisionShape2D" parent="border"]
+position = Vector2( 160, 0 )
+shape = SubResource( 123 )
+
+[node name="soul_point" type="Position2D" parent="."]
+position = Vector2( -193, -21 )
+
+[node name="camera" type="Camera2D" parent="."]
+position = Vector2( -193, -21 )
+zoom = Vector2( 0.6, 0.6 )
+
+[node name="soul" type="KinematicBody2D" parent="."]
+position = Vector2( -193, -21 )
+collision_layer = 128
+collision_mask = 768
+
+[node name="shape" type="CollisionShape2D" parent="soul"]
+position = Vector2( 0, -1 )
+shape = SubResource( 124 )
+disabled = true
+
+[node name="sprite" type="Sprite" parent="soul"]
+z_index = 20
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="anim" type="AnimationPlayer" parent="soul"]
+anims/hurt = SubResource( 125 )
+
+[node name="label" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = -313.0
+margin_right = 167.0
+margin_bottom = 24.0
+grow_horizontal = 2
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 3 )
+text = "10_10.soul.tip"
+align = 1
+
+[node name="anim" type="AnimationPlayer" parent="label"]
+anims/tip = SubResource( 126 )
