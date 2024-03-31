@@ -64,12 +64,12 @@ anims/tween = SubResource( 2 )
 [node name="MultiplayerSynchronizer" type="Node" parent="projectile"]
 script = ExtResource( 3 )
 unreliable_sync_node_paths = [ NodePath(".."), NodePath(".."), NodePath("..") ]
-unreliable_sync_properties_names = [ "global_position", "angle", "rotation_degrees" ]
+unreliable_sync_properties_names = [ "position", "angle", "rotation_degrees" ]
 
 [node name="MultiplayerSpawnable" type="Node" parent="."]
 script = ExtResource( 1 )
 spawn_sync_data_node_paths = [ NodePath("../projectile"), NodePath("../projectile"), NodePath("..") ]
-spawn_sync_data_properties = [ "global_position", "rotation_degrees", "global_position" ]
+spawn_sync_data_properties = [ "position", "rotation_degrees", "position" ]
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )

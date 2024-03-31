@@ -4,7 +4,7 @@ menu.exit,Выйти,Quit
 menu.achvs,Достижения,Achievements
 menu.settings,Настройки,Settings
 menu.about,Об игре,About
-menu.lang,Язык,Language
+menu.lang,English,Русский
 menu.more,Ещё игры,More games
 menu.change,Сменить,Change
 menu.cancel,Отмена,Cancel
@@ -47,14 +47,15 @@ menu.licenses.text,"Эта игра использует движок Godot Engi
 menu.s_thanks.text,"Вдохновлено Brawl Stars, Match Land, Alpha Platformer Adventure.
 
 Говорю спасибо:
-Кириллу - как хорошему другу.
-Андрею - за его бесконечную критику и тестировку.
-Матвею - за очень хорошую поддержку.
-Фёдору - за поддержку и материальное вложение. Без Фёдора наших игр не было бы в Google Play.
-Арсению - за музыку, поддержку и заинтересованность.
-Гоше - за страданиями над моей первой игрой...
-Вадиму - за тестирование.
-Учитель физики - Гордон Глеб Владимирович.
+Кириллу — как хорошему другу.
+Андрею — за его бесконечную критику и тестировку.
+Матвею — за очень хорошую поддержку.
+Фёдору — за поддержку и материальное вложение. Без Фёдора наших игр не было бы в Google Play.
+Арсению — за музыку, поддержку и заинтересованность.
+Гоше — за страданиями над моей первой игрой...
+Вадиму — за тестирование.
+Мясным чипсам — за Рому и Егора.
+Учитель физики — Гордон Глеб Владимирович.
 И всем тем, кто заинтересовался бета-версиями этой игры.
 Спасибо и тебе, игрок.
 
@@ -68,6 +69,7 @@ Fedor — for support and material investment. Without Fedor, our games would no
 Arseniy — for music, support and interest.
 Gosha — for suffering over my first game…
 Vadim — for testing.
+Meat chips — for Roma and Egor.
 Physics teacher — Gordon Gleb Vladimirovich.
 And to all those who are interested in the beta versions of this game.
 Thank you, too, player.

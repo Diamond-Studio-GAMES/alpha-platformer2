@@ -19,7 +19,9 @@ export(Array, Vector2) var phases_points = []
 export(Array, PackedScene) var mobs_to_spawn = []
 var defeat_phrases = [tr("10_10.boss.death.0"), tr("10_10.boss.death.1")]
 var is_time_stopped = false
+var time_stopped_attacks = 0
 var is_soul_free = false
+var is_shield_up = false
 var current_phase = 1
 var immune_timer = -1
 var mobs_idxs = []
@@ -30,6 +32,7 @@ var soul_attack_eight = load("res://prefabs/bosses/soul_attack_eight.tscn")
 var soul_attack_bullet = load("res://prefabs/bosses/soul_attack_bullet.tscn")
 var soul_attack_area = load("res://prefabs/bosses/soul_attack_area.tscn")
 var knife = load("res://prefabs/bosses/knife_final.tscn")
+var ball = load("res://prefabs/bosses/big_redball.tscn")
 onready var timer = $timer
 
 
@@ -113,15 +116,15 @@ func get_phase():
 	if health_left <= 0:
 		return -1
 	elif health_left < 0.33:
-		next_attack_time_min = 0.65
-		next_attack_time_max = 1.5
+		next_attack_time_min = 0.6
+		next_attack_time_max = 1.4
 		return 3
 	elif health_left < 0.67:
-		next_attack_time_min = 0.8
-		next_attack_time_max = 1.8
+		next_attack_time_min = 0.75
+		next_attack_time_max = 1.6
 		return 2
-	next_attack_time_min = 1
-	next_attack_time_max = 2
+	next_attack_time_min = 0.9
+	next_attack_time_max = 1.8
 	return 1
 
 
@@ -132,15 +135,25 @@ func do_attack():
 	if is_soul_free:
 		do_soul_attack()
 		return
+	if is_time_stopped:
+		if time_stopped_attacks == 2:
+			zero()
+			return
+		var vars = ["sword", "knife", "big_ball"]
+		vars.shuffle()
+		call(vars[0])
+		time_stopped_attacks += 1
+		return
 	if phase != current_phase:
 		switch_to_phase(phase)
 		current_phase = phase
 		return
 	var attacks = phases_attacks[phase].duplicate()
-	if not is_time_stopped and randi() % 5 > 1 and alive_mobs.empty():
-		attacks.append("enter_soul_mode")
-	if phase == 3 and not is_time_stopped:
-		attacks.append("stop_time")
+	if alive_mobs.empty():
+		if randi() % (4 - current_phase) == 0:
+			attacks.append("enter_soul_mode")
+		if phase == 3:
+			attacks.append("stop_time")
 	attacks.shuffle()
 	call(attacks[0])
 
@@ -174,37 +187,88 @@ func spawn_mob(idx, position):
 
 
 func sword():
-	pass
+	ms.sync_call(self, "sword")
+	next_attack_time += 2
+	anim.play("sword")
 
 
 func shield():
-	pass
+	ms.sync_call(self, "shield")
+	next_attack_time += 2
+	anim.play("shield")
+	yield(get_tree().create_timer(0.3, false), "timeout")
+	mob.immune_counter += 1
+	is_shield_up = true
+	yield(get_tree().create_timer(1.5, false), "timeout")
+	if is_shield_up:
+		is_shield_up = false
+		mob.immune_counter -= 1
 
 
 func knife():
 	ms.sync_call(self, "knife")
 	next_attack_time += 1.5
 	anim.play("knife_throw")
+
+
+func summon_knife():
 	if not MP.auth(self):
 		return
-	yield(get_tree().create_timer(0.7, false), "timeout")
 	var kf = knife.instance()
 	kf.global_position = $visual/body/arm_right/hand/knife.global_position
-	var direction = (global_position + Vector2.UP * 64).direction_to(player_target.global_position)
+	var direction = $visual/body/arm_right/hand/knife.global_position.direction_to(player_target.global_position)
 	kf.get_node("projectile").rotation = direction.angle()
 	get_tree().current_scene.add_child(kf, true)
 
 
 func big_ball():
-	pass
+	ms.sync_call(self, "big_ball")
+	next_attack_time += 1.4
+	anim.play("ball")
+
+
+func summon_ball():
+	if not MP.auth(self):
+		return
+	var b = ball.instance()
+	b.global_position = $visual/body/arm_left/hand/ball.global_position
+	var direction = $visual/body/arm_left/hand/ball.global_position.direction_to(player_target.global_position)
+	b.rotation = direction.angle()
+	get_tree().current_scene.add_child(b, true)
 
 
 func stop_time():
-	pass
+	ms.sync_call(self, "stop_time")
+	next_attack_time += 2.5
+	anim.play("time_stop")
+	mob.immune_counter += 1
+	yield(get_tree().create_timer(1, false), "timeout")
+	pause_mode = PAUSE_MODE_PROCESS
+	get_tree().paused = true
+	Physics2DServer.set_active(true)
+	VisualServer.set_shader_time_scale(0)
+	is_time_stopped = true
+	time_stopped_attacks = 0
+
+
+func zero():
+	ms.sync_call(self, "zero")
+	$THEWORLD/anim.play("ZERO")
+	yield(get_tree().create_timer(0.5), "timeout")
+	pause_mode = PAUSE_MODE_INHERIT
+	get_tree().paused = false
+	mob.immune_counter -= 1
+	VisualServer.set_shader_time_scale(1)
+	is_time_stopped = false
 
 
 func enter_soul_mode():
 	ms.sync_call(self, "enter_soul_mode")
+	next_attack_time += 1
+	anim.play("soul_mode")
+	yield(get_tree().create_timer(0.5, false), "timeout")
+	if not can_mob_move():
+		return
 	var sm = soul_mode.instance()
 	sm.player = player
 	sm.connect("soul_returned", self, "_on_soul_returned")
@@ -240,6 +304,13 @@ func do_soul_attack():
 			sae.rotation = rand_range(-PI, PI)
 
 
+func parry():
+	if is_shield_up:
+		mob.immune_counter -= 1
+	is_shield_up = false
+	anim.play("shield_parry")
+
+
 func _on_soul_returned():
 	is_soul_free = false
 	mob.immune_counter -= 1
@@ -249,3 +320,8 @@ func _on_mob_died(mob):
 	alive_mobs.erase(mob)
 	if alive_mobs.empty() and immune_timer > -0.5:
 		immune_timer = -0.1
+
+
+func _on_blocked_damage():
+	if is_shield_up:
+		parry()

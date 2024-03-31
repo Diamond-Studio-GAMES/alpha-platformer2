@@ -7,7 +7,7 @@ const SOUL_SPEED = 192
 const IDLE_DISTANCE_SQUARED = 16
 var player: Player
 var is_controlling = false
-var time = 10
+var time = 7
 var _timer = 0
 var _immune_timer = 0
 var _mouse_pressed = false

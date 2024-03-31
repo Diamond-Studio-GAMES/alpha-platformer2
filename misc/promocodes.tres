@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=54 format=2]
+[gd_resource type="Resource" load_steps=60 format=2]
 
 [ext_resource path="res://scripts/menu/other/promocode.gd" type="Script" id=1]
 
@@ -580,6 +580,78 @@ custom_method = ""
 custom_method_pass = ""
 multiple_uses = false
 
+[sub_resource type="CryptoKey" id=53]
+script = ExtResource( 1 )
+id = "егапро"
+reward = {
+"diamond_box": 1,
+"gems": 4
+}
+comment = "Всем привет, я Егапро, и сейчас мы будем делать обзор на вентилятор моего дедушки."
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=54]
+script = ExtResource( 1 )
+id = "мясныечипсы"
+reward = {
+"coins": 999
+}
+comment = "ГЫЫЫЖА."
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=55]
+script = ExtResource( 1 )
+id = "аначасахнольноль"
+reward = {
+"coins": 0,
+"gems": 0
+}
+comment = "Bruh."
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=56]
+script = ExtResource( 1 )
+id = "ilovegodot"
+reward = {
+"coins": 415,
+"gems": 4
+}
+comment = "i <3 u"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=57]
+script = ExtResource( 1 )
+id = "светофор"
+reward = {
+"coins": 2,
+"gems": 3,
+"tickets": 1
+}
+comment = "MacOS - кал."
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
+[sub_resource type="CryptoKey" id=58]
+script = ExtResource( 1 )
+id = "zv"
+reward = {
+"coins": 1200,
+"gems": 6
+}
+comment = "Уважаю!"
+custom_method = ""
+custom_method_pass = ""
+multiple_uses = false
+
 [sub_resource type="GDScript" id=1]
 script/source = "extends Resource
 
@@ -589,4 +661,4 @@ export (Array, CryptoKey) var promocodes = []
 
 [resource]
 script = SubResource( 1 )
-promocodes = [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 46 ), SubResource( 16 ), SubResource( 17 ), SubResource( 15 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ]
+promocodes = [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 46 ), SubResource( 16 ), SubResource( 17 ), SubResource( 15 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ) ]

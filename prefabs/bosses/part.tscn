@@ -38,7 +38,7 @@ tracks/1/keys = {
 
 [node name="part" type="Area2D" groups=["spawnable"]]
 script = ExtResource( 1 )
-damage = 100
+damage = 80
 is_enemy_attack = true
 lifetime = 0.0
 
@@ -56,9 +56,9 @@ anims/remove = SubResource( 2 )
 [node name="MultiplayerSpawnable" type="Node" parent="."]
 script = ExtResource( 3 )
 spawn_sync_data_node_paths = [ NodePath(".."), NodePath("..") ]
-spawn_sync_data_properties = [ "global_position", "velocity" ]
+spawn_sync_data_properties = [ "position", "velocity" ]
 
 [node name="MultiplayerSynchronizer" type="Node" parent="."]
 script = ExtResource( 4 )
 unreliable_sync_node_paths = [ NodePath(".."), NodePath("..") ]
-unreliable_sync_properties_names = [ "global_position", "velocity" ]
+unreliable_sync_properties_names = [ "position", "velocity" ]

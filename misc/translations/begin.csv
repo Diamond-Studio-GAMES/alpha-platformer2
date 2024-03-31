@@ -6,7 +6,7 @@ sl.create,СОЗДАТЬ,CREATE
 sl.settings.volm,Громкость музыки:,Music volume:
 sl.settings.vols,Громкость звуков:,SFX volume:
 sl.settings.fullscr,Полный экран,Fullscreen
-sl.settings.lang,СМЕНИТЬ ЯЗЫК,CHANGE LANGUAGE
+sl.settings.lang,ENGLISH,РУССКИЙ
 sl.create.pname,Введите имя…,Enter name…
 gender,Пол,Gender
 gender.male,Мужской,Male
