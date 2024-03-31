@@ -45,7 +45,8 @@ func _physics_process(delta):
 
 
 func shoot():
-	player.get_node("MultiplayerSynchronizer").sync_call(self, "shoot")
+	player.ms.sync_call(self, "shoot")
+	$sfx.play()
 	if MP.has_multiplayer_authority(self):
 		var node = bullet.instance()
 		node.global_position = $shoot_point.global_position

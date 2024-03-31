@@ -1,13 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
-[ext_resource path="res://minigames/minigame7/sfx/throw.wav" type="AudioStream" id=2]
 [ext_resource path="res://minigames/minigame7/weapons/bullet.gd" type="Script" id=3]
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=4]
 [ext_resource path="res://minigames/minigame7/images/knife.png" type="Texture" id=5]
-
-[sub_resource type="AudioStreamRandomPitch" id=1]
-audio_stream = ExtResource( 2 )
 
 [node name="knife_projectile" type="Area2D" groups=["spawnable"]]
 collision_layer = 16
@@ -33,11 +29,5 @@ auto_despawn = false
 [node name="polygon" type="CollisionPolygon2D" parent="."]
 position = Vector2( 60, 0 )
 polygon = PoolVector2Array( 0, -10, 10, 0, 0, 10 )
-
-[node name="sfx" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource( 1 )
-volume_db = 6.0
-autoplay = true
-bus = "sfx"
 
 [connection signal="body_entered" from="." to="." method="body_entered"]

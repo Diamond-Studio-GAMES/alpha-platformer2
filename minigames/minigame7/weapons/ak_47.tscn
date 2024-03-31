@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://minigames/minigame7/weapons/gun.gd" type="Script" id=1]
 [ext_resource path="res://minigames/minigame7/images/shot_effect.png" type="Texture" id=2]
 [ext_resource path="res://minigames/minigame7/images/ak_47.png" type="Texture" id=3]
+[ext_resource path="res://minigames/minigame7/sfx/shot.wav" type="AudioStream" id=4]
+
+[sub_resource type="AudioStreamRandomPitch" id=2]
+audio_stream = ExtResource( 4 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "shot"
@@ -30,6 +34,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0.5, 0.5 ) ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("../../sfx")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource( 2 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [node name="ak_47" type="Sprite"]
@@ -65,3 +83,7 @@ offset = Vector2( 50, 0 )
 
 [node name="anim" type="AnimationPlayer" parent="shoot_point/shot_effect"]
 anims/shot = SubResource( 1 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 224, -36 )
+bus = "sfx"
