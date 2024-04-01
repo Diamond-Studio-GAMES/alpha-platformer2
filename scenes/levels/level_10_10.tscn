@@ -1598,7 +1598,7 @@ tracks/17/imported = false
 tracks/17/enabled = true
 tracks/17/keys = {
 "times": PoolRealArray( 0, 0.3, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1e-05, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -4492,7 +4492,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/gleb/mob_gl/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/gleb/mob_gl/visual/body"]
-scale = Vector2( 1.25, 1.18197 )
+scale = Vector2( 1.25, 1.21251 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/gleb/mob_gl"]
