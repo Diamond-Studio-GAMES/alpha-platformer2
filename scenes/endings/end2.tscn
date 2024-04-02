@@ -1,0 +1,279 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://textures/story/end_1.png" type="Texture" id=1]
+[ext_resource path="res://textures/story/end_1_eyes.png" type="Texture" id=2]
+[ext_resource path="res://textures/story/end_0.png" type="Texture" id=3]
+[ext_resource path="res://themes/theme.tres" type="Theme" id=4]
+[ext_resource path="res://scripts/menu/screens/ending_cutscene.gd" type="Script" id=5]
+[ext_resource path="res://textures/story/lore_0_0.png" type="Texture" id=6]
+[ext_resource path="res://textures/story/grave.png" type="Texture" id=7]
+[ext_resource path="res://scripts/game/player/soul_color.gd" type="Script" id=8]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+
+func _ready():
+	var bosses_died = 0
+	for i in range(1, 10):
+		if G.getv(\"boss_%d_10_killed\" % i, false):
+			bosses_died += 1
+	for i in get_children():
+		if int(i.name) > bosses_died:
+			i.hide()
+"
+
+[sub_resource type="Animation" id=2]
+resource_name = "lore"
+length = 16.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("image:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.6, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("image:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 2.2, 2.6, 3, 4.5, 5, 5.5, 9, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("image/eyes:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.6, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("image/eyes:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("image/graves:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("text:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 10 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "next"
+} ]
+}
+
+[node name="end2" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 5 )
+hate_minus_1_next = "res://scenes/endings/the_end.tscn"
+hate_0_next = "res://scenes/endings/the_end.tscn"
+hate_1_next = "res://scenes/endings/the_end.tscn"
+hate_2_next = "res://scenes/endings/the_end.tscn"
+hate_3_next = "res://scenes/endings/the_end.tscn"
+hate_4_next = "res://scenes/endings/the_end.tscn"
+
+[node name="image" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_top = -120.0
+margin_right = 240.0
+margin_bottom = 120.0
+mouse_filter = 2
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="eyes" type="TextureRect" parent="image"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 8 )
+
+[node name="graves" type="Control" parent="image"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+
+[node name="1" type="TextureRect" parent="image/graves"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -69.0
+margin_top = -14.0
+margin_right = 11.0
+margin_bottom = 66.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="2" type="TextureRect" parent="image/graves"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -18.0
+margin_top = -15.0
+margin_right = 62.0
+margin_bottom = 65.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="3" type="TextureRect" parent="image/graves"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 32.0
+margin_top = -16.0
+margin_right = 112.0
+margin_bottom = 64.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="4" type="TextureRect" parent="image/graves"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 82.0
+margin_top = -15.0
+margin_right = 162.0
+margin_bottom = 65.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="5" type="TextureRect" parent="image/graves"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 132.0
+margin_top = -16.0
+margin_right = 212.0
+margin_bottom = 64.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="6" type="TextureRect" parent="image/graves"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -26.0
+margin_top = 32.0
+margin_right = 54.0
+margin_bottom = 112.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="7" type="TextureRect" parent="image/graves"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 29.0
+margin_top = 30.0
+margin_right = 109.0
+margin_bottom = 110.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="8" type="TextureRect" parent="image/graves"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 83.0
+margin_top = 30.0
+margin_right = 163.0
+margin_bottom = 110.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="text" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_top = -20.0
+margin_right = 240.0
+margin_bottom = 140.0
+text = "..."
+align = 1
+valign = 1
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "lore"
+anims/lore = SubResource( 2 )

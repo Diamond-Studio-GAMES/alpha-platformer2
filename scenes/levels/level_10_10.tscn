@@ -4492,7 +4492,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/gleb/mob_gl/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/gleb/mob_gl/visual/body"]
-scale = Vector2( 1.25, 1.21251 )
+scale = Vector2( 1.25, 1.16024 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/gleb/mob_gl"]

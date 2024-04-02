@@ -477,6 +477,7 @@ win.claim,Забрать,Claim
 win.next,Далее,Next
 win.restart,Заново,Retry
 win.menu,Меню,Menu
+win.end,Конец,The End
 loading.loading,Загрузка…,Loading…
 loading.error,Не могу загрузить сцену: %s!,Can’t load scene: %s!
 noads.title,РЕКЛАМА УДАЛЕНА!,ADS REMOVED!

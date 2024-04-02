@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://themes/font_headers.tres" type="DynamicFont" id=1]
+[ext_resource path="res://prefabs/menu/name_of_game.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/game/player/soul_color.gd" type="Script" id=3]
+[ext_resource path="res://scripts/menu/screens/the_end.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fade_in"
+length = 7.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("visual:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 7.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="the_end" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 3 )
+
+[node name="visual" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="name_of_game" parent="visual" instance=ExtResource( 2 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -120.0
+margin_bottom = 0.0
+
+[node name="label" type="Label" parent="visual"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_right = 200.0
+margin_bottom = 120.0
+custom_fonts/font = ExtResource( 1 )
+text = "win.end"
+align = 1
+valign = 1
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "fade_in"
+anims/fade_in = SubResource( 1 )

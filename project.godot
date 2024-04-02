@@ -550,7 +550,6 @@ quality/intended_usage/framebuffer_allocation.mobile=0
 vram_compression/import_etc=true
 quality/shading/force_vertex_shading=true
 batching/precision/uv_contract=true
-environment/default_clear_color=Color( 0.207843, 0, 0.266667, 1 )
 environment/default_environment="res://misc/env.tres"
 
 [world]

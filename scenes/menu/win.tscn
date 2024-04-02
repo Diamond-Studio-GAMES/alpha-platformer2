@@ -377,6 +377,19 @@ margin_bottom = -4.0
 text = "win.next"
 clip_text = true
 
+[node name="end" type="Button" parent="win_level/win_level_dialog/buttons"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -36.0
+margin_right = 40.0
+margin_bottom = -4.0
+text = "win.end"
+clip_text = true
+
 [node name="education1" parent="win_level/win_level_dialog/buttons" instance=ExtResource( 10 )]
 visible = false
 margin_left = -202.0
@@ -400,5 +413,6 @@ bus = "sfx"
 [connection signal="pressed" from="win_level/win_level_dialog/buttons/restart" to="win_level/win_level_dialog" method="restart"]
 [connection signal="pressed" from="win_level/win_level_dialog/buttons/menu" to="win_level/win_level_dialog" method="menu"]
 [connection signal="pressed" from="win_level/win_level_dialog/buttons/next" to="win_level/win_level_dialog" method="next"]
+[connection signal="pressed" from="win_level/win_level_dialog/buttons/end" to="win_level/win_level_dialog" method="end"]
 
 [editable path="select_level"]

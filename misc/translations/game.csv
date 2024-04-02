@@ -429,3 +429,23 @@ which, although it gives strength, takes away control over yourself..."""
 10_10.meteorit,Метеорит ->,Meteorite ->
 10_10.forward,Вперёд.,Forward.
 10_10.soul.tip,"Удерживай палец, и душа будет следовать за ним.","Hold a finger, and soul will follow it."
+begin.0,Глеб: Класс… Также это называется?,Gleb: Class... is that what it's called?
+begin.1,"Глеб: То, что давало тебе силу…",Gleb: What gave you strength…
+begin.0.no,Глеб: Что!? Где!?,Gleb: What?! Where?!
+begin.1.no,"Глеб: Где твой класс?.. Ладно, всё равно…","Gleb: Where is your class?.. Okay, whatever.…"
+begin.2,"Глеб: …без него ты ничего не сможешь, ведь так?","Gleb: ...you can't do anything without it, can you?"
+begin.3,"Глеб: Ну и умри, верни мне контроль над временем!!!","Gleb: Well, die, give me back control of time!!!"
+main.0,Глеб: Что?! Что произошло? Как ты…,Gleb: What?! What happened? How you…
+main0.0,Ты… Зачем ты всё это сделал?,You... why did you do all this?
+main0.1,Зачем ты портишь людям жизнь?,Why are you ruining people's lives?
+main0.2,"Ладно, лежи здесь, и даже НЕ пробуй помешать мне…","Okay, stay here, and don't even try to stop me.…"
+main.1,Ну вот и всё…,"Well, that's all.…"
+main.2,! Я снова могу себя контролировать…,! I can control myself again.…
+main.3,Но моё приключение подошло к концу…,But my adventure has come to an end…
+main.4,Пора покончить с этим.,It's time to end this.
+main1.0,Ты… ТЫ…,You… YOU…
+main3.0,"Хочешь, чтобы я умер?.. А как насчёт…",Do you want me to die?.. What about…
+main3.1,УМЕРЕТЬ САМОМУ???,TO DIE YOURSELF???
+end11,"Спасибо, игрок…","Thank you, player…"
+end0,Мне… Мне жаль…,I’m… I’m sorry…
+end3,Жалкие создания!..,Pathetic creatures!

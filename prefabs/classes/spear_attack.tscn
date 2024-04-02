@@ -33,6 +33,7 @@ position = Vector2( 16, 2.28571 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 1 )
 animation = "sword"
+frame = 3
 speed_scale = 1.5
 
 [node name="shape" type="CollisionShape2D" parent="."]

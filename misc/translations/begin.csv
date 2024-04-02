@@ -69,3 +69,7 @@ sl.cloud.more, и ещё %d, and %d more
 sl.cloud.no,Нет сохранений,No saves
 sl.save.hardcore,"Сохранение в этом режиме нельзя скопировать и экспортировать, а также оно будет удалено сразу после смерти, если ты не возродишься.","Save in this mode can’t be duplicated or exported, and it will be deleted right after you die, unless you revive."
 sl.save.normal,"Стандартное сохранение. Может быть скопировано или экспортировано, а игрок имеет неограниченное число жизней.","Standard save. Can be exported or copied, and player has unlimited number of lives."
+sl.completed.tip,"Поздравляю с прохождением игры! Ты можешь вновь загрузить это сохранение (и вся ненависть будет очищена), или же создать новое для получения другой концовки.
+Режим «Одна жизнь»: если ты хочешь попробовать что-то новое, то создай сохранение в этом режиме. Насколько далеко ты сможешь продвинуться?","Congratulations on completing the game! You can reload this save (and all the hate will be cleared), or create a new one to get a different ending.
+One Life Mode: If you want to try something new, create a save in this mode. How far can you go?"
+sl.completed,Игра пройдена!,Game Completed!

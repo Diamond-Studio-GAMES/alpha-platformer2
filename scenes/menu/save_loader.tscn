@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://themes/font_standard.tres" type="DynamicFont" id=1]
 [ext_resource path="res://themes/font_headers2.tres" type="DynamicFont" id=2]
@@ -13,11 +13,13 @@
 [ext_resource path="res://scripts/menu/main/save_loader.gd" type="Script" id=11]
 [ext_resource path="res://textures/gui/cloud_icon.png" type="Texture" id=12]
 [ext_resource path="res://scripts/menu/other/play_games_api.gd" type="Script" id=13]
+[ext_resource path="res://textures/gui/save_bg_eyes.tres" type="Texture" id=14]
+[ext_resource path="res://textures/gui/save_bg_hate.png" type="Texture" id=15]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("center/all:position")
+tracks/0/path = NodePath("center/completed:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -29,7 +31,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("center/all/save_bg_effect:position")
+tracks/1/path = NodePath("center/completed/save_bg_effect:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -41,7 +43,7 @@ tracks/1/keys = {
 "values": [ Vector2( 258.236, 1.12762 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("center/all/save_bg_effect2:position")
+tracks/2/path = NodePath("center/completed/save_bg_effect2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -53,7 +55,7 @@ tracks/2/keys = {
 "values": [ Vector2( 292.697, 19.1073 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("center/all/save_bg_effect3:position")
+tracks/3/path = NodePath("center/completed/save_bg_effect3:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -65,7 +67,7 @@ tracks/3/keys = {
 "values": [ Vector2( 214.785, 26.5989 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("center/all/glow:scale")
+tracks/4/path = NodePath("center/completed/glow:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -77,7 +79,159 @@ tracks/4/keys = {
 "values": [ Vector2( 34.5077, 8.64194 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("center/all:modulate")
+tracks/5/path = NodePath("center/completed:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "moving"
+length = 50.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("center/uncompleted:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 15, 30, 45.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -208, 0 ), Vector2( -224, -14 ), Vector2( -199.143, -18 ), Vector2( -212.007, 9.95 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("center/uncompleted/save_bg_effect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 15, 30, 45.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 258.236, 1.12762 ), Vector2( 298.236, -22.8724 ), Vector2( 213.093, -24.5866 ), Vector2( 258.079, 7.34192 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("center/uncompleted/save_bg_effect2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 15, 30, 45.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 292.697, 19.1073 ), Vector2( 284.697, 63.1073 ), Vector2( 292.126, 18.2502 ), Vector2( 312.569, 24.9144 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("center/uncompleted/save_bg_effect3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 15, 30, 45.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 214.785, 26.5989 ), Vector2( 174.785, -23.4011 ), Vector2( 175.928, 46.0275 ), Vector2( 206.042, 34.9703 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("center/uncompleted/glow:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 15, 30, 45.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 34.5077, 8.64194 ), Vector2( 30.7877, 8.64194 ), Vector2( 34.822, 9.56195 ), Vector2( 34.4584, 8.48895 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("center/uncompleted:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2.2, 4.7, 7.1, 9.9, 12.7, 15, 19, 24.4, 28.6, 32.7, 36.8, 41, 45.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.6, 0.6, 0.6, 1 ), Color( 1, 1, 1, 1 ), Color( 0.596078, 0.596078, 0.596078, 1 ), Color( 1, 1, 1, 1 ), Color( 0.462745, 0.462745, 0.462745, 1 ), Color( 1, 1, 1, 1 ), Color( 0.541176, 0.541176, 0.541176, 1 ), Color( 1, 1, 1, 1 ), Color( 0.552941, 0.552941, 0.552941, 1 ), Color( 1, 1, 1, 1 ), Color( 0.513726, 0.513726, 0.513726, 1 ), Color( 1, 1, 1, 1 ), Color( 0.67451, 0.67451, 0.67451, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("center/completed:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("center/completed/save_bg_effect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 258.236, 1.12762 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("center/completed/save_bg_effect2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 292.697, 19.1073 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("center/completed/save_bg_effect3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 214.785, 26.5989 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("center/completed/glow:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 34.5077, 8.64194 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("center/completed:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -94,7 +248,7 @@ resource_name = "moving"
 length = 50.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("center/all:position")
+tracks/0/path = NodePath("center/completed:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -103,10 +257,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 15, 30, 45.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -16, -14 ), Vector2( 8.85714, -18 ), Vector2( -4.00714, 9.95002 ) ]
+"values": [ Vector2( -16, 0 ), Vector2( -32, -14 ), Vector2( -7.143, -18 ), Vector2( -20.007, 9.95 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("center/all/save_bg_effect:position")
+tracks/1/path = NodePath("center/completed/save_bg_effect:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -118,7 +272,7 @@ tracks/1/keys = {
 "values": [ Vector2( 258.236, 1.12762 ), Vector2( 298.236, -22.8724 ), Vector2( 213.093, -24.5866 ), Vector2( 258.079, 7.34192 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("center/all/save_bg_effect2:position")
+tracks/2/path = NodePath("center/completed/save_bg_effect2:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -130,7 +284,7 @@ tracks/2/keys = {
 "values": [ Vector2( 292.697, 19.1073 ), Vector2( 284.697, 63.1073 ), Vector2( 292.126, 18.2502 ), Vector2( 312.569, 24.9144 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("center/all/save_bg_effect3:position")
+tracks/3/path = NodePath("center/completed/save_bg_effect3:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -142,7 +296,7 @@ tracks/3/keys = {
 "values": [ Vector2( 214.785, 26.5989 ), Vector2( 174.785, -23.4011 ), Vector2( 175.928, 46.0275 ), Vector2( 206.042, 34.9703 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("center/all/glow:scale")
+tracks/4/path = NodePath("center/completed/glow:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -154,7 +308,7 @@ tracks/4/keys = {
 "values": [ Vector2( 34.5077, 8.64194 ), Vector2( 30.7877, 8.64194 ), Vector2( 34.822, 9.56195 ), Vector2( 34.4584, 8.48895 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("center/all:modulate")
+tracks/5/path = NodePath("center/completed:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -164,6 +318,24 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.6, 0.6, 0.6, 1 ), Color( 1, 1, 1, 1 ), Color( 0.596078, 0.596078, 0.596078, 1 ), Color( 1, 1, 1, 1 ), Color( 0.462745, 0.462745, 0.462745, 1 ), Color( 1, 1, 1, 1 ), Color( 0.541176, 0.541176, 0.541176, 1 ), Color( 1, 1, 1, 1 ), Color( 0.552941, 0.552941, 0.552941, 1 ), Color( 1, 1, 1, 1 ), Color( 0.513726, 0.513726, 0.513726, 1 ), Color( 1, 1, 1, 1 ), Color( 0.67451, 0.67451, 0.67451, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "anim"
+length = 50.0
+loop = true
+step = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 15, 30, 45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -23, 17 ), Vector2( 31, 2 ), Vector2( -6, -14 ) ]
 }
 
 [sub_resource type="ButtonGroup" id=3]
@@ -178,9 +350,6 @@ script = ExtResource( 11 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="center" type="Control" parent="tint"]
 anchor_left = 0.5
@@ -191,49 +360,103 @@ margin_left = -20.0
 margin_top = -20.0
 margin_right = 20.0
 margin_bottom = 20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="all" type="Node2D" parent="tint/center"]
+[node name="uncompleted" type="Node2D" parent="tint/center"]
+position = Vector2( -208, 0 )
 
-[node name="glow" type="Sprite" parent="tint/center/all"]
+[node name="glow" type="Sprite" parent="tint/center/uncompleted"]
 self_modulate = Color( 0, 0.0627451, 1, 0.227451 )
 position = Vector2( 228.258, 133.484 )
 scale = Vector2( 34.5077, 8.64194 )
 texture = ExtResource( 3 )
 
-[node name="player" type="Sprite" parent="tint/center/all"]
-self_modulate = Color( 0, 0, 0.584314, 1 )
-position = Vector2( -174.07, 21.8122 )
-texture = ExtResource( 10 )
-
-[node name="meteorit" type="Sprite" parent="tint/center/all"]
+[node name="meteorit" type="Sprite" parent="tint/center/uncompleted"]
 modulate = Color( 0, 0.341176, 0.541176, 1 )
 position = Vector2( 238.758, 11.6158 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 
-[node name="save_bg_effect" type="Sprite" parent="tint/center/all"]
+[node name="save_bg_effect" type="Sprite" parent="tint/center/uncompleted"]
 self_modulate = Color( 0, 0, 1, 0.192157 )
 position = Vector2( 258.236, 1.12762 )
 texture = ExtResource( 7 )
 
-[node name="save_bg_effect2" type="Sprite" parent="tint/center/all"]
+[node name="save_bg_effect2" type="Sprite" parent="tint/center/uncompleted"]
 self_modulate = Color( 0, 0.862745, 1, 0.192157 )
 position = Vector2( 292.697, 19.1073 )
 texture = ExtResource( 7 )
 
-[node name="save_bg_effect3" type="Sprite" parent="tint/center/all"]
+[node name="save_bg_effect3" type="Sprite" parent="tint/center/uncompleted"]
 self_modulate = Color( 1, 1, 1, 0.192157 )
 position = Vector2( 214.785, 26.5989 )
 texture = ExtResource( 7 )
 
-[node name="anim" type="AnimationPlayer" parent="tint/center/all"]
+[node name="anim" type="AnimationPlayer" parent="tint/center/uncompleted"]
+root_node = NodePath("../../..")
+autoplay = "moving"
+anims/RESET = SubResource( 4 )
+anims/moving = SubResource( 5 )
+
+[node name="completed" type="Node2D" parent="tint/center"]
+visible = false
+
+[node name="glow" type="Sprite" parent="tint/center/completed"]
+self_modulate = Color( 0, 0.0627451, 1, 0.227451 )
+position = Vector2( 228.258, 133.484 )
+scale = Vector2( 34.5077, 8.64194 )
+texture = ExtResource( 3 )
+
+[node name="player" type="Sprite" parent="tint/center/completed"]
+self_modulate = Color( 0, 0, 0.584314, 1 )
+position = Vector2( -94.07, 5.8122 )
+texture = ExtResource( 10 )
+
+[node name="eyes" type="RemoteTransform2D" parent="tint/center/completed/player"]
+remote_path = NodePath("../../eyes")
+update_rotation = false
+update_scale = false
+
+[node name="meteorit" type="Sprite" parent="tint/center/completed"]
+modulate = Color( 0, 0.341176, 0.541176, 1 )
+position = Vector2( 238.758, 11.6158 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 8 )
+
+[node name="save_bg_effect" type="Sprite" parent="tint/center/completed"]
+self_modulate = Color( 0, 0, 1, 0.192157 )
+position = Vector2( 258.236, 1.12762 )
+texture = ExtResource( 7 )
+
+[node name="save_bg_effect2" type="Sprite" parent="tint/center/completed"]
+self_modulate = Color( 0, 0.862745, 1, 0.192157 )
+position = Vector2( 292.697, 19.1073 )
+texture = ExtResource( 7 )
+
+[node name="save_bg_effect3" type="Sprite" parent="tint/center/completed"]
+self_modulate = Color( 1, 1, 1, 0.192157 )
+position = Vector2( 214.785, 26.5989 )
+texture = ExtResource( 7 )
+
+[node name="eyes" type="Sprite" parent="tint/center/completed"]
+position = Vector2( -94.07, 5.81219 )
+texture = ExtResource( 14 )
+
+[node name="anim" type="AnimationPlayer" parent="tint/center/completed"]
 root_node = NodePath("../../..")
 autoplay = "moving"
 anims/RESET = SubResource( 2 )
 anims/moving = SubResource( 1 )
+
+[node name="hate" type="Node2D" parent="tint/center"]
+visible = false
+
+[node name="sprite" type="Sprite" parent="tint/center/hate"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 15 )
+
+[node name="anim" type="AnimationPlayer" parent="tint/center/hate"]
+autoplay = "anim"
+anims/anim = SubResource( 6 )
 
 [node name="saves" type="Panel" parent="."]
 anchor_left = 0.5
@@ -894,6 +1117,21 @@ margin_bottom = -16.0
 text = "sl.misc.remove.note"
 align = 1
 autowrap = true
+
+[node name="complete" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -270.0
+margin_top = -80.0
+margin_right = 270.0
+margin_bottom = 80.0
+grow_vertical = 2
+popup_exclusive = true
+window_title = "sl.completed"
+dialog_text = "sl.completed.tip"
+dialog_autowrap = true
 
 [connection signal="pressed" from="saves/create" to="." method="enter_create"]
 [connection signal="pressed" from="saves/settings" to="." method="enter_settings"]

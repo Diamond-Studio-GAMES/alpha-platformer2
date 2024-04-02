@@ -3,11 +3,11 @@ extends Node2D
 
 signal soul_returned
 
-const SOUL_SPEED = 192
+const SOUL_SPEED = 224
 const IDLE_DISTANCE_SQUARED = 16
 var player: Player
 var is_controlling = false
-var time = 7
+var time = 7.5
 var _timer = 0
 var _immune_timer = 0
 var _mouse_pressed = false

@@ -123,6 +123,12 @@ func show_d(lvl = "1_1"):
 
 func show_d_win():
 	yield(get_tree(), "idle_frame")
+	if G.current_level == "10_10":
+		get_close_button().hide()
+		$buttons/menu.hide()
+		$buttons/restart.hide()
+		$buttons/next.hide()
+		$buttons/end.show()
 	if G.ad.ad_counter_win == 1:
 		G.ad.show_interstitial()
 		G.ad.ad_counter_win = 0
@@ -334,6 +340,13 @@ func set_win_rewards(level = ""):
 
 func menu():
 	get_tree().change_scene("res://scenes/menu/menu.tscn")
+
+
+func end():
+	if G.getv("game_completed", false):
+		get_tree().change_scene("res://scenes/endings/the_end.tscn")
+	else:
+		get_tree().change_scene("res://scenes/endings/begin.tscn")
 
 
 func menu_pressed(id):
