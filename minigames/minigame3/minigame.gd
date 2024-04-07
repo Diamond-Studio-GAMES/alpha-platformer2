@@ -48,13 +48,13 @@ func _process(delta):
 	timer += delta
 	if timer >= 60:
 		timer = 0
-		spawn_item(coin, 20)
-		add_coins(20)
+		spawn_item(coin, 8)
+		add_coins(8)
 		minutes_passed += 1
-	if minutes_passed >= 60:
+	if minutes_passed >= 10:
 		minutes_passed = 0
-		spawn_item(gem, 6)
-		add_gems(6)
+		spawn_item(gem, 1)
+		add_gems(1)
 
 
 func quit():
@@ -65,7 +65,7 @@ func _on_spawn_timer_timeout():
 	G.setv("ss_remained", remaining_time)
 	if remaining_time <= 0:
 		return
-	if coin_counter >= 150:
+	if coin_counter >= 75:
 		spawn_item(gem, 1)
 		coin_counter = 0
 	else:

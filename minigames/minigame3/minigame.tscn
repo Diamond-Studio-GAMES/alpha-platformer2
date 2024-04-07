@@ -138,7 +138,7 @@ shape = SubResource( 7 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.52469, 0 )
 
 [node name="spawn_timer" type="Timer" parent="base"]
-wait_time = 2.0
+wait_time = 7.0
 autostart = true
 
 [node name="gui" type="CanvasLayer" parent="."]
