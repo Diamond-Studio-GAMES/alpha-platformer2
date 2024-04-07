@@ -75,19 +75,19 @@ func attack(fatal = false):
 	ms.sync_call(self, "attack", [fatal])
 	can_attack = false
 	_is_attacking = true
-	attack_cooldown = RECHARGE_SPEED + 0.6
+	attack_cooldown = RECHARGE_SPEED + 0.8
 	_anim_tree["parameters/attack_seek/seek_position"] = 0
 	_anim_tree["parameters/attack_shot/active"] = true
-	yield(get_tree().create_timer(0.35, false), "timeout")
+	yield(get_tree().create_timer(0.55, false), "timeout")
 	$visual/body/knight_attack/swing.play()
 	_attack_node.fatal = fatal
+	_attack_visual.frame = 0
 	_attack_visual.show()
 	_attack_visual.playing = true
 	_attack_shape.disabled = false
 	yield(get_tree().create_timer(0.25, false), "timeout")
 	_attack_visual.hide()
 	_attack_visual.playing = false
-	_attack_visual.frame = 0
 	_attack_shape.disabled = true
 	_is_attacking = false
 

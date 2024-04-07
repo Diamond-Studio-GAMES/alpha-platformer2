@@ -115,11 +115,11 @@ func get_phase():
 	var health_left = mob.current_health / mob.max_health
 	if health_left <= 0:
 		return -1
-	elif health_left < 0.33:
+	elif health_left < 0.4:
 		next_attack_time_min = 0.6
 		next_attack_time_max = 1.4
 		return 3
-	elif health_left < 0.67:
+	elif health_left < 0.7:
 		next_attack_time_min = 0.75
 		next_attack_time_max = 1.6
 		return 2
@@ -232,7 +232,7 @@ func summon_ball():
 		return
 	var b = ball.instance()
 	b.global_position = $visual/body/arm_left/hand/ball.global_position
-	var direction = $visual/body/arm_left/hand/ball.global_position.direction_to(player_target.global_position)
+	var direction = $visual/body/arm_left/hand/ball.global_position.direction_to(player_target.global_position + Vector2.UP * 32)
 	b.rotation = direction.angle()
 	get_tree().current_scene.add_child(b, true)
 

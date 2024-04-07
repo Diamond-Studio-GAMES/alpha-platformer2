@@ -74,6 +74,7 @@ func attack():
 	yield(get_tree().create_timer(0.2, false), "timeout")
 	_attack_node.knockback = 2
 	$visual/body/spear_attack/swing.play()
+	_attack_visual.frame = 0
 	_attack_visual.show()
 	_attack_visual.playing = true
 	yield(get_tree().create_timer(0.05, false), "timeout")
@@ -83,7 +84,6 @@ func attack():
 	_attack_visual.hide()
 	_attack_node.modulate = Color.white
 	_attack_visual.playing = false
-	_attack_visual.frame = 0
 	_attack_shape.disabled = true
 	_is_attacking = false
 

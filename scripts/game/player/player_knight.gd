@@ -108,13 +108,13 @@ func attack(fatal = false):
 	yield(get_tree().create_timer(0.35, false), "timeout")
 	$visual/body/knight_attack/swing.play()
 	_attack_node.fatal = fatal
+	_attack_visual.frame = 0
 	_attack_visual.show()
 	_attack_visual.playing = true
 	_attack_shape.disabled = false
 	yield(get_tree().create_timer(0.25, false), "timeout")
 	_attack_visual.hide()
 	_attack_visual.playing = false
-	_attack_visual.frame = 0
 	_attack_shape.disabled = true
 	_is_attacking = false
 

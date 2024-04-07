@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 
 export (String, FILE, "*.tscn") var hate_minus_1_next = ""

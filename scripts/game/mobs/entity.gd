@@ -104,9 +104,9 @@ func calculate_fall_damage():
 
 #HEALTH
 func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
+	ms.sync_call(self, "hurt", [damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source])
 	if immune_counter > 0:
 		return false
-	ms.sync_call(self, "hurt", [damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source])
 	var past_health = current_health
 	var real_defense = defense * int(defense_allowed)
 	current_health = round(clamp(current_health - max(damage - real_defense, 0), 0, max_health))

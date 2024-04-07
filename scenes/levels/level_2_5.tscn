@@ -198,7 +198,7 @@ position = Vector2( 816, -16 )
 
 [node name="mob_shooter" parent="mobs" instance=ExtResource( 6 )]
 position = Vector2( 976, -24 )
-stats_multiplier = 2.5
+stats_multiplier = 2.0
 
 [node name="mob_mushroom4" parent="mobs" instance=ExtResource( 3 )]
 position = Vector2( 1312, -16 )
