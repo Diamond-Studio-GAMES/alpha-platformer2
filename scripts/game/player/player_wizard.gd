@@ -27,7 +27,7 @@ func _ready():
 	ulti_power = G.getv(class_nam + "_ulti_level", 1)
 	max_health = power * 16 + 80 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
 	defense = power + 5 + (5 if is_amulet(G.Amulet.DEFENSE) else 0)
-	$visual/body/knight_attack.damage = power * 2 + 10  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
+	_attack_node.damage = power * 2 + 10  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
 	current_health = max_health
 	_health_bar.max_value = max_health
 	_health_change_bar.max_value = max_health
@@ -55,7 +55,7 @@ func apply_data(data):
 	.apply_data(data)
 	max_health = power * 16 + 80 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
 	defense = power + 5 + (5 if is_amulet(G.Amulet.DEFENSE) else 0)
-	$visual/body/knight_attack.damage = power * 2 + 10  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
+	_attack_node.damage = power * 2 + 10  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
 	SPEED += (7 if is_amulet(G.Amulet.SPEED) else 0)
 	RECHARGE_SPEED = 0.1
 	_health_bar.max_value = max_health
@@ -140,7 +140,7 @@ func throw(direction):
 		node.global_position = Vector2(global_position.x, global_position.y - 12 * GRAVITY_SCALE)
 		node.rotation = direction.angle()
 		var heals = gen.randi_range(0, 100) > 85 and have_soul_power
-		node.get_node("attack").damage = G.getv("wizard_level", 0) * 6 + 30  + (15 if  is_amulet(G.Amulet.POWER) else 0)
+		node.get_node("attack").damage = power * 6 + 30  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 		if heals:
 			node.get_node("attack").connect("hit_enemy", self, "heal", [round(max_health * 0.1)])
 		node.get_node("attack").fatal = hate_fatal()
@@ -175,9 +175,25 @@ func revive(hpc = -1):
 
 
 func use_gadget():
-	if ulti_percentage >= 100:
-		return
 	var success = .use_gadget()
 	if not success:
 		return
-	ulti_percentage = clamp(ulti_percentage + 40, 0, 100)
+	if not MP.auth(self):
+		return
+	var rotation = 0
+	for i in 6:
+		var node = wizard_attack.instance()
+		node.global_position = global_position - Vector2.RIGHT.rotated(rotation) * 32
+		node.rotation = rotation
+		var heals = gen.randi_range(0, 100) > 85 and have_soul_power
+		node.get_node("attack").damage = power * 6 + 30  + (15 if  is_amulet(G.Amulet.POWER) else 0)
+		if heals:
+			node.get_node("attack").connect("hit_enemy", self, "heal", [round(max_health * 0.1)])
+		node.get_node("attack").connect("hit_enemy", self, "_fill_ulti")
+		_level.add_child(node, true)
+		rotation += -PI / 5 * GRAVITY_SCALE
+
+
+func _fill_ulti():
+	ms.sync_call(self, "_fill_ulti")
+	ulti_percentage = clamp(ulti_percentage + 15, 0, 100)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=2]
+[gd_scene load_steps=134 format=2]
 
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/classes/emotion.tscn" type="PackedScene" id=2]
@@ -59,7 +59,6 @@
 [ext_resource path="res://scripts/game/player/revive.gd" type="Script" id=57]
 [ext_resource path="res://sounds/sfx/hurt.wav" type="AudioStream" id=58]
 [ext_resource path="res://textures/classes/player_control.tres" type="Texture" id=59]
-[ext_resource path="res://textures/effects/other/dodge_star.png" type="Texture" id=60]
 [ext_resource path="res://textures/gui/button_attack2.tres" type="Texture" id=61]
 [ext_resource path="res://textures/gui/button_move_active.tres" type="Texture" id=62]
 [ext_resource path="res://textures/gui/joystick_tip_arrows.png" type="Texture" id=63]
@@ -2026,7 +2025,7 @@ nodes/ulti_shot/node = SubResource( 94 )
 nodes/ulti_shot/position = Vector2( 1035.29, 70.5882 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "potion_seek", 0, "potion", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "throw_shot", 0, "attack_shot", "throw_shot", 1, "throw", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "potion_shot", 0, "throw_shot", "potion_shot", 1, "potion_seek", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_seek", 0, "attack", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti" ]
+node_connections = [ "attack_seek", 0, "attack", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "output", 0, "death_trans", "potion_seek", 0, "potion", "potion_shot", 0, "throw_shot", "potion_shot", 1, "potion_seek", "throw_shot", 0, "attack_shot", "throw_shot", 1, "throw", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti" ]
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.24788
@@ -2470,9 +2469,6 @@ _data = [ Vector2( 0, 0.274128 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.46304 ), 0.0, 0.
 [sub_resource type="Gradient" id=44]
 offsets = PoolRealArray( 0, 0.452381, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
-
-[sub_resource type="Curve" id=47]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.505159, 0.497433 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=50]
 offsets = PoolRealArray( 0, 0.320574, 0.665072, 1 )
@@ -3861,18 +3857,6 @@ gravity = Vector2( 0, 0 )
 angular_velocity = 180.0
 scale_amount_curve = SubResource( 43 )
 color_ramp = SubResource( 44 )
-
-[node name="gadget_active" type="CPUParticles2D" parent="."]
-emitting = false
-amount = 10
-texture = ExtResource( 60 )
-emission_shape = 2
-emission_rect_extents = Vector2( 20, 40 )
-direction = Vector2( 0, 0 )
-spread = 0.0
-gravity = Vector2( 0, 0 )
-angular_velocity = 180.0
-scale_amount_curve = SubResource( 47 )
 
 [node name="stun_stars" type="CPUParticles2D" parent="."]
 visible = false

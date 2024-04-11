@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=2]
+[gd_scene load_steps=134 format=2]
 
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
 [ext_resource path="res://textures/gui/emotions_button_pressed.png" type="Texture" id=2]
@@ -16,7 +16,6 @@
 [ext_resource path="res://textures/mobs/player/hand2.tres" type="Texture" id=14]
 [ext_resource path="res://textures/items/small_potion.png" type="Texture" id=15]
 [ext_resource path="res://textures/effects/attacks/fist_attack.png" type="Texture" id=16]
-[ext_resource path="res://textures/effects/other/dodge_star.png" type="Texture" id=17]
 [ext_resource path="res://textures/effects/skills/revive_shield.tres" type="Texture" id=18]
 [ext_resource path="res://textures/gui/button_attack2_active.tres" type="Texture" id=19]
 [ext_resource path="res://textures/items/gem.png" type="Texture" id=20]
@@ -2250,9 +2249,6 @@ _data = [ Vector2( 0, 0.274128 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.46304 ), 0.0, 0.
 offsets = PoolRealArray( 0, 0.452381, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="Curve" id=47]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.505159, 0.497433 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
 [sub_resource type="Gradient" id=50]
 offsets = PoolRealArray( 0, 0.320574, 0.665072, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
@@ -3644,18 +3640,6 @@ gravity = Vector2( 0, 0 )
 angular_velocity = 180.0
 scale_amount_curve = SubResource( 43 )
 color_ramp = SubResource( 44 )
-
-[node name="gadget_active" type="CPUParticles2D" parent="."]
-emitting = false
-amount = 10
-texture = ExtResource( 17 )
-emission_shape = 2
-emission_rect_extents = Vector2( 20, 40 )
-direction = Vector2( 0, 0 )
-spread = 0.0
-gravity = Vector2( 0, 0 )
-angular_velocity = 180.0
-scale_amount_curve = SubResource( 47 )
 
 [node name="stun_stars" type="CPUParticles2D" parent="."]
 visible = false

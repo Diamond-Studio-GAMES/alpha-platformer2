@@ -3,8 +3,8 @@ class_name Player
 
 
 # MOVEMENT
-export (float) var COYOTE_TIME = 0.07
-var _coyote_timer = 0.07
+export (float) var COYOTE_TIME = 0.09
+var _coyote_timer = 0.09
 
 
 # HEALTH

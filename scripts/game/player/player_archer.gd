@@ -9,6 +9,7 @@ var key_idx0_1
 var key_idx1_1
 var key_idx2_1
 var is_aiming = false
+var is_active_gadget = false
 var aim_time = 0
 var jout = Vector2()
 var cjo = Vector2()
@@ -37,7 +38,7 @@ func _ready():
 	ulti_power = G.getv(class_nam + "_ulti_level", 1)
 	max_health = power * 20 + 100 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
 	defense = power + 5 + (5 if is_amulet(G.Amulet.DEFENSE) else 0)
-	$visual/body/knight_attack.damage = power * 2 + 10  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
+	_attack_node.damage = power * 2 + 10  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
 	current_health = max_health
 	_health_bar.max_value = max_health
 	_health_change_bar.max_value = max_health
@@ -64,7 +65,7 @@ func apply_data(data):
 	.apply_data(data)
 	max_health = power * 20 + 100 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
 	defense = power + 5 + (5 if is_amulet(G.Amulet.DEFENSE) else 0)
-	$visual/body/knight_attack.damage = power * 2 + 10  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
+	_attack_node.damage = power * 2 + 10  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
 	SPEED += (7 if is_amulet(G.Amulet.SPEED) else 0)
 	RECHARGE_SPEED = 0.1
 	_health_bar.max_value = max_health
@@ -169,6 +170,11 @@ func throw(direction, aimed_time):
 	attack_cooldown = RECHARGE_SPEED + 0.25
 	var rotates = calc_hand_rotate(direction)
 	$visual/body/arm_right/hand/weapon/sfx2.play()
+	var gadget = false
+	if is_active_gadget:
+		is_active_gadget = false
+		$gadget_active.hide()
+		gadget = true
 	if MP.auth(self):
 		var node = arrow.instance()
 		if aimed_time >= 0.55 and aimed_time < 0.85:
@@ -176,10 +182,12 @@ func throw(direction, aimed_time):
 			node.get_node("attack").damage = power * 3 + 15  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
 		else:
 			node.SPEED = 225.0
-			node.get_node("attack").damage = G.getv("archer_level", 0) * 7 + 35  + (15 if  is_amulet(G.Amulet.POWER) else 0)
+			node.get_node("attack").damage = power * 7 + 35  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 		node.global_position = Vector2(global_position.x, global_position.y - 10.5 * GRAVITY_SCALE)
 		node.rotation = rotates[1]
 		node.get_node("attack").fatal = hate_fatal()
+		if gadget:
+			node.connect("destroyed", self, "_spawn_gadget", [], CONNECT_DEFERRED)
 		_level.add_child(node, true)
 		if have_soul_power and randi() % 10 > 5:
 			yield(get_tree().create_timer(0.1, false), "timeout")
@@ -189,7 +197,7 @@ func throw(direction, aimed_time):
 				node.get_node("attack").damage = power * 3 + 15  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
 			else:
 				node.SPEED = 225.0
-				node.get_node("attack").damage = G.getv("archer_level", 0) * 7 + 35  + (15 if  is_amulet(G.Amulet.POWER) else 0)
+				node.get_node("attack").damage = power * 7 + 35  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 			node.global_position = Vector2(global_position.x, global_position.y - 10.5 * GRAVITY_SCALE)
 			node.rotation = rotates[1]
 			node.get_node("attack").fatal = hate_fatal()
@@ -249,11 +257,16 @@ func _process(delta):
 		reset_aim()
 
 
+func _spawn_gadget(pos):
+	var node = gadget_attack.instance()
+	node.global_position = pos + Vector2.UP * 150
+	_level.add_child(node)
+
+
 func use_gadget():
 	var success = .use_gadget()
 	if not success:
 		return
-	var node = gadget_attack.instance()
-	node.global_position = global_position + Vector2.UP * 150
-	_level.add_child(node)
+	is_active_gadget = true
+	$gadget_active.show()
 

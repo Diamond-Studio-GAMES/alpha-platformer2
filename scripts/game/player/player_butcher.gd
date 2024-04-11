@@ -3,6 +3,7 @@ class_name Butcher
 
 var gen = RandomNumberGenerator.new()
 var is_active_gadget = false
+var is_in_air = false
 var gadget_crack = load("res://prefabs/classes/butcher_gadget.tscn")
 onready var _attack_node = $visual/body/knight_attack
 onready var _attack_visual = $visual/body/knight_attack/visual
@@ -17,7 +18,7 @@ func _ready():
 	ulti_power = G.getv(class_nam + "_ulti_level", 1)
 	max_health = power * 24 + 120 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
 	defense = 0 + (5 if is_amulet(G.Amulet.DEFENSE) else 0)
-	$visual/body/knight_attack.damage = power * 6 + 30  + (15 if  is_amulet(G.Amulet.POWER) else 0)
+	_attack_node.damage = power * 6 + 30  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 	current_health = max_health
 	_health_bar.max_value = max_health
 	_health_change_bar.max_value = max_health
@@ -44,7 +45,7 @@ func apply_data(data):
 	.apply_data(data)
 	max_health = power * 24 + 120 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
 	defense = (5 if is_amulet(G.Amulet.DEFENSE) else 0)
-	$visual/body/knight_attack.damage = power * 6 + 30  + (15 if  is_amulet(G.Amulet.POWER) else 0)
+	_attack_node.damage = power * 6 + 30  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 	SPEED += (7 if is_amulet(G.Amulet.SPEED) else 0)
 	RECHARGE_SPEED = 0.1
 	_health_bar.max_value = max_health
@@ -78,6 +79,8 @@ func attack(fatal = false):
 	attack_cooldown = RECHARGE_SPEED + 0.8
 	_anim_tree["parameters/attack_seek/seek_position"] = 0
 	_anim_tree["parameters/attack_shot/active"] = true
+	if is_active_gadget and MP.auth(self):
+		_attack_node.connect("hit_enemy", self, "hit_gadget", [], CONNECT_ONESHOT)
 	yield(get_tree().create_timer(0.55, false), "timeout")
 	$visual/body/knight_attack/swing.play()
 	_attack_node.fatal = fatal
@@ -89,10 +92,27 @@ func attack(fatal = false):
 	_attack_visual.hide()
 	_attack_visual.playing = false
 	_attack_shape.disabled = true
+	if is_active_gadget:
+		is_active_gadget = false
+		$gadget_active.hide()
+		if MP.auth(self):
+			if _attack_node.is_connected("hit_enemy", self, "hit_gadget"):
+				_attack_node.disconnect("hit_enemy", self, "hit_gadget")
 	_is_attacking = false
 
 
+func hit_gadget():
+	if is_on_floor():
+		_move.y = -350 * GRAVITY_SCALE
+	else:
+		_move.y = -255 * GRAVITY_SCALE
+	yield(get_tree().create_timer(0.1, false), "timeout")
+	is_in_air = true
+
+
 func _process(delta):
+	if is_active_gadget:
+		gadget_cooldown = 10
 	if MP.auth(self):
 		if Input.is_action_just_pressed("attack1"):
 			attack()
@@ -103,14 +123,14 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	if is_on_floor() and is_active_gadget:
+	if is_on_floor() and is_in_air:
 		var node = gadget_crack.instance()
 		var pos = Vector2(global_position.x, 0)
 		pos.y = global_position.y + 30 * GRAVITY_SCALE
 		node.global_position = pos
 		node.scale.y = GRAVITY_SCALE
 		_level.add_child(node, true)
-		is_active_gadget = false
+		is_in_air = false
 
 
 func use_gadget():
@@ -121,7 +141,6 @@ func use_gadget():
 	var success = .use_gadget()
 	if not success:
 		return false
-	jump(370)
-	yield(get_tree().create_timer(0.25, false), "timeout")
 	is_active_gadget = true
+	$gadget_active.show()
 	return true

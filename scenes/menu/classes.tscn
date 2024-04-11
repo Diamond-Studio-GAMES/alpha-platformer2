@@ -1754,7 +1754,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "speed.high"
+text = "speed.normal"
 
 [node name="upgrade" type="Button" parent="info_butcher"]
 visible = false
@@ -2509,7 +2509,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "speed.low"
+text = "speed.normal"
 
 [node name="close" type="Button" parent="info_archer"]
 margin_left = 8.0

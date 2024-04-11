@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=2]
+[gd_scene load_steps=132 format=2]
 
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
 [ext_resource path="res://textures/gui/emotions_button_pressed.png" type="Texture" id=2]
@@ -43,7 +43,6 @@
 [ext_resource path="res://textures/mobs/player/hair_man.tres" type="Texture" id=41]
 [ext_resource path="res://textures/gui/boss_bar_empty.png" type="Texture" id=42]
 [ext_resource path="res://textures/effects/other/use_item_0.tres" type="Texture" id=43]
-[ext_resource path="res://textures/effects/other/dodge_star.png" type="Texture" id=44]
 [ext_resource path="res://textures/gui/attack.png" type="Texture" id=45]
 [ext_resource path="res://textures/gui/ulti_icon_0.tres" type="Texture" id=46]
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=47]
@@ -1872,7 +1871,7 @@ nodes/ulti_shot/node = SubResource( 94 )
 nodes/ulti_shot/position = Vector2( 752.941, 70.5882 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -823.529, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "potion_shot", 0, "attack_shot", "potion_shot", 1, "potion_seek", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "potion_seek", 0, "potion", "miss_shot", 0, "hurt_shot", "miss_shot", 1, "miss", "attack_shot", 0, "miss_shot", "attack_shot", 1, "attack_seek", "attack_seek", 0, "attack", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
+node_connections = [ "attack_seek", 0, "attack", "attack_shot", 0, "miss_shot", "attack_shot", 1, "attack_seek", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "miss_shot", 0, "hurt_shot", "miss_shot", 1, "miss", "output", 0, "death_trans", "potion_seek", 0, "potion", "potion_shot", 0, "attack_shot", "potion_shot", 1, "potion_seek", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti" ]
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.24788
@@ -2320,8 +2319,22 @@ _data = [ Vector2( 0, 0.274128 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.46304 ), 0.0, 0.
 offsets = PoolRealArray( 0, 0.452381, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="Curve" id=47]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.505159, 0.497433 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Animation" id=102]
+resource_name = "rotate"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
 
 [sub_resource type="Gradient" id=50]
 offsets = PoolRealArray( 0, 0.320574, 0.665072, 1 )
@@ -2331,7 +2344,7 @@ colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 collision_layer = 2
 collision_mask = 29
 script = ExtResource( 29 )
-SPEED = 78.0
+SPEED = 78
 ulti_filled = Color( 1, 0, 0, 1 )
 ulti_empty = Color( 0.690196, 0, 0, 1 )
 
@@ -3650,17 +3663,15 @@ angular_velocity = 180.0
 scale_amount_curve = SubResource( 43 )
 color_ramp = SubResource( 44 )
 
-[node name="gadget_active" type="CPUParticles2D" parent="."]
-emitting = false
-amount = 10
-texture = ExtResource( 44 )
-emission_shape = 2
-emission_rect_extents = Vector2( 20, 40 )
-direction = Vector2( 0, 0 )
-spread = 0.0
-gravity = Vector2( 0, 0 )
-angular_velocity = 180.0
-scale_amount_curve = SubResource( 47 )
+[node name="gadget_active" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -36 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 35 )
+
+[node name="anim" type="AnimationPlayer" parent="gadget_active"]
+autoplay = "rotate"
+anims/rotate = SubResource( 102 )
 
 [node name="stun_stars" type="CPUParticles2D" parent="."]
 visible = false

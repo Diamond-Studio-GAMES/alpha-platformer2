@@ -300,14 +300,14 @@ class.archer,ЛУЧНИК,ARCHER
 class.archer.l,Лучник,Archer
 class.none,НЕТ,NONE
 class.none.l,Нет,None
-gadgets.knight,Следующие 2 секунды Рыцарь будет уклоняться от атак.,"For the next 2 seconds, the Knight will dodge attacks."
-gadgets.butcher,"Мясник прыгает на среднюю высоту. При приземлении отбрасывает ближайших врагов, нанося им 110 ед. урона.","The Butcher jumps to an average height. When landing, it throws away nearby enemies, dealing 110 damage to them."
-gadgets.spearman,"Копьеносец делает мощный удар вблизи, сильно отбрасывая врага и нанося ему 300 ед. урона.","The Spearman makes a powerful blow close by, throwing the enemy hard and dealing 300 damage to him."
-gadgets.wizard,Немедленно заряжает навык Мага на 40%.,Immediately charges the Wizard’s skill by 40%.
-gadgets.archer,"Создаёт град стрел над Лучником, летящих вниз, даже сквозь препятствия. Наносит 150 ед. урона врагам и отбрасывает их.","Creates a hail of arrows over the Archer, flying down, even through obstacles. Deals 150 damage to enemies and knocks back them."
-sp.knight,Даёт шанс в 20% уклониться от атаки.,Gives you a 20% chance to dodge an attack.
+gadgets.knight,"Следующие 2,5 секунды Рыцарь будет уклоняться от атак.","For the next 2,5 seconds, the Knight will dodge attacks."
+gadgets.butcher,"Следующая атака Мясника подкинет его в воздух, если попадёт по врагу. При приземлении он отбрасывает врагов, нанося им 175 ед. урона.","Next Butcher’s attack will throw him in air if it hits an enemy. When landing, it throws away enemies, dealing 175 damage to them."
+gadgets.spearman,"Копьеносец делает мощный удар вблизи, сильно отбрасывая врага и нанося ему 400 ед. урона.","The Spearman makes a powerful blow close by, throwing the enemy hard and dealing 400 damage to him."
+gadgets.wizard,"Вокруг Мага появляется 6 снарядов, которые при попадании во врагов заряжают его навык на 15%.","Summons 6 projectiles around Wizard, which charge 15% of skill when hit."
+gadgets.archer,"Создаёт град стрел над местом попадания следующей стрелы, летящих вниз сквозь препятствия. Наносит 300 ед. урона.",Creates a hail of arrows over the place where arrow hit flying down through obstacles. Deals 150 damage to enemies.
+sp.knight,Даёт шанс в 20% уклониться от атаки.,Gives a 20% chance to dodge an attack.
 sp.butcher,Даёт шанс в 20% зарядить навык на 15% при получении урона.,Gives a 20% chance to charge the skill by 15% when taking damage.
-sp.spearman,Даёт шанс в 20% оглушить врага атакой вблизи на 1.25 секунды.,Gives a 20% chance to stun an enemy with a close-range attack for 1.25 seconds.
+sp.spearman,"Даёт шанс в 20% оглушить врага атакой вблизи на 1,25 секунды.","Gives a 20% chance to stun an enemy with a close-range attack for 1,25 seconds."
 sp.wizard,Даёт шанс в 15% исцелиться на 10% при попадании по врагу дальнобойной атакой.,Gives a 15% chance to heal by 10% when hitting an enemy with a long-range attack.
 sp.archer,Даёт шанс в 40% выстрелить 2-мя стрелами вместо одной.,Gives a 40% chance of shooting 2 arrows instead of one.
 menu.setting.fps,Показывать FPS:,Show FPS:
@@ -546,11 +546,11 @@ spearman.ulti.desc,Копьеносец оглушает ближайшего в
 wizard.attack.name,АТАКА: МАГИЯ ПОСОХА,ATTACK: STAFF MAGIC
 wizard.attack.desc,"Маг стреляет во врага магической сферой. Также можно ударить посохом, но урон будет ниже.","Wizard shoots the enemy with a magic sphere. You can also hit with a staff, but the damage will be lower."
 wizard.ulti.name,НАВЫК: ЛЕЧЕНИЕ,SKILL: HEAL
-wizard.ulti.desc,"Маг исцеляет себя и союзников поблизости, а также наносит небольшой урон всем врагам поблизости.","The magician heals himself and allies nearby, and also deals small damage to all enemies nearby."
+wizard.ulti.desc,"Маг исцеляет себя и союзников, а также наносит небольшой урон всем врагам.","The magician heals himself and allies, and also deals small damage to all enemies."
 archer.attack.name,АТАКА: ПРИЦЕЛЬНЫЙ ВЫСТРЕЛ,ATTACK: PRECISE SHOT
 archer.attack.desc,"Лучник натягивает лук. Чем дольше натягивал, тем больше скорость и урон стрелы. Также можно ударить луком, но урон будет ниже.","Archer pulls the bow. The longer he pulled, the greater the speed and damage of the arrow. You can also hit with a bow, but the damage will be lower."
 archer.ulti.name,НАВЫК: НАЛЁТ,SKILL: BLITZ
-archer.ulti.desc,Лучник наносит урон всем врагам поблизости.,Archer deals damage to all enemies nearby.
+archer.ulti.desc,Лучник наносит урон всем врагам.,Archer deals damage to all enemies.
 shop.notenough,Недостаточно ресурсов для покупки!,Not enough resources!
 shop.potinfo.title,Информация о зелье,Potion information
 shop.potinfo.1,Восстанавливает 20% от максимального здоровья.,Heals 20% of max health.

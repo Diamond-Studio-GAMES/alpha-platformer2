@@ -119,6 +119,7 @@ func throw(direction):
 	node.rotation = direction.angle()
 	if is_using_gadget:
 		is_using_gadget = false
+		$gadget_active.hide()
 		node.get_node("sprite").modulate = Color.red
 		node.collides = false
 		node.get_node("attack").damage = _attack_node.damage * 4
@@ -198,6 +199,7 @@ func use_gadget():
 	attack_cooldown = 0
 	can_attack = true
 	is_using_gadget = true
+	$gadget_active.show()
 
 
 func revive(hp = -1):

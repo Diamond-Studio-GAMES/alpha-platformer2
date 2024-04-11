@@ -146,7 +146,7 @@ func throw(direction):
 		var node = spear.instance()
 		node.global_position = Vector2(global_position.x, global_position.y - 12 * GRAVITY_SCALE)
 		node.rotation = direction.angle()
-		node.get_node("attack").damage = G.getv("spearman_level", 0) * 5 + 25 + (15 if  is_amulet(G.Amulet.POWER) else 0)
+		node.get_node("attack").damage = power * 5 + 25 + (15 if  is_amulet(G.Amulet.POWER) else 0)
 		node.get_node("attack").fatal = hate_fatal()
 		_level.add_child(node, true)
 	_is_attacking = false

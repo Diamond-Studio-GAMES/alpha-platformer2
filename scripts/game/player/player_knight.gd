@@ -15,7 +15,7 @@ func _ready():
 	ulti_power = G.getv(class_nam + "_ulti_level", 1)
 	max_health = power * 20 + 100 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
 	defense = power + 5 + (5 if is_amulet(G.Amulet.DEFENSE) else 0)
-	$visual/body/knight_attack.damage = power * 5 + 25  + (15 if  is_amulet(G.Amulet.POWER) else 0)
+	_attack_node.damage = power * 5 + 25  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 	_ulti = load("res://prefabs/classes/knight_ulti.tscn")
 	current_health = max_health
 	_health_bar.max_value = max_health
@@ -42,7 +42,7 @@ func apply_data(data):
 	.apply_data(data)
 	max_health = power * 20 + 100 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
 	defense = power + 5 + (5 if is_amulet(G.Amulet.DEFENSE) else 0)
-	$visual/body/knight_attack.damage = power * 5 + 25  + (15 if  is_amulet(G.Amulet.POWER) else 0)
+	_attack_node.damage = power * 5 + 25  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 	SPEED += (7 if is_amulet(G.Amulet.SPEED) else 0)
 	RECHARGE_SPEED = 0.1
 	_health_bar.max_value = max_health
@@ -120,6 +120,8 @@ func attack(fatal = false):
 
 
 func _process(delta):
+	if is_active_gadget:
+		gadget_cooldown = 10
 	if MP.auth(self):
 		if Input.is_action_just_pressed("attack1"):
 			attack()
@@ -136,7 +138,7 @@ func use_gadget():
 	if not success:
 		return
 	is_active_gadget = true
-	$gadget_active.emitting = true
-	yield(get_tree().create_timer(2, false), "timeout")
+	$gadget_active.show()
+	yield(get_tree().create_timer(2.5, false), "timeout")
 	is_active_gadget = false
-	$gadget_active.emitting = false
+	$gadget_active.hide()

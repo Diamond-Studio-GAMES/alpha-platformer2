@@ -125,17 +125,17 @@ func ulti():
 	yield(get_tree().create_timer(0.8, false), "timeout")
 	can_see = false
 	$visual.modulate = Color(1, 1, 1, 0.25)
-	collision_layer = 0b1000000
-	collision_mask = 0b1
+	collision_layer = 0b0
+	collision_mask = 0b11001
 	trail.points.clear()
 	trail.show()
 	$gadget_active.emitting = true
 	var shape_owner = $ulti.shape_find_owner(0)
 	$ulti.shape_owner_set_disabled(shape_owner, false)
-	SPEED = 250
-	JUMP_POWER = 350
+	SPEED = 185
+	JUMP_POWER = 280
 	yield(get_tree().create_timer(3, false), "timeout")
-	SPEED = 95
+	SPEED = 92
 	JUMP_POWER = 255
 	$visual.modulate = Color.white
 	trail.hide()

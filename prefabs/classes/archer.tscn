@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=2]
+[gd_scene load_steps=146 format=2]
 
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/classes/emotion.tscn" type="PackedScene" id=2]
@@ -31,7 +31,6 @@
 [ext_resource path="res://scripts/game/player/revive_multiplayer.gd" type="Script" id=31]
 [ext_resource path="res://textures/gui/button_move.tres" type="Texture" id=32]
 [ext_resource path="res://textures/gui/button_attack2_active.tres" type="Texture" id=33]
-[ext_resource path="res://textures/effects/other/dodge_star.png" type="Texture" id=34]
 [ext_resource path="res://textures/items/big_potion.png" type="Texture" id=35]
 [ext_resource path="res://textures/mobs/player/hair_woman.tres" type="Texture" id=36]
 [ext_resource path="res://textures/gui/ulti_button.png" type="Texture" id=37]
@@ -2726,8 +2725,22 @@ _data = [ Vector2( 0, 0.274128 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.46304 ), 0.0, 0.
 offsets = PoolRealArray( 0, 0.452381, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="Curve" id=47]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.505159, 0.497433 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Animation" id=108]
+resource_name = "rotate"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
 
 [sub_resource type="Gradient" id=50]
 offsets = PoolRealArray( 0, 0.320574, 0.665072, 1 )
@@ -2741,7 +2754,6 @@ script = ExtResource( 26 )
 __meta__ = {
 "_editor_description_": ""
 }
-SPEED = 78
 ulti_filled = Color( 0, 1, 1, 1 )
 ulti_empty = Color( 0, 0.74902, 0.74902, 1 )
 
@@ -4190,17 +4202,15 @@ angular_velocity = 180.0
 scale_amount_curve = SubResource( 43 )
 color_ramp = SubResource( 44 )
 
-[node name="gadget_active" type="CPUParticles2D" parent="."]
-emitting = false
-amount = 10
-texture = ExtResource( 34 )
-emission_shape = 2
-emission_rect_extents = Vector2( 20, 40 )
-direction = Vector2( 0, 0 )
-spread = 0.0
-gravity = Vector2( 0, 0 )
-angular_velocity = 180.0
-scale_amount_curve = SubResource( 47 )
+[node name="gadget_active" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -36 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 38 )
+
+[node name="anim" type="AnimationPlayer" parent="gadget_active"]
+autoplay = "rotate"
+anims/rotate = SubResource( 108 )
 
 [node name="stun_stars" type="CPUParticles2D" parent="."]
 visible = false
