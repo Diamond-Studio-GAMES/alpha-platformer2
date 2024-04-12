@@ -118,6 +118,10 @@ func hurt(dmg, by, rmt = false):
 			is_shooting = false
 			$shape.set_deferred("disabled", true)
 			if MP.has_multiplayer_authority(self):
+				var h = load("res://minigames/minigame7/heal_dead_player.tscn").instance()
+				h.global_position = global_position 
+				h.name = "heal" + str(randi())
+				parent.add_child(h, true)
 				parent.rpc("player_died", get_tree().get_network_unique_id(), by)
 
 
