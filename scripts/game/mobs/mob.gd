@@ -164,13 +164,13 @@ func _process(delta):
 
 
 func do_lookup():
-	var left_x = stepify(global_position.x - 16, 32) - 16
-	var right_x = stepify(global_position.x - 16, 32) + 48
-	var center_x = stepify(global_position.x - 16, 32) + 16
+	var left_x = stepify(global_position.x - 8, 16) - 8
+	var right_x = stepify(global_position.x - 8, 16) + 24
+	var center_x = stepify(global_position.x - 8, 16) + 8
 	var y = global_position.y - 32 * GRAVITY_SCALE
 	move_ray.enabled = true
-	move_ray.global_position = Vector2(left_x, y)
 	move_ray.cast_to = Vector2.DOWN * RAY_LENGTH * GRAVITY_SCALE
+	move_ray.global_position = Vector2(left_x, y)
 	move_ray.force_raycast_update()
 	var left_ray_state = _get_ray_state()
 	var left_ray_y = move_ray.get_collision_point().y
@@ -179,8 +179,10 @@ func do_lookup():
 	var right_ray_state = _get_ray_state()
 	var right_ray_y = move_ray.get_collision_point().y
 	move_ray.global_position = Vector2(center_x, y)
+	move_ray.collide_with_areas = false
 	move_ray.force_raycast_update()
 	var floor_y = move_ray.get_collision_point().y
+	move_ray.collide_with_areas = true
 	move_ray.enabled = false
 	
 	match left_ray_state:
