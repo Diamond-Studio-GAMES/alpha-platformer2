@@ -91,7 +91,7 @@ func start_fight():
 
 
 remote func move_player_to_start():
-	if player.current_health > 0:
+	if player.can_revive:
 		player.global_position = $"../../tilemap".map_to_world(teleport_position) + Vector2.ONE * 16
 
 

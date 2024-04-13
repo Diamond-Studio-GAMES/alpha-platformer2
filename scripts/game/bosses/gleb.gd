@@ -290,7 +290,7 @@ func do_soul_attack():
 		2:
 			var list = range(4)
 			list.shuffle()
-			for i in 3:
+			for i in 2:
 				var saa = soul_attack_area.instance()
 				$soul_mode.add_child(saa)
 				saa.global_position = $soul_mode/soul_point.global_position - Vector2.RIGHT * \

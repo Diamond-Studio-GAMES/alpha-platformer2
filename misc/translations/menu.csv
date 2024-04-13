@@ -114,6 +114,7 @@ menu.setting.music,Громкость музыки:,Music volume:
 menu.setting.sfx,Громкость звуков:,SFX volume:
 menu.setting.graphics,Графика:,Graphics:
 menu.graphics.setup,Настроить…,Set up…
+menu.setting.lore,Отключить диалоги:,Disable dialogs:
 menu.setting.scm,Плавное движение камеры:,Smooth camera movement:
 menu.setting.damping,Резкость камеры:,Camera damping:
 menu.press,Нажми!,Tap!

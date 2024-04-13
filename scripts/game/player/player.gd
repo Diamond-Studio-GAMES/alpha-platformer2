@@ -799,6 +799,8 @@ remote func revived_player():
 
 
 func make_dialog(text = "", time = 2, color = Color.white):
+	if G.getv("lore_disabled", false):
+		return
 	if G.getv("gender", "male") == "male":
 		text = text.replace("%", "")
 	else:
