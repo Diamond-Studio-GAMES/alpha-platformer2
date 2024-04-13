@@ -7,6 +7,7 @@ func _ready():
 	current_class = G.getv("selected_class", "player")
 	var scene = load("res://prefabs/classes/%s.tscn" % current_class)
 	var node = scene.instance()
+	yield(get_tree().create_timer(1, false), "timeout")
 	var visual = node.get_node("visual")
 	anim = node.get_node("anim")
 	node.remove_child(visual)

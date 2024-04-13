@@ -1323,7 +1323,7 @@ __meta__ = {
 anims/RESET = SubResource( 2 )
 anims/idle = SubResource( 3 )
 anims/walk = SubResource( 4 )
-blend_times = [ "death", "attack", 0.3, "death", "miss", 0.3, "death", "skill_use", 0.3, "death", "walk", 0.5, "hurt", "attack", 0.3, "hurt", "idle", 0.3, "hurt", "skill_use", 0.3, "hurt", "walk", 0.5, "idle", "attack", 0.3, "idle", "idle", 0.3, "idle", "skill_use", 0.3, "idle", "walk", 0.5, "miss", "attack", 0.3, "miss", "idle", 0.3, "miss", "skill_use", 0.3, "miss", "walk", 0.5, "skill_use", "attack", 0.3, "skill_use", "idle", 0.3, "skill_use", "skill_use", 0.3, "skill_use", "walk", 0.5, "use_potion", "death", 0.3, "use_potion", "hurt", 0.3, "use_potion", "idle", 0.3, "use_potion", "miss", 0.3, "use_potion", "skill_use", 0.3, "use_potion", "use_potion", 0.3, "use_potion", "walk", 0.5, "walk", "attack", 0.3, "walk", "idle", 0.3, "walk", "skill_use", 0.3, "walk", "walk", 0.5 ]
+blend_times = [ "idle", "idle", 0.3, "idle", "walk", 0.5, "walk", "idle", 0.3, "walk", "walk", 0.5 ]
 
 [node name="player_class" type="Node2D" parent="."]
 position = Vector2( 0, -30 )
@@ -1365,9 +1365,6 @@ margin_top = -570.0
 margin_right = 200.0
 margin_bottom = -370.0
 rect_pivot_offset = Vector2( 200, 100 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="main" type="Label" parent="tint/intro/text"]
 anchor_left = 0.5

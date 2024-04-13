@@ -1,18 +1,22 @@
 keys,ru,en
 1.name,Резня,Bloodbath
+1.desc,Выживи 2 минуты среди постоянно появляющихся врагов… Чем больше билетов поставишь — тем больше наград получишь!,"Survive for 2 minutes among the constantly appearing enemies… The more tickets you bet, the more rewards you will receive!"
 1.music,Музыка: KSLV - Override (https://youtu.be/NS8DPG62Fto),Music: KSLV - Override (https://youtu.be/NS8DPG62Fto)
 1.win,ТЫ ПОБЕДИЛ!,YOU WIN!
 1.level,ВЫЖИВИ 2 МИНУТЫ!!!,SURVIVE 2 MINUTES!!!
 1.select,Выбери класс:,Select class:
 2.name,Избавление от ненависти,Destroy Your Hate
+2.desc,"Пройди уровень, чтобы очиститься от ненависти, захватившей твоё тело… Только помни: она будет тебе мешать!",Complete the level to get rid of the hate that has taken over your body… Just remember: she'll be in your way!
 2.free_from,Освободись от,Destroy your
 2.hateee,НЕНАВИСТИ!!!,HATE!!!
 2.death,Смерть ждёт тебя…,Death is waiting for you…
 3.total,Всего заработано:,Earned total:
 3.cost,1 билет = 10 минут игры,1 ticket = 10 minutes
 3.remains,Оставшееся время: %02d:%02d:%02d,Time remained: %02d:%02d:%02d
+3.desc,"Пока идёт время, на камень будут падать монеты и кристаллы, которые нужно подбирать. Раз в минуту падает сразу несколько монет, и часть из них автоматически подбирается.","As time goes on, coins and gems that need to be picked up will fall on the stone. Several coins fall once a minute, and some of them are automatically picked up."
 3.name,Симулятор камня,Stone Simulator
 4.name,Последние волны,Last Waves
+4.desc,"Отбивайся от волн врагов и прокачивай героя! Чем больше билетов поставишь и волн отобьёшь, тем больше наград получишь!","Fight off waves of enemies and upgrade your hero! The more tickets you bet and the waves you beat off, the more rewards you will receive!"
 4.wave.start,Волна %d началась!,Wave %d started!
 4.wave.end,Все враги появились!,All enemies spawned!
 4.wave.clear,Волна зачищена!,Wave cleared!
@@ -25,6 +29,7 @@ keys,ru,en
 4.shop.hp,+20 здоровья,+20 health
 4.shop.arm,+15 брони,+15 armor
 4.shop.start,Начать волну,Start wave
+5.desc,"Нажимай, чтобы прыгать или, если ты в корабле, удерживай, чтобы лететь! Ты можешь поставить билет при прохождении уровня, чтобы получить за него награду.","Tap to jump or, if you're in a ship, hold to fly! You can bet a ticket when completing a level to get a reward for it."
 5.preview,Предпросмотр,Preview
 5.camera,Перемещение камеры,Move camera mode
 5.erase,Стирание блоков,Eraser mode

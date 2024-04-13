@@ -211,6 +211,8 @@ func use_potion(level):
 
 
 func _process(delta):
+	if is_active_gadget:
+		gadget_cooldown = 10
 	if MP.auth(self):
 		if Input.is_action_just_pressed("attack1"):
 			attack()

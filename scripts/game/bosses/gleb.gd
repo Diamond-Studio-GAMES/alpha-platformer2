@@ -115,11 +115,11 @@ func get_phase():
 	var health_left = mob.current_health / mob.max_health
 	if health_left <= 0:
 		return -1
-	elif health_left < 0.4:
+	elif health_left < 0.34:
 		next_attack_time_min = 0.6
 		next_attack_time_max = 1.4
 		return 3
-	elif health_left < 0.7:
+	elif health_left < 0.67:
 		next_attack_time_min = 0.75
 		next_attack_time_max = 1.6
 		return 2
@@ -253,10 +253,14 @@ func stop_time():
 
 func zero():
 	ms.sync_call(self, "zero")
+	next_attack_time += 2
 	$THEWORLD/anim.play("ZERO")
 	yield(get_tree().create_timer(0.5), "timeout")
 	pause_mode = PAUSE_MODE_INHERIT
 	get_tree().paused = false
+	var tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(Engine, "time_scale", 1, 0.3).from(0.1)
 	mob.immune_counter -= 1
 	VisualServer.set_shader_time_scale(1)
 	is_time_stopped = false
