@@ -24,7 +24,7 @@
 [ext_resource path="res://textures/bosses/gleb/head.tres" type="Texture" id=22]
 [ext_resource path="res://textures/bosses/gleb/body.tres" type="Texture" id=23]
 [ext_resource path="res://prefabs/blocks/islands_grass.tscn" type="PackedScene" id=24]
-[ext_resource path="res://sounds/music/village_boss.ogg" type="AudioStream" id=25]
+[ext_resource path="res://sounds/music/final_boss.ogg" type="AudioStream" id=25]
 [ext_resource path="res://textures/mobs/mushroom/mushroom.tres" type="Texture" id=26]
 [ext_resource path="res://textures/gui/health_bar_empty.tres" type="Texture" id=27]
 [ext_resource path="res://prefabs/blocks/tab.tscn" type="PackedScene" id=28]
@@ -4492,7 +4492,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/gleb/mob_gl/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/gleb/mob_gl/visual/body"]
-scale = Vector2( 1.25, 1.16024 )
+scale = Vector2( 1.25, 1.16672 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/gleb/mob_gl"]

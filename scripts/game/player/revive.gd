@@ -37,8 +37,6 @@ func show_revive_screen():
 func revive_button():
 	if G.getv("gems", 0) < 10:
 		return
-	if G.getv("hardcore", false):
-		G.main_setv("remove_save", "")
 	is_screen_on = false
 	get_tree().paused = false
 	VisualServer.set_shader_time_scale(1)

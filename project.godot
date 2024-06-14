@@ -357,7 +357,6 @@ settings/fps/force_fps=60
 gdscript/warnings/enable=false
 gdscript/warnings/unused_class_variable=true
 gdscript/warnings/unused_argument=false
-gdscript/warnings/return_value_discarded=false
 
 [display]
 

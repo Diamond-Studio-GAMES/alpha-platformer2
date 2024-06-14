@@ -103,9 +103,9 @@ func attack(fatal = false):
 
 func hit_gadget():
 	if is_on_floor():
-		_move.y = -350 * GRAVITY_SCALE
+		_move.y = -400 * GRAVITY_SCALE
 	else:
-		_move.y = -255 * GRAVITY_SCALE
+		_move.y = -300 * GRAVITY_SCALE
 	yield(get_tree().create_timer(0.1, false), "timeout")
 	is_in_air = true
 

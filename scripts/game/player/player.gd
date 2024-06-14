@@ -463,6 +463,8 @@ func _hurt_intermediate(damage_source, died):
 
 
 func _post_hurt(ded):
+	if not MP.auth(self):
+		return
 	if ded:
 		if G.getv("hardcore", false):
 			G.main_setv("remove_save", G.getv("save_id"))
@@ -767,6 +769,8 @@ func revive(hp_count = -1):
 	breath_time = 10
 	tint_anim.play("reviving")
 	if MP.auth(self):
+		if G.getv("hardcore", false):
+			G.main_setv("remove_save", "")
 		G.addv("revives", 1)
 		if hp_count < 0:
 			heal(max_health)

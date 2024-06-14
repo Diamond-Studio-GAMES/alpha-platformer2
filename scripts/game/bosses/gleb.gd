@@ -212,7 +212,7 @@ func knife():
 
 
 func summon_knife():
-	if not MP.auth(self):
+	if not MP.auth(self) or not can_mob_move():
 		return
 	var kf = knife.instance()
 	kf.global_position = $visual/body/arm_right/hand/knife.global_position
@@ -228,7 +228,7 @@ func big_ball():
 
 
 func summon_ball():
-	if not MP.auth(self):
+	if not MP.auth(self) or not can_mob_move():
 		return
 	var b = ball.instance()
 	b.global_position = $visual/body/arm_left/hand/ball.global_position
@@ -253,7 +253,7 @@ func stop_time():
 
 func zero():
 	ms.sync_call(self, "zero")
-	next_attack_time += 2
+	next_attack_time += 2.5
 	$THEWORLD/anim.play("ZERO")
 	yield(get_tree().create_timer(0.5), "timeout")
 	pause_mode = PAUSE_MODE_INHERIT
@@ -282,8 +282,9 @@ func enter_soul_mode():
 
 
 func do_soul_attack():
+	next_attack_time += 0.4
 	ms.sync_call(self, "do_soul_attack")
-	var attack_idx = randi() % current_phase + 1
+	var attack_idx = randi() % get_phase() + 1
 	match attack_idx:
 		1:
 			for i in range(8):
