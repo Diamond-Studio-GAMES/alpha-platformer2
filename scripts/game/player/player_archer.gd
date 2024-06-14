@@ -1,7 +1,6 @@
 extends Player
 class_name Archer
 
-var gen = RandomNumberGenerator.new()
 var anima
 var trck_idx0
 var trck_idx1
@@ -10,6 +9,7 @@ var key_idx0_1
 var key_idx1_1
 var key_idx2_1
 var is_aiming = false
+var is_active_gadget = false
 var aim_time = 0
 var jout = Vector2()
 var cjo = Vector2()
@@ -38,7 +38,7 @@ func _ready():
 	ulti_power = G.getv(class_nam + "_ulti_level", 1)
 	max_health = power * 20 + 100 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
 	defense = power + 5 + (5 if is_amulet(G.Amulet.DEFENSE) else 0)
-	$visual/body/knight_attack.damage = power * 2 + 10  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
+	_attack_node.damage = power * 2 + 10  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
 	current_health = max_health
 	_health_bar.max_value = max_health
 	_health_change_bar.max_value = max_health
@@ -49,12 +49,9 @@ func _ready():
 	_ulti = load("res://prefabs/classes/archer_ulti.tscn")
 	RECHARGE_SPEED = 1.1 * (0.8 if is_amulet(G.Amulet.RELOAD) else 1)
 	SPEED += (7 if is_amulet(G.Amulet.SPEED) else 0)
-	gen.randomize()
 	have_soul_power = G.getv("archer_soul_power", false)
 	have_gadget = G.getv("archer_gadget", false)
 	joystick.connect("released", self, "joystick_released")
-	if have_soul_power and MP.auth(self):
-		$visual/body/knight_attack.connect("hit_enemy", self, "sp_effect")
 	if not have_gadget:
 		$camera/gui/base/buttons/buttons_0/gadget.hide()
 	if MP.auth(self):
@@ -68,7 +65,7 @@ func apply_data(data):
 	.apply_data(data)
 	max_health = power * 20 + 100 + (60 if is_amulet(G.Amulet.HEALTH) else 0)
 	defense = power + 5 + (5 if is_amulet(G.Amulet.DEFENSE) else 0)
-	$visual/body/knight_attack.damage = power * 2 + 10  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
+	_attack_node.damage = power * 2 + 10  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
 	SPEED += (7 if is_amulet(G.Amulet.SPEED) else 0)
 	RECHARGE_SPEED = 0.1
 	_health_bar.max_value = max_health
@@ -103,7 +100,7 @@ func joystick_released(output):
 func reset_aim():
 	jout = Vector2.ZERO
 	if is_aiming:
-		speed_cooficent /= 0.5
+		speed_cooficent /= 0.7
 		can_turn = true
 		is_aiming = false
 		_anim_tree["parameters/aim_ts/scale"] = -1 if aim_time < 0.55 else 1
@@ -113,12 +110,6 @@ func reset_aim():
 		_aim_tween.remove_all()
 		_aim_tween.interpolate_property(_anim_tree, "parameters/aim_blend/blend_amount", _anim_tree["parameters/aim_blend/blend_amount"], 0, 0.3)
 		_aim_tween.start()
-
-
-func sp_effect(remote_call = false):
-	if gen.randi_range(0, 100) > 55 or remote_call:
-		$knockback/anim.play("def")
-		ms.sync_call(self, "sp_effect", [true])
 
 
 func attack(fatal = false):
@@ -140,6 +131,7 @@ func attack(fatal = false):
 	yield(get_tree().create_timer(0.267, false), "timeout")
 	_attack_node.fatal = fatal
 	$visual/body/knight_attack/swing.play()
+	_attack_visual.frame = 0
 	_attack_visual.show()
 	_attack_visual.playing = true
 	_attack_shape.disabled = false
@@ -147,7 +139,6 @@ func attack(fatal = false):
 	_attack_visual.hide()
 	_attack_visual.self_modulate = Color.white
 	_attack_visual.playing = false
-	_attack_visual.frame = 0
 	_attack_shape.disabled = true
 	_is_attacking = false
 
@@ -179,6 +170,11 @@ func throw(direction, aimed_time):
 	attack_cooldown = RECHARGE_SPEED + 0.25
 	var rotates = calc_hand_rotate(direction)
 	$visual/body/arm_right/hand/weapon/sfx2.play()
+	var gadget = false
+	if is_active_gadget:
+		is_active_gadget = false
+		$gadget_active.hide()
+		gadget = true
 	if MP.auth(self):
 		var node = arrow.instance()
 		if aimed_time >= 0.55 and aimed_time < 0.85:
@@ -186,11 +182,26 @@ func throw(direction, aimed_time):
 			node.get_node("attack").damage = power * 3 + 15  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
 		else:
 			node.SPEED = 225.0
-			node.get_node("attack").damage = G.getv("archer_level", 0) * 7 + 35  + (15 if  is_amulet(G.Amulet.POWER) else 0)
+			node.get_node("attack").damage = power * 7 + 35  + (15 if  is_amulet(G.Amulet.POWER) else 0)
 		node.global_position = Vector2(global_position.x, global_position.y - 10.5 * GRAVITY_SCALE)
 		node.rotation = rotates[1]
 		node.get_node("attack").fatal = hate_fatal()
+		if gadget:
+			node.connect("destroyed", self, "_spawn_gadget", [], CONNECT_DEFERRED)
 		_level.add_child(node, true)
+		if have_soul_power and randi() % 10 > 5:
+			yield(get_tree().create_timer(0.1, false), "timeout")
+			node = arrow.instance()
+			if aimed_time >= 0.55 and aimed_time < 0.85:
+				node.SPEED = 150.0
+				node.get_node("attack").damage = power * 3 + 15  + (15 if  is_amulet(G.Amulet.POWER) else 0)/3
+			else:
+				node.SPEED = 225.0
+				node.get_node("attack").damage = power * 7 + 35  + (15 if  is_amulet(G.Amulet.POWER) else 0)
+			node.global_position = Vector2(global_position.x, global_position.y - 10.5 * GRAVITY_SCALE)
+			node.rotation = rotates[1]
+			node.get_node("attack").fatal = hate_fatal()
+			_level.add_child(node, true)
 
 
 func use_potion(level):
@@ -200,12 +211,14 @@ func use_potion(level):
 
 
 func _process(delta):
+	if is_active_gadget:
+		gadget_cooldown = 10
 	if MP.auth(self):
 		if Input.is_action_just_pressed("attack1"):
 			attack()
 		if Input.is_action_just_pressed("ulti"):
 			ulti()
-		if Input.is_action_just_pressed("gadget") and have_gadget:
+		if Input.is_action_just_pressed("gadget"):
 			use_gadget()
 		if joystick._output.length_squared() * current_health > 0:
 			aim_line.rotation = Vector2(joystick._output.x, joystick._output.y * GRAVITY_SCALE).angle()
@@ -224,7 +237,7 @@ func _process(delta):
 			is_aiming = true
 			can_turn = false
 			if is_zero_approx(_anim_tree["parameters/aim_blend/blend_amount"]):
-				speed_cooficent *= 0.5
+				speed_cooficent *= 0.7
 				_anim_tree["parameters/aim_ts/scale"] = 1
 				_anim_tree["parameters/aim_seek/seek_position"] = 0
 				_aim_tween.stop_all()
@@ -246,11 +259,16 @@ func _process(delta):
 		reset_aim()
 
 
+func _spawn_gadget(pos):
+	var node = gadget_attack.instance()
+	node.global_position = pos + Vector2.UP * 150
+	_level.add_child(node)
+
+
 func use_gadget():
 	var success = .use_gadget()
 	if not success:
 		return
-	var node = gadget_attack.instance()
-	node.global_position = global_position + Vector2.UP * 150
-	_level.add_child(node)
+	is_active_gadget = true
+	$gadget_active.show()
 

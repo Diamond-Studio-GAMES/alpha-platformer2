@@ -3661,6 +3661,9 @@ script/source = "extends Area2D
 
 func _on_area_start_body_entered(body):
 	$\"../anim\".play(\"up\")
+	$\"../../../tilemap\".set_cell(97, -3, 52)
+	$\"../../../tilemap\".set_cell(97, -2, 52)
+	$\"../../../tilemap\".set_cell(97, -1, 52)
 "
 
 [sub_resource type="RectangleShape2D" id=101]
@@ -3905,7 +3908,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=25]
-radius = 12.0
+radius = 32.0
 
 [node name="level_9_10" type="Node2D"]
 script = ExtResource( 15 )

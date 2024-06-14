@@ -13,6 +13,8 @@ enum SoulType  {
 
 onready var soul = $create/soul
 var save_obj = load("res://prefabs/menu/save.tscn")
+var soul_clear = load("res://textures/gui/soul_clear.png")
+var soul_hate = load("res://textures/gui/soul_hate.png")
 var id_to_delete = ""
 var saves_objs_dict = {}
 
@@ -44,6 +46,27 @@ func _ready():
 	$create/name.placeholder_text = tr("sl.create.pname")
 	$create/name.set_message_translation(false)
 	$create/name.notification(NOTIFICATION_TRANSLATION_CHANGED)
+	
+	if G.main_getv("last_completed_color", Color.transparent) != Color.transparent:
+		$tint/center/uncompleted.hide()
+		$tint/center/completed.show()
+		$tint/center/completed/eyes.self_modulate = G.main_getv("last_completed_color", Color.transparent)
+		if not G.main_getv("complete_tip", false):
+			$complete.popup_centered()
+			G.main_setv("complete_tip", true)
+		if G.main_getv("last_completed_hate", false):
+			$tint/center/completed.hide()
+			$tint/center/hate.show()
+			$tint/center/hate/sprite.self_modulate = G.main_getv("last_completed_color", Color.transparent)
+	
+	if not G.main_getv("remove_save", "").empty():
+		id_to_delete = G.main_getv("remove_save", "")
+		confirm_delete()
+		G.main_setv("remove_save", "")
+	if G.main_getv("reload_meta", false):
+		G.main_setv("reload_meta", false)
+		reload_meta_from_saves()
+	
 	list_saves()
 
 
@@ -78,6 +101,8 @@ func list_saves():
 		node.get_node("date").text = date_str
 		node.get_node("soul").self_modulate = G.SOUL_COLORS[G.get_save_meta(i, "soul_type", 6)]
 		var color = Color.white
+		if G.get_save_meta(i, "completed", false):
+			node.get_node("soul").texture = soul_clear
 		match G.get_save_meta(i, "hate_level", -1):
 			1:
 				node.get_node("soul").modulate = color.darkened(0.1)
@@ -87,10 +112,15 @@ func list_saves():
 				node.get_node("soul").modulate = color.darkened(0.5)
 			4:
 				node.get_node("soul").modulate = color.darkened(0.7)
+				if G.get_save_meta(i, "completed", false):
+					node.get_node("soul").texture = soul_hate
 			_:
 				node.get_node("soul").modulate = color
 		node.get_node("play").connect("pressed", self, "play", [i])
-		node.get_node("copy").connect("pressed", self, "duplicate_save", [i])
+		if G.get_save_meta(i, "soul_type", 6) == 6:
+			node.get_node("copy").connect("pressed", self, "duplicate_save", [i])
+		else:
+			node.get_node("copy").self_modulate = Color.webgray
 		node.get_node("delete").connect("pressed", self, "delete_save", [i])
 		$saves/scroll/saves.add_child(node)
 		saves_objs_dict[G.get_save_meta(i, "name", "???")] = node
@@ -106,7 +136,8 @@ func sort_saves():
 
 func _process(delta):
 	$create/soul_type.visible = $create/hardcore.pressed
-	$create/soul_type_text.visible = $create/hardcore.pressed
+	$create/determination_text.visible = not $create/hardcore.pressed
+	$create/save_notice.text = tr("sl.save.hardcore") if $create/hardcore.pressed else tr("sl.save.normal")
 	if $create/hardcore.pressed:
 		soul.self_modulate = G.SOUL_COLORS[$create/soul_type.selected]
 	else:
@@ -151,7 +182,7 @@ func create():
 	G.setv("volume", G.main_getv("volume", 0.75))
 	G.setv("volume_sfx", G.main_getv("volume_sfx", 1))
 	G.setv("lang", G.main_getv("lang", OS.get_locale_language()))
-	G.setv("hero_chance", 2)
+	G.setv("hero_chance", 4)
 	$enter.interpolate_property($enter_color, "color", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 2)
 	$enter.start()
 	$enter_color.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -165,6 +196,7 @@ func play(id):
 	G.open_save(id)
 	G.setv("last_opened", Time.get_date_dict_from_system())
 	G.set_save_meta(id, "last_opened", Time.get_date_dict_from_system())
+	G.set_save_meta(id, "completed", false)
 	G.save()
 	$enter.interpolate_property($enter_color, "color", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 1)
 	$enter.start()
@@ -207,7 +239,6 @@ func enter_create():
 
 
 func cancel_settings():
-	G.save()
 	if $settings/enter.is_active() or $saves/enter.is_active():
 		return
 	$settings/enter.interpolate_property($settings, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.5)
@@ -242,11 +273,9 @@ func enter_settings():
 func lang():
 	if G.main_getv("lang", "ru") == "ru":
 		G.main_setv("lang", "en")
-		G.save()
 		TranslationServer.set_locale(G.main_getv("lang", "en"))
 	else:
 		G.main_setv("lang", "ru")
-		G.save()
 		TranslationServer.set_locale(G.main_getv("lang", "ru"))
 
 

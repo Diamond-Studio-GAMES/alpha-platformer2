@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://textures/story/end_hate.png" type="Texture" id=1]
+[ext_resource path="res://textures/story/hate_end.png" type="Texture" id=2]
+[ext_resource path="res://themes/theme.tres" type="Theme" id=4]
+[ext_resource path="res://scripts/menu/screens/ending_cutscene.gd" type="Script" id=5]
+[ext_resource path="res://scripts/game/player/soul_color.gd" type="Script" id=8]
+
+[sub_resource type="Animation" id=2]
+resource_name = "lore"
+length = 20.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 20 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "next"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("view:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 16.9, 20 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("view/image:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4, 14 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -240 ), Vector2( 0, -240 ), Vector2( 0, 0 ) ]
+}
+
+[node name="end4" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 5 )
+hate_minus_1_next = "res://scenes/endings/the_end.tscn"
+hate_0_next = "res://scenes/endings/the_end.tscn"
+hate_1_next = "res://scenes/endings/the_end.tscn"
+hate_2_next = "res://scenes/endings/the_end.tscn"
+hate_3_next = "res://scenes/endings/the_end.tscn"
+hate_4_next = "res://scenes/endings/the_end.tscn"
+
+[node name="view" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_top = -120.0
+margin_right = 240.0
+margin_bottom = 120.0
+rect_clip_content = true
+mouse_filter = 2
+
+[node name="image" type="Control" parent="view"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -240.0
+
+[node name="bottom" type="TextureRect" parent="view/image"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_right = 240.0
+margin_bottom = 240.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="top" type="TextureRect" parent="view/image"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -240.0
+margin_top = -240.0
+margin_right = 240.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 8 )
+dont_dark = true
+
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "lore"
+anims/lore = SubResource( 2 )

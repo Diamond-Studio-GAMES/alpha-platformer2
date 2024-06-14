@@ -214,8 +214,8 @@ func time_fast():
 	get_tree().current_scene.add_child(tf)
 	time_fasting = tf
 	yield(get_tree().create_timer(1.3, false), "timeout")
-	Engine.time_scale = 1.5
+	Engine.time_scale = 1.25
 	is_time_faster = true
-	yield(get_tree().create_timer(12, false), "timeout")
+	yield(get_tree().create_timer(10, false), "timeout")
 	Engine.time_scale = 1
 	is_time_faster = false

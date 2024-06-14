@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://textures/gui/multiplayer.png" type="Texture" id=1]
 [ext_resource path="res://textures/items/ticket.png" type="Texture" id=2]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=3]
 [ext_resource path="res://textures/gui/help.png" type="Texture" id=4]
-[ext_resource path="res://themes/font_headers2.tres" type="DynamicFont" id=5]
+[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=5]
 [ext_resource path="res://textures/effects/backgrounds/levels_bg.png" type="Texture" id=7]
 [ext_resource path="res://textures/mobs/knife_man/head.tres" type="Texture" id=23]
 [ext_resource path="res://prefabs/menu/education.tscn" type="PackedScene" id=27]
@@ -16,14 +16,18 @@
 [sub_resource type="CanvasItemMaterial" id=279]
 blend_mode = 4
 
+[sub_resource type="DynamicFont" id=280]
+size = 36
+extra_spacing_bottom = -12
+font_data = ExtResource( 5 )
+
 [node name="levels" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 3 )
 script = ExtResource( 56 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_vertical_guides_": [ 4800.0 ]
+"_edit_group_": true
 }
 
 [node name="bg" type="ColorRect" parent="."]
@@ -955,6 +959,106 @@ margin_top = -39.0
 margin_right = 1907.0
 margin_bottom = 1.0
 
+[node name="10_1" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1911.0
+margin_top = -177.0
+margin_right = 1951.0
+margin_bottom = -137.0
+
+[node name="10_2" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1960.0
+margin_top = -175.0
+margin_right = 2000.0
+margin_bottom = -135.0
+
+[node name="10_3" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 2009.0
+margin_top = -169.0
+margin_right = 2049.0
+margin_bottom = -129.0
+
+[node name="10_4" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 2058.0
+margin_top = -166.0
+margin_right = 2098.0
+margin_bottom = -126.0
+
+[node name="10_5" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 2109.0
+margin_top = -167.0
+margin_right = 2149.0
+margin_bottom = -127.0
+
+[node name="10_6" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 2157.0
+margin_top = -153.0
+margin_right = 2197.0
+margin_bottom = -113.0
+
+[node name="10_7" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 2202.0
+margin_top = -148.0
+margin_right = 2242.0
+margin_bottom = -108.0
+
+[node name="10_8" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 2247.0
+margin_top = -165.0
+margin_right = 2287.0
+margin_bottom = -125.0
+
+[node name="10_9" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 2302.0
+margin_top = -183.0
+margin_right = 2342.0
+margin_bottom = -143.0
+
+[node name="10_10" type="Button" parent="levels/levels/buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 2349.0
+margin_top = -188.0
+margin_right = 2389.0
+margin_bottom = -148.0
+
 [node name="shop_button" type="Button" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -1087,7 +1191,7 @@ anchor_bottom = 0.5
 margin_left = -320.0
 margin_top = -160.0
 margin_right = 320.0
-margin_bottom = 160.0
+margin_bottom = 140.0
 window_title = "minigame.s"
 
 [node name="minigame1" type="Button" parent="select_minigame"]
@@ -1095,9 +1199,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -280.0
+margin_left = -290.0
 margin_top = -120.0
-margin_right = -40.0
+margin_right = -30.0
 margin_bottom = -72.0
 text = "1.name"
 expand_icon = true
@@ -1107,9 +1211,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -280.0
+margin_left = -290.0
 margin_top = -56.0
-margin_right = -40.0
+margin_right = -30.0
 margin_bottom = -8.0
 text = "2.name"
 expand_icon = true
@@ -1119,9 +1223,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -280.0
+margin_left = -290.0
 margin_top = 8.0
-margin_right = -40.0
+margin_right = -30.0
 margin_bottom = 56.0
 text = "3.name"
 expand_icon = true
@@ -1131,9 +1235,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -280.0
+margin_left = -290.0
 margin_top = 72.0
-margin_right = -40.0
+margin_right = -30.0
 margin_bottom = 120.0
 text = "4.name"
 expand_icon = true
@@ -1143,9 +1247,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 40.0
+margin_left = 30.0
 margin_top = -120.0
-margin_right = 280.0
+margin_right = 290.0
 margin_bottom = -72.0
 text = "Platformer Dash"
 expand_icon = true
@@ -1155,9 +1259,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 40.0
+margin_left = 30.0
 margin_top = -56.0
-margin_right = 280.0
+margin_right = 290.0
 margin_bottom = -8.0
 text = "6.name"
 expand_icon = true
@@ -1167,9 +1271,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 40.0
+margin_left = 30.0
 margin_top = 8.0
-margin_right = 280.0
+margin_right = 290.0
 margin_bottom = 56.0
 text = "7.name"
 expand_icon = true
@@ -1179,9 +1283,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 40.0
+margin_left = 30.0
 margin_top = 72.0
-margin_right = 280.0
+margin_right = 290.0
 margin_bottom = 120.0
 text = "FNaS"
 expand_icon = true
@@ -1376,7 +1480,7 @@ margin_right = 640.0
 margin_bottom = 366.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-custom_fonts/bold_font = ExtResource( 5 )
+custom_fonts/bold_font = SubResource( 280 )
 bbcode_enabled = true
 
 [connection signal="pressed" from="shop_button" to="." method="shop"]

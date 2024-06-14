@@ -4,6 +4,7 @@ extends Node2D
 export (String) var location = "Где-то"
 export (String) var level_name = "УРОВЕНЬ: ТЕСТ"
 export (Array, PackedScene) var mobs = []
+export (Array, int) var mobs_locations = []
 onready var pos = $spawn_pos
 onready var st = $spawn_timer
 onready var hp_butt = $shop/shop/panel/base/options/hp/buy
@@ -44,6 +45,11 @@ func get_rewards():
 
 
 func _ready():
+	var current_location = int(G.getv("level", "1_1").split('_')[0])
+	for i in range(mobs.size() - 1, -1, -1):
+		if mobs_locations[i] > current_location:
+			mobs.remove(i)
+	
 	gen.randomize()
 	player = load("res://minigames/minigame4/hero.tscn").instance()
 	player.get_node("camera/gui/base/intro/text/main").text = level_name
@@ -126,6 +132,8 @@ func spawn_mob(pos_id = -1):
 		mob.global_position = get_node("spawn_points/pos" + spawn_id).global_position
 		get_node("spawn_points/pos" + spawn_id + "/anim").play("spawn")
 	mob.connect("died", self, "mob_died", [mob])
+	if mob.has_signal("transformed"):
+		mob.connect("transformed", self, "mob_transformed")
 	$mobs.add_child(mob, true)
 
 
@@ -144,6 +152,17 @@ func mob_died(node):
 	hh.get_node("text").modulate = Color.yellow
 	hh.get_node("text").text = "+" + str(amount)
 	add_child(hh)
+
+
+func mob_transformed(mob):
+	if not mob is Mob:
+		return
+	mob._vision_distance = 100000000
+	if mob.has_signal("transformed"):
+		mob.connect("died", self, "mob_died", [mob])
+		mob.connect("transformed", self, "mob_transformed")
+	elif mob.has_signal("returned_to_owner"):
+		mob.connect("returned_to_owner", self, "mob_transformed")
 
 
 func update_shop():

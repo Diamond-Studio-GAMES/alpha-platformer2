@@ -21,8 +21,8 @@ var mobs_data = {
 	"magic" : [7, 1, "res://prefabs/mobs/magician.tscn"],
 	"mech" : [9, 1, "res://prefabs/mobs/mechanic.tscn"],
 	"robot" : [9, 1, "res://prefabs/mobs/mechanic_robot.tscn"],
-	"werewolf.human" : [10, 1, "res://prefabs/mobs/mechanic.tscn"],
-	"werewolf" : [10, 1, "res://prefabs/mobs/mechanic.tscn"],
+	"werewolf.human" : [10, 1, "res://prefabs/mobs/werewolf_human.tscn"],
+	"werewolf" : [10, 1, "res://prefabs/mobs/werewolf.tscn"],
 }
 var mobs_id_mappings = {}
 var mobs_scenes = {}

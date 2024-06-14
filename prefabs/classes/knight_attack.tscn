@@ -33,6 +33,7 @@ lifetime = 0.0
 position = Vector2( 16, 0 )
 frames = SubResource( 1 )
 animation = "sword"
+frame = 4
 speed_scale = 1.5
 
 [node name="shape" type="CollisionShape2D" parent="."]

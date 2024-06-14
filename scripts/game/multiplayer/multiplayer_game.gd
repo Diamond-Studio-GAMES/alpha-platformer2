@@ -166,7 +166,7 @@ func _process(delta):
 		ping_server()
 	if _is_pinging:
 		_ping_timer += delta
-		if _ping_timer > 2:
+		if _ping_timer > 5:
 			get_tree().emit_signal("server_disconnected")
 		elif _ping_timer > 1:
 			ping = 0.999

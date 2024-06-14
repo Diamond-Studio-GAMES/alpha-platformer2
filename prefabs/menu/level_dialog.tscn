@@ -49,9 +49,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -84.0
-margin_top = -92.0
+margin_top = -108.0
 margin_right = -44.0
-margin_bottom = -52.0
+margin_bottom = -68.0
 rect_scale = Vector2( 0.6, 0.6 )
 rect_pivot_offset = Vector2( 20, 20 )
 

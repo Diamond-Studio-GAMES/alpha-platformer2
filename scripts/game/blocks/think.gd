@@ -9,6 +9,8 @@ signal player_entered
 
 
 func _ready():
+	if G.getv("lore_disabled", false) and modulate == Color.white and self_modulate == Color.white:
+		hide()
 	connect("body_entered", self, "player_entered")
 	connect("area_entered", self, "player_entered")
 

@@ -259,6 +259,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/game/other/virtual_joystick.gd"
 }, {
+"base": "Mob",
+"class": "Werewolf",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/werewolf.gd"
+}, {
+"base": "Mob",
+"class": "WerewolfHuman",
+"language": "GDScript",
+"path": "res://scripts/game/mobs/werewolf_human.gd"
+}, {
 "base": "Player",
 "class": "Wizard",
 "language": "GDScript",
@@ -315,6 +325,8 @@ _global_script_class_icons={
 "Throwable": "",
 "Trail2D": "",
 "VirtualJoystick": "",
+"Werewolf": "",
+"WerewolfHuman": "",
 "Wizard": ""
 }
 
@@ -339,18 +351,12 @@ default_bus_layout="res://misc/bus_layout.tres"
 G="*res://scripts/globals.gd"
 MP="*res://scripts/game/multiplayer/multiplayer.gd"
 
-[compression]
-
-formats/zstd/compression_level=1
-formats/zlib/compression_level=0
-formats/gzip/compression_level=0
-
 [debug]
 
+settings/fps/force_fps=60
 gdscript/warnings/enable=false
 gdscript/warnings/unused_class_variable=true
 gdscript/warnings/unused_argument=false
-gdscript/warnings/return_value_discarded=false
 
 [display]
 
@@ -499,7 +505,9 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_4="other"
 2d_physics/layer_5="attack"
 2d_physics/layer_6="water"
-2d_physics/layer_7="death"
+2d_physics/layer_8="soul"
+2d_physics/layer_9="soul_border"
+2d_physics/layer_10="soul_attack"
 
 [locale]
 

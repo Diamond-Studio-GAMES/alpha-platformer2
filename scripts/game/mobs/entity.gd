@@ -12,6 +12,7 @@ enum AliveState {
 }
 
 const UP_DIRECTION = Vector2.UP
+const DEFAULT_GRAVITY_SPEED = 750
 export (int) var SPEED = 85
 export (float) var speed_cooficent = 1.0
 export (int) var JUMP_POWER = 255
@@ -19,7 +20,7 @@ export (int) var KNOCKBACK_POWER = 150
 export (int) var MAX_GRAVITY = 250
 export (int) var MAX_UNDERWATER_GRAVITY = 30
 export (float) var GRAVITY_SCALE = 1.0
-var GRAVITY_SPEED = 750
+var GRAVITY_SPEED = DEFAULT_GRAVITY_SPEED
 var _move_direction = Vector2()
 var _body
 var _move = Vector2()
@@ -81,13 +82,13 @@ func calculate_fall_damage():
 		return
 	elif GRAVITY_SCALE < 0 and _start_falling_y < global_position.y:
 		return
-	if distance_falling > 512:
+	if distance_falling > 512 * DEFAULT_GRAVITY_SPEED / GRAVITY_SPEED:
 		hurt(1, 0, false, true, false, 1, 0.5, 0.4, "fall")
-	elif distance_falling > 416:
+	elif distance_falling > 416 * DEFAULT_GRAVITY_SPEED / GRAVITY_SPEED:
 		hurt(round(max_health * 0.7), 0, false, false, false, 1, 1.5, 1.2, "fall")
-	elif distance_falling > 320:
+	elif distance_falling > 320 * DEFAULT_GRAVITY_SPEED / GRAVITY_SPEED:
 		hurt(round(max_health * 0.5), 0, false, false, false, 1, 1, 0.8, "fall")
-	elif distance_falling > 192:
+	elif distance_falling > 192 * DEFAULT_GRAVITY_SPEED / GRAVITY_SPEED:
 		hurt(round(max_health * 0.3), 0, false, false, false, 1, 0.5, 0.4, "fall")
 	else:
 		return
@@ -103,9 +104,9 @@ func calculate_fall_damage():
 
 #HEALTH
 func hurt(damage, knockback_multiplier = 1, defense_allowed = true, fatal = false, stuns = false, stun_time = 1, custom_invincibility_time = 0.5, custom_immobility_time = 0.4, damage_source = "env"):
+	ms.sync_call(self, "hurt", [damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source])
 	if immune_counter > 0:
 		return false
-	ms.sync_call(self, "hurt", [damage, knockback_multiplier, defense_allowed, fatal, stuns, stun_time, custom_invincibility_time, custom_immobility_time, damage_source])
 	var past_health = current_health
 	var real_defense = defense * int(defense_allowed)
 	current_health = round(clamp(current_health - max(damage - real_defense, 0), 0, max_health))

@@ -1209,15 +1209,13 @@ z_index = -2
 collision_layer = 4
 collision_mask = 23
 script = ExtResource( 27 )
-SPEED = 105.0
-KNOCKBACK_POWER = 300.0
 max_health = 120
 defense = 0
 attack_damage = 15
 reaction_speed = 0.4
 vision_distance = 350.0
 attack_distance = 90.0
-attack_speed = 2.8
+attack_speed = 3.0
 head_path = NodePath("visual/body/head")
 head_sprite_path = "res://textures/mobs/sportsman/head.tres"
 head_hurt_sprite_path = "res://textures/mobs/sportsman/head_hurt.tres"
@@ -1565,32 +1563,6 @@ color_ramp = SubResource( 19 )
 __meta__ = {
 "_editor_description_": ""
 }
-
-[node name="jump_ray_cast" type="RayCast2D" parent="."]
-position = Vector2( 0, 18 )
-enabled = true
-cast_to = Vector2( 24, 0 )
-collision_mask = 9
-
-[node name="jump_ray_cast2" type="RayCast2D" parent="."]
-position = Vector2( 0, 18 )
-enabled = true
-cast_to = Vector2( -24, 0 )
-collision_mask = 9
-
-[node name="path_ray_cast_left" type="RayCast2D" parent="."]
-position = Vector2( -8, -22 )
-enabled = true
-cast_to = Vector2( -12, 106 )
-collision_mask = 25
-collide_with_areas = true
-
-[node name="path_ray_cast_right" type="RayCast2D" parent="."]
-position = Vector2( 8, -22 )
-enabled = true
-cast_to = Vector2( 12, 106 )
-collision_mask = 25
-collide_with_areas = true
 
 [node name="hurt_sfx" type="AudioStreamPlayer2D" parent="."]
 max_distance = 800.0

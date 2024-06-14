@@ -25,8 +25,9 @@ func export_data():
 		if not dir.current_is_dir():
 			var cfc = ConfigFile.new()
 			cfc.load_encrypted_pass(saves_path.plus_file(filename), "apa2_save")
-			for i in cfc.get_section_keys("save"):
-				cf.set_value(filename, i, cfc.get_value("save", i))
+			if not cfc.get_value("save", "hardcore", false):
+				for i in cfc.get_section_keys("save"):
+					cf.set_value(filename, i, cfc.get_value("save", i))
 		filename = dir.get_next()
 	cf.save("user://export_cache.apa2saves.uncompressed")
 	var file = File.new()
@@ -83,4 +84,5 @@ func import_data(data, clear_current):
 		for j in cf.get_section_keys(i):
 			c.set_value("save", j, cf.get_value(i, j))
 		c.save_encrypted_pass("user://saves/".plus_file(i), "apa2_save")
+	G.main_setv("reload_meta", true)
 	get_tree().reload_current_scene()

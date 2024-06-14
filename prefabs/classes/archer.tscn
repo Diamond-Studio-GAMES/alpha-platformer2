@@ -1,8 +1,7 @@
-[gd_scene load_steps=151 format=2]
+[gd_scene load_steps=146 format=2]
 
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/classes/emotion.tscn" type="PackedScene" id=2]
-[ext_resource path="res://textures/effects/other/glow.png" type="Texture" id=3]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=4]
 [ext_resource path="res://themes/font.tres" type="DynamicFontData" id=5]
 [ext_resource path="res://sounds/sfx/bow_shoot.wav" type="AudioStream" id=6]
@@ -23,7 +22,6 @@
 [ext_resource path="res://textures/gui/attack.png" type="Texture" id=21]
 [ext_resource path="res://textures/gui/button_attack1_active.tres" type="Texture" id=22]
 [ext_resource path="res://textures/classes/player_control.tres" type="Texture" id=23]
-[ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=24]
 [ext_resource path="res://textures/classes/archer_weapon1.tres" type="Texture" id=25]
 [ext_resource path="res://scripts/game/player/player_archer.gd" type="Script" id=26]
 [ext_resource path="res://textures/items/small_potion.png" type="Texture" id=27]
@@ -33,7 +31,6 @@
 [ext_resource path="res://scripts/game/player/revive_multiplayer.gd" type="Script" id=31]
 [ext_resource path="res://textures/gui/button_move.tres" type="Texture" id=32]
 [ext_resource path="res://textures/gui/button_attack2_active.tres" type="Texture" id=33]
-[ext_resource path="res://textures/effects/other/dodge_star.png" type="Texture" id=34]
 [ext_resource path="res://textures/items/big_potion.png" type="Texture" id=35]
 [ext_resource path="res://textures/mobs/player/hair_woman.tres" type="Texture" id=36]
 [ext_resource path="res://textures/gui/ulti_button.png" type="Texture" id=37]
@@ -2728,55 +2725,26 @@ _data = [ Vector2( 0, 0.274128 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.46304 ), 0.0, 0.
 offsets = PoolRealArray( 0, 0.452381, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="Curve" id=47]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.505159, 0.497433 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="Gradient" id=50]
-offsets = PoolRealArray( 0, 0.320574, 0.665072, 1 )
-colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
-
-[sub_resource type="CircleShape2D" id=62]
-radius = 64.0
-
-[sub_resource type="Animation" id=63]
-resource_name = "def"
-length = 0.5
+[sub_resource type="Animation" id=108]
+resource_name = "rotate"
+length = 6.0
+loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:visible")
+tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("shape:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("sprite:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ 0.0, 360.0 ]
 }
+
+[sub_resource type="Gradient" id=50]
+offsets = PoolRealArray( 0, 0.320574, 0.665072, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [node name="player" type="KinematicBody2D" groups=["spawnable"]]
 position = Vector2( 1, 0 )
@@ -2786,7 +2754,6 @@ script = ExtResource( 26 )
 __meta__ = {
 "_editor_description_": ""
 }
-SPEED = 78.0
 ulti_filled = Color( 0, 1, 1, 1 )
 ulti_empty = Color( 0, 0.74902, 0.74902, 1 )
 
@@ -4235,17 +4202,15 @@ angular_velocity = 180.0
 scale_amount_curve = SubResource( 43 )
 color_ramp = SubResource( 44 )
 
-[node name="gadget_active" type="CPUParticles2D" parent="."]
-emitting = false
-amount = 10
-texture = ExtResource( 34 )
-emission_shape = 2
-emission_rect_extents = Vector2( 20, 40 )
-direction = Vector2( 0, 0 )
-spread = 0.0
-gravity = Vector2( 0, 0 )
-angular_velocity = 180.0
-scale_amount_curve = SubResource( 47 )
+[node name="gadget_active" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -36 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 38 )
+
+[node name="anim" type="AnimationPlayer" parent="gadget_active"]
+autoplay = "rotate"
+anims/rotate = SubResource( 108 )
 
 [node name="stun_stars" type="CPUParticles2D" parent="."]
 visible = false
@@ -4275,28 +4240,6 @@ position = Vector2( 4, 0 )
 points = PoolVector2Array( 0, 0, 353.5, 0 )
 width = 2.0
 default_color = Color( 1, 1, 1, 0.501961 )
-
-[node name="knockback" type="Area2D" parent="."]
-visible = false
-collision_layer = 8
-collision_mask = 4
-script = ExtResource( 24 )
-damage = 50
-is_player_attack = true
-lifetime = 0.0
-
-[node name="shape" type="CollisionShape2D" parent="knockback"]
-shape = SubResource( 62 )
-disabled = true
-
-[node name="sprite" type="Sprite" parent="knockback"]
-modulate = Color( 0, 1, 1, 0.25098 )
-scale = Vector2( 4, 4 )
-z_index = 1
-texture = ExtResource( 3 )
-
-[node name="anim" type="AnimationPlayer" parent="knockback"]
-anims/def = SubResource( 63 )
 
 [node name="game_over_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 40 )

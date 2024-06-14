@@ -88,26 +88,35 @@ func select_class(class_n = "player"):
 		$sp.hide()
 		$amulet.hide()
 		return
-	$gadget.hide()
-	$sp.hide()
-	$amulet.hide()
+	$gadget.show()
+	$gadget/lock.hide()
+	$sp.show()
+	$sp/lock.hide()
+	$amulet.show()
+	$amulet/lock.hide()
 	$stats.show()
 	$stats.text = tr("class.power") + str(G.getv(selected_class + "_level", 0)) + tr("class.skill") + str(G.getv(selected_class + "_ulti_level", 1))
 	if G.getv(selected_class + "_gadget", false):
-		$gadget.show()
 		$gadget.self_modulate = Color.white
 	elif G.getv(selected_class + "_level", 0) >= 15:
-		$gadget.show()
-		$gadget.self_modulate = Color.webgray
+		$gadget.self_modulate = Color.darkgray
+	else:
+		$gadget.self_modulate = Color.dimgray
+		$gadget/lock.show()
 	if G.getv(selected_class + "_soul_power", false):
-		$sp.show()
 		$sp.self_modulate = Color.white
 	elif G.getv(selected_class + "_level", 0) >= 20:
-		$sp.show()
-		$sp.self_modulate = Color.webgray
+		$sp.self_modulate = Color.darkgray
+	else:
+		$sp.self_modulate = Color.dimgray
+		$sp/lock.show()
+	$amulet.texture_normal = AMULET_ICONS[G.AMULET[G.getv(selected_class + "_amulet", -1)]]
 	if G.getv(selected_class + "_level", 0) >= 10:
-		$amulet.show()
-		$amulet.texture_normal = AMULET_ICONS[G.AMULET[G.getv(selected_class + "_amulet", -1)]]
+		$amulet.self_modulate = Color.white
+	else:
+		$amulet.self_modulate = Color.darkgray
+		$amulet/lock.show()
+	
 	$upgrade.show()
 	$upgrade/bar/token.self_modulate = G.CLASS_COLORS[selected_class]
 	$upgrade/bar_ulti/token.self_modulate = G.CLASS_COLORS[selected_class]
@@ -164,16 +173,22 @@ func soul_power():
 
 
 func setup_amulets():
+	var have_amulets = G.getv(selected_class + "_level", 0) >= 10
 	var am = $infos/amulet/panels
 	for i in am.get_child_count():
 		var n = am.get_child(i)
 		n.self_modulate = Color.white
+		if not have_amulets:
+			n.get_node("bar").hide()
+			n.get_node("craft").hide()
+			continue
+		n.get_node("craft").show()
 		n.get_node("craft").disabled = false
 		n.get_node("craft").text = tr("amulet.craft")
 		n.get_node("bar").show()
-		var count = G.getv("amulet_frags_"+G.AMULET[i], 0)
+		var count = G.getv("amulet_frags_" + G.AMULET[i], 0)
 		var max_count = AMULETS_COUNTS[selected_class][i]
-		if not i in G.getv(selected_class+"_amulets", []):
+		if not i in G.getv(selected_class + "_amulets", []):
 			n.get_node("bar").max_value = max_count
 			n.get_node("bar").value = count
 			n.get_node("bar/count").text = str(count)+"/"+str(max_count)
@@ -183,7 +198,7 @@ func setup_amulets():
 		else:
 			n.get_node("bar").hide()
 			n.get_node("craft").text = tr("menu.select")
-		if i == G.getv(selected_class+"_amulet", -1):
+		if i == G.getv(selected_class + "_amulet", -1):
 			n.self_modulate = Color.green
 			n.get_node("craft").disabled = true
 			n.get_node("craft").text = tr("menu.selected")

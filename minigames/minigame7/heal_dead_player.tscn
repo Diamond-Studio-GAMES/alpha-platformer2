@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://minigames/minigame7/heal.gd" type="Script" id=2]
+[ext_resource path="res://minigames/minigame7/images/heal.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=2]
+resource_name = "anim"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 5 ), Vector2( 0, -5 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 50.0
+
+[node name="heal" type="Area2D" groups=["heal", "spawnable"]]
+script = ExtResource( 2 )
+heal_amount = 30
+
+[node name="heal" type="Sprite" parent="."]
+position = Vector2( 0, -2.56103 )
+texture = ExtResource( 3 )
+
+[node name="anim" type="AnimationPlayer" parent="heal"]
+autoplay = "anim"
+anims/anim = SubResource( 2 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath("..") ]
+spawn_sync_data_properties = [ "global_position", "heal_amount" ]
+auto_despawn = false
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 45.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_heal_body_entered"]
+[connection signal="timeout" from="timer" to="." method="queue_free"]

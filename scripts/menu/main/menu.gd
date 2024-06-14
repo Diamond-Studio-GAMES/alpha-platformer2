@@ -33,6 +33,7 @@ func _ready():
 	$settings/sfxv_s.value = G.getv("volume_sfx", 1)
 	$settings/dmp_s.value = G.getv("damping", 2.5)
 	$settings/smc_c.pressed = G.getv("smooth_camera", true)
+	$settings/lore_c.pressed = G.getv("lore_disabled", false)
 	$settings/fps_c.pressed = G.getv("show_fps", false)
 	$settings/ping_c.pressed = G.getv("show_ping", false)
 	$settings/save_id.text = tr("menu.save_id") + G.getv("save_id", "undefined")
@@ -49,9 +50,9 @@ func _ready():
 		$dialog.dialog_text = G.dialog_in_menu
 		G.dialog_in_menu = ""
 		$dialog.popup_centered()
+	_process(0)
 	
-	if not G.hasv("hate_level"):
-		G.calculate_hate_level()
+	G.calculate_hate_level()
 	if not G.getv("rated", false):
 		var curr_lvl = G.getv("level", "1_1")
 		var lvls = curr_lvl.split("_")
@@ -66,6 +67,7 @@ func _process(delta):
 	G.setv("volume_sfx", $settings/sfxv_s.value)
 	G.setv("damping", $settings/dmp_s.value)
 	G.setv("smooth_camera", $settings/smc_c.pressed)
+	G.setv("lore_disabled", $settings/lore_c.pressed)
 	G.setv("show_ping", $settings/ping_c.pressed)
 	G.setv("show_fps", $settings/fps_c.pressed)
 	G.fps_text.visible = $settings/fps_c.pressed
@@ -162,11 +164,9 @@ func license():
 func language():
 	if G.getv("lang", "ru") == "ru":
 		G.setv("lang", "en")
-		G.save()
 		TranslationServer.set_locale(G.getv("lang", "en"))
 	else:
 		G.setv("lang", "ru")
-		G.save()
 		TranslationServer.set_locale(G.getv("lang", "ru"))
 
 

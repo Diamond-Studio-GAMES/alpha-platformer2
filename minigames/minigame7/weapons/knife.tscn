@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://minigames/minigame7/weapons/knife.gd" type="Script" id=1]
 [ext_resource path="res://minigames/minigame7/images/knife.png" type="Texture" id=2]
+[ext_resource path="res://minigames/minigame7/sfx/throw.wav" type="AudioStream" id=3]
+
+[sub_resource type="AudioStreamRandomPitch" id=4]
+audio_stream = ExtResource( 3 )
 
 [node name="knife" type="Sprite"]
 texture = ExtResource( 2 )
@@ -23,3 +27,7 @@ position = Vector2( 0, -168 )
 scale = Vector2( 2.5, 2.5 )
 width = 40.0
 default_color = Color( 0, 0, 0, 0.501961 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource( 4 )
+bus = "sfx"

@@ -3,10 +3,6 @@ class_name Doctor
 
 
 export (float) var min_distance = 100
-onready var jump_ray0 = $jump_ray_cast
-onready var jump_ray1 = $jump_ray_cast2
-onready var path_ray_left = $path_ray_cast_left
-onready var path_ray_right = $path_ray_cast_right
 onready var shoot = $visual/body/arm_right/hand/weapon/shoot
 var bullet = load("res://prefabs/mobs/syringe.tscn")
 var _min_distance = 0
@@ -77,21 +73,19 @@ func _physics_process(delta):
 			stop()
 			return
 		if player_distance > _min_distance:
-			if player.global_position.x > global_position.x and _is_move_safe(path_ray_right):
+			if player.global_position.x > global_position.x and move_right_safe:
 				move_right()
-			elif player.global_position.x < global_position.x and _is_move_safe(path_ray_left):
+			elif player.global_position.x < global_position.x and move_left_safe:
 				move_left()
 			else:
 				stop()
 		else:
-			if player.global_position.x > global_position.x and _is_move_safe(path_ray_left):
+			if player.global_position.x > global_position.x and move_left_safe:
 				move_left()
-			elif player.global_position.x < global_position.x and _is_move_safe(path_ray_right):
+			elif player.global_position.x < global_position.x and move_right_safe:
 				move_right()
 			else:
 				stop()
-		if under_water and breath_time < 2 and not immune_to_water:
-			jump()
 	
 	if not player_visible:
 		return
@@ -101,10 +95,7 @@ func _physics_process(delta):
 		attack_timer = 0
 	lookup_timer += delta
 	if lookup_timer > lookup_speed:
-		if ray_colliding(jump_ray0) == Colliding.OK and _move_direction.x > 0 or \
-				ray_colliding(jump_ray1) == Colliding.OK and _move_direction.x < 0:
+		lookup_timer = 0
+		if under_water and breath_time < 2 and not immune_to_water:
 			jump()
-		if _move_direction.x > 0 and not _is_move_safe(path_ray_right):
-			stop()
-		elif _move_direction.x < 0 and not _is_move_safe(path_ray_left):
-			stop()
+		do_lookup()

@@ -1,9 +1,10 @@
-extends Sprite
+extends Node2D
 
 enum ToManage {
 	WATER = 0,
 	LAVA = 1,
 	FIRE = 2,
+	STARS = 3,
 }
 
 export (ToManage) var to_manage = ToManage.WATER
@@ -25,13 +26,18 @@ func _ready():
 			if is_lava_up:
 				$"../smoke".queue_free()
 				$"../sparks".queue_free()
-				texture = load("res://textures/blocks/lava_up_masked.png")
+				self.texture = load("res://textures/blocks/lava_up_masked.png")
 			else:
-				texture = load("res://textures/blocks/lava_masked.png")
+				self.texture = load("res://textures/blocks/lava_masked.png")
 		ToManage.FIRE:
 			if G.getv("graphics", G.Graphics.BEAUTY_DEFAULT) & G.Graphics.BEAUTY_FIRE != 0:
 				continue
 			material = null
-			texture = load("res://textures/blocks/fire0.png")
+			self.texture = load("res://textures/blocks/fire0.png")
 			scale = Vector2.ONE * 0.5
 			$"../smoke".queue_free()
+		ToManage.STARS:
+			if G.getv("graphics", G.Graphics.BEAUTY_DEFAULT) & G.Graphics.BEAUTY_LIGHT == 0:
+				continue
+			$stars.show()
+			$sprite.hide()

@@ -48,7 +48,7 @@ func _process(delta):
 		process_attack(delta)
 	if waiting_for_death:
 		death_timer += delta
-		if death_timer >= 10:
+		if death_timer >= 7:
 			mercy()
 	if boss_bar == null:
 		return
@@ -91,7 +91,8 @@ func start_fight():
 
 
 remote func move_player_to_start():
-	player.global_position = $"../../tilemap".map_to_world(teleport_position) + Vector2.ONE * 16
+	if player.can_revive:
+		player.global_position = $"../../tilemap".map_to_world(teleport_position) + Vector2.ONE * 16
 
 
 func get_hit(area):
@@ -172,7 +173,7 @@ func death():
 	if G.getv("boss_" + G.current_level + "_killed", false):
 		anim.play("final_death")
 	else:
-		player.make_dialog(death_dialog, 5)
+		player.make_dialog(death_dialog, 7)
 		waiting_for_death = true
 
 

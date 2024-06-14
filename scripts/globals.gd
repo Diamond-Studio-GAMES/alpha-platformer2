@@ -2,10 +2,10 @@ extends Node
 class_name Globals, "res://textures/gui/alpha_text.png"
 
 
-const VERSION = "0.9.2"
+const VERSION = "1.0"
 const VERSION_STATUS = ""
 const VERSION_STATUS_NUMBER = ""
-const VERSION_CODE = 82
+const VERSION_CODE = 86
 
 var main_file: ConfigFile
 var save_file: ConfigFile
@@ -367,6 +367,7 @@ func receive_loot(looted):
 	for i in rec:
 		loot_to_show[i] = rec[i]
 	ach.check(Achievements.PROZAPASS)
+	save()
 	if not loot_to_show.empty():
 		var n = box.instance()
 		get_tree().root.add_child(n)

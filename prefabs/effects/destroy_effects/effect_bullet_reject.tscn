@@ -1,10 +1,67 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://sounds/sfx/randomed/bullet_hit.tres" type="AudioStream" id=1]
+[ext_resource path="res://sounds/sfx/randomed/sword_hit_wall.tres" type="AudioStream" id=1]
+[ext_resource path="res://textures/effects/attacks/reject_bullet_atlas.png" type="Texture" id=2]
 
-[node name="bullet_reject" type="AudioStreamPlayer2D"]
+[sub_resource type="Animation" id=1]
+resource_name = "reject"
+length = 0.5
+step = 0.075
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("effect:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.075, 0.15, 0.225 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("effect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.375 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="bullet_reject" type="Node2D"]
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 1 )
 autoplay = true
 bus = "sfx"
 
-[connection signal="finished" from="." to="." method="queue_free"]
+[node name="anim" type="AnimationPlayer" parent="."]
+autoplay = "reject"
+anims/reject = SubResource( 1 )
+
+[node name="effect" type="Sprite" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 0, 1 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+hframes = 2
+vframes = 2
+frame = 3

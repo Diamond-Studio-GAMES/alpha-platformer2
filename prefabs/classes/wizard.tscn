@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=2]
+[gd_scene load_steps=139 format=2]
 
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
 [ext_resource path="res://textures/gui/emotions_button_pressed.png" type="Texture" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://textures/effects/other/use_item_0.tres" type="Texture" id=9]
 [ext_resource path="res://textures/classes/player_control.tres" type="Texture" id=10]
 [ext_resource path="res://textures/mobs/player/leg2.tres" type="Texture" id=11]
-[ext_resource path="res://textures/effects/other/dodge_star.png" type="Texture" id=12]
 [ext_resource path="res://textures/gui/breath_indicator.png" type="Texture" id=13]
 [ext_resource path="res://textures/gui/strike_bar.tres" type="Texture" id=14]
 [ext_resource path="res://textures/items/ulti_token.png" type="Texture" id=15]
@@ -2425,9 +2424,6 @@ _data = [ Vector2( 0, 0.274128 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.46304 ), 0.0, 0.
 offsets = PoolRealArray( 0, 0.452381, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="Curve" id=47]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.505159, 0.497433 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
 [sub_resource type="Gradient" id=50]
 offsets = PoolRealArray( 0, 0.320574, 0.665072, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
@@ -3856,18 +3852,6 @@ gravity = Vector2( 0, 0 )
 angular_velocity = 180.0
 scale_amount_curve = SubResource( 43 )
 color_ramp = SubResource( 44 )
-
-[node name="gadget_active" type="CPUParticles2D" parent="."]
-emitting = false
-amount = 10
-texture = ExtResource( 12 )
-emission_shape = 2
-emission_rect_extents = Vector2( 20, 40 )
-direction = Vector2( 0, 0 )
-spread = 0.0
-gravity = Vector2( 0, 0 )
-angular_velocity = 180.0
-scale_amount_curve = SubResource( 47 )
 
 [node name="stun_stars" type="CPUParticles2D" parent="."]
 visible = false

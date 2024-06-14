@@ -135,6 +135,17 @@ clip_text = true
 
 [node name="tickets_count" parent="." instance=ExtResource( 4 )]
 
+[node name="tip" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -160.0
+margin_bottom = -64.0
+text = "5.desc"
+align = 1
+valign = 1
+autowrap = true
+
 [connection signal="started" from="easy_ticket_selector" to="." method="open_level" binds= [ "1" ]]
 [connection signal="started" from="normal_ticket_selector" to="." method="open_level" binds= [ "2" ]]
 [connection signal="started" from="hard_ticket_selector" to="." method="open_level" binds= [ "3" ]]

@@ -3,8 +3,8 @@ class_name Player
 
 
 # MOVEMENT
-export (float) var COYOTE_TIME = 0.07
-var _coyote_timer = 0.07
+export (float) var COYOTE_TIME = 0.09
+var _coyote_timer = 0.09
 
 
 # HEALTH
@@ -197,7 +197,7 @@ func _ready():
 			auto_chance = 33
 			revive_chance = 5
 			revive_amount = 25
-			fatal_chance = 6
+			fatal_chance = 8
 			var lvl_name = _level.name.split("_")
 			if len(lvl_name) > 2:
 				if lvl_name[2].is_valid_integer():
@@ -463,7 +463,12 @@ func _hurt_intermediate(damage_source, died):
 
 
 func _post_hurt(ded):
+	if not MP.auth(self):
+		return
 	if ded:
+		if G.getv("hardcore", false):
+			G.main_setv("remove_save", G.getv("save_id"))
+			G.save()
 		yield(get_tree().create_timer(4, false), "timeout")
 		if not MP.is_active:
 			if not camera.is_screen_on:
@@ -724,6 +729,8 @@ func idle_heal():
 
 
 func use_gadget():
+	if not have_gadget:
+		return false
 	if gadget_cooldown > 0 or gadget_count <= 0 or current_health <= 0 or not can_control or is_stunned or _is_drinking or _is_ultiing:
 		return false
 	if hate_refuse():
@@ -762,6 +769,8 @@ func revive(hp_count = -1):
 	breath_time = 10
 	tint_anim.play("reviving")
 	if MP.auth(self):
+		if G.getv("hardcore", false):
+			G.main_setv("remove_save", "")
 		G.addv("revives", 1)
 		if hp_count < 0:
 			heal(max_health)
@@ -794,6 +803,8 @@ remote func revived_player():
 
 
 func make_dialog(text = "", time = 2, color = Color.white):
+	if G.getv("lore_disabled", false):
+		return
 	if G.getv("gender", "male") == "male":
 		text = text.replace("%", "")
 	else:

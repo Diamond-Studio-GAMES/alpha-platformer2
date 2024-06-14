@@ -248,7 +248,7 @@ shape = SubResource( 6 )
 
 [node name="slow_down_zone" parent="blocks" instance=ExtResource( 14 )]
 position = Vector2( 1872, -56 )
-speed_change = 0.7
+speed_change = 0.85
 
 [node name="saw" parent="blocks" instance=ExtResource( 12 )]
 position = Vector2( 1920, 112 )

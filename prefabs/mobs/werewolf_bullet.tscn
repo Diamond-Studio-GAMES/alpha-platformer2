@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/game/other/throwable.gd" type="Script" id=1]
+[ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=2]
+[ext_resource path="res://scripts/game/other/trail.gd" type="Script" id=3]
+[ext_resource path="res://textures/mobs/werewolf_human/gun/gun_bullet.tres" type="Texture" id=4]
+[ext_resource path="res://sounds/sfx/randomed/sword_hit.tres" type="AudioStream" id=5]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=6]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1, 1 )
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 1, 1, 0, 0, 1, 1, 0, 1 )
+
+[node name="werewolf_bullet" type="Node2D" groups=["spawnable"]]
+script = ExtResource( 1 )
+SPEED = 300.0
+is_player_projectile = false
+is_enemy_projectile = true
+effect_wall = "res://prefabs/effects/destroy_effects/effect_bullet_wall.tscn"
+effect_hit = "res://prefabs/effects/destroy_effects/effect_bullet_hit.tscn"
+effect_reject = "res://prefabs/effects/destroy_effects/effect_bullet_reject.tscn"
+simple_effect_color = Color( 1, 1, 0, 1 )
+simple_effect_scale = Vector2( 0.5, 0.5 )
+simple_effect_destroy_sound_hit = "res://sounds/sfx/randomed/sword_hit.tres"
+simple_effect_destroy_sound_wall = "res://sounds/sfx/randomed/bullet_hit.tres"
+
+[node name="attack" type="Area2D" parent="."]
+position = Vector2( -8, 0 )
+collision_layer = 16
+collision_mask = 23
+script = ExtResource( 2 )
+knockback = 0.5
+is_enemy_attack = true
+emit_hit_attack_signal = true
+lifetime = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="attack"]
+position = Vector2( 8, 0 )
+shape = SubResource( 1 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="attack"]
+stream = ExtResource( 5 )
+max_distance = 800.0
+bus = "sfx"
+
+[node name="sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+z_index = -1
+texture = ExtResource( 4 )
+flip_h = true
+
+[node name="trail" type="Line2D" parent="sprite"]
+width = 1.0
+default_color = Color( 1, 1, 0, 1 )
+gradient = SubResource( 2 )
+script = ExtResource( 3 )
+length = 4
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 6 )
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath("../attack") ]
+spawn_sync_data_properties = [ "global_position", "rotation_degrees", "damage" ]
+auto_despawn = false
+
+[node name="MultiplayerSynchronizer" type="Node" parent="."]
+script = ExtResource( 7 )
+unreliable_sync_node_paths = [ NodePath("..") ]
+unreliable_sync_properties_names = [ "global_position" ]
+
+[connection signal="hit_enemy" from="attack" to="attack/sfx" method="play"]

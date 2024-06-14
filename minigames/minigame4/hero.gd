@@ -74,6 +74,7 @@ func attack():
 	yield(get_tree().create_timer(0.2, false), "timeout")
 	_attack_node.knockback = 2
 	$visual/body/spear_attack/swing.play()
+	_attack_visual.frame = 0
 	_attack_visual.show()
 	_attack_visual.playing = true
 	yield(get_tree().create_timer(0.05, false), "timeout")
@@ -83,7 +84,6 @@ func attack():
 	_attack_visual.hide()
 	_attack_node.modulate = Color.white
 	_attack_visual.playing = false
-	_attack_visual.frame = 0
 	_attack_shape.disabled = true
 	_is_attacking = false
 
@@ -119,6 +119,7 @@ func throw(direction):
 	node.rotation = direction.angle()
 	if is_using_gadget:
 		is_using_gadget = false
+		$gadget_active.hide()
 		node.get_node("sprite").modulate = Color.red
 		node.collides = false
 		node.get_node("attack").damage = _attack_node.damage * 4
@@ -166,7 +167,7 @@ func _process(delta):
 		attack()
 	if Input.is_action_just_pressed("ulti"):
 		ulti()
-	if Input.is_action_just_pressed("gadget") and have_gadget:
+	if Input.is_action_just_pressed("gadget"):
 		use_gadget()
 	if joystick._output.length_squared() * current_health > 0:
 		var hand_rotate = Vector2(joystick._output.x, joystick._output.y * GRAVITY_SCALE).angle()
@@ -198,6 +199,7 @@ func use_gadget():
 	attack_cooldown = 0
 	can_attack = true
 	is_using_gadget = true
+	$gadget_active.show()
 
 
 func revive(hp = -1):

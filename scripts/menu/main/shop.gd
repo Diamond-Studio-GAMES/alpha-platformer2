@@ -403,7 +403,7 @@ func info_box(box_type = "gold"):
 		for i in range(6):
 			if G.getv("total_amulet_frags_"+G.AMULET[i], 0) < G.AMULET_MAX[i]:
 				amulet_types.append(G.AMULET[i])
-	var hero_chance = G.getv("hero_chance", 1.0) if not classes_to_unlock.empty() else 0
+	var hero_chance = G.getv("hero_chance", 4) if not classes_to_unlock.empty() else 0
 	var amul_chance = 16 if not amulet_types.empty() else 0
 	var gadget_chance = 4 if not gadget_classes.empty() else 0
 	var sp_chance = 2 if not soul_power_classes.empty() else 0
@@ -754,7 +754,6 @@ func generate_offers():
 		if exists:
 			continue
 		G.setv("offers", G.getv("offers", []) + [offer])
-		G.save()
 		i += 1
 	var free_receives = [{"gold_box":1}, {"tickets":gen.randi_range(2, 3)}, {"gems":gen.randi_range(1, 2)}, {"coins":10*gen.randi_range(15, 30)}]
 	if not power_classes.empty():
@@ -770,10 +769,10 @@ func generate_offers():
 		free_receives.append({"potions1": 1})
 	free_receives.shuffle()
 	G.setv("offers", G.getv("offers", []) + [{"costs":{}, "receives":free_receives[0], "id" : 993, "name" : tr("shop.offer.gift")}])
-	G.save()
 	G.setv("offers_upd", Time.get_date_dict_from_system())
 	G.setv("offers_upd_time", Time.get_unix_time_from_system())
 	G.setv("collected_ad_bonus", false)
+	G.save()
 	show_offers()
 
 

@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sounds/sfx/randomed/arrow_hit.tres" type="AudioStream" id=1]
 [ext_resource path="res://textures/classes/archer_arrow.png" type="Texture" id=2]
 [ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=3]
 [ext_resource path="res://scripts/game/other/throwable.gd" type="Script" id=4]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 40, 12 )
+extents = Vector2( 60, 12 )
 
-[node name="arrows" type="Node2D"]
+[node name="arrows" type="Node2D" groups=["spawnable"]]
 scale = Vector2( 2, 2 )
 z_index = 10
 script = ExtResource( 4 )
@@ -19,136 +20,11 @@ collides = false
 simple_effect_color = Color( 0, 1, 1, 1 )
 simple_effect_scale = Vector2( 2, 2 )
 
-[node name="arrow0" type="Sprite" parent="."]
-position = Vector2( -16, 0 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow1" type="Sprite" parent="."]
-position = Vector2( -12, -6 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow2" type="Sprite" parent="."]
-position = Vector2( -20, -6 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow3" type="Sprite" parent="."]
-position = Vector2( -24, 0 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow4" type="Sprite" parent="."]
-position = Vector2( -8, 0 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow5" type="Sprite" parent="."]
-position = Vector2( -28, -6 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow6" type="Sprite" parent="."]
-position = Vector2( -32, 0 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow7" type="Sprite" parent="."]
-position = Vector2( -36, -6 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow8" type="Sprite" parent="."]
-position = Vector2( -40, 0 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow9" type="Sprite" parent="."]
-position = Vector2( -4, -6 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow10" type="Sprite" parent="."]
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow11" type="Sprite" parent="."]
-position = Vector2( 4, -6 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow12" type="Sprite" parent="."]
-position = Vector2( 8, 0 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow13" type="Sprite" parent="."]
-position = Vector2( 32, 0 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow14" type="Sprite" parent="."]
-position = Vector2( 36, -6 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow15" type="Sprite" parent="."]
-position = Vector2( 28, -6 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow16" type="Sprite" parent="."]
-position = Vector2( 24, 0 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow17" type="Sprite" parent="."]
-position = Vector2( 40, 0 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow18" type="Sprite" parent="."]
-position = Vector2( 20, -6 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow19" type="Sprite" parent="."]
-position = Vector2( 16, 0 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
-[node name="arrow20" type="Sprite" parent="."]
-position = Vector2( 12, -6 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 2 )
-flip_v = true
-
 [node name="attack" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 23
 script = ExtResource( 3 )
-damage = 150
+damage = 300
 knockback = 4.0
 is_player_attack = true
 lifetime = 0.0
@@ -161,5 +37,197 @@ shape = SubResource( 1 )
 stream = ExtResource( 1 )
 max_distance = 800.0
 bus = "sfx"
+
+[node name="arrow0" type="Sprite" parent="."]
+position = Vector2( -36, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow1" type="Sprite" parent="."]
+position = Vector2( -32, -6 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow2" type="Sprite" parent="."]
+position = Vector2( -40, -6 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow3" type="Sprite" parent="."]
+position = Vector2( -44, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow4" type="Sprite" parent="."]
+position = Vector2( -28, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow5" type="Sprite" parent="."]
+position = Vector2( -48, -6 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow6" type="Sprite" parent="."]
+position = Vector2( -52, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow7" type="Sprite" parent="."]
+position = Vector2( -56, -6 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow8" type="Sprite" parent="."]
+position = Vector2( -60, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow9" type="Sprite" parent="."]
+position = Vector2( -24, -6 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow10" type="Sprite" parent="."]
+position = Vector2( -20, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow11" type="Sprite" parent="."]
+position = Vector2( -16, -6 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow12" type="Sprite" parent="."]
+position = Vector2( -12, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow13" type="Sprite" parent="."]
+position = Vector2( 12, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow14" type="Sprite" parent="."]
+position = Vector2( 16, -6 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow15" type="Sprite" parent="."]
+position = Vector2( 8, -6 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow16" type="Sprite" parent="."]
+position = Vector2( 4, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow17" type="Sprite" parent="."]
+position = Vector2( 20, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow18" type="Sprite" parent="."]
+position = Vector2( 0, -6 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow19" type="Sprite" parent="."]
+position = Vector2( -4, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow20" type="Sprite" parent="."]
+position = Vector2( -8, -6 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow21" type="Sprite" parent="."]
+position = Vector2( 44, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow22" type="Sprite" parent="."]
+position = Vector2( 48, -6 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow23" type="Sprite" parent="."]
+position = Vector2( 40, -6 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow24" type="Sprite" parent="."]
+position = Vector2( 36, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow25" type="Sprite" parent="."]
+position = Vector2( 52, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow26" type="Sprite" parent="."]
+position = Vector2( 32, -6 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow27" type="Sprite" parent="."]
+position = Vector2( 28, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow28" type="Sprite" parent="."]
+position = Vector2( 24, -6 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow30" type="Sprite" parent="."]
+position = Vector2( 56, -6 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="arrow31" type="Sprite" parent="."]
+position = Vector2( 60, 0 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 5 )
+spawn_sync_data_node_paths = [ NodePath("..") ]
+spawn_sync_data_properties = [ "global_position" ]
+auto_despawn = false
 
 [connection signal="hit_enemy" from="attack" to="attack/sfx" method="play"]

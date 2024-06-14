@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=97 format=2]
 
 [ext_resource path="res://sounds/sfx/mob_death.wav" type="AudioStream" id=1]
 [ext_resource path="res://textures/effects/backgrounds/background_base.png" type="Texture" id=2]
@@ -2931,6 +2931,9 @@ extents = Vector2( 10, 90 )
 [sub_resource type="LineShape2D" id=37]
 normal = Vector2( -1, 0 )
 
+[sub_resource type="LineShape2D" id=120]
+normal = Vector2( -1, 0 )
+
 [sub_resource type="DynamicFont" id=26]
 size = 64
 outline_size = 2
@@ -3437,7 +3440,7 @@ position = Vector2( 0, -4 )
 [node name="body" type="Node2D" parent="mobs/egor/mob_eg/visual"]
 
 [node name="sprite" type="Sprite" parent="mobs/egor/mob_eg/visual/body"]
-scale = Vector2( 1.25, 1.21588 )
+scale = Vector2( 1.25, 1.20409 )
 texture = ExtResource( 26 )
 
 [node name="shape" type="CollisionShape2D" parent="mobs/egor/mob_eg"]
@@ -3834,6 +3837,9 @@ shape = SubResource( 37 )
 position = Vector2( 560, 0 )
 text = "8_10.boss.0"
 color = Color( 1, 1, 1, 1 )
+
+[node name="shape" parent="decor/think2" index="1"]
+shape = SubResource( 120 )
 
 [node name="think3" parent="decor" instance=ExtResource( 39 )]
 position = Vector2( 752, 0 )
@@ -4257,3 +4263,4 @@ color = Color( 0.603922, 0.603922, 0.603922, 1 )
 [connection signal="body_entered" from="end_star" to="end_star" method="end_level"]
 
 [editable path="decor/think"]
+[editable path="decor/think2"]

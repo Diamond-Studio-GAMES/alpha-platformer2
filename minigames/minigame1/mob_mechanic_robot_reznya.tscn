@@ -8,6 +8,7 @@ stats_multiplier = 2.0
 attack_damage = 40
 vision_distance = 6000.0
 big_attack_damage = 100
+owner_path = "res://minigames/minigame1/mob_mechanic_reznya.tscn"
 
 [node name="anim" parent="." index="1"]
 blend_times = [ "attack", "attack", 0.3, "attack", "idle", 0.15, "attack", "walk", 0.5, "death", "attack", 0.3, "death", "walk", 0.5, "hurt", "attack", 0.3, "hurt", "idle", 0.3, "hurt", "walk", 0.5, "idle", "attack", 0.3, "idle", "idle", 0.3, "idle", "walk", 0.5, "walk", "attack", 0.3, "walk", "idle", 0.3, "walk", "walk", 0.5 ]

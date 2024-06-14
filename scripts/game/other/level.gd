@@ -55,4 +55,4 @@ func _ready():
 					i.hide()
 				else:
 					i.color = Color(0.35, 0.35, 0.35, 1)
-	tint.color = Color(1, 1, 1, 0)
+	tint.color = Color.transparent

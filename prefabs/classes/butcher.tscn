@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=2]
+[gd_scene load_steps=130 format=2]
 
 [ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/classes/emotion.tscn" type="PackedScene" id=2]
@@ -26,7 +26,6 @@
 [ext_resource path="res://sounds/sfx/stun.wav" type="AudioStream" id=24]
 [ext_resource path="res://textures/items/gadget.png" type="Texture" id=25]
 [ext_resource path="res://textures/gui/button_move.tres" type="Texture" id=26]
-[ext_resource path="res://textures/effects/other/dodge_star.png" type="Texture" id=27]
 [ext_resource path="res://textures/items/small_potion.png" type="Texture" id=28]
 [ext_resource path="res://textures/items/ulti_token.png" type="Texture" id=29]
 [ext_resource path="res://textures/classes/butcher_helmet.png" type="Texture" id=30]
@@ -319,7 +318,7 @@ tracks/19/keys = {
 
 [sub_resource type="Animation" id=1]
 resource_name = "attack"
-length = 0.85
+length = 1.05
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("visual/body/head/helmet:rotation_degrees")
@@ -340,10 +339,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.45, 0.6, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.65, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, -9.48414, 28.5139, 28.5139, 0.0 ]
+"values": [ 0.0, -9.48414, 28.5139, 28.5139 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("visual/body:rotation_degrees")
@@ -364,10 +363,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.25, 0.3, 0.5, 0.65, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 0.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -20.0, -117.927, -117.927, 1.26042, 1.26042, -20.0 ]
+"values": [ -20.0, -123.353, -117.927, 1.26042, 1.26042 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("visual/body/arm_left:rotation_degrees")
@@ -376,10 +375,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.25, 0.3, 0.5, 0.65, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 0.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 20.0, -102.437, -102.437, -21.6142, -21.6, 20.0 ]
+"values": [ 20.0, -61.0709, -102.437, -21.6142, -21.6 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("visual/body/arm_right/hand:rotation_degrees")
@@ -388,10 +387,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 0.65, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.7, 0.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -150.0, -105.637, -0.111467, -0.111467, -150.0 ]
+"values": [ -150.0, -105.637, -0.111467, -0.111467 ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("visual/body/arm_right:rotation_degrees")
@@ -400,10 +399,10 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 0.65, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.7, 0.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -30.0, -116.621, -20.2984, -20.2984, -30.0 ]
+"values": [ -30.0, -116.621, -20.2984, -20.2984 ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("visual/body/arm_right/hand/weapon:rotation_degrees")
@@ -412,10 +411,10 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.5, 0.65, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.7, 0.85 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 90.0, 155.719, 155.719, 90.0 ]
+"values": [ 90.0, 155.719, 155.719 ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("visual/body/leg_left:rotation_degrees")
@@ -1805,7 +1804,7 @@ nodes/ulti_shot/node = SubResource( 94 )
 nodes/ulti_shot/position = Vector2( 752.941, 70.5882 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "attack_seek", 0, "attack", "potion_shot", 0, "attack_shot", "potion_shot", 1, "potion_seek", "potion_seek", 0, "potion", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "iw_trans", 0, "idle", "iw_trans", 1, "walk" ]
+node_connections = [ "attack_seek", 0, "attack", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "death_trans", 0, "ulti_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "output", 0, "death_trans", "potion_seek", 0, "potion", "potion_shot", 0, "attack_shot", "potion_shot", 1, "potion_seek", "ulti_shot", 0, "potion_shot", "ulti_shot", 1, "ulti" ]
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 8.24788
@@ -2253,8 +2252,22 @@ _data = [ Vector2( 0, 0.274128 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.46304 ), 0.0, 0.
 offsets = PoolRealArray( 0, 0.452381, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="Curve" id=47]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.505159, 0.497433 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Animation" id=102]
+resource_name = "rotate"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
 
 [sub_resource type="Gradient" id=50]
 offsets = PoolRealArray( 0, 0.320574, 0.665072, 1 )
@@ -2267,7 +2280,6 @@ script = ExtResource( 35 )
 __meta__ = {
 "_editor_description_": ""
 }
-SPEED = 92.0
 ulti_filled = Color( 1, 1, 0, 1 )
 ulti_empty = Color( 0.752941, 0.752941, 0, 1 )
 
@@ -3589,17 +3601,15 @@ angular_velocity = 180.0
 scale_amount_curve = SubResource( 43 )
 color_ramp = SubResource( 44 )
 
-[node name="gadget_active" type="CPUParticles2D" parent="."]
-emitting = false
-amount = 10
-texture = ExtResource( 27 )
-emission_shape = 2
-emission_rect_extents = Vector2( 20, 40 )
-direction = Vector2( 0, 0 )
-spread = 0.0
-gravity = Vector2( 0, 0 )
-angular_velocity = 180.0
-scale_amount_curve = SubResource( 47 )
+[node name="gadget_active" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -36 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 25 )
+
+[node name="anim" type="AnimationPlayer" parent="gadget_active"]
+autoplay = "rotate"
+anims/rotate = SubResource( 102 )
 
 [node name="stun_stars" type="CPUParticles2D" parent="."]
 visible = false

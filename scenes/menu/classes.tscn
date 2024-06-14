@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://scripts/menu/main/classes.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/menu/education.tscn" type="PackedScene" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://shaders/glow.gdshader" type="Shader" id=39]
 [ext_resource path="res://textures/effects/backgrounds/upgrade_background.png" type="Texture" id=40]
 [ext_resource path="res://sounds/sfx/menu/upgrade.wav" type="AudioStream" id=41]
+[ext_resource path="res://textures/gui/lock.png" type="Texture" id=42]
 
 [sub_resource type="Animation" id=1]
 resource_name = "bg"
@@ -1043,15 +1044,27 @@ texture_normal = ExtResource( 8 )
 expand = true
 stretch_mode = 5
 
+[node name="lock" type="TextureRect" parent="amulet"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -12.0
+margin_top = -12.0
+margin_right = 12.0
+margin_bottom = 12.0
+texture = ExtResource( 42 )
+stretch_mode = 6
+
 [node name="help_info" parent="amulet" instance=ExtResource( 33 )]
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 margin_left = -15.0
-margin_top = 2.0
+margin_top = -15.0
 margin_right = 15.0
-margin_bottom = 32.0
+margin_bottom = 15.0
 info = "classes.tip.amulet"
 id = "amulet"
 
@@ -1068,15 +1081,27 @@ texture_normal = ExtResource( 17 )
 expand = true
 stretch_mode = 5
 
+[node name="lock" type="TextureRect" parent="gadget"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -12.0
+margin_top = -12.0
+margin_right = 12.0
+margin_bottom = 12.0
+texture = ExtResource( 42 )
+stretch_mode = 6
+
 [node name="help_info" parent="gadget" instance=ExtResource( 33 )]
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 margin_left = -15.0
-margin_top = 2.0
+margin_top = -15.0
 margin_right = 15.0
-margin_bottom = 32.0
+margin_bottom = 15.0
 info = "classes.tip.gadget"
 id = "gadget"
 
@@ -1097,15 +1122,27 @@ texture_focused = ExtResource( 12 )
 expand = true
 stretch_mode = 5
 
+[node name="lock" type="TextureRect" parent="sp"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -12.0
+margin_top = -12.0
+margin_right = 12.0
+margin_bottom = 12.0
+texture = ExtResource( 42 )
+stretch_mode = 6
+
 [node name="help_info" parent="sp" instance=ExtResource( 33 )]
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 margin_left = -15.0
-margin_top = 2.0
+margin_top = -15.0
 margin_right = 15.0
-margin_bottom = 32.0
+margin_bottom = 15.0
 info = "classes.tip.sp"
 id = "sp"
 
@@ -1717,7 +1754,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "speed.high"
+text = "speed.normal"
 
 [node name="upgrade" type="Button" parent="info_butcher"]
 visible = false
@@ -2472,7 +2509,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 24.0
-text = "speed.low"
+text = "speed.normal"
 
 [node name="close" type="Button" parent="info_archer"]
 margin_left = 8.0

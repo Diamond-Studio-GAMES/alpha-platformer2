@@ -1204,7 +1204,7 @@ nodes/iw_trans/position = Vector2( -305.882, 117.647 )
 nodes/output/position = Vector2( 776.471, 164.706 )
 nodes/walk/node = SubResource( 79 )
 nodes/walk/position = Vector2( -564.706, 211.765 )
-node_connections = [ "output", 0, "death_trans", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "attack_seek", 0, "attack", "death_trans", 0, "attack_shot", "death_trans", 1, "death", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt" ]
+node_connections = [ "attack_seek", 0, "attack", "attack_shot", 0, "hurt_shot", "attack_shot", 1, "attack_seek", "death_trans", 0, "attack_shot", "death_trans", 1, "death", "hurt_shot", 0, "iw_trans", "hurt_shot", 1, "hurt", "iw_trans", 0, "idle", "iw_trans", 1, "walk", "output", 0, "death_trans" ]
 
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 8.0
@@ -1235,7 +1235,6 @@ collision_layer = 4
 collision_mask = 23
 script = ExtResource( 28 )
 SPEED = 50
-KNOCKBACK_POWER = 125.0
 defense = 10
 attack_damage = 25
 reaction_speed = 0.6
@@ -1580,31 +1579,6 @@ color_ramp = SubResource( 19 )
 __meta__ = {
 "_editor_description_": ""
 }
-
-[node name="jump_ray_cast" type="RayCast2D" parent="."]
-position = Vector2( 0, 18 )
-enabled = true
-cast_to = Vector2( 24, 0 )
-collision_mask = 9
-
-[node name="jump_ray_cast2" type="RayCast2D" parent="."]
-position = Vector2( 0, 18 )
-enabled = true
-cast_to = Vector2( -24, 0 )
-
-[node name="path_ray_cast_left" type="RayCast2D" parent="."]
-position = Vector2( -8, -22 )
-enabled = true
-cast_to = Vector2( -12, 106 )
-collision_mask = 25
-collide_with_areas = true
-
-[node name="path_ray_cast_right" type="RayCast2D" parent="."]
-position = Vector2( 8, -22 )
-enabled = true
-cast_to = Vector2( 12, 106 )
-collision_mask = 25
-collide_with_areas = true
 
 [node name="hurt_sfx" type="AudioStreamPlayer2D" parent="."]
 max_distance = 800.0

@@ -37,7 +37,7 @@ boss.follower1.defeat,Егор: Ну вот и всё…,"Egor: Now, that’s al
 boss.follower2,Максим,Max
 boss.follower2.mercy,"Максим: Но его… Нет, ты сможешь!","Max: But him… No, you can!"
 boss.follower2.defeat,"Максим: Возможно, сейчас ты и победил…","Max: Maybe, you won this time…"
-boss.main,,
+boss.main,Глеб,Gleb
 miss.miss,МИМО,MISS
 location.field,Поле,Field
 location.forest,Лес,Forest
@@ -388,3 +388,64 @@ to turn everything into pixels..."""
 9_10.boss.6,"Максим: И, наверное, уже знаешь, что здесь произошло с рабочими.","Max: And probably you already know, what happened here with workers."
 9_10.boss.7,Максим: Пора и тебе…,Max: It’s time for you…
 9_10.elevator,Лифт к Небесным островам,Elevator to heavenly islands
+10_3.views,Здесь очень красиво…,It’s very beautiful here…
+10_6.island,Остров добычи пурпурной руды,Island with purple ore
+10_6.ore,Ещё один тип руды…,One more type of ore…
+10_8.egor.0,"Записка из дневника Егора: «Я стал последователем очень странно, ведь свою черту характера
+я потерял ещё в детстве, а вместе с ней теряется и магия...»","A note from Egor's diary: ""It's very strange that I became a follower, because
+I lost my character trait in childhood, and magic is lost with it…"""
+10_8.egor.1,"«…но я оказался исключением. Моя магия осталась, и стала даже крепче 
+после принятия тёмной энергии.»","""...but I turned out to be an exception. My magic remained, and
+became even stronger after taking dark energy."""
+10_8.maxim,"Записка из дневника Максима: «Я впустил в свою душу тёмную энергию ещё раньше, чем
+появился Дракон. Так я инвертировал свою черту характера, но не умер. Да, у меня была Доброта.»","A note from Maxim's diary: ""I let dark energy into my soul even before the Dragon appeared.
+That's how I inverted my character trait, but I didn't die. Yes, I had Kindness."""
+10_8.gleb.0,"Записка из дневника… он не подписан: «По каким-то причинам я потерял Решительность после
+появления Дракона, а вместе с тем и возможность сохраняться.»","A note from the diary… It is not signed: ""For some reason, I lost my Determination after
+the Dragon appeared, and at the same time, the ability to save."""
+10_8.gleb.1,"«Приняв тёмную энергию, я вовсе потерял всю черту характера.
+Красные глаза — единственное, что от неё осталось.»","""Having accepted the dark energy, I completely lost character trait.
+Red eyes are the only thing left of it."""
+10_8.way,Проход в мою личную комнату. НЕ ВХОДИТЬ!!!,Entrance to my room. DO NOT ENTER!!!
+10_8.house,Дом Последователей,House of Followers
+10_9.meteor.0,"«Наша первая задача — восстановить метеорит, который был уничтожен неким человеком.»","""Our first task is to recover a meteorite that was destroyed by a certain person."""
+10_9.meteor.1,"«Сам же метеорит был создан учёным АЛЬФА-51, который открыл и изучил Пиксель.»","""The meteorite itself was created by the ALPHA 51 scientist, who discovered and studied the Pixel."""
+10_9.meteor.2,"«Метеорит состоит из Пикселя и огромного количества тёмной энергии, которая и придавала Дракону силу.»","""The meteorite consists of a Pixel and a huge amount of dark energy, which gave the Dragon strength."""
+10_9.meteor.3,"«После уничтожения метеорит разлетелся на части, которые, наверное, можно соединить вновь...»","""After the destruction, the meteorite broke into pieces, which can probably be put back together…"""
+10_9.meteor.4,«А тёмной энергии у нас предостаточно.»,"""And we have plenty of dark energy."""
+10_9.meteor.5,"«Нет… Не всё черное есть тёмная энергия… Есть ещё так называемая НЕНАВИСТЬ,
+которая хоть и даёт силу, но отбирает контроль над собой…»","""No... Not all black is dark energy... There is also the so-called HATE,
+which, although it gives strength, takes away control over yourself..."""
+10_10.boss.death.0,Глеб: Тебе не победить последователя Дракона!,Gleb: You can't defeat a follower of the Dragon!
+10_10.boss.death.1,Глеб: Хорошая попытка!,Gleb: Good try!
+10_10.boss.death.2,Глеб: %s — вот чего тебе не хватило.,Gleb: %s — that’s not enough in you.
+10_10.boss.death.det,Глеб: Ты ещё вернёшься.,Gleb: You will return.
+10_10.boss.death.hdc,"Глеб: Наконец-то, я вернул контроль над временем…","Gleb: Finally, I have regained control over timeline…"
+10_10.boss.reload,Глеб: Зачем ты загрузил% сохранение?.. Ладно.,Gleb: Why did you load your save?.. Okay.
+10_10.boss.start.again,"Глеб: Хотя… Ты же здесь не первый раз, ведь так?","Gleb: Although… It's not your first time here, is it?"
+10_10.boss.0,Глеб: Ты наконец-то здесь.,"Gleb: Finally, you’re here."
+10_10.boss.1,Глеб: Ты каким-то образом победил% всех моих приспешников…,Gleb: You somehow defeated all my minions…
+10_10.boss.start,Глеб: Но правда за мной: ты не уничтожишь метеорит!,Gleb: But the truth is behind me: You will not destroy the meteorite!
+10_10.meteorit,Метеорит ->,Meteorite ->
+10_10.forward,Вперёд.,Forward.
+10_10.soul.tip,"Удерживай палец, и душа будет следовать за ним.","Hold a finger, and soul will follow it."
+begin.0,Глеб: Класс… Также это называется?,Gleb: Class... is that what it's called?
+begin.1,"Глеб: То, что давало тебе силу…",Gleb: What gave you strength…
+begin.0.no,Глеб: Что!? Где!?,Gleb: What?! Where?!
+begin.1.no,"Глеб: Где твой класс?.. Ладно, всё равно…","Gleb: Where is your class?.. Okay, whatever.…"
+begin.2,"Глеб: …без него ты ничего не сможешь, ведь так?","Gleb: ...you can't do anything without it, can you?"
+begin.3,"Глеб: Ну и умри, верни мне контроль над временем!!!","Gleb: Well, die, give me back control of time!!!"
+main.0,Глеб: Что?! Что произошло? Как ты…,Gleb: What?! What happened? How you…
+main0.0,Ты… Зачем ты всё это сделал?,You... why did you do all this?
+main0.1,Зачем ты портишь людям жизнь?,Why are you ruining people's lives?
+main0.2,"Ладно, лежи здесь, и даже НЕ пробуй помешать мне…","Okay, stay here, and don't even try to stop me.…"
+main.1,Ну вот и всё…,"Well, that's all.…"
+main.2,! Я снова могу себя контролировать…,! I can control myself again.…
+main.3,Но моё приключение подошло к концу…,But my adventure has come to an end…
+main.4,Пора покончить с этим.,It's time to end this.
+main1.0,Ты… ТЫ…,You… YOU…
+main3.0,"Хочешь, чтобы я умер?.. А как насчёт…",Do you want me to die?.. What about…
+main3.1,УМЕРЕТЬ САМОМУ???,TO DIE YOURSELF???
+end11,"Спасибо, игрок…","Thank you, player…"
+end0,Мне… Мне жаль…,I’m… I’m sorry…
+end3,Жалкие создания!..,Pathetic creatures!

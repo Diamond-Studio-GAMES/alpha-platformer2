@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_spawnable.gd" type="Script" id=1]
+[ext_resource path="res://scripts/game/mobs/attack.gd" type="Script" id=2]
+[ext_resource path="res://scripts/game/multiplayer/multiplayer_synchronizer.gd" type="Script" id=3]
+[ext_resource path="res://scripts/game/other/throwable.gd" type="Script" id=4]
+[ext_resource path="res://textures/bosses/gleb/knife.png" type="Texture" id=5]
+[ext_resource path="res://scripts/game/bosses/knife_final.gd" type="Script" id=6]
+[ext_resource path="res://sounds/sfx/randomed/sword_hit_wall.tres" type="AudioStream" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10.5, 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "tween"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.988235, 0.0382353, 0.0382353, 1 ), Color( 0.764706, 0.764706, 0.764706, 1 ) ]
+}
+
+[node name="knife_final" type="Node2D" groups=["spawnable"]]
+script = ExtResource( 6 )
+
+[node name="projectile" type="Node2D" parent="."]
+script = ExtResource( 4 )
+SPEED = 250.0
+destroy_time = 5.0
+is_player_projectile = false
+is_enemy_projectile = true
+simple_effect_color = Color( 1, 0, 0, 1 )
+
+[node name="sprite" type="Sprite" parent="projectile"]
+modulate = Color( 0.988235, 0.0382353, 0.0382353, 1 )
+position = Vector2( 12, 0 )
+rotation = 1.57079
+z_index = -5
+texture = ExtResource( 5 )
+
+[node name="attack" type="Area2D" parent="projectile"]
+collision_layer = 16
+collision_mask = 19
+script = ExtResource( 2 )
+damage = 125
+is_enemy_attack = true
+lifetime = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="projectile/attack"]
+position = Vector2( 12.5, 0 )
+shape = SubResource( 1 )
+
+[node name="anim" type="AnimationPlayer" parent="projectile"]
+autoplay = "tween"
+anims/tween = SubResource( 2 )
+
+[node name="MultiplayerSynchronizer" type="Node" parent="projectile"]
+script = ExtResource( 3 )
+unreliable_sync_node_paths = [ NodePath(".."), NodePath(".."), NodePath("..") ]
+unreliable_sync_properties_names = [ "position", "angle", "rotation_degrees" ]
+
+[node name="MultiplayerSpawnable" type="Node" parent="."]
+script = ExtResource( 1 )
+spawn_sync_data_node_paths = [ NodePath("../projectile"), NodePath("../projectile"), NodePath("..") ]
+spawn_sync_data_properties = [ "position", "rotation_degrees", "position" ]
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+max_distance = 800.0
+bus = "sfx"
+
+[connection signal="destroyed" from="projectile" to="." method="_on_projectile_destroyed"]

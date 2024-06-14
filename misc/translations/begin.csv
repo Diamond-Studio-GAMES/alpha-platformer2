@@ -6,14 +6,14 @@ sl.create,СОЗДАТЬ,CREATE
 sl.settings.volm,Громкость музыки:,Music volume:
 sl.settings.vols,Громкость звуков:,SFX volume:
 sl.settings.fullscr,Полный экран,Fullscreen
-sl.settings.lang,СМЕНИТЬ ЯЗЫК,CHANGE LANGUAGE
+sl.settings.lang,ENGLISH,РУССКИЙ
 sl.create.pname,Введите имя…,Enter name…
 gender,Пол,Gender
 gender.male,Мужской,Male
 gender.female,Женский,Female
 sl.create.hardcore,Одна жизнь,Hardcore
-sl.create.soultrait,Черта характера,Soul trait
-trait.det,Решимость,Determination
+sl.create.soultrait,Черта характера:,Soul trait:
+trait.det,Решительность,Determination
 trait.bra,Храбрость,Bravery
 trait.jus,Справедливость,Justice
 trait.kin,Доброта,Kindness
@@ -33,7 +33,7 @@ sl.ei,ЭКСПОРТ/ИМПОРТ,EXPORT/IMPORT
 sl.ei.title,Экспорт/импорт сохранений,Export/import of saves
 sl.ei.step0,Шаг 1: Выдай разрешение на чтение и запись файлов (начиная с Android 6),Step 1: Give permission to read and write external storage (from Android 6)
 sl.ei.step1,"Шаг 2: Экспортируй сохранения кнопкой ниже
-Сохранится в: ","Step 2: Export saves with button below.
+Сохранятся в: ","Step 2: Export saves with button below.
 Will be saved in: "
 sl.ei.step2,Шаг 3: Импортируй сохранения в новой версии,Step 3: Import saves in new version.
 sl.ei.give,ВЫДАТЬ,GIVE
@@ -67,3 +67,9 @@ sl.misc.check.upd.beta,Оповещать о новых бета-версиях,
 sl.cloud,ОБЛАЧНЫЕ СОХРАНЕНИЯ,CLOUD SAVES
 sl.cloud.more, и ещё %d, and %d more
 sl.cloud.no,Нет сохранений,No saves
+sl.save.hardcore,"Сохранение в этом режиме нельзя скопировать и экспортировать, а также оно будет удалено сразу после смерти, если ты не возродишься.","Save in this mode can’t be duplicated or exported, and it will be deleted right after you die, unless you revive."
+sl.save.normal,"Стандартное сохранение. Может быть скопировано или экспортировано, а игрок имеет неограниченное число жизней.","Standard save. Can be exported or copied, and player has unlimited number of lives."
+sl.completed.tip,"Поздравляю с прохождением игры! Ты можешь вновь загрузить это сохранение (и вся ненависть будет очищена), или же создать новое для получения другой концовки.
+Режим «Одна жизнь»: если ты хочешь попробовать что-то новое, то создай сохранение в этом режиме. Насколько далеко ты сможешь продвинуться?","Congratulations on completing the game! You can reload this save (and all the hate will be cleared), or create a new one to get a different ending.
+One Life Mode: If you want to try something new, create a save in this mode. How far can you go?"
+sl.completed,Игра пройдена!,Game Completed!

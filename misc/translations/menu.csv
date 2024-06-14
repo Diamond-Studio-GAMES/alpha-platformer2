@@ -4,7 +4,7 @@ menu.exit,Выйти,Quit
 menu.achvs,Достижения,Achievements
 menu.settings,Настройки,Settings
 menu.about,Об игре,About
-menu.lang,Язык,Language
+menu.lang,English,Русский
 menu.more,Ещё игры,More games
 menu.change,Сменить,Change
 menu.cancel,Отмена,Cancel
@@ -47,14 +47,15 @@ menu.licenses.text,"Эта игра использует движок Godot Engi
 menu.s_thanks.text,"Вдохновлено Brawl Stars, Match Land, Alpha Platformer Adventure.
 
 Говорю спасибо:
-Кириллу - как хорошему другу.
-Андрею - за его бесконечную критику и тестировку.
-Матвею - за очень хорошую поддержку.
-Фёдору - за поддержку и материальное вложение. Без Фёдора наших игр не было бы в Google Play.
-Арсению - за музыку, поддержку и заинтересованность.
-Гоше - за страданиями над моей первой игрой...
-Вадиму - за тестирование.
-Учитель физики - Гордон Глеб Владимирович.
+Кириллу — как хорошему другу.
+Андрею — за его бесконечную критику и тестировку.
+Матвею — за очень хорошую поддержку.
+Фёдору — за поддержку и материальное вложение. Без Фёдора наших игр не было бы в Google Play.
+Арсению — за музыку, поддержку и заинтересованность.
+Гоше — за страданиями над моей первой игрой...
+Вадиму — за тестирование.
+Мясным чипсам — за Рому и Егора.
+Учитель физики — Гордон Глеб Владимирович.
 И всем тем, кто заинтересовался бета-версиями этой игры.
 Спасибо и тебе, игрок.
 
@@ -68,6 +69,7 @@ Fedor — for support and material investment. Without Fedor, our games would no
 Arseniy — for music, support and interest.
 Gosha — for suffering over my first game…
 Vadim — for testing.
+Meat chips — for Roma and Egor.
 Physics teacher — Gordon Gleb Vladimirovich.
 And to all those who are interested in the beta versions of this game.
 Thank you, too, player.
@@ -112,6 +114,7 @@ menu.setting.music,Громкость музыки:,Music volume:
 menu.setting.sfx,Громкость звуков:,SFX volume:
 menu.setting.graphics,Графика:,Graphics:
 menu.graphics.setup,Настроить…,Set up…
+menu.setting.lore,Отключить диалоги:,Disable dialogs:
 menu.setting.scm,Плавное движение камеры:,Smooth camera movement:
 menu.setting.damping,Резкость камеры:,Camera damping:
 menu.press,Нажми!,Tap!
@@ -128,7 +131,7 @@ menu.last_confirm.text,Ты уверен?,Are you sure?
 menu.current_name,Текущее имя: ,Current name: 
 menu.changing_name,Смена имени,Changing name
 menu.warning,Предупреждение!,Warning!
-menu.blw.text,"Опция ""Красивый свет"" может привести к потере производительности, рекомендуем её включать только на ПК или мощном смартфоне.","The ""Beautiful light"" option can lead to a loss of performance, we recommend turning it on only on a PC or a powerful smartphone."
+menu.blw.text,"Опция ""Красивые свет и звёзды"" может привести к потере производительности на уровнях, где присутствуют эти элементы. Рекомендуем включать эту опцию только на ПК или мощном смартфоне.","The ""Beautiful light and stars"" option can lead to a loss of performance on levels, which have them. We recommend turning it on only on a PC or a powerful smartphone."
 menu.gr.proj_effects,Эффекты снарядов,Projectile effects
 menu.gr.proj_effects.standard,Стандартные,Standard
 menu.gr.proj_effects.simple,Упрощённые,Simple
@@ -138,7 +141,7 @@ menu.gr.grass.gpu,Анимированная (GPU),GPU-animated
 menu.gr.grass.cpu,Анимированная (CPU),CPU-animated
 menu.gr.grass.static,Статичная,Static
 menu.gr.misc,Прочее,Miscellaneous
-menu.gr.misc.beauty_light,Красивый свет,Beautiful light
+menu.gr.misc.beauty_light,Красивые свет и звёзды,Beautiful light ans stars
 menu.gr.misc.beauty_water,Красивая вода,Beautiful water
 menu.gr.misc.beauty_lava,Красивая лава,Beautiful lava
 menu.gr.misc.beauty_fire,Красивый огонь,Beautiful fire
@@ -186,8 +189,8 @@ achv.boss8,"Реквием, да!","Requiem, da!"
 achv.boss8.desc,Победите Егора.,Defeat the Egor.
 achv.boss9,Месть рабочих,Revenge of the workers
 achv.boss9.desc,Победите Максима.,Defeat the Max.
-achv.boss10,,
-achv.boss10.desc,,
+achv.boss10,Конец,The End
+achv.boss10.desc,Победите Глеба.,Defeat the Gleb.
 achv.what_is_it,Это что?,What is it?
 achv.what_is_it.desc,Открой первый класс.,Unlock your first class.
 achv.master,Мастер всех оружий,Master of all weapons
@@ -298,16 +301,16 @@ class.archer,ЛУЧНИК,ARCHER
 class.archer.l,Лучник,Archer
 class.none,НЕТ,NONE
 class.none.l,Нет,None
-gadgets.knight,Следующие 2 секунды Рыцарь будет уклоняться от атак.,"For the next 2 seconds, the Knight will dodge attacks."
-gadgets.butcher,"Мясник прыгает на среднюю высоту. При приземлении отбрасывает ближайших врагов, нанося им 110 ед. урона.","The Butcher jumps to an average height. When landing, it throws away nearby enemies, dealing 110 damage to them."
-gadgets.spearman,"Копьеносец делает мощный удар вблизи, сильно отбрасывая врага и нанося ему 300 ед. урона.","The Spearman makes a powerful blow close by, throwing the enemy hard and dealing 300 damage to him."
-gadgets.wizard,Немедленно заряжает навык Мага на 40%.,Immediately charges the Wizard’s skill by 40%.
-gadgets.archer,"Создаёт град стрел над Лучником, летящих вниз, даже сквозь препятствия. Наносит 150 ед. урона врагам и отбрасывает их.","Creates a hail of arrows over the Archer, flying down, even through obstacles. Deals 150 damage to enemies and knocks back them."
-sp.knight,Даёт шанс в 20% уклониться от атаки.,Gives you a 20% chance to dodge an attack.
+gadgets.knight,"Следующие 2,5 секунды Рыцарь будет уклоняться от атак.","For the next 2,5 seconds, the Knight will dodge attacks."
+gadgets.butcher,"Следующая атака Мясника подкинет его в воздух, если попадёт по врагу. При приземлении он отбрасывает врагов, нанося им 175 ед. урона.","Next Butcher’s attack will throw him in air if it hits an enemy. When landing, it throws away enemies, dealing 175 damage to them."
+gadgets.spearman,"Копьеносец делает мощный удар вблизи, сильно отбрасывая врага и нанося ему 400 ед. урона.","The Spearman makes a powerful blow close by, throwing the enemy hard and dealing 400 damage to him."
+gadgets.wizard,"Вокруг Мага появляется 6 снарядов, которые при попадании во врагов заряжают его навык на 15%.","Summons 6 projectiles around Wizard, which charge 15% of skill when hit."
+gadgets.archer,"Создаёт град стрел над местом попадания следующей стрелы, летящих вниз сквозь препятствия. Наносит 300 ед. урона.",Creates a hail of arrows over the place where arrow hit flying down through obstacles. Deals 150 damage to enemies.
+sp.knight,Даёт шанс в 20% уклониться от атаки.,Gives a 20% chance to dodge an attack.
 sp.butcher,Даёт шанс в 20% зарядить навык на 15% при получении урона.,Gives a 20% chance to charge the skill by 15% when taking damage.
-sp.spearman,Даёт шанс в 20% оглушить врага атакой вблизи на 1.25 секунды.,Gives a 20% chance to stun an enemy with a close-range attack for 1.25 seconds.
+sp.spearman,"Даёт шанс в 20% оглушить врага атакой вблизи на 1,25 секунды.","Gives a 20% chance to stun an enemy with a close-range attack for 1,25 seconds."
 sp.wizard,Даёт шанс в 15% исцелиться на 10% при попадании по врагу дальнобойной атакой.,Gives a 15% chance to heal by 10% when hitting an enemy with a long-range attack.
-sp.archer,Даёт шанс в 45% при попадании ближней атакой нанести 50 ед. урона всем врагам в радиусе 2 блоков.,Gives a 45% chance of dealing 50 damage to all enemies within a radius of 2 blocks when hitting an enemy by a melee attack.
+sp.archer,Даёт шанс в 40% выстрелить 2-мя стрелами вместо одной.,Gives a 40% chance of shooting 2 arrows instead of one.
 menu.setting.fps,Показывать FPS:,Show FPS:
 menu.setting.ping,Показывать пинг:,Show ping:
 menu.ping,Пинг: %d мс,Ping: %d ms
@@ -368,7 +371,7 @@ shop.box_info,"Ящик может содержать классы, монеты
 Билеты (как бонус): 25%
 Кристаллы (как бонус): 10%
 
-Получить душевный навык можно только на класс, достигший 15-го уровня силы, а душевную силу на класс, достигший 20-го уровня силы. Получать фрагменты амулетов можно после того, как один из классов достигнет 10-го уровня силы. После каждого открытого обычного ящика, в котором не было класса, шанс на него повышается на 0.06%. А если в ящике оказался класс, шанс падает до 1.5%. Начальный шанс - 2%. Если жетоны какого-то типа все классы не могут получить, то они конвертируются в монеты. 3 монеты за каждый жетон силы, 10 монет за каждый жетон навыка.","Box can contain classes, coins, tokens and much more.
+Получить душевный навык можно только на класс, достигший 15-го уровня силы, а душевную силу на класс, достигший 20-го уровня силы. Получать фрагменты амулетов можно после того, как один из классов достигнет 10-го уровня силы. После каждого открытого обычного ящика, в котором не было класса, шанс на него повышается на 0.08%. А если в ящике оказался класс, шанс падает до 1.5%. Начальный шанс — 4%. Если жетоны какого-то типа все классы не могут получить, то они конвертируются в монеты. 3 монеты за каждый жетон силы, 10 монет за каждый жетон навыка.","Box can contain classes, coins, tokens and much more.
 Chances when opening one regular box:
 Coins{cs}: {cc}%
 Class: {hc}%
@@ -378,7 +381,7 @@ Soul power: {sc}%
 Tickets (as bonus): 25%
 Gems (as bonus): 10%
 
-You can only get soul skill for a class that has reached the 15th power level, and soul power for a class that has reached the 20th power level. You can receive fragments of amulets after one of the classes reaches the 10th power level. After each open regular box, in which there was no class, the chance of it increases by 0.06%. And if there is a class in the box, the chance drops to 1.5%. The initial chance is 2%. If all classes cannot receive tokens of some type, then they are converted into coins. 3 coins for each power token, 10 coins for each skill token."
+You can only get soul skill for a class that has reached the 15th power level, and soul power for a class that has reached the 20th power level. You can receive fragments of amulets after one of the classes reaches the 10th power level. After each open regular box, in which there was no class, the chance of it increases by 0.08%. And if there is a class in the box, the chance drops to 1.5%. The initial chance is 4%. If all classes cannot receive tokens of some type, then they are converted into coins. 3 coins for each power token, 10 coins for each skill token."
 shop.box_info.title,Информация о ящике,Box information
 shop.box_info.gold,"Открытие золотого ящика равно открытию 3 ящиков, однако жетоны распределяются между меньшим количеством классов.","Opening a gold box is equal to opening 3 boxes, but tokens are distributed among fewer classes."
 shop.box_info.diamond,"Открытие алмазного ящика равно открытию 10 ящиков, однако жетоны распределяются между меньшим количеством классов.","Opening a diamond box is equal to opening 10 boxes, but tokens are distributed among fewer classes."
@@ -475,6 +478,7 @@ win.claim,Забрать,Claim
 win.next,Далее,Next
 win.restart,Заново,Retry
 win.menu,Меню,Menu
+win.end,Конец,The End
 loading.loading,Загрузка…,Loading…
 loading.error,Не могу загрузить сцену: %s!,Can’t load scene: %s!
 noads.title,РЕКЛАМА УДАЛЕНА!,ADS REMOVED!
@@ -510,9 +514,9 @@ amulet.amulet,Амулет,Amulet
 menu.done,Готово,Done
 shop.name,Магазин,Shop
 classes.name,Классы,Classes
-classes.tip.gadget,"Душевный навык — особая способность класса, которую можно использовать три раза за уровень. Можно найти в ящике.",Soul Skill is a special class ability that can be used 3 times per level. Can be found in a box.
-classes.tip.sp,"Душевная сила — пассивная способность класса, которая действует всегда. Можно найти в ящике.",Soul Power is a passive ability of the class that always works. Can be found in a box.
-classes.tip.amulet,"Амулеты — пассивная способность, которая повышает некоторые характеристики класса. Можно создать из фрагментов амулета.",Amulets are a passive ability that increases some class characteristics. You can create an amulet from fragments.
+classes.tip.gadget,"Душевный навык — особая способность класса, которую можно использовать три раза за уровень. Можно найти в ящике, если класс достиг 15-го уровня силы.",Soul Skill is a special class ability that can be used 3 times per level. Can be found in a box if class reached 15th power level.
+classes.tip.sp,"Душевная сила — пассивная способность класса, которая действует всегда. Можно найти в ящике, если класс достиг 20-го уровня силы.",Soul Power is a passive ability of the class that always works. Can be found in a box if class reached 20th power level.
+classes.tip.amulet,"Амулеты — пассивная способность, которая повышает некоторые характеристики класса. Создаются из фрагментов амулета, которые можно найти в ящиках, если хотя бы 1 класс достиг 10-го уровня силы.","Amulets are a passive ability that increases some class characteristics. You can create an amulet from fragments, which can be found in a boxes if at least 1 class reached 10th power level."
 classes.found,Класс можно найти в ящике,Class can be found in box
 classes.try,Испытать,Try
 classes.upgrade,Улучшить,Upgrade
@@ -543,11 +547,11 @@ spearman.ulti.desc,Копьеносец оглушает ближайшего в
 wizard.attack.name,АТАКА: МАГИЯ ПОСОХА,ATTACK: STAFF MAGIC
 wizard.attack.desc,"Маг стреляет во врага магической сферой. Также можно ударить посохом, но урон будет ниже.","Wizard shoots the enemy with a magic sphere. You can also hit with a staff, but the damage will be lower."
 wizard.ulti.name,НАВЫК: ЛЕЧЕНИЕ,SKILL: HEAL
-wizard.ulti.desc,"Маг исцеляет себя и союзников поблизости, а также наносит небольшой урон всем врагам поблизости.","The magician heals himself and allies nearby, and also deals small damage to all enemies nearby."
+wizard.ulti.desc,"Маг исцеляет себя и союзников, а также наносит небольшой урон всем врагам.","The magician heals himself and allies, and also deals small damage to all enemies."
 archer.attack.name,АТАКА: ПРИЦЕЛЬНЫЙ ВЫСТРЕЛ,ATTACK: PRECISE SHOT
 archer.attack.desc,"Лучник натягивает лук. Чем дольше натягивал, тем больше скорость и урон стрелы. Также можно ударить луком, но урон будет ниже.","Archer pulls the bow. The longer he pulled, the greater the speed and damage of the arrow. You can also hit with a bow, but the damage will be lower."
 archer.ulti.name,НАВЫК: НАЛЁТ,SKILL: BLITZ
-archer.ulti.desc,Лучник наносит урон всем врагам поблизости.,Archer deals damage to all enemies nearby.
+archer.ulti.desc,Лучник наносит урон всем врагам.,Archer deals damage to all enemies.
 shop.notenough,Недостаточно ресурсов для покупки!,Not enough resources!
 shop.potinfo.title,Информация о зелье,Potion information
 shop.potinfo.1,Восстанавливает 20% от максимального здоровья.,Heals 20% of max health.

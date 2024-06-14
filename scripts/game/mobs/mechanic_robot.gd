@@ -2,19 +2,18 @@ extends Mob
 class_name MechanicRobot
 
 
+signal returned_to_owner(mob_owner)
+
 export (float) var min_distance = 100
 export (int) var big_attack_damage = 50
-onready var jump_ray0 = $jump_ray_cast
-onready var jump_ray1 = $jump_ray_cast2
-onready var path_ray_left = $path_ray_cast_left
-onready var path_ray_right = $path_ray_cast_right
+export (String) var owner_path = "res://prefabs/mobs/mechanic.tscn"
 onready var arm_big = $visual/body/arm_big
 onready var arm_small = $visual/body/arm_small
 onready var shoot = $visual/body/arm_small/arm_small/shoot
 onready var big_shoot = $visual/body/arm_big/arm_big/ball
 var bullet = load("res://prefabs/mobs/robot_bullet.tscn")
 var big_bullet = load("res://prefabs/mobs/big_robot_bullet.tscn") # I NEED MORE BULLETS
-var _owner = load("res://prefabs/mobs/mechanic.tscn")
+var _owner
 var owner_current_health = 0
 var _min_distance = 0
 var _animation_attack
@@ -38,6 +37,7 @@ func _ready():
 	_big_track_idx = _animation_big.find_track(@"visual/body/arm_big:rotation_degrees")
 	_big_key_idx = _animation_big.track_find_key(_big_track_idx, 0.8)
 	attack_timer = 5
+	_owner = load(owner_path)
 
 
 func attack():
@@ -73,6 +73,8 @@ func attack():
 	can_turn = true
 
 
+# NOW IS YOUR CHANCE TO BE BIG SHOT
+# BIG BIG BIG BIG BIG BIG SHOT
 func big_shot():
 	ms.sync_call(self, "big_shot")
 	can_turn = false
@@ -115,7 +117,6 @@ func _post_hurt(ded):
 		emit_signal("destroyed")
 		if MP.auth(self):
 			_spawn_owner()
-		queue_free()
 
 
 func _spawn_owner():
@@ -129,6 +130,8 @@ func _spawn_owner():
 	get_parent().add_child(n, true)
 	n.current_health = owner_current_health
 	n._update_bars()
+	emit_signal("returned_to_owner", n)
+	queue_free()
 
 
 func _process(delta):
@@ -156,21 +159,19 @@ func _physics_process(delta):
 			stop()
 			return
 		if player_distance > _min_distance:
-			if player.global_position.x > global_position.x and _is_move_safe(path_ray_right):
+			if player.global_position.x > global_position.x and move_right_safe:
 				move_right()
-			elif player.global_position.x < global_position.x and _is_move_safe(path_ray_left):
+			elif player.global_position.x < global_position.x and move_left_safe:
 				move_left()
 			else:
 				stop()
 		else:
-			if player.global_position.x > global_position.x and _is_move_safe(path_ray_left):
+			if player.global_position.x > global_position.x and move_left_safe:
 				move_left()
-			elif player.global_position.x < global_position.x and _is_move_safe(path_ray_right):
+			elif player.global_position.x < global_position.x and move_right_safe:
 				move_right()
 			else:
 				stop()
-		if under_water and breath_time < 2 and not immune_to_water:
-			jump()
 	
 	if not player_visible:
 		return
@@ -184,10 +185,7 @@ func _physics_process(delta):
 			attack_timer = -1
 	lookup_timer += delta
 	if lookup_timer > lookup_speed:
-		if ray_colliding(jump_ray0) == Colliding.OK and _move_direction.x > 0 or \
-				ray_colliding(jump_ray1) == Colliding.OK and _move_direction.x < 0:
+		lookup_timer = 0
+		if under_water and breath_time < 2 and not immune_to_water:
 			jump()
-		if _move_direction.x > 0 and not _is_move_safe(path_ray_right):
-			stop()
-		elif _move_direction.x < 0 and not _is_move_safe(path_ray_left):
-			stop()
+		do_lookup()

@@ -98,6 +98,7 @@ func attack(fatal = false, stuns = false):
 	if fatal:
 		_attack_node.fatal = fatal
 	$visual/body/spear_attack/swing.play()
+	_attack_visual.frame = 0
 	_attack_visual.show()
 	_attack_visual.playing = true
 	yield(get_tree().create_timer(0.05, false), "timeout")
@@ -108,7 +109,6 @@ func attack(fatal = false, stuns = false):
 		_attack_node.stuns = false
 		_attack_node.modulate = Color.white
 	_attack_visual.playing = false
-	_attack_visual.frame = 0
 	_attack_shape.disabled = true
 	_is_attacking = false
 
@@ -146,7 +146,7 @@ func throw(direction):
 		var node = spear.instance()
 		node.global_position = Vector2(global_position.x, global_position.y - 12 * GRAVITY_SCALE)
 		node.rotation = direction.angle()
-		node.get_node("attack").damage = G.getv("spearman_level", 0) * 5 + 25 + (15 if  is_amulet(G.Amulet.POWER) else 0)
+		node.get_node("attack").damage = power * 5 + 25 + (15 if  is_amulet(G.Amulet.POWER) else 0)
 		node.get_node("attack").fatal = hate_fatal()
 		_level.add_child(node, true)
 	_is_attacking = false
@@ -162,7 +162,7 @@ func _process(delta):
 		attack()
 	if Input.is_action_just_pressed("ulti"):
 		ulti()
-	if Input.is_action_just_pressed("gadget") and have_gadget:
+	if Input.is_action_just_pressed("gadget"):
 		use_gadget()
 	if joystick._output.length_squared() * current_health > 0:
 		aim_line.rotation = Vector2(joystick._output.x, joystick._output.y * GRAVITY_SCALE).angle()
