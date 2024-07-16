@@ -428,10 +428,6 @@ func show_offers():
 		return
 	for i in G.getv("offers", []):
 		show_offer(i["costs"], i["receives"], i["id"], i["name"], i.get("sale", 0))
-	if not G.getv("collected_ad_bonus", false) and G.ad.ads_available():
-		var node = load("res://prefabs/menu/offer_ad.tscn").instance()
-		$scroll/offers.add_child(node)
-		$scroll/offers.move_child(node, 0)
 
 
 func show_offer(costs, receives, id = 0, name = tr("shop.offer.title"), sale = 0):

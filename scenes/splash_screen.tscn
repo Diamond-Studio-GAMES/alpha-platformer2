@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://themes/font.tres" type="DynamicFontData" id=1]
 [ext_resource path="res://themes/theme.tres" type="Theme" id=2]
 [ext_resource path="res://scripts/menu/main/splash_screen.gd" type="Script" id=3]
 [ext_resource path="res://textures/misc/splash_screen.png" type="Texture" id=4]
@@ -129,10 +128,6 @@ tracks/3/keys = {
 "values": [ ExtResource( 4 ) ]
 }
 
-[sub_resource type="DynamicFont" id=2]
-size = 24
-font_data = ExtResource( 1 )
-
 [node name="splash_screen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -220,85 +215,6 @@ margin_bottom = -16.0
 disabled = true
 text = "ss.pp.accept.butt"
 
-[node name="age" type="WindowDialog" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -240.0
-margin_top = -120.0
-margin_right = 240.0
-margin_bottom = 160.0
-popup_exclusive = true
-window_title = "ss.a.title"
-
-[node name="age_panel" type="Panel" parent="age"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -25.0
-margin_top = -109.0
-margin_right = 25.0
-margin_bottom = -59.0
-
-[node name="text" type="Label" parent="age/age_panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-custom_fonts/font = SubResource( 2 )
-text = "0"
-align = 1
-valign = 1
-clip_text = true
-
-[node name="slider" type="HSlider" parent="age"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 16.0
-margin_top = -36.0
-margin_right = -16.0
-margin_bottom = -4.0
-max_value = 99.0
-
-[node name="accept" type="Button" parent="age"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -80.0
-margin_top = -96.0
-margin_right = 80.0
-margin_bottom = -56.0
-disabled = true
-text = "ss.a.accept"
-
-[node name="no" type="Button" parent="age"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -80.0
-margin_top = -48.0
-margin_right = 80.0
-margin_bottom = -8.0
-text = "ss.a.ignore"
-
-[node name="comment" type="Label" parent="age"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -63.0
-margin_top = -136.0
-margin_right = 63.0
-margin_bottom = -112.0
-grow_horizontal = 2
-text = "ss.a.comment"
-align = 1
-valign = 1
-
 [node name="update" type="ConfirmationDialog" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -334,7 +250,4 @@ bus = "sfx"
 [connection signal="pressed" from="privacy_policy/link" to="." method="open_link"]
 [connection signal="toggled" from="privacy_policy/check" to="." method="check_toggled"]
 [connection signal="pressed" from="privacy_policy/next" to="." method="accept_policy"]
-[connection signal="value_changed" from="age/slider" to="." method="_on_slider_value_changed"]
-[connection signal="pressed" from="age/accept" to="." method="accept_consent"]
-[connection signal="pressed" from="age/no" to="." method="decline_consent"]
 [connection signal="confirmed" from="update" to="." method="open_update_link"]

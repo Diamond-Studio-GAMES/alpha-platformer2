@@ -6,11 +6,6 @@ export (float, 0, 1, 0.01) var time_scale = 1
 
 
 func _ready():
-	if G.ad.ad_counter_go > 1:
-		G.ad.show_interstitial()
-		G.ad.ad_counter_go = 0
-	else:
-		G.ad.ad_counter_go += 1
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("music"), false)
 	if G.save_file == null:
 		return

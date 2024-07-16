@@ -12,7 +12,6 @@ onready var label = $label
 
 func _ready():
 	$privacy_policy.get_close_button().hide()
-	$age.get_close_button().hide()
 	TranslationServer.set_locale(G.main_getv("lang", "ru"))
 	$update.get_ok().text = tr("ss.update.do")
 	$update.get_cancel().text = tr("ss.update.cancel")
@@ -20,9 +19,6 @@ func _ready():
 		G.main_setv("lang", "ru" if OS.get_locale_language() == "ru" else "en")
 		TranslationServer.set_locale(G.main_getv("lang", "en"))
 		$privacy_policy.popup_centered()
-		return
-	if G.main_getv("age", -1) < 0:
-		$age.popup_centered()
 		return
 	
 	var dir = Directory.new()
@@ -33,7 +29,6 @@ func _ready():
 			G.main_setv("patch_version", 0)
 			G.main_setv("patch_code", 0)
 	
-	G.ad.initialize(G.main_getv("age", 0))
 	if G.percent_chance(1):
 		$anim.play("easter_egg")
 	else:
@@ -152,7 +147,7 @@ func restart():
 
 
 func open_link():
-	OS.shell_open("http://diamondstudiogames.tilda.ws/privacy_policy")
+	OS.shell_open("https://diamond-studio-games.github.io/privacy_policy.html")
 
 
 func open_update_link():
@@ -167,28 +162,3 @@ func accept_policy():
 	G.main_setv("privacy_policy", true)
 	G.save()
 	restart()
-
-
-func accept_consent():
-	G.main_setv("age", $age/slider.value)
-	G.save()
-	restart()
-
-
-func decline_consent():
-	G.main_setv("age", 3)
-	G.save()
-	restart()
-
-
-func _on_slider_value_changed(value):
-	$age/age_panel/text.text = str(value)
-	if value >= 99:
-		$age/comment.text = tr("ss.a.comment2")
-		$age/accept.disabled = true
-	else:
-		$age/comment.text = tr("ss.a.comment")
-		if value == 0:
-			$age/accept.disabled = true
-		else:
-			$age/accept.disabled = false

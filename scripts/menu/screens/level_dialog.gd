@@ -129,11 +129,6 @@ func show_d_win():
 		$buttons/restart.hide()
 		$buttons/next.hide()
 		$buttons/end.show()
-	if G.ad.ad_counter_win == 1:
-		G.ad.show_interstitial()
-		G.ad.ad_counter_win = 0
-	else:
-		G.ad.ad_counter_win = 1
 	$particles.set_as_toplevel(true)
 	curr_lvl = G.current_level
 	var curr_nums = curr_lvl.split("_")

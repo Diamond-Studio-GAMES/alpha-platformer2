@@ -14,16 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/game/other/achievements.gd"
 }, {
-"base": "Node",
-"class": "AdMobAPI",
-"language": "GDScript",
-"path": "res://scripts/menu/other/admob_api.gd"
-}, {
-"base": "Node",
-"class": "AdsManager",
-"language": "GDScript",
-"path": "res://scripts/menu/other/ads_manager.gd"
-}, {
 "base": "Player",
 "class": "Archer",
 "language": "GDScript",
@@ -276,8 +266,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Achievements": "res://textures/achievements/complete.png",
-"AdMobAPI": "",
-"AdsManager": "",
 "Archer": "",
 "Attack": "res://textures/gui/attack.png",
 "Boss": "",

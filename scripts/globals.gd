@@ -5,7 +5,7 @@ class_name Globals, "res://textures/gui/alpha_text.png"
 const VERSION = "1.0"
 const VERSION_STATUS = ""
 const VERSION_STATUS_NUMBER = ""
-const VERSION_CODE = 86
+const VERSION_CODE = 87
 
 var main_file: ConfigFile
 var save_file: ConfigFile
@@ -21,7 +21,6 @@ var dialog_in_menu = ""
 var fps_text
 var music
 var time_timer
-var ad: AdsManager
 var ach: Achievements
 var class_visuals
 var loading_scene = load("res://scenes/menu/loading.tscn")
@@ -191,9 +190,6 @@ func _ready():
 		dir.make_dir_recursive("user://saves/")
 	
 	randomize()
-	ad = AdsManager.new()
-	ad.name = "ads"
-	add_child(ad)
 	ach = Achievements.new()
 	ach.name = "achievements"
 	ach.layer = 128
