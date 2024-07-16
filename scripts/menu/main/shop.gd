@@ -784,7 +784,7 @@ func quit():
 func fetch_online_offers():
 	http.download_file = OS.get_cache_dir().plus_file("online_offers_cache.cfg")
 	http.connect("request_completed", self, "request_online_response", [], CONNECT_ONESHOT)
-	var err = http.request("http://f0695447.xsph.ru/apa2/offers.cfg")
+	var err = http.request("https://diamond-studio-games.github.io/apa2/offers.cfg")
 	if err:
 		print("fetch failed:", err)
 

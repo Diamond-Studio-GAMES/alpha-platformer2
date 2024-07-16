@@ -5,6 +5,7 @@ class_name Player
 # MOVEMENT
 export (float) var COYOTE_TIME = 0.09
 var _coyote_timer = 0.09
+var last_floor_posiition = Vector2()
 
 
 # HEALTH
@@ -17,7 +18,6 @@ var potions_3 = 1
 var _breath_time_warned = false
 var custom_respawn_scene = ""
 var can_see = true
-var can_revive = true
 var can_control = true
 var _is_ultiing = false
 var _is_drinking = false
@@ -697,6 +697,8 @@ func _physics_process(delta):
 			use_potion(2)
 		if Input.is_action_just_pressed("potion3"):
 			use_potion(3)
+	if is_on_floor():
+		last_floor_posiition = global_position
 	if _move.length_squared() < 25 and _move_direction == Vector2.ZERO and attack_cooldown == 0:
 		_health_timer += delta * 60
 	else:

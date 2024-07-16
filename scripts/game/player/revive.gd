@@ -19,7 +19,7 @@ func _ready():
 func show_revive_screen():
 	if is_multiplayer:
 		return
-	if is_revived or not $"..".can_revive:
+	if is_revived:
 		give_up()
 		return
 	is_screen_on = true
