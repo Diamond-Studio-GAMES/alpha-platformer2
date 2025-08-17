@@ -5,7 +5,8 @@ class_name Player
 # MOVEMENT
 export (float) var COYOTE_TIME = 0.09
 var _coyote_timer = 0.09
-var last_floor_posiition = Vector2()
+var last_floor_position = Vector2()
+var last_floor_gravity = 1.0
 
 
 # HEALTH
@@ -698,7 +699,8 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("potion3"):
 			use_potion(3)
 	if is_on_floor():
-		last_floor_posiition = global_position
+		last_floor_position = global_position - _move * 0.25
+		last_floor_gravity = GRAVITY_SCALE
 	if _move.length_squared() < 25 and _move_direction == Vector2.ZERO and attack_cooldown == 0:
 		_health_timer += delta * 60
 	else:

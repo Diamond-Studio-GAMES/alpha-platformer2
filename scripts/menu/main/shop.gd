@@ -573,7 +573,7 @@ func generate_offers():
 	if not amulet_types.empty():
 		amulet_types.shuffle()
 		free_receives.append({"amulet_frags":{amulet_types[0]:1}})
-	if G.getv("potions1", 0) < 5:
+	if G.getv("potions1", 0) < 3:
 		free_receives.append({"potions1": 1})
 	free_receives.shuffle()
 	G.setv("offers", G.getv("offers", []) + [{"costs":{}, "receives":free_receives[0], "id" : 993, "name" : tr("shop.offer.gift")}])
@@ -596,7 +596,7 @@ func quit():
 func fetch_online_offers():
 	http.download_file = OS.get_cache_dir().plus_file("online_offers_cache.cfg")
 	http.connect("request_completed", self, "request_online_response", [], CONNECT_ONESHOT)
-	var err = http.request("https://diamondstudiogames.github.io/apa2/offers.cfg")
+	var err = http.request("https://diamondstudiogames.ru/apa2/offers.cfg")
 	if err:
 		print("fetch failed:", err)
 

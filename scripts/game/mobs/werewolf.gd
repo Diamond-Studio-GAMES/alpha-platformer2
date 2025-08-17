@@ -2,6 +2,8 @@ extends Mob
 class_name Werewolf
 
 
+signal transformed
+
 export (float) var transform_time = 2
 export (String) var transform_to_path = "res://prefabs/mobs/werewolf_human.tscn"
 onready var attack_visual = $visual/body/knife_attack/visual

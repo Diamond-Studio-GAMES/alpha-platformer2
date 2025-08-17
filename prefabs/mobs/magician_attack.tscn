@@ -68,6 +68,6 @@ anims/anim = SubResource( 2 )
 
 [node name="MultiplayerSpawnable" type="Node" parent="."]
 script = ExtResource( 3 )
-spawn_sync_data_node_paths = [ NodePath(".."), NodePath("..") ]
-spawn_sync_data_properties = [ "global_position", "damage" ]
+spawn_sync_data_node_paths = [ NodePath(".."), NodePath(".."), NodePath("..") ]
+spawn_sync_data_properties = [ "global_position", "damage", "scale" ]
 auto_despawn = false
