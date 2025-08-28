@@ -699,7 +699,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("potion3"):
 			use_potion(3)
 	if is_on_floor():
-		last_floor_position = global_position - _move * 0.25
+		last_floor_position = global_position + Vector2.LEFT * clamp(_move.x * 0.25, -32.0, 32.0)
 		last_floor_gravity = GRAVITY_SCALE
 	if _move.length_squared() < 25 and _move_direction == Vector2.ZERO and attack_cooldown == 0:
 		_health_timer += delta * 60
