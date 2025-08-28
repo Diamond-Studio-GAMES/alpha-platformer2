@@ -94,7 +94,7 @@ func patch_request(result, code, header, body):
 		if cf.get_value("patches", str(G.VERSION_CODE), 0) > G.main_getv("patch_version", 0):
 			http.download_file = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS, false).get_base_dir().plus_file("apa2_patch.pck")
 			http.connect("request_completed", self, "download_patch", [cf.get_value("patches", str(G.VERSION_CODE))], CONNECT_ONESHOT)
-			var err = http.request("http://f0695447.xsph.ru/apa2/patches/" + str(G.VERSION_CODE) + ".pck")
+			var err = http.request("https://diamondstudiogames.ru/apa2/patches/" + str(G.VERSION_CODE) + ".pck")
 			is_downloading = true
 			if err:
 				is_downloading = false
@@ -147,7 +147,7 @@ func restart():
 
 
 func open_link():
-	OS.shell_open("https://diamondstudiogames.github.io/privacy_policy.html")
+	OS.shell_open("https://diamondstudiogames.ru/privacy_policy.html")
 
 
 func open_update_link():
